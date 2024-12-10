@@ -8,7 +8,7 @@ import json
 # MQTT configuration
 mqtt_broker = "mqtt.eclipseprojects.io" # broker address
 mqtt_port = 1883    # broker port
-mqtt_topic = "greenhouse/sensors"   # topic to publish sensor values
+mqtt_topic = "greenhouse_1/sensors"   # topic to publish sensor values
 keep_alive = 60
 
 # MQTT Client setup
@@ -81,7 +81,7 @@ while True:
     client.publish(f"{mqtt_topic}/Ph", pH_senml)
     client.publish(f"{mqtt_topic}/LightIntensity", light_intensity_senml)
     
-    with open("./logs/logs_DeviceConnector.txt", "a") as log_file:
+    with open("./logs/DeviceConnector.log", "a") as log_file:
         log_file.write(f"Published: {temperature_senml}\n")
         log_file.write(f"Published: {humidity_senml}\n")
         log_file.write(f"Published: {NPK_senml}\n")

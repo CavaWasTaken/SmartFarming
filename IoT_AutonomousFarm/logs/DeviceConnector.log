@@ -1,0 +1,36 @@
+Published: {"bn": "greenhouse_1/sensors/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": 11.072157769952724, "t": 0}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": 27.92965722226169, "t": 0}
+Published: {"bn": "greenhouse_1/sensors/NPK", "n": "NPK", "u": "mg/L", "v": 902.1747503089991, "t": 0}
+Published: {"bn": "greenhouse_1/sensors/SoilMoisture", "n": "soil_moisture", "u": "%", "v": 47.46435747291239, "t": 0}
+Published: {"bn": "greenhouse_1/sensors/Ph", "n": "pH", "v": 8.712623685178777, "t": 0}
+Published: {"bn": "greenhouse_1/sensors/LightIntensity", "n": "light_intensity", "u": "lux", "v": 0.7084213204481271, "t": 0}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": 32.2040524781374, "t": 10}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": 47.16758255362885, "t": 10}
+Published: {"bn": "greenhouse_1/sensors/NPK", "n": "NPK", "u": "mg/L", "v": 912.0555064786699, "t": 10}
+Published: {"bn": "greenhouse_1/sensors/SoilMoisture", "n": "soil_moisture", "u": "%", "v": 3.3498209679460156, "t": 10}
+Published: {"bn": "greenhouse_1/sensors/Ph", "n": "pH", "v": 3.5408112205814457, "t": 10}
+Published: {"bn": "greenhouse_1/sensors/LightIntensity", "n": "light_intensity", "u": "lux", "v": 163.22471365441916, "t": 10}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": 24.467228951121648, "t": 20}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": 70.71717696391252, "t": 20}
+Published: {"bn": "greenhouse_1/sensors/NPK", "n": "NPK", "u": "mg/L", "v": 350.68508921889605, "t": 20}
+Published: {"bn": "greenhouse_1/sensors/SoilMoisture", "n": "soil_moisture", "u": "%", "v": 80.031916690503, "t": 20}
+Published: {"bn": "greenhouse_1/sensors/Ph", "n": "pH", "v": 5.538445313192905, "t": 20}
+Published: {"bn": "greenhouse_1/sensors/LightIntensity", "n": "light_intensity", "u": "lux", "v": 205.2105797360403, "t": 20}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": 16.06026735371108, "t": 30}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": 88.52357088425966, "t": 30}
+Published: {"bn": "greenhouse_1/sensors/NPK", "n": "NPK", "u": "mg/L", "v": 936.2166430537333, "t": 30}
+Published: {"bn": "greenhouse_1/sensors/SoilMoisture", "n": "soil_moisture", "u": "%", "v": 60.98080493033968, "t": 30}
+Published: {"bn": "greenhouse_1/sensors/Ph", "n": "pH", "v": 7.074440325928945, "t": 30}
+Published: {"bn": "greenhouse_1/sensors/LightIntensity", "n": "light_intensity", "u": "lux", "v": 924.990379714852, "t": 30}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": 18.132212251500356, "t": 40}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": 27.2942950749093, "t": 40}
+Published: {"bn": "greenhouse_1/sensors/NPK", "n": "NPK", "u": "mg/L", "v": 947.3731997223331, "t": 40}
+Published: {"bn": "greenhouse_1/sensors/SoilMoisture", "n": "soil_moisture", "u": "%", "v": 88.72180055487611, "t": 40}
+Published: {"bn": "greenhouse_1/sensors/Ph", "n": "pH", "v": 4.677465267650468, "t": 40}
+Published: {"bn": "greenhouse_1/sensors/LightIntensity", "n": "light_intensity", "u": "lux", "v": 318.2326163973422, "t": 40}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": 17.83498754838025, "t": 50}
+Published: {"bn": "greenhouse_1/sensors/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": 76.76725091981345, "t": 50}
+Published: {"bn": "greenhouse_1/sensors/NPK", "n": "NPK", "u": "mg/L", "v": 681.1575921675511, "t": 50}
+Published: {"bn": "greenhouse_1/sensors/SoilMoisture", "n": "soil_moisture", "u": "%", "v": 55.53514733945497, "t": 50}
+Published: {"bn": "greenhouse_1/sensors/Ph", "n": "pH", "v": 6.176749430527849, "t": 50}
+Published: {"bn": "greenhouse_1/sensors/LightIntensity", "n": "light_intensity", "u": "lux", "v": 986.5427067554576, "t": 50}
