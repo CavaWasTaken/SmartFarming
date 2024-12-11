@@ -2,14 +2,24 @@ import paho.mqtt.client as mqtt
 import time
 import random
 import json
+import requests
+
+from Catalog import CatalogService
 
 # device connector is a MQTT publisher that reads data from the sensors connected to RaspberryPi and publishes it to the MQTT broker
 
-# MQTT configuration
-mqtt_broker = "mqtt.eclipseprojects.io" # broker address
-mqtt_port = 1883    # broker port
-mqtt_topic = "greenhouse_1/sensors"   # topic to publish sensor values
-keep_alive = 60
+catalog = CatalogService()
+# each device should have an identifier (MAC address)
+response = requests.get('http://localhost:8080/get_device_configurations', params={'device_id': '0'})    # read the configuration from the Catalog
+configuration = response.json()
+# extract information from the configuration dictionary
+mqtt_broker = configuration["mqtt_broker"]
+mqtt_port = configuration["mqtt_port"]
+mqtt_topic = configuration["mqtt_topic"]
+keep_alive = configuration["keep_alive"]
+
+response = requests.get('http://localhost:8080/get_sensors', params={'device_id': '0'})    # read the list of sensors from the Catalog
+sensors = response.json()["sensors"]
 
 # MQTT Client setup
 client = mqtt.Client()
@@ -59,34 +69,59 @@ start_time = int(time.time())
 
 while True:
     timestamp = int(time.time()-start_time)
-    temperature, humidity = get_DTH22_Values()
-    NPK = get_NPK_Values()
-    soil_moisture = get_SoilMoisture_Values()
-    pH = get_pH_Values()
-    light_intensity = get_LightIntensity_Values()
+    # temperature, humidity = get_DTH22_Values()
+    # NPK = get_NPK_Values()
+    # soil_moisture = get_SoilMoisture_Values()
+    # pH = get_pH_Values()
+    # light_intensity = get_LightIntensity_Values()
     
     # Create SenML records for each sensor value
-    temperature_senml = json.dumps({"bn": f"{mqtt_topic}/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": temperature, "t": timestamp})
-    humidity_senml = json.dumps({"bn": f"{mqtt_topic}/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": humidity, "t": timestamp})
-    NPK_senml = json.dumps({"bn": f"{mqtt_topic}/NPK", "n": "NPK", "u": "mg/L", "v": NPK, "t": timestamp})
-    soil_moisture_senml = json.dumps({"bn": f"{mqtt_topic}/SoilMoisture", "n": "soil_moisture", "u": "%", "v": soil_moisture, "t": timestamp})
-    pH_senml = json.dumps({"bn": f"{mqtt_topic}/Ph", "n": "pH", "v": pH, "t": timestamp})
-    light_intensity_senml = json.dumps({"bn": f"{mqtt_topic}/LightIntensity", "n": "light_intensity", "u": "lux", "v": light_intensity, "t": timestamp})
+    # temperature_senml = json.dumps({"bn": f"{mqtt_topic}/DTH22/Temperature", "n": "temperature", "u": "Cel", "v": temperature, "t": timestamp})
+    # humidity_senml = json.dumps({"bn": f"{mqtt_topic}/DTH22/Humidity", "n": "humidity", "u": "%RH", "v": humidity, "t": timestamp})
+    # NPK_senml = json.dumps({"bn": f"{mqtt_topic}/NPK", "n": "NPK", "u": "mg/L", "v": NPK, "t": timestamp})
+    # soil_moisture_senml = json.dumps({"bn": f"{mqtt_topic}/SoilMoisture", "n": "soil_moisture", "u": "%", "v": soil_moisture, "t": timestamp})
+    # pH_senml = json.dumps({"bn": f"{mqtt_topic}/Ph", "n": "pH", "v": pH, "t": timestamp})
+    # light_intensity_senml = json.dumps({"bn": f"{mqtt_topic}/LightIntensity", "n": "light_intensity", "u": "lux", "v": light_intensity, "t": timestamp})
     
-    # Publish the sensor values to the MQTT broker
-    client.publish(f"{mqtt_topic}/DTH22/Temperature", temperature_senml)
-    client.publish(f"{mqtt_topic}/DTH22/Humidity", humidity_senml)
-    client.publish(f"{mqtt_topic}/NPK", NPK_senml)
-    client.publish(f"{mqtt_topic}/SoilMoisture", soil_moisture_senml)
-    client.publish(f"{mqtt_topic}/Ph", pH_senml)
-    client.publish(f"{mqtt_topic}/LightIntensity", light_intensity_senml)
+    # # Publish the sensor values to the MQTT broker
+    # client.publish(f"{mqtt_topic}/DTH22/Temperature", temperature_senml)
+    # client.publish(f"{mqtt_topic}/DTH22/Humidity", humidity_senml)
+    # client.publish(f"{mqtt_topic}/NPK", NPK_senml)
+    # client.publish(f"{mqtt_topic}/SoilMoisture", soil_moisture_senml)
+    # client.publish(f"{mqtt_topic}/Ph", pH_senml)
+    # client.publish(f"{mqtt_topic}/LightIntensity", light_intensity_senml)
+
+    for sensor in sensors:
+        val = -1    # default value
+        if(sensor["name"] == "DTH22"):
+            if(sensor["type"] == "Temperature"):
+                val = get_DTH22_Values()
+            elif(sensor["type"] == "Humidity"):
+                val = get_DTH22_Values()
+        elif(sensor["name"] == "NPK"):
+            val = get_NPK_Values()
+        elif(sensor["name"] == "SoilMoisture"):
+            val = get_SoilMoisture_Values()
+        elif(sensor["name"] == "Ph"):
+            val = get_pH_Values()
+        elif(sensor["name"] == "LightIntensity"):
+            val = get_LightIntensity_Values()
+        else:
+            # not recognized sensor
+            print("Sensor not recognized")
+            continue    # skip to the next sensor
+        
+        senML = json.dumps({"bn": f"{mqtt_topic}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": timestamp})
+        client.publish(f"{mqtt_topic}/{sensor['name']}/{sensor['type']}", senML)
+        with open("./logs/DeviceConnector.log", "a") as log_file:
+            log_file.write(f"Published: {senML}\n")
     
-    with open("./logs/DeviceConnector.log", "a") as log_file:
-        log_file.write(f"Published: {temperature_senml}\n")
-        log_file.write(f"Published: {humidity_senml}\n")
-        log_file.write(f"Published: {NPK_senml}\n")
-        log_file.write(f"Published: {soil_moisture_senml}\n")
-        log_file.write(f"Published: {pH_senml}\n")
-        log_file.write(f"Published: {light_intensity_senml}\n")
+    # with open("./logs/DeviceConnector.log", "a") as log_file:
+    #     log_file.write(f"Published: {temperature_senml}\n")
+    #     log_file.write(f"Published: {humidity_senml}\n")
+    #     log_file.write(f"Published: {NPK_senml}\n")
+    #     log_file.write(f"Published: {soil_moisture_senml}\n")
+    #     log_file.write(f"Published: {pH_senml}\n")
+    #     log_file.write(f"Published: {light_intensity_senml}\n")
     
     time.sleep(10)  # Publish sensor values every 10 seconds
