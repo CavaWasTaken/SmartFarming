@@ -3,14 +3,6 @@ import psycopg2
 from psycopg2 import sql
 import json
 
-# configuration for the connection to the MQTT broker
-configuration = {
-    "mqtt_broker": "mqtt.eclipseprojects.io",
-    "mqtt_port": 1883,
-    "mqtt_topic": "",
-    "keep_alive": 60
-}
-
 # class that implements the REST API of the Catalog
 class CatalogService:
     # method to get a connection to the database
