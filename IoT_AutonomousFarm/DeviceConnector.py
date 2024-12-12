@@ -8,23 +8,37 @@ from Catalog import CatalogService
 
 # device connector is a MQTT publisher that reads data from the sensors connected to RaspberryPi and publishes it to the MQTT broker
 
-catalog = CatalogService()
-# each device should have an identifier (MAC address)
+catalog = CatalogService()  # create an instance of the CatalogService class
+# each device should have an identifier (MAC address), now i am using a device_id set to 0 only for simulation
+# REST API calls to the Catalog to get the configuration
 response = requests.get('http://localhost:8080/get_device_configurations', params={'device_id': '0'})    # read the configuration from the Catalog
-configuration = response.json()
+if response.status_code == 200: # if the request is successful
+    configuration = response.json() # configutation is a dictionary
+else:
+    with open("./logs/DeviceConnector.log", "a") as log_file:
+        log_file.write(f"Failed to get configuration from the Catalog\n")
+        exit(1) # if the request fails, the device connector stops
 # extract information from the configuration dictionary
 mqtt_broker = configuration["mqtt_broker"]
 mqtt_port = configuration["mqtt_port"]
 mqtt_topic = configuration["mqtt_topic"]
 keep_alive = configuration["keep_alive"]
 
+# REST API calls to the Catalog to get the list of sensors connected to this device connector
 response = requests.get('http://localhost:8080/get_sensors', params={'device_id': '0'})    # read the list of sensors from the Catalog
-sensors = response.json()["sensors"]
+if response.status_code == 200: # if the request is successful
+    sensors = response.json()["sensors"]    # sensors is a list of dictionaries
+else:
+    sensors = []    # if the request fails, the list of sensors is empty
+    with open("./logs/DeviceConnector.log", "a") as log_file:
+        log_file.write(f"Failed to get sensors from the Catalog\n")
+        exit(1) # if the request fails, the device connector stops
 
 # MQTT Client setup
 client = mqtt.Client()
-client.connect(mqtt_broker, mqtt_port, keep_alive)
+client.connect(mqtt_broker, mqtt_port, keep_alive)  # connection to the MQTT broker with the read configuration
 
+# this are simulation functions of real sensors, they generate  only random values without a logic
 # DTH22 is the sensor that measures temperature and humidity
 def get_DTH22_Values():
     humidity = random.uniform(20.0, 90.0)  # Read data from the sensors
@@ -65,10 +79,12 @@ def get_LightIntensity_Values():
     else:
         return None
 
-start_time = int(time.time())
+start_time = int(time.time())   # get the time when the device connector starts
 
 while True:
-    timestamp = int(time.time()-start_time)
+    timestamp = int(time.time()-start_time) # get the time since the device connector started
+
+    # this commented code is the old mqtt architecture
     # temperature, humidity = get_DTH22_Values()
     # NPK = get_NPK_Values()
     # soil_moisture = get_SoilMoisture_Values()
@@ -91,9 +107,11 @@ while True:
     # client.publish(f"{mqtt_topic}/Ph", pH_senml)
     # client.publish(f"{mqtt_topic}/LightIntensity", light_intensity_senml)
 
-    for sensor in sensors:
-        val = -1    # default value
-        if(sensor["name"] == "DTH22"):
+    for sensor in sensors:  # iterate over the list of sensors
+        val = -1    # default value read from the sensor
+        # check the sensor name, if its knwon we read its value
+        if(sensor["name"] == "DTH22"):  
+            # DTH22 is the only senosor in our system that collects two values, temperature and humidity, so we need to handle both
             if(sensor["type"] == "Temperature"):
                 val = get_DTH22_Values()
             elif(sensor["type"] == "Humidity"):
@@ -107,15 +125,19 @@ while True:
         elif(sensor["name"] == "LightIntensity"):
             val = get_LightIntensity_Values()
         else:
-            # not recognized sensor
-            print("Sensor not recognized")
-            continue    # skip to the next sensor
+            # not recognized sensor, write the error in the log file
+            with open("./logs/DeviceConnector.log", "a") as log_file:
+                log_file.write(f"Sensor not recognized: {sensor['name']}\n")
+            continue    # skip to the next iteration, so at the next sensor
         
+        # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
         senML = json.dumps({"bn": f"{mqtt_topic}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": timestamp})
         client.publish(f"{mqtt_topic}/{sensor['name']}/{sensor['type']}", senML)
+        # write in a log file the value published
         with open("./logs/DeviceConnector.log", "a") as log_file:
             log_file.write(f"Published: {senML}\n")
     
+    # old code
     # with open("./logs/DeviceConnector.log", "a") as log_file:
     #     log_file.write(f"Published: {temperature_senml}\n")
     #     log_file.write(f"Published: {humidity_senml}\n")
@@ -124,4 +146,4 @@ while True:
     #     log_file.write(f"Published: {pH_senml}\n")
     #     log_file.write(f"Published: {light_intensity_senml}\n")
     
-    time.sleep(10)  # Publish sensor values every 10 seconds
+    time.sleep(10)  # publish sensor values every 10 seconds
