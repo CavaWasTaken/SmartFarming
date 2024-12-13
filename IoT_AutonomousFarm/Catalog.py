@@ -36,7 +36,7 @@ class CatalogService:
         if cherrypy.request.method == "GET":    # this method can be called only with GET
             conn = self.get_db_connection() # get the connection to the database
             cur = conn.cursor() # create a cursor to execute queries
-            cur.execute("SELECT configuration FROM devices WHERE device_id = %s AND type = %s", (device_id, device_type))    # select from the db the configuration json file of the device
+            cur.execute("SELECT configuration FROM devices WHERE device_id = %s AND name LIKE %s", (device_id, device_type+'%'))    # select from the db the configuration json file of the device
             configurations = cur.fetchone()
             cur.close()
             conn.close()

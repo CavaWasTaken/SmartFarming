@@ -46,13 +46,20 @@ client.connect(mqtt_broker, mqtt_port, keep_alive)  # connection to the MQTT bro
 
 # this are simulation functions of real sensors, they generate  only random values without a logic
 # DTH22 is the sensor that measures temperature and humidity
-def get_DTH22_Values():
-    humidity = random.uniform(20.0, 90.0)  # Read data from the sensors
-    temperature = random.uniform(10.0, 35.0)  # Read data from the sensors
-    if humidity is not None and temperature is not None:
-        return temperature, humidity
+def get_DTH22_Humidity():
+    humidity = random.uniform(0.0, 100.0)  # Read data from the sensors
+    if humidity is not None:
+        return humidity
     else:
-        return None, None
+        return None
+
+def get_DTH22_Temperature():
+    temperature = random.uniform(10.0, 35.0)  # Read data from the sensors
+    if temperature is not None:
+        return temperature
+    else:
+        return None
+    
 # grove NPK sensor is the sensor that measures NPK values
 def get_NPK_Values():
     NPK = random.uniform(0.0, 1000.0)  # Read data from the sensors
@@ -119,9 +126,9 @@ while True:
         if(sensor["name"] == "DTH22"):  
             # DTH22 is the only senosor in our system that collects two values, temperature and humidity, so we need to handle both
             if(sensor["type"] == "Temperature"):
-                val = get_DTH22_Values()
+                val = get_DTH22_Temperature()
             elif(sensor["type"] == "Humidity"):
-                val = get_DTH22_Values()
+                val = get_DTH22_Humidity()
         elif(sensor["name"] == "NPK"):
             val = get_NPK_Values()
         elif(sensor["name"] == "SoilMoisture"):
