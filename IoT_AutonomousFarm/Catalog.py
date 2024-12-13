@@ -48,14 +48,15 @@ class CatalogService:
     # given the id of the device connector, return the list of sensors connected to it
     @cherrypy.expose
     @cherrypy.tools.json_out()  # automatically convert return value
-    def get_sensors(self, device_id):
+    def get_sensors(self, device_id, device_type):
         if cherrypy.request.method == "GET":    # this method can be called only with GET
             conn = self.get_db_connection() # get the connection to the database
             cur = conn.cursor() # create a cursor to execute queries
             # the first query is to get the greenhouse_id of the device connector
-            cur.execute("SELECT greenhouse_id FROM devices WHERE device_id = %s", (device_id,))
+            cur.execute("SELECT greenhouse_id FROM devices WHERE device_id = %s AND type = %s", (device_id, device_type))
             # then the second one returns the list of sensors connected to the greenhouse
-            cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s", (str(cur.fetchone()[0])))
+            greenhouse_id = cur.fetchone()[0]
+            cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s", (greenhouse_id,))
             sensors = cur.fetchall()    # sensors is a list of values (tuples)
             cur.close()
             conn.close()

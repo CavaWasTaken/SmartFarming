@@ -31,7 +31,7 @@ mqtt_topic = configuration["mqtt_topic"]
 keep_alive = configuration["keep_alive"]
 
 # REST API calls to the Catalog to get the list of sensors connected to this device connector
-response = requests.get('http://localhost:8080/get_sensors', params={'device_id': '0'})    # read the list of sensors from the Catalog
+response = requests.get('http://localhost:8080/get_sensors', params={'device_id': device_id, 'device_type': 'DeviceConnector'})    # read the list of sensors from the Catalog
 if response.status_code == 200: # if the request is successful
     sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor connected to the device connector
 else:

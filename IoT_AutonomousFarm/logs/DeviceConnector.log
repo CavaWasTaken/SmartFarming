@@ -1,18 +1,18 @@
-Published: {"bn": "greenhouse_0/sensors/Ph/Ph", "n": "Ph", "v": 6.353132711272087, "t": 0}
-Published: {"bn": "greenhouse_0/sensors/DTH22/Temperature", "n": "Temperature", "v": [22.80292361364235, 49.09947702166089], "t": 0}
-Published: {"bn": "greenhouse_0/sensors/DTH22/Humidity", "n": "Humidity", "v": [19.57787393279505, 28.844599145831037], "t": 0}
-Published: {"bn": "greenhouse_0/sensors/NPK/NPK", "n": "NPK", "v": 346.98149434917735, "t": 0}
-Published: {"bn": "greenhouse_0/sensors/SoilMoisture/SoilMoisture", "n": "SoilMoisture", "v": 41.42253916515454, "t": 0}
-Published: {"bn": "greenhouse_0/sensors/LightIntensity/LightIntensity", "n": "LightIntensity", "v": 544.4033986997497, "t": 0}
-Published: {"bn": "greenhouse_0/sensors/Ph/Ph", "n": "Ph", "v": 7.461464843744439, "t": 10}
-Published: {"bn": "greenhouse_0/sensors/DTH22/Temperature", "n": "Temperature", "v": [14.271177998570275, 87.83402723901003], "t": 10}
-Published: {"bn": "greenhouse_0/sensors/DTH22/Humidity", "n": "Humidity", "v": [17.270668477300053, 57.59268872455495], "t": 10}
-Published: {"bn": "greenhouse_0/sensors/NPK/NPK", "n": "NPK", "v": 769.2628732120396, "t": 10}
-Published: {"bn": "greenhouse_0/sensors/SoilMoisture/SoilMoisture", "n": "SoilMoisture", "v": 22.12845797517844, "t": 10}
-Published: {"bn": "greenhouse_0/sensors/LightIntensity/LightIntensity", "n": "LightIntensity", "v": 406.75294925987237, "t": 10}
-Published: {"bn": "greenhouse_0/sensors/Ph/Ph", "n": "Ph", "v": 3.568971930825618, "t": 20}
-Published: {"bn": "greenhouse_0/sensors/DTH22/Temperature", "n": "Temperature", "v": [17.78423506254006, 33.80504491273398], "t": 20}
-Published: {"bn": "greenhouse_0/sensors/DTH22/Humidity", "n": "Humidity", "v": [17.896423738598358, 52.11267168689013], "t": 20}
-Published: {"bn": "greenhouse_0/sensors/NPK/NPK", "n": "NPK", "v": 999.8747244583227, "t": 20}
-Published: {"bn": "greenhouse_0/sensors/SoilMoisture/SoilMoisture", "n": "SoilMoisture", "v": 17.112378012392927, "t": 20}
-Published: {"bn": "greenhouse_0/sensors/LightIntensity/LightIntensity", "n": "LightIntensity", "v": 904.866670393471, "t": 20}
+Published: {"bn": "greenhouse_0/sensors/Ph/Ph", "n": "Ph", "v": 6.483879529571206, "t": 0}
+Published: {"bn": "greenhouse_0/sensors/DTH22/Temperature", "n": "Temperature", "v": [21.13110128781414, 69.60210410836686], "t": 0}
+Published: {"bn": "greenhouse_0/sensors/DTH22/Humidity", "n": "Humidity", "v": [13.869299703505312, 72.56990122533011], "t": 0}
+Published: {"bn": "greenhouse_0/sensors/NPK/NPK", "n": "NPK", "v": 751.3515336143593, "t": 0}
+Published: {"bn": "greenhouse_0/sensors/SoilMoisture/SoilMoisture", "n": "SoilMoisture", "v": 40.21735087925722, "t": 0}
+Published: {"bn": "greenhouse_0/sensors/LightIntensity/LightIntensity", "n": "LightIntensity", "v": 953.0817067049716, "t": 0}
+Published: {"bn": "greenhouse_0/sensors/Ph/Ph", "n": "Ph", "v": 4.560195571972068, "t": 10}
+Published: {"bn": "greenhouse_0/sensors/DTH22/Temperature", "n": "Temperature", "v": [14.260157286538993, 85.67218084575129], "t": 10}
+Published: {"bn": "greenhouse_0/sensors/DTH22/Humidity", "n": "Humidity", "v": [27.742966173955853, 78.3108815297613], "t": 10}
+Published: {"bn": "greenhouse_0/sensors/NPK/NPK", "n": "NPK", "v": 799.5010799389503, "t": 10}
+Published: {"bn": "greenhouse_0/sensors/SoilMoisture/SoilMoisture", "n": "SoilMoisture", "v": 99.92741668376429, "t": 10}
+Published: {"bn": "greenhouse_0/sensors/LightIntensity/LightIntensity", "n": "LightIntensity", "v": 266.2585582868169, "t": 10}
+Published: {"bn": "greenhouse_0/sensors/Ph/Ph", "n": "Ph", "v": 3.951256348545931, "t": 20}
+Published: {"bn": "greenhouse_0/sensors/DTH22/Temperature", "n": "Temperature", "v": [13.791577469278243, 63.25174453547998], "t": 20}
+Published: {"bn": "greenhouse_0/sensors/DTH22/Humidity", "n": "Humidity", "v": [12.416058588501382, 45.63020549410817], "t": 20}
+Published: {"bn": "greenhouse_0/sensors/NPK/NPK", "n": "NPK", "v": 476.50039502967144, "t": 20}
+Published: {"bn": "greenhouse_0/sensors/SoilMoisture/SoilMoisture", "n": "SoilMoisture", "v": 8.301200735416492, "t": 20}
+Published: {"bn": "greenhouse_0/sensors/LightIntensity/LightIntensity", "n": "LightIntensity", "v": 838.0777755539821, "t": 20}
