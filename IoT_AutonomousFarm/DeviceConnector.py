@@ -3,15 +3,21 @@ import time
 import random
 import json
 import requests
+import socket
 
 from Catalog import CatalogService
 
 # device connector is a MQTT publisher that reads data from the sensors connected to RaspberryPi and publishes it to the MQTT broker
 
 catalog = CatalogService()  # create an instance of the CatalogService class
-# each device should have an identifier (MAC address), now i am using a device_id set to 0 only for simulation
+device_id = socket.gethostname()    # get the name of the device running
+
+# on the same device are running DeviceConnector and all the MicroServices, so all these components are sharing the same device_id. 
+# This is why in the devices table of the DB (where all the microservices and device connectors are saved), the primay key is made by the device_id and the type of device. 
+# Cause i think that in our system we cannot have more than one of the same device on the same greenhouse. (At each raspberry is connected just one device connector, not more. The same for management components)
+
 # REST API calls to the Catalog to get the configuration
-response = requests.get('http://localhost:8080/get_device_configurations', params={'device_id': '0'})    # read the configuration from the Catalog
+response = requests.get('http://localhost:8080/get_device_configurations', params={'device_id': device_id, 'device_type': 'DeviceConnector'})    # read the configuration from the Catalog
 if response.status_code == 200: # if the request is successful
     configuration = response.json() # configutation is a dictionary
 else:
@@ -27,7 +33,7 @@ keep_alive = configuration["keep_alive"]
 # REST API calls to the Catalog to get the list of sensors connected to this device connector
 response = requests.get('http://localhost:8080/get_sensors', params={'device_id': '0'})    # read the list of sensors from the Catalog
 if response.status_code == 200: # if the request is successful
-    sensors = response.json()["sensors"]    # sensors is a list of dictionaries
+    sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor connected to the device connector
 else:
     sensors = []    # if the request fails, the list of sensors is empty
     with open("./logs/DeviceConnector.log", "a") as log_file:

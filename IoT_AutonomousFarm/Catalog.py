@@ -1,7 +1,6 @@
 import cherrypy
 import psycopg2
 from psycopg2 import sql
-import json
 
 # class that implements the REST API of the Catalog
 class CatalogService:
@@ -33,11 +32,11 @@ class CatalogService:
     # at the beginnig of the system each device should read from the Catalog the information about the system itself
     @cherrypy.expose
     @cherrypy.tools.json_out()  # automatically convert return value to JSON
-    def get_device_configurations(self, device_id):
+    def get_device_configurations(self, device_id, device_type):
         if cherrypy.request.method == "GET":    # this method can be called only with GET
             conn = self.get_db_connection() # get the connection to the database
             cur = conn.cursor() # create a cursor to execute queries
-            cur.execute("SELECT configuration FROM devices WHERE device_id = %s", (device_id, ))    # select from the db the configuration json file of the device
+            cur.execute("SELECT configuration FROM devices WHERE device_id = %s AND type = %s", (device_id, device_type))    # select from the db the configuration json file of the device
             configurations = cur.fetchone()
             cur.close()
             conn.close()
