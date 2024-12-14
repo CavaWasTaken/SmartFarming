@@ -1,20 +1,396 @@
-Humidity is low: 33.48169520791665
-Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 33.48169520791665, 't': 790}
-Soil moisture is low: 39.71394356071964
-Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 39.71394356071964, 't': 790}
-Humidity is high: 63.99363930229636
-Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 63.99363930229636, 't': 800}
-Soil moisture is high: 95.52381401851679
-Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.52381401851679, 't': 800}
-Humidity is low: 29.340230540937306
-Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 29.340230540937306, 't': 810}
-Soil moisture is high: 88.41576293750093
-Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 88.41576293750093, 't': 810}
-Humidity is high: 68.11720249952438
-Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 68.11720249952438, 't': 820}
-Soil moisture is high: 67.80995502862068
-Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 67.80995502862068, 't': 820}
-Humidity is high: 98.08590289210377
-Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 98.08590289210377, 't': 830}
-Soil moisture is high: 86.03943949530805
-Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 86.03943949530805, 't': 830}
+Humidity is high: 94.65001459268817
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 94.65001459268817, 't': 50}
+Soil moisture is high: 79.3741955782781
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 79.3741955782781, 't': 50}
+Humidity is low: 3.8563990429859585
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 3.8563990429859585, 't': 60}
+Soil moisture is high: 60.448926860322075
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 60.448926860322075, 't': 60}
+Humidity is high: 71.24331896885991
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 71.24331896885991, 't': 70}
+Soil moisture is low: 32.220616947352745
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.220616947352745, 't': 70}
+Humidity is low: 43.93787138023417
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 43.93787138023417, 't': 80}
+Soil moisture is high: 95.37991307114999
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.37991307114999, 't': 80}
+Humidity is high: 93.32475583774664
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 93.32475583774664, 't': 90}
+Soil moisture is high: 74.71660447231432
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 74.71660447231432, 't': 90}
+Humidity is low: 37.751183477038595
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 37.751183477038595, 't': 100}
+Soil moisture is high: 87.50494808324657
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 87.50494808324657, 't': 100}
+Humidity is low: 12.980748312618662
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 12.980748312618662, 't': 110}
+Soil moisture is low: 34.213266682731316
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 34.213266682731316, 't': 110}
+Humidity is low: 37.307630753865794
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 37.307630753865794, 't': 120}
+Soil moisture is low: 19.87184533125831
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 19.87184533125831, 't': 120}
+Humidity is high: 66.01287685983117
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 66.01287685983117, 't': 130}
+Soil moisture is high: 46.49260685327404
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 46.49260685327404, 't': 130}
+Humidity is high: 91.58982184185496
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 91.58982184185496, 't': 140}
+Soil moisture is low: 11.277869919542772
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 11.277869919542772, 't': 140}
+Humidity is low: 8.743467067377008
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 8.743467067377008, 't': 150}
+Soil moisture is high: 45.85081853571486
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 45.85081853571486, 't': 150}
+Humidity is high: 99.24512643198976
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 99.24512643198976, 't': 160}
+Soil moisture is high: 61.22063084419287
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 61.22063084419287, 't': 160}
+Humidity is low: 38.899447883456276
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 38.899447883456276, 't': 170}
+Soil moisture is high: 51.97372408878943
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.97372408878943, 't': 170}
+Humidity is high: 94.52362857564876
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 94.52362857564876, 't': 180}
+Soil moisture is low: 4.499026213866763
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.499026213866763, 't': 180}
+Humidity is high: 63.01563691892246
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 63.01563691892246, 't': 190}
+Soil moisture is high: 89.95217769310588
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 89.95217769310588, 't': 190}
+Humidity is high: 71.61918287348544
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 71.61918287348544, 't': 200}
+Soil moisture is high: 90.13937606107342
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 90.13937606107342, 't': 200}
+Humidity is high: 83.39955099898062
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 83.39955099898062, 't': 210}
+Soil moisture is low: 39.24264912696014
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 39.24264912696014, 't': 210}
+Humidity is low: 7.388009045954924
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 7.388009045954924, 't': 220}
+Soil moisture is high: 48.708597747422054
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.708597747422054, 't': 220}
+Humidity is low: 12.593691699876109
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 12.593691699876109, 't': 230}
+Soil moisture is high: 98.65340014375751
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 98.65340014375751, 't': 230}
+Humidity is low: 41.63017697718958
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 41.63017697718958, 't': 240}
+Soil moisture is low: 7.060906584377625
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 7.060906584377625, 't': 240}
+Humidity is low: 15.288075383893885
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 15.288075383893885, 't': 250}
+Soil moisture is high: 56.12813287124779
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 56.12813287124779, 't': 250}
+Humidity is low: 0.32033633187829036
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 0.32033633187829036, 't': 260}
+Soil moisture is low: 28.056273593566072
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 28.056273593566072, 't': 260}
+Humidity is low: 37.59774363132111
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 37.59774363132111, 't': 270}
+Soil moisture is high: 76.05503364503
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 76.05503364503, 't': 270}
+Humidity is low: 35.509352117526305
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 35.509352117526305, 't': 280}
+Soil moisture is high: 75.81613158390901
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 75.81613158390901, 't': 280}
+Humidity is low: 2.008674579319869
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 2.008674579319869, 't': 290}
+Soil moisture is low: 35.13578422453829
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 35.13578422453829, 't': 290}
+Humidity is low: 26.731156069552487
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 26.731156069552487, 't': 300}
+Soil moisture is high: 93.9360694393316
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 93.9360694393316, 't': 300}
+Humidity is low: 22.637991031667916
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 22.637991031667916, 't': 310}
+Soil moisture is high: 79.9424156312594
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 79.9424156312594, 't': 310}
+Humidity is high: 78.38738655857586
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 78.38738655857586, 't': 320}
+Soil moisture is low: 36.531742335161944
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 36.531742335161944, 't': 320}
+Humidity is high: 69.63752745678252
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 69.63752745678252, 't': 330}
+Soil moisture is high: 50.72556635028994
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.72556635028994, 't': 330}
+Humidity is high: 84.49904536602388
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 84.49904536602388, 't': 340}
+Soil moisture is high: 91.51202618081008
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 91.51202618081008, 't': 340}
+Humidity is high: 88.13607244398152
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 88.13607244398152, 't': 350}
+Soil moisture is low: 8.844083184621997
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 8.844083184621997, 't': 350}
+Humidity is high: 61.42711785594821
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 61.42711785594821, 't': 360}
+Soil moisture is high: 95.39280614362023
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.39280614362023, 't': 360}
+Humidity is high: 84.50832047059235
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 84.50832047059235, 't': 370}
+Soil moisture is high: 74.0997352151898
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 74.0997352151898, 't': 370}
+Humidity is low: 57.57933454911868
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 57.57933454911868, 't': 380}
+Soil moisture is high: 92.39474178808499
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 92.39474178808499, 't': 380}
+Humidity is low: 13.099842472335743
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 13.099842472335743, 't': 390}
+Soil moisture is low: 32.589964266946595
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.589964266946595, 't': 390}
+Humidity is high: 83.63985153906887
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 83.63985153906887, 't': 400}
+Soil moisture is low: 34.95287736636021
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 34.95287736636021, 't': 400}
+Humidity is high: 75.07768232143475
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 75.07768232143475, 't': 410}
+Soil moisture is high: 94.21116864720648
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 94.21116864720648, 't': 410}
+Humidity is low: 26.049240643024795
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 26.049240643024795, 't': 420}
+Soil moisture is high: 49.27505999928011
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.27505999928011, 't': 420}
+Humidity is low: 54.63489892014213
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 54.63489892014213, 't': 430}
+Soil moisture is high: 65.20981298264871
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 65.20981298264871, 't': 430}
+Humidity is high: 63.49612090587352
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 63.49612090587352, 't': 440}
+Soil moisture is high: 97.92106382771483
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 97.92106382771483, 't': 440}
+Humidity is high: 79.4698262264667
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 79.4698262264667, 't': 450}
+Soil moisture is high: 87.64627843300626
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 87.64627843300626, 't': 450}
+Humidity is low: 37.17884180012252
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 37.17884180012252, 't': 460}
+Soil moisture is high: 80.88933866784173
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 80.88933866784173, 't': 460}
+Humidity is low: 50.44909086369487
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 50.44909086369487, 't': 470}
+Soil moisture is high: 82.63470347361509
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 82.63470347361509, 't': 470}
+Humidity is high: 94.25409525254041
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 94.25409525254041, 't': 480}
+Soil moisture is low: 4.254932901627695
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.254932901627695, 't': 480}
+Humidity is low: 44.109073953485364
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 44.109073953485364, 't': 490}
+Soil moisture is high: 92.93952270003327
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 92.93952270003327, 't': 490}
+Humidity is low: 18.956698007568782
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 18.956698007568782, 't': 500}
+Soil moisture is high: 64.92975414322079
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 64.92975414322079, 't': 500}
+Humidity is low: 28.909454753210618
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 28.909454753210618, 't': 510}
+Soil moisture is high: 65.91850591076393
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 65.91850591076393, 't': 510}
+Humidity is low: 14.704768537861746
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 14.704768537861746, 't': 520}
+Soil moisture is low: 25.965799609371366
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.965799609371366, 't': 520}
+Humidity is low: 54.86640067297132
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 54.86640067297132, 't': 530}
+Soil moisture is low: 4.146025820124
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.146025820124, 't': 530}
+Humidity is high: 80.52783402100184
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 80.52783402100184, 't': 540}
+Soil moisture is high: 70.57942438891581
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 70.57942438891581, 't': 540}
+Humidity is high: 62.99865846011857
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 62.99865846011857, 't': 550}
+Soil moisture is high: 89.64008934532134
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 89.64008934532134, 't': 550}
+Humidity is low: 32.144066070849654
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 32.144066070849654, 't': 560}
+Soil moisture is high: 94.09225323287392
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 94.09225323287392, 't': 560}
+Humidity is low: 33.93404005511118
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 33.93404005511118, 't': 570}
+Soil moisture is high: 89.69268342329708
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 89.69268342329708, 't': 570}
+Humidity is low: 50.49559697154792
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 50.49559697154792, 't': 580}
+Soil moisture is low: 12.014434155607335
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 12.014434155607335, 't': 580}
+Humidity is low: 48.43847958273795
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 48.43847958273795, 't': 590}
+Soil moisture is low: 19.09284769483276
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 19.09284769483276, 't': 590}
+Humidity is low: 32.68359683537538
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 32.68359683537538, 't': 600}
+Soil moisture is high: 95.22050667634251
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.22050667634251, 't': 600}
+Humidity is low: 14.699259607714165
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 14.699259607714165, 't': 610}
+Soil moisture is low: 32.529443936686384
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.529443936686384, 't': 610}
+Humidity is low: 25.059872664640825
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 25.059872664640825, 't': 620}
+Soil moisture is low: 35.03720445973237
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 35.03720445973237, 't': 620}
+Humidity is low: 5.2358921039392765
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 5.2358921039392765, 't': 630}
+Soil moisture is low: 25.473430434313325
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.473430434313325, 't': 630}
+Humidity is low: 56.86411870547226
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 56.86411870547226, 't': 640}
+Soil moisture is high: 76.25206205192558
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 76.25206205192558, 't': 640}
+Humidity is high: 74.50977491657562
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 74.50977491657562, 't': 650}
+Soil moisture is high: 94.0336612203408
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 94.0336612203408, 't': 650}
+Humidity is high: 98.90495703472139
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 98.90495703472139, 't': 660}
+Soil moisture is high: 50.22732268642551
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.22732268642551, 't': 660}
+Humidity is high: 72.41719792011999
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 72.41719792011999, 't': 670}
+Soil moisture is low: 29.810908193673036
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 29.810908193673036, 't': 670}
+Humidity is low: 43.57182416176513
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 43.57182416176513, 't': 680}
+Soil moisture is high: 74.14674926336882
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 74.14674926336882, 't': 680}
+Humidity is low: 2.8280427580411494
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 2.8280427580411494, 't': 690}
+Soil moisture is low: 0.14769860543443203
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 0.14769860543443203, 't': 690}
+Humidity is low: 57.645710767439
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 57.645710767439, 't': 700}
+Soil moisture is low: 25.983190514516597
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.983190514516597, 't': 700}
+Humidity is high: 60.4566317434111
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 60.4566317434111, 't': 710}
+Soil moisture is high: 95.48810314151058
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.48810314151058, 't': 710}
+Humidity is low: 57.68983370901375
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 57.68983370901375, 't': 720}
+Soil moisture is high: 42.60035513626337
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 42.60035513626337, 't': 720}
+Humidity is high: 83.231869313025
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 83.231869313025, 't': 730}
+Soil moisture is high: 66.38066507496606
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 66.38066507496606, 't': 730}
+Humidity is high: 65.88238417476835
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 65.88238417476835, 't': 740}
+Soil moisture is high: 47.86319875058969
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.86319875058969, 't': 740}
+Humidity is low: 1.9194274037031445
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 1.9194274037031445, 't': 750}
+Soil moisture is low: 39.306474528119594
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 39.306474528119594, 't': 750}
+Humidity is low: 9.27632166730865
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 9.27632166730865, 't': 760}
+Soil moisture is low: 25.565013839445406
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.565013839445406, 't': 760}
+Humidity is low: 0.6123854820629937
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 0.6123854820629937, 't': 770}
+Soil moisture is high: 68.92052874205189
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 68.92052874205189, 't': 770}
+Humidity is low: 41.74162924368312
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 41.74162924368312, 't': 780}
+Soil moisture is low: 34.419946318457505
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 34.419946318457505, 't': 780}
+Humidity is low: 46.9430046921445
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 46.9430046921445, 't': 790}
+Soil moisture is high: 86.86837248978154
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 86.86837248978154, 't': 790}
+Humidity is high: 65.71983001142841
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 65.71983001142841, 't': 800}
+Soil moisture is low: 8.841171585140206
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 8.841171585140206, 't': 800}
+Humidity is low: 48.625180820076054
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 48.625180820076054, 't': 810}
+Soil moisture is high: 51.70969418623472
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.70969418623472, 't': 810}
+Humidity is low: 12.443315477163509
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 12.443315477163509, 't': 820}
+Soil moisture is low: 32.96027516574196
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.96027516574196, 't': 820}
+Humidity is high: 63.096527058114575
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 63.096527058114575, 't': 830}
+Soil moisture is high: 67.76438134801545
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 67.76438134801545, 't': 830}
+Humidity is low: 41.05568688905748
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 41.05568688905748, 't': 840}
+Soil moisture is high: 56.60682641222136
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 56.60682641222136, 't': 840}
+Humidity is low: 6.88326849690789
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 6.88326849690789, 't': 850}
+Soil moisture is low: 19.376103407696387
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 19.376103407696387, 't': 850}
+Humidity is low: 4.237609967066858
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 4.237609967066858, 't': 860}
+Soil moisture is high: 86.16065280132518
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 86.16065280132518, 't': 860}
+Humidity is low: 29.401996054379808
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 29.401996054379808, 't': 870}
+Soil moisture is high: 50.52570548662666
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.52570548662666, 't': 870}
+Humidity is low: 15.156082042031983
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 15.156082042031983, 't': 880}
+Soil moisture is high: 87.61548146232731
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 87.61548146232731, 't': 880}
+Humidity is low: 40.91770268382273
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 40.91770268382273, 't': 890}
+Soil moisture is high: 55.78281751475416
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 55.78281751475416, 't': 890}
+Humidity is low: 45.03575928625243
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 45.03575928625243, 't': 900}
+Soil moisture is low: 27.805917944562854
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 27.805917944562854, 't': 900}
+Humidity is low: 39.37066360155639
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 39.37066360155639, 't': 910}
+Soil moisture is low: 28.886242599418445
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 28.886242599418445, 't': 910}
+Humidity is high: 63.524705218480705
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 63.524705218480705, 't': 920}
+Soil moisture is high: 84.44885843647292
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 84.44885843647292, 't': 920}
+Humidity is low: 24.735182698553526
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 24.735182698553526, 't': 930}
+Soil moisture is high: 80.56581987884556
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 80.56581987884556, 't': 930}
+Humidity is low: 25.590643153117142
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 25.590643153117142, 't': 940}
+Soil moisture is low: 10.659784098231395
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 10.659784098231395, 't': 940}
+Humidity is high: 90.58645430526826
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 90.58645430526826, 't': 950}
+Soil moisture is low: 29.403955584343578
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 29.403955584343578, 't': 950}
+Humidity is low: 37.045753728275386
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 37.045753728275386, 't': 960}
+Soil moisture is low: 17.167030630686774
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 17.167030630686774, 't': 960}
+Humidity is low: 14.964555700251392
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 14.964555700251392, 't': 970}
+Soil moisture is low: 9.73014749506451
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 9.73014749506451, 't': 970}
+Humidity is low: 37.71731127273639
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 37.71731127273639, 't': 980}
+Soil moisture is high: 97.16394883079863
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 97.16394883079863, 't': 980}
+Humidity is high: 90.13039674376348
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 90.13039674376348, 't': 990}
+Soil moisture is low: 14.798278975691614
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 14.798278975691614, 't': 990}
+Humidity is high: 86.78612605644193
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 86.78612605644193, 't': 1000}
+Soil moisture is high: 88.90675913373806
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 88.90675913373806, 't': 1000}
+Humidity is low: 19.13839281077613
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 19.13839281077613, 't': 1010}
+Soil moisture is low: 7.205807408702869
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 7.205807408702869, 't': 1010}
+Humidity is high: 98.23930932961837
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 98.23930932961837, 't': 1020}
+Soil moisture is high: 54.71300276519777
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 54.71300276519777, 't': 1020}
+Humidity is low: 58.45904169852748
+Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 58.45904169852748, 't': 1030}
+Soil moisture is low: 21.12880175559424
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 21.12880175559424, 't': 1030}

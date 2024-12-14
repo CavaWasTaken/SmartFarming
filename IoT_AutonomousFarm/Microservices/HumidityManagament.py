@@ -3,14 +3,8 @@ import paho.mqtt.client as PahoMQTT
 from MqttSub import MqttSubscriber
 import socket
 import requests
-import sys
-import os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from Catalog import CatalogService 
 
 # humidity management component is a MQTT subscriber and it receives the humidity and soil moisture values
-catalog = CatalogService()
 device_id = socket.gethostname()
 
 def handle_message(topic, val):
@@ -78,7 +72,7 @@ if __name__ == "__main__":
         configuration = response.json()
     else:
         with open("../logs/HumidityManagement.log", "a") as log_file:
-            log_file.write(f"Failed to get configuration from the Catalog\n")
+            log_file.write("Failed to get configuration from the Catalog\n")
             exit(1)
 
     mqtt_broker = configuration["mqtt_broker"]

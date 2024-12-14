@@ -1,0 +1,500 @@
+pH is high: 8.603430051525628
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.603430051525628, 't': 40}
+NPK is high: 841.3636363860908
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 841.3636363860908, 't': 40}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 53.98893908648118, 't': 40}
+pH is low: 4.7397072888334355
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.7397072888334355, 't': 50}
+NPK is high: 835.170158794455
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 835.170158794455, 't': 50}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 79.3741955782781, 't': 50}
+pH is high: 7.006676487777757
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.006676487777757, 't': 60}
+NPK is high: 384.90898039221446
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 384.90898039221446, 't': 60}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 60.448926860322075, 't': 60}
+pH is low: 5.932544331508192
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.932544331508192, 't': 70}
+NPK is high: 161.10501726727367
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 161.10501726727367, 't': 70}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.220616947352745, 't': 70}
+pH is high: 8.387979201826347
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.387979201826347, 't': 80}
+NPK is low: 15.85481929856314
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 15.85481929856314, 't': 80}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.37991307114999, 't': 80}
+pH is low: 6.935012053319231
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.935012053319231, 't': 90}
+NPK is high: 846.8696396147785
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 846.8696396147785, 't': 90}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 74.71660447231432, 't': 90}
+pH is low: 5.564229456629823
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.564229456629823, 't': 100}
+NPK is high: 504.1933248872551
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 504.1933248872551, 't': 100}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 87.50494808324657, 't': 100}
+pH is high: 8.329542449893081
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.329542449893081, 't': 110}
+NPK is high: 668.9395038235614
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 668.9395038235614, 't': 110}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 34.213266682731316, 't': 110}
+pH is low: 4.54389930103236
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.54389930103236, 't': 120}
+NPK is high: 277.2144856190305
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 277.2144856190305, 't': 120}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 19.87184533125831, 't': 120}
+pH is low: 6.263946293273466
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.263946293273466, 't': 130}
+NPK is high: 629.4835152670836
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 629.4835152670836, 't': 130}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 46.49260685327404, 't': 130}
+pH is low: 4.334671044931971
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.334671044931971, 't': 140}
+NPK is high: 767.0648756688283
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 767.0648756688283, 't': 140}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 11.277869919542772, 't': 140}
+pH is low: 4.495096138778957
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.495096138778957, 't': 150}
+NPK is high: 753.4981687939995
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 753.4981687939995, 't': 150}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 45.85081853571486, 't': 150}
+pH is high: 7.035437981543215
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.035437981543215, 't': 160}
+NPK is high: 239.21237872884316
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 239.21237872884316, 't': 160}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 61.22063084419287, 't': 160}
+pH is low: 5.521885892135169
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.521885892135169, 't': 170}
+NPK is high: 498.16347732077384
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 498.16347732077384, 't': 170}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.97372408878943, 't': 170}
+pH is low: 4.048522362403628
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.048522362403628, 't': 180}
+NPK is high: 405.72101559549054
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 405.72101559549054, 't': 180}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.499026213866763, 't': 180}
+pH is low: 3.9179199886139493
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.9179199886139493, 't': 190}
+NPK is high: 541.2048234985069
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 541.2048234985069, 't': 190}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 89.95217769310588, 't': 190}
+pH is high: 8.349434525382781
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.349434525382781, 't': 200}
+NPK is high: 382.4227994903263
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 382.4227994903263, 't': 200}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 90.13937606107342, 't': 200}
+pH is high: 8.890280800284483
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.890280800284483, 't': 210}
+NPK is high: 159.85626902916107
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 159.85626902916107, 't': 210}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 39.24264912696014, 't': 210}
+pH is high: 8.975838589576277
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.975838589576277, 't': 220}
+NPK is high: 535.6548297119995
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 535.6548297119995, 't': 220}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.708597747422054, 't': 220}
+pH is high: 8.53090952372794
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.53090952372794, 't': 230}
+NPK is high: 523.2023276338167
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 523.2023276338167, 't': 230}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 98.65340014375751, 't': 230}
+pH is high: 7.7207129012901845
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.7207129012901845, 't': 240}
+NPK is high: 676.7660813334584
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 676.7660813334584, 't': 240}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 7.060906584377625, 't': 240}
+pH is low: 6.222063539447275
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.222063539447275, 't': 250}
+NPK is high: 899.9331832119599
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 899.9331832119599, 't': 250}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 56.12813287124779, 't': 250}
+pH is low: 6.91562904609705
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.91562904609705, 't': 260}
+NPK is high: 591.9467366631962
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 591.9467366631962, 't': 260}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 28.056273593566072, 't': 260}
+pH is low: 3.531694079389016
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.531694079389016, 't': 270}
+NPK is high: 954.4354382594751
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 954.4354382594751, 't': 270}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 76.05503364503, 't': 270}
+pH is low: 4.101083234005712
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.101083234005712, 't': 280}
+NPK is high: 342.26950711337054
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 342.26950711337054, 't': 280}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 75.81613158390901, 't': 280}
+pH is low: 6.095244138311087
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.095244138311087, 't': 290}
+NPK is high: 966.1712330596093
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 966.1712330596093, 't': 290}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 35.13578422453829, 't': 290}
+pH is low: 5.240678059464201
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.240678059464201, 't': 300}
+NPK is high: 449.56158225475554
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 449.56158225475554, 't': 300}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 93.9360694393316, 't': 300}
+pH is high: 7.677785220418238
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.677785220418238, 't': 310}
+NPK is low: 84.2918648672103
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 84.2918648672103, 't': 310}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 79.9424156312594, 't': 310}
+pH is high: 7.489164913634584
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.489164913634584, 't': 320}
+NPK is high: 922.281989903283
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 922.281989903283, 't': 320}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 36.531742335161944, 't': 320}
+pH is high: 7.928213980670192
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.928213980670192, 't': 330}
+NPK is high: 182.16837003913687
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 182.16837003913687, 't': 330}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.72556635028994, 't': 330}
+pH is high: 8.773461623544247
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.773461623544247, 't': 340}
+NPK is high: 278.29553524083195
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 278.29553524083195, 't': 340}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 91.51202618081008, 't': 340}
+pH is high: 8.047893877382046
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.047893877382046, 't': 350}
+NPK is high: 966.0241769009695
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 966.0241769009695, 't': 350}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 8.844083184621997, 't': 350}
+pH is low: 6.802239886810809
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.802239886810809, 't': 360}
+NPK is high: 488.43452231510184
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 488.43452231510184, 't': 360}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.39280614362023, 't': 360}
+pH is low: 3.2780526072350282
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.2780526072350282, 't': 370}
+NPK is high: 212.7651355604041
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 212.7651355604041, 't': 370}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 74.0997352151898, 't': 370}
+pH is high: 7.703300319698832
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.703300319698832, 't': 380}
+NPK is low: 24.222845400576844
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 24.222845400576844, 't': 380}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 92.39474178808499, 't': 380}
+pH is low: 3.332074983794418
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.332074983794418, 't': 390}
+NPK is high: 353.1734694284383
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 353.1734694284383, 't': 390}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.589964266946595, 't': 390}
+pH is low: 6.805901670078239
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.805901670078239, 't': 400}
+NPK is high: 866.8426179479021
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 866.8426179479021, 't': 400}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 34.95287736636021, 't': 400}
+pH is low: 4.520455558394522
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.520455558394522, 't': 410}
+NPK is high: 190.67940642866742
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 190.67940642866742, 't': 410}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 94.21116864720648, 't': 410}
+pH is high: 7.900837584009469
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.900837584009469, 't': 420}
+NPK is low: 49.67687687187028
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 49.67687687187028, 't': 420}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.27505999928011, 't': 420}
+pH is low: 5.6809986095505645
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.6809986095505645, 't': 430}
+NPK is high: 102.82961304523897
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 102.82961304523897, 't': 430}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 65.20981298264871, 't': 430}
+pH is high: 7.825915079306649
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.825915079306649, 't': 440}
+NPK is high: 280.59030434140897
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 280.59030434140897, 't': 440}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 97.92106382771483, 't': 440}
+pH is high: 7.430448857272117
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.430448857272117, 't': 450}
+NPK is high: 980.8526066998259
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 980.8526066998259, 't': 450}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 87.64627843300626, 't': 450}
+pH is low: 6.943549398081764
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.943549398081764, 't': 460}
+NPK is high: 890.5308818006748
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 890.5308818006748, 't': 460}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 80.88933866784173, 't': 460}
+pH is high: 7.856506768014039
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.856506768014039, 't': 470}
+NPK is high: 880.5850364959933
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 880.5850364959933, 't': 470}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 82.63470347361509, 't': 470}
+pH is low: 6.043905590942192
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.043905590942192, 't': 480}
+NPK is high: 390.04304451902414
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 390.04304451902414, 't': 480}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.254932901627695, 't': 480}
+pH is high: 7.305999608913747
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.305999608913747, 't': 490}
+NPK is high: 212.91254463736774
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 212.91254463736774, 't': 490}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 92.93952270003327, 't': 490}
+pH is high: 8.481665306336879
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.481665306336879, 't': 500}
+NPK is low: 11.771582358830024
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 11.771582358830024, 't': 500}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 64.92975414322079, 't': 500}
+pH is high: 8.16143035348619
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.16143035348619, 't': 510}
+NPK is high: 905.4792297820092
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 905.4792297820092, 't': 510}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 65.91850591076393, 't': 510}
+pH is high: 8.191605687445296
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.191605687445296, 't': 520}
+NPK is high: 209.31734379146562
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 209.31734379146562, 't': 520}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.965799609371366, 't': 520}
+pH is low: 5.602852308770235
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.602852308770235, 't': 530}
+NPK is high: 344.18608452476707
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 344.18608452476707, 't': 530}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.146025820124, 't': 530}
+pH is high: 8.416674821634249
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.416674821634249, 't': 540}
+NPK is high: 981.1989592189404
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 981.1989592189404, 't': 540}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 70.57942438891581, 't': 540}
+pH is low: 5.499404990361702
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.499404990361702, 't': 550}
+NPK is high: 367.19659000556095
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 367.19659000556095, 't': 550}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 89.64008934532134, 't': 550}
+pH is high: 8.204275693825817
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.204275693825817, 't': 560}
+NPK is high: 110.67994094357746
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 110.67994094357746, 't': 560}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 94.09225323287392, 't': 560}
+pH is low: 4.847199256003863
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.847199256003863, 't': 570}
+NPK is high: 354.48463128724075
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 354.48463128724075, 't': 570}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 89.69268342329708, 't': 570}
+pH is high: 7.039348019930591
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.039348019930591, 't': 580}
+NPK is high: 931.1556074300507
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 931.1556074300507, 't': 580}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 12.014434155607335, 't': 580}
+pH is high: 7.573721717218747
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.573721717218747, 't': 590}
+NPK is high: 471.5849783838453
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 471.5849783838453, 't': 590}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 19.09284769483276, 't': 590}
+pH is low: 5.525202779517261
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.525202779517261, 't': 600}
+NPK is high: 211.87660966748712
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 211.87660966748712, 't': 600}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.22050667634251, 't': 600}
+pH is low: 5.507336616456626
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.507336616456626, 't': 610}
+NPK is high: 941.6581397014846
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 941.6581397014846, 't': 610}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.529443936686384, 't': 610}
+pH is low: 5.208759395087937
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.208759395087937, 't': 620}
+NPK is high: 985.6416447994128
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 985.6416447994128, 't': 620}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 35.03720445973237, 't': 620}
+pH is low: 3.325510433772121
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.325510433772121, 't': 630}
+NPK is high: 821.3262140452879
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 821.3262140452879, 't': 630}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.473430434313325, 't': 630}
+pH is low: 6.198060153290914
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.198060153290914, 't': 640}
+NPK is high: 143.8628582944057
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 143.8628582944057, 't': 640}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 76.25206205192558, 't': 640}
+pH is low: 3.5777590657304863
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.5777590657304863, 't': 650}
+NPK is high: 244.67383741839578
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 244.67383741839578, 't': 650}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 94.0336612203408, 't': 650}
+pH is low: 4.460509384136907
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.460509384136907, 't': 660}
+NPK is high: 453.9683891805936
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 453.9683891805936, 't': 660}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.22732268642551, 't': 660}
+pH is low: 5.774868799234422
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.774868799234422, 't': 670}
+NPK is high: 104.91590578211351
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 104.91590578211351, 't': 670}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 29.810908193673036, 't': 670}
+pH is high: 8.493956853442363
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.493956853442363, 't': 680}
+NPK is high: 407.34997690095776
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 407.34997690095776, 't': 680}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 74.14674926336882, 't': 680}
+pH is low: 5.311628157529268
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.311628157529268, 't': 690}
+NPK is high: 729.2583890691753
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 729.2583890691753, 't': 690}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 0.14769860543443203, 't': 690}
+pH is high: 8.82509149676045
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.82509149676045, 't': 700}
+NPK is high: 141.87434892358664
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 141.87434892358664, 't': 700}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.983190514516597, 't': 700}
+pH is high: 8.694872072314608
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.694872072314608, 't': 710}
+NPK is high: 561.6796892035699
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 561.6796892035699, 't': 710}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 95.48810314151058, 't': 710}
+pH is low: 6.6403164292958365
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.6403164292958365, 't': 720}
+NPK is high: 812.470671889169
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 812.470671889169, 't': 720}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 42.60035513626337, 't': 720}
+pH is low: 3.187973660158181
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.187973660158181, 't': 730}
+NPK is high: 328.2868542617813
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 328.2868542617813, 't': 730}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 66.38066507496606, 't': 730}
+pH is high: 7.524744483985683
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.524744483985683, 't': 740}
+NPK is high: 928.136532199807
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 928.136532199807, 't': 740}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.86319875058969, 't': 740}
+pH is high: 7.706304635897228
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.706304635897228, 't': 750}
+NPK is high: 276.6374891054382
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 276.6374891054382, 't': 750}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 39.306474528119594, 't': 750}
+pH is low: 5.011719574992558
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.011719574992558, 't': 760}
+NPK is high: 756.0707541814678
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 756.0707541814678, 't': 760}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 25.565013839445406, 't': 760}
+pH is low: 3.079103329783341
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.079103329783341, 't': 770}
+NPK is high: 154.69511898760413
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 154.69511898760413, 't': 770}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 68.92052874205189, 't': 770}
+pH is low: 4.442712370130686
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.442712370130686, 't': 780}
+NPK is high: 714.5434985044675
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 714.5434985044675, 't': 780}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 34.419946318457505, 't': 780}
+pH is high: 7.372175661626965
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.372175661626965, 't': 790}
+NPK is high: 521.4930381109124
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 521.4930381109124, 't': 790}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 86.86837248978154, 't': 790}
+pH is low: 6.621593209054505
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.621593209054505, 't': 800}
+NPK is high: 695.4315173937002
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 695.4315173937002, 't': 800}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 8.841171585140206, 't': 800}
+pH is low: 4.7559716925604905
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.7559716925604905, 't': 810}
+NPK is low: 6.290708586943028
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 6.290708586943028, 't': 810}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.70969418623472, 't': 810}
+pH is high: 7.567370363950678
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.567370363950678, 't': 820}
+NPK is high: 454.2872017543556
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 454.2872017543556, 't': 820}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 32.96027516574196, 't': 820}
+pH is low: 3.0488654758646168
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.0488654758646168, 't': 830}
+NPK is high: 454.5663184130845
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 454.5663184130845, 't': 830}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 67.76438134801545, 't': 830}
+pH is low: 5.335939296107916
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.335939296107916, 't': 840}
+NPK is high: 546.5551837019875
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 546.5551837019875, 't': 840}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 56.60682641222136, 't': 840}
+pH is low: 3.159596859856705
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.159596859856705, 't': 850}
+NPK is low: 1.288325814290281
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 1.288325814290281, 't': 850}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 19.376103407696387, 't': 850}
+pH is low: 3.513820516740844
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.513820516740844, 't': 860}
+NPK is high: 547.2897072763357
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 547.2897072763357, 't': 860}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 86.16065280132518, 't': 860}
+pH is low: 6.364924294840348
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.364924294840348, 't': 870}
+NPK is high: 502.7195058968639
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 502.7195058968639, 't': 870}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.52570548662666, 't': 870}
+pH is low: 5.297908716281689
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.297908716281689, 't': 880}
+NPK is high: 232.1558221024801
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 232.1558221024801, 't': 880}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 87.61548146232731, 't': 880}
+pH is low: 3.293289280703352
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.293289280703352, 't': 890}
+NPK is high: 361.18437775086744
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 361.18437775086744, 't': 890}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 55.78281751475416, 't': 890}
+pH is high: 7.363062416132093
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.363062416132093, 't': 900}
+NPK is high: 793.3714290285494
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 793.3714290285494, 't': 900}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 27.805917944562854, 't': 900}
+pH is low: 4.852031545813908
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 4.852031545813908, 't': 910}
+NPK is high: 122.32975228021192
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 122.32975228021192, 't': 910}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 28.886242599418445, 't': 910}
+pH is high: 7.2675618393740775
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.2675618393740775, 't': 920}
+NPK is high: 318.1900595457133
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 318.1900595457133, 't': 920}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 84.44885843647292, 't': 920}
+pH is high: 8.9116151254193
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.9116151254193, 't': 930}
+NPK is high: 593.767811648583
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 593.767811648583, 't': 930}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 80.56581987884556, 't': 930}
+pH is low: 3.1527729764235
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.1527729764235, 't': 940}
+NPK is high: 899.9003555873402
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 899.9003555873402, 't': 940}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 10.659784098231395, 't': 940}
+pH is high: 7.513455477224767
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.513455477224767, 't': 950}
+NPK is high: 480.11169214710424
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 480.11169214710424, 't': 950}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 29.403955584343578, 't': 950}
+pH is low: 6.9359185177212215
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.9359185177212215, 't': 960}
+NPK is low: 4.89971692014568
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 4.89971692014568, 't': 960}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 17.167030630686774, 't': 960}
+pH is low: 5.12357841561722
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 5.12357841561722, 't': 970}
+NPK is high: 498.9250577083576
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 498.9250577083576, 't': 970}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 9.73014749506451, 't': 970}
+pH is high: 7.668440340175982
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.668440340175982, 't': 980}
+NPK is low: 32.51392121226082
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 32.51392121226082, 't': 980}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 97.16394883079863, 't': 980}
+pH is low: 6.650826018772547
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 6.650826018772547, 't': 990}
+NPK is high: 252.8568795439182
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 252.8568795439182, 't': 990}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 14.798278975691614, 't': 990}
+pH is low: 3.139865694844818
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.139865694844818, 't': 1000}
+NPK is high: 585.9872387306591
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 585.9872387306591, 't': 1000}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 88.90675913373806, 't': 1000}
+pH is high: 8.373275544397103
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 8.373275544397103, 't': 1010}
+NPK is high: 334.38836004609874
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 334.38836004609874, 't': 1010}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 7.205807408702869, 't': 1010}
+pH is high: 7.882632881725609
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 7.882632881725609, 't': 1020}
+NPK is high: 514.1386690918291
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 514.1386690918291, 't': 1020}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 54.71300276519777, 't': 1020}
+pH is low: 3.659899500669166
+Received message on greenhouse_0/sensors/Ph/Ph: {'bn': 'greenhouse_0/sensors/Ph/Ph', 'n': 'Ph', 'v': 3.659899500669166, 't': 1030}
+NPK is high: 290.02896540690205
+Received message on greenhouse_0/sensors/NPK/NPK: {'bn': 'greenhouse_0/sensors/NPK/NPK', 'n': 'NPK', 'v': 290.02896540690205, 't': 1030}
+Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 21.12880175559424, 't': 1030}

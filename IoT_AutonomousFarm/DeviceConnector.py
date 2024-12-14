@@ -5,11 +5,7 @@ import json
 import requests
 import socket
 
-from Catalog import CatalogService
-
 # device connector is a MQTT publisher that reads data from the sensors connected to RaspberryPi and publishes it to the MQTT broker
-
-catalog = CatalogService()  # create an instance of the CatalogService class
 device_id = socket.gethostname()    # get the name of the device running
 
 # on the same device are running DeviceConnector and all the MicroServices, so all these components are sharing the same device_id. 
