@@ -1,11 +1,18 @@
 import json
 import paho.mqtt.client as PahoMQTT
 from MqttSub import MqttSubscriber
-import socket
 import requests
 
 # humidity management component is a MQTT subscriber and it receives the humidity and soil moisture values
-device_id = socket.gethostname()
+
+
+# read the device_id and mqtt information of the broker from the json file
+with open("./HumidityManagement_config.json", "r") as config_fd:
+    config = json.load(config_fd)
+    device_id = config["device_id"]
+    mqtt_broker = config["mqtt_broker"]
+    mqtt_port = config["mqtt_port"]
+    keep_alive = config["keep_alive"]
 
 def handle_message(topic, val):
     with open("../logs/HumidityManagement.log", "a") as log_file:
@@ -39,45 +46,18 @@ class HumidityManagement(MqttSubscriber):
                     val = message["v"]
                     handle_message(topic, val)
 
-            # if message["bn"] == "greenhouse_0/sensors/DTH22/Humidity":    # check the topic of the message
-            #     humidity = message["v"] # get the value of the message
-            #     if humidity < 60:   # check if the value is lower than a threshold
-            #         log_file.write(f"Humidity is low: {humidity}\n")    # write on the log file what it has understand
-            #         # take action
-            #     else:
-            #         log_file.write(f"Humidity is high: {humidity}\n")
-            #         # take action
-            # elif message["bn"] == "greenhouse_0/sensors/SoilMoisture":
-            #     soil_moisture = message["v"]    # get the value of the message
-            #     if soil_moisture < 40:  # check if the value is lower than a threshold
-            #         log_file.write(f"Soil moisture is low: {soil_moisture}\n")
-            #         # take action
-            #     else:
-            #         log_file.write(f"Soil moisture is high: {soil_moisture}\n")
-            #         # take action
-            # elif message["bn"] == "greenhouse_0/schedules/irrigation":
-            #     log_file.write(f"Irrigation scheduled: {message["e"]}\n")
-            #     # take action
-            # elif message["bn"] == "greenhouse_0/schedules/humidity":
-            #     log_file.write(f"Humidity scheduled: {message["e"]}\n")
-            #     # take action
 
 if __name__ == "__main__":
-    # broker = "mqtt.eclipseprojects.io"  # broker address
-    # port = 1883
-    # topics = ["greenhouse_0/sensors/DTH22/Humidity", "greenhouse_0/sensors/SoilMoisture", "greenhouse_0/schedules/irrigation", "greenhouse_0/schedules/humidity"]    # nutrient values
-
-    response = requests.get(f"http://localhost:8080/get_device_configurations", params={'device_id': device_id, 'device_type': 'HumidityManagement'})    # get the device information from the catalog
+    response = requests.get(f"http://localhost:8080/get_topics", params={'device_id': device_id, 'device_type': 'HumidityManagement'})    # get the device information from the catalog
     if response.status_code == 200:
-        configuration = response.json()
+        mqtt_topic = response.json()    # obtain the data from the response in json format
+        mqtt_topic = mqtt_topic["topics"][0]   # obtain the array of topics
+        with open("../logs/HumidityManagement.log", "a") as log_file:
+            log_file.write(f"Received mqtt_topic: {mqtt_topic}\n")
     else:
         with open("../logs/HumidityManagement.log", "a") as log_file:
-            log_file.write("Failed to get configuration from the Catalog\n")
-            exit(1)
-
-    mqtt_broker = configuration["mqtt_broker"]
-    mqtt_port = configuration["mqtt_port"]
-    mqtt_topic = configuration["mqtt_topic"]
+            log_file.write(f"Failed to get topics from the Catalog\nResponse: {response.reason}\n") # in case of error, write the reason of the error in the log file
+            exit(1) # if the request fails, the device connector stops
 
     subscriber = HumidityManagement(mqtt_broker, mqtt_port, mqtt_topic)
     subscriber.connect()

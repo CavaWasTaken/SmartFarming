@@ -1,11 +1,18 @@
 import json
 import paho.mqtt.client as PahoMQTT
 from MqttSub import MqttSubscriber
-import socket
 import requests
 
 # nutrient management component is a MQTT subscriber and it receives the NPK, pH and soil moisture values from the sensors
-device_id = socket.gethostname()
+
+
+# read the device_id and mqtt information of the broker from the json file
+with open("./NutrientManagement_config.json", "r") as config_fd:
+    config = json.load(config_fd)
+    device_id = config["device_id"]
+    mqtt_broker = config["mqtt_broker"]
+    mqtt_port = config["mqtt_port"]
+    keep_alive = config["keep_alive"]
 
 def handle_message(topic, val):
     with open("../logs/NutrientManagement.log", "a") as log_file:
@@ -44,42 +51,18 @@ class NutrientManagement(MqttSubscriber):
                 if message["bn"] == topic:
                     val = message["v"]
                     handle_message(topic, val)
-            
-            # if message["bn"] == "greenhouse_0/sensors/NPK":   # check the topic of the message
-            #     npk = message["v"]
-            #     if npk < 100:
-            #         log_file.write(f"NPK is low: {npk}\n")
-            #     else:
-            #         log_file.write(f"NPK is high: {npk}\n")
-
-            # elif message["bn"] == "greenhouse_0/sensors/Ph":
-            #     ph = message["v"]
-            #     if ph < 7:
-            #         log_file.write(f"pH is low: {ph}\n")
-            #     else:
-            #         log_file.write(f"pH is high: {ph}\n")
-                    
-            # elif message["bn"] == "greenhouse_0/sensors/SoilMoisture":
-            #     soil_moisture = message["v"]
-            #     if soil_moisture < 50:
-            #         log_file.write(f"Soil moisture is low: {soil_moisture}\n")
-            #     else:
-            #         log_file.write(f"Soil moisture is high: {soil_moisture}\n")
-            # elif message["bn"] == "greenhouse_0/schedules/fertilization":
-            #     log_file.write(f"Received fertilization schedule: {message["e"]}\n")
 
 if __name__ == "__main__":
-    response = requests.get(f"http://localhost:8080/get_device_configurations", params={'device_id': device_id, 'device_type': 'NutrientManagement'})    # get the device information from the catalog
+    response = requests.get(f"http://localhost:8080/get_topics", params={'device_id': device_id, 'device_type': 'NutrientManagement'})    # get the device information from the catalog
     if response.status_code == 200:
-        configuration = response.json()
+        mqtt_topic = response.json()    # obtain the data from the response in json format
+        mqtt_topic = mqtt_topic["topics"][0]   # obtain the array of topics
+        with open("../logs/NutrientManagement.log", "a") as log_file:
+            log_file.write(f"Received mqtt_topic: {mqtt_topic}\n")
     else:
         with open("../logs/NutrientManagement.log", "a") as log_file:
-            log_file.write("Failed to get configuration from the Catalog\n")
-            exit(1)
-
-    mqtt_broker = configuration["mqtt_broker"]
-    mqtt_port = configuration["mqtt_port"]
-    mqtt_topic = configuration["mqtt_topic"]
+            log_file.write(f"Failed to get topics from the Catalog\nResponse: {response.reason}\n") # in case of error, write the reason of the error in the log file
+            exit(1) # if the request fails, the device connector stops
 
     subscriber = NutrientManagement(mqtt_broker, mqtt_port, mqtt_topic)
     subscriber.connect()

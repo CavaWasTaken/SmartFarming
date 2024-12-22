@@ -32,16 +32,20 @@ class CatalogService:
     # at the beginnig of the system each device should read from the Catalog the information about the system itself
     @cherrypy.expose
     @cherrypy.tools.json_out()  # automatically convert return value to JSON
-    def get_device_configurations(self, device_id, device_type):
+    def get_topics(self, device_id, device_type):
         if cherrypy.request.method == "GET":    # this method can be called only with GET
             conn = self.get_db_connection() # get the connection to the database
             cur = conn.cursor() # create a cursor to execute queries
-            cur.execute("SELECT configuration FROM devices WHERE device_id = %s AND name LIKE %s", (device_id, device_type+'%'))    # select from the db the configuration json file of the device
-            configurations = cur.fetchone()
+            cur.execute("SELECT topic FROM devices WHERE device_id = %s AND name LIKE %s", (device_id, device_type+'%'))    # select from the db the configuration json file of the device
+            topics = cur.fetchone()
+            if topics is None:
+                raise cherrypy.HTTPError(404, "Device not found")    # if the device is not found, return error 404
+            # create a dictionary of topics
+            topics = {'topics': topics}
             cur.close()
             conn.close()
 
-            return configurations[0]    # configuration is an array, return the first element
+            return topics    # configuration is an array, return the first element
         else:    # if the method is called with other methods, return error 405
             raise cherrypy.HTTPError(405, "Invalid request method")
     
@@ -70,9 +74,8 @@ class CatalogService:
                     'plant_id': sensor[2],
                     'type': sensor[3],
                     'thing_speak_channel_id': sensor[4],
-                    'description': sensor[5],
-                    'name': sensor[6],
-                    'unit': sensor[7]
+                    'name': sensor[5],
+                    'unit': sensor[6]
                 }
                 sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
 
