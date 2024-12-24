@@ -15,24 +15,12 @@ with open("./DeviceConnector_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_port"]
     keep_alive = config["keep_alive"]
 
-# REST API calls to the Catalog to get the configuration
-response = requests.get('http://localhost:8080/get_topics', params={'device_id': device_id, 'device_type': 'DeviceConnector'})    # read the topics from the Catalog
-if response.status_code == 200: # if the request is successful read the mqtt topic
-    mqtt_topic = response.json()    # obtain the data from the response in json format
-    mqtt_topic = mqtt_topic["topics"][0]   # obtain the array of topics
-    with open("./logs/DeviceConnector.log", "a") as log_file:   # to be more clear, we write everything in a log file
-        log_file.write(f"Received mqtt_topic: {mqtt_topic}\n")
-else:
-    with open("./logs/DeviceConnector.log", "a") as log_file:
-        log_file.write(f"Failed to get topics from the Catalog\nResponse: {response.reason}\n") # in case of error, write the reason of the error in the log file
-        exit(1) # if the request fails, the device connector stops
-
 # REST API calls to the Catalog to get the list of sensors connected to this device connector
-response = requests.get('http://localhost:8080/get_sensors', params={'device_id': device_id, 'device_type': 'DeviceConnector'})    # read the list of sensors from the Catalog
+response = requests.get('http://localhost:8080/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
 if response.status_code == 200: # if the request is successful
     sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor connected to the device connector
     with open("./logs/DeviceConnector.log", "a") as log_file:   # to be more clear, we write everything in a log file
-        log_file.write(f"Received sensors: {sensors}\n")
+        log_file.write(f"Received {len(sensors)} sensors: {sensors}\n")
 else:
     with open("./logs/DeviceConnector.log", "a") as log_file:
         log_file.write(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
@@ -110,7 +98,7 @@ while True:
             val = get_NPK_Values()
         elif(sensor["name"] == "SoilMoisture"):
             val = get_SoilMoisture_Values()
-        elif(sensor["name"] == "Ph"):
+        elif(sensor["name"] == "pH"):
             val = get_pH_Values()
         elif(sensor["name"] == "LightIntensity"):
             val = get_LightIntensity_Values()
@@ -121,8 +109,9 @@ while True:
             continue    # skip to the next iteration, so at the next sensor
         
         # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
-        senML = json.dumps({"bn": f"{mqtt_topic[0]}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": timestamp})
-        client.publish(f"{mqtt_topic[0]}/{sensor['name']}/{sensor['type']}", senML)
+        senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": timestamp})
+        senML_dictionary = json.loads(senML)
+        client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
         # write in a log file the value published
         with open("./logs/DeviceConnector.log", "a") as log_file:
             log_file.write(f"Published: {senML}\n")

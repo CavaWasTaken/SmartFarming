@@ -13,54 +13,27 @@ class CatalogService:
             host="localhost"    # host
         )
         return conn
-
-    # method called by a device to register itself in the system
-    # i have used this method to register devices on the DB
-    # @cherrypy.expose
-    # @cherrypy.tools.json_out()  # automatically convert return value to JSON
-    # def register_device(self, device_id, device_name, device_type, greenhouse_id):
-    #     configuration["mqtt_topic"] = "greenhouse_" + str(greenhouse_id) + "/sensors"
-    #     conn = self.get_db_connection()
-    #     cur = conn.cursor()
-    #     cur.execute("INSERT INTO devices (device_id, greenhouse_id, name, type, configuration) VALUES (%s, %s, %s, %s, %s)", 
-    #         (device_id, greenhouse_id, device_name, device_type, json.dumps(configuration)))
-    #     conn.commit()
-    #     cur.close()
-    #     conn.close()
-    #     return "OK"
-    
-    # at the beginnig of the system each device should read from the Catalog the information about the system itself
-    @cherrypy.expose
-    @cherrypy.tools.json_out()  # automatically convert return value to JSON
-    def get_topics(self, device_id, device_type):
-        if cherrypy.request.method == "GET":    # this method can be called only with GET
-            conn = self.get_db_connection() # get the connection to the database
-            cur = conn.cursor() # create a cursor to execute queries
-            cur.execute("SELECT topic FROM devices WHERE device_id = %s AND name LIKE %s", (device_id, device_type+'%'))    # select from the db the configuration json file of the device
-            topics = cur.fetchone()
-            if topics is None:
-                raise cherrypy.HTTPError(404, "Device not found")    # if the device is not found, return error 404
-            # create a dictionary of topics
-            topics = {'topics': topics}
-            cur.close()
-            conn.close()
-
-            return topics    # configuration is an array, return the first element
-        else:    # if the method is called with other methods, return error 405
-            raise cherrypy.HTTPError(405, "Invalid request method")
     
     # given the id of the device connector, return the list of sensors connected to it
     @cherrypy.expose
     @cherrypy.tools.json_out()  # automatically convert return value
-    def get_sensors(self, device_id, device_type):
+    def get_sensors(self, device_id, device_name):
         if cherrypy.request.method == "GET":    # this method can be called only with GET
             conn = self.get_db_connection() # get the connection to the database
             cur = conn.cursor() # create a cursor to execute queries
             # the first query is to get the greenhouse_id of the device connector
-            cur.execute("SELECT greenhouse_id FROM devices WHERE device_id = %s AND type = %s", (device_id, device_type))
+            cur.execute("SELECT greenhouse_id FROM devices WHERE device_id = %s AND name = %s", (device_id, device_name))
             # then the second one returns the list of sensors connected to the greenhouse
             greenhouse_id = cur.fetchone()[0]
-            cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s", (greenhouse_id,))
+            # personalize the query based on the device name, cause each device connector is interested in different sensors
+            if device_name == "DeviceConnector":    # device connector is interested in all the sensors connected to the greenhouse
+                cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s", (greenhouse_id,))
+            elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
+                cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'Humidity' OR type = 'SoilMoisture'", (greenhouse_id,))
+            elif device_name == "LightManagement":  # light management is interested in light intensity and temperature sensors
+                cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'LightIntensity' OR type = 'Temperature'", (greenhouse_id,))
+            elif device_name == "NutrientManagement":   # nutrient management is interested in NPK and pH sensors
+                cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'NPK' OR type = 'pH' OR type = 'SoilMoisture'", (greenhouse_id,))
             sensors = cur.fetchall()    # sensors is a list of values (tuples)
             cur.close()
             conn.close()

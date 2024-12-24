@@ -1,5 +1,17 @@
-Received mqtt_topic: ['greenhouse_0/sensors/DTH22/Humidity', 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'greenhouse_0/schedules/irrigation', 'greenhouse_0/schedules/humidity']
-Humidity is low: 44.14397395032898
-Received message on greenhouse_0/sensors/DTH22/Humidity: {'bn': 'greenhouse_0/sensors/DTH22/Humidity', 'n': 'Humidity', 'v': 44.14397395032898, 't': 0}
-Soil moisture is high: 64.10897640594872
-Received message on greenhouse_0/sensors/SoilMoisture/SoilMoisture: {'bn': 'greenhouse_0/sensors/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 64.10897640594872, 't': 0}
+Received 2 sensors: [{'sensor_id': 5, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Humidity', 'thing_speak_channel_id': 6, 'name': 'DTH22', 'unit': '%'}, {'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'thing_speak_channel_id': 3, 'name': 'SoilMoisture', 'unit': '%'}]
+Humidity is high: 81.60246955312691
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 81.60246955312691, 't': 0}
+Soil moisture is low: 30.376965636494013
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 30.376965636494013, 't': 0}
+Humidity is low: 31.369624724144607
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 31.369624724144607, 't': 60}
+Soil moisture is low: 4.537910607526408
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 4.537910607526408, 't': 60}
+Humidity is low: 2.0902632309078517
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 2.0902632309078517, 't': 120}
+Soil moisture is high: 70.46262837693226
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 70.46262837693226, 't': 120}
+Humidity is high: 91.31345954453904
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 91.31345954453904, 't': 180}
+Soil moisture is high: 98.79918283420504
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 98.79918283420504, 't': 180}

@@ -24,14 +24,14 @@ def handle_message(topic, val):
             else:
                 log_file.write(f"NPK is high: {val}\n")
                 # take action
-        elif topic == "Ph":
+        elif topic == "pH":
             if val < 7:
                 log_file.write(f"pH is low: {val}\n")
                 # take action
             else:
                 log_file.write(f"pH is high: {val}\n")
                 # take action
-        elif topic == "Soil Moisture":
+        elif topic == "SoilMoisture":
             if val < 50:
                 log_file.write(f"Soil moisture is low: {val}\n")
                 # take action
@@ -46,23 +46,26 @@ class NutrientManagement(MqttSubscriber):
     def on_message(self, client, userdata, msg):
         with open("../logs/NutrientManagement.log", "a") as log_file:  # print all the messages received on a log file
             message = json.loads(msg.payload.decode()) # decode the message from JSON format, so we can access the values of the message as a dictionary
-            log_file.write(f"Received message on {msg.topic}: {message}\n")
+            log_file.write(f"Received: {message}\n")
             for topic in mqtt_topic:
                 if message["bn"] == topic:
                     val = message["v"]
                     handle_message(topic, val)
 
 if __name__ == "__main__":
-    response = requests.get(f"http://localhost:8080/get_topics", params={'device_id': device_id, 'device_type': 'NutrientManagement'})    # get the device information from the catalog
+    response = requests.get(f"http://localhost:8080/get_sensors", params={'device_id': device_id, 'device_name': 'NutrientManagement'})    # get the device information from the catalog
     if response.status_code == 200:
-        mqtt_topic = response.json()    # obtain the data from the response in json format
-        mqtt_topic = mqtt_topic["topics"][0]   # obtain the array of topics
+        sensors = response.json()["sensors"]   # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
         with open("../logs/NutrientManagement.log", "a") as log_file:
-            log_file.write(f"Received mqtt_topic: {mqtt_topic}\n")
+            log_file.write(f"Received {len(sensors)} sensors: {sensors}\n")
     else:
         with open("../logs/NutrientManagement.log", "a") as log_file:
-            log_file.write(f"Failed to get topics from the Catalog\nResponse: {response.reason}\n") # in case of error, write the reason of the error in the log file
+            log_file.write(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
             exit(1) # if the request fails, the device connector stops
+
+    mqtt_topic = []
+    for sensor in sensors:
+        mqtt_topic.append(f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}")
 
     subscriber = NutrientManagement(mqtt_broker, mqtt_port, mqtt_topic)
     subscriber.connect()

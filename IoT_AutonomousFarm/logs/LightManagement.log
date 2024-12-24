@@ -1,5 +1,17 @@
-Received mqtt_topic: ['greenhouse_0/sensors/LightIntensity/LightIntensity', 'greenhouse_0/sensors/DTH22/Temperature', 'greenhouse_0/schedules/lighting']
-Temperature is high: 27.554823583278374
-Received message on greenhouse_0/sensors/DTH22/Temperature: {'bn': 'greenhouse_0/sensors/DTH22/Temperature', 'n': 'Temperature', 'v': 27.554823583278374, 't': 0}
-Light intensity is high: 692.6083748046644
-Received message on greenhouse_0/sensors/LightIntensity/LightIntensity: {'bn': 'greenhouse_0/sensors/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 692.6083748046644, 't': 0}
+Received 2 sensors: [{'sensor_id': 0, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Temperature', 'thing_speak_channel_id': 1, 'name': 'DTH22', 'unit': 'Cel'}, {'sensor_id': 4, 'greenhouse_id': 0, 'plant_id': None, 'type': 'LightIntensity', 'thing_speak_channel_id': 5, 'name': 'LightIntensity', 'unit': 'Lux'}]
+Temperature is low: 18.051044500401716
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 18.051044500401716, 't': 0}
+Light intensity is high: 632.3387107982107
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 632.3387107982107, 't': 0}
+Temperature is high: 20.54054837563499
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.54054837563499, 't': 60}
+Light intensity is high: 537.4703081282513
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 537.4703081282513, 't': 60}
+Temperature is high: 21.367466372450853
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.367466372450853, 't': 120}
+Light intensity is high: 416.57004921499396
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 416.57004921499396, 't': 120}
+Temperature is high: 22.960494130193407
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.960494130193407, 't': 180}
+Light intensity is high: 313.8874528216379
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 313.8874528216379, 't': 180}
