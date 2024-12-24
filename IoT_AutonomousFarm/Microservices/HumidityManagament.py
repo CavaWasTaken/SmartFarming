@@ -16,21 +16,37 @@ with open("./HumidityManagement_config.json", "r") as config_fd:
 
 def handle_message(topic, val):
     with open("../logs/HumidityManagement.log", "a") as log_file:
-        topic = topic.split("/")[-1]
-        if topic == "Humidity":
-            if val < 60:
+        greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
+        response = requests.get(f"http://localhost:8080/get_sensor_id", params={'device_id': device_id, 'device_name': 'HumidityManagement', 'greenhouse_id': greenhouse.split("_")[1], 'plant_id': plant.split("_")[1], 'sensor_name': sensor_name, 'sensor_type': sensor_type})    # get the sensor id from the catalog
+        if response.status_code == 200:
+            sensor_id = response.json()["sensor_id"]
+            log_file.write(f"New value collected by sensor {sensor_id}\n")
+        else:
+            log_file.write(f"Failed to get sensor id from the Catalog\nResponse: {response.reason}\n")
+            exit(1) # if the request fails, the device connector stops
+
+        treshold = tresholds[f"sensor_{sensor_id}"]    # get the treshold for the sensor
+        min_treshold = treshold["min"]
+        max_treshold = treshold["max"]
+
+        if sensor_type == "Humidity":
+            if val < min_treshold:
                 log_file.write(f"Humidity is low: {val}\n")
                 # take action
-            else:
+            elif val > max_treshold:
                 log_file.write(f"Humidity is high: {val}\n")
                 # take action
-        elif topic == "SoilMoisture":
-            if val < 40:
+            else:
+                log_file.write(f"Humidity is in the accepted range {treshold}: {val}\n")
+        elif sensor_type == "SoilMoisture":
+            if val < min_treshold:
                 log_file.write(f"Soil moisture is low: {val}\n")
                 # take action
-            else:
+            elif val > max_treshold:
                 log_file.write(f"Soil moisture is high: {val}\n")
                 # take action
+            else:
+                log_file.write(f"Soil moisture is in the accepted range {treshold}: {val}\n")
 
 
 class HumidityManagement(MqttSubscriber):
@@ -59,9 +75,15 @@ if __name__ == "__main__":
             log_file.write(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
             exit(1) # if the request fails, the device connector stops
 
-    mqtt_topic = []
-    for sensor in sensors:
-        mqtt_topic.append(f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}")
+    mqtt_topic = [] # array of topics where the microservice is subscribed
+    global tresholds    # global variable that contains the tresholds for each sensor
+    tresholds = {}  # dictionary of tresholds for each sensor used by the microservice
+    for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
+        mqtt_topic.append(f"greenhouse_{sensor['greenhouse_id']}/plant_{sensor['plant_id'] if sensor['plant_id'] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}")
+        tresholds[f"sensor_{sensor['sensor_id']}"] = sensor['threshold']    # associate the threshold to the sensor id into the dictionary
+    with open("../logs/HumidityManagement.log", "a") as log_file:
+        log_file.write(f"Tresholds: {tresholds}\n")
 
+    # the mqtt subscriber subscribes to the topics
     subscriber = HumidityManagement(mqtt_broker, mqtt_port, mqtt_topic)
     subscriber.connect()

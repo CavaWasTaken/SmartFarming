@@ -48,14 +48,38 @@ class CatalogService:
                     'type': sensor[3],
                     'thing_speak_channel_id': sensor[4],
                     'name': sensor[5],
-                    'unit': sensor[6]
+                    'unit': sensor[6],
+                    'threshold': sensor[7]
                 }
                 sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
 
             return {'sensors': sensors_list}
         else:   # if the method is called with other methods, return error 405
             raise cherrypy.HTTPError(405, "Invalid request method")
+
+    # given the information of the sensor, return the id of the sensor
+    @cherrypy.expose
+    @cherrypy.tools.json_out()  # automatically convert return value
+    def get_sensor_id(self, device_id, device_name, greenhouse_id, plant_id, sensor_name, sensor_type):
+        if cherrypy.request.method == "GET":    # this method can be called only with GET
+            conn = self.get_db_connection() # get the connection to the database
+            cur = conn.cursor() # create a cursor to execute queries
+            cur.execute("SELECT * FROM devices WHERE device_id = %s AND name = %s", (device_id, device_name))    # check if the device connector exists
+            if cur.rowcount == 0:   # if the device connector does not exist, return error 404
+                raise cherrypy.HTTPError(404, "Device not found")
+            # the query is to get the sensor id of the sensor
+            if plant_id == 'ALL':
+                cur.execute("SELECT sensor_id FROM sensors WHERE greenhouse_id = %s AND plant_id IS NULL AND name = %s AND type = %s", (greenhouse_id, sensor_name, sensor_type))
+            else:
+                cur.execute("SELECT sensor_id FROM sensors WHERE greenhouse_id = %s AND plant_id = %s AND name = %s AND type = %s", (greenhouse_id, plant_id, sensor_name, sensor_type))
+            sensor_id = cur.fetchone()[0]
+            cur.close()
+            conn.close()
+            return {'sensor_id': sensor_id}
+        else:   # if the method is called with other methods, return error 405
+            raise cherrypy.HTTPError(405, "Invalid request method")
     
+
 if __name__ == "__main__":
     # configuration of the server
     cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8080})
