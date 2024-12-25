@@ -3,6 +3,7 @@ import time
 import random
 import json
 import requests
+import math
 
 # device connector is a MQTT publisher that reads data from the sensors connected to RaspberryPi and publishes it to the MQTT broker
 
@@ -42,48 +43,166 @@ def get_DTH22_Humidity():
         return None
 
 def get_DTH22_Temperature():
-    temperature = random.uniform(10.0, 35.0)  # Read data from the sensors
-    if temperature is not None:
-        return temperature
-    else:
-        return None
+    # real simulation of temperature sensor
+    global current_temperature, start_time
+
+    # simulate time passage
+    elapsed_time = time.time() - start_time # returns the seconds passed since the device connector started
+    hours = (elapsed_time / 3600) % 24  # every 24 hours the temperature pattern repeats
+    
+    # simulate daily temperature variation using a sinusoidal pattern
+    daily_variation = 10 * math.sin(math.pi * hours / 12)  # 10 degree variation over 24 hours
+    
+    # add some random noise
+    noise = random.uniform(-1.0, 1.0)
+    
+    # update the current temperature
+    current_temperature = 22.0 + daily_variation + noise
+
+    # ensure temperature stays within realistic bounds (10 to 35 degrees Celsius)
+    current_temperature = max(10.0, min(35.0, current_temperature))
+    
+    return current_temperature
+
+    # temperature = random.uniform(10.0, 35.0)  # Read data from the sensors
+    # if temperature is not None:
+    #     return temperature
+    # else:
+    #     return None
     
 # grove NPK sensor is the sensor that measures NPK values
 def get_NPK_Values():
-    NPK = random.uniform(0.0, 1000.0)  # Read data from the sensors
-    if NPK is not None:
-        return NPK
-    else:
-        return None
+    # real simulation of NPK sensor
+    global current_npk, start_time
+    
+    # simulate time passage
+    elapsed_time = time.time() - start_time
+    
+    # add some random noise
+    noise = {
+        'N': random.uniform(-5.0, 5.0),
+        'P': random.uniform(-3.0, 3.0),
+        'K': random.uniform(-4.0, 4.0)
+    }
+    
+    # introduce gradual decrease
+    trend = {
+        'N': -0.01 * elapsed_time / 3600,  # small decrease over time
+        'P': -0.01 * elapsed_time / 3600,  # small decrease over time
+        'K': -0.01 * elapsed_time / 3600   # small decrease over time
+    }
+    
+    # update the current NPK values
+    current_npk['N'] += noise['N'] + trend['N']
+    current_npk['P'] += noise['P'] + trend['P']
+    current_npk['K'] += noise['K'] + trend['K']
+
+    # ensure NPK values stay within realistic bounds (0 to 1000)
+    current_npk['N'] = max(0.0, min(1000.0, current_npk['N']))
+    current_npk['P'] = max(0.0, min(1000.0, current_npk['P']))
+    current_npk['K'] = max(0.0, min(1000.0, current_npk['K']))
+    
+    return current_npk
+
+    # NPK = random.uniform(0.0, 1000.0)  # Read data from the sensors
+    # if NPK is not None:
+    #     return NPK
+    # else:
+    #     return None
     
 # capacitive soil moisture sensor is the sensor that measures soil moisture
 def get_SoilMoisture_Values():
-    soil_moisture = random.uniform(0.0, 100.0)  # Read data from the sensors
-    if soil_moisture is not None:
-        return soil_moisture
-    else:
-        return None
+    # real simulation of soil moisture sensor
+    global current_soil_moisture, start_time
+    
+    # simulate time passage
+    elapsed_time = time.time() - start_time
+    
+    # add some random noise
+    noise = random.uniform(-1.0, 1.0)
+    
+    # introduce gradual decrease
+    trend = -0.05 * elapsed_time / 3600  # small decrease over time
+    
+    # update the current soil moisture value
+    current_soil_moisture += noise + trend
+    
+    # ensure soil moisture stays within realistic bounds (0 to 100)
+    current_soil_moisture = max(0.0, min(100.0, current_soil_moisture))
+    
+    return current_soil_moisture
+
+    # soil_moisture = random.uniform(0.0, 100.0)  # Read data from the sensors
+    # if soil_moisture is not None:
+    #     return soil_moisture
+    # else:
+    #     return None
     
 # analog pH sensor is the sensor that measures pH values of the soil
 def get_pH_Values():
-    pH = random.uniform(3.0, 9.0)  # Read data from the sensors
-    if pH is not None:
-        return pH
-    else:
-        return None
+    # real simulation of pH sensor
+    global current_pH, start_time
+    
+    # simulate time passage
+    elapsed_time = time.time() - start_time
+    
+    # add some random noise
+    noise = random.uniform(-0.1, 0.1)
+    
+    # introduce gradual change
+    trend = -0.001 * elapsed_time / 3600  # small decrease over time
+    
+    # update the current pH value
+    current_pH += noise + trend
+    
+    # ensure pH stays within realistic bounds (3.0 to 9.0)
+    current_pH = max(3.0, min(9.0, current_pH))
+    
+    return current_pH
+
+    # pH = random.uniform(3.0, 9.0)  # Read data from the sensors
+    # if pH is not None:
+    #     return pH
+    # else:
+    #     return None
     
 # ldr sensor is the sensor that measures light intensity
 def get_LightIntensity_Values():
-    light_intensity = random.uniform(0.0, 1000.0)  # Read data from the sensors
-    if light_intensity is not None:
-        return light_intensity
-    else:
-        return None
+    # real simulation of light intensity sensor
+    global current_light_intensity, start_time
+    
+    # simulate time passage
+    elapsed_time = time.time() - start_time
+    
+    # add some random noise
+    noise = random.uniform(-10.0, 10.0)
+    
+    # introduce gradual change
+    trend = 0.1 * math.sin(math.pi * elapsed_time / 43200)  # simulate daily light intensity variation
+    
+    # update the current light intensity value
+    current_light_intensity += noise + trend
+    
+    # ensure light intensity stays within realistic bounds (0 to 1000)
+    current_light_intensity = max(0.0, min(1000.0, current_light_intensity))
+    
+    return current_light_intensity
 
-start_time = int(time.time())   # get the time when the device connector starts
+    # light_intensity = random.uniform(0.0, 1000.0)  # Read data from the sensors
+    # if light_intensity is not None:
+    #     return light_intensity
+    # else:
+    #     return None
+
+start_time = time.time()   # get the time when the device connector starts
+current_temperature = 22.0  # default temperature value for the simulation
+current_npk = {"N": 500.0, "P": 500.0, "K": 500.0}  # default NPK values for the simulation
+current_soil_moisture = 50.0  # default soil moisture value for the simulation
+current_pH = 7.0  # default pH value for the simulation
+current_light_intensity = 500.0  # default light intensity value for the simulation
 
 while True:
-    timestamp = int(time.time()-start_time) # get the time since the device connector started
+    timestamp = int(time.time()-int(start_time)) # get the time since the device connector started
 
     for sensor in sensors:  # iterate over the list of sensors
         val = -1    # default value read from the sensor

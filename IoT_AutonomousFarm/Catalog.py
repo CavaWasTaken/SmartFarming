@@ -26,7 +26,7 @@ class CatalogService:
             # then the second one returns the list of sensors connected to the greenhouse
             greenhouse_id = cur.fetchone()[0]
             # personalize the query based on the device name, cause each device connector is interested in different sensors
-            if device_name == "DeviceConnector":    # device connector is interested in all the sensors connected to the greenhouse
+            if device_name == "DeviceConnector" or device_name == "DataAnalysis" or device_name == "ThingSpeakAdaptor":    # device connector is interested in all the sensors connected to the greenhouse
                 cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s", (greenhouse_id,))
             elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
                 cur.execute("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'Humidity' OR type = 'SoilMoisture'", (greenhouse_id,))
@@ -46,10 +46,10 @@ class CatalogService:
                     'greenhouse_id': sensor[1],
                     'plant_id': sensor[2],
                     'type': sensor[3],
-                    'thing_speak_channel_id': sensor[4],
-                    'name': sensor[5],
-                    'unit': sensor[6],
-                    'threshold': sensor[7]
+                    'name': sensor[4],
+                    'unit': sensor[5],
+                    'threshold': sensor[6],
+                    'thing_speak_channel_id': sensor[7]
                 }
                 sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
 
