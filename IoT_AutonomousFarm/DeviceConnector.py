@@ -50,7 +50,7 @@ def get_DTH22_Humidity():
     noise = random.uniform(-5.0, 5.0)
 
     # update the current humidity
-    current_humidity = 50.0 + daily_variation + noise
+    current_humidity += daily_variation + noise
 
     # ensure humidity stays within realistic bounds (0 to 100 percent)
     current_humidity = max(0.0, min(100.0, current_humidity))
@@ -72,7 +72,7 @@ def get_DTH22_Temperature():
     noise = random.uniform(-1.0, 1.0)
     
     # update the current temperature
-    current_temperature = 22.0 + daily_variation + noise
+    current_temperature += daily_variation + noise
 
     # ensure temperature stays within realistic bounds (10 to 35 degrees Celsius)
     current_temperature = max(10.0, min(35.0, current_temperature))
