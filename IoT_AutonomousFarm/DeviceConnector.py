@@ -36,11 +36,26 @@ with open("./logs/DeviceConnector.log", "a") as log_file:
 # this are simulation functions of real sensors, they generate  only random values without a logic
 # DTH22 is the sensor that measures temperature and humidity
 def get_DTH22_Humidity():
-    humidity = random.uniform(0.0, 100.0)  # Read data from the sensors
-    if humidity is not None:
-        return humidity
-    else:
-        return None
+    # real simulation of humidity sensor
+    global current_humidity, start_time
+
+    # simulate time passage
+    elapsed_time = time.time() - start_time  # returns the seconds passed since the device connector started
+    hours = (elapsed_time / 3600) % 24  # every 24 hours the humidity pattern repeats
+
+    # simulate daily humidity variation using a sinusoidal pattern
+    daily_variation = 20 * math.sin(math.pi * hours / 12)  # 20% variation over 24 hours
+
+    # add some random noise
+    noise = random.uniform(-5.0, 5.0)
+
+    # update the current humidity
+    current_humidity = 50.0 + daily_variation + noise
+
+    # ensure humidity stays within realistic bounds (0 to 100 percent)
+    current_humidity = max(0.0, min(100.0, current_humidity))
+
+    return current_humidity
 
 def get_DTH22_Temperature():
     # real simulation of temperature sensor
@@ -195,6 +210,7 @@ def get_LightIntensity_Values():
     #     return None
 
 start_time = time.time()   # get the time when the device connector starts
+current_humidity = 50.0  # default humidity value for the simulation
 current_temperature = 22.0  # default temperature value for the simulation
 current_npk = {"N": 500.0, "P": 500.0, "K": 500.0}  # default NPK values for the simulation
 current_soil_moisture = 50.0  # default soil moisture value for the simulation
