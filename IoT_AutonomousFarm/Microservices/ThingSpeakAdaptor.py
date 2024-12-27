@@ -14,10 +14,55 @@ with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_port"]
     keep_alive = config["keep_alive"]
 
+fields = {}
+
 def handle_message(topic, val):
     with open("../logs/ThingSpeakAdaptor.log", "a") as log_file:
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
-        log_file.write(f"Received message from {greenhouse} - {plant} - {sensor_name} - {sensor_type}\n")
+        greenhouse_id = greenhouse.split("_")[1]    # extract the id of the greenhouse from the topic
+        plant_id = plant.split("_")[1]  # extract the id of the plant from the topic
+        with open("./ThingSpeak_config.json", "r") as config_fd:    # read from the json file the configuration of the ThingSpeak channels
+            config = json.load(config_fd)   # load the configuration in a dictionary
+
+        url = f"https://api.thingspeak.com/update"  # url of the ThingSpeak API
+
+        # these sensors are general for the greenhouse, so they are not associated with a specific plant. We have to update the channel of the greenhouse
+        if sensor_type in ["Temperature", "Humidity", "LightIntensity"]:
+            channel_data = config["greenhouses"][greenhouse_id] # get the configuration of the greenhouse
+            key = f"greenhouse_{greenhouse_id}"  # key of the fields of the greenhouse
+        elif sensor_type in ["SoilMoisture", "NPK", "pH"]:
+            channel_data = config["greenhouses"][greenhouse_id]["plants"][plant_id]
+            key = f"plant_{plant_id}_{greenhouse_id}"   # key of the fields of the plant in the greenhouse
+        else:
+            raise ValueError(f"Unknown sensor type: {sensor_type}")
+        
+        if key not in fields:   # if the key is new and is not in the fields dictionary, add it
+            fields[key] = channel_data["fields"]
+
+        if sensor_type == "NPK":    # if the sensor type is NPK, we have to split the value in the three nutrients
+            for nutrient in ["N", "P", "K"]:
+                fields[key][nutrient] = val.get(nutrient, "")
+        else:   # if the sensor type is not NPK, we just have to update the value of the sensor
+            fields[key][sensor_type] = val
+
+        if any(value == "" for value in fields[key].values()):  # if there are missing values in the fields, write a log message and return
+            with open("../logs/ThingSpeakAdaptor.log", "a") as log_file:
+                log_file.write(f"Missing values for {sensor_type} in {key}\n")
+            return
+        
+        payload = { # payload to send to the ThingSpeak API
+            "api_key": channel_data["write_api_key"],   # write api key of the channel
+            **{f"field{i+1}": value for i, value in enumerate(fields[key].values())}    # add the values of the fields to the payload
+        }
+
+        response = requests.get(url, params=payload)    # send the request to the ThingSpeak API
+        with open("../logs/ThingSpeakAdaptor.log", "a") as log_file:    
+            if response.status_code == 200:
+                log_file.write(f"Successfully updated ThingSpeak channel {channel_data['channel_id']} with payload: {payload}\n")
+            else:
+                log_file.write(f"Failed to update ThingSpeak. Response: {response.reason}\n")
+
+        fields[key] = {k: "" for k in fields[key]}  # reset the fields of the key to empty strings
 
 class ThingSpeakAdaptor(MqttSubscriber):
     def __init__(self, broker, port, topics):
@@ -45,19 +90,9 @@ if __name__ == "__main__":
             exit(1) # if the request fails, the device connector stops
 
     mqtt_topic = [] # array of topics where the microservice is subscribed
-    # to do, thing speak adaptor should understand how to share data with ThingSpeak
-    # global channels
-    # channels = {}
-    # for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
-    #     mqtt_topic.append(f"greenhouse_{sensor['greenhouse_id']}/plant_{sensor['plant_id'] if sensor['plant_id'] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}")
-    #     greenhouse_key = f"greenhouse_{sensor['greenhouse_id']}"    # the key of the greenhouse in the dictionary of channels
-    #     plant_key = f"plant_{sensor['plant_id']}" if sensor['plant_id'] is not None else 'ALL'  # the key of the plant in the dictionary of channels
-    #     if greenhouse_key not in channels:  # if the greenhouse is not in the dictionary, add it
-    #         channels[greenhouse_key] = {}
-    #     if plant_key not in channels[greenhouse_key]:   # if the plant is not in the dictionary, add it
-    #         channels[greenhouse_key][plant_key] = {}
-    #     channels[greenhouse_key][plant_key][f"sensor_{sensor['sensor_id']}"] = sensor['thing_speak_channel_id']    # add the channel where the data of the sensor will be sent to ThingSpeak
-    # print(channels)
+    for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
+        mqtt_topic.append(f"greenhouse_{sensor['greenhouse_id']}/plant_{sensor['plant_id'] if sensor['plant_id'] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}")
+
     # the mqtt subscriber subscribes to the topics
     subscriber = ThingSpeakAdaptor(mqtt_broker, mqtt_port, mqtt_topic)
     subscriber.connect()
