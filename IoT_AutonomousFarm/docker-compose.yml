@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: iotproject
+      POSTGRES_PASSWORD: WeWillDieForIoT
+      POSTGRES_DB: smartfarm_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:

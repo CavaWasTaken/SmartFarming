@@ -10,7 +10,8 @@ class CatalogService:
             dbname="smartfarm_db",  # db name
             user="iotproject",  # username postgre sql
             password="WeWillDieForIoT", # password postgre sql
-            host="localhost"    # host
+            host="localhost",    # host,
+            port="5432" # port
         )
         return conn
     
