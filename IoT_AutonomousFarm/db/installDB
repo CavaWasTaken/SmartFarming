@@ -1,0 +1,1 @@
+psql -U <loro_username> -h localhost -f database_backup.sql
