@@ -20,17 +20,17 @@ with open("./DeviceConnector_config.json", "r") as config_fd:
 response = requests.get('http://localhost:8080/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
 if response.status_code == 200: # if the request is successful
     sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor connected to the device connector
-    with open("./logs/DeviceConnector.log", "a") as log_file:   # to be more clear, we write everything in a log file
+    with open("../logs/DeviceConnector.log", "a") as log_file:   # to be more clear, we write everything in a log file
         log_file.write(f"Received {len(sensors)} sensors: {sensors}\n")
 else:
-    with open("./logs/DeviceConnector.log", "a") as log_file:
+    with open("../logs/DeviceConnector.log", "a") as log_file:
         log_file.write(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
         exit(1) # if the request fails, the device connector stops
 
 # MQTT Client setup
 client = mqtt.Client()
 client.connect(mqtt_broker, mqtt_port, keep_alive)  # connection to the MQTT broker with the read configuration
-with open("./logs/DeviceConnector.log", "a") as log_file:
+with open("../logs/DeviceConnector.log", "a") as log_file:
     log_file.write(f"Connected to the MQTT broker\n")    # write in the log file that the connection is successful
 
 # this are simulation functions of real sensors, they generate  only random values without a logic
@@ -239,7 +239,7 @@ while True:
             val = get_LightIntensity_Values()
         else:
             # not recognized sensor, write the error in the log file
-            with open("./logs/DeviceConnector.log", "a") as log_file:
+            with open("../logs/DeviceConnector.log", "a") as log_file:
                 log_file.write(f"Sensor not recognized: {sensor['name']}\n")
             continue    # skip to the next iteration, so at the next sensor
         
@@ -248,7 +248,7 @@ while True:
         senML_dictionary = json.loads(senML)
         client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
         # write in a log file the value published
-        with open("./logs/DeviceConnector.log", "a") as log_file:
+        with open("../logs/DeviceConnector.log", "a") as log_file:
             log_file.write(f"Published: {senML}\n")
 
     time.sleep(60)  # publish sensor values every 60 seconds

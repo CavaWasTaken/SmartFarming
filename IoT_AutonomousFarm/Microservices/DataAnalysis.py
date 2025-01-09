@@ -16,37 +16,36 @@ with open("./DataAnalysis_config.json", "r") as config_fd:
 
 def handle_message(topic, val):
     with open("../logs/DataAnalysis.log", "a") as log_file:
+        global count_mean_t, mean_temperature, count_mean_h, mean_humidity, count_mean_l, mean_light, count_mean_sm, mean_soil_moisture, count_mean_pH, mean_pH, count_mean_N, mean_N, count_mean_P, mean_P, count_mean_K, mean_K
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
-        log_file.write(f"Received message from {greenhouse} - {plant} - {sensor_name} - {sensor_type}\n")
+        # log_file.write(f"Received message from {greenhouse} - {plant} - {sensor_name} - {sensor_type}\n")
 
         # function to update the mean value of the data collected by each sensor
         def update_mean(value, count, mean):
             count += 1
             mean += (value - mean) / count
             return count, mean
-        
-        if sensor_type == "temperature":    # keeps track of the mean temperature
+
+        if sensor_type == "Temperature":    # keeps track of the mean temperature
             count_mean_t, mean_temperature = update_mean(val, count_mean_t, mean_temperature)
             log_file.write(f"Mean temperature: {mean_temperature}\n")
-        elif sensor_type == "humidity":   # keeps track of the mean humidity
+        elif sensor_type == "Humidity":   # keeps track of the mean humidity
             count_mean_h, mean_humidity = update_mean(val, count_mean_h, mean_humidity)
             log_file.write(f"Mean humidity: {mean_humidity}\n")
-        elif sensor_type == "light":    # keeps track of the mean light
+        elif sensor_type == "LightIntensity":    # keeps track of the mean light
             count_mean_l, mean_light = update_mean(val, count_mean_l, mean_light)
-            log_file.write(f"Mean light: {mean_light}\n")
-        elif sensor_type == "soil_moisture":    # keeps track of the mean soil moisture
+            log_file.write(f"Mean light intensity: {mean_light}\n")
+        elif sensor_type == "SoilMoisture":    # keeps track of the mean soil moisture
             count_mean_sm, mean_soil_moisture = update_mean(val, count_mean_sm, mean_soil_moisture)
             log_file.write(f"Mean soil moisture: {mean_soil_moisture}\n")
         elif sensor_type == "pH":   # keeps track of the mean pH
             count_mean_pH, mean_pH = update_mean(val, count_mean_pH, mean_pH)
             log_file.write(f"Mean pH: {mean_pH}\n")
-        elif sensor_type == "N":    # keeps track of the mean Nitrogen
+        elif sensor_type == "NPK":    # keeps track of the mean NPK
             count_mean_N, mean_N = update_mean(val["N"], count_mean_N, mean_N)
             log_file.write(f"Mean N: {mean_N}\n")
-        elif sensor_type == "P":    # keeps track of the mean Phosphorus
             count_mean_P, mean_P = update_mean(val["P"], count_mean_P, mean_P)
             log_file.write(f"Mean P: {mean_P}\n")
-        elif sensor_type == "K":    # keeps track of the mean Krypton - Potassium
             count_mean_K, mean_K = update_mean(val["K"], count_mean_K, mean_K)
             log_file.write(f"Mean K: {mean_K}\n")
             
@@ -65,14 +64,22 @@ class DataAnalysis(MqttSubscriber):
                     handle_message(topic, val)
 
 # initialize the mean values of the sensors to 0 and the count of the messages received to 0
-count_mean_t, mean_temperature = 0
-count_mean_h, mean_humidity = 0
-count_mean_l, mean_light = 0
-count_mean_sm, mean_soil_moisture = 0
-count_mean_pH, mean_pH = 0
-count_mean_N, mean_N = 0
-count_mean_P, mean_P = 0
-count_mean_K, mean_K = 0
+count_mean_t = 0
+mean_temperature = 0
+count_mean_h = 0
+mean_humidity = 0
+count_mean_l = 0
+mean_light = 0
+count_mean_sm = 0
+mean_soil_moisture = 0
+count_mean_pH = 0
+mean_pH = 0
+count_mean_N = 0
+mean_N = 0
+count_mean_P = 0
+mean_P = 0
+count_mean_K = 0
+mean_K = 0
 
 if __name__ == "__main__":
     # instead of reading the topics like this, i would like to change it and make that the microservices build the topics by itself by knowing the greenhouse where it is connected and the plant that it contains
