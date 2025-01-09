@@ -1,1 +1,2 @@
-psql -U <loro_username> -h localhost -f database_backup.sql
+psql -U iotproject -d smartfarm_db -h localhost
+pswd: WeWillDieForIoT
