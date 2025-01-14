@@ -17,7 +17,7 @@ def get_db_connection():
 # given the id of the device connector, return the list of sensors connected to it
 def get_sensors(conn, device_id, device_name):
     with conn.cursor() as cur: # create a cursor to execute queries
-        # the first query is to get the greenhouse_id of the device connector
+        # the first query is to get the greenhouse_id of the device
         cur.execute(sql.SQL("SELECT greenhouse_id FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
         # then the second one returns the list of sensors connected to the greenhouse
         greenhouse_id = cur.fetchone()[0]

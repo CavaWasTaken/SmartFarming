@@ -10,10 +10,11 @@ with open("./logs/LightManagement.log", "w") as log_file:
 # read the device_id and mqtt information of the broker from the json file
 with open("./LightManagement_config.json", "r") as config_fd:
     config = json.load(config_fd)
+    catalog_url = config["catalog_url"]
     device_id = config["device_id"]
-    mqtt_broker = config["mqtt_broker"]
-    mqtt_port = config["mqtt_port"]
-    keep_alive = config["keep_alive"]
+    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
+    mqtt_port = config["mqtt_connection"]["mqtt_port"]
+    keep_alive = config["mqtt_connection"]["keep_alive"]
 
 def handle_message(topic, val):
     with open("./logs/LightManagement.log", "a") as log_file:
@@ -27,7 +28,8 @@ def handle_message(topic, val):
                 log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\n")
 
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
-        response = requests.get(f"http://localhost:8080/get_sensor_id", params={'device_id': device_id, 'device_name': 'LightManagement', 'greenhouse_id': greenhouse.split("_")[1], 'plant_id': plant.split("_")[1], 'sensor_name': sensor_name, 'sensor_type': sensor_type})    # get the sensor id from the catalog
+        # i have all the information about the sensor but i don't know its id, so i need to ask the catalog. I need the id cause i use it to access to its tresholds
+        response = requests.get(f"{catalog_url}/get_sensor_id", params={'device_id': device_id, 'device_name': 'LightManagement', 'greenhouse_id': greenhouse.split("_")[1], 'plant_id': plant.split("_")[1], 'sensor_name': sensor_name, 'sensor_type': sensor_type})    # get the sensor id from the catalog
         if response.status_code == 200:
             sensor_id = response.json()["sensor_id"]
             log_file.write(f"New value collected by sensor {sensor_id}\n")
@@ -59,7 +61,7 @@ class LightManagement(MqttSubscriber):
                     handle_message(topic, val)
 
 if __name__ == "__main__":
-    response = requests.get(f"http://localhost:8080/get_sensors", params={"device_id": device_id, 'device_name': 'LightManagement'})
+    response = requests.get(f"{catalog_url}/get_sensors", params={"device_id": device_id, 'device_name': 'LightManagement'})
     if response.status_code == 200:
         sensors = response.json()["sensors"]  # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
         with open("./logs/LightManagement.log", "a") as log_file:

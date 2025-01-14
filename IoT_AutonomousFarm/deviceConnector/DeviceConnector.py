@@ -12,13 +12,14 @@ with open("./logs/DeviceConnector.log", "w") as log_file:
 # read the device_id and mqtt information of the broker from the json file
 with open("./DeviceConnector_config.json", "r") as config_fd:
     config = json.load(config_fd)
+    catalog_url = config["catalog_url"]
     device_id = config["device_id"]
-    mqtt_broker = config["mqtt_broker"]
-    mqtt_port = config["mqtt_port"]
-    keep_alive = config["keep_alive"]
+    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
+    mqtt_port = config["mqtt_connection"]["mqtt_port"]
+    keep_alive = config["mqtt_connection"]["keep_alive"]
 
 # REST API calls to the Catalog to get the list of sensors connected to this device connector
-response = requests.get('http://0.0.0.0:8080/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
+response = requests.get(f'{catalog_url}/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
 if response.status_code == 200: # if the request is successful
     sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor connected to the device connector
     with open("./logs/DeviceConnector.log", "a") as log_file:   # to be more clear, we write everything in a log file

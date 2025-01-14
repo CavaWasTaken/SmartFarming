@@ -1,6 +1,9 @@
 {
+    "catalog_url": "http://localhost:8080",
     "device_id": "5",
-    "mqtt_port": 1883,
-    "keep_alive": 60,
-    "mqtt_broker": "mqtt.eclipseprojects.io"
+    "mqtt_connection": {
+        "mqtt_port": 1883,
+        "keep_alive": 60,
+        "mqtt_broker": "mqtt.eclipseprojects.io"
+    }
 }

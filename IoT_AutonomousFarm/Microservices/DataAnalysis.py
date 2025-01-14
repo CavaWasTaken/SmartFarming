@@ -10,10 +10,11 @@ with open("./logs/DataAnalysis.log", "w") as log_file:
 # read the device_id and mqtt information of the broker from the json file
 with open("./DataAnalysis_config.json", "r") as config_fd:
     config = json.load(config_fd)
+    catalog_url = config["catalog_url"]
     device_id = config["device_id"]
-    mqtt_broker = config["mqtt_broker"]
-    mqtt_port = config["mqtt_port"]
-    keep_alive = config["keep_alive"]
+    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
+    mqtt_port = config["mqtt_connection"]["mqtt_port"]
+    keep_alive = config["mqtt_connection"]["keep_alive"]
 
 def handle_message(topic, val):
     with open("./logs/DataAnalysis.log", "a") as log_file:
@@ -84,7 +85,7 @@ mean_K = 0
 
 if __name__ == "__main__":
     # instead of reading the topics like this, i would like to change it and make that the microservices build the topics by itself by knowing the greenhouse where it is connected and the plant that it contains
-    response = requests.get(f"http://localhost:8080/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
+    response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
     if response.status_code == 200:
         sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
         with open("./logs/DataAnalysis.log", "a") as log_file:
