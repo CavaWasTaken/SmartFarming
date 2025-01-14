@@ -3,7 +3,9 @@ import time
 import json
 from datetime import datetime, timedelta
 
-# device connector is a MQTT publisher that reads data from the sensors connected to RaspberryPi and publishes it to the MQTT broker
+# each time that the device starts, we clear the log file
+with open("./logs/TimeShift.log", "w") as log_file:
+    pass
 
 # MQTT configuration
 mqtt_broker = "mqtt.eclipseprojects.io" # broker address
@@ -48,6 +50,6 @@ while True:
             # result in senml format
             result = json.dumps({"bn": topic, "e": [{"n": "start_date", "u": "date", "v": event["start_date"]}, {"n": "end_date", "u": "date", "v": event["end_date"]}, {"n": "start_time", "u": "time", "v": event["start_time"]}, {"n": "end_time", "u": "time", "v": event["end_time"]}, {"n": "recurrence", "u": "text", "v": event["recurrence"]}]})
             client.publish(topic, result)
-            with open("../logs/TimeShift.log", "a") as f:
+            with open("./logs/TimeShift.log", "a") as f:
                 f.write(f"Published: {result}\n")            
     time.sleep(5)   # check every 5 seconds

@@ -1,2 +1,0 @@
-psql -U iotproject -d smartfarm_db -h localhost
-pswd: WeWillDieForIoT

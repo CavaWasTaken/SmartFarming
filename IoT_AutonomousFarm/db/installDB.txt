@@ -1,0 +1,12 @@
+# exec docker to turn on the db
+sudo docker-compose up -d
+
+# then you can exec the catalog and this will connect to the db through the docker
+
+# if you want manually to connect and interact with the db
+psql -h localhost -p 5433 -U iotproject -d smartfarm_db
+
+# it will ask a password: WeWillDieForIoT
+
+# to turn down docker
+sudo docker-compose down
