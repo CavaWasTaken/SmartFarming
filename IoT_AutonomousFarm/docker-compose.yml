@@ -10,8 +10,8 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql
+      - pgdata:/var/lib/postgresql/data # persist data storage
+      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # initial data
 
 volumes:
-  pgdata:
+  pgdata: # docker volume for persisting data
