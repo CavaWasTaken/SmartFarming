@@ -1,0 +1,133 @@
+Received 2 sensors: [{'sensor_id': 0, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': 30.0, 'min': 15.0}, 'thing_speak_channel_id': None}, {'sensor_id': 4, 'greenhouse_id': 0, 'plant_id': None, 'type': 'LightIntensity', 'name': 'LightIntensity', 'unit': 'Lux', 'threshold': {'max': 10000.0, 'min': 1000.0}, 'thing_speak_channel_id': None}]
+New value collected by sensor 0
+Sensor_0 (temperature): 21.81541132434387 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.81541132434387, 't': 0}
+New value collected by sensor 4
+Sensor_4 (light intensity): 615.4981923510986 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 615.4981923510986, 't': 0}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.606086440354698 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.606086440354698, 't': 59}
+New value collected by sensor 4
+Sensor_4 (light intensity): 619.8478425595024 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 619.8478425595024, 't': 59}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.48940913052386 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.48940913052386, 't': 120}
+New value collected by sensor 4
+Sensor_4 (light intensity): 611.4420941242169 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 611.4420941242169, 't': 120}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.975573268027322 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.975573268027322, 't': 180}
+New value collected by sensor 4
+Sensor_4 (light intensity): 613.0450561851414 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 613.0450561851414, 't': 180}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.20900003748052 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.20900003748052, 't': 239}
+New value collected by sensor 4
+Sensor_4 (light intensity): 616.4056176166623 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 616.4056176166623, 't': 239}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.872321512805595 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.872321512805595, 't': 299}
+New value collected by sensor 4
+Sensor_4 (light intensity): 616.7685311219377 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 616.7685311219377, 't': 299}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.923878737666957 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.923878737666957, 't': 360}
+New value collected by sensor 4
+Sensor_4 (light intensity): 610.049491973896 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 610.049491973896, 't': 360}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.678500312301587 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.678500312301587, 't': 420}
+New value collected by sensor 4
+Sensor_4 (light intensity): 608.5984312860832 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 608.5984312860832, 't': 420}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.976885225065377 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.976885225065377, 't': 479}
+New value collected by sensor 4
+Sensor_4 (light intensity): 611.2122395393164 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 611.2122395393164, 't': 479}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.69536885299326 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.69536885299326, 't': 539}
+New value collected by sensor 4
+Sensor_4 (light intensity): 609.35506269734 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 609.35506269734, 't': 539}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.08981452005591 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.08981452005591, 't': 600}
+New value collected by sensor 4
+Sensor_4 (light intensity): 608.518221398694 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 608.518221398694, 't': 600}
+New value collected by sensor 0
+Sensor_0 (temperature): 20.984358205535997 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.984358205535997, 't': 660}
+New value collected by sensor 4
+Sensor_4 (light intensity): 612.8725027945399 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 612.8725027945399, 't': 660}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.51304558353399 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.51304558353399, 't': 719}
+New value collected by sensor 4
+Sensor_4 (light intensity): 607.3569231879735 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 607.3569231879735, 't': 719}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.71283578570928 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.71283578570928, 't': 782}
+New value collected by sensor 4
+Sensor_4 (light intensity): 605.0222734171172 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.0222734171172, 't': 782}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.756488804914753 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.756488804914753, 't': 841}
+New value collected by sensor 4
+Sensor_4 (light intensity): 605.4818200532194 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.4818200532194, 't': 841}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.625610966104585 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.625610966104585, 't': 902}
+New value collected by sensor 4
+Sensor_4 (light intensity): 601.3218596285146 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 601.3218596285146, 't': 902}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.303996891725593 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.303996891725593, 't': 962}
+New value collected by sensor 4
+Sensor_4 (light intensity): 606.6779532536681 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 606.6779532536681, 't': 962}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.577393611754996 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.577393611754996, 't': 1021}
+New value collected by sensor 4
+Sensor_4 (light intensity): 609.1877582218625 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 609.1877582218625, 't': 1021}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.911811870554423 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.911811870554423, 't': 1081}
+New value collected by sensor 4
+Sensor_4 (light intensity): 606.6121195948987 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 606.6121195948987, 't': 1081}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.572456096654182 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.572456096654182, 't': 1142}
+New value collected by sensor 4
+Sensor_4 (light intensity): 605.7471530005427 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.7471530005427, 't': 1142}
+New value collected by sensor 0
+Sensor_0 (temperature): 21.918449928427325 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.918449928427325, 't': 1202}
+New value collected by sensor 4
+Sensor_4 (light intensity): 605.7149135102339 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.7149135102339, 't': 1202}
+New value collected by sensor 0
+Sensor_0 (temperature): 22.583855427726004 is in the accepted range 15.0-30.0
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.583855427726004, 't': 1261}
+New value collected by sensor 4
+Sensor_4 (light intensity): 602.3152246641148 Lux is low	accepted range 1000.0-10000.0
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 602.3152246641148, 't': 1261}

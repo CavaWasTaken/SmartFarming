@@ -16,6 +16,13 @@ with open("./DataAnalysis_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
 
+x_est = 20.0  # Initial estimate
+P = 1.0  # Initial uncertainty
+A = 1.0  # State transition model
+H = 1.0  # Observation model
+Q = 0.01  # Process noise covariance (small noise)
+R = 0.5  # Measurement noise covariance (sensor noise)
+
 def handle_message(topic, val):
     with open("./logs/DataAnalysis.log", "a") as log_file:
         global count_mean_t, mean_temperature, count_mean_h, mean_humidity, count_mean_l, mean_light, count_mean_sm, mean_soil_moisture, count_mean_pH, mean_pH, count_mean_N, mean_N, count_mean_P, mean_P, count_mean_K, mean_K
@@ -27,10 +34,26 @@ def handle_message(topic, val):
             count += 1
             mean += (value - mean) / count
             return count, mean
+        
+        def kalman_filter(z_meas):
+            global x_est, P
+            
+            # Prediction Step
+            x_pred = A * x_est
+            P_pred = A * P * A + Q
+
+            # Update Step
+            K = P_pred * H / (H * P_pred * H + R)  # Kalman Gain
+            x_est = x_pred + K * (z_meas - H * x_pred)  # Update estimate
+            P = (1 - K * H) * P_pred  # Update uncertainty
+            
+            return x_est
 
         if sensor_type == "Temperature":    # keeps track of the mean temperature
             count_mean_t, mean_temperature = update_mean(val, count_mean_t, mean_temperature)
             log_file.write(f"Mean temperature: {mean_temperature}\n")
+            pred = kalman_filter(val)
+            log_file.write(f"Kalman Filter Prediction: {pred}\n")
         elif sensor_type == "Humidity":   # keeps track of the mean humidity
             count_mean_h, mean_humidity = update_mean(val, count_mean_h, mean_humidity)
             log_file.write(f"Mean humidity: {mean_humidity}\n")
