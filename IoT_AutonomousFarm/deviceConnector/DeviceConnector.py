@@ -1,10 +1,13 @@
 import paho.mqtt.client as mqtt
+from datetime import datetime
 import time
-import random
 import json
 import requests
-import math
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from sensors import DTH22, NPK, soilMoisture, pH, light
 # each time that the device starts, we clear the log file
 with open("./logs/DeviceConnector.log", "w") as log_file:
     pass
@@ -35,192 +38,13 @@ client.connect(mqtt_broker, mqtt_port, keep_alive)  # connection to the MQTT bro
 with open("./logs/DeviceConnector.log", "a") as log_file:
     log_file.write(f"Connected to the MQTT broker\n")    # write in the log file that the connection is successful
 
-# this are simulation functions of real sensors, they generate  only random values without a logic
-# DTH22 is the sensor that measures temperature and humidity
-def get_DTH22_Humidity():
-    # real simulation of humidity sensor
-    global current_humidity, start_time
-
-    # simulate time passage
-    elapsed_time = time.time() - start_time  # returns the seconds passed since the device connector started
-    hours = (elapsed_time / 3600) % 24  # every 24 hours the humidity pattern repeats
-
-    # simulate daily humidity variation using a sinusoidal pattern
-    daily_variation = 20 * math.sin(math.pi * hours / 12)  # 20% variation over 24 hours
-
-    # add some random noise
-    noise = random.uniform(-5.0, 5.0)
-
-    # update the current humidity
-    current_humidity += daily_variation + noise
-
-    # ensure humidity stays within realistic bounds (0 to 100 percent)
-    current_humidity = max(0.0, min(100.0, current_humidity))
-
-    return current_humidity
-
-def get_DTH22_Temperature():
-    # real simulation of temperature sensor
-    global current_temperature, start_time
-
-    # simulate time passage
-    elapsed_time = time.time() - start_time # returns the seconds passed since the device connector started
-    hours = (elapsed_time / 3600) % 24  # every 24 hours the temperature pattern repeats
-    
-    # simulate daily temperature variation using a sinusoidal pattern
-    daily_variation = 10 * math.sin(math.pi * hours / 12)  # 10 degree variation over 24 hours
-    
-    # add some random noise
-    noise = random.uniform(-1.0, 1.0)
-    
-    # update the current temperature
-    current_temperature += daily_variation + noise
-
-    # ensure temperature stays within realistic bounds (10 to 35 degrees Celsius)
-    current_temperature = max(10.0, min(35.0, current_temperature))
-    
-    return current_temperature
-
-    # temperature = random.uniform(10.0, 35.0)  # Read data from the sensors
-    # if temperature is not None:
-    #     return temperature
-    # else:
-    #     return None
-    
-# grove NPK sensor is the sensor that measures NPK values
-def get_NPK_Values():
-    # real simulation of NPK sensor
-    global current_npk, start_time
-    
-    # simulate time passage
-    elapsed_time = time.time() - start_time
-    
-    # add some random noise
-    noise = {
-        'N': random.uniform(-5.0, 5.0),
-        'P': random.uniform(-3.0, 3.0),
-        'K': random.uniform(-4.0, 4.0)
-    }
-    
-    # introduce gradual decrease
-    trend = {
-        'N': -0.01 * elapsed_time / 3600,  # small decrease over time
-        'P': -0.01 * elapsed_time / 3600,  # small decrease over time
-        'K': -0.01 * elapsed_time / 3600   # small decrease over time
-    }
-    
-    # update the current NPK values
-    current_npk['N'] += noise['N'] + trend['N']
-    current_npk['P'] += noise['P'] + trend['P']
-    current_npk['K'] += noise['K'] + trend['K']
-
-    # ensure NPK values stay within realistic bounds (0 to 1000)
-    current_npk['N'] = max(0.0, min(1000.0, current_npk['N']))
-    current_npk['P'] = max(0.0, min(1000.0, current_npk['P']))
-    current_npk['K'] = max(0.0, min(1000.0, current_npk['K']))
-    
-    return current_npk
-
-    # NPK = random.uniform(0.0, 1000.0)  # Read data from the sensors
-    # if NPK is not None:
-    #     return NPK
-    # else:
-    #     return None
-    
-# capacitive soil moisture sensor is the sensor that measures soil moisture
-def get_SoilMoisture_Values():
-    # real simulation of soil moisture sensor
-    global current_soil_moisture, start_time
-    
-    # simulate time passage
-    elapsed_time = time.time() - start_time
-    
-    # add some random noise
-    noise = random.uniform(-1.0, 1.0)
-    
-    # introduce gradual decrease
-    trend = -0.05 * elapsed_time / 3600  # small decrease over time
-    
-    # update the current soil moisture value
-    current_soil_moisture += noise + trend
-    
-    # ensure soil moisture stays within realistic bounds (0 to 100)
-    current_soil_moisture = max(0.0, min(100.0, current_soil_moisture))
-    
-    return current_soil_moisture
-
-    # soil_moisture = random.uniform(0.0, 100.0)  # Read data from the sensors
-    # if soil_moisture is not None:
-    #     return soil_moisture
-    # else:
-    #     return None
-    
-# analog pH sensor is the sensor that measures pH values of the soil
-def get_pH_Values():
-    # real simulation of pH sensor
-    global current_pH, start_time
-    
-    # simulate time passage
-    elapsed_time = time.time() - start_time
-    
-    # add some random noise
-    noise = random.uniform(-0.1, 0.1)
-    
-    # introduce gradual change
-    trend = -0.001 * elapsed_time / 3600  # small decrease over time
-    
-    # update the current pH value
-    current_pH += noise + trend
-    
-    # ensure pH stays within realistic bounds (3.0 to 9.0)
-    current_pH = max(3.0, min(9.0, current_pH))
-    
-    return current_pH
-
-    # pH = random.uniform(3.0, 9.0)  # Read data from the sensors
-    # if pH is not None:
-    #     return pH
-    # else:
-    #     return None
-    
-# ldr sensor is the sensor that measures light intensity
-def get_LightIntensity_Values():
-    # real simulation of light intensity sensor
-    global current_light_intensity, start_time
-    
-    # simulate time passage
-    elapsed_time = time.time() - start_time
-    
-    # add some random noise
-    noise = random.uniform(-10.0, 10.0)
-    
-    # introduce gradual change
-    trend = 0.1 * math.sin(math.pi * elapsed_time / 43200)  # simulate daily light intensity variation
-    
-    # update the current light intensity value
-    current_light_intensity += noise + trend
-    
-    # ensure light intensity stays within realistic bounds (0 to 1000)
-    current_light_intensity = max(0.0, min(1000.0, current_light_intensity))
-    
-    return current_light_intensity
-
-    # light_intensity = random.uniform(0.0, 1000.0)  # Read data from the sensors
-    # if light_intensity is not None:
-    #     return light_intensity
-    # else:
-    #     return None
-
-start_time = time.time()   # get the time when the device connector starts
-current_humidity = 50.0  # default humidity value for the simulation
-current_temperature = 22.0  # default temperature value for the simulation
-current_npk = {"N": 500.0, "P": 500.0, "K": 500.0}  # default NPK values for the simulation
-current_soil_moisture = 50.0  # default soil moisture value for the simulation
-current_pH = 7.0  # default pH value for the simulation
-current_light_intensity = 500.0  # default light intensity value for the simulation
+start_time = datetime.now() # get the current time
+start_time = (start_time.hour*3600 + start_time.minute*60 + start_time.second)/3600  # convert the time to hours
 
 while True:
-    timestamp = int(time.time()-int(start_time)) # get the time since the device connector started
+    timestamp = datetime.now() 
+    timestamp = (timestamp.hour*3600 + timestamp.minute*60 + timestamp.second)/3600  # convert the time to hours
+    timestamp -= start_time  # calculate the time passed since the start of the simulation
 
     for sensor in sensors:  # iterate over the list of sensors
         val = -1    # default value read from the sensor
@@ -228,17 +52,17 @@ while True:
         if(sensor["name"] == "DTH22"):  
             # DTH22 is the only senosor in our system that collects two values, temperature and humidity, so we need to handle both
             if(sensor["type"] == "Temperature"):
-                val = get_DTH22_Temperature()
+                val = DTH22.get_DTH22_Temperature()
             elif(sensor["type"] == "Humidity"):
-                val = get_DTH22_Humidity()
+                val = DTH22.get_DTH22_Humidity()
         elif(sensor["name"] == "NPK"):
-            val = get_NPK_Values()
+            val = NPK.get_NPK_Values(timestamp)
         elif(sensor["name"] == "SoilMoisture"):
-            val = get_SoilMoisture_Values()
+            val = soilMoisture.get_SoilMoisture_Values(timestamp)
         elif(sensor["name"] == "pH"):
-            val = get_pH_Values()
+            val = pH.get_pH_Values(timestamp)
         elif(sensor["name"] == "LightIntensity"):
-            val = get_LightIntensity_Values()
+            val = light.get_LightIntensity_Values()
         else:
             # not recognized sensor, write the error in the log file
             with open("./logs/DeviceConnector.log", "a") as log_file:
@@ -246,11 +70,11 @@ while True:
             continue    # skip to the next iteration, so at the next sensor
         
         # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
-        senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": timestamp})
+        senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": int(timestamp*3600)})
         senML_dictionary = json.loads(senML)
         client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
         # write in a log file the value published
         with open("./logs/DeviceConnector.log", "a") as log_file:
             log_file.write(f"Published: {senML}\n")
-
-    time.sleep(60)  # publish sensor values every 60 seconds
+        
+    time.sleep(60)   # wait for 1 minute before reading the sensors again
