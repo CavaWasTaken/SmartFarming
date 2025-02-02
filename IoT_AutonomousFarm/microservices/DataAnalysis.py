@@ -2,10 +2,13 @@ import json
 import paho.mqtt.client as PahoMQTT
 from MqttSub import MqttSubscriber
 import requests
+import cherrypy
 
 # each time that the device starts, we clear the log file
 with open("./logs/DataAnalysis.log", "w") as log_file:
     pass
+    
+# MQTT Sub
 
 # read the device_id and mqtt information of the broker from the json file
 with open("./DataAnalysis_config.json", "r") as config_fd:
@@ -16,62 +19,59 @@ with open("./DataAnalysis_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
 
-x_est = 20.0  # Initial estimate
-P = 1.0  # Initial uncertainty
-A = 1.0  # State transition model
-H = 1.0  # Observation model
-Q = 0.01  # Process noise covariance (small noise)
-R = 0.5  # Measurement noise covariance (sensor noise)
+global N
 
 def handle_message(topic, val):
     with open("./logs/DataAnalysis.log", "a") as log_file:
-        global count_mean_t, mean_temperature, count_mean_h, mean_humidity, count_mean_l, mean_light, count_mean_sm, mean_soil_moisture, count_mean_pH, mean_pH, count_mean_N, mean_N, count_mean_P, mean_P, count_mean_K, mean_K
+        global mean_temperature, mean_humidity, mean_light, mean_soil_moisture, mean_pH, mean_N, mean_P, mean_K
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
         # log_file.write(f"Received message from {greenhouse} - {plant} - {sensor_name} - {sensor_type}\n")
 
-        # function to update the mean value of the data collected by each sensor
-        def update_mean(value, count, mean):
-            count += 1
-            mean += (value - mean) / count
-            return count, mean
-        
-        def kalman_filter(z_meas):
-            global x_est, P
-            
-            # Prediction Step
-            x_pred = A * x_est
-            P_pred = A * P * A + Q
-
-            # Update Step
-            K = P_pred * H / (H * P_pred * H + R)  # Kalman Gain
-            x_est = x_pred + K * (z_meas - H * x_pred)  # Update estimate
-            P = (1 - K * H) * P_pred  # Update uncertainty
-            
-            return x_est
-
         if sensor_type == "Temperature":    # keeps track of the mean temperature
-            count_mean_t, mean_temperature = update_mean(val, count_mean_t, mean_temperature)
+            if len(temperatures) == N_values:    # if the list of temperatures is N_values, remove the first element (the oldest)
+                temperatures.pop(0)
+            temperatures.append(val)    # append the new temperature to the list
+            mean_temperature = sum(temperatures) / len(temperatures)    # calculate the mean temperature
             log_file.write(f"Mean temperature: {mean_temperature}\n")
-            pred = kalman_filter(val)
-            log_file.write(f"Kalman Filter Prediction: {pred}\n")
         elif sensor_type == "Humidity":   # keeps track of the mean humidity
-            count_mean_h, mean_humidity = update_mean(val, count_mean_h, mean_humidity)
+            if len(humidities) == N_values:
+                humidities.pop(0)
+            humidities.append(val)
+            mean_humidity = sum(humidities) / len(humidities)
             log_file.write(f"Mean humidity: {mean_humidity}\n")
         elif sensor_type == "LightIntensity":    # keeps track of the mean light
-            count_mean_l, mean_light = update_mean(val, count_mean_l, mean_light)
+            if len(light_intensities) == N_values:
+                light_intensities.pop(0)
+            light_intensities.append(val)
+            mean_light = sum(light_intensities) / len(light_intensities)
             log_file.write(f"Mean light intensity: {mean_light}\n")
         elif sensor_type == "SoilMoisture":    # keeps track of the mean soil moisture
-            count_mean_sm, mean_soil_moisture = update_mean(val, count_mean_sm, mean_soil_moisture)
+            if len(soil_moistures) == N_values:
+                soil_moistures.pop(0)
+            soil_moistures.append(val)
+            mean_soil_moisture = sum(soil_moistures) / len(soil_moistures)
             log_file.write(f"Mean soil moisture: {mean_soil_moisture}\n")
         elif sensor_type == "pH":   # keeps track of the mean pH
-            count_mean_pH, mean_pH = update_mean(val, count_mean_pH, mean_pH)
+            if len(pH_values) == N_values:
+                pH_values.pop(0)
+            pH_values.append(val)
+            mean_pH = sum(pH_values) / len(pH_values)
             log_file.write(f"Mean pH: {mean_pH}\n")
         elif sensor_type == "NPK":    # keeps track of the mean NPK
-            count_mean_N, mean_N = update_mean(val["N"], count_mean_N, mean_N)
+            if len(N_values) == N_values:
+                N_values.pop(0)
+            N_values.append(val["N"])
+            mean_N = sum(N_values) / len(N_values)
             log_file.write(f"Mean N: {mean_N}\n")
-            count_mean_P, mean_P = update_mean(val["P"], count_mean_P, mean_P)
+            if len(P_values) == N_values:
+                P_values.pop(0)
+            P_values.append(val["P"])
+            mean_P = sum(P_values) / len(P_values)
             log_file.write(f"Mean P: {mean_P}\n")
-            count_mean_K, mean_K = update_mean(val["K"], count_mean_K, mean_K)
+            if len(K_values) == N_values:
+                K_values.pop(0)
+            K_values.append(val["K"])
+            mean_K = sum(K_values) / len(K_values)
             log_file.write(f"Mean K: {mean_K}\n")
             
 
@@ -88,25 +88,119 @@ class DataAnalysis(MqttSubscriber):
                     val = message["v"]
                     handle_message(topic, val)
 
-# initialize the mean values of the sensors to 0 and the count of the messages received to 0
-count_mean_t = 0
-mean_temperature = 0
-count_mean_h = 0
-mean_humidity = 0
-count_mean_l = 0
-mean_light = 0
-count_mean_sm = 0
-mean_soil_moisture = 0
-count_mean_pH = 0
-mean_pH = 0
-count_mean_N = 0
-mean_N = 0
-count_mean_P = 0
-mean_P = 0
-count_mean_K = 0
-mean_K = 0
+temperatures = []   # list of the last N temperatures received
+humidities = [] # list of the last N humidities received
+light_intensities = []  # list of the last N light intensities received
+soil_moistures = [] # list of the last N soil moistures received
+pH_values = []  # list of the last N pH values received
+N_values = []   # list of the last N N values received
+P_values = []   # list of the last N P values received
+K_values = []   # list of the last N K values received
+
+# REST API
+
+# methods called from management components to get the mean statistics on the last N values received
+def get_mean_temperature():
+    global mean_temperature
+    return {'mean_temperature': mean_temperature}
+
+def get_mean_humidity():
+    global mean_humidity
+    return {'mean_humidity': mean_humidity}
+
+def get_mean_light():
+    global mean_light
+    return {'mean_light': mean_light}
+
+def get_mean_soil_moisture():
+    global mean_soil_moisture
+    return {'mean_soil_moisture': mean_soil_moisture}
+
+def get_mean_pH():
+    global mean_pH
+    return {'mean_pH': mean_pH}
+
+def get_mean_N():
+    global mean_N
+    return {'mean_N': mean_N}
+
+def get_mean_P():
+    global mean_P
+    return {'mean_P': mean_P}
+
+def get_mean_K():
+    global mean_K
+    return {'mean_K': mean_K}
+
+# REST API exposed by the DataAnalysis microservice
+class DataAnalysisREST(object):
+    exposed = True
+
+    def __init__(self, data_analysis_connection):
+        self.data_analysis_connection = data_analysis_connection
+
+    # handles all the different HTTP methods
+    @cherrypy.tools.json_out()  # automatically convert return value
+    def GET(self, *uri, **params):
+        if len(uri) == 0:
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        elif uri[0] == 'get_mean_temperature':
+            return get_mean_temperature()
+        elif uri[0] == 'get_mean_humidity':
+            return get_mean_humidity()
+        elif uri[0] == 'get_mean_light':
+            return get_mean_light()
+        elif uri[0] == 'get_mean_soil_moisture':
+            return get_mean_soil_moisture()
+        elif uri[0] == 'get_mean_pH':
+            return get_mean_pH()
+        elif uri[0] == 'get_mean_N':
+            return get_mean_N()
+        elif uri[0] == 'get_mean_P':
+            return get_mean_P()
+        elif uri[0] == 'get_mean_K':
+            return get_mean_K()
+        else:
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        
+    @cherrypy.tools.json_out()  # automatically convert return value
+    def POST(self, *uri, **params):
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+
+    @cherrypy.tools.json_out()  # automatically convert return value        
+    def PUT(self, *uri, **params):
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+        
+    @cherrypy.tools.json_out()  # automatically convert return value
+    def DELETE(self, *uri, **params):
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
 
 if __name__ == "__main__":
+    # RESR API
+    dataAnalysisClient = DataAnalysisREST(None)
+    conf = {
+        '/': {
+            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+            'tools.sessions.on': True,
+        }
+    }
+    cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8081})
+    cherrypy.tree.mount(dataAnalysisClient, '/', conf)
+    cherrypy.engine.start()
+
+    response = requests.get(f"{catalog_url}/get_device_info", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
+    if response.status_code == 200:
+        device_info = response.json()    # device_info is a dictionary with the information of the device
+        with open("./logs/DataAnalysis.log", "a") as log_file:
+            log_file.write(f"Received device information: {device_info}\n")
+    else:
+        with open("./logs/DataAnalysis.log", "a") as log_file:
+            log_file.write(f"Failed to get device information from the Catalog\nResponse: {response.reason}\n")
+            exit(1) # if the request fails, the device connector stops
+
+    N = device_info["params"]['N']    # get the number of values to keep track of from the device information
+
+    # MQTT Sub
     # instead of reading the topics like this, i would like to change it and make that the microservices build the topics by itself by knowing the greenhouse where it is connected and the plant that it contains
     response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
     if response.status_code == 200:

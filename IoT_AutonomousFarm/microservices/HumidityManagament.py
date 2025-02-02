@@ -11,6 +11,7 @@ with open("./logs/HumidityManagement.log", "w") as log_file:
 with open("./HumidityManagement_config.json", "r") as config_fd:
     config = json.load(config_fd)
     catalog_url = config["catalog_url"]
+    dataAnalysis_url = config["dataAnalysis_url"]
     device_id = config["device_id"]
     mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
@@ -19,13 +20,13 @@ with open("./HumidityManagement_config.json", "r") as config_fd:
 def handle_message(topic, val):
     with open("./logs/HumidityManagement.log", "a") as log_file:
 
-        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold):   # function that checks if the value is in the accepted range
+        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold, mean):   # function that checks if the value is in the accepted range
             if val < min_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\n")
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
             elif val > max_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\n")
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
             else:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\n")
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
 
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
         # i have all the information about the sensor but i don't know its id, so i need to ask the catalog. I need the id cause i use it to access to its tresholds
@@ -42,11 +43,24 @@ def handle_message(topic, val):
         max_treshold = treshold["max"]
 
         if sensor_type == "Humidity":   # check the values of humidity
-            check_val(sensor_id, "humidity", "%", val, min_treshold, max_treshold)
-
+            response = requests.get(f"{dataAnalysis_url}/get_mean_humidity", params={})    # get the mean humidity of the measurements
+            if response.status_code == 200:
+                mean_humidity = response.json()["mean_humidity"]
+                log_file.write(f"Mean humidity: {mean_humidity}\n")
+                check_val(sensor_id, "humidity", "%", val, min_treshold, max_treshold, mean_humidity)
+            else:
+                log_file.write(f"Failed to get mean humidity from the DataAnalysis\nResponse: {response.reason}\n")
+                exit(1) # if the request fails, the device connector stops
         elif sensor_type == "SoilMoisture":  # check the value of soil moisture
-            check_val(sensor_id, "soil moisture", "%", val, min_treshold, max_treshold)
-
+            response = requests.get(f"{dataAnalysis_url}/get_mean_soil_moisture", params={})    # get the mean soil moisture of the measurements
+            if response.status_code == 200:
+                mean_soil_moisture = response.json()["mean_soil_moisture"]
+                log_file.write(f"Mean soil moisture: {mean_soil_moisture}\n")
+                check_val(sensor_id, "soil moisture", "%", val, min_treshold, max_treshold, mean_soil_moisture)
+            else:
+                log_file.write(f"Failed to get mean soil moisture from the DataAnalysis\nResponse: {response.reason}\n")
+                exit(1) # if the request fails, the device connector stops
+                
 class HumidityManagement(MqttSubscriber):
     def __init__(self, broker, port, topics):
         super().__init__(broker, port, topics)

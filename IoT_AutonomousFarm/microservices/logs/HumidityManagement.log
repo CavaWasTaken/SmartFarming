@@ -1,133 +1,17 @@
 Received 2 sensors: [{'sensor_id': 5, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 70.0, 'min': 40.0}, 'thing_speak_channel_id': None}, {'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 60.0, 'min': 20.0}, 'thing_speak_channel_id': None}]
 New value collected by sensor 5
-Sensor_5 (humidity): 46.696201866514734 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 46.696201866514734, 't': 0}
+Mean humidity: 52.93553112259805
+Sensor_5 (humidity): 53.51680696839074 is in the accepted range 40.0-70.0	mean: 52.93553112259805
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 53.51680696839074, 't': 59}
 New value collected by sensor 2
-Sensor_2 (soil moisture): 50.18353512018929 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.18353512018929, 't': 0}
+Mean soil moisture: 49.76788339382894
+Sensor_2 (soil moisture): 50.67540832736761 is in the accepted range 20.0-60.0	mean: 49.76788339382894
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.67540832736761, 't': 59}
 New value collected by sensor 5
-Sensor_5 (humidity): 47.94447880237976 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.94447880237976, 't': 59}
+Mean humidity: 54.71121034551978
+Sensor_5 (humidity): 58.262568791363236 is in the accepted range 40.0-70.0	mean: 54.71121034551978
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 58.262568791363236, 't': 120}
 New value collected by sensor 2
-Sensor_2 (soil moisture): 49.24910242796026 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.24910242796026, 't': 59}
-New value collected by sensor 5
-Sensor_5 (humidity): 43.5485616167126 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 43.5485616167126, 't': 120}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.92819856268898 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.92819856268898, 't': 120}
-New value collected by sensor 5
-Sensor_5 (humidity): 47.78213101082855 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.78213101082855, 't': 180}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.805952310327434 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.805952310327434, 't': 180}
-New value collected by sensor 5
-Sensor_5 (humidity): 44.309619677439215 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.309619677439215, 't': 239}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.47907893838742 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.47907893838742, 't': 239}
-New value collected by sensor 5
-Sensor_5 (humidity): 49.184693654744144 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 49.184693654744144, 't': 299}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.33158194502251 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.33158194502251, 't': 299}
-New value collected by sensor 5
-Sensor_5 (humidity): 45.92495861781693 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 45.92495861781693, 't': 360}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.363581992780304 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.363581992780304, 't': 360}
-New value collected by sensor 5
-Sensor_5 (humidity): 44.65172442027408 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.65172442027408, 't': 420}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.53722282286218 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.53722282286218, 't': 420}
-New value collected by sensor 5
-Sensor_5 (humidity): 46.0322935853139 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 46.0322935853139, 't': 479}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.08061060628382 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.08061060628382, 't': 479}
-New value collected by sensor 5
-Sensor_5 (humidity): 46.184336137667415 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 46.184336137667415, 't': 539}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.29031095790722 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.29031095790722, 't': 539}
-New value collected by sensor 5
-Sensor_5 (humidity): 48.3826499590649 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 48.3826499590649, 't': 600}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.297069610860255 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.297069610860255, 't': 600}
-New value collected by sensor 5
-Sensor_5 (humidity): 44.371773862753685 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.371773862753685, 't': 660}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.80220014233484 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.80220014233484, 't': 660}
-New value collected by sensor 5
-Sensor_5 (humidity): 44.62111930060378 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.62111930060378, 't': 719}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.35412490230707 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.35412490230707, 't': 719}
-New value collected by sensor 5
-Sensor_5 (humidity): 47.026366572363735 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.026366572363735, 't': 782}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 48.48639970394208 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.48639970394208, 't': 782}
-New value collected by sensor 5
-Sensor_5 (humidity): 49.678374008609595 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 49.678374008609595, 't': 841}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 48.0426872035839 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.0426872035839, 't': 841}
-New value collected by sensor 5
-Sensor_5 (humidity): 48.6299155426691 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 48.6299155426691, 't': 902}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 48.10109442163753 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.10109442163753, 't': 902}
-New value collected by sensor 5
-Sensor_5 (humidity): 45.365301443539195 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 45.365301443539195, 't': 962}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.20428741199389 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.20428741199389, 't': 962}
-New value collected by sensor 5
-Sensor_5 (humidity): 47.9889429798937 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.9889429798937, 't': 1021}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.474185593319284 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.474185593319284, 't': 1021}
-New value collected by sensor 5
-Sensor_5 (humidity): 47.09209896260153 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.09209896260153, 't': 1081}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.4576501472232 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.4576501472232, 't': 1081}
-New value collected by sensor 5
-Sensor_5 (humidity): 47.82293944525301 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.82293944525301, 't': 1142}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 47.7881599533553 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7881599533553, 't': 1142}
-New value collected by sensor 5
-Sensor_5 (humidity): 47.87309054961302 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.87309054961302, 't': 1202}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 47.7691949863184 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7691949863184, 't': 1202}
-New value collected by sensor 5
-Sensor_5 (humidity): 50.810382911157106 is in the accepted range 40.0-70.0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 50.810382911157106, 't': 1261}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.508427355376654 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.508427355376654, 't': 1261}
+Mean soil moisture: 50.032695957349326
+Sensor_2 (soil moisture): 50.56232108439012 is in the accepted range 20.0-60.0	mean: 50.032695957349326
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.56232108439012, 't': 120}

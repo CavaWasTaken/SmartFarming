@@ -14,6 +14,22 @@ def get_db_connection():
         port="5433" # port
     )
 
+# given the id of the device connector and the name of the device, return the information of the device
+def get_device_info(conn, device_id, device_name):
+    with conn.cursor() as cur: # create a cursor to execute queries
+        cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])    # the query is to get the device info of the device
+        device = cur.fetchone() # device is a tuple
+        if device is None:  # if the device does not exist, return error 404
+            raise cherrypy.HTTPError(404, "Device not found")
+        device_dict = { # associate the values to the keys
+            'device_id': device[0],
+            'greenhouse_id': device[1],
+            'name': device[2],
+            'type': device[3],
+            'params': device[4]
+        }
+        return device_dict
+
 # given the id of the device connector, return the list of sensors connected to it
 def get_sensors(conn, device_id, device_name):
     with conn.cursor() as cur: # create a cursor to execute queries
@@ -77,24 +93,23 @@ class CatalogREST(object):
             return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
         elif uri[0] == 'get_sensor_id':
             return get_sensor_id(self.catalog_connection, params['device_id'], params['device_name'], params['greenhouse_id'], params['plant_id'], params['sensor_name'], params['sensor_type'])
+        elif uri[0] == 'get_device_info':
+            return get_device_info(self.catalog_connection, params['device_id'], params['device_name'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         
     @cherrypy.tools.json_out()  # automatically convert return value
     def POST(self, *uri, **params):
-        if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
         
     @cherrypy.tools.json_out()  # automatically convert return value        
     def PUT(self, *uri, **params):
-        if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
         
     @cherrypy.tools.json_out()  # automatically convert return value
     def DELETE(self, *uri, **params):
-        if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
-        
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+
 if __name__ == "__main__":
     # configuration of the server
     catalogClient = CatalogREST(get_db_connection())

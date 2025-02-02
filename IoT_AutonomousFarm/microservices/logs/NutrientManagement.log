@@ -1,243 +1,33 @@
 Received 3 sensors: [{'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 60.0, 'min': 20.0}, 'thing_speak_channel_id': None}, {'sensor_id': 3, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 7.5, 'min': 5.5}, 'thing_speak_channel_id': None}, {'sensor_id': 1, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/L', 'threshold': {'K': {'max': 800.0, 'min': 200.0}, 'N': {'max': 800.0, 'min': 200.0}, 'P': {'max': 800.0, 'min': 200.0}}, 'thing_speak_channel_id': None}]
 New value collected by sensor 2
-Sensor_2 (soil moisture): 50.18353512018929 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.18353512018929, 't': 0}
+Mean soil moisture: 48.86035846029026
+Sensor_2 (soil moisture): 50.67540832736761 is in the accepted range 20.0-60.0	mean: 48.86035846029026
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.67540832736761, 't': 59}
 New value collected by sensor 3
-Sensor_3 (pH): 7.010205124303058 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.010205124303058, 't': 0}
+Mean pH: 6.984714003931179
+Sensor_3 (pH): 7.068682948311864 is in the accepted range 5.5-7.5	mean: 6.984714003931179
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.068682948311864, 't': 59}
 New value collected by sensor 1
-Sensor_1 (N): 500.054876384288 is in the accepted range 200.0-800.0
-Sensor_1 (P): 501.9706518464073 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.3304037497534 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.054876384288, 'P': 501.9706518464073, 'K': 498.3304037497534}, 't': 0}
+Mean N: 500.3884958360239
+Sensor_1 (N): 500.6250415286704 is in the accepted range 200.0-800.0	mean: 500.3884958360239
+Mean P: 498.5905101977645
+Sensor_1 (P): 498.71833803808767 is in the accepted range 200.0-800.0	mean: 498.5905101977645
+Mean K: 498.94960337035866
+Sensor_1 (K): 499.49501916122443 is in the accepted range 200.0-800.0	mean: 498.94960337035866
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.6250415286704, 'P': 498.71833803808767, 'K': 499.49501916122443}, 't': 59}
 New value collected by sensor 2
-Sensor_2 (soil moisture): 49.24910242796026 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.24910242796026, 't': 59}
+Mean soil moisture: 49.76788339382894
+Sensor_2 (soil moisture): 50.56232108439012 is in the accepted range 20.0-60.0	mean: 49.76788339382894
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.56232108439012, 't': 120}
 New value collected by sensor 3
-Sensor_3 (pH): 7.08168360105891 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.08168360105891, 't': 59}
+Mean pH: 6.99886381032546
+Sensor_3 (pH): 7.027163423114024 is in the accepted range 5.5-7.5	mean: 6.99886381032546
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.027163423114024, 't': 120}
 New value collected by sensor 1
-Sensor_1 (N): 500.2549718813541 is in the accepted range 200.0-800.0
-Sensor_1 (P): 500.09894020454834 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.5633842953531 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.2549718813541, 'P': 500.09894020454834, 'K': 499.5633842953531}, 't': 59}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.92819856268898 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.92819856268898, 't': 120}
-New value collected by sensor 3
-Sensor_3 (pH): 7.0089246145211295 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.0089246145211295, 't': 120}
-New value collected by sensor 1
-Sensor_1 (N): 501.6904772047927 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.2962862629647 is in the accepted range 200.0-800.0
-Sensor_1 (K): 497.9417548542323 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.6904772047927, 'P': 498.2962862629647, 'K': 497.9417548542323}, 't': 120}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.805952310327434 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.805952310327434, 't': 180}
-New value collected by sensor 3
-Sensor_3 (pH): 7.047263103807879 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.047263103807879, 't': 180}
-New value collected by sensor 1
-Sensor_1 (N): 501.67409471660363 is in the accepted range 200.0-800.0
-Sensor_1 (P): 499.20042888480964 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.2982133566285 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.67409471660363, 'P': 499.20042888480964, 'K': 499.2982133566285}, 't': 180}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.47907893838742 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.47907893838742, 't': 239}
-New value collected by sensor 3
-Sensor_3 (pH): 6.951194393795224 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.951194393795224, 't': 239}
-New value collected by sensor 1
-Sensor_1 (N): 499.82722932567486 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.74902912036896 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.2792110763715 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.82722932567486, 'P': 498.74902912036896, 'K': 498.2792110763715}, 't': 239}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.33158194502251 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.33158194502251, 't': 299}
-New value collected by sensor 3
-Sensor_3 (pH): 6.98264886916328 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.98264886916328, 't': 299}
-New value collected by sensor 1
-Sensor_1 (N): 500.9911903753913 is in the accepted range 200.0-800.0
-Sensor_1 (P): 497.6191289571016 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.54660960558493 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.9911903753913, 'P': 497.6191289571016, 'K': 499.54660960558493}, 't': 299}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.363581992780304 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.363581992780304, 't': 360}
-New value collected by sensor 3
-Sensor_3 (pH): 7.027875086048766 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.027875086048766, 't': 360}
-New value collected by sensor 1
-Sensor_1 (N): 497.8722514019754 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.02109348287485 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.29210916633446 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.8722514019754, 'P': 498.02109348287485, 'K': 499.29210916633446}, 't': 360}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.53722282286218 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.53722282286218, 't': 420}
-New value collected by sensor 3
-Sensor_3 (pH): 7.048602978574945 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.048602978574945, 't': 420}
-New value collected by sensor 1
-Sensor_1 (N): 499.31112618295816 is in the accepted range 200.0-800.0
-Sensor_1 (P): 497.51070965545955 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.51202445999184 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.31112618295816, 'P': 497.51070965545955, 'K': 499.51202445999184}, 't': 420}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.08061060628382 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.08061060628382, 't': 479}
-New value collected by sensor 3
-Sensor_3 (pH): 6.963531888501703 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.963531888501703, 't': 479}
-New value collected by sensor 1
-Sensor_1 (N): 500.2410452089101 is in the accepted range 200.0-800.0
-Sensor_1 (P): 500.343084824437 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.59462090298126 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.2410452089101, 'P': 500.343084824437, 'K': 498.59462090298126}, 't': 479}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.29031095790722 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.29031095790722, 't': 539}
-New value collected by sensor 3
-Sensor_3 (pH): 7.005284669626208 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.005284669626208, 't': 539}
-New value collected by sensor 1
-Sensor_1 (N): 498.4268270148847 is in the accepted range 200.0-800.0
-Sensor_1 (P): 497.30712062744544 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.9985566586014 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.4268270148847, 'P': 497.30712062744544, 'K': 499.9985566586014}, 't': 539}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.297069610860255 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.297069610860255, 't': 600}
-New value collected by sensor 3
-Sensor_3 (pH): 7.008055449088089 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.008055449088089, 't': 600}
-New value collected by sensor 1
-Sensor_1 (N): 497.46421598681127 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.6466572893869 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.7017758880772 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.46421598681127, 'P': 498.6466572893869, 'K': 499.7017758880772}, 't': 600}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.80220014233484 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.80220014233484, 't': 660}
-New value collected by sensor 3
-Sensor_3 (pH): 6.945032214277714 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.945032214277714, 't': 660}
-New value collected by sensor 1
-Sensor_1 (N): 500.4938686604657 is in the accepted range 200.0-800.0
-Sensor_1 (P): 497.82010426102033 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.4547155437482 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.4938686604657, 'P': 497.82010426102033, 'K': 498.4547155437482}, 't': 660}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.35412490230707 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.35412490230707, 't': 719}
-New value collected by sensor 3
-Sensor_3 (pH): 7.018321029603338 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.018321029603338, 't': 719}
-New value collected by sensor 1
-Sensor_1 (N): 500.1449421435194 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.52973263665876 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.9606767255812 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.1449421435194, 'P': 498.52973263665876, 'K': 498.9606767255812}, 't': 719}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 48.48639970394208 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.48639970394208, 't': 782}
-New value collected by sensor 3
-Sensor_3 (pH): 6.946976140253763 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.946976140253763, 't': 782}
-New value collected by sensor 1
-Sensor_1 (N): 499.13560166019295 is in the accepted range 200.0-800.0
-Sensor_1 (P): 500.4544914399207 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.6843199872712 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.13560166019295, 'P': 500.4544914399207, 'K': 498.6843199872712}, 't': 782}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 48.0426872035839 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.0426872035839, 't': 841}
-New value collected by sensor 3
-Sensor_3 (pH): 6.934397364664134 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.934397364664134, 't': 841}
-New value collected by sensor 1
-Sensor_1 (N): 499.1061074623846 is in the accepted range 200.0-800.0
-Sensor_1 (P): 499.19515968367614 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.4364481813268 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.1061074623846, 'P': 499.19515968367614, 'K': 499.4364481813268}, 't': 841}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 48.10109442163753 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.10109442163753, 't': 902}
-New value collected by sensor 3
-Sensor_3 (pH): 6.912770765201735 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.912770765201735, 't': 902}
-New value collected by sensor 1
-Sensor_1 (N): 497.2116406929215 is in the accepted range 200.0-800.0
-Sensor_1 (P): 497.9010694973487 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.8514626657258 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.2116406929215, 'P': 497.9010694973487, 'K': 499.8514626657258}, 't': 902}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.20428741199389 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.20428741199389, 't': 962}
-New value collected by sensor 3
-Sensor_3 (pH): 7.072649984310674 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.072649984310674, 't': 962}
-New value collected by sensor 1
-Sensor_1 (N): 497.19991553933585 is in the accepted range 200.0-800.0
-Sensor_1 (P): 496.83184325368046 is in the accepted range 200.0-800.0
-Sensor_1 (K): 499.4296010365838 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.19991553933585, 'P': 496.83184325368046, 'K': 499.4296010365838}, 't': 962}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 50.474185593319284 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.474185593319284, 't': 1021}
-New value collected by sensor 3
-Sensor_3 (pH): 6.885641821185959 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.885641821185959, 't': 1021}
-New value collected by sensor 1
-Sensor_1 (N): 498.5585430394476 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.9475037418897 is in the accepted range 200.0-800.0
-Sensor_1 (K): 497.0040391108115 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.5585430394476, 'P': 498.9475037418897, 'K': 497.0040391108115}, 't': 1021}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 49.4576501472232 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.4576501472232, 't': 1081}
-New value collected by sensor 3
-Sensor_3 (pH): 6.910261793721955 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.910261793721955, 't': 1081}
-New value collected by sensor 1
-Sensor_1 (N): 499.75080292673783 is in the accepted range 200.0-800.0
-Sensor_1 (P): 498.4938563651796 is in the accepted range 200.0-800.0
-Sensor_1 (K): 496.7694864060531 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.75080292673783, 'P': 498.4938563651796, 'K': 496.7694864060531}, 't': 1081}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 47.7881599533553 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7881599533553, 't': 1142}
-New value collected by sensor 3
-Sensor_3 (pH): 6.948655829055257 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.948655829055257, 't': 1142}
-New value collected by sensor 1
-Sensor_1 (N): 497.899263499157 is in the accepted range 200.0-800.0
-Sensor_1 (P): 499.09147760595283 is in the accepted range 200.0-800.0
-Sensor_1 (K): 500.0473978068161 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.899263499157, 'P': 499.09147760595283, 'K': 500.0473978068161}, 't': 1142}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 47.7691949863184 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7691949863184, 't': 1202}
-New value collected by sensor 3
-Sensor_3 (pH): 6.872095914599 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.872095914599, 't': 1202}
-New value collected by sensor 1
-Sensor_1 (N): 496.9547534084385 is in the accepted range 200.0-800.0
-Sensor_1 (P): 499.7889186958514 is in the accepted range 200.0-800.0
-Sensor_1 (K): 496.8059991463396 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 496.9547534084385, 'P': 499.7889186958514, 'K': 496.8059991463396}, 't': 1202}
-New value collected by sensor 2
-Sensor_2 (soil moisture): 51.508427355376654 is in the accepted range 20.0-60.0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.508427355376654, 't': 1261}
-New value collected by sensor 3
-Sensor_3 (pH): 7.056673123744867 is in the accepted range 5.5-7.5
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.056673123744867, 't': 1261}
-New value collected by sensor 1
-Sensor_1 (N): 500.12081096678065 is in the accepted range 200.0-800.0
-Sensor_1 (P): 497.0128791911595 is in the accepted range 200.0-800.0
-Sensor_1 (K): 498.4540016595618 is in the accepted range 200.0-800.0
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.12081096678065, 'P': 497.0128791911595, 'K': 498.4540016595618}, 't': 1261}
+Mean N: 500.8015888490134
+Sensor_1 (N): 501.6277748749925 is in the accepted range 200.0-800.0	mean: 500.8015888490134
+Mean P: 498.87544930714034
+Sensor_1 (P): 499.445327525892 is in the accepted range 200.0-800.0	mean: 498.87544930714034
+Mean K: 499.3531906439944
+Sensor_1 (K): 500.160365191266 is in the accepted range 200.0-800.0	mean: 499.3531906439944
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.6277748749925, 'P': 499.445327525892, 'K': 500.160365191266}, 't': 120}

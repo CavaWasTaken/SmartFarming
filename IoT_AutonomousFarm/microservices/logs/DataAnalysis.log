@@ -1,61 +1,44 @@
+Received device information: {'device_id': 4, 'greenhouse_id': 0, 'name': 'DataAnalysis', 'type': 'Microservices', 'params': {'N': 10}}
 Received 6 sensors: [{'sensor_id': 0, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': 30.0, 'min': 15.0}, 'thing_speak_channel_id': None}, {'sensor_id': 5, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 70.0, 'min': 40.0}, 'thing_speak_channel_id': None}, {'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 60.0, 'min': 20.0}, 'thing_speak_channel_id': None}, {'sensor_id': 4, 'greenhouse_id': 0, 'plant_id': None, 'type': 'LightIntensity', 'name': 'LightIntensity', 'unit': 'Lux', 'threshold': {'max': 10000.0, 'min': 1000.0}, 'thing_speak_channel_id': None}, {'sensor_id': 3, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 7.5, 'min': 5.5}, 'thing_speak_channel_id': None}, {'sensor_id': 1, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/L', 'threshold': {'K': {'max': 800.0, 'min': 200.0}, 'N': {'max': 800.0, 'min': 200.0}, 'P': {'max': 800.0, 'min': 200.0}}, 'thing_speak_channel_id': None}]
-Mean temperature: 21.911811870554423
-Kalman Filter Prediction: 21.27876158229137
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.911811870554423, 't': 1081}
-Mean humidity: 47.09209896260153
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.09209896260153, 't': 1081}
-Mean soil moisture: 49.4576501472232
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.4576501472232, 't': 1081}
-Mean light intensity: 606.6121195948987
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 606.6121195948987, 't': 1081}
-Mean pH: 6.910261793721955
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.910261793721955, 't': 1081}
-Mean N: 499.75080292673783
-Mean P: 498.4938563651796
-Mean K: 496.7694864060531
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.75080292673783, 'P': 498.4938563651796, 'K': 496.7694864060531}, 't': 1081}
-Mean temperature: 22.242133983604305
-Kalman Filter Prediction: 21.806446090894696
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.572456096654182, 't': 1142}
-Mean humidity: 47.457519203927276
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.82293944525301, 't': 1142}
-Mean soil moisture: 48.62290505028925
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7881599533553, 't': 1142}
-Mean light intensity: 606.1796362977207
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.7471530005427, 't': 1142}
-Mean pH: 6.929458811388606
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.948655829055257, 't': 1142}
-Mean N: 498.8250332129474
-Mean P: 498.79266698556626
-Mean K: 498.40844210643456
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.899263499157, 'P': 499.09147760595283, 'K': 500.0473978068161}, 't': 1142}
-Mean temperature: 22.13423929854531
-Kalman Filter Prediction: 21.840009803004353
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.918449928427325, 't': 1202}
-Mean humidity: 47.59604298582252
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.87309054961302, 't': 1202}
-Mean soil moisture: 48.33833502896563
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7691949863184, 't': 1202}
-Mean light intensity: 606.0247287018917
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.7149135102339, 't': 1202}
-Mean pH: 6.910337845792071
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.872095914599, 't': 1202}
-Mean N: 498.20160661144445
-Mean P: 499.12475088899464
-Mean K: 497.8742944530696
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 496.9547534084385, 'P': 499.7889186958514, 'K': 496.8059991463396}, 't': 1202}
-Mean temperature: 22.246643330840485
-Kalman Filter Prediction: 22.020193277579597
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.583855427726004, 't': 1261}
-Mean humidity: 48.399627967156164
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 50.810382911157106, 't': 1261}
-Mean soil moisture: 49.13085811056838
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.508427355376654, 't': 1261}
-Mean light intensity: 605.0973526924474
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 602.3152246641148, 't': 1261}
-Mean pH: 6.94692166528027
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.056673123744867, 't': 1261}
-Mean N: 498.6814077002785
-Mean P: 498.59678296453586
-Mean K: 498.01922125469264
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.12081096678065, 'P': 497.0128791911595, 'K': 498.4540016595618}, 't': 1261}
+Mean temperature: 19.39295743612708
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 19.39295743612708, 't': 0}
+Mean humidity: 52.35425527680537
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 52.35425527680537, 't': 0}
+Mean soil moisture: 48.86035846029026
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.86035846029026, 't': 0}
+Mean light intensity: 561.9184752032014
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 561.9184752032014, 't': 0}
+Mean pH: 6.900745059550494
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.900745059550494, 't': 0}
+Mean N: 500.15195014337735
+Mean P: 498.4626823574414
+Mean K: 498.4041875794928
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.15195014337735, 'P': 498.4626823574414, 'K': 498.4041875794928}, 't': 0}
+Mean temperature: 20.181777715505277
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.970597994883477, 't': 59}
+Mean humidity: 52.93553112259805
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 53.51680696839074, 't': 59}
+Mean soil moisture: 49.76788339382894
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.67540832736761, 't': 59}
+Mean light intensity: 559.6692862604481
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 557.4200973176947, 't': 59}
+Mean pH: 6.984714003931179
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.068682948311864, 't': 59}
+Mean N: 500.3884958360239
+Mean P: 498.5905101977645
+Mean K: 498.94960337035866
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.6250415286704, 'P': 498.71833803808767, 'K': 499.49501916122443}, 't': 59}
+Mean temperature: 20.122959296250645
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.005322457741386, 't': 120}
+Mean humidity: 54.71121034551978
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 58.262568791363236, 't': 120}
+Mean soil moisture: 50.032695957349326
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.56232108439012, 't': 120}
+Mean light intensity: 560.4669621990382
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 562.0623140762186, 't': 120}
+Mean pH: 6.99886381032546
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.027163423114024, 't': 120}
+Mean N: 500.8015888490134
+Mean P: 498.87544930714034
+Mean K: 499.3531906439944
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.6277748749925, 'P': 499.445327525892, 'K': 500.160365191266}, 't': 120}
