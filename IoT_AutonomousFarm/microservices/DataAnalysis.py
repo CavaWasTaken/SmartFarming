@@ -19,60 +19,53 @@ with open("./DataAnalysis_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
 
-global N
+global N, weights   # N is the number of values to keep track of, weights is a list of weights from 1 to N to calculate the weighted mean
 
 def handle_message(topic, val):
-    with open("./logs/DataAnalysis.log", "a") as log_file:
-        global mean_temperature, mean_humidity, mean_light, mean_soil_moisture, mean_pH, mean_N, mean_P, mean_K
+
+    def weighted_mean(values, weights):    # calculate the weighted mean of a list of values
+        return sum([v*w for v,w in zip(values, weights)]) / sum(weights)
+    
+    def update_statistics(values, val):    # update the statistics of the last N values received
+        if len(values) >= N:    # if the list of values is N, remove the first element (the oldest)
+            values.pop(0)
+        values.append(val)    # append the new value to the list
+        mean = weighted_mean(values, weights)    # calculate the weighted mean of the values
+        return mean
+
+    with open("./logs/DataAnalysis.log", "a") as log_file:  # open the log file to write on it logs
+        global mean_temperature, mean_humidity, mean_light, mean_soil_moisture, mean_pH, mean_N, mean_P, mean_K   # global variables to keep track of the mean values
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
-        # log_file.write(f"Received message from {greenhouse} - {plant} - {sensor_name} - {sensor_type}\n")
 
         if sensor_type == "Temperature":    # keeps track of the mean temperature
-            if len(temperatures) == N_values:    # if the list of temperatures is N_values, remove the first element (the oldest)
-                temperatures.pop(0)
-            temperatures.append(val)    # append the new temperature to the list
-            mean_temperature = sum(temperatures) / len(temperatures)    # calculate the mean temperature
-            log_file.write(f"Mean temperature: {mean_temperature}\n")
+            mean_temperature = update_statistics(temperatures, val)
+            log_file.write(f"Weighted mean temperature: {mean_temperature}\n")
+
         elif sensor_type == "Humidity":   # keeps track of the mean humidity
-            if len(humidities) == N_values:
-                humidities.pop(0)
-            humidities.append(val)
-            mean_humidity = sum(humidities) / len(humidities)
-            log_file.write(f"Mean humidity: {mean_humidity}\n")
+            mean_humidity = update_statistics(humidities, val)
+            log_file.write(f"Weighted mean humidity: {mean_humidity}\n")
+
         elif sensor_type == "LightIntensity":    # keeps track of the mean light
-            if len(light_intensities) == N_values:
-                light_intensities.pop(0)
-            light_intensities.append(val)
-            mean_light = sum(light_intensities) / len(light_intensities)
-            log_file.write(f"Mean light intensity: {mean_light}\n")
+            mean_light = update_statistics(light_intensities, val)
+            log_file.write(f"Weighted mean light intensity: {mean_light}\n")
+
         elif sensor_type == "SoilMoisture":    # keeps track of the mean soil moisture
-            if len(soil_moistures) == N_values:
-                soil_moistures.pop(0)
-            soil_moistures.append(val)
-            mean_soil_moisture = sum(soil_moistures) / len(soil_moistures)
-            log_file.write(f"Mean soil moisture: {mean_soil_moisture}\n")
+            mean_soil_moisture = update_statistics(soil_moistures, val)
+            log_file.write(f"Weighted mean soil moisture: {mean_soil_moisture}\n")
+
         elif sensor_type == "pH":   # keeps track of the mean pH
-            if len(pH_values) == N_values:
-                pH_values.pop(0)
-            pH_values.append(val)
-            mean_pH = sum(pH_values) / len(pH_values)
-            log_file.write(f"Mean pH: {mean_pH}\n")
+            mean_pH = update_statistics(pH_values, val)
+            log_file.write(f"Weighted mean pH: {mean_pH}\n")
+
         elif sensor_type == "NPK":    # keeps track of the mean NPK
-            if len(N_values) == N_values:
-                N_values.pop(0)
-            N_values.append(val["N"])
-            mean_N = sum(N_values) / len(N_values)
-            log_file.write(f"Mean N: {mean_N}\n")
-            if len(P_values) == N_values:
-                P_values.pop(0)
-            P_values.append(val["P"])
-            mean_P = sum(P_values) / len(P_values)
-            log_file.write(f"Mean P: {mean_P}\n")
-            if len(K_values) == N_values:
-                K_values.pop(0)
-            K_values.append(val["K"])
-            mean_K = sum(K_values) / len(K_values)
-            log_file.write(f"Mean K: {mean_K}\n")
+            mean_N = update_statistics(N_values, val["N"])
+            log_file.write(f"Weighted mean N: {mean_N}\n")
+
+            mean_P = update_statistics(P_values, val["P"])
+            log_file.write(f"Weighted mean P: {mean_P}\n")
+
+            mean_K = update_statistics(K_values, val["K"])
+            log_file.write(f"Weighted mean K: {mean_K}\n")
             
 
 class DataAnalysis(MqttSubscriber):
@@ -199,6 +192,7 @@ if __name__ == "__main__":
             exit(1) # if the request fails, the device connector stops
 
     N = device_info["params"]['N']    # get the number of values to keep track of from the device information
+    weights = list(range(1, N+1))    # create a list of weights from 1 to N to calculate the weighted mean
 
     # MQTT Sub
     # instead of reading the topics like this, i would like to change it and make that the microservices build the topics by itself by knowing the greenhouse where it is connected and the plant that it contains
