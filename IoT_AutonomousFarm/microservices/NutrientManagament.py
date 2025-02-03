@@ -20,14 +20,17 @@ with open("./NutrientManagement_config.json", "r") as config_fd:
 def handle_message(topic, val):
     with open("./logs/NutrientManagement.log", "a") as log_file:
 
-        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold, mean):   # function that checks if the value is in the accepted range
-            if val < min_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-            elif val > max_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-            else:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-
+        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold):   # function that checks if the value is in the accepted range
+            out = False # if the value is in the accepted range, out is False
+            if val < min_treshold:  # if the value is lower than the accepted range, out is True
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\n")
+            elif val > max_treshold:    # if the value is higher than the accepted range, out is True
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\n")
+            else:   # if the value is in the accepted range, out is False
+                out = True
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\n")
+            return out
+        
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
         # i have all the information about the sensor but i don't know its id, so i need to ask the catalog. I need the id cause i use it to access to its tresholds
         response = requests.get(f"{catalog_url}/get_sensor_id", params={'device_id': device_id, 'device_name': 'NutrientManagement', 'greenhouse_id': greenhouse.split("_")[1], 'plant_id': plant.split("_")[1], 'sensor_name': sensor_name, 'sensor_type': sensor_type})    # get the sensor id from the catalog
@@ -45,7 +48,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_N = response.json()["mean_N"]
                 log_file.write(f"Mean N: {mean_N}\n")
-                check_val(sensor_id, "N", "mg/L", val["N"], treshold["N"]["min"], treshold["N"]["max"], mean_N)  # check if the values are in the accepted range
+                if not check_val(sensor_id, "N", "mg/L", val["N"], treshold["N"]["min"], treshold["N"]["max"]): # check if the value is not in the accepted range, then we need to check also the mean
+                    if not check_val(sensor_id, "N", "mg/L", mean_N, treshold["N"]["min"], treshold["N"]["max"]): # check if the mean is not in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean N from the Data Analysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
@@ -54,7 +59,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_P = response.json()["mean_P"]
                 log_file.write(f"Mean P: {mean_P}\n")
-                check_val(sensor_id, "P", "mg/L", val["P"], treshold["P"]["min"], treshold["P"]["max"], mean_P)
+                if not check_val(sensor_id, "P", "mg/L", val["P"], treshold["P"]["min"], treshold["P"]["max"]): # check if the value is not in the accepted range, then we need to check also the mean
+                    if not check_val(sensor_id, "P", "mg/L", mean_P, treshold["P"]["min"], treshold["P"]["max"]):   # check if the mean is not in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean P from the Data Analysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
@@ -63,7 +70,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_K = response.json()["mean_K"]
                 log_file.write(f"Mean K: {mean_K}\n")
-                check_val(sensor_id, "K", "mg/L", val["K"], treshold["K"]["min"], treshold["K"]["max"], mean_K)
+                if not check_val(sensor_id, "K", "mg/L", val["K"], treshold["K"]["min"], treshold["K"]["max"]): # check if the value is not in the accepted range, then we need to check also the mean
+                    if not check_val(sensor_id, "K", "mg/L", mean_K, treshold["K"]["min"], treshold["K"]["max"]):   # check if the mean is not in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean K from the Data Analysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
@@ -73,7 +82,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_pH = response.json()["mean_pH"]
                 log_file.write(f"Mean pH: {mean_pH}\n")
-                check_val(sensor_id, "pH", "", val, treshold["min"], treshold["max"], mean_pH)
+                if not check_val(sensor_id, "pH", "", val, treshold["min"], treshold["max"]):    # check if the value is not in the accepted range, then we need to check also the mean
+                    if not check_val(sensor_id, "pH", "", mean_pH, treshold["min"], treshold["max"]):  # check if the mean is not in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean pH from the Data Analysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
@@ -83,7 +94,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_soil_moisture = response.json()["mean_soil_moisture"]
                 log_file.write(f"Mean soil moisture: {mean_soil_moisture}\n")
-                check_val(sensor_id, "soil moisture", "%", val, treshold["min"], treshold["max"], mean_soil_moisture)
+                if not check_val(sensor_id, "soil moisture", "%", val, treshold["min"], treshold["max"]):   # check if the value is not in the accepted range, then we need to check also the mean
+                    if not check_val(sensor_id, "soil moisture", "%", mean_soil_moisture, treshold["min"], treshold["max"]):    # check if the mean is not in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean soil moisture from the Data Analysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops

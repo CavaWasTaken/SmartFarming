@@ -20,13 +20,16 @@ with open("./LightManagement_config.json", "r") as config_fd:
 def handle_message(topic, val):
     with open("./logs/LightManagement.log", "a") as log_file:
 
-        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold, mean):   # function that checks if the value is in the accepted range
-            if val < min_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-            elif val > max_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-            else:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
+        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold):   # function that checks if the value is in the accepted range
+            out = False # return true only if the value is in the accepted range
+            if val < min_treshold:  # value is lower then the accepted range
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\n")
+            elif val > max_treshold:    # value is higher then the accepted range
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\n")
+            else:   # value is in the accepted range
+                out = True
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\n")
+            return out
 
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
         # i have all the information about the sensor but i don't know its id, so i need to ask the catalog. I need the id cause i use it to access to its tresholds
@@ -47,7 +50,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_light = response.json()["mean_light"]
                 log_file.write(f"Mean light intensity: {mean_light}\n")
-                check_val(sensor_id, "light intensity", "Lux", val, min_treshold, max_treshold, mean_light)
+                if not check_val(sensor_id, "light intensity", "Lux", val, min_treshold, max_treshold): # check if the value is not in the accepted range, then we need to check also the mean value
+                    if not check_val(sensor_id, "light intensity", "Lux", mean_light, min_treshold, max_treshold):    # check if the mean value is in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get the mean light intensity from the DataAnalytics\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
@@ -57,7 +62,9 @@ def handle_message(topic, val):
             if response.status_code == 200:
                 mean_temperature = response.json()["mean_temperature"]
                 log_file.write(f"Mean temperature: {mean_temperature}\n")
-                check_val(sensor_id, "temperature", "Celsius", val, min_treshold, max_treshold, mean_temperature)
+                if not check_val(sensor_id, "temperature", "Celsius", val, min_treshold, max_treshold): # check if the value is not in the accepted range, then we need to check also the mean value
+                    if not check_val(sensor_id, "temperature", "Celsius", mean_temperature, min_treshold, max_treshold):
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get the mean temperature from the DataAnalytics\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops

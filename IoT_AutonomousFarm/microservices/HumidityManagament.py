@@ -20,13 +20,16 @@ with open("./HumidityManagement_config.json", "r") as config_fd:
 def handle_message(topic, val):
     with open("./logs/HumidityManagement.log", "a") as log_file:
 
-        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold, mean):   # function that checks if the value is in the accepted range
-            if val < min_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is low\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-            elif val > max_treshold:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is high\taccepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
-            else:
-                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\tmean: {mean}\n")
+        def check_val(sensor_id, param, unit, val, min_treshold, max_treshold):   # function that checks if the value is in the accepted range
+            out = False # return true only if the value is in the accepted range
+            if val < min_treshold:  # value is lower then the accepted range
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} {unit} is lower then the accepted range {min_treshold}-{max_treshold}\n")
+            elif val > max_treshold:    # value is higher then the accepted range
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is higher then the accepted range {min_treshold}-{max_treshold}\n")
+            else:   # value is in the accepted range
+                out = True
+                log_file.write(f"Sensor_{sensor_id} ({param}): {val} is in the accepted range {min_treshold}-{max_treshold}\n")
+            return out
 
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
         # i have all the information about the sensor but i don't know its id, so i need to ask the catalog. I need the id cause i use it to access to its tresholds
@@ -43,20 +46,24 @@ def handle_message(topic, val):
         max_treshold = treshold["max"]
 
         if sensor_type == "Humidity":   # check the values of humidity
-            response = requests.get(f"{dataAnalysis_url}/get_mean_humidity", params={})    # get the mean humidity of the measurements
+            response = requests.get(f"{dataAnalysis_url}/get_mean_humidity", params={})    # get the mean humidity of the measurements from the data analysis
             if response.status_code == 200:
-                mean_humidity = response.json()["mean_humidity"]
+                mean_humidity = response.json()["mean_humidity"]    # get the mean humidity from the response
                 log_file.write(f"Mean humidity: {mean_humidity}\n")
-                check_val(sensor_id, "humidity", "%", val, min_treshold, max_treshold, mean_humidity)
+                if not check_val(sensor_id, "humidity", "%", val, min_treshold, max_treshold):  # check if the value is not in the accepted range, then we need to check also the mean value
+                    if not check_val(sensor_id, "humidity", "%", mean_humidity, min_treshold, max_treshold):    # check if the mean value is in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean humidity from the DataAnalysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
         elif sensor_type == "SoilMoisture":  # check the value of soil moisture
             response = requests.get(f"{dataAnalysis_url}/get_mean_soil_moisture", params={})    # get the mean soil moisture of the measurements
             if response.status_code == 200:
-                mean_soil_moisture = response.json()["mean_soil_moisture"]
+                mean_soil_moisture = response.json()["mean_soil_moisture"]  # get the mean soil moisture from the response
                 log_file.write(f"Mean soil moisture: {mean_soil_moisture}\n")
-                check_val(sensor_id, "soil moisture", "%", val, min_treshold, max_treshold, mean_soil_moisture)
+                if not check_val(sensor_id, "soil moisture", "%", val, min_treshold, max_treshold): # check if the value is not in the accepted range, then we need to check also the mean value
+                    if not check_val(sensor_id, "soil moisture", "%", mean_soil_moisture, min_treshold, max_treshold):    # check if the mean value is not in the accepted range, then we need to take action
+                        log_file.write(f"Action needed for sensor_{sensor_id}\n")
             else:
                 log_file.write(f"Failed to get mean soil moisture from the DataAnalysis\nResponse: {response.reason}\n")
                 exit(1) # if the request fails, the device connector stops
