@@ -20,7 +20,7 @@ with open("./DataAnalysis_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
 
-global N, weights   # N is the number of values to keep track of, weights is a list of weights from 1 to N to calculate the weighted mean
+global N   # N is the number of values to keep track of
 
 def handle_message(topic, val, timestamp):
 
@@ -28,101 +28,116 @@ def handle_message(topic, val, timestamp):
         return sum([v*w for v,w in zip(values, weights)]) / sum(weights)
     
     def linear_regression(times, values):
-        slope, intercept, r_value, p_value, std_err = linregress(times, values)    # calculate the linear regression of the values
-        if slope > 0:   # if the slope is positive, the values are increasing
-            trend = "increasing"
-        elif slope < 0: # if the slope is negative, the values are decreasing
-            trend = "decreasing"
-        else:   # if the slope is 0, the values are constant
-            trend = "stable"
+        if len(times) > 1 and len(set(times)) > 1 and len(set(values)) > 1:  # ensure there are enough unique points
+            slope, intercept, r_value, p_value, std_err = linregress(times, values)    # calculate the linear regression of the values
+            slope = round(slope, 2)    # round the slope to 2 decimal places
+            if slope > 0:   # if the slope is positive, the values are increasing
+                trend = "increasing of " + str(slope)
+            elif slope < 0: # if the slope is negative, the values are decreasing
+                trend = "decreasing of " + str(slope)
+            else:   # if the slope is 0, the values are constant
+                trend = "stable"
 
-        if len(times) > 1:  # if there are less than 2 values, we cannot predict the next value
             # predict the timestamp of the next value by evaluating the mean difference between two consecutive timestamps
-            next_timestamp = sum([times[i] - times[i-1] for i in range(1, len(times))]) / (len(times) - 1)
+            next_timestamp = sum([times[i] - times[i-1] for i in range(1, len(times))]) / (len(times) - 1) + times[-1]
 
             # predict the value of the next value by evaluating the linear regression of the values (y = mx + q)
             next_value = slope * next_timestamp + intercept
         else:
             next_timestamp = None
             next_value = None
+            trend = None
 
-        return next_timestamp, next_value
+        return next_timestamp, next_value, trend
     
-    def update_statistics(times, values, val, next_times, next_vals):    # update the statistics of the last N values received
+    def update_timestamps(times, timestamp):    # update the timestamps of the last N values received
         if len(times) >= N:    # if the length of the list of timestamps is N, remove the first element (the oldest)
             times.pop(0)
         times.append(timestamp)    # append the timestamp of the new value to the list of timestamps 
-
+    
+    def update_statistics(times, values, val):    # update the statistics of the last N values received
         if len(values) >= N:    # if the length of the list of values is N, remove the first element (the oldest)
             values.pop(0)
         values.append(val)    # append the new value to the list
+        weights = list(range(1, len(values)+1))    # create a list of weights from 1 to N to calculate the weighted mean
         mean = weighted_mean(values, weights)    # calculate the weighted mean of the values
 
         # evaluate predictions
-        next_time, next_val = linear_regression(times, values)    # calculate the linear regression of the values
+        next_times, next_val, trend = linear_regression(times, values)    # calculate the linear regression of the values
+        next_timestamp[sensor_type] = next_times
+        next_value[sensor_type] = next_val
 
-        # update the original lists with the new values
-        next_times.clear()
-        next_times.append(next_time)
-        next_vals.clear()
-        next_val.append(next_val)
-
-        return mean
+        return mean, trend
 
 
     with open("./logs/DataAnalysis.log", "a") as log_file:  # open the log file to write on it logs
         global mean_temperature, mean_humidity, mean_light, mean_soil_moisture, mean_pH, mean_N, mean_P, mean_K   # global variables to keep track of the mean values
+        global trend_temperature, trend_humidity, trend_light, trend_soil_moisture, trend_pH, trend_N, trend_P, trend_K   # global variables to keep track of the trend of the values
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
 
         if sensor_type == "Temperature":    # keeps track of the mean temperature
-            mean_temperature = update_statistics(timestamps[sensor_type], temperatures, val, next_timestamp[sensor_type], next_value[sensor_type])
+            update_timestamps(timestamps[sensor_type], timestamp)
+            mean_temperature, trend_temperature = update_statistics(timestamps[sensor_type], temperatures, val)
             log_file.write(f"Weighted mean temperature: {mean_temperature}\n")
+            log_file.write(f"Trend of temperature: {trend_temperature}\n")
 
             if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
                 log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
                 log_file.write(f"Next value: {next_value[sensor_type]}\n")
 
         elif sensor_type == "Humidity":   # keeps track of the mean humidity
-            mean_humidity = update_statistics(timestamps[sensor_type], humidities, val, next_timestamp[sensor_type], next_value[sensor_type])
+            update_timestamps(timestamps[sensor_type], timestamp)
+            mean_humidity, trend_humidity = update_statistics(timestamps[sensor_type], humidities, val)
             log_file.write(f"Weighted mean humidity: {mean_humidity}\n")
+            log_file.write(f"Trend of humidity: {trend_humidity}\n")
 
             if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
                 log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
                 log_file.write(f"Next value: {next_value[sensor_type]}\n")
 
         elif sensor_type == "LightIntensity":    # keeps track of the mean light
-            mean_light = update_statistics(timestamps[sensor_type], light_intensities, val, next_timestamp[sensor_type], next_value[sensor_type])
+            update_timestamps(timestamps[sensor_type], timestamp)
+            mean_light, trend_light = update_statistics(timestamps[sensor_type], light_intensities, val)
             log_file.write(f"Weighted mean light intensity: {mean_light}\n")
+            log_file.write(f"Trend of light intensity: {trend_light}\n")
 
             if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
                 log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
                 log_file.write(f"Next value: {next_value[sensor_type]}\n")
 
         elif sensor_type == "SoilMoisture":    # keeps track of the mean soil moisture
-            mean_soil_moisture = update_statistics(timestamps[sensor_type], soil_moistures, val, next_timestamp[sensor_type], next_value[sensor_type])
+            update_timestamps(timestamps[sensor_type], timestamp)
+            mean_soil_moisture, trend_soil_moisture = update_statistics(timestamps[sensor_type], soil_moistures, val)
             log_file.write(f"Weighted mean soil moisture: {mean_soil_moisture}\n")
+            log_file.write(f"Trend of soil moisture: {trend_soil_moisture}\n")
 
             if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
                 log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
                 log_file.write(f"Next value: {next_value[sensor_type]}\n")
 
         elif sensor_type == "pH":   # keeps track of the mean pH
-            mean_pH = update_statistics(timestamps[sensor_type], pH_values, val, next_timestamp[sensor_type], next_value[sensor_type])
+            update_timestamps(timestamps[sensor_type], timestamp)
+            mean_pH, trend_pH = update_statistics(timestamps[sensor_type], pH_values, val)
             log_file.write(f"Weighted mean pH: {mean_pH}\n")
+            log_file.write(f"Trend of pH: {trend_pH}\n")
 
             if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
                 log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
                 log_file.write(f"Next value: {next_value[sensor_type]}\n")
 
         elif sensor_type == "NPK":    # keeps track of the mean NPK
-            mean_N = update_statistics(timestamps[sensor_type], N_values, val["N"], next_timestamp[sensor_type], next_value["N"])
-            log_file.write(f"Weighted mean N: {mean_N}\n")
+            update_timestamps(timestamps[sensor_type], timestamp)
+            mean_N, trend_N = update_statistics(timestamps[sensor_type], N_values, val["N"])
+            log_file.write(f"Weighted mean Nitrogen: {mean_N}\n")
+            log_file.write(f"Trend of Nitrogen: {trend_N}\n")
 
-            mean_P = update_statistics(timestamps[sensor_type], P_values, val["P"], next_timestamp[sensor_type], next_value["P"])
-            log_file.write(f"Weighted mean P: {mean_P}\n")
+            mean_P, trend_P = update_statistics(timestamps[sensor_type], P_values, val["P"])
+            log_file.write(f"Weighted mean Phosphorus: {mean_P}\n")
+            log_file.write(f"Trend of Phosphorus: {trend_P}\n")
 
-            mean_K = update_statistics(timestamps[sensor_type], K_values, val["K"], next_timestamp[sensor_type], next_value["K"])
-            log_file.write(f"Weighted mean K: {mean_K}\n")
+            mean_K, trend_K = update_statistics(timestamps[sensor_type], K_values, val["K"])
+            log_file.write(f"Weighted mean K(Potassium): {mean_K}\n")
+            log_file.write(f"Trend of K(Potassium): {trend_K}\n")
 
             if next_timestamp[sensor_type] is not None and next_value["N"] is not None and next_value["P"] is not None and next_value["K"] is not None:
                 log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
@@ -285,7 +300,6 @@ if __name__ == "__main__":
             exit(1) # if the request fails, the device connector stops
 
     N = device_info["params"]['N']    # get the number of values to keep track of from the device information
-    weights = list(range(1, N+1))    # create a list of weights from 1 to N to calculate the weighted mean
 
     # MQTT Sub
     # it has to read the sensors from the catalog
