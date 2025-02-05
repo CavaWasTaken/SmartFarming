@@ -4,6 +4,7 @@ from MqttSub import MqttSubscriber
 import requests
 import cherrypy
 from scipy.stats import linregress
+import time
 
 # each time that the device starts, we clear the log file
 with open("./logs/DataAnalysis.log", "w") as log_file:
@@ -30,13 +31,6 @@ def handle_message(topic, val, timestamp):
     def linear_regression(times, values):
         if len(times) > 1 and len(set(times)) > 1 and len(set(values)) > 1:  # ensure there are enough unique points
             slope, intercept, r_value, p_value, std_err = linregress(times, values)    # calculate the linear regression of the values
-            slope = round(slope, 2)    # round the slope to 2 decimal places
-            if slope > 0:   # if the slope is positive, the values are increasing
-                trend = "increasing of " + str(slope)
-            elif slope < 0: # if the slope is negative, the values are decreasing
-                trend = "decreasing of " + str(slope)
-            else:   # if the slope is 0, the values are constant
-                trend = "stable"
 
             # predict the timestamp of the next value by evaluating the mean difference between two consecutive timestamps
             next_timestamp = sum([times[i] - times[i-1] for i in range(1, len(times))]) / (len(times) - 1) + times[-1]
@@ -46,105 +40,49 @@ def handle_message(topic, val, timestamp):
         else:
             next_timestamp = None
             next_value = None
-            trend = None
+            slope = None
 
-        return next_timestamp, next_value, trend
+        return next_timestamp, next_value, slope
     
     def update_timestamps(times, timestamp):    # update the timestamps of the last N values received
         if len(times) >= N:    # if the length of the list of timestamps is N, remove the first element (the oldest)
             times.pop(0)
         times.append(timestamp)    # append the timestamp of the new value to the list of timestamps 
     
-    def update_statistics(times, values, val):    # update the statistics of the last N values received
-        if len(values) >= N:    # if the length of the list of values is N, remove the first element (the oldest)
-            values.pop(0)
-        values.append(val)    # append the new value to the list
-        weights = list(range(1, len(values)+1))    # create a list of weights from 1 to N to calculate the weighted mean
-        mean = weighted_mean(values, weights)    # calculate the weighted mean of the values
+    def update_statistics(times, vals, val, value_type):    # update the statistics of the last N values received
+        if len(vals) >= N:    # if the length of the list of values is N, remove the first element (the oldest)
+            vals.pop(0)
+        vals.append(val)    # append the new value to the list
+        weights = list(range(1, len(vals)+1))    # create a list of weights from 1 to N to calculate the weighted mean
+        mean = weighted_mean(vals, weights)    # calculate the weighted mean of the values
 
         # evaluate predictions
-        next_times, next_val, trend = linear_regression(times, values)    # calculate the linear regression of the values
+        next_times, next_val, trend = linear_regression(times, vals)    # calculate the linear regression of the values
         next_timestamp[sensor_type] = next_times
-        next_value[sensor_type] = next_val
+        next_value[value_type] = next_val
 
         return mean, trend
-
+    
+    def handle_sensor(value_type, val):
+        ts = timestamps[sensor_type].copy()    # copy the list of timestamps of the last N values received
+        if value_type != "P" and value_type != "K":    # otherwise we add three times the same timestamp for N, P, K
+            update_timestamps(ts, timestamp)
+        mean_value[value_type], trend[value_type] = update_statistics(ts, values[value_type], val, value_type)
+        log_file.write(f"Weighted mean {value_type}: {mean_value[value_type]}\n")
+        log_file.write(f"Trend of {value_type}: {trend[value_type]}\n")
+        log_file.write(f"Expected next timestamp of {value_type}: {next_timestamp[sensor_type]}\n")
+        log_file.write(f"Expected next value of {value_type}: {next_value[value_type]}\n")
+        timestamps[sensor_type] = ts    # update the list of timestamps of the last N values received
 
     with open("./logs/DataAnalysis.log", "a") as log_file:  # open the log file to write on it logs
-        global mean_temperature, mean_humidity, mean_light, mean_soil_moisture, mean_pH, mean_N, mean_P, mean_K   # global variables to keep track of the mean values
-        global trend_temperature, trend_humidity, trend_light, trend_soil_moisture, trend_pH, trend_N, trend_P, trend_K   # global variables to keep track of the trend of the values
         greenhouse, plant, sensor_name, sensor_type = topic.split("/")  # split the topic and get all the information contained
 
-        if sensor_type == "Temperature":    # keeps track of the mean temperature
-            update_timestamps(timestamps[sensor_type], timestamp)
-            mean_temperature, trend_temperature = update_statistics(timestamps[sensor_type], temperatures, val)
-            log_file.write(f"Weighted mean temperature: {mean_temperature}\n")
-            log_file.write(f"Trend of temperature: {trend_temperature}\n")
-
-            if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
-                log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
-                log_file.write(f"Next value: {next_value[sensor_type]}\n")
-
-        elif sensor_type == "Humidity":   # keeps track of the mean humidity
-            update_timestamps(timestamps[sensor_type], timestamp)
-            mean_humidity, trend_humidity = update_statistics(timestamps[sensor_type], humidities, val)
-            log_file.write(f"Weighted mean humidity: {mean_humidity}\n")
-            log_file.write(f"Trend of humidity: {trend_humidity}\n")
-
-            if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
-                log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
-                log_file.write(f"Next value: {next_value[sensor_type]}\n")
-
-        elif sensor_type == "LightIntensity":    # keeps track of the mean light
-            update_timestamps(timestamps[sensor_type], timestamp)
-            mean_light, trend_light = update_statistics(timestamps[sensor_type], light_intensities, val)
-            log_file.write(f"Weighted mean light intensity: {mean_light}\n")
-            log_file.write(f"Trend of light intensity: {trend_light}\n")
-
-            if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
-                log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
-                log_file.write(f"Next value: {next_value[sensor_type]}\n")
-
-        elif sensor_type == "SoilMoisture":    # keeps track of the mean soil moisture
-            update_timestamps(timestamps[sensor_type], timestamp)
-            mean_soil_moisture, trend_soil_moisture = update_statistics(timestamps[sensor_type], soil_moistures, val)
-            log_file.write(f"Weighted mean soil moisture: {mean_soil_moisture}\n")
-            log_file.write(f"Trend of soil moisture: {trend_soil_moisture}\n")
-
-            if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
-                log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
-                log_file.write(f"Next value: {next_value[sensor_type]}\n")
-
-        elif sensor_type == "pH":   # keeps track of the mean pH
-            update_timestamps(timestamps[sensor_type], timestamp)
-            mean_pH, trend_pH = update_statistics(timestamps[sensor_type], pH_values, val)
-            log_file.write(f"Weighted mean pH: {mean_pH}\n")
-            log_file.write(f"Trend of pH: {trend_pH}\n")
-
-            if next_timestamp[sensor_type] is not None and next_value[sensor_type] is not None:
-                log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
-                log_file.write(f"Next value: {next_value[sensor_type]}\n")
-
-        elif sensor_type == "NPK":    # keeps track of the mean NPK
-            update_timestamps(timestamps[sensor_type], timestamp)
-            mean_N, trend_N = update_statistics(timestamps[sensor_type], N_values, val["N"])
-            log_file.write(f"Weighted mean Nitrogen: {mean_N}\n")
-            log_file.write(f"Trend of Nitrogen: {trend_N}\n")
-
-            mean_P, trend_P = update_statistics(timestamps[sensor_type], P_values, val["P"])
-            log_file.write(f"Weighted mean Phosphorus: {mean_P}\n")
-            log_file.write(f"Trend of Phosphorus: {trend_P}\n")
-
-            mean_K, trend_K = update_statistics(timestamps[sensor_type], K_values, val["K"])
-            log_file.write(f"Weighted mean K(Potassium): {mean_K}\n")
-            log_file.write(f"Trend of K(Potassium): {trend_K}\n")
-
-            if next_timestamp[sensor_type] is not None and next_value["N"] is not None and next_value["P"] is not None and next_value["K"] is not None:
-                log_file.write(f"Next timestamp: {next_timestamp[sensor_type]}\n")
-                log_file.write(f"Next value N: {next_value['N']}\n")
-                log_file.write(f"Next value P: {next_value['P']}\n")
-                log_file.write(f"Next value K: {next_value['K']}\n")
-            
+        if sensor_type != "NPK":    # keeps track of the mean of the other sensors
+            handle_sensor(sensor_type, val)
+        else:    # keeps track of the mean NPK
+            handle_sensor("N", val["N"])
+            handle_sensor("P", val["P"])
+            handle_sensor("K", val["K"])
 
 class DataAnalysis(MqttSubscriber):
     def __init__(self, broker, port, topics):
@@ -153,7 +91,8 @@ class DataAnalysis(MqttSubscriber):
     def on_message(self, client, userdata, msg):    # when a new message of one of the topic where it is subscribed arrives to the broker
         with open("./logs/DataAnalysis.log", "a") as log_file:  # print all the messages received on a log file
             message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
-            log_file.write(f"Received: {message}\n")
+            log_file.write(f"\nReceived: {message}\n")
+            log_file.flush()    # flush the buffer of the log file to write the message immediately
             for topic in mqtt_topic:
                 if message["bn"] == topic:
                     timestamp = message["t"]    # get the timestamp of the message
@@ -168,14 +107,39 @@ timestamps = {
     "pH": [],   # list of the timestamps of the last N pH values received
     "NPK": []   # list of the timestamps of the last N NPK values received
 }
-temperatures = []   # list of the last N temperatures received
-humidities = [] # list of the last N humidities received
-light_intensities = []  # list of the last N light intensities received
-soil_moistures = [] # list of the last N soil moistures received
-pH_values = []  # list of the last N pH values received
-N_values = []   # list of the last N N values received
-P_values = []   # list of the last N P values received
-K_values = []   # list of the last N K values received
+
+values = {
+    "Temperature": [],  # list of the last N temperatures received
+    "Humidity": [], # list of the last N humidities received
+    "LightIntensity": [],   # list of the last N light intensities received
+    "SoilMoisture": [], # list of the last N soil moistures received
+    "pH": [],   # list of the last N pH values received
+    "N": [],   # list of the last N N values received
+    "P": [],   # list of the last N P values received
+    "K": []   # list of the last N K values received
+}
+
+mean_value = {  # dictionary of the mean value of each sensor
+    "Temperature": None,  # mean value of the temperature
+    "Humidity": None,  # mean value of the humidity
+    "LightIntensity": None,    # mean value of the light intensity
+    "SoilMoisture": None,  # mean value of the soil moisture
+    "pH": None,    # mean value of the pH
+    "N": None,    # mean value of the Nitrogen
+    "P": None,    # mean value of the Phosphorus
+    "K": None    # mean value of the Potassium
+}
+
+trend = { # dictionary of the trend of each sensor
+    "Temperature": None,  # trend of the temperature
+    "Humidity": None,  # trend of the humidity
+    "LightIntensity": None,    # trend of the light intensity
+    "SoilMoisture": None,  # trend of the soil moisture
+    "pH": None,    # trend of the pH
+    "N": None,    # trend of the Nitrogen
+    "P": None,    # trend of the Phosphorus
+    "K": None    # trend of the Potassium
+}
 
 next_timestamp = { # dictionary of the next expected timestamp of each sensor
     "Temperature": None,  # timestamp of the next expected temperature
@@ -185,6 +149,7 @@ next_timestamp = { # dictionary of the next expected timestamp of each sensor
     "pH": None,    # timestamp of the next expected pH
     "NPK": None    # timestamp of the next expected NPK
 }
+
 next_value = {  # dictionary of the next expected value of each sensor
     "Temperature": None,  # value of the next expected temperature
     "Humidity": None,  # value of the next expected humidity
@@ -199,37 +164,79 @@ next_value = {  # dictionary of the next expected value of each sensor
 # REST API
 
 # methods called from management components to get the mean statistics on the last N values received
-def get_mean_temperature():
-    global mean_temperature
-    return {'mean_temperature': mean_temperature}
+def get_mean_value(value_type, timestamp, sensor_type):
+    with open("./logs/DataAnalysis.log", "a") as log_file:
+        log_file.write(f"Received request for the mean value of {value_type} at timestamp {timestamp}\n{timestamps[sensor_type]}\n")
+        log_file.write(f"{float(timestamps[sensor_type][-1])} == {float(timestamp)} : {float(timestamps[sensor_type][-1]) == float(timestamp)}\n")
+        count = 0   # count how many seconds we are waiting
+        if float(timestamps[sensor_type][-1]) == float(timestamp):  # if the timestamp is the same as the last received, return the mean value
+            log_file.write(f"I AM IN\n")
+            return {'mean_value': mean_value[value_type]}   # the value has been updated, so we can return it
+        else:   # the value has not been updated yet, so we wait for it
+            log_file.write(f"I AM OUT\n")
+            while float(timestamps[sensor_type][-1]) != float(timestamp):   # wait for the value to be updated
+                log_file.write(f"{float(timestamps[sensor_type][-1])} != {float(timestamp)} : {float(timestamps[sensor_type][-1]) != float(timestamp)}\n")
+                if count < 60:  # wait for a maximum of 60 seconds
+                    time.sleep(1)   # wait for 1 second
+                else:   # if we waited for 60 seconds, return None
+                    return {'mean_value': None}
+                count += 1  # increment the counter
+            return {'mean_value': mean_value[value_type]}   # the value has been updated, so we can return it
+            
+# methods called from management components to get the trend of the last N values received
+def get_trend(value_type, timestamp, sensor_type):
+    with open("./logs/DataAnalysis.log", "a") as log_file:
+        log_file.write(f"Received request for the trend of {value_type} at timestamp {timestamp}\n{timestamps[sensor_type]}\n")
+        count = 0   # count how many seconds we are waiting
+        if float(timestamps[sensor_type][-1]) == float(timestamp):  # if the timestamp is the same as the last received, return the mean value
+            return {'trend': trend[value_type]}   # the value has been updated, so we can return it
+        else:   # the value has not been updated yet, so we wait for it
+            while float(timestamps[sensor_type][-1]) == float(timestamp):   # wait for the value to be updated
+                if count < 60:  # wait for a maximum of 60 seconds
+                    time.sleep(1)   # wait for 1 second
+                else:   # if we waited for 60 seconds, return None
+                    return {'trend': None}
+                count += 1  # increment the counter
+            return {'trend': trend[value_type]}  # the value has been updated, so we can return it
+    
+# methods called from management components to get the predictions of the sensor
+def get_next_timestamp(sensor_type, timestamp):
+    with open("./logs/DataAnalysis.log", "a") as log_file:
+        log_file.write(f"Received request for the next timestamp of {sensor_type} at timestamp {timestamp}\n{timestamps[sensor_type]}\n")
+        log_file.write(f"{float(timestamps[sensor_type][-1])} == {float(timestamp)} : {float(timestamps[sensor_type][-1]) == float(timestamp)}\n")
+        count = 0   # count how many seconds we are waiting
+        if float(timestamps[sensor_type][-1]) == float(timestamp):  # if the timestamp is the same as the last received, return the mean value
+            log_file.write(f"I AM IN\n")
+            return {'next_timestamp': next_timestamp[sensor_type]}   # the value has been updated, so we can return it
+        else:   # the value has not been updated yet, so we wait for it
+            log_file.write(f"I AM OUT\n")
+            while float(timestamps[sensor_type][-1]) != float(timestamp):   # wait for the value to be updated
+                log_file.write(f"{float(timestamps[sensor_type][-1])} != {float(timestamp)} : {float(timestamps[sensor_type][-1]) != float(timestamp)}\n")
+                if count < 60:  # wait for a maximum of 60 seconds
+                    time.sleep(1)   # wait for 1 second
+                else:   # if we waited for 60 seconds, return None
+                    return {'next_timestamp': None}
+                count += 1  # increment the counter
+            return {'next_timestamp': next_timestamp[sensor_type]}   # the value has been updated, so we can return it
 
-def get_mean_humidity():
-    global mean_humidity
-    return {'mean_humidity': mean_humidity}
-
-def get_mean_light():
-    global mean_light
-    return {'mean_light': mean_light}
-
-def get_mean_soil_moisture():
-    global mean_soil_moisture
-    return {'mean_soil_moisture': mean_soil_moisture}
-
-def get_mean_pH():
-    global mean_pH
-    return {'mean_pH': mean_pH}
-
-def get_mean_N():
-    global mean_N
-    return {'mean_N': mean_N}
-
-def get_mean_P():
-    global mean_P
-    return {'mean_P': mean_P}
-
-def get_mean_K():
-    global mean_K
-    return {'mean_K': mean_K}
+def get_next_value(value_type, timestamp, sensor_type):
+    with open("./logs/DataAnalysis.log", "a") as log_file:
+        log_file.write(f"Received request for the next value of {value_type} at timestamp {timestamp}\n{timestamps[sensor_type]}\n")
+        log_file.write(f"{float(timestamps[sensor_type][-1])} == {float(timestamp)} : {float(timestamps[sensor_type][-1]) == float(timestamp)}\n")
+        count = 0   # count how many seconds we are waiting
+        if float(timestamps[sensor_type][-1]) == float(timestamp):  # if the timestamp is the same as the last received, return the mean value
+            log_file.write(f"I AM IN\n")
+            return {'next_value': next_value[value_type]}   # the value has been updated, so we can return it
+        else:   # the value has not been updated yet, so we wait for it
+            log_file.write(f"I AM OUT\n")
+            while float(timestamps[sensor_type][-1]) != float(timestamp):   # wait for the value to be updated
+                log_file.write(f"{float(timestamps[sensor_type][-1])} != {float(timestamp)} : {float(timestamps[sensor_type][-1]) != float(timestamp)}\n")
+                if count < 60:  # wait for a maximum of 60 seconds
+                    time.sleep(1)   # wait for 1 second
+                else:   # if we waited for 60 seconds, return None
+                    return {'next_value': None}
+                count += 1  # increment the counter
+            return {'next_value': next_value[value_type]}   # the value has been updated, so we can return it
 
 # REST API exposed by the DataAnalysis microservice
 class DataAnalysisREST(object):
@@ -243,22 +250,14 @@ class DataAnalysisREST(object):
     def GET(self, *uri, **params):
         if len(uri) == 0:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
-        elif uri[0] == 'get_mean_temperature':
-            return get_mean_temperature()
-        elif uri[0] == 'get_mean_humidity':
-            return get_mean_humidity()
-        elif uri[0] == 'get_mean_light':
-            return get_mean_light()
-        elif uri[0] == 'get_mean_soil_moisture':
-            return get_mean_soil_moisture()
-        elif uri[0] == 'get_mean_pH':
-            return get_mean_pH()
-        elif uri[0] == 'get_mean_N':
-            return get_mean_N()
-        elif uri[0] == 'get_mean_P':
-            return get_mean_P()
-        elif uri[0] == 'get_mean_K':
-            return get_mean_K()
+        elif uri[0] == 'get_mean_value':
+            return get_mean_value(params['value_type'], params['timestamp'], params['sensor_type'])
+        elif uri[0] == 'get_trend':
+            return get_trend(params['value_type'], params['timestamp'], params['sensor_type'])
+        elif uri[0] == 'get_next_timestamp':
+            return get_next_timestamp(params['sensor_type'], params['timestamp'])
+        elif uri[0] == 'get_next_value':
+            return get_next_value(params['value_type'], params['timestamp'], params['sensor_type'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         

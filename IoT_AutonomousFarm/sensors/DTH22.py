@@ -19,6 +19,8 @@ def get_DTH22_Humidity():
     # update the current humidity
     current_humidity = trend + noise
 
+    current_humidity = max(0, min(100, current_humidity))
+
     return current_humidity
 
 def get_DTH22_Temperature():
@@ -33,6 +35,8 @@ def get_DTH22_Temperature():
 
     # update the current temperature
     current_temperature = trend + noise
+
+    current_temperature = max(-10, min(40, current_temperature))
 
     return current_temperature
 

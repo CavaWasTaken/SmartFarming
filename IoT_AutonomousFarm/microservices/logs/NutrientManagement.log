@@ -1,33 +1,524 @@
 Received 3 sensors: [{'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 60.0, 'min': 20.0}, 'thing_speak_channel_id': None}, {'sensor_id': 3, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 7.5, 'min': 5.5}, 'thing_speak_channel_id': None}, {'sensor_id': 1, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/L', 'threshold': {'K': {'max': 800.0, 'min': 200.0}, 'N': {'max': 800.0, 'min': 200.0}, 'P': {'max': 800.0, 'min': 200.0}}, 'thing_speak_channel_id': None}]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.98042875340167, 'u': '%', 't': 79}
 New value collected by sensor 2
-Mean soil moisture: 48.86035846029026
-Sensor_2 (soil moisture): 50.67540832736761 is in the accepted range 20.0-60.0	mean: 48.86035846029026
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.67540832736761, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected SoilMoisture: 47.989952532743125
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.92195859212064, 'u': None, 't': 79}
 New value collected by sensor 3
-Mean pH: 6.984714003931179
-Sensor_3 (pH): 7.068682948311864 is in the accepted range 5.5-7.5	mean: 6.984714003931179
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.068682948311864, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected pH: 6.9400069445080925
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.5273819327074, 'P': 499.563016073837, 'K': 498.5540552493232}, 'u': 'mg/L', 't': 79}
 New value collected by sensor 1
-Mean N: 500.3884958360239
-Sensor_1 (N): 500.6250415286704 is in the accepted range 200.0-800.0	mean: 500.3884958360239
-Mean P: 498.5905101977645
-Sensor_1 (P): 498.71833803808767 is in the accepted range 200.0-800.0	mean: 498.5905101977645
-Mean K: 498.94960337035866
-Sensor_1 (K): 499.49501916122443 is in the accepted range 200.0-800.0	mean: 498.94960337035866
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.6250415286704, 'P': 498.71833803808767, 'K': 499.49501916122443}, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected N: 498.8549994779083
+Next expected P: 498.48393177952323
+Next expected K: 499.3613969198803
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.13730090148397, 'u': '%', 't': 100}
 New value collected by sensor 2
-Mean soil moisture: 49.76788339382894
-Sensor_2 (soil moisture): 50.56232108439012 is in the accepted range 20.0-60.0	mean: 49.76788339382894
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.56232108439012, 't': 120}
+Next expected timestamp: 120.0
+Next expected SoilMoisture: 49.00468792152112
+INFO: The measured value (50.13730090148397 %) and the next prediction (49.00468792152112, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.06529075741434, 'u': None, 't': 100}
 New value collected by sensor 3
-Mean pH: 6.99886381032546
-Sensor_3 (pH): 7.027163423114024 is in the accepted range 5.5-7.5	mean: 6.99886381032546
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.027163423114024, 't': 120}
+Next expected timestamp: 120.0
+Next expected pH: 6.999683873331498
+INFO: The measured value (7.06529075741434 None) and the next prediction (6.999683873331498, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.1861357455366, 'P': 501.67771900907894, 'K': 498.3702115567633}, 'u': 'mg/L', 't': 100}
 New value collected by sensor 1
-Mean N: 500.8015888490134
-Sensor_1 (N): 501.6277748749925 is in the accepted range 200.0-800.0	mean: 500.8015888490134
-Mean P: 498.87544930714034
-Sensor_1 (P): 499.445327525892 is in the accepted range 200.0-800.0	mean: 498.87544930714034
-Mean K: 499.3531906439944
-Sensor_1 (K): 500.160365191266 is in the accepted range 200.0-800.0	mean: 499.3531906439944
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.6277748749925, 'P': 499.445327525892, 'K': 500.160365191266}, 't': 120}
+Next expected timestamp: 120.0
+Next expected N: 500.87890003017725
+INFO: The measured value (501.1861357455366 mg/L) and the next prediction (500.87890003017725, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 500.29067161968845
+INFO: The measured value (501.67771900907894 mg/L) and the next prediction (500.29067161968845, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 498.5476900685591
+INFO: The measured value (498.3702115567633 mg/L) and the next prediction (498.5476900685591, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.65249984880528, 'u': '%', 't': 119}
+New value collected by sensor 2
+Next expected timestamp: 138.8
+Next expected SoilMoisture: 49.16814426228042
+INFO: The measured value (49.65249984880528 %) and the next prediction (49.16814426228042, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.908209445384818, 'u': None, 't': 119}
+New value collected by sensor 3
+Next expected timestamp: 138.8
+Next expected pH: 6.924241870494072
+INFO: The measured value (6.908209445384818 None) and the next prediction (6.924241870494072, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.8164758759218, 'P': 500.63280423578453, 'K': 498.9563846071496}, 'u': 'mg/L', 't': 119}
+New value collected by sensor 1
+Next expected timestamp: 138.8
+Next expected N: 501.42463599976236
+INFO: The measured value (500.8164758759218 mg/L) and the next prediction (501.42463599976236, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 500.40516810084387
+INFO: The measured value (500.63280423578453 mg/L) and the next prediction (500.40516810084387, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 498.61259470006587
+INFO: The measured value (498.9563846071496 mg/L) and the next prediction (498.61259470006587, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.99944451951762, 'u': '%', 't': 140}
+New value collected by sensor 2
+Next expected timestamp: 160.0
+Next expected SoilMoisture: 50.038182275548216
+INFO: The measured value (50.99944451951762 %) and the next prediction (50.038182275548216, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.0387268871128175, 'u': None, 't': 140}
+New value collected by sensor 3
+Next expected timestamp: 160.0
+Next expected pH: 6.960981330441532
+INFO: The measured value (7.0387268871128175 None) and the next prediction (6.960981330441532, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.1350816798297, 'P': 501.30524240035646, 'K': 500.977193400248}, 'u': 'mg/L', 't': 140}
+New value collected by sensor 1
+Next expected timestamp: 160.0
+Next expected N: 500.14128563609853
+INFO: The measured value (498.1350816798297 mg/L) and the next prediction (500.14128563609853, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 500.8558634946422
+INFO: The measured value (501.30524240035646 mg/L) and the next prediction (500.8558634946422, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.8183505699506
+INFO: The measured value (500.977193400248 mg/L) and the next prediction (499.8183505699506, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.11958922958083, 'u': '%', 't': 159}
+New value collected by sensor 2
+Next expected timestamp: 178.85714285714286
+Next expected SoilMoisture: 49.10249106486936
+INFO: The measured value (48.11958922958083 %) and the next prediction (49.10249106486936, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.984263599727935, 'u': None, 't': 159}
+New value collected by sensor 3
+Next expected timestamp: 178.85714285714286
+Next expected pH: 6.95703046025732
+INFO: The measured value (6.984263599727935 None) and the next prediction (6.95703046025732, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.70146816187815, 'P': 499.2258347142811, 'K': 498.45411131904075}, 'u': 'mg/L', 't': 159}
+New value collected by sensor 1
+Next expected timestamp: 178.85714285714286
+Next expected N: 500.65145850011015
+INFO: The measured value (500.70146816187815 mg/L) and the next prediction (500.65145850011015, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 500.0765702097302
+INFO: The measured value (499.2258347142811 mg/L) and the next prediction (500.0765702097302, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.23990092816484
+INFO: The measured value (498.45411131904075 mg/L) and the next prediction (499.23990092816484, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.61160591801303, 'u': '%', 't': 180}
+New value collected by sensor 2
+Next expected timestamp: 200.0
+Next expected SoilMoisture: 48.73602747715037
+INFO: The measured value (48.61160591801303 %) and the next prediction (48.73602747715037, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.078431158101814, 'u': None, 't': 180}
+New value collected by sensor 3
+Next expected timestamp: 200.0
+Next expected pH: 6.996784280572348
+INFO: The measured value (7.078431158101814 None) and the next prediction (6.996784280572348, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.89746390070337, 'P': 498.69482570837044, 'K': 501.59034819056853}, 'u': 'mg/L', 't': 180}
+New value collected by sensor 1
+Next expected timestamp: 200.0
+Next expected N: 501.0580992672088
+INFO: The measured value (500.89746390070337 mg/L) and the next prediction (501.0580992672088, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.35004913944
+INFO: The measured value (498.69482570837044 mg/L) and the next prediction (499.35004913944, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 500.2810411450124
+INFO: The measured value (501.59034819056853 mg/L) and the next prediction (500.2810411450124, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.68658514770422, 'u': '%', 't': 199}
+New value collected by sensor 2
+Next expected timestamp: 218.88888888888889
+Next expected SoilMoisture: 48.94561326045192
+INFO: The measured value (49.68658514770422 %) and the next prediction (48.94561326045192, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.999473577843269, 'u': None, 't': 199}
+New value collected by sensor 3
+Next expected timestamp: 218.88888888888889
+Next expected pH: 6.9921008980525485
+INFO: The measured value (6.999473577843269 None) and the next prediction (6.9921008980525485, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.97324716554095, 'P': 500.08016151254, 'K': 497.80034986437676}, 'u': 'mg/L', 't': 199}
+New value collected by sensor 1
+Next expected timestamp: 218.88888888888889
+Next expected N: 500.1237067020371
+INFO: The measured value (497.97324716554095 mg/L) and the next prediction (500.1237067020371, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.4505705076154
+INFO: The measured value (500.08016151254 mg/L) and the next prediction (499.4505705076154, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.4362530172764
+INFO: The measured value (497.80034986437676 mg/L) and the next prediction (499.4362530172764, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.047799179035415, 'u': '%', 't': 220}
+New value collected by sensor 2
+Next expected timestamp: 240.11111111111111
+Next expected SoilMoisture: 49.42904778374473
+INFO: The measured value (50.047799179035415 %) and the next prediction (49.42904778374473, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.977161517888895, 'u': None, 't': 220}
+New value collected by sensor 3
+Next expected timestamp: 240.11111111111111
+Next expected pH: 6.983770200664761
+INFO: The measured value (6.977161517888895 None) and the next prediction (6.983770200664761, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.8215586491675, 'P': 500.3473711478687, 'K': 501.61519235781594}, 'u': 'mg/L', 't': 220}
+New value collected by sensor 1
+Next expected timestamp: 240.11111111111111
+Next expected N: 499.53908859086954
+INFO: The measured value (498.8215586491675 mg/L) and the next prediction (499.53908859086954, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.67964644370096
+INFO: The measured value (500.3473711478687 mg/L) and the next prediction (499.67964644370096, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 500.1520080113187
+INFO: The measured value (501.61519235781594 mg/L) and the next prediction (500.1520080113187, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.93417652131225, 'u': '%', 't': 239}
+New value collected by sensor 2
+Next expected timestamp: 258.8888888888889
+Next expected SoilMoisture: 49.41120780278302
+INFO: The measured value (48.93417652131225 %) and the next prediction (49.41120780278302, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.050181689726455, 'u': None, 't': 239}
+New value collected by sensor 3
+Next expected timestamp: 258.8888888888889
+Next expected pH: 7.015792302946959
+INFO: The measured value (7.050181689726455 None) and the next prediction (7.015792302946959, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.10498068191737, 'P': 497.82294008566987, 'K': 499.04742774437415}, 'u': 'mg/L', 't': 239}
+New value collected by sensor 1
+Next expected timestamp: 258.8888888888889
+Next expected N: 500.0343529814589
+INFO: The measured value (501.10498068191737 mg/L) and the next prediction (500.0343529814589, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.13954288703206
+INFO: The measured value (497.82294008566987 mg/L) and the next prediction (499.13954288703206, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 500.0108588987061
+INFO: The measured value (499.04742774437415 mg/L) and the next prediction (500.0108588987061, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.17546400934464, 'u': '%', 't': 260}
+New value collected by sensor 2
+Next expected timestamp: 280.1111111111111
+Next expected SoilMoisture: 49.57102168131436
+INFO: The measured value (50.17546400934464 %) and the next prediction (49.57102168131436, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.072639590039636, 'u': None, 't': 260}
+New value collected by sensor 3
+Next expected timestamp: 280.1111111111111
+Next expected pH: 7.062761153056353
+INFO: The measured value (7.072639590039636 None) and the next prediction (7.062761153056353, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.6896823677898, 'P': 498.71496375188383, 'K': 498.00509791336697}, 'u': 'mg/L', 't': 260}
+New value collected by sensor 1
+Next expected timestamp: 280.1111111111111
+Next expected N: 499.3698738994627
+INFO: The measured value (498.6896823677898 mg/L) and the next prediction (499.3698738994627, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.46727318143377
+INFO: The measured value (498.71496375188383 mg/L) and the next prediction (498.46727318143377, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.5738450096596
+INFO: The measured value (498.00509791336697 mg/L) and the next prediction (499.5738450096596, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.06980657587493, 'u': '%', 't': 279}
+New value collected by sensor 2
+Next expected timestamp: 298.8888888888889
+Next expected SoilMoisture: 50.033070183314564
+INFO: The measured value (51.06980657587493 %) and the next prediction (50.033070183314564, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.061428721818843, 'u': None, 't': 279}
+New value collected by sensor 3
+Next expected timestamp: 298.8888888888889
+Next expected pH: 7.0596429562964635
+INFO: The measured value (7.061428721818843 None) and the next prediction (7.0596429562964635, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.99997327003626, 'P': 498.80668681435196, 'K': 500.7070426907598}, 'u': 'mg/L', 't': 279}
+New value collected by sensor 1
+Next expected timestamp: 298.8888888888889
+Next expected N: 499.1869362527514
+INFO: The measured value (499.99997327003626 mg/L) and the next prediction (499.1869362527514, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.0114469573677
+INFO: The measured value (498.80668681435196 mg/L) and the next prediction (498.0114469573677, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.9079566978759
+INFO: The measured value (500.7070426907598 mg/L) and the next prediction (499.9079566978759, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.508885493478935, 'u': '%', 't': 300}
+New value collected by sensor 2
+Next expected timestamp: 320.1111111111111
+Next expected SoilMoisture: 50.447287438602444
+INFO: The measured value (50.508885493478935 %) and the next prediction (50.447287438602444, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.937694023412991, 'u': None, 't': 300}
+New value collected by sensor 3
+Next expected timestamp: 320.1111111111111
+Next expected pH: 7.036354831786445
+INFO: The measured value (6.937694023412991 None) and the next prediction (7.036354831786445, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.7919819011134, 'P': 499.7339658478523, 'K': 499.16251795354253}, 'u': 'mg/L', 't': 300}
+New value collected by sensor 1
+Next expected timestamp: 320.1111111111111
+Next expected N: 498.72240406969854
+INFO: The measured value (497.7919819011134 mg/L) and the next prediction (498.72240406969854, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.5216462076537
+INFO: The measured value (499.7339658478523 mg/L) and the next prediction (498.5216462076537, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.43857685369557
+INFO: The measured value (499.16251795354253 mg/L) and the next prediction (499.43857685369557, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.96488241390701, 'u': '%', 't': 319}
+New value collected by sensor 2
+Next expected timestamp: 338.8888888888889
+Next expected SoilMoisture: 50.08539481327726
+INFO: The measured value (48.96488241390701 %) and the next prediction (50.08539481327726, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.974519691578889, 'u': None, 't': 319}
+New value collected by sensor 3
+Next expected timestamp: 338.8888888888889
+Next expected pH: 6.99435889772438
+INFO: The measured value (6.974519691578889 None) and the next prediction (6.99435889772438, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.42683161859543, 'P': 498.5041778644367, 'K': 498.43485769278266}, 'u': 'mg/L', 't': 319}
+New value collected by sensor 1
+Next expected timestamp: 338.8888888888889
+Next expected N: 499.4512707879173
+INFO: The measured value (500.42683161859543 mg/L) and the next prediction (499.4512707879173, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.4094894789825
+INFO: The measured value (498.5041778644367 mg/L) and the next prediction (498.4094894789825, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 498.78326644008564
+INFO: The measured value (498.43485769278266 mg/L) and the next prediction (498.78326644008564, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.45965331481893, 'u': '%', 't': 340}
+New value collected by sensor 2
+Next expected timestamp: 360.1111111111111
+Next expected SoilMoisture: 49.925776044576374
+INFO: The measured value (48.45965331481893 %) and the next prediction (49.925776044576374, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.915347747654201, 'u': None, 't': 340}
+New value collected by sensor 3
+Next expected timestamp: 360.1111111111111
+Next expected pH: 6.958811645471684
+INFO: The measured value (6.915347747654201 None) and the next prediction (6.958811645471684, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.9855054460009, 'P': 499.6730312311611, 'K': 500.8387140310188}, 'u': 'mg/L', 't': 340}
+New value collected by sensor 1
+Next expected timestamp: 360.1111111111111
+Next expected N: 499.3142948033334
+INFO: The measured value (499.9855054460009 mg/L) and the next prediction (499.3142948033334, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.07236288690706
+INFO: The measured value (499.6730312311611 mg/L) and the next prediction (499.07236288690706, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.6576388148094
+INFO: The measured value (500.8387140310188 mg/L) and the next prediction (499.6576388148094, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.488550689051024, 'u': '%', 't': 359}
+New value collected by sensor 2
+Next expected timestamp: 378.8888888888889
+Next expected SoilMoisture: 49.18025800568585
+INFO: The measured value (48.488550689051024 %) and the next prediction (49.18025800568585, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.086225485029808, 'u': None, 't': 359}
+New value collected by sensor 3
+Next expected timestamp: 378.8888888888889
+Next expected pH: 6.985716303865145
+INFO: The measured value (7.086225485029808 None) and the next prediction (6.985716303865145, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.7074011156626, 'P': 497.6565195568971, 'K': 500.122654048709}, 'u': 'mg/L', 't': 359}
+New value collected by sensor 1
+Next expected timestamp: 378.8888888888889
+Next expected N: 498.8319108544234
+INFO: The measured value (497.7074011156626 mg/L) and the next prediction (498.8319108544234, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.4924293248302
+INFO: The measured value (497.6565195568971 mg/L) and the next prediction (498.4924293248302, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.5814757465733
+INFO: The measured value (500.122654048709 mg/L) and the next prediction (499.5814757465733, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.20731444576354, 'u': '%', 't': 380}
+New value collected by sensor 2
+Next expected timestamp: 400.1111111111111
+Next expected SoilMoisture: 49.23058954471377
+INFO: The measured value (50.20731444576354 %) and the next prediction (49.23058954471377, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.98205200789888, 'u': None, 't': 380}
+New value collected by sensor 3
+Next expected timestamp: 400.1111111111111
+Next expected pH: 6.988966471017076
+INFO: The measured value (6.98205200789888 None) and the next prediction (6.988966471017076, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.2557376507862, 'P': 497.7388297405623, 'K': 500.98537719278494}, 'u': 'mg/L', 't': 380}
+New value collected by sensor 1
+Next expected timestamp: 400.1111111111111
+Next expected N: 500.01444575281636
+INFO: The measured value (501.2557376507862 mg/L) and the next prediction (500.01444575281636, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 497.8988840437665
+INFO: The measured value (497.7388297405623 mg/L) and the next prediction (497.8988840437665, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 500.5789122797395
+INFO: The measured value (500.98537719278494 mg/L) and the next prediction (500.5789122797395, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.85033744329867, 'u': '%', 't': 399}
+New value collected by sensor 2
+Next expected timestamp: 418.8888888888889
+Next expected SoilMoisture: 49.3192844006519
+INFO: The measured value (49.85033744329867 %) and the next prediction (49.3192844006519, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.903435566620892, 'u': None, 't': 399}
+New value collected by sensor 3
+Next expected timestamp: 418.8888888888889
+Next expected pH: 6.9467484720895785
+INFO: The measured value (6.903435566620892 None) and the next prediction (6.9467484720895785, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.5815675630434, 'P': 499.02107787814157, 'K': 499.3334803165034}, 'u': 'mg/L', 't': 399}
+New value collected by sensor 1
+Next expected timestamp: 418.8888888888889
+Next expected N: 499.3205455203706
+INFO: The measured value (498.5815675630434 mg/L) and the next prediction (499.3205455203706, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.26241592951277
+INFO: The measured value (499.02107787814157 mg/L) and the next prediction (498.26241592951277, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.93938576634486
+INFO: The measured value (499.3334803165034 mg/L) and the next prediction (499.93938576634486, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.36729338845265, 'u': '%', 't': 420}
+New value collected by sensor 2
+Next expected timestamp: 440.1111111111111
+Next expected SoilMoisture: 49.295689202115454
+INFO: The measured value (49.36729338845265 %) and the next prediction (49.295689202115454, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.914277065614734, 'u': None, 't': 420}
+New value collected by sensor 3
+Next expected timestamp: 440.1111111111111
+Next expected pH: 6.908558307422337
+INFO: The measured value (6.914277065614734 None) and the next prediction (6.908558307422337, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.85268414350725, 'P': 498.95715805908355, 'K': 498.82261623250093}, 'u': 'mg/L', 't': 420}
+New value collected by sensor 1
+Next expected timestamp: 440.1111111111111
+Next expected N: 498.519103218075
+INFO: The measured value (497.85268414350725 mg/L) and the next prediction (498.519103218075, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.7330497827693
+INFO: The measured value (498.95715805908355 mg/L) and the next prediction (498.7330497827693, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 500.0124399768027
+INFO: The measured value (498.82261623250093 mg/L) and the next prediction (500.0124399768027, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.4040009428254, 'u': '%', 't': 439}
+New value collected by sensor 2
+Next expected timestamp: 458.8888888888889
+Next expected SoilMoisture: 49.039539390760105
+INFO: The measured value (49.4040009428254 %) and the next prediction (49.039539390760105, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.054067596135324, 'u': None, 't': 439}
+New value collected by sensor 3
+Next expected timestamp: 458.8888888888889
+Next expected pH: 6.950675031430867
+INFO: The measured value (7.054067596135324 None) and the next prediction (6.950675031430867, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.7589977973759, 'P': 499.8583554694022, 'K': 497.4633003732494}, 'u': 'mg/L', 't': 439}
+New value collected by sensor 1
+Next expected timestamp: 458.8888888888889
+Next expected N: 499.55951728406285
+INFO: The measured value (500.7589977973759 mg/L) and the next prediction (499.55951728406285, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 498.98335042744964
+INFO: The measured value (499.8583554694022 mg/L) and the next prediction (498.98335042744964, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.04881175880564
+INFO: The measured value (497.4633003732494 mg/L) and the next prediction (499.04881175880564, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.697338296655694, 'u': '%', 't': 460}
+New value collected by sensor 2
+Next expected timestamp: 480.1111111111111
+Next expected SoilMoisture: 48.79306683783712
+INFO: The measured value (48.697338296655694 %) and the next prediction (48.79306683783712, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.98541454375814, 'u': None, 't': 460}
+New value collected by sensor 3
+Next expected timestamp: 480.1111111111111
+Next expected pH: 6.970490212235322
+INFO: The measured value (6.98541454375814 None) and the next prediction (6.970490212235322, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.2889585723259, 'P': 500.2312752235205, 'K': 500.94302206534917}, 'u': 'mg/L', 't': 460}
+New value collected by sensor 1
+Next expected timestamp: 480.1111111111111
+Next expected N: 499.390718956918
+INFO: The measured value (499.2889585723259 mg/L) and the next prediction (499.390718956918, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.49285577847627
+INFO: The measured value (500.2312752235205 mg/L) and the next prediction (499.49285577847627, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 499.30543090256236
+INFO: The measured value (500.94302206534917 mg/L) and the next prediction (499.30543090256236, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.22246825807254, 'u': '%', 't': 479}
+New value collected by sensor 2
+Next expected timestamp: 498.8888888888889
+Next expected SoilMoisture: 49.104825527715725
+INFO: The measured value (49.22246825807254 %) and the next prediction (49.104825527715725, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.999912459995491, 'u': None, 't': 479}
+New value collected by sensor 3
+Next expected timestamp: 498.8888888888889
+Next expected pH: 6.999271860873886
+INFO: The measured value (6.999912459995491 None) and the next prediction (6.999271860873886, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.11898302739695, 'P': 498.59476150745184, 'K': 497.44082793005066}, 'u': 'mg/L', 't': 479}
+New value collected by sensor 1
+Next expected timestamp: 498.8888888888889
+Next expected N: 499.8601373279085
+INFO: The measured value (500.11898302739695 mg/L) and the next prediction (499.8601373279085, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.26563225339794
+INFO: The measured value (498.59476150745184 mg/L) and the next prediction (499.26563225339794, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 498.6908305288842
+INFO: The measured value (497.44082793005066 mg/L) and the next prediction (498.6908305288842, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.93054946459969, 'u': '%', 't': 500}
+New value collected by sensor 2
+Next expected timestamp: 520.1111111111111
+Next expected SoilMoisture: 48.862702009181724
+INFO: The measured value (47.93054946459969 %) and the next prediction (48.862702009181724, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.914679036807849, 'u': None, 't': 500}
+New value collected by sensor 3
+Next expected timestamp: 520.1111111111111
+Next expected pH: 6.965003695874061
+INFO: The measured value (6.914679036807849 None) and the next prediction (6.965003695874061, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.84912363861184, 'P': 499.92501547896114, 'K': 498.6429858040649}, 'u': 'mg/L', 't': 500}
+New value collected by sensor 1
+Next expected timestamp: 520.1111111111111
+Next expected N: 499.6312164351239
+INFO: The measured value (499.84912363861184 mg/L) and the next prediction (499.6312164351239, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 499.83643894430986
+INFO: The measured value (499.92501547896114 mg/L) and the next prediction (499.83643894430986, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 498.349948351269
+INFO: The measured value (498.6429858040649 mg/L) and the next prediction (498.349948351269, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.49653128699006, 'u': '%', 't': 519}
+New value collected by sensor 2
+Next expected timestamp: 538.8888888888889
+Next expected SoilMoisture: 48.61475666090868
+INFO: The measured value (48.49653128699006 %) and the next prediction (48.61475666090868, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.88568761178059, 'u': None, 't': 519}
+New value collected by sensor 3
+Next expected timestamp: 538.8888888888889
+Next expected pH: 6.930743365234069
+INFO: The measured value (6.88568761178059 None) and the next prediction (6.930743365234069, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.5032611661014, 'P': 500.92007357198884, 'K': 498.541816207371}, 'u': 'mg/L', 't': 519}
+New value collected by sensor 1
+Next expected timestamp: 538.8888888888889
+Next expected N: 499.42761296935055
+INFO: The measured value (498.5032611661014 mg/L) and the next prediction (499.42761296935055, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 500.4524189291932
+INFO: The measured value (500.92007357198884 mg/L) and the next prediction (500.4524189291932, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 497.8201631422961
+INFO: The measured value (498.541816207371 mg/L) and the next prediction (497.8201631422961, mg/L) of K are inside the range [200.0, 800.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.154028858044796, 'u': '%', 't': 540}
+New value collected by sensor 2
+Next expected timestamp: 560.1111111111111
+Next expected SoilMoisture: 48.925165229928155
+INFO: The measured value (50.154028858044796 %) and the next prediction (48.925165229928155, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.964914057212116, 'u': None, 't': 540}
+New value collected by sensor 3
+Next expected timestamp: 560.1111111111111
+Next expected pH: 6.917932557919363
+INFO: The measured value (6.964914057212116 None) and the next prediction (6.917932557919363, None) of pH are inside the range [5.5, 7.5]
+
+Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.9135273990433, 'P': 500.57419064903354, 'K': 499.8358405335992}, 'u': 'mg/L', 't': 540}
+New value collected by sensor 1
+Next expected timestamp: 560.1111111111111
+Next expected N: 499.7966628152057
+INFO: The measured value (499.9135273990433 mg/L) and the next prediction (499.7966628152057, mg/L) of N are inside the range [200.0, 800.0]
+Next expected P: 501.0987227023604
+INFO: The measured value (500.57419064903354 mg/L) and the next prediction (501.0987227023604, mg/L) of P are inside the range [200.0, 800.0]
+Next expected K: 498.4283476806535
+INFO: The measured value (499.8358405335992 mg/L) and the next prediction (498.4283476806535, mg/L) of K are inside the range [200.0, 800.0]

@@ -1,17 +1,327 @@
 Received 2 sensors: [{'sensor_id': 0, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': 30.0, 'min': 15.0}, 'thing_speak_channel_id': None}, {'sensor_id': 4, 'greenhouse_id': 0, 'plant_id': None, 'type': 'LightIntensity', 'name': 'LightIntensity', 'unit': 'Lux', 'threshold': {'max': 10000.0, 'min': 1000.0}, 'thing_speak_channel_id': None}]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.783657221875366, 'u': 'Cel', 't': 79}
 New value collected by sensor 0
-Mean temperature: 20.181777715505277
-Sensor_0 (temperature): 20.970597994883477 is in the accepted range 15.0-30.0	mean: 20.181777715505277
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.970597994883477, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected Temperature: 23.145626407463418
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 656.304451365522, 'u': 'Lux', 't': 79}
 New value collected by sensor 4
-Mean light intensity: 561.9184752032014
-Sensor_4 (light intensity): 557.4200973176947 Lux is low	accepted range 1000.0-10000.0	mean: 561.9184752032014
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 557.4200973176947, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected LightIntensity: 655.7466242390688
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.728865518953864, 'u': 'Cel', 't': 100}
 New value collected by sensor 0
-Mean temperature: 20.122959296250645
-Sensor_0 (temperature): 20.005322457741386 is in the accepted range 15.0-30.0	mean: 20.122959296250645
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.005322457741386, 't': 120}
+Next expected timestamp: 120.0
+Next expected Temperature: 23.29781694461727
+INFO: The measured value (23.728865518953864 Cel) and the next prediction (23.29781694461727, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 658.172467282031, 'u': 'Lux', 't': 100}
 New value collected by sensor 4
-Mean light intensity: 559.6692862604481
-Sensor_4 (light intensity): 562.0623140762186 Lux is low	accepted range 1000.0-10000.0	mean: 559.6692862604481
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 562.0623140762186, 't': 120}
+Next expected timestamp: 120.0
+Next expected LightIntensity: 658.1177415953855
+WARNING: The measured value 658.172467282031 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.0252488685472
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 24.304182300448918, 'u': 'Cel', 't': 119}
+New value collected by sensor 0
+Next expected timestamp: 138.8
+Next expected Temperature: 23.7739955351338
+INFO: The measured value (24.304182300448918 Cel) and the next prediction (23.7739955351338, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 658.2019809393257, 'u': 'Lux', 't': 119}
+New value collected by sensor 4
+Next expected timestamp: 138.8
+Next expected LightIntensity: 659.0354401526168
+WARNING: The measured value 658.2019809393257 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.6471723173412
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.642414127010696, 'u': 'Cel', 't': 140}
+New value collected by sensor 0
+Next expected timestamp: 160.0
+Next expected Temperature: 23.068089395817054
+INFO: The measured value (22.642414127010696 Cel) and the next prediction (23.068089395817054, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 658.245446872552, 'u': 'Lux', 't': 140}
+New value collected by sensor 4
+Next expected timestamp: 160.0
+Next expected LightIntensity: 659.5070299410098
+WARNING: The measured value 658.245446872552 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 657.0467409561439
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.105513308723012, 'u': 'Cel', 't': 159}
+New value collected by sensor 0
+Next expected timestamp: 178.85714285714286
+Next expected Temperature: 22.91856630004831
+INFO: The measured value (23.105513308723012 Cel) and the next prediction (22.91856630004831, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 654.6535270048698, 'u': 'Lux', 't': 159}
+New value collected by sensor 4
+Next expected timestamp: 178.85714285714286
+Next expected LightIntensity: 657.8846893767119
+WARNING: The measured value 654.6535270048698 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.5149156336386
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.386933206912968, 'u': 'Cel', 't': 180}
+New value collected by sensor 0
+Next expected timestamp: 200.0
+Next expected Temperature: 22.95154727337122
+INFO: The measured value (23.386933206912968 Cel) and the next prediction (22.95154727337122, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 650.8136886995226, 'u': 'Lux', 't': 180}
+New value collected by sensor 4
+Next expected timestamp: 200.0
+Next expected LightIntensity: 655.1447432486325
+WARNING: The measured value 650.8136886995226 of LightIntensity is unexpected. (Expected value: 655.1447432486325)	Waiting for the next value
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.401524810870054, 'u': 'Cel', 't': 199}
+New value collected by sensor 0
+Next expected timestamp: 218.88888888888889
+Next expected Temperature: 22.996132339119093
+INFO: The measured value (23.401524810870054 Cel) and the next prediction (22.996132339119093, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 659.7689180110772, 'u': 'Lux', 't': 199}
+New value collected by sensor 4
+Next expected timestamp: 218.88888888888889
+Next expected LightIntensity: 656.9228713400408
+WARNING: The measured value 659.7689180110772 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.1736243857721
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 24.302934771587672, 'u': 'Cel', 't': 220}
+New value collected by sensor 0
+Next expected timestamp: 240.11111111111111
+Next expected Temperature: 23.5083808500697
+INFO: The measured value (24.302934771587672 Cel) and the next prediction (23.5083808500697, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 654.9588967809982, 'u': 'Lux', 't': 220}
+New value collected by sensor 4
+Next expected timestamp: 240.11111111111111
+Next expected LightIntensity: 656.5394541874297
+WARNING: The measured value 654.9588967809982 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.004423661103
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.920050516525894, 'u': 'Cel', 't': 239}
+New value collected by sensor 0
+Next expected timestamp: 258.8888888888889
+Next expected Temperature: 23.76741500603492
+INFO: The measured value (23.920050516525894 Cel) and the next prediction (23.76741500603492, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 659.1393129098309, 'u': 'Lux', 't': 239}
+New value collected by sensor 4
+Next expected timestamp: 258.8888888888889
+Next expected LightIntensity: 656.9082935898784
+WARNING: The measured value 659.1393129098309 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.611249588452
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.79519996156362, 'u': 'Cel', 't': 260}
+New value collected by sensor 0
+Next expected timestamp: 280.1111111111111
+Next expected Temperature: 23.36710557123875
+INFO: The measured value (22.79519996156362 Cel) and the next prediction (23.36710557123875, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 653.7193210913547, 'u': 'Lux', 't': 260}
+New value collected by sensor 4
+Next expected timestamp: 280.1111111111111
+Next expected LightIntensity: 655.3087810434467
+WARNING: The measured value 653.7193210913547 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.1070456524873
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.29580016871355, 'u': 'Cel', 't': 279}
+New value collected by sensor 0
+Next expected timestamp: 298.8888888888889
+Next expected Temperature: 23.337936501845107
+INFO: The measured value (23.29580016871355 Cel) and the next prediction (23.337936501845107, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 653.6803441941345, 'u': 'Lux', 't': 279}
+New value collected by sensor 4
+Next expected timestamp: 298.8888888888889
+Next expected LightIntensity: 654.2089699759862
+WARNING: The measured value 653.6803441941345 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.612962579474
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 24.002721592000402, 'u': 'Cel', 't': 300}
+New value collected by sensor 0
+Next expected timestamp: 320.1111111111111
+Next expected Temperature: 23.608116121559643
+INFO: The measured value (24.002721592000402 Cel) and the next prediction (23.608116121559643, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 658.1365882998252, 'u': 'Lux', 't': 300}
+New value collected by sensor 4
+Next expected timestamp: 320.1111111111111
+Next expected LightIntensity: 655.546144582168
+WARNING: The measured value 658.1365882998252 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.9768167469749
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.03416965921815, 'u': 'Cel', 't': 319}
+New value collected by sensor 0
+Next expected timestamp: 338.8888888888889
+Next expected Temperature: 23.627015990275567
+INFO: The measured value (23.03416965921815 Cel) and the next prediction (23.627015990275567, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 649.2747240358264, 'u': 'Lux', 't': 319}
+New value collected by sensor 4
+Next expected timestamp: 338.8888888888889
+Next expected LightIntensity: 653.3765377422363
+WARNING: The measured value 649.2747240358264 of LightIntensity is unexpected. (Expected value: 653.3765377422363)	Waiting for the next value
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.258303348368994, 'u': 'Cel', 't': 340}
+New value collected by sensor 0
+Next expected timestamp: 360.1111111111111
+Next expected Temperature: 23.37730217051654
+INFO: The measured value (23.258303348368994 Cel) and the next prediction (23.37730217051654, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 657.7270599656362, 'u': 'Lux', 't': 340}
+New value collected by sensor 4
+Next expected timestamp: 360.1111111111111
+Next expected LightIntensity: 655.1676464514603
+WARNING: The measured value 657.7270599656362 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.1824357889958
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 24.141500349206325, 'u': 'Cel', 't': 359}
+New value collected by sensor 0
+Next expected timestamp: 378.8888888888889
+Next expected Temperature: 23.56026370627976
+INFO: The measured value (24.141500349206325 Cel) and the next prediction (23.56026370627976, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 657.366970017636, 'u': 'Lux', 't': 359}
+New value collected by sensor 4
+Next expected timestamp: 378.8888888888889
+Next expected LightIntensity: 655.8916089810352
+WARNING: The measured value 657.366970017636 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.5787506832372
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 24.251305414453018, 'u': 'Cel', 't': 380}
+New value collected by sensor 0
+Next expected timestamp: 400.1111111111111
+Next expected Temperature: 23.796529842478932
+INFO: The measured value (24.251305414453018 Cel) and the next prediction (23.796529842478932, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 658.1640162227302, 'u': 'Lux', 't': 380}
+New value collected by sensor 4
+Next expected timestamp: 400.1111111111111
+Next expected LightIntensity: 655.7474404697106
+WARNING: The measured value 658.1640162227302 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 656.0706477418092
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.861145461568164, 'u': 'Cel', 't': 399}
+New value collected by sensor 0
+Next expected timestamp: 418.8888888888889
+Next expected Temperature: 23.819665335704737
+INFO: The measured value (23.861145461568164 Cel) and the next prediction (23.819665335704737, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 653.6430740510251, 'u': 'Lux', 't': 399}
+New value collected by sensor 4
+Next expected timestamp: 418.8888888888889
+Next expected LightIntensity: 655.6916454117494
+WARNING: The measured value 653.6430740510251 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.606912996013
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.97160281513046, 'u': 'Cel', 't': 420}
+New value collected by sensor 0
+Next expected timestamp: 440.1111111111111
+Next expected Temperature: 24.099096455170415
+INFO: The measured value (23.97160281513046 Cel) and the next prediction (24.099096455170415, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 652.5162569005984, 'u': 'Lux', 't': 420}
+New value collected by sensor 4
+Next expected timestamp: 440.1111111111111
+Next expected LightIntensity: 654.2935103936328
+WARNING: The measured value 652.5162569005984 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.0496813857762
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.288586051059966, 'u': 'Cel', 't': 439}
+New value collected by sensor 0
+Next expected timestamp: 458.8888888888889
+Next expected Temperature: 24.023257484267333
+INFO: The measured value (23.288586051059966 Cel) and the next prediction (24.023257484267333, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 657.8090523084413, 'u': 'Lux', 't': 439}
+New value collected by sensor 4
+Next expected timestamp: 458.8888888888889
+Next expected LightIntensity: 656.2983323981192
+WARNING: The measured value 657.8090523084413 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 655.4991878475184
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.895396161507403, 'u': 'Cel', 't': 460}
+New value collected by sensor 0
+Next expected timestamp: 480.1111111111111
+Next expected Temperature: 23.936990897382632
+INFO: The measured value (23.895396161507403 Cel) and the next prediction (23.936990897382632, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 648.885459541424, 'u': 'Lux', 't': 460}
+New value collected by sensor 4
+Next expected timestamp: 480.1111111111111
+Next expected LightIntensity: 653.3666837228288
+WARNING: The measured value 648.885459541424 of LightIntensity is unexpected. (Expected value: 653.3666837228288)	Waiting for the next value
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.91334864451981, 'u': 'Cel', 't': 479}
+New value collected by sensor 0
+Next expected timestamp: 498.8888888888889
+Next expected Temperature: 23.912507751721133
+INFO: The measured value (23.91334864451981 Cel) and the next prediction (23.912507751721133, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 657.5203386799386, 'u': 'Lux', 't': 479}
+New value collected by sensor 4
+Next expected timestamp: 498.8888888888889
+Next expected LightIntensity: 654.2085817061471
+WARNING: The measured value 657.5203386799386 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 654.8594974764119
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 23.599679935437365, 'u': 'Cel', 't': 500}
+New value collected by sensor 0
+Next expected timestamp: 520.1111111111111
+Next expected Temperature: 23.912086862463877
+INFO: The measured value (23.599679935437365 Cel) and the next prediction (23.912086862463877, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 651.8962380700917, 'u': 'Lux', 't': 500}
+New value collected by sensor 4
+Next expected timestamp: 520.1111111111111
+Next expected LightIntensity: 653.7193339025537
+WARNING: The measured value 651.8962380700917 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 654.2762036705543
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 24.392360337832507, 'u': 'Cel', 't': 519}
+New value collected by sensor 0
+Next expected timestamp: 538.8888888888889
+Next expected Temperature: 23.994054851653143
+INFO: The measured value (24.392360337832507 Cel) and the next prediction (23.994054851653143, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 652.3096370594147, 'u': 'Lux', 't': 519}
+New value collected by sensor 4
+Next expected timestamp: 538.8888888888889
+Next expected LightIntensity: 651.46836969561
+WARNING: The measured value 652.3096370594147 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 653.8815342305688
+WARNING: Action needed for sensor_4
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.56375421477084, 'u': 'Cel', 't': 540}
+New value collected by sensor 0
+Next expected timestamp: 560.1111111111111
+Next expected Temperature: 23.31493686672873
+INFO: The measured value (22.56375421477084 Cel) and the next prediction (23.31493686672873, Cel) of Temperature are inside the range [15.0, 30.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 649.5567181393192, 'u': 'Lux', 't': 540}
+New value collected by sensor 4
+Next expected timestamp: 560.1111111111111
+Next expected LightIntensity: 650.1307661404353
+WARNING: The measured value 649.5567181393192 Lux of LightIntensity went outside the range [1000.0, 10000.0]
+Mean LightIntensity: 652.9311538410464
+WARNING: Action needed for sensor_4

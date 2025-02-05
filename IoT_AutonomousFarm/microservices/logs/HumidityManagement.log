@@ -1,17 +1,333 @@
 Received 2 sensors: [{'sensor_id': 5, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 70.0, 'min': 40.0}, 'thing_speak_channel_id': None}, {'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 60.0, 'min': 20.0}, 'thing_speak_channel_id': None}]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 37.02546266564174, 'u': '%', 't': 79}
 New value collected by sensor 5
-Mean humidity: 52.93553112259805
-Sensor_5 (humidity): 53.51680696839074 is in the accepted range 40.0-70.0	mean: 52.93553112259805
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 53.51680696839074, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected Humidity: 39.510668638713724
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.98042875340167, 'u': '%', 't': 79}
 New value collected by sensor 2
-Mean soil moisture: 49.76788339382894
-Sensor_2 (soil moisture): 50.67540832736761 is in the accepted range 20.0-60.0	mean: 49.76788339382894
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.67540832736761, 't': 59}
+Next expected timestamp: 98.66666666666667
+Next expected SoilMoisture: 47.989952532743125
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 36.075283767933406, 'u': '%', 't': 100}
 New value collected by sensor 5
-Mean humidity: 54.71121034551978
-Sensor_5 (humidity): 58.262568791363236 is in the accepted range 40.0-70.0	mean: 54.71121034551978
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 58.262568791363236, 't': 120}
+Next expected timestamp: 120.0
+Next expected Humidity: 37.95785178845342
+WARNING: The measured value 36.075283767933406 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.77723800713305
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.13730090148397, 'u': '%', 't': 100}
 New value collected by sensor 2
-Mean soil moisture: 50.032695957349326
-Sensor_2 (soil moisture): 50.56232108439012 is in the accepted range 20.0-60.0	mean: 50.032695957349326
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.56232108439012, 't': 120}
+Next expected timestamp: 120.0
+Next expected SoilMoisture: 49.00468792152112
+INFO: The measured value (50.13730090148397 %) and the next prediction (49.00468792152112, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 34.09189810548515, 'u': '%', 't': 119}
+New value collected by sensor 5
+Next expected timestamp: 138.8
+Next expected Humidity: 35.8933484795708
+WARNING: The measured value 34.09189810548515 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.00999803523365
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.65249984880528, 'u': '%', 't': 119}
+New value collected by sensor 2
+Next expected timestamp: 138.8
+Next expected SoilMoisture: 49.16814426228042
+INFO: The measured value (49.65249984880528 %) and the next prediction (49.16814426228042, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 39.177598580037994, 'u': '%', 't': 140}
+New value collected by sensor 5
+Next expected timestamp: 160.0
+Next expected Humidity: 37.74248978487876
+WARNING: The measured value 39.177598580037994 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.801898171434736
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.99944451951762, 'u': '%', 't': 140}
+New value collected by sensor 2
+Next expected timestamp: 160.0
+Next expected SoilMoisture: 50.038182275548216
+INFO: The measured value (50.99944451951762 %) and the next prediction (50.038182275548216, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 34.9721886734902, 'u': '%', 't': 159}
+New value collected by sensor 5
+Next expected timestamp: 178.85714285714286
+Next expected Humidity: 36.66804499903843
+WARNING: The measured value 34.9721886734902 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.395296060780396
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.11958922958083, 'u': '%', 't': 159}
+New value collected by sensor 2
+Next expected timestamp: 178.85714285714286
+Next expected SoilMoisture: 49.10249106486936
+INFO: The measured value (48.11958922958083 %) and the next prediction (49.10249106486936, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 37.89741049270647, 'u': '%', 't': 180}
+New value collected by sensor 5
+Next expected timestamp: 200.0
+Next expected Humidity: 37.30283094869916
+WARNING: The measured value 37.89741049270647 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.69571894716561
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.61160591801303, 'u': '%', 't': 180}
+New value collected by sensor 2
+Next expected timestamp: 200.0
+Next expected SoilMoisture: 48.73602747715037
+INFO: The measured value (48.61160591801303 %) and the next prediction (48.73602747715037, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 38.89346367376075, 'u': '%', 't': 199}
+New value collected by sensor 5
+Next expected timestamp: 218.88888888888889
+Next expected Humidity: 38.09319347823438
+WARNING: The measured value 38.89346367376075 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.09530889745564
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.68658514770422, 'u': '%', 't': 199}
+New value collected by sensor 2
+Next expected timestamp: 218.88888888888889
+Next expected SoilMoisture: 48.94561326045192
+INFO: The measured value (49.68658514770422 %) and the next prediction (48.94561326045192, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 35.63776778763942, 'u': '%', 't': 220}
+New value collected by sensor 5
+Next expected timestamp: 240.11111111111111
+Next expected Humidity: 36.76583232638329
+WARNING: The measured value 35.63776778763942 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.89829954584997
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.047799179035415, 'u': '%', 't': 220}
+New value collected by sensor 2
+Next expected timestamp: 240.11111111111111
+Next expected SoilMoisture: 49.42904778374473
+INFO: The measured value (50.047799179035415 %) and the next prediction (49.42904778374473, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 33.959742955716294, 'u': '%', 't': 239}
+New value collected by sensor 5
+Next expected timestamp: 258.8888888888889
+Next expected Humidity: 35.69066869673398
+WARNING: The measured value 33.959742955716294 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.35447050666971
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.93417652131225, 'u': '%', 't': 239}
+New value collected by sensor 2
+Next expected timestamp: 258.8888888888889
+Next expected SoilMoisture: 49.41120780278302
+INFO: The measured value (48.93417652131225 %) and the next prediction (49.41120780278302, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 36.86560076699189, 'u': '%', 't': 260}
+New value collected by sensor 5
+Next expected timestamp: 280.1111111111111
+Next expected Humidity: 36.25548335836045
+WARNING: The measured value 36.86560076699189 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.401047408192944
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.17546400934464, 'u': '%', 't': 260}
+New value collected by sensor 2
+Next expected timestamp: 280.1111111111111
+Next expected SoilMoisture: 49.57102168131436
+INFO: The measured value (50.17546400934464 %) and the next prediction (49.57102168131436, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 36.45098984201315, 'u': '%', 't': 279}
+New value collected by sensor 5
+Next expected timestamp: 298.8888888888889
+Next expected Humidity: 36.40435729448743
+WARNING: The measured value 36.45098984201315 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.39947433456982
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.06980657587493, 'u': '%', 't': 279}
+New value collected by sensor 2
+Next expected timestamp: 298.8888888888889
+Next expected SoilMoisture: 50.033070183314564
+INFO: The measured value (51.06980657587493 %) and the next prediction (50.033070183314564, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 35.19572963620667, 'u': '%', 't': 300}
+New value collected by sensor 5
+Next expected timestamp: 320.1111111111111
+Next expected Humidity: 35.83196009766267
+WARNING: The measured value 35.19572963620667 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.180117093047855
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.508885493478935, 'u': '%', 't': 300}
+New value collected by sensor 2
+Next expected timestamp: 320.1111111111111
+Next expected SoilMoisture: 50.447287438602444
+INFO: The measured value (50.508885493478935 %) and the next prediction (50.447287438602444, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 37.97621479672147, 'u': '%', 't': 319}
+New value collected by sensor 5
+Next expected timestamp: 338.8888888888889
+Next expected Humidity: 35.90092409658719
+WARNING: The measured value 37.97621479672147 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.48229450128726
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.96488241390701, 'u': '%', 't': 319}
+New value collected by sensor 2
+Next expected timestamp: 338.8888888888889
+Next expected SoilMoisture: 50.08539481327726
+INFO: The measured value (48.96488241390701 %) and the next prediction (50.08539481327726, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 34.91830479915497, 'u': '%', 't': 340}
+New value collected by sensor 5
+Next expected timestamp: 360.1111111111111
+Next expected Humidity: 35.8368912083956
+WARNING: The measured value 34.91830479915497 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.157864333764806
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.45965331481893, 'u': '%', 't': 340}
+New value collected by sensor 2
+Next expected timestamp: 360.1111111111111
+Next expected SoilMoisture: 49.925776044576374
+INFO: The measured value (48.45965331481893 %) and the next prediction (49.925776044576374, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 35.18630912607404, 'u': '%', 't': 359}
+New value collected by sensor 5
+Next expected timestamp: 378.8888888888889
+Next expected Humidity: 35.05679901396055
+WARNING: The measured value 35.18630912607404 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 35.95960393078915
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.488550689051024, 'u': '%', 't': 359}
+New value collected by sensor 2
+Next expected timestamp: 378.8888888888889
+Next expected SoilMoisture: 49.18025800568585
+INFO: The measured value (48.488550689051024 %) and the next prediction (49.18025800568585, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 39.77224431740755, 'u': '%', 't': 380}
+New value collected by sensor 5
+Next expected timestamp: 400.1111111111111
+Next expected Humidity: 36.87372723065276
+WARNING: The measured value 39.77224431740755 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.59125682709988
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.20731444576354, 'u': '%', 't': 380}
+New value collected by sensor 2
+Next expected timestamp: 400.1111111111111
+Next expected SoilMoisture: 49.23058954471377
+INFO: The measured value (50.20731444576354 %) and the next prediction (49.23058954471377, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 36.08044257053596, 'u': '%', 't': 399}
+New value collected by sensor 5
+Next expected timestamp: 418.8888888888889
+Next expected Humidity: 37.354471490147176
+WARNING: The measured value 36.08044257053596 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 36.5175851544394
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.85033744329867, 'u': '%', 't': 399}
+New value collected by sensor 2
+Next expected timestamp: 418.8888888888889
+Next expected SoilMoisture: 49.3192844006519
+INFO: The measured value (49.85033744329867 %) and the next prediction (49.3192844006519, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 39.37920863649019, 'u': '%', 't': 420}
+New value collected by sensor 5
+Next expected timestamp: 440.1111111111111
+Next expected Humidity: 38.48723019186403
+WARNING: The measured value 39.37920863649019 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.094834968374684
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.36729338845265, 'u': '%', 't': 420}
+New value collected by sensor 2
+Next expected timestamp: 440.1111111111111
+Next expected SoilMoisture: 49.295689202115454
+INFO: The measured value (49.36729338845265 %) and the next prediction (49.295689202115454, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 39.64272482597795, 'u': '%', 't': 439}
+New value collected by sensor 5
+Next expected timestamp: 458.8888888888889
+Next expected Humidity: 38.99564201629315
+WARNING: The measured value 39.64272482597795 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.65197061951045
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.4040009428254, 'u': '%', 't': 439}
+New value collected by sensor 2
+Next expected timestamp: 458.8888888888889
+Next expected SoilMoisture: 49.039539390760105
+INFO: The measured value (49.4040009428254 %) and the next prediction (49.039539390760105, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 34.57298638862528, 'u': '%', 't': 460}
+New value collected by sensor 5
+Next expected timestamp: 480.1111111111111
+Next expected Humidity: 37.89454024168004
+WARNING: The measured value 34.57298638862528 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.184008702577344
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.697338296655694, 'u': '%', 't': 460}
+New value collected by sensor 2
+Next expected timestamp: 480.1111111111111
+Next expected SoilMoisture: 48.79306683783712
+INFO: The measured value (48.697338296655694 %) and the next prediction (48.79306683783712, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 37.17177445792761, 'u': '%', 't': 479}
+New value collected by sensor 5
+Next expected timestamp: 498.8888888888889
+Next expected Humidity: 37.86596350370761
+WARNING: The measured value 37.17177445792761 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.230237605124046
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.22246825807254, 'u': '%', 't': 479}
+New value collected by sensor 2
+Next expected timestamp: 498.8888888888889
+Next expected SoilMoisture: 49.104825527715725
+INFO: The measured value (49.22246825807254 %) and the next prediction (49.104825527715725, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 36.964296044602904, 'u': '%', 't': 500}
+New value collected by sensor 5
+Next expected timestamp: 520.1111111111111
+Next expected Humidity: 37.38324842315617
+WARNING: The measured value 36.964296044602904 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.22563798495873
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.93054946459969, 'u': '%', 't': 500}
+New value collected by sensor 2
+Next expected timestamp: 520.1111111111111
+Next expected SoilMoisture: 48.862702009181724
+INFO: The measured value (47.93054946459969 %) and the next prediction (48.862702009181724, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 37.120071673104064, 'u': '%', 't': 519}
+New value collected by sensor 5
+Next expected timestamp: 538.8888888888889
+Next expected Humidity: 37.5802265921632
+WARNING: The measured value 37.120071673104064 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.217205453459144
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.49653128699006, 'u': '%', 't': 519}
+New value collected by sensor 2
+Next expected timestamp: 538.8888888888889
+Next expected SoilMoisture: 48.61475666090868
+INFO: The measured value (48.49653128699006 %) and the next prediction (48.61475666090868, %) of SoilMoisture are inside the range [20.0, 60.0]
+
+Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 36.83583988755628, 'u': '%', 't': 540}
+New value collected by sensor 5
+Next expected timestamp: 560.1111111111111
+Next expected Humidity: 36.909169761224355
+WARNING: The measured value 36.83583988755628 % of Humidity went outside the range [40.0, 70.0]
+Mean Humidity: 37.172660654107545
+WARNING: Action needed for sensor_5
+
+Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.154028858044796, 'u': '%', 't': 540}
+New value collected by sensor 2
+Next expected timestamp: 560.1111111111111
+Next expected SoilMoisture: 48.925165229928155
+INFO: The measured value (50.154028858044796 %) and the next prediction (48.925165229928155, %) of SoilMoisture are inside the range [20.0, 60.0]

@@ -46,35 +46,36 @@ while True:
     timestamp = (timestamp.hour*3600 + timestamp.minute*60 + timestamp.second)/3600  # convert the time to hours
     timestamp -= start_time  # calculate the time passed since the start of the simulation
 
-    for sensor in sensors:  # iterate over the list of sensors
-        val = -1    # default value read from the sensor
-        # check the sensor name, if its knwon we read its value
-        if(sensor["name"] == "DTH22"):  
-            # DTH22 is the only senosor in our system that collects two values, temperature and humidity, so we need to handle both
-            if(sensor["type"] == "Temperature"):
-                val = DTH22.get_DTH22_Temperature()
-            elif(sensor["type"] == "Humidity"):
-                val = DTH22.get_DTH22_Humidity()
-        elif(sensor["name"] == "NPK"):
-            val = NPK.get_NPK_Values(timestamp)
-        elif(sensor["name"] == "SoilMoisture"):
-            val = soilMoisture.get_SoilMoisture_Values(timestamp)
-        elif(sensor["name"] == "pH"):
-            val = pH.get_pH_Values(timestamp)
-        elif(sensor["name"] == "LightIntensity"):
-            val = light.get_LightIntensity_Values()
-        else:
-            # not recognized sensor, write the error in the log file
-            with open("./logs/DeviceConnector.log", "a") as log_file:
-                log_file.write(f"Sensor not recognized: {sensor['name']}\n")
-            continue    # skip to the next iteration, so at the next sensor
-        
-        # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
-        senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "t": int(timestamp*3600)})
-        senML_dictionary = json.loads(senML)
-        client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
-        # write in a log file the value published
-        with open("./logs/DeviceConnector.log", "a") as log_file:
+    with open("./logs/DeviceConnector.log", "a") as log_file:
+        log_file.write("\n")
+        for sensor in sensors:  # iterate over the list of sensors
+            val = -1    # default value read from the sensor
+            # check the sensor name, if its knwon we read its value
+            if(sensor["name"] == "DTH22"):  
+                # DTH22 is the only senosor in our system that collects two values, temperature and humidity, so we need to handle both
+                if(sensor["type"] == "Temperature"):
+                    val = DTH22.get_DTH22_Temperature()
+                elif(sensor["type"] == "Humidity"):
+                    val = DTH22.get_DTH22_Humidity()
+            elif(sensor["name"] == "NPK"):
+                val = NPK.get_NPK_Values(timestamp)
+            elif(sensor["name"] == "SoilMoisture"):
+                val = soilMoisture.get_SoilMoisture_Values(timestamp)
+            elif(sensor["name"] == "pH"):
+                val = pH.get_pH_Values(timestamp)
+            elif(sensor["name"] == "LightIntensity"):
+                val = light.get_LightIntensity_Values()
+            else:
+                # not recognized sensor, write the error in the log file
+                with open("./logs/DeviceConnector.log", "a") as log_file:
+                    log_file.write(f"Sensor not recognized: {sensor['name']}\n")
+                continue    # skip to the next iteration, so at the next sensor
+            
+            # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
+            senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "u": sensor["unit"], "t": int(timestamp*3600)})
+            senML_dictionary = json.loads(senML)
+            client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
+            # write in a log file the value published
             log_file.write(f"Published: {senML}\n")
-        
+
     time.sleep(60)   # wait for 1 minute before reading the sensors again
