@@ -29,6 +29,7 @@ if response.status_code == 200: # if the request is successful
         log_file.write(f"Received {len(sensors)} sensors: {sensors}\n")
 else:
     with open("./logs/DeviceConnector.log", "a") as log_file:
+        # this error means that the device connector is not registered in the Catalog
         log_file.write(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
         exit(1) # if the request fails, the device connector stops
 
@@ -63,19 +64,18 @@ while True:
                 val = soilMoisture.get_SoilMoisture_Values(timestamp)
             elif(sensor["name"] == "pH"):
                 val = pH.get_pH_Values(timestamp)
-            elif(sensor["name"] == "LightIntensity"):
+            elif(sensor["name"] == "PAR"):
                 val = light.get_LightIntensity_Values()
             else:
                 # not recognized sensor, write the error in the log file
-                with open("./logs/DeviceConnector.log", "a") as log_file:
-                    log_file.write(f"Sensor not recognized: {sensor['name']}\n")
+                log_file.write(f"Sensor not recognized: {sensor['name']}\n")
                 continue    # skip to the next iteration, so at the next sensor
             
             # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
-            senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/plant_{sensor["plant_id"] if sensor["plant_id"] is not None else 'ALL'}/{sensor['name']}/{sensor['type']}", "n": sensor["type"], "v": val, "u": sensor["unit"], "t": int(timestamp*3600)})
+            senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/sensor_{sensor['sensor_id']}", "e": {"n": sensor["type"], "v": val, "u": sensor["unit"], "t": int(timestamp*3600)}})
             senML_dictionary = json.loads(senML)
             client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
             # write in a log file the value published
             log_file.write(f"Published: {senML}\n")
 
-    time.sleep(60)   # wait for 1 minute before reading the sensors again
+    time.sleep(10)   # wait for 1 minute before reading the sensors again

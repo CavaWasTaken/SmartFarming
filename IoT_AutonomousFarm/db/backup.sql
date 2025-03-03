@@ -2,12 +2,13 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-0ubuntu0.24.04.1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-0ubuntu0.24.04.1)
+-- Dumped from database version 17.2 (Debian 17.2-1.pgdg120+1)
+-- Dumped by pg_dump version 17.2 (Debian 17.2-1.pgdg120+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -15,6 +16,20 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
+
 
 SET default_tablespace = '';
 
@@ -29,6 +44,7 @@ CREATE TABLE public.devices (
     greenhouse_id integer NOT NULL,
     name character varying(100) NOT NULL,
     type character varying(100) NOT NULL,
+    params jsonb,
     CONSTRAINT device_name_check CHECK (((name)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('HumidityManagement'::character varying)::text, ('LightManagement'::character varying)::text, ('NutrientManagement'::character varying)::text, ('DataAnalysis'::character varying)::text, ('TimeShift'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text, ('TelegramBot'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text]))),
     CONSTRAINT device_type_check CHECK (((type)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('Microservices'::character varying)::text, ('UI'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text])))
 );
@@ -68,7 +84,8 @@ CREATE TABLE public.greenhouses (
     name character varying(100) NOT NULL,
     location character varying(255),
     thing_speak_channel_read_api_key character varying(20),
-    thing_speak_channel_write_api_key character varying(20)
+    thing_speak_channel_write_api_key character varying(20),
+    token character(64)
 );
 
 
@@ -104,9 +121,7 @@ CREATE TABLE public.plants (
     plant_id integer NOT NULL,
     greenhouse_id integer NOT NULL,
     name character varying(100) NOT NULL,
-    species character varying(100) NOT NULL,
-    thing_speak_channel_read_api_key character varying(20),
-    thing_speak_channel_write_api_key character varying(20)
+    species character varying(100) NOT NULL
 );
 
 
@@ -147,9 +162,9 @@ CREATE TABLE public.scheduled_events (
     frequency character varying(50) NOT NULL,
     status character varying(50) NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT event_values CHECK (((event_type)::text = ANY ((ARRAY['Irrigation'::character varying, 'Fertilization'::character varying, 'Lighting'::character varying])::text[]))),
-    CONSTRAINT frequency_values CHECK (((frequency)::text = ANY ((ARRAY['Once'::character varying, 'Daily'::character varying, 'Weekly'::character varying, 'Monthly'::character varying])::text[]))),
-    CONSTRAINT status_values CHECK (((status)::text = ANY ((ARRAY['Pending'::character varying, 'In action'::character varying, 'Compleated'::character varying])::text[])))
+    CONSTRAINT event_values CHECK (((event_type)::text = ANY (ARRAY[('Irrigation'::character varying)::text, ('Fertilization'::character varying)::text, ('Lighting'::character varying)::text]))),
+    CONSTRAINT frequency_values CHECK (((frequency)::text = ANY (ARRAY[('Once'::character varying)::text, ('Daily'::character varying)::text, ('Weekly'::character varying)::text, ('Monthly'::character varying)::text]))),
+    CONSTRAINT status_values CHECK (((status)::text = ANY (ARRAY[('Pending'::character varying)::text, ('In action'::character varying)::text, ('Compleated'::character varying)::text])))
 );
 
 
@@ -184,12 +199,12 @@ ALTER SEQUENCE public.scheduled_events_event_id_seq OWNED BY public.scheduled_ev
 CREATE TABLE public.sensors (
     sensor_id integer NOT NULL,
     greenhouse_id integer NOT NULL,
-    plant_id integer,
     type character varying(100) NOT NULL,
     name character varying(100) NOT NULL,
     unit character varying(10),
     threshold_range jsonb,
-    thing_speak_field character varying(20)
+    domain jsonb,
+    CONSTRAINT check_sensor_type CHECK (((type)::text = ANY ((ARRAY['Temperature'::character varying, 'Humidity'::character varying, 'SoilMoisture'::character varying, 'LightIntensity'::character varying, 'pH'::character varying, 'NPK'::character varying])::text[])))
 );
 
 
@@ -299,14 +314,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: devices; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.devices (device_id, greenhouse_id, name, type) FROM stdin;
-1	0	HumidityManagement	Microservices
-2	0	LightManagement	Microservices
-3	0	NutrientManagement	Microservices
-0	0	DeviceConnector	DeviceConnector
-4	0	DataAnalysis	Microservices
-5	0	TimeShift	Microservices
-6	0	ThingSpeakAdaptor	ThingSpeakAdaptor
+COPY public.devices (device_id, greenhouse_id, name, type, params) FROM stdin;
+1	0	HumidityManagement	Microservices	\N
+2	0	LightManagement	Microservices	\N
+3	0	NutrientManagement	Microservices	\N
+0	0	DeviceConnector	DeviceConnector	\N
+5	0	TimeShift	Microservices	\N
+6	0	ThingSpeakAdaptor	ThingSpeakAdaptor	\N
+4	0	DataAnalysis	Microservices	{"N": 10}
 \.
 
 
@@ -314,8 +329,8 @@ COPY public.devices (device_id, greenhouse_id, name, type) FROM stdin;
 -- Data for Name: greenhouses; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.greenhouses (greenhouse_id, user_id, name, location, thing_speak_channel_read_api_key, thing_speak_channel_write_api_key) FROM stdin;
-0	0	greenhouse_0	Torino	E8FA7YO31E86NVDU	DIOMNEBEJT9EW5PQ
+COPY public.greenhouses (greenhouse_id, user_id, name, location, thing_speak_channel_read_api_key, thing_speak_channel_write_api_key, token) FROM stdin;
+0	0	greenhouse_0	Torino	E8FA7YO31E86NVDU	DIOMNEBEJT9EW5PQ	\N
 \.
 
 
@@ -323,8 +338,10 @@ COPY public.greenhouses (greenhouse_id, user_id, name, location, thing_speak_cha
 -- Data for Name: plants; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.plants (plant_id, greenhouse_id, name, species, thing_speak_channel_read_api_key, thing_speak_channel_write_api_key) FROM stdin;
-0	0	basil	Lamiaceae	0HDA85CB4QXLVFQC	YO4BG26YPBCFX427
+COPY public.plants (plant_id, greenhouse_id, name, species) FROM stdin;
+0	0	Tomato	Solanum lycopersicum
+1	0	Zucchini	Cucurbita pepo
+2	0	Bell Pepper	Capsicum annuum
 \.
 
 
@@ -340,13 +357,13 @@ COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, e
 -- Data for Name: sensors; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.sensors (sensor_id, greenhouse_id, plant_id, type, name, unit, threshold_range, thing_speak_field) FROM stdin;
-0	0	\N	Temperature	DTH22	Cel	{"max": 30.0, "min": 15.0}	\N
-5	0	\N	Humidity	DTH22	%	{"max": 70.0, "min": 40.0}	\N
-2	0	0	SoilMoisture	SoilMoisture	%	{"max": 60.0, "min": 20.0}	\N
-4	0	\N	LightIntensity	LightIntensity	Lux	{"max": 10000.0, "min": 1000.0}	\N
-3	0	0	pH	pH	\N	{"max": 7.5, "min": 5.5}	\N
-1	0	0	NPK	NPK	mg/L	{"K": {"max": 800.0, "min": 200.0}, "N": {"max": 800.0, "min": 200.0}, "P": {"max": 800.0, "min": 200.0}}	\N
+COPY public.sensors (sensor_id, greenhouse_id, type, name, unit, threshold_range, domain) FROM stdin;
+0	0	Temperature	DTH22	Cel	{"max": 26.0, "min": 18.0}	{"max": 50, "min": -10}
+5	0	Humidity	DTH22	%	{"max": 75.0, "min": 60.0}	{"max": 100, "min": 0}
+2	0	SoilMoisture	SoilMoisture	%	{"max": 80.0, "min": 60.0}	{"max": 100, "min": 0}
+4	0	LightIntensity	PAR	µmol/m²/s	{"max": 600.0, "min": 400.0}	{"max": 2500, "min": 0}
+3	0	pH	pH	\N	{"max": 6.8, "min": 6.0}	{"max": 10.0, "min": 3.0}
+1	0	NPK	NPK	mg/kg	{"K": {"max": 400, "min": 100}, "N": {"max": 300, "min": 50}, "P": {"max": 150, "min": 30}}	{"max": 1000, "min": 0}
 \.
 
 
@@ -442,6 +459,22 @@ ALTER TABLE ONLY public.sensors
 
 
 --
+-- Name: sensors unique_greenhouse_sensor_type; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.sensors
+    ADD CONSTRAINT unique_greenhouse_sensor_type UNIQUE (greenhouse_id, type);
+
+
+--
+-- Name: greenhouses unique_name_per_user; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.greenhouses
+    ADD CONSTRAINT unique_name_per_user UNIQUE (user_id, name);
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: iotproject
 --
 
@@ -495,14 +528,6 @@ ALTER TABLE ONLY public.scheduled_events
 
 ALTER TABLE ONLY public.sensors
     ADD CONSTRAINT sensors_greenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id) ON DELETE CASCADE;
-
-
---
--- Name: sensors sensors_plant_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
---
-
-ALTER TABLE ONLY public.sensors
-    ADD CONSTRAINT sensors_plant_id_fkey FOREIGN KEY (plant_id) REFERENCES public.plants(plant_id) ON DELETE CASCADE;
 
 
 --

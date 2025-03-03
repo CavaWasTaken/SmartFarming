@@ -2,7 +2,7 @@ import random
 
 # grove NPK sensor is the sensor that measures NPK values
 def get_NPK_Values(elapsed_time):    
-    start_npk = {"N": 500.0, "P": 500.0, "K": 500.0}
+    start_npk = {"N": 150.0, "P": 200.0, "K": 200.0}
 
     # add some random noise
     noise = {

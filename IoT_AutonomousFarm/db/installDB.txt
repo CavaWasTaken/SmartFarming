@@ -1,4 +1,4 @@
-# exec docker to turn on the db
+# exec docker to turn on the db by executing the following command inside the db folder
 sudo docker-compose up -d
 
 # then you can exec the catalog and this will connect to the db through the docker

@@ -7,21 +7,12 @@
             "fields": {
                 "Temperature": "",
                 "Humidity": "",
-                "LightIntensity": ""
-            },
-            "plants": {
-                "0": {
-                    "channel_id": 2794836, 
-                    "write_api_key": "YO4BG26YPBCFX427",
-                    "read_api_key": "0HDA85CB4QXLVFQC",
-                    "fields": {
-                        "N": "",
-                        "P": "",
-                        "K": "",
-                        "SoilMoisture": "",
-                        "pH": ""
-                    }
-                }   
+                "LightIntensity": "",
+                "SoilMoisture": "",
+                "Nitrogen": "",
+                "Phosphorus": "",
+                "Potassium": "",
+                "pH": ""
             }
         }
     }

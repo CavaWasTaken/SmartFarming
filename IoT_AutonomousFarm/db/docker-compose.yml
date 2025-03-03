@@ -11,7 +11,7 @@ services:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data # persist data storage
-      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # initial data
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql  # initial data
 
 volumes:
   pgdata: # docker volume for persisting data
