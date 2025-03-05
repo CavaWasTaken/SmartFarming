@@ -30,6 +30,15 @@ def get_device_info(conn, device_id, device_name):
         }
 
         return device_dict
+    
+# given the id of the greenhouse, return the location of the greenhouse
+def get_greenhouse_location(conn, greenhouse_id):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT location FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
+        location = cur.fetchone()[0]
+        if location is None:
+            raise cherrypy.HTTPError(404, "Greenhouse not found")
+        return {'location': location}
 
 # given the id of the device connector, return the list of sensors connected to it
 def get_sensors(conn, device_id, device_name):
@@ -109,6 +118,8 @@ class CatalogREST(object):
             return get_greenhouse_info(self.catalog_connection, params['greenhouse_id'], params['device_id'])
         elif uri[0] == 'get_device_info':
             return get_device_info(self.catalog_connection, params['device_id'], params['device_name'])
+        elif uri[0] == 'get_greenhouse_location':
+            return get_greenhouse_location(self.catalog_connection, params['greenhouse_id'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         
