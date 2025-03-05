@@ -77,8 +77,7 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
                         return
 
                     if severity > 0.5:  # if the severity is high enough, action is needed
-                        # take preventive action by following the expected severity
-                        log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")  # ALERT TO BE SENT TO THE UI
+                        log_file.write(f"WARNING: The measured value {val} is highly outside the range (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type})\n")  # ALERT TO BE SENT TO THE UI
                     else:   # if the severity isn't high enough
                         # get the updated mean
                         response = requests.get(f"{dataAnalysis_url}/get_mean_value", params={'sensor_id': sensor_id, 'sensor_type':sensor_type, 'timestamp': timestamp})    # get the mean value from the data analysis
@@ -91,15 +90,15 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
                                 return
                             if not Is_inside(min_treshold, mean_value, max_treshold):    # if the mean value is outside the range, action is needed
                                 # take preventive action by following the expected severity
-                                log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
+                                log_file.write(f"WARNING: The measured value {val} and the mean value {mean_value} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
                             else:   # if the mean value is inside the range
                                 if abs(val - mean_value) > 5:    # if the value is far from the mean, action is needed
                                     # take preventive action by following the expected severity
-                                    log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
+                                    log_file.write(f"WARNING: The measured value {val} is far from the mean value {mean_value}. Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
                                 else:   # if the value is near the mean, check if the next expected value is in the range
                                     if not Is_inside(min_treshold, expected_val, max_treshold):    # if the expected value is outside the range, action is needed
                                         # take preventive action by following the expected severity
-                                        log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
+                                        log_file.write(f"WARNING: The measured value {val} and the next expected one {expected_val} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
                         else:
                             log_file.write(f"Failed to get mean value of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\nResponse: {response.reason}\n")    # ALERT TO BE SENT TO THE UI
                             return
@@ -114,7 +113,7 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
                             distance = (min_treshold - expected_val)
                         severity = Severity(distance)
                         # take preventive action by following the expected severity
-                        log_file.write(f"WARNING: Preventine action needed for sensor_{sensor_id} ({sensor_type})\n")
+                        log_file.write(f"WARNING: The measured value {val} is inside the range, but the next expected value {expected_val} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type})\n")
                     else:   # if the next expected value is inside the range
                         log_file.write(f"The measured value ({val} {unit}) and the next prediction ({expected_val} {unit}) of {sensor_type} ({sensor_type}) are inside the range [{min_treshold}, {max_treshold}]\n")
             

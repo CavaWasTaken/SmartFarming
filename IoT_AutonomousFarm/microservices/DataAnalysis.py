@@ -16,6 +16,7 @@ with open("./logs/DataAnalysis.log", "w") as log_file:
 with open("./DataAnalysis_config.json", "r") as config_fd:
     config = json.load(config_fd)
     catalog_url = config["catalog_url"]
+    thingSpeak_url = config["thingSpeak_url"]
     device_id = config["device_id"]
     mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
@@ -221,7 +222,6 @@ class DataAnalysisREST(object):
         raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
 
 if __name__ == "__main__":
-
     # RESR API exposed by the DataAnalysis microservice and used by management components to get statistics
     dataAnalysisClient = DataAnalysisREST(None)
     conf = {
@@ -267,6 +267,31 @@ if __name__ == "__main__":
         mean_value[sensor["sensor_id"]] = 0
         next_timestamp[sensor["sensor_id"]] = 0
         next_value[sensor["sensor_id"]] = 0
+
+    # import matplotlib.pyplot as plt
+
+    # def askDataForPlot(field, n):
+    #     with open("./logs/DataAnalysis.log", "a") as log_file:
+    #         log_file.write(f"\nRequesting {n} values of {field} from ThingSpeak\n")
+    #         response = requests.get(f"{thingSpeak_url}/get_field_data", params={'field': field, 'n': n})
+    #         if response.status_code == 200:
+    #             values = response.json()["values"]
+    #             # reduce the amount of decimal digits
+    #             values = [round(float(v), 2) for v in values]
+    #             log_file.write(f"Received {len(values)} values of {field} from ThingSpeak:\n{values}\n")
+    #             if len(values) < n:
+    #                 log_file.write(f"Requested {n} values, but only {len(values)} are avaible\n")
+    #             # generate a plot with the data received
+    #             plt.figure(1)
+    #             plt.plot(values)
+    #             plt.xlabel("Timestamp")
+    #             plt.ylabel("Value")
+    #             plt.title(f"{field} values")
+    #             plt.savefig(f"./plots/{field}_plot.png")
+    #         else:
+    #             log_file.write(f"Failed to get data from ThingSpeak\nResponse: {response.reason}\n")
+
+    # askDataForPlot("Temperature", 10)
 
     # the mqtt subscriber subscribes to the topics
     subscriber = DataAnalysis(mqtt_broker, mqtt_port, mqtt_topic)

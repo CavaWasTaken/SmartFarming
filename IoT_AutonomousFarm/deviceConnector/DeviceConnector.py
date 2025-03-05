@@ -78,4 +78,4 @@ while True:
             # write in a log file the value published
             log_file.write(f"Published: {senML}\n")
 
-    time.sleep(120)   # wait for 1 minute before reading the sensors again
+    time.sleep(20)   # wait for 1 minute before reading the sensors again

@@ -2,6 +2,7 @@ import json
 import paho.mqtt.client as PahoMQTT
 from MqttSub import MqttSubscriber
 import requests
+import cherrypy
 
 # each time that the device starts, we clear the log file
 with open("./logs/ThingSpeakAdaptor.log", "w") as log_file:
@@ -16,7 +17,8 @@ with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
     mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
-    url = config["url"]
+    write_url = config["write_url"]
+    read_url = config["read_url"]
 
 thingSpeak_config = {}  # dictionary containing the configuration of the ThingSpeak channel
 
@@ -44,7 +46,7 @@ def handle_message(topic, sensor_type, val):
             **{f"field{i+1}": value for i, value in enumerate(fields.values())}    # add the values of the fields to the payload
         }
 
-        response = requests.post(url, data=payload)    # send the request to the ThingSpeak API
+        response = requests.post(write_url, data=payload)    # send the request to the ThingSpeak API
         with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:    
             if response.status_code == 200:
                 log_file.write(f"Successfully updated ThingSpeak channel {thingSpeak_config['channel_id']} with payload: {payload}\n")
@@ -72,7 +74,81 @@ class ThingSpeakAdaptor(MqttSubscriber):
                     handle_message(topic, sensor_type, val)
                     break   # if the message is processed, break the loop
 
+def get_field_data(field, n):
+    with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:
+        log_file.write(f"Request to get last {n} values of field '{field}'\n")
+        # ask to the ThingSpeak API the last N data of the field
+        response = requests.get(f"{read_url}/{thingSpeak_config["channel_id"]}/feeds.json", params={'api_key': thingSpeak_config["read_api_key"], 'results': 0})
+        if response.status_code == 200:
+            data = response.json()
+            channel_info = data.get("channel", {})
+            field_num = None
+
+            for key, value in channel_info.items():
+                if value == field and key.startswith("field"):
+                    field_number = key.replace("field", "")  # Extract the number
+                    break
+
+            if field_number:
+                response = requests.get(f"{read_url}/{thingSpeak_config['channel_id']}/fields/{field_number}.json", params={"api_key": thingSpeak_config["read_api_key"], "results": n})
+
+                if response.status_code == 200:
+                    field_data = response.json()
+                    entries = field_data.get("feeds", [])
+                    values = [entry.get(f"field{field_number}") for entry in entries if entry.get(f"field{field_number}") is not None]
+
+                    log_file.write(f"Successfully fetched {len(values)} values of field '{field}': {values}\n")
+                    return {"values": values}
+                else:
+                    log_file.write(f"Failed to fetch data from ThingSpeak. Response: {response.reason}\n")
+                    raise cherrypy.HTTPError(status=500, message='Failed to fetch data from ThingSpeak')
+            else:
+                log_file.write(f"Failed to fetch data from ThingSpeak. Field '{field}' not found in the channel\n")
+                raise cherrypy.HTTPError(status=404, message='Field not found in the channel')
+        else:
+            log_file.write(f"Failed to fetch data from ThingSpeak. Response: {response.reason}\n")
+            raise cherrypy.HTTPError(status=500, message='Failed to fetch data from ThingSpeak')
+
+# REST API exposed by the ThingSpeak Adaptor
+class ThingSpeakAdaptorRestAPI(object):
+    exposed = True
+
+    def __init__(self, thingSpeak_connection):
+        self.thingSpeak_connection = thingSpeak_connection
+
+    @cherrypy.tools.json_out()
+    def GET(self, *uri, **params):
+        if len(uri) == 0:
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        elif uri[0] == "get_field_data":
+            return get_field_data(params['field'], params['n'])
+        else:
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+    
+    @cherrypy.tools.json_out()  # automatically convert return value
+    def POST(self, *uri, **params):
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+
+    @cherrypy.tools.json_out()  # automatically convert return value        
+    def PUT(self, *uri, **params):
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+        
+    @cherrypy.tools.json_out()  # automatically convert return value
+    def DELETE(self, *uri, **params):
+        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+
 if __name__ == "__main__":
+    thingSpeakClient = ThingSpeakAdaptorRestAPI(None)
+    conf = {
+        '/': {
+            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+            'tools.sessions.on': True,
+        }
+    }
+    cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8082})
+    cherrypy.tree.mount(thingSpeakClient, '/', conf)
+    cherrypy.engine.start()
+
     # instead of reading the topics like this, i would like to change it and make that the microservices build the topics by itself by knowing the greenhouse where it is connected and the plant that it contains
     response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'ThingSpeakAdaptor'})    # get the device information from the catalog
     if response.status_code == 200:

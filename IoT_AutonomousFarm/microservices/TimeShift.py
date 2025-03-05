@@ -7,11 +7,15 @@ from datetime import datetime, timedelta
 with open("./logs/TimeShift.log", "w") as log_file:
     pass
 
-# MQTT configuration
-mqtt_broker = "mqtt.eclipseprojects.io" # broker address
-mqtt_port = 1883    # broker port
-mqtt_topic = "greenhouse_1/schedules"   # topic to publish scheduled events
-keep_alive = 60
+# read the device_id and mqtt information of the broker from the json file
+with open("./TimeShift_config.json", "r") as config_fd:
+    config = json.load(config_fd)
+    catalog_url = config["catalog_url"]
+    dataAnalysis_url = config["dataAnalysis_url"]
+    device_id = config["device_id"]
+    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
+    mqtt_port = config["mqtt_connection"]["mqtt_port"]
+    keep_alive = config["mqtt_connection"]["keep_alive"]
 
 # MQTT Client setup
 client = mqtt.Client()
@@ -20,21 +24,6 @@ client.connect(mqtt_broker, mqtt_port, keep_alive)
 start_time = int(time.time())
 last_query = start_time
 flag = 1
-
-# we must think about different type of plants or we handle all the plants in the same way?
-
-# our system is sensor-driven, so even if we have scheduled events, we must check the sensor values to decide if we need to perform the scheduled event or not
-# this check must be done by the management component that handle the scheduled event
-
-# we perform scheduled events by time
-# the scheduled events are correlated to the actions that the system must perform, so we must define the actions that the system must perform, for example: irrigation, fertilization, lighting
-schedule = [
-    {"event": "irrigation", "start_date": "2024-12-10", "end_date": None, "start_time": "08:00:00", "end_time": "8:15:00", "recurrence": "daily"},
-    {"event": "fertilization", "start_date": "2024-12-10", "end_date": None, "start_time": "10:00:00", "end_time": "10:15:00", "recurrence": "weekly:Mon,Wed,Fri"},
-    {"event": "lighting", "start_date": "2024-12-10", "end_date": None, "start_time": "18:00:00", "end_time": "20:00:00", "recurrence": "daily"},
-    {"event": "humidity", "start_date": "2024-12-10", "end_date": None, "start_time": "12:00:00", "end_time": "12:15:00", "recurrence": "weekly:Tue,Thu,Sat"},
-]
-# there could be events that are not scheduled as recurring events, so they are one-time events
 
 while True:
     current_time = int(time.time())

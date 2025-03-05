@@ -1,5 +1,6 @@
 {
     "catalog_url": "http://localhost:8080",
+    "thingSpeak_url": "http://localhost:8082",
     "device_id": "4",
     "mqtt_connection": {
         "mqtt_port": 1883,
