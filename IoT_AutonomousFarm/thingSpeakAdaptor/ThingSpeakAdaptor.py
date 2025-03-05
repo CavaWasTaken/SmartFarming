@@ -16,10 +16,9 @@ with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
     mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
+    url = config["url"]
 
-fields = {}
-read_API = ""
-write_API = ""
+thingSpeak_config = {}  # dictionary containing the configuration of the ThingSpeak channel
 
 def handle_message(topic, sensor_type, val):
     with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:
@@ -27,28 +26,34 @@ def handle_message(topic, sensor_type, val):
         greenhouse_id = greenhouse.split("_")[1]    # extract the id of the greenhouse from the topic
         sensor_id = sensor.split("_")[1]    # extract the id of the sensor from the topic
 
-        url = f"https://api.thingspeak.com/update"  # url of the ThingSpeak API
+        fields = thingSpeak_config["fields"]    # get the fields of the ThingSpeak channel
+        if sensor_type == "NPK":
+            fields["Nitrogen"] = val["N"]
+            fields["Phosphorus"] = val["P"]
+            fields["Potassium"] = val["K"]
+        else:
+            fields[sensor_type] = val   # update the value of the field with the value received from the sensor
 
-        fields[f"greenhouse_{greenhouse_id}"][f"sensor_{sensor_id}"] = val
-
-        if any(value == "" for value in fields[f"greenhouse_{greenhouse_id}"].values()):  # if there are missing values in the fields, write a log message and return
-            with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:
-                log_file.write(f"Missing values in {f"greenhouse_{greenhouse_id}"}\n")
+        missing_fields = [k for k, v in fields.items() if v == ""]  # find the keys of the missing values
+        if missing_fields:  # if there are missing values in the fields, log them and return. We have to wait to have read all the data before sending to ThingSpeak
+            log_file.write(f"Missing values for fields: {missing_fields}\n")
             return
         
         payload = { # payload to send to the ThingSpeak API
-            "api_key": write_API,   # write api key of the channel
-            **{f"field{i+1}": value for i, value in enumerate(fields[f"greenhouse_{greenhouse_id}"].values())}    # add the values of the fields to the payload
+            "api_key": thingSpeak_config["write_api_key"],   # write api key of the channel
+            **{f"field{i+1}": value for i, value in enumerate(fields.values())}    # add the values of the fields to the payload
         }
 
         response = requests.post(url, data=payload)    # send the request to the ThingSpeak API
         with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:    
             if response.status_code == 200:
-                log_file.write(f"Successfully updated ThingSpeak channel {channel_data['channel_id']} with payload: {payload}\n")
+                log_file.write(f"Successfully updated ThingSpeak channel {thingSpeak_config['channel_id']} with payload: {payload}\n")
             else:
                 log_file.write(f"Failed to update ThingSpeak. Response: {response.reason}\n")
 
-        fields[key] = {k: "" for k in fields[key]}  # reset the fields of the key to empty strings
+        # reset the json to empty strings
+        for key in fields.keys():
+            fields[key] = ""
 
 class ThingSpeakAdaptor(MqttSubscriber):
     def __init__(self, broker, port, topics):
@@ -58,6 +63,7 @@ class ThingSpeakAdaptor(MqttSubscriber):
         with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:  # print all the messages received on a log file
             message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
             log_file.write(f"Received: {message}\n")
+            log_file.flush()
             for topic in mqtt_topic:
                 if message["bn"] == topic:
                     message = message["e"]
@@ -83,8 +89,7 @@ if __name__ == "__main__":
         greenhouse_info = response.json()    # greenhouse_info is a dictionary with the information of the greenhouse
         with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:
             log_file.write(f"Received greenhouse information: {greenhouse_info}\n")
-            read_API = greenhouse_info["thingspeak_channel_read_key"]
-            write_API = greenhouse_info["thingspeak_channel_write_key"]
+            thingSpeak_config = greenhouse_info["thingSpeak_config"]
     else:
         with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:
             log_file.write(f"Failed to get greenhouse information from the Catalog\nResponse: {response.reason}\n")
@@ -94,7 +99,6 @@ if __name__ == "__main__":
     mqtt_topic = [] # array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
         mqtt_topic.append(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}")
-        fields[f"greenhouse_{sensor['greenhouse_id']}"][f"sensor_{sensor['sensor_id']}"] = ""    # initialize the fields of the sensor to empty strings
 
     # the mqtt subscriber subscribes to the topics
     subscriber = ThingSpeakAdaptor(mqtt_broker, mqtt_port, mqtt_topic)

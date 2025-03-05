@@ -86,9 +86,8 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
             'user_id': greenhouse[1],
             'name': greenhouse[2],
             'location': greenhouse[3],
-            'thingspeak_channel_read_key': greenhouse[4],
-            'thingspeak_channel_write_key': greenhouse[5],
-            'token': greenhouse[6]
+            'token': greenhouse[4],
+            'thingSpeak_config': greenhouse[5]
         }
         
         return greenhouse_dict

@@ -83,9 +83,8 @@ CREATE TABLE public.greenhouses (
     user_id integer NOT NULL,
     name character varying(100) NOT NULL,
     location character varying(255),
-    thing_speak_channel_read_api_key character varying(20),
-    thing_speak_channel_write_api_key character varying(20),
-    token character(64)
+    token character(64),
+    thingspeak_config jsonb
 );
 
 
@@ -329,8 +328,8 @@ COPY public.devices (device_id, greenhouse_id, name, type, params) FROM stdin;
 -- Data for Name: greenhouses; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.greenhouses (greenhouse_id, user_id, name, location, thing_speak_channel_read_api_key, thing_speak_channel_write_api_key, token) FROM stdin;
-0	0	greenhouse_0	Torino	E8FA7YO31E86NVDU	DIOMNEBEJT9EW5PQ	\N
+COPY public.greenhouses (greenhouse_id, user_id, name, location, token, thingspeak_config) FROM stdin;
+0	0	greenhouse_0	Torino	\N	{"fields": {"pH": "", "Humidity": "", "Nitrogen": "", "Potassium": "", "Phosphorus": "", "Temperature": "", "SoilMoisture": "", "LightIntensity": ""}, "channel_id": 2794826, "read_api_key": "E8FA7YO31E86NVDU", "write_api_key": "DIOMNEBEJT9EW5PQ"}
 \.
 
 

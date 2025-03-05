@@ -1,229 +1,122 @@
-Received 6 sensors: [{'sensor_id': 0, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': 30.0, 'min': 15.0}, 'thing_speak_channel_id': None}, {'sensor_id': 5, 'greenhouse_id': 0, 'plant_id': None, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 70.0, 'min': 40.0}, 'thing_speak_channel_id': None}, {'sensor_id': 2, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 60.0, 'min': 20.0}, 'thing_speak_channel_id': None}, {'sensor_id': 4, 'greenhouse_id': 0, 'plant_id': None, 'type': 'LightIntensity', 'name': 'LightIntensity', 'unit': 'Lux', 'threshold': {'max': 10000.0, 'min': 1000.0}, 'thing_speak_channel_id': None}, {'sensor_id': 3, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 7.5, 'min': 5.5}, 'thing_speak_channel_id': None}, {'sensor_id': 1, 'greenhouse_id': 0, 'plant_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/L', 'threshold': {'K': {'max': 800.0, 'min': 200.0}, 'N': {'max': 800.0, 'min': 200.0}, 'P': {'max': 800.0, 'min': 200.0}}, 'thing_speak_channel_id': None}]
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.975573268027322, 't': 180}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.78213101082855, 't': 180}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.805952310327434, 't': 180}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.975573268027322, 'field2': 47.78213101082855, 'field3': 613.0450561851414}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 613.0450561851414, 't': 180}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.047263103807879, 't': 180}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 501.67409471660363, 'field2': 499.20042888480964, 'field3': 499.2982133566285, 'field4': 49.805952310327434, 'field5': 7.047263103807879}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 501.67409471660363, 'P': 499.20042888480964, 'K': 499.2982133566285}, 't': 180}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.20900003748052, 't': 239}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.309619677439215, 't': 239}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.47907893838742, 't': 239}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.20900003748052, 'field2': 44.309619677439215, 'field3': 616.4056176166623}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 616.4056176166623, 't': 239}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.951194393795224, 't': 239}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 499.82722932567486, 'field2': 498.74902912036896, 'field3': 498.2792110763715, 'field4': 51.47907893838742, 'field5': 6.951194393795224}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.82722932567486, 'P': 498.74902912036896, 'K': 498.2792110763715}, 't': 239}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.872321512805595, 't': 299}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 49.184693654744144, 't': 299}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.33158194502251, 't': 299}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.872321512805595, 'field2': 49.184693654744144, 'field3': 616.7685311219377}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 616.7685311219377, 't': 299}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.98264886916328, 't': 299}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 500.9911903753913, 'field2': 497.6191289571016, 'field3': 499.54660960558493, 'field4': 49.33158194502251, 'field5': 6.98264886916328}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.9911903753913, 'P': 497.6191289571016, 'K': 499.54660960558493}, 't': 299}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.923878737666957, 't': 360}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 45.92495861781693, 't': 360}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.363581992780304, 't': 360}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.923878737666957, 'field2': 45.92495861781693, 'field3': 610.049491973896}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 610.049491973896, 't': 360}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.027875086048766, 't': 360}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 497.8722514019754, 'field2': 498.02109348287485, 'field3': 499.29210916633446, 'field4': 50.363581992780304, 'field5': 7.027875086048766}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.8722514019754, 'P': 498.02109348287485, 'K': 499.29210916633446}, 't': 360}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.678500312301587, 't': 420}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.65172442027408, 't': 420}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.53722282286218, 't': 420}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.678500312301587, 'field2': 44.65172442027408, 'field3': 608.5984312860832}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 608.5984312860832, 't': 420}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.048602978574945, 't': 420}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 499.31112618295816, 'field2': 497.51070965545955, 'field3': 499.51202445999184, 'field4': 49.53722282286218, 'field5': 7.048602978574945}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.31112618295816, 'P': 497.51070965545955, 'K': 499.51202445999184}, 't': 420}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.976885225065377, 't': 479}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 46.0322935853139, 't': 479}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.08061060628382, 't': 479}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.976885225065377, 'field2': 46.0322935853139, 'field3': 611.2122395393164}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 611.2122395393164, 't': 479}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.963531888501703, 't': 479}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 500.2410452089101, 'field2': 500.343084824437, 'field3': 498.59462090298126, 'field4': 49.08061060628382, 'field5': 6.963531888501703}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.2410452089101, 'P': 500.343084824437, 'K': 498.59462090298126}, 't': 479}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.69536885299326, 't': 539}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 46.184336137667415, 't': 539}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.29031095790722, 't': 539}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.69536885299326, 'field2': 46.184336137667415, 'field3': 609.35506269734}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 609.35506269734, 't': 539}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.005284669626208, 't': 539}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 498.4268270148847, 'field2': 497.30712062744544, 'field3': 499.9985566586014, 'field4': 49.29031095790722, 'field5': 7.005284669626208}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.4268270148847, 'P': 497.30712062744544, 'K': 499.9985566586014}, 't': 539}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.08981452005591, 't': 600}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 48.3826499590649, 't': 600}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.297069610860255, 't': 600}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.08981452005591, 'field2': 48.3826499590649, 'field3': 608.518221398694}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 608.518221398694, 't': 600}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.008055449088089, 't': 600}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 497.46421598681127, 'field2': 498.6466572893869, 'field3': 499.7017758880772, 'field4': 50.297069610860255, 'field5': 7.008055449088089}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.46421598681127, 'P': 498.6466572893869, 'K': 499.7017758880772}, 't': 600}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 20.984358205535997, 't': 660}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.371773862753685, 't': 660}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.80220014233484, 't': 660}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 20.984358205535997, 'field2': 44.371773862753685, 'field3': 612.8725027945399}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 612.8725027945399, 't': 660}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.945032214277714, 't': 660}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 500.4938686604657, 'field2': 497.82010426102033, 'field3': 498.4547155437482, 'field4': 51.80220014233484, 'field5': 6.945032214277714}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.4938686604657, 'P': 497.82010426102033, 'K': 498.4547155437482}, 't': 660}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.51304558353399, 't': 719}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 44.62111930060378, 't': 719}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.35412490230707, 't': 719}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.51304558353399, 'field2': 44.62111930060378, 'field3': 607.3569231879735}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 607.3569231879735, 't': 719}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.018321029603338, 't': 719}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 500.1449421435194, 'field2': 498.52973263665876, 'field3': 498.9606767255812, 'field4': 49.35412490230707, 'field5': 7.018321029603338}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.1449421435194, 'P': 498.52973263665876, 'K': 498.9606767255812}, 't': 719}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.71283578570928, 't': 782}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.026366572363735, 't': 782}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.48639970394208, 't': 782}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.71283578570928, 'field2': 47.026366572363735, 'field3': 605.0222734171172}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.0222734171172, 't': 782}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.946976140253763, 't': 782}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 499.13560166019295, 'field2': 500.4544914399207, 'field3': 498.6843199872712, 'field4': 48.48639970394208, 'field5': 6.946976140253763}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.13560166019295, 'P': 500.4544914399207, 'K': 498.6843199872712}, 't': 782}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.756488804914753, 't': 841}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 49.678374008609595, 't': 841}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.0426872035839, 't': 841}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.756488804914753, 'field2': 49.678374008609595, 'field3': 605.4818200532194}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.4818200532194, 't': 841}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.934397364664134, 't': 841}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 499.1061074623846, 'field2': 499.19515968367614, 'field3': 499.4364481813268, 'field4': 48.0426872035839, 'field5': 6.934397364664134}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.1061074623846, 'P': 499.19515968367614, 'K': 499.4364481813268}, 't': 841}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.625610966104585, 't': 902}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 48.6299155426691, 't': 902}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 48.10109442163753, 't': 902}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.625610966104585, 'field2': 48.6299155426691, 'field3': 601.3218596285146}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 601.3218596285146, 't': 902}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.912770765201735, 't': 902}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 497.2116406929215, 'field2': 497.9010694973487, 'field3': 499.8514626657258, 'field4': 48.10109442163753, 'field5': 6.912770765201735}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.2116406929215, 'P': 497.9010694973487, 'K': 499.8514626657258}, 't': 902}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.303996891725593, 't': 962}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 45.365301443539195, 't': 962}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.20428741199389, 't': 962}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.303996891725593, 'field2': 45.365301443539195, 'field3': 606.6779532536681}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 606.6779532536681, 't': 962}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.072649984310674, 't': 962}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 497.19991553933585, 'field2': 496.83184325368046, 'field3': 499.4296010365838, 'field4': 50.20428741199389, 'field5': 7.072649984310674}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.19991553933585, 'P': 496.83184325368046, 'K': 499.4296010365838}, 't': 962}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.577393611754996, 't': 1021}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.9889429798937, 't': 1021}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 50.474185593319284, 't': 1021}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.577393611754996, 'field2': 47.9889429798937, 'field3': 609.1877582218625}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 609.1877582218625, 't': 1021}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.885641821185959, 't': 1021}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 498.5585430394476, 'field2': 498.9475037418897, 'field3': 497.0040391108115, 'field4': 50.474185593319284, 'field5': 6.885641821185959}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 498.5585430394476, 'P': 498.9475037418897, 'K': 497.0040391108115}, 't': 1021}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.911811870554423, 't': 1081}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.09209896260153, 't': 1081}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 49.4576501472232, 't': 1081}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.911811870554423, 'field2': 47.09209896260153, 'field3': 606.6121195948987}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 606.6121195948987, 't': 1081}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.910261793721955, 't': 1081}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 499.75080292673783, 'field2': 498.4938563651796, 'field3': 496.7694864060531, 'field4': 49.4576501472232, 'field5': 6.910261793721955}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 499.75080292673783, 'P': 498.4938563651796, 'K': 496.7694864060531}, 't': 1081}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.572456096654182, 't': 1142}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.82293944525301, 't': 1142}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7881599533553, 't': 1142}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.572456096654182, 'field2': 47.82293944525301, 'field3': 605.7471530005427}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.7471530005427, 't': 1142}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.948655829055257, 't': 1142}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 497.899263499157, 'field2': 499.09147760595283, 'field3': 500.0473978068161, 'field4': 47.7881599533553, 'field5': 6.948655829055257}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 497.899263499157, 'P': 499.09147760595283, 'K': 500.0473978068161}, 't': 1142}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 21.918449928427325, 't': 1202}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 47.87309054961302, 't': 1202}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 47.7691949863184, 't': 1202}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 21.918449928427325, 'field2': 47.87309054961302, 'field3': 605.7149135102339}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 605.7149135102339, 't': 1202}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 6.872095914599, 't': 1202}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 496.9547534084385, 'field2': 499.7889186958514, 'field3': 496.8059991463396, 'field4': 47.7691949863184, 'field5': 6.872095914599}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 496.9547534084385, 'P': 499.7889186958514, 'K': 496.8059991463396}, 't': 1202}
-Missing values for Temperature in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Temperature', 'n': 'Temperature', 'v': 22.583855427726004, 't': 1261}
-Missing values for Humidity in greenhouse_0
-Received: {'bn': 'greenhouse_0/plant_ALL/DTH22/Humidity', 'n': 'Humidity', 'v': 50.810382911157106, 't': 1261}
-Missing values for SoilMoisture in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/SoilMoisture/SoilMoisture', 'n': 'SoilMoisture', 'v': 51.508427355376654, 't': 1261}
-Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 22.583855427726004, 'field2': 50.810382911157106, 'field3': 602.3152246641148}
-Received: {'bn': 'greenhouse_0/plant_ALL/LightIntensity/LightIntensity', 'n': 'LightIntensity', 'v': 602.3152246641148, 't': 1261}
-Missing values for pH in plant_0_0
-Received: {'bn': 'greenhouse_0/plant_0/pH/pH', 'n': 'pH', 'v': 7.056673123744867, 't': 1261}
-Successfully updated ThingSpeak channel 2794836 with payload: {'api_key': 'YO4BG26YPBCFX427', 'field1': 500.12081096678065, 'field2': 497.0128791911595, 'field3': 498.4540016595618, 'field4': 51.508427355376654, 'field5': 7.056673123744867}
-Received: {'bn': 'greenhouse_0/plant_0/NPK/NPK', 'n': 'NPK', 'v': {'N': 500.12081096678065, 'P': 497.0128791911595, 'K': 498.4540016595618}, 't': 1261}
+Received 6 sensors: [{'sensor_id': 0, 'greenhouse_id': 0, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': 26.0, 'min': 18.0}, 'domain': {'max': 50, 'min': -10}}, {'sensor_id': 5, 'greenhouse_id': 0, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 75.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 2, 'greenhouse_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 80.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 4, 'greenhouse_id': 0, 'type': 'LightIntensity', 'name': 'PAR', 'unit': 'µmol/m²/s', 'threshold': {'max': 600.0, 'min': 400.0}, 'domain': {'max': 2500, 'min': 0}}, {'sensor_id': 3, 'greenhouse_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 6.8, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}}, {'sensor_id': 1, 'greenhouse_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 300, 'min': 50}, 'P': {'max': 150, 'min': 30}}, 'domain': {'max': 1000, 'min': 0}}]
+Received greenhouse information: {'greenhouse_id': 0, 'user_id': 0, 'name': 'greenhouse_0', 'location': 'Torino', 'token': None, 'thingSpeak_config': {'fields': {'pH': '', 'Humidity': '', 'Nitrogen': '', 'Potassium': '', 'Phosphorus': '', 'Temperature': '', 'SoilMoisture': '', 'LightIntensity': ''}, 'channel_id': 2794826, 'read_api_key': 'E8FA7YO31E86NVDU', 'write_api_key': 'DIOMNEBEJT9EW5PQ'}}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.795600338896996, 'u': 'Cel', 't': 679}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 25.08009703268832, 'u': '%', 't': 679}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.66541597866536, 'u': '%', 't': 679}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 683.6179898996922, 'u': 'µmol/m²/s', 't': 679}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.972524641634544, 'u': None, 't': 679}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 147.23276494262726, 'P': 197.06619891933568, 'K': 200.4425433784172}, 'u': 'mg/kg', 't': 679}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 6.972524641634544, 'field2': 25.08009703268832, 'field3': 147.23276494262726, 'field4': 200.4425433784172, 'field5': 197.06619891933568, 'field6': 24.795600338896996, 'field7': 50.66541597866536, 'field8': 683.6179898996922}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.547721649832383, 'u': 'Cel', 't': 689}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 22.20300318828101, 'u': '%', 't': 689}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.29147274058699, 'u': '%', 't': 689}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 686.6260181898778, 'u': 'µmol/m²/s', 't': 689}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.930236103509341, 'u': None, 't': 689}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 148.02855746056372, 'P': 197.36633286806006, 'K': 197.72341732502454}, 'u': 'mg/kg', 't': 689}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 6.930236103509341, 'field2': 22.20300318828101, 'field3': 148.02855746056372, 'field4': 197.72341732502454, 'field5': 197.36633286806006, 'field6': 24.547721649832383, 'field7': 51.29147274058699, 'field8': 686.6260181898778}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.89890711569268, 'u': 'Cel', 't': 699}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 27.156591923216794, 'u': '%', 't': 699}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.708846131226124, 'u': '%', 't': 699}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 686.313419636553, 'u': 'µmol/m²/s', 't': 699}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 7.036544241731611, 'u': None, 't': 699}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 148.84668961555826, 'P': 200.93897244658393, 'K': 200.99193968739064}, 'u': 'mg/kg', 't': 699}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 7.036544241731611, 'field2': 27.156591923216794, 'field3': 148.84668961555826, 'field4': 200.99193968739064, 'field5': 200.93897244658393, 'field6': 24.89890711569268, 'field7': 48.708846131226124, 'field8': 686.313419636553}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 23.86013835999378, 'u': 'Cel', 't': 709}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 23.059154073413794, 'u': '%', 't': 709}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.85612827111227, 'u': '%', 't': 709}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 688.7227886489339, 'u': 'µmol/m²/s', 't': 709}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.883714141086183, 'u': None, 't': 709}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 149.11779461200288, 'P': 198.3216860325385, 'K': 199.15781732514822}, 'u': 'mg/kg', 't': 709}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 6.883714141086183, 'field2': 23.059154073413794, 'field3': 149.11779461200288, 'field4': 199.15781732514822, 'field5': 198.3216860325385, 'field6': 23.86013835999378, 'field7': 49.85612827111227, 'field8': 688.7227886489339}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 25.28758946341614, 'u': 'Cel', 't': 719}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 27.38442031319353, 'u': '%', 't': 719}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.20602528776692, 'u': '%', 't': 719}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 683.8396989611722, 'u': 'µmol/m²/s', 't': 719}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 7.016608702400455, 'u': None, 't': 719}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 150.37260241519957, 'P': 199.70099522560093, 'K': 200.36692609717363}, 'u': 'mg/kg', 't': 719}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 7.016608702400455, 'field2': 27.38442031319353, 'field3': 150.37260241519957, 'field4': 200.36692609717363, 'field5': 199.70099522560093, 'field6': 25.28758946341614, 'field7': 51.20602528776692, 'field8': 683.8396989611722}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 25.539781787662815, 'u': 'Cel', 't': 729}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 23.95464452141428, 'u': '%', 't': 729}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.470640683587554, 'u': '%', 't': 729}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 687.6113487294499, 'u': 'µmol/m²/s', 't': 729}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.938852209483573, 'u': None, 't': 729}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 148.14023768173215, 'P': 197.1546566202399, 'K': 199.6362147105497}, 'u': 'mg/kg', 't': 729}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 6.938852209483573, 'field2': 23.95464452141428, 'field3': 148.14023768173215, 'field4': 199.6362147105497, 'field5': 197.1546566202399, 'field6': 25.539781787662815, 'field7': 48.470640683587554, 'field8': 687.6113487294499}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.32953037158315, 'u': 'Cel', 't': 740}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 24.33635498852592, 'u': '%', 't': 740}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.686769139428364, 'u': '%', 't': 740}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 684.5118907791971, 'u': 'µmol/m²/s', 't': 740}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.9140986481536935, 'u': None, 't': 740}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 149.4170957745462, 'P': 198.62133024445524, 'K': 197.45745332875958}, 'u': 'mg/kg', 't': 740}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 6.9140986481536935, 'field2': 24.33635498852592, 'field3': 149.4170957745462, 'field4': 197.45745332875958, 'field5': 198.62133024445524, 'field6': 24.32953037158315, 'field7': 50.686769139428364, 'field8': 684.5118907791971}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 23.796209537846938, 'u': 'Cel', 't': 749}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 23.804781096695834, 'u': '%', 't': 749}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.72167065449362, 'u': '%', 't': 749}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 690.2433769687352, 'u': 'µmol/m²/s', 't': 749}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 7.026780187180509, 'u': None, 't': 749}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 146.9828182253423, 'P': 200.4359226530476, 'K': 199.68724871697657}, 'u': 'mg/kg', 't': 749}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 7.026780187180509, 'field2': 23.804781096695834, 'field3': 146.9828182253423, 'field4': 199.68724871697657, 'field5': 200.4359226530476, 'field6': 23.796209537846938, 'field7': 51.72167065449362, 'field8': 690.2433769687352}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.67532749970506, 'u': 'Cel', 't': 759}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 25.211790810104354, 'u': '%', 't': 759}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.652849055128016, 'u': '%', 't': 759}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 686.4222534893102, 'u': 'µmol/m²/s', 't': 759}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 7.06426100550202, 'u': None, 't': 759}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 149.81779427239087, 'P': 198.523199680175, 'K': 200.82177205837937}, 'u': 'mg/kg', 't': 759}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 7.06426100550202, 'field2': 25.211790810104354, 'field3': 149.81779427239087, 'field4': 200.82177205837937, 'field5': 198.523199680175, 'field6': 24.67532749970506, 'field7': 48.652849055128016, 'field8': 686.4222534893102}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.319021960470227, 'u': 'Cel', 't': 769}}
+Missing values for fields: ['pH', 'Humidity', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 21.827957720741704, 'u': '%', 't': 769}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'SoilMoisture', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.25758223575736, 'u': '%', 't': 769}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus', 'LightIntensity']
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 688.3128898005723, 'u': 'µmol/m²/s', 't': 769}}
+Missing values for fields: ['pH', 'Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 7.054634339264304, 'u': None, 't': 769}}
+Missing values for fields: ['Nitrogen', 'Potassium', 'Phosphorus']
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 150.239156326039, 'P': 200.39915891665294, 'K': 198.80799602903647}, 'u': 'mg/kg', 't': 769}}
+Successfully updated ThingSpeak channel 2794826 with payload: {'api_key': 'DIOMNEBEJT9EW5PQ', 'field1': 7.054634339264304, 'field2': 21.827957720741704, 'field3': 150.239156326039, 'field4': 198.80799602903647, 'field5': 200.39915891665294, 'field6': 24.319021960470227, 'field7': 51.25758223575736, 'field8': 688.3128898005723}
