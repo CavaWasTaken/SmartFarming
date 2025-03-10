@@ -1,19 +1,22 @@
-import paho.mqtt.client as mqtt
 from datetime import datetime
 import time
 import json
 import requests
+
 import sys
 import os
-# add the path of the parent directory to the sys path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))) # we can import the sensors classes
-
-from sensors import DTH22, Light, NPK, pH, SoilMoisture, Sensor
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))) # so we can import classes from the parent directory
+from sensors import DTH22, Light, NPK, pH, SoilMoisture, Sensor # import the classes of the sensors
+from MqttClient import MqttClient   # import the MqttClient class
 
 # function to write in a log file the message passed as argument
 def write_log(message):
     with open("./logs/DeviceConnector.log", "a") as log_file:
-        log_file.write(f"{message}")
+        log_file.write(f"{message}\n")
+
+# function for the device connector to receive the needed action and perform it
+def ActionReceived(client, userdata, message):
+    write_log(f"Received action: {message.payload.decode()}")    # write in the log file the action received
 
 # each time that the device starts, we clear the log file
 with open("./logs/DeviceConnector.log", "w") as log_file:
@@ -32,16 +35,16 @@ with open("./DeviceConnector_config.json", "r") as config_fd:
 response = requests.get(f'{catalog_url}/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
 if response.status_code == 200: # if the request is successful
     sensors = response.json()["sensors"]    # sensors is a dictionary of sensors connected to the device connector
-    write_log(f"Received {len(sensors)} sensors: {sensors}\n")
+    write_log(f"Received {len(sensors)} sensors: {sensors}")
 else:
-    write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
+    write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
     exit(1) # if we fail to get the sensor list, the device connector stops
 
 # get the location of the greenhouse from the Catalog
 response = requests.get(f'{catalog_url}/get_greenhouse_location', params={'greenhouse_id': sensors[0]["greenhouse_id"]})    # read the greenhouse location from the Catalog
 if response.status_code == 200: # if the request is successful
     greenhouse_location = response.json()["location"]    # get the location from the response
-    write_log(f"Received greenhouse location: {greenhouse_location}\n")
+    write_log(f"Received greenhouse location: {greenhouse_location}")
     classSensor = Sensor.Sensor(location=greenhouse_location)    # create a sensor object with the location of the greenhouse
     classDTH22 = DTH22.DTH22(classSensor)    # create a DTH22 object with the sensor object
     classLight = Light.Light(classSensor)  # create a LightIntensity object with the sensor object
@@ -49,13 +52,18 @@ if response.status_code == 200: # if the request is successful
     classpH = pH.pH(classSensor)    # create a pH object with the sensor object
     classSoilMoisture = SoilMoisture.SoilMoisture(classSensor)  # create a SoilMoisture object with the sensor object
 else:
-    write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
+    write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
     exit(1)
 
 # MQTT Client setup
-client = mqtt.Client()
-client.connect(mqtt_broker, mqtt_port, keep_alive)  # connection to the MQTT broker with the read configuration
-write_log(f"Connected to the MQTT broker\n")    # write in the log file that the connection is successful
+client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DeviceConnector_{device_id}", ActionReceived, write_log)    # create a MQTT client object
+client.start()  # start the MQTT client
+
+write_log("")
+
+# connection to topics to receive needed action
+for sensor in sensors:  # iterate over the list of sensors
+    client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action")    # subscribe to the topic to receive actions from the Catalog
 
 start_time = datetime.now() # get the current time
 start_time = (start_time.hour*3600 + start_time.minute*60 + start_time.second)/3600  # convert the time to hours
@@ -65,7 +73,7 @@ while True:
     timestamp = (timestamp.hour*3600 + timestamp.minute*60 + timestamp.second)/3600  # convert the time to hours
     timestamp -= start_time  # calculate the time passed since the start of the simulation
 
-    write_log("\n")
+    write_log("")
     for sensor in sensors:  # iterate over the list of sensors
         val = -1    # default value read from the sensor
         # check the sensor name, if its knwon we read its value
@@ -85,14 +93,14 @@ while True:
             val = classLight.get_LightIntensity_Values()
         else:
             # not recognized sensor, write the error in the log file
-            write_log(f"Sensor not recognized: {sensor['name']}\n")
+            write_log(f"Sensor not recognized: {sensor['name']}")
             continue    # skip to the next iteration, so at the next sensor
         
         # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
         senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/sensor_{sensor['sensor_id']}", "e": {"n": sensor["type"], "v": val, "u": sensor["unit"], "t": int(timestamp*3600)}})
         senML_dictionary = json.loads(senML)
         client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
-        # write in a log file the value published
-        write_log(f"Published: {senML}\n")
 
-    time.sleep(120)   # wait for 2 minutes before reading the sensors again
+    time.sleep(10)   # wait for 2 minutes before reading the sensors again
+
+client.stop()   # stop the MQTT client

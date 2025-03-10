@@ -1,271 +1,147 @@
 import json
-import paho.mqtt.client as PahoMQTT
-from MqttSub import MqttSubscriber
 import requests
 import threading
 from functools import partial
+import time
+import Management
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))) # so we can import classes from the parent directory
+from MqttClient import MqttClient   # import the MqttClient class
+
+# function to write in a log file the message passed as argument
+def write_log(message):
+    with open("./logs/NutrientManagement.log", "a") as log_file:
+        log_file.write(f"{message}\n")
 
 # each time that the device starts, we clear the log file
 with open("./logs/NutrientManagement.log", "w") as log_file:
     pass
 
-# read the device_id and mqtt information of the broker from the json file
+# read the info from the json file
 with open("./NutrientManagement_config.json", "r") as config_fd:
-    config = json.load(config_fd)
-    catalog_url = config["catalog_url"]
-    dataAnalysis_url = config["dataAnalysis_url"]
-    device_id = config["device_id"]
-    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
-    mqtt_port = config["mqtt_connection"]["mqtt_port"]
-    keep_alive = config["mqtt_connection"]["keep_alive"]
+    config = json.load(config_fd)   # load the configuration from the file as a dictionary
+    catalog_url = config["catalog_url"] # get the url of the catalog
+    dataAnalysis_url = config["dataAnalysis_url"]   # get the url of the data analysis
+    device_id = config["device_id"] # get the id of the device
+    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # mqtt broker
+    mqtt_port = config["mqtt_connection"]["mqtt_port"]  # mqtt port
+    keep_alive = config["mqtt_connection"]["keep_alive"]    # keep alive time
 
-expected_value = {}
-timers = {}
-tresholds = {}
-domains = {}
+expected_value = {} # dictionary to save the next expected value for each sensor
+timers = {} # dictionary to save the timer (interval of time for waiting the next value of that sensor) for each sensor
+tresholds = {}  # dictionary to save the treshold interval for each sensor
+domains = {}    # dictionary  to save the domain of the values collectable by each sensor
 
+# function that handles the received message from the broker
 def handle_message(topic, sensor_type, val, unit, timestamp):
-    with open("./logs/NutrientManagement.log", "a") as log_file:
+    # function that sends an alert to the user when the expected value doesn't arrive (timer expiration)
+    def TimerExpiration(sensor_id, expected_timestamp):
+        write_log(f"WARNING: Was expecting a value of {sensor_type} from sensor_{sensor_id} at time {expected_timestamp}, but it didn't arrive")   # ALERT TO BE SENT TO THE UI
+        SendAlert(f"WARNING: Was expecting a value of {sensor_type} from sensor_{sensor_id} at time {expected_timestamp}, but it didn't arrive")
 
-        def Send_alert(sensor_id, expected_timestamp):
-            with open("./logs/NutrientManagement.log", "a") as log_file:
-                log_file.write(f"WARNING: Was expecting a value of {sensor_type} from sensor_{sensor_id} at time {expected_timestamp}, but it didn't arrive\n")   # ALERT TO BE SENT TO THE UI
+    def SendAlert(msg):
+        client.publish(f"greenhouse_{greenhouse_id}/alert", msg)
 
-        def Severity(distance):
-            max = domains[sensor_id]["max"]
-            min = domains[sensor_id]["min"]
-            severity = distance / max - min
+    def SendInfo(msg):
+        client.publish(f"greenhouse_{greenhouse_id}/info", msg)
 
-            return severity
-        
-        def Is_inside(min_treshold, val, max_treshold):   # function that checks if the value is in the accepted range
-            return min_treshold <= val <= max_treshold
-        
-        def Check_value(min_treshold, max_treshold, sensor_id):
-                
-            # evaluate the next expected value
-            response = requests.get(f"{dataAnalysis_url}/get_next_value", params={'sensor_id': sensor_id, 'sensor_type': sensor_type, 'timestamp': timestamp})    # get the expected value from the data analysis
-            if response.status_code == 200:
-                expected_val = response.json()["next_value"]
-                if expected_val is not None:
-                    log_file.write(f"Next expected value of sensor_{sensor_id} ({sensor_type}): {expected_val}\n")   # THIS INFO CAN BE SENT TO THE UI
-                else:   # if the response is None, we consider the prediction lost
-                    # send notification to the user through the telegram bot           
-                    log_file.write(f"WARNING: Next expected value of sensor_{sensor_id} ({sensor_type}) not found\n")    # ALERT TO BE SENT TO THE UI
-                    return
-            else:
-                log_file.write(f"WARNING: Impossible to get the next expected value of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\nResponse: {response.reason}\n")    # ALERT TO BE SENT TO THE UI
-                return
+    def SendAction(msg):
+        client.publish(f"greenhouse_{greenhouse_id}/sensor_{sensor_id}/action", msg)
 
-            if expected_value[sensor_id] is None:  # if it is the first value, just update the expected value and terminate the function
-                expected_value[sensor_id] = expected_val   # update the next expected value
-                return
+    def Severity(distance):
+        max = domains[sensor_id]["max"]
+        min = domains[sensor_id]["min"]
+        severity = distance / max - min
 
-            if sensor_type == "NPK":
-                for nutrient in ["N", "P", "K"]:
-                    nutrient_val = val[nutrient]
-                    expected_nutrient_val = expected_val[nutrient]
+        return severity
+    
+    def Is_inside(min_treshold, val, max_treshold):   # function that checks if the value is in the accepted range
+        return min_treshold <= val <= max_treshold
+    
+    greenhouse, sensor = topic.split("/")  # split the topic and get all the information contained
+    
+    greenhouse_id = int(greenhouse.split("_")[1])
+    sensor_id = int(sensor.split("_")[1])
 
-                    if abs(nutrient_val - expected_nutrient_val) > 5:
-                        log_file.write(f"WARNING: The measured value {nutrient_val} of sensor_{sensor_id} ({sensor_type} - {nutrient}) is unexpected. (Expected: {expected_nutrient_val})\tWaiting for the next value\n")
-                    else:
-                        if not Is_inside(min_treshold[nutrient], nutrient_val, max_treshold[nutrient]):
-                            log_file.write(f"WARNING: The measured value {nutrient_val} {unit} of sensor_{sensor_id} ({sensor_type} - {nutrient}) went outside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n")
+    treshold = tresholds[sensor_id]    # get the treshold for the sensor
 
-                            # Evaluate how far the value is from the interval
-                            if nutrient_val > max_treshold[nutrient]:
-                                distance = (nutrient_val - max_treshold[nutrient])
-                            else:
-                                distance = (min_treshold[nutrient] - nutrient_val)
-
-                            severity = Severity(distance)
-                            if severity is None:
-                                log_file.write(f"WARNING: Failed to evaluate severity for sensor_{sensor_id} ({sensor_type} - {nutrient})\n")
-                                return
-
-                            if severity > 0.5:
-                                log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})\n")
-                            else:
-                                response = requests.get(f"{dataAnalysis_url}/get_mean_value", params={'sensor_id': sensor_id, 'sensor_type': sensor_type, 'timestamp': timestamp})
-                                if response.status_code == 200:
-                                    mean_value = response.json()["mean_value"].get(nutrient)  # Extract mean value for the specific nutrient
-                                    if mean_value is not None:
-                                        log_file.write(f"Mean value of sensor_{sensor_id} ({sensor_type} - {nutrient}): {mean_value}\n")
-                                    else:
-                                        log_file.write(f"WARNING: Failed to get mean value for sensor_{sensor_id} ({sensor_type} - {nutrient}) from DataAnalysis\n")
-                                        return
-
-                                    if not Is_inside(min_treshold[nutrient], mean_value, max_treshold[nutrient]):
-                                        log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})\n")
-                                    else:
-                                        if abs(nutrient_val - mean_value) > 5:
-                                            log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})\n")
-                                        else:
-                                            if not Is_inside(min_treshold[nutrient], expected_nutrient_val, max_treshold[nutrient]):
-                                                log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})\n")
-                                else:
-                                    log_file.write(f"Failed to get mean value for sensor_{sensor_id} ({sensor_type} - {nutrient}) from DataAnalysis\nResponse: {response.reason}\n")
-                                    return
-                        else:
-                            if not Is_inside(min_treshold[nutrient], expected_nutrient_val, max_treshold[nutrient]):
-                                log_file.write(f"WARNING: The next expected value of sensor_{sensor_id} ({sensor_type} - {nutrient}) is outside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n")
-
-                                if expected_nutrient_val > max_treshold[nutrient]:
-                                    distance = (expected_nutrient_val - max_treshold[nutrient])
-                                else:
-                                    distance = (min_treshold[nutrient] - expected_nutrient_val)
-
-                                severity = Severity(distance)
-                                log_file.write(f"WARNING: Preventive action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})\n")
-                            else:
-                                log_file.write(f"The measured value ({nutrient_val} {unit}) and the next prediction ({expected_nutrient_val} {unit}) of {sensor_type} ({nutrient}) are inside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n")
-
-                    # Update expected values per nutrient
-                    expected_value[sensor_id][nutrient] = expected_nutrient_val
-
-            else:
-                # we use the previous expected value to check if the measured value is unexpected
-                if abs(val - expected_value[sensor_id]) > 5:    # if the value was unexpected, alert the user and wait for the next value
-                    log_file.write(f"WARNING: The measured value {val} of sensor_{sensor_id} ({sensor_type}) is unexpected. (Expected value: {expected_val})\tWaiting for the next value\n")   # ALERT TO BE SENT TO THE UI
-                
-                else:   # if the value was expected
-                    if not Is_inside(min_treshold, val, max_treshold):  # if the value is outside the range of accepted values, alert the user
-                        log_file.write(f"WARNING: The measured value {val} {unit} of sensor_{sensor_id} ({sensor_type}) went outside the range [{min_treshold}, {max_treshold}]\n")    # ALERT TO BE SENT TO THE UI
-
-                        # evaluate how far the value is from the interval
-                        if val > max_treshold:  # if the value is higher than the max treshold
-                            distance = (val - max_treshold)
-                        else:   # val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_t
-                            distance = (min_treshold - val)
-                        severity = Severity(distance)   # evaluate the severity of the problem
-                        if severity is None:
-                            log_file.write(f"WARNING: Failed to evaluate the severity of the problem for sensor_{sensor_id} ({sensor_type})\n")
-                            return
-
-                        # if the value was expected
-                        if severity > 0.5:  # if the severity is high enough, action is needed
-                            # take preventive action by following the expected severity
-                            log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")  # ALERT TO BE SENT TO THE UI
-                        else:   # if the severity isn't high enough
-                            # get the updated mean
-                            response = requests.get(f"{dataAnalysis_url}/get_mean_value", params={'sensor_id': sensor_id, 'sensor_type':sensor_type, 'timestamp': timestamp})    # get the mean value from the data analysis
-                            if response.status_code == 200:
-                                mean_value = response.json()["mean_value"]
-                                if mean_value is not None:
-                                    log_file.write(f"Mean value of sensor_{sensor_id} ({sensor_type}): {mean_value}\n")   # THIS INFO CAN BE SENT TO THE UI
-                                else:   # if the response is None, we consider the evaluation lost
-                                    log_file.write(f"WARNING: Failed to get mean value of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\n")   # ALERT TO BE SENT TO THE UI
-                                    return
-                                if not Is_inside(min_treshold, mean_value, max_treshold):    # if the mean value is outside the range, action is needed
-                                    # take preventive action by following the expected severity
-                                    log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
-                                else:   # if the mean value is inside the range
-                                    if abs(val - mean_value) > 5:    # if the value is far from the mean, action is needed
-                                        # take preventive action by following the expected severity
-                                        log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
-                                    else:   # if the value is near the mean, check if the next expected value is in the range
-                                        if not Is_inside(min_treshold, expected_val, max_treshold):    # if the expected value is outside the range, action is needed
-                                            # take preventive action by following the expected severity
-                                            log_file.write(f"WARNING: Action needed for sensor_{sensor_id} ({sensor_type})\n")   # ALERT TO BE SENT TO THE UI
-                            else:
-                                log_file.write(f"Failed to get mean value of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\nResponse: {response.reason}\n")    # ALERT TO BE SENT TO THE UI
-                                return
-
-                    else:   # if the value is inside the range
-                        if not Is_inside(min_treshold, expected_val, max_treshold):    # if the next expected value is outside the range, action is needed
-                            log_file.write(f"WARNING: The next expected value of sensor_{sensor_id} ({sensor_type}) is outside the range [{min_treshold}, {max_treshold}]\n")
-
-                            if expected_val > max_treshold: # if the expected value is higher than the max treshold
-                                distance = (expected_val - max_treshold)
-                            else:   # expected_value < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_treshold
-                                distance = (min_treshold - expected_val)
-                            severity = Severity(distance)
-                            # take preventive action by following the expected severity
-                            log_file.write(f"WARNING: Preventine action needed for sensor_{sensor_id} ({sensor_type})\n")
-                        else:   # if the next expected value is inside the range
-                            log_file.write(f"The measured value ({val} {unit}) and the next prediction ({expected_val} {unit}) of {sensor_type} ({sensor_type}) are inside the range [{min_treshold}, {max_treshold}]\n")
-                
-                expected_value[sensor_id] = expected_val   # update the next expected value
-
-        greenhouse, sensor = topic.split("/")  # split the topic and get all the information contained
-        
-        sensor_id = int(sensor.split("_")[1])
-
-        treshold = tresholds[sensor_id]    # get the treshold for the sensor
-
-        # get from the DataAnalysis the next expected timestamp
-        response = requests.get(f"{dataAnalysis_url}/get_next_timestamp", params={'sensor_id': sensor_id, 'sensor_type': sensor_type, 'timestamp': timestamp})
-        if response.status_code == 200:
-            next_timestamp = response.json()["next_timestamp"]
-            if next_timestamp is not None:
-                log_file.write(f"Next expected timestamp of sensor_{sensor_id} ({sensor_type}): {next_timestamp}\n")  # THIS INFO CAN BE SENT TO THE UI
-            else:   # if the response is None, we consider the prediction lost
-                log_file.write(f"WARNING: Next expected timestamp of sensor_{sensor_id} ({sensor_type}) not found\n")   # ALERT TO BE SENT TO THE UI
-                return
-        else:
-            log_file.write(f"WARNING: Impossible to get the next expected timestamp of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\nResponse: {response.reason}\n")  # ALERT TO BE SENT TO THE UI
+     # get from the DataAnalysis the next expected timestamp
+    response = requests.get(f"{dataAnalysis_url}/get_next_timestamp", params={'sensor_id': sensor_id, 'sensor_type': sensor_type, 'timestamp': timestamp})
+    if response.status_code == 200:
+        next_timestamp = response.json()["next_timestamp"]
+        if next_timestamp is not None:
+            write_log(f"Next expected timestamp of sensor_{sensor_id} ({sensor_type}): {next_timestamp}")  # THIS INFO CAN BE SENT TO THE UI
+            SendInfo(f"Next expected timestamp of sensor_{sensor_id} ({sensor_type}): {next_timestamp}")
+        else:   # if the response is None, we consider the prediction lost
+            write_log(f"WARNING: Next expected timestamp of sensor_{sensor_id} ({sensor_type}) not found")   # ALERT TO BE SENT TO THE UI
+            SendAlert(f"WARNING: Next expected timestamp of sensor_{sensor_id} ({sensor_type}) not found")
             return
+    else:
+        write_log(f"WARNING: Impossible to get the next expected timestamp of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\t(Response: {response.reason})")  # ALERT TO BE SENT TO THE UI
+        SendAlert(f"WARNING: Impossible to get the next expected timestamp of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\t(Response: {response.reason})")
+        return
 
-        if next_timestamp is not None:  # when the data analysis make prediction with just 1 value, it can't predict the next value so it is None
-            if timers[sensor_id] is not None:  # if there is a timer running, stop it
-                timers[sensor_id].cancel()
+    if next_timestamp is not None:  # when the data analysis make prediction with just 1 value, it can't predict the next value so it is None
+        if timers[sensor_id] is not None:  # if there is a timer running, stop it
+            timers[sensor_id].cancel()
 
-            timers[sensor_id] = threading.Timer(next_timestamp + 5 - timestamp, partial(Send_alert, sensor_id, next_timestamp)) # timer that will wait the next timestamp
-            timers[sensor_id].start()   # start the timer
+        timers[sensor_id] = threading.Timer(next_timestamp + 5 - timestamp, partial(TimerExpiration, sensor_id, next_timestamp)) # timer that will wait the next timestamp
+        timers[sensor_id].start()   # start the timer
 
-        if sensor_type == "NPK":
-            min_treshold_N = treshold["N"]["min"]
-            max_treshold_N = treshold["N"]["max"]
-            min_treshold_P = treshold["P"]["min"]
-            max_treshold_P = treshold["P"]["max"]
-            min_treshold_K = treshold["K"]["min"]
-            max_treshold_K = treshold["K"]["max"]
+    if sensor_type == "NPK":
+        min_treshold_N = treshold["N"]["min"]
+        max_treshold_N = treshold["N"]["max"]
+        min_treshold_P = treshold["P"]["min"]
+        max_treshold_P = treshold["P"]["max"]
+        min_treshold_K = treshold["K"]["min"]
+        max_treshold_K = treshold["K"]["max"]
 
-            Check_value({"N": min_treshold_N, "P": min_treshold_P, "K": min_treshold_K}, {"N": max_treshold_N, "P": max_treshold_P, "K": max_treshold_K}, sensor_id)
-        else:
-            min_treshold = treshold["min"]
-            max_treshold = treshold["max"]
+        Management.Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, {"N": min_treshold_N, "P": min_treshold_P, "K": min_treshold_K}, {"N": max_treshold_N, "P": max_treshold_P, "K": max_treshold_K}, expected_value, domains, write_log, SendAlert, SendInfo, SendAction)
+    else:
+        min_treshold = treshold["min"]
+        max_treshold = treshold["max"]
 
-            Check_value(min_treshold, max_treshold, sensor_id)
+        Management.Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, SendAlert, SendInfo, SendAction)
 
-class NutrientManagement(MqttSubscriber):
-    def __init__(self, broker, port, topics):
-        super().__init__(broker, port, topics)
 
-    def on_message(self, client, userdata, msg):
-        with open("./logs/NutrientManagement.log", "a") as log_file:  # print all the messages received on a log file
-            message = json.loads(msg.payload.decode()) # decode the message from JSON format, so we can access the values of the message as a dictionary
-            log_file.write(f"\nReceived: {message}\n")
-            log_file.flush()    # flush the buffer of the file
-            for topic in mqtt_topic:
-                if message["bn"] == topic:
-                    message = message["e"]
-                    sensor_type = message["n"]
-                    val = message["v"]
-                    unit = message["u"]
-                    timestamp = message["t"]
-                    handle_message(topic, sensor_type, val, unit, timestamp)
-                    break   # if the message is processed, exit the loop
+def on_message(client, userdata, msg):
+    message = json.loads(msg.payload.decode()) # decode the message from JSON format, so we can access the values of the message as a dictionary
+    write_log(f"\nReceived: {message}")
+    for topic in mqtt_topics:
+        if message["bn"] == topic:
+            message = message["e"]
+            sensor_type = message["n"]
+            val = message["v"]
+            unit = message["u"]
+            timestamp = message["t"]
+            handle_message(topic, sensor_type, val, unit, timestamp)
+            break   # if the message is processed, exit the loop
 
 if __name__ == "__main__":
     response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'NutrientManagement'})    # get the device information from the catalog
     if response.status_code == 200:
         sensors = response.json()["sensors"]   # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
-        with open("./logs/NutrientManagement.log", "a") as log_file:
-            log_file.write(f"Received {len(sensors)} sensors: {sensors}\n")
+        write_log(f"Received {len(sensors)} sensors: {sensors}\n")
     else:
-        with open("./logs/NutrientManagement.log", "a") as log_file:
-            log_file.write(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
-            exit(1) # if the request fails, the device connector stops
+        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
+        exit(1) # if the request fails, the device connector stops
 
-    mqtt_topic = [] # array of topics where the device is subscribed
+    mqtt_topics = [] # array of topics where the device is subscribed
     for sensor in sensors:  # for each sensor build the topic where the device is subscribed and build the dictionary of tresholds
-        mqtt_topic.append(f"greenhouse_{sensor["greenhouse_id"]}/sensor_{sensor['sensor_id']}")
+        mqtt_topics.append(f"greenhouse_{sensor["greenhouse_id"]}/sensor_{sensor['sensor_id']}")
         tresholds[sensor['sensor_id']] = sensor['threshold']    # associate the threshold to the sensor id into the dictionary
         domains[sensor['sensor_id']] = sensor['domain']    # associate the domain to the sensor id into the dictionary
         expected_value[sensor['sensor_id']] = None
         timers[sensor['sensor_id']] = None
 
-    # the mqtt subscriber subscribes to the topics
-    subscriber = NutrientManagement(mqtt_broker, mqtt_port, mqtt_topic)
-    subscriber.connect()
+     # create the mqtt client
+    client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"NutrientManagement_{device_id}", on_message, write_log)
+    client.start()
+    for topic in mqtt_topics:
+        client.subscribe(topic)
+
+    while True:
+        time.sleep(1)   # keep the microservice running
+    client.stop()
