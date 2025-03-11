@@ -3,9 +3,6 @@ import time
 import json
 import requests
 
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))) # so we can import classes from the parent directory
 from sensors import DTH22, Light, NPK, pH, SoilMoisture, Sensor # import the classes of the sensors
 from MqttClient import MqttClient   # import the MqttClient class
 

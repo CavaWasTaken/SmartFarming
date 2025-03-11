@@ -5,9 +5,6 @@ from functools import partial
 import time
 import Management
 
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))) # so we can import classes from the parent directory
 from MqttClient import MqttClient   # import the MqttClient class
 
 # function to write in a log file the message passed as argument
