@@ -150,10 +150,14 @@ def runApp(user_id, username):
                     
                     if choice == "4":
                         print("\nCheck IoT devices information:")
-                        # here i should see an history of the mqtt communications emitted by the devices
+                        # select the device of interest
+                        # here i should see an history of the mqtt communications emitted by the selected device
 
                     if choice == "5":
                         print("\nAsk for a plot:")
+                        # select which sensor values from the id of the sensor
+                        # decide how many values to show / or a date range
+                        # ask the plot to the data analysis rest api
 
                     if choice == "6":
                         print("\nManage scheduled events:")
