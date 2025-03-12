@@ -10,3 +10,7 @@ psql -h localhost -p 5433 -U iotproject -d smartfarm_db
 
 # to turn down docker
 sudo docker-compose down
+
+--------------------------------------------------------------------------------------------
+# to add a random hash (unique token) associated to the greenhouse
+UPDATE greenhouses SET token = encode(gen_random_bytes(32), 'hex');

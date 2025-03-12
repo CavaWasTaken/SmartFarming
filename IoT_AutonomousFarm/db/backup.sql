@@ -45,7 +45,7 @@ CREATE TABLE public.devices (
     name character varying(100) NOT NULL,
     type character varying(100) NOT NULL,
     params jsonb,
-    CONSTRAINT device_name_check CHECK (((name)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('HumidityManagement'::character varying)::text, ('LightManagement'::character varying)::text, ('NutrientManagement'::character varying)::text, ('DataAnalysis'::character varying)::text, ('TimeShift'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text, ('TelegramBot'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text]))),
+    CONSTRAINT device_name_check CHECK (((name)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('HumidityManagement'::character varying)::text, ('LightManagement'::character varying)::text, ('NutrientManagement'::character varying)::text, ('DataAnalysis'::character varying)::text, ('TimeShift'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text, ('TelegramBot'::character varying)::text, ('WebApp'::character varying)::text]))),
     CONSTRAINT device_type_check CHECK (((type)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('Microservices'::character varying)::text, ('UI'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text])))
 );
 
@@ -75,6 +75,18 @@ ALTER SEQUENCE public.devices_device_id_seq OWNED BY public.devices.device_id;
 
 
 --
+-- Name: greenhouse_plants; Type: TABLE; Schema: public; Owner: iotproject
+--
+
+CREATE TABLE public.greenhouse_plants (
+    greenhouse_id integer NOT NULL,
+    plant_id integer NOT NULL
+);
+
+
+ALTER TABLE public.greenhouse_plants OWNER TO iotproject;
+
+--
 -- Name: greenhouses; Type: TABLE; Schema: public; Owner: iotproject
 --
 
@@ -83,7 +95,6 @@ CREATE TABLE public.greenhouses (
     user_id integer NOT NULL,
     name character varying(100) NOT NULL,
     location character varying(255),
-    token character(64),
     thingspeak_config jsonb
 );
 
@@ -118,9 +129,9 @@ ALTER SEQUENCE public.greenhouses_greenhouse_id_seq OWNED BY public.greenhouses.
 
 CREATE TABLE public.plants (
     plant_id integer NOT NULL,
-    greenhouse_id integer NOT NULL,
     name character varying(100) NOT NULL,
-    species character varying(100) NOT NULL
+    species character varying(100) NOT NULL,
+    desired_thresholds jsonb
 );
 
 
@@ -239,7 +250,7 @@ CREATE TABLE public.users (
     user_id integer NOT NULL,
     username character varying(100) NOT NULL,
     email character varying(100) NOT NULL,
-    password_hash character varying(255) NOT NULL
+    password_hash bytea
 );
 
 
@@ -321,6 +332,18 @@ COPY public.devices (device_id, greenhouse_id, name, type, params) FROM stdin;
 5	0	TimeShift	Microservices	\N
 6	0	ThingSpeakAdaptor	ThingSpeakAdaptor	\N
 4	0	DataAnalysis	Microservices	{"N": 10}
+7	0	WebApp	UI	\N
+8	0	TelegramBot	UI	\N
+\.
+
+
+--
+-- Data for Name: greenhouse_plants; Type: TABLE DATA; Schema: public; Owner: iotproject
+--
+
+COPY public.greenhouse_plants (greenhouse_id, plant_id) FROM stdin;
+0	0
+0	1
 \.
 
 
@@ -328,8 +351,8 @@ COPY public.devices (device_id, greenhouse_id, name, type, params) FROM stdin;
 -- Data for Name: greenhouses; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.greenhouses (greenhouse_id, user_id, name, location, token, thingspeak_config) FROM stdin;
-0	0	greenhouse_0	Torino	\N	{"fields": {"pH": "", "Humidity": "", "Nitrogen": "", "Potassium": "", "Phosphorus": "", "Temperature": "", "SoilMoisture": "", "LightIntensity": ""}, "channel_id": 2794826, "read_api_key": "E8FA7YO31E86NVDU", "write_api_key": "DIOMNEBEJT9EW5PQ"}
+COPY public.greenhouses (greenhouse_id, user_id, name, location, thingspeak_config) FROM stdin;
+0	0	greenhouse_0	Torino	{"fields": {"pH": "", "Humidity": "", "Nitrogen": "", "Potassium": "", "Phosphorus": "", "Temperature": "", "SoilMoisture": "", "LightIntensity": ""}, "channel_id": 2794826, "read_api_key": "E8FA7YO31E86NVDU", "write_api_key": "DIOMNEBEJT9EW5PQ"}
 \.
 
 
@@ -337,10 +360,10 @@ COPY public.greenhouses (greenhouse_id, user_id, name, location, token, thingspe
 -- Data for Name: plants; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.plants (plant_id, greenhouse_id, name, species) FROM stdin;
-0	0	Tomato	Solanum lycopersicum
-1	0	Zucchini	Cucurbita pepo
-2	0	Bell Pepper	Capsicum annuum
+COPY public.plants (plant_id, name, species, desired_thresholds) FROM stdin;
+0	Tomato	Solanum lycopersicum	{"pH": {"max": 6.8, "min": 5.5}, "NPK": {"K": {"max": 400.0, "min": 100.0}, "N": {"max": 150.0, "min": 50.0}, "P": {"max": 200.0, "min": 100.0}}, "Humidity": {"max": 70.0, "min": 50.0}, "Temperature": {"max": 26.0, "min": 18.0}, "SoilMoisture": {"max": 70.0, "min": 60.0}, "LightIntensity": {"max": 800.0, "min": 200.0}}
+2	Bell Pepper	Capsicum annuum	{"pH": {"max": 6.8, "min": 6.0}, "NPK": {"K": {"max": 350.0, "min": 100.0}, "N": {"max": 150.0, "min": 50.0}, "P": {"max": 300.0, "min": 100.0}}, "Humidity": {"max": 75.0, "min": 60.0}, "Temperature": {"max": 30.0, "min": 18.0}, "SoilMoisture": {"max": 70.0, "min": 60.0}, "LightIntensity": {"max": 800.0, "min": 200.0}}
+1	Zucchini	Cucurbita pepo	{"pH": {"max": 6.8, "min": 6.0}, "NPK": {"K": {"max": 350.0, "min": 100.0}, "N": {"max": 250.0, "min": 100.0}, "P": {"max": 300.0, "min": 100.0}}, "Humidity": {"max": 80.0, "min": 60.0}, "Temperature": {"max": 25.0, "min": 18.0}, "SoilMoisture": {"max": 80.0, "min": 70.0}, "LightIntensity": {"max": 800.0, "min": 300.0}}
 \.
 
 
@@ -357,12 +380,12 @@ COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, e
 --
 
 COPY public.sensors (sensor_id, greenhouse_id, type, name, unit, threshold_range, domain) FROM stdin;
-0	0	Temperature	DTH22	Cel	{"max": 26.0, "min": 18.0}	{"max": 50, "min": -10}
+0	0	Temperature	DTH22	Cel	{}	{"max": 50, "min": -10}
+1	0	NPK	NPK	mg/kg	{"K": {"max": 400.0, "min": 100.0}, "N": {"max": 150.0, "min": 50.0}, "P": {"max": 300.0, "min": 75.0}}	{"max": 1000, "min": 0}
 5	0	Humidity	DTH22	%	{"max": 75.0, "min": 60.0}	{"max": 100, "min": 0}
 2	0	SoilMoisture	SoilMoisture	%	{"max": 80.0, "min": 60.0}	{"max": 100, "min": 0}
-4	0	LightIntensity	PAR	µmol/m²/s	{"max": 600.0, "min": 400.0}	{"max": 2500, "min": 0}
 3	0	pH	pH	\N	{"max": 6.8, "min": 6.0}	{"max": 10.0, "min": 3.0}
-1	0	NPK	NPK	mg/kg	{"K": {"max": 400, "min": 100}, "N": {"max": 300, "min": 50}, "P": {"max": 150, "min": 30}}	{"max": 1000, "min": 0}
+4	0	LightIntensity	PAR	umol/m^2/s	{"max": 600.0, "min": 400.0}	{"max": 2500, "min": 0}
 \.
 
 
@@ -371,7 +394,7 @@ COPY public.sensors (sensor_id, greenhouse_id, type, name, unit, threshold_range
 --
 
 COPY public.users (user_id, username, email, password_hash) FROM stdin;
-0	Lorenzo	s346742@studenti.polito.it	 
+0	Lorenzo	s346742@studenti.polito.it	\\x2432622431322438756e7534385057784c50745369767177586950642e557a6a7a775066705648713734463530715475414742504930444e6b717432
 \.
 
 
@@ -414,7 +437,7 @@ SELECT pg_catalog.setval('public.sensors_sensor_id_seq', 1, false);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_user_id_seq', 1, true);
 
 
 --
@@ -423,6 +446,14 @@ SELECT pg_catalog.setval('public.users_user_id_seq', 1, false);
 
 ALTER TABLE ONLY public.devices
     ADD CONSTRAINT devices_pkey PRIMARY KEY (device_id);
+
+
+--
+-- Name: greenhouse_plants greenhouse_plants_pkey; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.greenhouse_plants
+    ADD CONSTRAINT greenhouse_plants_pkey PRIMARY KEY (greenhouse_id, plant_id);
 
 
 --
@@ -498,19 +529,27 @@ ALTER TABLE ONLY public.devices
 
 
 --
+-- Name: greenhouse_plants greenhouse_plants_greenhouse_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.greenhouse_plants
+    ADD CONSTRAINT greenhouse_plants_greenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id) ON DELETE CASCADE;
+
+
+--
+-- Name: greenhouse_plants greenhouse_plants_plant_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.greenhouse_plants
+    ADD CONSTRAINT greenhouse_plants_plant_id_fkey FOREIGN KEY (plant_id) REFERENCES public.plants(plant_id) ON DELETE CASCADE;
+
+
+--
 -- Name: greenhouses greenhouses_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
 --
 
 ALTER TABLE ONLY public.greenhouses
     ADD CONSTRAINT greenhouses_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
-
-
---
--- Name: plants plants_greenhouse_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
---
-
-ALTER TABLE ONLY public.plants
-    ADD CONSTRAINT plants_greenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id) ON DELETE CASCADE;
 
 
 --

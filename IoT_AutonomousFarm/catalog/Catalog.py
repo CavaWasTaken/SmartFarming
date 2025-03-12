@@ -1,6 +1,8 @@
 import cherrypy
 import psycopg2
 from psycopg2 import sql
+import bcrypt
+import json
 
 # class that implements the REST API of the Catalog
 
@@ -50,7 +52,8 @@ def get_sensors(conn, device_id, device_name):
         if greenhouse_id is None:   # if the greenhouse does not exist, return error 404
             raise cherrypy.HTTPError(404, "Greenhouse not found")
         # personalize the query based on the device name, cause each device connector is interested in different sensors
-        if device_name == "DeviceConnector" or device_name == "DataAnalysis" or device_name == "ThingSpeakAdaptor":    # device connector is interested in all the sensors connected to the greenhouse
+        authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot"]
+        if device_name in authorized_devices:    # device connector is interested in all the sensors connected to the greenhouse
             cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"),  [greenhouse_id,])
         elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
             cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'Humidity' OR type = 'SoilMoisture'"), [greenhouse_id,])
@@ -78,6 +81,7 @@ def get_sensors(conn, device_id, device_name):
 
         return {'sensors': sensors_list}
 
+# return the info about the greenhouse by greenhouse_id. The device id is used to see if who made the request is connected to the greenhouse
 def get_greenhouse_info(conn, greenhouse_id, device_id):
     with conn.cursor() as cur: # create a cursor to execute queries
         # check if the device is connected to the greenhouse
@@ -95,13 +99,239 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
             'user_id': greenhouse[1],
             'name': greenhouse[2],
             'location': greenhouse[3],
-            'token': greenhouse[4],
-            'thingSpeak_config': greenhouse[5]
+            'thingSpeak_config': greenhouse[4]
         }
         
         return greenhouse_dict
+    
+# function to perform user registration
+def register(conn, username, email, password):
+    with conn.cursor() as cur:
+        # check if the username already exists
+        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+        user = cur.fetchone()
+        if user is not None:
+            raise cherrypy.HTTPError(409, "Username already exists")
+        # insert the new user in the db
+        try:
+            # salt hash the password
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            cur.execute(sql.SQL("INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)"), [username, email, hashed_password])
+            conn.commit()
+        except psycopg2.errors.UniqueViolation:
+            raise cherrypy.HTTPError(409, "Username already exists")
+        except psycopg2.errors.NotNullViolation:
+            raise cherrypy.HTTPError(400, "Username, email or password not provided")
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+        
+        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+        user = cur.fetchone()
 
+        if user is None:
+            raise cherrypy.HTTPError(401, "Incorrect username")
+        
+        return {'message': 'User registered successfully', 'user_id': user[0], 'username': user[1], 'email': user[2]}
+    
+# function to perform user login
+def login(conn, username, password):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+        user = cur.fetchone()
 
+        if user is None:
+            raise cherrypy.HTTPError(401, "Incorrect username")
+
+        stored_hash = bytes(user[3])  # Convert memoryview to bytes
+
+        # Check the hashed password
+        if not bcrypt.checkpw(password.encode('utf-8'), stored_hash):
+            raise cherrypy.HTTPError(401, "Incorrect password")
+
+        return {'message': 'Login successful', 'user_id': user[0], 'username': user[1], 'email': user[2]}
+
+# function to return the greenhouses of a user
+def get_user_greenhouses(conn, user_id):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE user_id = %s"), [user_id])
+        greenhouses = cur.fetchall()
+        if greenhouses is None:
+            return {'greenhouses': []}
+        
+        greenhouses_list = []
+        for greenhouse in greenhouses:
+            greenhouse_dict = {
+                'greenhouse_id': greenhouse[0],
+                'user_id': greenhouse[1],
+                'name': greenhouse[2],
+                'location': greenhouse[3],
+                'thingSpeak_config': greenhouse[4]
+            }
+            greenhouses_list.append(greenhouse_dict)
+        
+        return {'greenhouses': greenhouses_list}
+    
+# function to return everything about a greenhouse (plants, sensors, devices)
+def get_greenhouse_configurations(conn, greenhouse_id):
+    with conn.cursor() as cur:
+        # get sensors of the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
+        sensors = cur.fetchall()
+        if sensors is None:
+            raise cherrypy.HTTPError(404, "No sensors found")
+
+        sensors_list = []
+        for sensor in sensors:
+            sensor_dict = {
+                'sensor_id': sensor[0],
+                'greenhouse_id': sensor[1],
+                'type': sensor[2],
+                'name': sensor[3],
+                'unit': sensor[4],
+                'threshold': sensor[5],
+                'domain': sensor[6]
+            }
+            sensors_list.append(sensor_dict)
+
+        # get devices of the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s"), [greenhouse_id])
+        devices = cur.fetchall()
+        if devices is None:
+            raise cherrypy.HTTPError(404, "No devices found")
+        
+        devices_list = []
+        for device in devices:
+            device_dict = {
+                'device_id': device[0],
+                'greenhouse_id': device[1],
+                'name': device[2],
+                'type': device[3],
+                'params': device[4]
+            }
+            devices_list.append(device_dict)
+
+        # get plants of the greenhouse
+        cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+        plants = cur.fetchall()
+        if plants is None:
+            raise cherrypy.HTTPError(404, "No plants found")
+        
+        plants_list = []
+        for plant in plants:
+            cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
+            plant = cur.fetchone()
+            plant_dict = {
+                'plant_id': plant[0],
+                'name': plant[1],
+                'species': plant[2],
+                'desired_thresholds': plant[3],
+            }
+            plants_list.append(plant_dict)
+
+        return {'sensors': sensors_list, 'devices': devices_list, 'plants': plants_list}
+    
+# function used by the user to change the threshold of a sensor
+def set_sensor_threshold(conn, sensor_id, threshold):
+    threshold = json.dumps(threshold)
+    with conn.cursor() as cur:
+        try:
+            cur.execute(sql.SQL("UPDATE sensors SET threshold_range = %s WHERE sensor_id = %s"), [threshold, sensor_id])
+            conn.commit()
+            return {'message': 'Threshold set'}
+        
+        except psycopg2.errors.NotNullViolation:
+            raise cherrypy.HTTPError(400, "Threshold not provided")
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+        
+# function to get the entire list of plants
+def get_all_plants(conn):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM plants"))
+        plants = cur.fetchall()
+        if plants is None:
+            raise cherrypy.HTTPError(404, "No plants found")
+        
+        plants_list = []
+        for plant in plants:
+            plant_dict = {
+                'plant_id': plant[0],
+                'name': plant[1],
+                'species': plant[2],
+                'desired_thresholds': plant[3]
+            }
+            plants_list.append(plant_dict)
+        
+        return {'plants': plants_list}
+    
+# function to add a plant to a greenhouse
+def add_plant_to_greenhouse(conn, greenhouse_id, plant_id):
+    with conn.cursor() as cur:
+        # check if the plant is already in the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
+        plant = cur.fetchone()
+        if plant is not None:
+            raise cherrypy.HTTPError(409, "Plant already in the greenhouse")
+        # insert the new plant in the greenhouse
+        try:
+            cur.execute(sql.SQL("INSERT INTO greenhouse_plants (greenhouse_id, plant_id) VALUES (%s, %s)"), [greenhouse_id, plant_id])
+            conn.commit()
+            # return the updated list of plants in the greenhouse
+            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            plants = cur.fetchall()
+            if plants is None:
+                raise cherrypy.HTTPError(404, "No plants found")
+            
+            plants_list = []
+            for plant in plants:
+                cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
+                plant = cur.fetchone()
+                plant_dict = {
+                    'plant_id': plant[0],
+                    'name': plant[1],
+                    'species': plant[2],
+                    'desired_thresholds': plant[3]
+                }
+                plants_list.append(plant_dict)
+
+            return plants_list
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+        
+# function to remove a plant from the greenhouse
+def remove_plant_from_greenhouse(conn, greenhouse_id, plant_id):
+    with conn.cursor() as cur:
+        # check if the plant is in the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
+        plant = cur.fetchone()
+        if plant is None:
+            raise cherrypy.HTTPError(404, "Plant not in the greenhouse")
+        # remove the plant from the greenhouse
+        try:
+            cur.execute(sql.SQL("DELETE FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
+            conn.commit()
+            # return the updated list of plants in the greenhouse
+            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            plants = cur.fetchall()
+            if plants is None:
+                raise cherrypy.HTTPError(404, "No plants found")
+            
+            plants_list = []
+            for plant in plants:
+                cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
+                plant = cur.fetchone()
+                plant_dict = {
+                    'plant_id': plant[0],
+                    'name': plant[1],
+                    'species': plant[2],
+                    'desired_thresholds': plant[3]
+                }
+                plants_list.append(plant_dict)
+
+            return plants_list
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
 class CatalogREST(object):
     exposed = True
 
@@ -120,13 +350,37 @@ class CatalogREST(object):
             return get_device_info(self.catalog_connection, params['device_id'], params['device_name'])
         elif uri[0] == 'get_greenhouse_location':
             return get_greenhouse_location(self.catalog_connection, params['greenhouse_id'])
+        elif uri[0] == 'get_user_greenhouses':
+            return get_user_greenhouses(self.catalog_connection, params['user_id'])
+        elif uri[0] == 'get_greenhouse_configurations':
+            return get_greenhouse_configurations(self.catalog_connection, params['greenhouse_id'])
+        elif uri[0] == 'get_all_plants':
+            return get_all_plants(self.catalog_connection)
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         
     @cherrypy.tools.json_out()  # automatically convert return value
     def POST(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-        
+        if len(uri) == 0:
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        elif uri[0] == 'register':
+            input_json = json.loads(cherrypy.request.body.read())
+            return register(self.catalog_connection, input_json['username'], input_json['email'], input_json['password'])
+        elif uri[0] == 'login':
+            input_json = json.loads(cherrypy.request.body.read())
+            return login(self.catalog_connection, input_json['username'], input_json['password'])
+        elif uri[0] == 'set_sensor_threshold':
+            input_json = json.loads(cherrypy.request.body.read())
+            return set_sensor_threshold(self.catalog_connection, input_json['sensor_id'], input_json['threshold'])
+        elif uri[0] == 'add_plant_to_greenhouse':
+            input_json = json.loads(cherrypy.request.body.read())
+            return add_plant_to_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+        elif uri[0] == 'remove_plant_from_greenhouse':
+            input_json = json.loads(cherrypy.request.body.read())
+            return remove_plant_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+        else:
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+
     @cherrypy.tools.json_out()  # automatically convert return value        
     def PUT(self, *uri, **params):
         raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
