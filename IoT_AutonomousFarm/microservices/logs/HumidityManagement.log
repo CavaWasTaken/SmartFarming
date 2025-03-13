@@ -3,1664 +3,304 @@ Subscribed to greenhouse_0/sensor_5
 Subscribed to greenhouse_0/sensor_2
 Connected to mqtt.eclipseprojects.io with result code 0
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.44286799216291, 'u': '%', 't': 5130}}
-Next expected timestamp of sensor_5 (Humidity): 5139.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5139.888888888889
-Next expected value of sensor_5 (Humidity): 55.77339557383078
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.77339557383078
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 47.436538027030934, 'u': '%', 't': 4341}}
+Next expected timestamp of sensor_5 (Humidity): 4361.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4361.0", "timestamp": 4341}
+Next expected value of sensor_5 (Humidity): 47.028810619089924
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 47.028810619089924", "timestamp": 4341}
 Wait to see another value to start the decision making for sensor_5 (Humidity)
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.84148736037351, 'u': '%', 't': 5130}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5139.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5139.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.82867302912996
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.82867302912996
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.946033169875626, 'u': '%', 't': 4341}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4361.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4361.0", "timestamp": 4341}
+Next expected value of sensor_2 (SoilMoisture): 48.220801628942795
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.220801628942795", "timestamp": 4341}
 Wait to see another value to start the decision making for sensor_2 (SoilMoisture)
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.330633282486744, 'u': '%', 't': 5140}}
-Next expected timestamp of sensor_5 (Humidity): 5149.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5149.888888888889
-Next expected value of sensor_5 (Humidity): 54.69582754175868
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.69582754175868
-WARNING: The measured value 52.330633282486744 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.330633282486744 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.52010145670474
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.52010145670474
-WARNING: The measured value 52.330633282486744 and the mean value 54.52010145670474 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.330633282486744 and the mean value 54.52010145670474 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.5177237245578, 'u': '%', 't': 5140}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5149.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5149.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.04582895274855
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.04582895274855
-WARNING: The measured value 48.5177237245578 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.5177237245578 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.50075271210982
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.50075271210982
-WARNING: The measured value 48.5177237245578 and the mean value 48.50075271210982 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.5177237245578 and the mean value 48.50075271210982 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.774103066127616, 'u': '%', 't': 5151}}
-Next expected timestamp of sensor_5 (Humidity): 5161.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5161.111111111111
-Next expected value of sensor_5 (Humidity): 54.328272714692815
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.328272714692815
-WARNING: The measured value 54.774103066127616 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.774103066127616 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.57881213582208
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.57881213582208
-WARNING: The measured value 54.774103066127616 and the mean value 54.57881213582208 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.774103066127616 and the mean value 54.57881213582208 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.60798376748183, 'u': '%', 't': 5151}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5161.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5161.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.35445445122639
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.35445445122639
-WARNING: The measured value 49.60798376748183 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.60798376748183 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.67053740293701
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.67053740293701
-WARNING: The measured value 49.60798376748183 and the mean value 48.67053740293701 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.60798376748183 and the mean value 48.67053740293701 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.79580742677082, 'u': '%', 't': 5160}}
-Next expected timestamp of sensor_5 (Humidity): 5169.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5169.888888888889
-Next expected value of sensor_5 (Humidity): 53.76088702984541
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.76088702984541
-WARNING: The measured value 52.79580742677082 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.79580742677082 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.237807627484486
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.237807627484486
-WARNING: The measured value 52.79580742677082 and the mean value 54.237807627484486 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.79580742677082 and the mean value 54.237807627484486 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.79795425293752, 'u': '%', 't': 5160}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5169.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5169.888888888889
-Next expected value of sensor_2 (SoilMoisture): 49.05444623227222
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.05444623227222
-WARNING: The measured value 49.79795425293752 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.79795425293752 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.853496384505526
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.853496384505526
-WARNING: The measured value 49.79795425293752 and the mean value 48.853496384505526 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.79795425293752 and the mean value 48.853496384505526 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.73809718285134, 'u': '%', 't': 5171}}
-Next expected timestamp of sensor_5 (Humidity): 5181.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5181.111111111111
-Next expected value of sensor_5 (Humidity): 52.96479672865678
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.96479672865678
-WARNING: The measured value 53.73809718285134 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.73809718285134 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.11387747819818
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.11387747819818
-WARNING: The measured value 53.73809718285134 and the mean value 54.11387747819818 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.73809718285134 and the mean value 54.11387747819818 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.14933444568744, 'u': '%', 't': 5171}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5181.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5181.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.232960946461496
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.232960946461496
-WARNING: The measured value 47.14933444568744 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.14933444568744 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.556580495084575
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.556580495084575
-WARNING: The measured value 47.14933444568744 and the mean value 48.556580495084575 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.14933444568744 and the mean value 48.556580495084575 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.960104529749344, 'u': '%', 't': 5181}}
-Next expected timestamp of sensor_5 (Humidity): 5191.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5191.0
-Next expected value of sensor_5 (Humidity): 52.47560475321879
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.47560475321879
-WARNING: The measured value 52.960104529749344 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.960104529749344 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.82596068893465
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.82596068893465
-WARNING: The measured value 52.960104529749344 and the mean value 53.82596068893465 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.960104529749344 and the mean value 53.82596068893465 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.765282897435, 'u': '%', 't': 5181}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5191.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5191.0
-Next expected value of sensor_2 (SoilMoisture): 48.74306784155992
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.74306784155992
-WARNING: The measured value 49.765282897435 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.765282897435 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.75402373266256
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.75402373266256
-WARNING: The measured value 49.765282897435 and the mean value 48.75402373266256 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.765282897435 and the mean value 48.75402373266256 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.355557710694754, 'u': '%', 't': 5190}}
-Next expected timestamp of sensor_5 (Humidity): 5199.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5199.888888888889
-Next expected value of sensor_5 (Humidity): 53.361249716059746
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.361249716059746
-WARNING: The measured value 55.355557710694754 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.355557710694754 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.01220183676677
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.01220183676677
-WARNING: The measured value 55.355557710694754 and the mean value 54.01220183676677 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.355557710694754 and the mean value 54.01220183676677 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.74787083406843, 'u': '%', 't': 5190}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5199.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5199.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.30405212256308
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.30405212256308
-WARNING: The measured value 46.74787083406843 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.74787083406843 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.38771945839806
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.38771945839806
-WARNING: The measured value 46.74787083406843 and the mean value 48.38771945839806 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.74787083406843 and the mean value 48.38771945839806 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.50436663221524, 'u': '%', 't': 5201}}
-Next expected timestamp of sensor_5 (Humidity): 5211.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5211.111111111111
-Next expected value of sensor_5 (Humidity): 52.620956691556245
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.620956691556245
-WARNING: The measured value 51.50436663221524 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.50436663221524 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.51116922750563
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.51116922750563
-WARNING: The measured value 51.50436663221524 and the mean value 53.51116922750563 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.50436663221524 and the mean value 53.51116922750563 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.00941904110957, 'u': '%', 't': 5201}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5211.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5211.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.52926268785016
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.52926268785016
-WARNING: The measured value 49.00941904110957 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.00941904110957 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.49400652689372
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.49400652689372
-WARNING: The measured value 49.00941904110957 and the mean value 48.49400652689372 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.00941904110957 and the mean value 48.49400652689372 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.10608377604455, 'u': '%', 't': 5210}}
-Next expected timestamp of sensor_5 (Humidity): 5219.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5219.888888888889
-Next expected value of sensor_5 (Humidity): 52.72542392507354
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.72542392507354
-WARNING: The measured value 53.10608377604455 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.10608377604455 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.37771998761547
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.37771998761547
-WARNING: The measured value 53.10608377604455 and the mean value 53.37771998761547 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.10608377604455 and the mean value 53.37771998761547 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.2158159743946, 'u': '%', 't': 5210}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5219.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5219.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.92763154990193
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.92763154990193
-WARNING: The measured value 47.2158159743946 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.2158159743946 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.26291179594355
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.26291179594355
-WARNING: The measured value 47.2158159743946 and the mean value 48.26291179594355 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.2158159743946 and the mean value 48.26291179594355 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.077864154876686, 'u': '%', 't': 5221}}
-Next expected timestamp of sensor_5 (Humidity): 5231.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5231.111111111111
-Next expected value of sensor_5 (Humidity): 53.05853863765248
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.05853863765248
-WARNING: The measured value 54.077864154876686 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.077864154876686 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.46032762038379
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.46032762038379
-WARNING: The measured value 54.077864154876686 and the mean value 53.46032762038379 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.077864154876686 and the mean value 53.46032762038379 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.093085004271096, 'u': '%', 't': 5221}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5231.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5231.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.64045990406007
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.64045990406007
-WARNING: The measured value 47.093085004271096 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.093085004271096 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.025722085751816
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.025722085751816
-WARNING: The measured value 47.093085004271096 and the mean value 48.025722085751816 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.093085004271096 and the mean value 48.025722085751816 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.48051894784171, 'u': '%', 't': 5231}}
-Next expected timestamp of sensor_5 (Humidity): 5241.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5241.111111111111
-Next expected value of sensor_5 (Humidity): 53.90581527118882
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.90581527118882
-WARNING: The measured value 54.48051894784171 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.48051894784171 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.61886768810083
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.61886768810083
-WARNING: The measured value 54.48051894784171 and the mean value 53.61886768810083 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.48051894784171 and the mean value 53.61886768810083 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.266259428181634, 'u': '%', 't': 5231}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5241.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5241.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.12209375735013
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.12209375735013
-WARNING: The measured value 50.266259428181634 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 50.266259428181634 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.40602457628817
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.40602457628817
-WARNING: The measured value 50.266259428181634 and the mean value 48.40602457628817 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 50.266259428181634 and the mean value 48.40602457628817 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.75224385705844, 'u': '%', 't': 5240}}
-Next expected timestamp of sensor_5 (Humidity): 5249.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5249.888888888889
-Next expected value of sensor_5 (Humidity): 54.46805309052346
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.46805309052346
-WARNING: The measured value 55.75224385705844 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.75224385705844 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.02612772193583
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.02612772193583
-WARNING: The measured value 55.75224385705844 and the mean value 54.02612772193583 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.75224385705844 and the mean value 54.02612772193583 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.245950731889806, 'u': '%', 't': 5240}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5249.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5249.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.805651776111446
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.805651776111446
-WARNING: The measured value 50.245950731889806 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 50.245950731889806 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.72036599353859
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.72036599353859
-WARNING: The measured value 50.245950731889806 and the mean value 48.72036599353859 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 50.245950731889806 and the mean value 48.72036599353859 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.16916278045545, 'u': '%', 't': 5251}}
-Next expected timestamp of sensor_5 (Humidity): 5261.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5261.111111111111
-Next expected value of sensor_5 (Humidity): 54.84708718999
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.84708718999
-WARNING: The measured value 54.16916278045545 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.16916278045545 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.08334373139627
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.08334373139627
-WARNING: The measured value 54.16916278045545 and the mean value 54.08334373139627 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.16916278045545 and the mean value 54.08334373139627 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.8574422738005, 'u': '%', 't': 5251}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5261.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5261.111111111111
-Next expected value of sensor_2 (SoilMoisture): 49.52246453057273
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.52246453057273
-WARNING: The measured value 49.8574422738005 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.8574422738005 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.93264720009401
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.93264720009401
-WARNING: The measured value 49.8574422738005 and the mean value 48.93264720009401 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.8574422738005 and the mean value 48.93264720009401 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.80313639068872, 'u': '%', 't': 5261}}
-Next expected timestamp of sensor_5 (Humidity): 5271.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5271.0
-Next expected value of sensor_5 (Humidity): 55.38471270748538
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.38471270748538
-WARNING: The measured value 55.80313639068872 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.80313639068872 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.44864476609316
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.44864476609316
-WARNING: The measured value 55.80313639068872 and the mean value 54.44864476609316 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.80313639068872 and the mean value 54.44864476609316 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.28105663719629, 'u': '%', 't': 5261}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5271.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5271.0
-Next expected value of sensor_2 (SoilMoisture): 50.04612923961443
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 50.04612923961443
-WARNING: The measured value 49.28105663719629 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.28105663719629 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 49.035595408970146
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 49.035595408970146
-WARNING: The measured value 49.28105663719629 and the mean value 49.035595408970146 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.28105663719629 and the mean value 49.035595408970146 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.373481402783725, 'u': '%', 't': 5270}}
-Next expected timestamp of sensor_5 (Humidity): 5279.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5279.888888888889
-Next expected value of sensor_5 (Humidity): 54.20405935010807
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.20405935010807
-WARNING: The measured value 51.373481402783725 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.373481402783725 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.95387527637245
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.95387527637245
-WARNING: The measured value 51.373481402783725 and the mean value 53.95387527637245 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.373481402783725 and the mean value 53.95387527637245 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.32826657098819, 'u': '%', 't': 5270}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5279.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5279.888888888889
-Next expected value of sensor_2 (SoilMoisture): 49.50051264245978
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.50051264245978
-WARNING: The measured value 48.32826657098819 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.32826657098819 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.97470719882192
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.97470719882192
-WARNING: The measured value 48.32826657098819 and the mean value 48.97470719882192 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.32826657098819 and the mean value 48.97470719882192 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.16796402938119, 'u': '%', 't': 5281}}
-Next expected timestamp of sensor_5 (Humidity): 5291.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5291.111111111111
-Next expected value of sensor_5 (Humidity): 53.289268850368735
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.289268850368735
-WARNING: The measured value 52.16796402938119 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.16796402938119 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.64655018748888
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.64655018748888
-WARNING: The measured value 52.16796402938119 and the mean value 53.64655018748888 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.16796402938119 and the mean value 53.64655018748888 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.67987970851784, 'u': '%', 't': 5281}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5291.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5291.111111111111
-Next expected value of sensor_2 (SoilMoisture): 49.72929535737568
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.72929535737568
-WARNING: The measured value 48.67987970851784 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.67987970851784 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.95631352049179
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.95631352049179
-WARNING: The measured value 48.67987970851784 and the mean value 48.95631352049179 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.67987970851784 and the mean value 48.95631352049179 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.51961107254187, 'u': '%', 't': 5290}}
-Next expected timestamp of sensor_5 (Humidity): 5299.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5299.888888888889
-Next expected value of sensor_5 (Humidity): 52.82552030126066
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.82552030126066
-WARNING: The measured value 51.51961107254187 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.51961107254187 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.23574529736848
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.23574529736848
-WARNING: The measured value 51.51961107254187 and the mean value 53.23574529736848 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.51961107254187 and the mean value 53.23574529736848 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.403547636612956, 'u': '%', 't': 5290}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5299.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5299.888888888889
-Next expected value of sensor_2 (SoilMoisture): 49.49270165413136
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.49270165413136
-WARNING: The measured value 49.403547636612956 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.403547636612956 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 49.08923043252292
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 49.08923043252292
-WARNING: The measured value 49.403547636612956 and the mean value 49.08923043252292 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.403547636612956 and the mean value 49.08923043252292 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.9019974908437, 'u': '%', 't': 5301}}
-Next expected timestamp of sensor_5 (Humidity): 5311.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5311.111111111111
-Next expected value of sensor_5 (Humidity): 52.51954353031269
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.51954353031269
-WARNING: The measured value 53.9019974908437 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.9019974908437 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.3278460585421
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.3278460585421
-WARNING: The measured value 53.9019974908437 and the mean value 53.3278460585421 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.9019974908437 and the mean value 53.3278460585421 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.252507259099154, 'u': '%', 't': 5301}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5311.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5311.111111111111
-Next expected value of sensor_2 (SoilMoisture): 49.64594646349311
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.64594646349311
-WARNING: The measured value 49.252507259099154 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.252507259099154 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 49.14640042495981
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 49.14640042495981
-WARNING: The measured value 49.252507259099154 and the mean value 49.14640042495981 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.252507259099154 and the mean value 49.14640042495981 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.00654080456665, 'u': '%', 't': 5311}}
-Next expected timestamp of sensor_5 (Humidity): 5321.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5321.0
-Next expected value of sensor_5 (Humidity): 52.524867117555445
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.524867117555445
-WARNING: The measured value 54.00654080456665 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.00654080456665 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.395361406599385
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.395361406599385
-WARNING: The measured value 54.00654080456665 and the mean value 53.395361406599385 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.00654080456665 and the mean value 53.395361406599385 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.74275865659094, 'u': '%', 't': 5311}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5321.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5321.0
-Next expected value of sensor_2 (SoilMoisture): 49.07907234370932
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.07907234370932
-WARNING: The measured value 48.74275865659094 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.74275865659094 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 49.10646906752266
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 49.10646906752266
-WARNING: The measured value 48.74275865659094 and the mean value 49.10646906752266 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.74275865659094 and the mean value 49.10646906752266 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.56138647268217, 'u': '%', 't': 5320}}
-Next expected timestamp of sensor_5 (Humidity): 5329.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5329.888888888889
-Next expected value of sensor_5 (Humidity): 52.9635911995492
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.9635911995492
-WARNING: The measured value 54.56138647268217 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.56138647268217 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.54738583925
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.54738583925
-WARNING: The measured value 54.56138647268217 and the mean value 53.54738583925 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.56138647268217 and the mean value 53.54738583925 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.58458630863893, 'u': '%', 't': 5320}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5329.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5329.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.55621283037999
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.55621283037999
-WARNING: The measured value 46.58458630863893 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.58458630863893 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.646380143508864
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.646380143508864
-WARNING: The measured value 46.58458630863893 and the mean value 48.646380143508864 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.58458630863893 and the mean value 48.646380143508864 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.67767023475769, 'u': '%', 't': 5331}}
-Next expected timestamp of sensor_5 (Humidity): 5341.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5341.111111111111
-Next expected value of sensor_5 (Humidity): 53.91011964539013
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.91011964539013
-WARNING: The measured value 55.67767023475769 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.67767023475769 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.89357964104515
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.89357964104515
-WARNING: The measured value 55.67767023475769 and the mean value 53.89357964104515 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.67767023475769 and the mean value 53.89357964104515 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.01060723256997, 'u': '%', 't': 5331}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5341.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5341.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.026791288034985
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.026791288034985
-WARNING: The measured value 47.01060723256997 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.01060723256997 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.27299500013038
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.27299500013038
-WARNING: The measured value 47.01060723256997 and the mean value 48.27299500013038 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.01060723256997 and the mean value 48.27299500013038 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.398810386486666, 'u': '%', 't': 5341}}
-Next expected timestamp of sensor_5 (Humidity): 5351.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5351.0
-Next expected value of sensor_5 (Humidity): 53.41146152933649
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.41146152933649
-WARNING: The measured value 51.398810386486666 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.398810386486666 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.440032537938
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.440032537938
-WARNING: The measured value 51.398810386486666 and the mean value 53.440032537938 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.398810386486666 and the mean value 53.440032537938 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.10002120616314, 'u': '%', 't': 5341}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5351.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5351.0
-Next expected value of sensor_2 (SoilMoisture): 47.1807534379698
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.1807534379698
-WARNING: The measured value 48.10002120616314 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.10002120616314 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.156878800961785
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.156878800961785
-WARNING: The measured value 48.10002120616314 and the mean value 48.156878800961785 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.10002120616314 and the mean value 48.156878800961785 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.06360610513395, 'u': '%', 't': 5350}}
-Next expected timestamp of sensor_5 (Humidity): 5359.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5359.888888888889
-Next expected value of sensor_5 (Humidity): 54.620584916910296
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.620584916910296
-WARNING: The measured value 56.06360610513395 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.06360610513395 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.913783446777124
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.913783446777124
-WARNING: The measured value 56.06360610513395 and the mean value 53.913783446777124 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.06360610513395 and the mean value 53.913783446777124 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.47745955718074, 'u': '%', 't': 5350}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5359.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5359.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.52900962241603
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.52900962241603
-WARNING: The measured value 48.47745955718074 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.47745955718074 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.14840465699141
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.14840465699141
-WARNING: The measured value 48.47745955718074 and the mean value 48.14840465699141 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.47745955718074 and the mean value 48.14840465699141 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.829264568852636, 'u': '%', 't': 5361}}
-Next expected timestamp of sensor_5 (Humidity): 5371.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5371.111111111111
-Next expected value of sensor_5 (Humidity): 56.08306237390562
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.08306237390562
-WARNING: The measured value 55.829264568852636 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.829264568852636 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.31048237948003
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.31048237948003
-WARNING: The measured value 55.829264568852636 and the mean value 54.31048237948003 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.829264568852636 and the mean value 54.31048237948003 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.666033305953405, 'u': '%', 't': 5361}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5371.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5371.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.06148984463155
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.06148984463155
-WARNING: The measured value 46.666033305953405 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.666033305953405 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 47.83567088037278
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 47.83567088037278
-WARNING: The measured value 46.666033305953405 and the mean value 47.83567088037278 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.666033305953405 and the mean value 47.83567088037278 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.91026226534107, 'u': '%', 't': 5370}}
-Next expected timestamp of sensor_5 (Humidity): 5379.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5379.888888888889
-Next expected value of sensor_5 (Humidity): 55.555803199699895
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.555803199699895
-WARNING: The measured value 53.91026226534107 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.91026226534107 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.35779674466877
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.35779674466877
-WARNING: The measured value 53.91026226534107 and the mean value 54.35779674466877 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.91026226534107 and the mean value 54.35779674466877 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.105743305694126, 'u': '%', 't': 5370}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5379.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5379.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.511156449341996
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.511156449341996
-WARNING: The measured value 49.105743305694126 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.105743305694126 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.01406661882053
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.01406661882053
-WARNING: The measured value 49.105743305694126 and the mean value 48.01406661882053 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.105743305694126 and the mean value 48.01406661882053 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.58563947903136, 'u': '%', 't': 5381}}
-Next expected timestamp of sensor_5 (Humidity): 5391.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5391.111111111111
-Next expected value of sensor_5 (Humidity): 56.199526676391585
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.199526676391585
-WARNING: The measured value 56.58563947903136 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.58563947903136 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.845420042118334
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.845420042118334
-WARNING: The measured value 56.58563947903136 and the mean value 54.845420042118334 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.58563947903136 and the mean value 54.845420042118334 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.40454202949423, 'u': '%', 't': 5381}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5391.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5391.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.5207843869106
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.5207843869106
-WARNING: The measured value 50.40454202949423 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 50.40454202949423 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.41447163914637
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.41447163914637
-WARNING: The measured value 50.40454202949423 and the mean value 48.41447163914637 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 50.40454202949423 and the mean value 48.41447163914637 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.86165812941639, 'u': '%', 't': 5391}}
-Next expected timestamp of sensor_5 (Humidity): 5401.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5401.0
-Next expected value of sensor_5 (Humidity): 56.44215980712447
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.44215980712447
-WARNING: The measured value 56.86165812941639 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.86165812941639 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.30290717691698
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.30290717691698
-WARNING: The measured value 56.86165812941639 and the mean value 55.30290717691698 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.86165812941639 and the mean value 55.30290717691698 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.78316186157221, 'u': '%', 't': 5391}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5401.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5401.0
-Next expected value of sensor_2 (SoilMoisture): 48.15943867212757
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.15943867212757
-WARNING: The measured value 46.78316186157221 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.78316186157221 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.12508640492318
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.12508640492318
-WARNING: The measured value 46.78316186157221 and the mean value 48.12508640492318 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.78316186157221 and the mean value 48.12508640492318 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.16866166378382, 'u': '%', 't': 5400}}
-Next expected timestamp of sensor_5 (Humidity): 5409.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5409.888888888889
-Next expected value of sensor_5 (Humidity): 55.09720655524766
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.09720655524766
-WARNING: The measured value 52.16866166378382 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.16866166378382 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.80999409874837
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.80999409874837
-WARNING: The measured value 52.16866166378382 and the mean value 54.80999409874837 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.16866166378382 and the mean value 54.80999409874837 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.011933534556476, 'u': '%', 't': 5400}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5409.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5409.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.81000094676163
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.81000094676163
-WARNING: The measured value 49.011933534556476 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.011933534556476 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.288575761697864
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.288575761697864
-WARNING: The measured value 49.011933534556476 and the mean value 48.288575761697864 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.011933534556476 and the mean value 48.288575761697864 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.696787026992666, 'u': '%', 't': 5411}}
-Next expected timestamp of sensor_5 (Humidity): 5421.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5421.111111111111
-Next expected value of sensor_5 (Humidity): 55.72032023309002
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.72032023309002
-WARNING: The measured value 56.696787026992666 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.696787026992666 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.171891738018815
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.171891738018815
-WARNING: The measured value 56.696787026992666 and the mean value 55.171891738018815 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.696787026992666 and the mean value 55.171891738018815 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.382656219304494, 'u': '%', 't': 5411}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5421.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5421.111111111111
-Next expected value of sensor_2 (SoilMoisture): 49.11152423328746
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.11152423328746
-WARNING: The measured value 48.382656219304494 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.382656219304494 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.342025128872976
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.342025128872976
-WARNING: The measured value 48.382656219304494 and the mean value 48.342025128872976 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.382656219304494 and the mean value 48.342025128872976 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.93251764976512, 'u': '%', 't': 5421}}
-Next expected timestamp of sensor_5 (Humidity): 5431.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5431.0
-Next expected value of sensor_5 (Humidity): 55.99319035136534
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.99319035136534
-WARNING: The measured value 55.93251764976512 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.93251764976512 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.34591774102196
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.34591774102196
-WARNING: The measured value 55.93251764976512 and the mean value 55.34591774102196 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.93251764976512 and the mean value 55.34591774102196 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.593294477723404, 'u': '%', 't': 5421}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5431.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5431.0
-Next expected value of sensor_2 (SoilMoisture): 48.52563053624173
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.52563053624173
-WARNING: The measured value 47.593294477723404 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.593294477723404 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.25850149643854
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.25850149643854
-WARNING: The measured value 47.593294477723404 and the mean value 48.25850149643854 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.593294477723404 and the mean value 48.25850149643854 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.37075261926773, 'u': '%', 't': 5430}}
-Next expected timestamp of sensor_5 (Humidity): 5439.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5439.888888888889
-Next expected value of sensor_5 (Humidity): 56.62143249279396
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.62143249279396
-WARNING: The measured value 56.37075261926773 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.37075261926773 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.574693171624055
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.574693171624055
-WARNING: The measured value 56.37075261926773 and the mean value 55.574693171624055 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.37075261926773 and the mean value 55.574693171624055 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.59621063330139, 'u': '%', 't': 5430}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5439.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5439.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.789585952098875
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.789585952098875
-WARNING: The measured value 49.59621063330139 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.59621063330139 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.520804289216755
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.520804289216755
-WARNING: The measured value 49.59621063330139 and the mean value 48.520804289216755 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.59621063330139 and the mean value 48.520804289216755 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.881107494744775, 'u': '%', 't': 5441}}
-Next expected timestamp of sensor_5 (Humidity): 5451.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5451.111111111111
-Next expected value of sensor_5 (Humidity): 54.710998944237375
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.710998944237375
-WARNING: The measured value 52.881107494744775 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.881107494744775 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.15638617259454
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.15638617259454
-WARNING: The measured value 52.881107494744775 and the mean value 55.15638617259454 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.881107494744775 and the mean value 55.15638617259454 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.88634504902757, 'u': '%', 't': 5441}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5451.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5451.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.499804929879474
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.499804929879474
-WARNING: The measured value 47.88634504902757 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.88634504902757 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.42521145938643
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.42521145938643
-WARNING: The measured value 47.88634504902757 and the mean value 48.42521145938643 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.88634504902757 and the mean value 48.42521145938643 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.77239206555039, 'u': '%', 't': 5450}}
-Next expected timestamp of sensor_5 (Humidity): 5459.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5459.888888888889
-Next expected value of sensor_5 (Humidity): 54.69285360789586
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.69285360789586
-WARNING: The measured value 54.77239206555039 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.77239206555039 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.05499823901589
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.05499823901589
-WARNING: The measured value 54.77239206555039 and the mean value 55.05499823901589 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.77239206555039 and the mean value 55.05499823901589 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.5747789221927, 'u': '%', 't': 5450}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5459.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5459.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.594799987385954
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.594799987385954
-WARNING: The measured value 48.5747789221927 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.5747789221927 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.45867344571587
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.45867344571587
-WARNING: The measured value 48.5747789221927 and the mean value 48.45867344571587 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.5747789221927 and the mean value 48.45867344571587 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.36993140853504, 'u': '%', 't': 5461}}
-Next expected timestamp of sensor_5 (Humidity): 5471.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5471.111111111111
-Next expected value of sensor_5 (Humidity): 53.708267796182085
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.708267796182085
-WARNING: The measured value 52.36993140853504 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.36993140853504 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.54027589579052
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.54027589579052
-WARNING: The measured value 52.36993140853504 and the mean value 54.54027589579052 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.36993140853504 and the mean value 54.54027589579052 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.73437339998024, 'u': '%', 't': 5461}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5471.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5471.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.46103102924731
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.46103102924731
-WARNING: The measured value 46.73437339998024 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.73437339998024 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.15574680318827
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.15574680318827
-WARNING: The measured value 46.73437339998024 and the mean value 48.15574680318827 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.73437339998024 and the mean value 48.15574680318827 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.23829933372215, 'u': '%', 't': 5471}}
-Next expected timestamp of sensor_5 (Humidity): 5481.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5481.0
-Next expected value of sensor_5 (Humidity): 52.79681109614552
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.79681109614552
-WARNING: The measured value 53.23829933372215 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.23829933372215 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.246335596423116
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.246335596423116
-WARNING: The measured value 53.23829933372215 and the mean value 54.246335596423116 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.23829933372215 and the mean value 54.246335596423116 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.72392959226074, 'u': '%', 't': 5471}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5481.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5481.0
-Next expected value of sensor_2 (SoilMoisture): 47.780235955668566
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.780235955668566
-WARNING: The measured value 48.72392959226074 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.72392959226074 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.2133151030021
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.2133151030021
-WARNING: The measured value 48.72392959226074 and the mean value 48.2133151030021 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.72392959226074 and the mean value 48.2133151030021 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.642565285543824, 'u': '%', 't': 5480}}
-Next expected timestamp of sensor_5 (Humidity): 5489.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5489.888888888889
-Next expected value of sensor_5 (Humidity): 52.05760471107837
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.05760471107837
-WARNING: The measured value 51.642565285543824 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.642565285543824 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.674479341598186
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.674479341598186
-WARNING: The measured value 51.642565285543824 and the mean value 53.674479341598186 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.642565285543824 and the mean value 53.674479341598186 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.42153326390587, 'u': '%', 't': 5480}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5489.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5489.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.73416704828938
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.73416704828938
-WARNING: The measured value 49.42153326390587 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.42153326390587 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.40466250154111
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.40466250154111
-WARNING: The measured value 49.42153326390587 and the mean value 48.40466250154111 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.42153326390587 and the mean value 48.40466250154111 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.82436043644814, 'u': '%', 't': 5491}}
-Next expected timestamp of sensor_5 (Humidity): 5501.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5501.111111111111
-Next expected value of sensor_5 (Humidity): 52.521708858044235
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.521708858044235
-WARNING: The measured value 53.82436043644814 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.82436043644814 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.58918719045564
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.58918719045564
-WARNING: The measured value 53.82436043644814 and the mean value 53.58918719045564 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.82436043644814 and the mean value 53.58918719045564 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.17453175505708, 'u': '%', 't': 5491}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5501.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5501.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.902237349606914
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.902237349606914
-WARNING: The measured value 47.17453175505708 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.17453175505708 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.20533705784557
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.20533705784557
-WARNING: The measured value 47.17453175505708 and the mean value 48.20533705784557 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.17453175505708 and the mean value 48.20533705784557 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.62802537410872, 'u': '%', 't': 5501}}
-Next expected timestamp of sensor_5 (Humidity): 5511.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5511.0
-Next expected value of sensor_5 (Humidity): 51.476071364523676
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 51.476071364523676
-WARNING: The measured value 52.62802537410872 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.62802537410872 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.34160316785079
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.34160316785079
-WARNING: The measured value 52.62802537410872 and the mean value 53.34160316785079 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.62802537410872 and the mean value 53.34160316785079 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.050791152949984, 'u': '%', 't': 5501}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5511.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5511.0
-Next expected value of sensor_2 (SoilMoisture): 48.39251108131941
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.39251108131941
-WARNING: The measured value 49.050791152949984 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.050791152949984 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.34003387024903
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.34003387024903
-WARNING: The measured value 49.050791152949984 and the mean value 48.34003387024903 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.050791152949984 and the mean value 48.34003387024903 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.88880261763032, 'u': '%', 't': 5510}}
-Next expected timestamp of sensor_5 (Humidity): 5519.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5519.888888888889
-Next expected value of sensor_5 (Humidity): 53.32656206655115
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.32656206655115
-WARNING: The measured value 56.88880261763032 of sensor_5 (Humidity) is unexpected. (Expected value: 53.32656206655115)	Waiting for the next value
-Published to greenhouse_0/alert: WARNING: The measured value 56.88880261763032 of sensor_5 (Humidity) is unexpected. (Expected value: 53.32656206655115)	Waiting for the next value
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.86243636155594, 'u': '%', 't': 5510}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5519.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5519.888888888889
-Next expected value of sensor_2 (SoilMoisture): 49.01752979860716
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.01752979860716
-WARNING: The measured value 49.86243636155594 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.86243636155594 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.62159603661004
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.62159603661004
-WARNING: The measured value 49.86243636155594 and the mean value 48.62159603661004 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.86243636155594 and the mean value 48.62159603661004 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 57.14242889502203, 'u': '%', 't': 5521}}
-Next expected timestamp of sensor_5 (Humidity): 5531.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5531.111111111111
-Next expected value of sensor_5 (Humidity): 55.05906188222655
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.05906188222655
-WARNING: The measured value 57.14242889502203 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 57.14242889502203 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.421727206878586
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.421727206878586
-WARNING: The measured value 57.14242889502203 and the mean value 54.421727206878586 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 57.14242889502203 and the mean value 54.421727206878586 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.21291952169003, 'u': '%', 't': 5521}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5531.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5531.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.29119763427198
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.29119763427198
-WARNING: The measured value 47.21291952169003 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.21291952169003 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.3945227749545
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.3945227749545
-WARNING: The measured value 47.21291952169003 and the mean value 48.3945227749545 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.21291952169003 and the mean value 48.3945227749545 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.1756394112782, 'u': '%', 't': 5530}}
-Next expected timestamp of sensor_5 (Humidity): 5539.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5539.888888888889
-Next expected value of sensor_5 (Humidity): 56.429842566335225
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.429842566335225
-WARNING: The measured value 56.1756394112782 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.1756394112782 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.78532227200965
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.78532227200965
-WARNING: The measured value 56.1756394112782 and the mean value 54.78532227200965 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.1756394112782 and the mean value 54.78532227200965 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.157474444969665, 'u': '%', 't': 5530}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5539.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5539.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.10773726319155
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.10773726319155
-WARNING: The measured value 47.157474444969665 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.157474444969665 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.16428449855042
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.16428449855042
-WARNING: The measured value 47.157474444969665 and the mean value 48.16428449855042 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.157474444969665 and the mean value 48.16428449855042 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.63094276285429, 'u': '%', 't': 5541}}
-Next expected timestamp of sensor_5 (Humidity): 5551.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5551.111111111111
-Next expected value of sensor_5 (Humidity): 55.50157314167754
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.50157314167754
-WARNING: The measured value 52.63094276285429 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.63094276285429 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.50797455029983
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.50797455029983
-WARNING: The measured value 52.63094276285429 and the mean value 54.50797455029983 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.63094276285429 and the mean value 54.50797455029983 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.23542872919107, 'u': '%', 't': 5541}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5551.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5551.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.05108881473065
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.05108881473065
-WARNING: The measured value 48.23542872919107 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.23542872919107 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.17437856815625
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.17437856815625
-WARNING: The measured value 48.23542872919107 and the mean value 48.17437856815625 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.23542872919107 and the mean value 48.17437856815625 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.06239756670912, 'u': '%', 't': 5551}}
-Next expected timestamp of sensor_5 (Humidity): 5561.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5561.0
-Next expected value of sensor_5 (Humidity): 56.456875853470564
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.456875853470564
-WARNING: The measured value 56.06239756670912 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.06239756670912 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.85907615168888
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.85907615168888
-WARNING: The measured value 56.06239756670912 and the mean value 54.85907615168888 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.06239756670912 and the mean value 54.85907615168888 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.5757861862002, 'u': '%', 't': 5551}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5561.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5561.0
-Next expected value of sensor_2 (SoilMoisture): 48.6993851982395
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.6993851982395
-WARNING: The measured value 49.5757861862002 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.5757861862002 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.42182701757895
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.42182701757895
-WARNING: The measured value 49.5757861862002 and the mean value 48.42182701757895 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.5757861862002 and the mean value 48.42182701757895 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.190310629905234, 'u': '%', 't': 5560}}
-Next expected timestamp of sensor_5 (Humidity): 5569.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5569.888888888889
-Next expected value of sensor_5 (Humidity): 56.6906961976793
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.6906961976793
-WARNING: The measured value 56.190310629905234 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.190310629905234 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.20998002818344
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.20998002818344
-WARNING: The measured value 56.190310629905234 and the mean value 55.20998002818344 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.190310629905234 and the mean value 55.20998002818344 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.251259509034604, 'u': '%', 't': 5560}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5569.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5569.888888888889
-Next expected value of sensor_2 (SoilMoisture): 49.043264632299554
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.043264632299554
-WARNING: The measured value 50.251259509034604 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 50.251259509034604 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.77388866635323
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.77388866635323
-WARNING: The measured value 50.251259509034604 and the mean value 48.77388866635323 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 50.251259509034604 and the mean value 48.77388866635323 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.134853129014715, 'u': '%', 't': 5571}}
-Next expected timestamp of sensor_5 (Humidity): 5581.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5581.111111111111
-Next expected value of sensor_5 (Humidity): 55.3309837402353
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.3309837402353
-WARNING: The measured value 52.134853129014715 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.134853129014715 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.75406655503662
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.75406655503662
-WARNING: The measured value 52.134853129014715 and the mean value 54.75406655503662 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.134853129014715 and the mean value 54.75406655503662 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.49141637333261, 'u': '%', 't': 5571}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5581.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5581.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.184649567533
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.184649567533
-WARNING: The measured value 46.49141637333261 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.49141637333261 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.37839908847161
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.37839908847161
-WARNING: The measured value 46.49141637333261 and the mean value 48.37839908847161 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.49141637333261 and the mean value 48.37839908847161 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.096744792730966, 'u': '%', 't': 5580}}
-Next expected timestamp of sensor_5 (Humidity): 5589.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5589.888888888889
-Next expected value of sensor_5 (Humidity): 53.584782568672395
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.584782568672395
-WARNING: The measured value 52.096744792730966 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.096744792730966 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.311286951741984
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.311286951741984
-WARNING: The measured value 52.096744792730966 and the mean value 54.311286951741984 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.096744792730966 and the mean value 54.311286951741984 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.223642302479114, 'u': '%', 't': 5580}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5589.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5589.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.968377304556725
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.968377304556725
-WARNING: The measured value 47.223642302479114 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.223642302479114 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.156632647142594
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.156632647142594
-WARNING: The measured value 47.223642302479114 and the mean value 48.156632647142594 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.223642302479114 and the mean value 48.156632647142594 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.90808361269963, 'u': '%', 't': 5590}}
-Next expected timestamp of sensor_5 (Humidity): 5599.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5599.888888888889
-Next expected value of sensor_5 (Humidity): 52.325129183092486
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.325129183092486
-WARNING: The measured value 51.90808361269963 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.90808361269963 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.825947506492795
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.825947506492795
-WARNING: The measured value 51.90808361269963 and the mean value 53.825947506492795 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.90808361269963 and the mean value 53.825947506492795 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.66316583411379, 'u': '%', 't': 5590}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5599.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5599.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.26236755929848
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.26236755929848
-WARNING: The measured value 49.66316583411379 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.66316583411379 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.418377592682184
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.418377592682184
-WARNING: The measured value 49.66316583411379 and the mean value 48.418377592682184 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.66316583411379 and the mean value 48.418377592682184 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.76980368266675, 'u': '%', 't': 5601}}
-Next expected timestamp of sensor_5 (Humidity): 5611.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5611.111111111111
-Next expected value of sensor_5 (Humidity): 52.397544163518575
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.397544163518575
-WARNING: The measured value 55.76980368266675 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.76980368266675 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.077580379851234
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.077580379851234
-WARNING: The measured value 55.76980368266675 and the mean value 54.077580379851234 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.76980368266675 and the mean value 54.077580379851234 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.507910366756505, 'u': '%', 't': 5601}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5611.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5611.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.02273417517402
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.02273417517402
-WARNING: The measured value 47.507910366756505 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.507910366756505 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.24301001544669
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.24301001544669
-WARNING: The measured value 47.507910366756505 and the mean value 48.24301001544669 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.507910366756505 and the mean value 48.24301001544669 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.62062541390959, 'u': '%', 't': 5610}}
-Next expected timestamp of sensor_5 (Humidity): 5619.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5619.888888888889
-Next expected value of sensor_5 (Humidity): 52.18661895769665
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.18661895769665
-WARNING: The measured value 52.62062541390959 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.62062541390959 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.69951214418914
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.69951214418914
-WARNING: The measured value 52.62062541390959 and the mean value 53.69951214418914 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.62062541390959 and the mean value 53.69951214418914 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.336492258508486, 'u': '%', 't': 5610}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5619.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5619.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.84614501135946
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.84614501135946
-WARNING: The measured value 49.336492258508486 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.336492258508486 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.428164251005995
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.428164251005995
-WARNING: The measured value 49.336492258508486 and the mean value 48.428164251005995 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.336492258508486 and the mean value 48.428164251005995 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.669656377275224, 'u': '%', 't': 5621}}
-Next expected timestamp of sensor_5 (Humidity): 5631.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5631.111111111111
-Next expected value of sensor_5 (Humidity): 52.279691288634126
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.279691288634126
-WARNING: The measured value 52.669656377275224 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.669656377275224 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.40796185102481
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.40796185102481
-WARNING: The measured value 52.669656377275224 and the mean value 53.40796185102481 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.669656377275224 and the mean value 53.40796185102481 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.64158065538719, 'u': '%', 't': 5621}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5631.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5631.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.723909032194115
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.723909032194115
-WARNING: The measured value 48.64158065538719 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.64158065538719 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.49653354241683
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.49653354241683
-WARNING: The measured value 48.64158065538719 and the mean value 48.49653354241683 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.64158065538719 and the mean value 48.49653354241683 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.2197167778592, 'u': '%', 't': 5631}}
-Next expected timestamp of sensor_5 (Humidity): 5641.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5641.0
-Next expected value of sensor_5 (Humidity): 52.68037688734323
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.68037688734323
-WARNING: The measured value 53.2197167778592 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.2197167778592 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.29774567647114
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.29774567647114
-WARNING: The measured value 53.2197167778592 and the mean value 53.29774567647114 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.2197167778592 and the mean value 53.29774567647114 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.99956764911269, 'u': '%', 't': 5631}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5641.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5641.0
-Next expected value of sensor_2 (SoilMoisture): 48.620557559510026
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.620557559510026
-WARNING: The measured value 48.99956764911269 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.99956764911269 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.60401572116508
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.60401572116508
-WARNING: The measured value 48.99956764911269 and the mean value 48.60401572116508 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.99956764911269 and the mean value 48.60401572116508 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.84962962585002, 'u': '%', 't': 5640}}
-Next expected timestamp of sensor_5 (Humidity): 5649.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5649.888888888889
-Next expected value of sensor_5 (Humidity): 52.98072148663745
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.98072148663745
-WARNING: The measured value 54.84962962585002 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.84962962585002 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.5376213403416
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.5376213403416
-WARNING: The measured value 54.84962962585002 and the mean value 53.5376213403416 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.84962962585002 and the mean value 53.5376213403416 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.299679048977374, 'u': '%', 't': 5640}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5649.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5649.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.805667113319714
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.805667113319714
-WARNING: The measured value 49.299679048977374 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.299679048977374 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.732571005267936
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.732571005267936
-WARNING: The measured value 49.299679048977374 and the mean value 48.732571005267936 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.299679048977374 and the mean value 48.732571005267936 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 51.92772041009715, 'u': '%', 't': 5651}}
-Next expected timestamp of sensor_5 (Humidity): 5661.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5661.111111111111
-Next expected value of sensor_5 (Humidity): 52.84530237312836
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.84530237312836
-WARNING: The measured value 51.92772041009715 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 51.92772041009715 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.20590102202071
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.20590102202071
-WARNING: The measured value 51.92772041009715 and the mean value 53.20590102202071 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 51.92772041009715 and the mean value 53.20590102202071 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.600516463730294, 'u': '%', 't': 5651}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5661.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5661.111111111111
-Next expected value of sensor_2 (SoilMoisture): 49.401162474295674
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.401162474295674
-WARNING: The measured value 49.600516463730294 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.600516463730294 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.896473995329764
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.896473995329764
-WARNING: The measured value 49.600516463730294 and the mean value 48.896473995329764 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.600516463730294 and the mean value 48.896473995329764 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 57.4887874747435, 'u': '%', 't': 5660}}
-Next expected timestamp of sensor_5 (Humidity): 5669.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5669.888888888889
-Next expected value of sensor_5 (Humidity): 55.243072682475116
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.243072682475116
-WARNING: The measured value 57.4887874747435 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 57.4887874747435 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.96045975466483
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.96045975466483
-WARNING: The measured value 57.4887874747435 and the mean value 53.96045975466483 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 57.4887874747435 and the mean value 53.96045975466483 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.81338411072871, 'u': '%', 't': 5660}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5669.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5669.888888888889
-Next expected value of sensor_2 (SoilMoisture): 49.850693771519474
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.850693771519474
-WARNING: The measured value 48.81338411072871 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.81338411072871 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.91681237070893
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.91681237070893
-WARNING: The measured value 48.81338411072871 and the mean value 48.91681237070893 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.81338411072871 and the mean value 48.91681237070893 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.9846570039419, 'u': '%', 't': 5671}}
-Next expected timestamp of sensor_5 (Humidity): 5681.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5681.111111111111
-Next expected value of sensor_5 (Humidity): 55.11818159765204
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.11818159765204
-WARNING: The measured value 53.9846570039419 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.9846570039419 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.054295186347964
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.054295186347964
-WARNING: The measured value 53.9846570039419 and the mean value 54.054295186347964 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.9846570039419 and the mean value 54.054295186347964 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.10702941090927, 'u': '%', 't': 5671}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5681.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5681.111111111111
-Next expected value of sensor_2 (SoilMoisture): 49.13807543608662
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 49.13807543608662
-WARNING: The measured value 48.10702941090927 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.10702941090927 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.834865807908315
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.834865807908315
-WARNING: The measured value 48.10702941090927 and the mean value 48.834865807908315 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.10702941090927 and the mean value 48.834865807908315 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.147902012063135, 'u': '%', 't': 5681}}
-Next expected timestamp of sensor_5 (Humidity): 5691.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5691.111111111111
-Next expected value of sensor_5 (Humidity): 55.29776138050592
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.29776138050592
-WARNING: The measured value 55.147902012063135 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.147902012063135 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.32599691269083
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.32599691269083
-WARNING: The measured value 55.147902012063135 and the mean value 54.32599691269083 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.147902012063135 and the mean value 54.32599691269083 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.47750623215756, 'u': '%', 't': 5681}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5691.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5691.111111111111
-Next expected value of sensor_2 (SoilMoisture): 48.63607608262709
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.63607608262709
-WARNING: The measured value 48.47750623215756 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.47750623215756 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.79090388465145
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.79090388465145
-WARNING: The measured value 48.47750623215756 and the mean value 48.79090388465145 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.47750623215756 and the mean value 48.79090388465145 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 55.04861974482979, 'u': '%', 't': 5690}}
-Next expected timestamp of sensor_5 (Humidity): 5699.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5699.888888888889
-Next expected value of sensor_5 (Humidity): 55.16769528802502
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.16769528802502
-WARNING: The measured value 55.04861974482979 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 55.04861974482979 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.524171731912496
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.524171731912496
-WARNING: The measured value 55.04861974482979 and the mean value 54.524171731912496 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 55.04861974482979 and the mean value 54.524171731912496 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.71512502824889, 'u': '%', 't': 5690}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5699.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5699.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.80569002109969
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.80569002109969
-WARNING: The measured value 48.71512502824889 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.71512502824889 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.76734785287157
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.76734785287157
-WARNING: The measured value 48.71512502824889 and the mean value 48.76734785287157 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.71512502824889 and the mean value 48.76734785287157 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.22397253125905, 'u': '%', 't': 5701}}
-Next expected timestamp of sensor_5 (Humidity): 5711.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5711.111111111111
-Next expected value of sensor_5 (Humidity): 54.748978377483304
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.748978377483304
-WARNING: The measured value 52.22397253125905 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.22397253125905 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.15167367353712
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.15167367353712
-WARNING: The measured value 52.22397253125905 and the mean value 54.15167367353712 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.22397253125905 and the mean value 54.15167367353712 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.48263704723429, 'u': '%', 't': 5701}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5711.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5711.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.56086962219308
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.56086962219308
-WARNING: The measured value 46.48263704723429 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.48263704723429 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.35512202101386
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.35512202101386
-WARNING: The measured value 46.48263704723429 and the mean value 48.35512202101386 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.48263704723429 and the mean value 48.35512202101386 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.99569596102513, 'u': '%', 't': 5711}}
-Next expected timestamp of sensor_5 (Humidity): 5721.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5721.0
-Next expected value of sensor_5 (Humidity): 55.635762606909225
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.635762606909225
-WARNING: The measured value 56.99569596102513 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.99569596102513 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.711231350599355
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.711231350599355
-WARNING: The measured value 56.99569596102513 and the mean value 54.711231350599355 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.99569596102513 and the mean value 54.711231350599355 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.80674629654305, 'u': '%', 't': 5711}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5721.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5721.0
-Next expected value of sensor_2 (SoilMoisture): 47.81330626712641
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.81330626712641
-WARNING: The measured value 48.80674629654305 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.80674629654305 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.38410284029452
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.38410284029452
-WARNING: The measured value 48.80674629654305 and the mean value 48.38410284029452 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.80674629654305 and the mean value 48.38410284029452 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 53.387291224472214, 'u': '%', 't': 5720}}
-Next expected timestamp of sensor_5 (Humidity): 5729.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5729.888888888889
-Next expected value of sensor_5 (Humidity): 54.79806815310036
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 54.79806815310036
-WARNING: The measured value 53.387291224472214 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 53.387291224472214 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.535168701977135
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.535168701977135
-WARNING: The measured value 53.387291224472214 and the mean value 54.535168701977135 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 53.387291224472214 and the mean value 54.535168701977135 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.230120738907964, 'u': '%', 't': 5720}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5729.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5729.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.30122031468753
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.30122031468753
-WARNING: The measured value 47.230120738907964 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.230120738907964 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.136056212040884
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.136056212040884
-WARNING: The measured value 47.230120738907964 and the mean value 48.136056212040884 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.230120738907964 and the mean value 48.136056212040884 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.303790366469926, 'u': '%', 't': 5731}}
-Next expected timestamp of sensor_5 (Humidity): 5741.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5741.111111111111
-Next expected value of sensor_5 (Humidity): 53.62697310109303
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.62697310109303
-WARNING: The measured value 52.303790366469926 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.303790366469926 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.14905799104183
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.14905799104183
-WARNING: The measured value 52.303790366469926 and the mean value 54.14905799104183 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.303790366469926 and the mean value 54.14905799104183 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.78229761489706, 'u': '%', 't': 5731}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5741.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5741.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.160684525369064
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.160684525369064
-WARNING: The measured value 47.78229761489706 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.78229761489706 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.01406828699398
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.01406828699398
-WARNING: The measured value 47.78229761489706 and the mean value 48.01406828699398 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.78229761489706 and the mean value 48.01406828699398 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.186706036621366, 'u': '%', 't': 5740}}
-Next expected timestamp of sensor_5 (Humidity): 5749.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5749.888888888889
-Next expected value of sensor_5 (Humidity): 52.923125938412454
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 52.923125938412454
-WARNING: The measured value 52.186706036621366 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.186706036621366 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 53.75831242761386
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 53.75831242761386
-WARNING: The measured value 52.186706036621366 and the mean value 53.75831242761386 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.186706036621366 and the mean value 53.75831242761386 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.82097082348533, 'u': '%', 't': 5740}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5749.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5749.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.016782431867995
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.016782431867995
-WARNING: The measured value 49.82097082348533 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 49.82097082348533 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.28488040049432
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.28488040049432
-WARNING: The measured value 49.82097082348533 and the mean value 48.28488040049432 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 49.82097082348533 and the mean value 48.28488040049432 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.192319470123635, 'u': '%', 't': 5751}}
-Next expected timestamp of sensor_5 (Humidity): 5761.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5761.111111111111
-Next expected value of sensor_5 (Humidity): 53.197102802705274
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 53.197102802705274
-WARNING: The measured value 56.192319470123635 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.192319470123635 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.14427700826319
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.14427700826319
-WARNING: The measured value 56.192319470123635 and the mean value 54.14427700826319 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.192319470123635 and the mean value 54.14427700826319 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.869471405552765, 'u': '%', 't': 5751}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5761.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5761.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.723604931267374
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.723604931267374
-WARNING: The measured value 46.869471405552765 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.869471405552765 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.00957822392497
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.00957822392497
-WARNING: The measured value 46.869471405552765 and the mean value 48.00957822392497 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.869471405552765 and the mean value 48.00957822392497 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 57.926529946993014, 'u': '%', 't': 5761}}
-Next expected timestamp of sensor_5 (Humidity): 5771.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5771.0
-Next expected value of sensor_5 (Humidity): 55.40220140122944
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.40220140122944
-WARNING: The measured value 57.926529946993014 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 57.926529946993014 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.7680144199792
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.7680144199792
-WARNING: The measured value 57.926529946993014 and the mean value 54.7680144199792 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 57.926529946993014 and the mean value 54.7680144199792 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.81510645345084, 'u': '%', 't': 5761}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5771.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5771.0
-Next expected value of sensor_2 (SoilMoisture): 48.20064846509013
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.20064846509013
-WARNING: The measured value 48.81510645345084 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.81510645345084 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.1376832389403
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.1376832389403
-WARNING: The measured value 48.81510645345084 and the mean value 48.1376832389403 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.81510645345084 and the mean value 48.1376832389403 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 58.10754165085539, 'u': '%', 't': 5770}}
-Next expected timestamp of sensor_5 (Humidity): 5779.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5779.888888888889
-Next expected value of sensor_5 (Humidity): 56.64861392160023
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.64861392160023
-WARNING: The measured value 58.10754165085539 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 58.10754165085539 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.416704096538375
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.416704096538375
-WARNING: The measured value 58.10754165085539 and the mean value 55.416704096538375 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 58.10754165085539 and the mean value 55.416704096538375 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.43530279554793, 'u': '%', 't': 5770}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5779.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5779.888888888889
-Next expected value of sensor_2 (SoilMoisture): 48.32609933048079
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.32609933048079
-WARNING: The measured value 48.43530279554793 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.43530279554793 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.196701728105616
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.196701728105616
-WARNING: The measured value 48.43530279554793 and the mean value 48.196701728105616 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.43530279554793 and the mean value 48.196701728105616 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 57.9170404258825, 'u': '%', 't': 5781}}
-Next expected timestamp of sensor_5 (Humidity): 5791.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5791.111111111111
-Next expected value of sensor_5 (Humidity): 57.91969289820773
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 57.91969289820773
-WARNING: The measured value 57.9170404258825 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 57.9170404258825 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.95579564770405
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.95579564770405
-WARNING: The measured value 57.9170404258825 and the mean value 55.95579564770405 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 57.9170404258825 and the mean value 55.95579564770405 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.09532417454294, 'u': '%', 't': 5781}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5791.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5791.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.993693192335236
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.993693192335236
-WARNING: The measured value 47.09532417454294 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 47.09532417454294 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.00611913373113
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.00611913373113
-WARNING: The measured value 47.09532417454294 and the mean value 48.00611913373113 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 47.09532417454294 and the mean value 48.00611913373113 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.596148560033406, 'u': '%', 't': 5791}}
-Next expected timestamp of sensor_5 (Humidity): 5801.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5801.0
-Next expected value of sensor_5 (Humidity): 56.80854117665146
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 56.80854117665146
-WARNING: The measured value 52.596148560033406 of sensor_5 (Humidity) is unexpected. (Expected value: 56.80854117665146)	Waiting for the next value
-Published to greenhouse_0/alert: WARNING: The measured value 52.596148560033406 of sensor_5 (Humidity) is unexpected. (Expected value: 56.80854117665146)	Waiting for the next value
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.33260244931214, 'u': '%', 't': 5791}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5801.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5801.0
-Next expected value of sensor_2 (SoilMoisture): 48.31930598380183
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.31930598380183
-WARNING: The measured value 48.33260244931214 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.33260244931214 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.06562680854405
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.06562680854405
-WARNING: The measured value 48.33260244931214 and the mean value 48.06562680854405 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.33260244931214 and the mean value 48.06562680854405 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 52.95832721193018, 'u': '%', 't': 5800}}
-Next expected timestamp of sensor_5 (Humidity): 5809.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5809.888888888889
-Next expected value of sensor_5 (Humidity): 55.268374995273604
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.268374995273604
-WARNING: The measured value 52.95832721193018 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 52.95832721193018 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.10885408747438
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.10885408747438
-WARNING: The measured value 52.95832721193018 and the mean value 55.10885408747438 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 52.95832721193018 and the mean value 55.10885408747438 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.74127926298194, 'u': '%', 't': 5800}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5809.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5809.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.44658883516924
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.44658883516924
-WARNING: The measured value 46.74127926298194 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.74127926298194 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 47.84275795091396
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 47.84275795091396
-WARNING: The measured value 46.74127926298194 and the mean value 47.84275795091396 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.74127926298194 and the mean value 47.84275795091396 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.16076728784032, 'u': '%', 't': 5811}}
-Next expected timestamp of sensor_5 (Humidity): 5821.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5821.111111111111
-Next expected value of sensor_5 (Humidity): 55.4226372946302
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.4226372946302
-WARNING: The measured value 54.16076728784032 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 54.16076728784032 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 54.9458773970016
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 54.9458773970016
-WARNING: The measured value 54.16076728784032 and the mean value 54.9458773970016 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 54.16076728784032 and the mean value 54.9458773970016 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.732338231552674, 'u': '%', 't': 5811}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5821.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5821.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.146773456238265
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.146773456238265
-WARNING: The measured value 46.732338231552674 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.732338231552674 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 47.613560865464954
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 47.613560865464954
-WARNING: The measured value 46.732338231552674 and the mean value 47.613560865464954 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.732338231552674 and the mean value 47.613560865464954 are outside the range. Action needed for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 56.553450227728966, 'u': '%', 't': 5820}}
-Next expected timestamp of sensor_5 (Humidity): 5829.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_5 (Humidity): 5829.888888888889
-Next expected value of sensor_5 (Humidity): 55.74712975894806
-Published to greenhouse_0/info: Next expected value of sensor_5 (Humidity): 55.74712975894806
-WARNING: The measured value 56.553450227728966 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Published to greenhouse_0/alert: WARNING: The measured value 56.553450227728966 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
-Mean value of sensor_5 (Humidity): 55.269478126021006
-Published to greenhouse_0/info: Mean value of sensor_5 (Humidity): 55.269478126021006
-WARNING: The measured value 56.553450227728966 and the mean value 55.269478126021006 are outside the range. Action needed for sensor_5 (Humidity)
-Published to greenhouse_0/sensor_5/action: WARNING: The measured value 56.553450227728966 and the mean value 55.269478126021006 are outside the range. Action needed for sensor_5 (Humidity)
-
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.698835988947245, 'u': '%', 't': 5820}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5829.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5829.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.36267114967623
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.36267114967623
-WARNING: The measured value 48.698835988947245 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.698835988947245 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 47.779625337087516
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 47.779625337087516
-WARNING: The measured value 48.698835988947245 and the mean value 47.779625337087516 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.698835988947245 and the mean value 47.779625337087516 are outside the range. Action needed for sensor_2 (SoilMoisture)
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.24297351179401, 'u': '%', 't': 4360}}
+Next expected timestamp of sensor_5 (Humidity): 4379.888888888889
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4379.888888888889", "timestamp": 4360}
+Next expected value of sensor_5 (Humidity): 48.879733990530816
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 48.879733990530816", "timestamp": 4360}
+WARNING: The measured value 49.24297351179401 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.24297351179401 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4360}
+Mean value of sensor_5 (Humidity): 47.028646858058046 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 47.028646858058046 %", "timestamp": 4360}
+WARNING: The measured value 49.24297351179401 % and the mean value 47.028646858058046 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.24297351179401 % and the mean value 47.028646858058046 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4360}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.509967287994655, 'u': '%', 't': 4360}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4379.888888888889
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4379.888888888889", "timestamp": 4360}
+Next expected value of sensor_2 (SoilMoisture): 48.83222120533749
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.83222120533749", "timestamp": 4360}
+WARNING: The measured value 50.509967287994655 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.509967287994655 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4360}
+Mean value of sensor_2 (SoilMoisture): 48.97087689882105 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 48.97087689882105 %", "timestamp": 4360}
+WARNING: The measured value 50.509967287994655 % and the mean value 48.97087689882105 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 50.509967287994655 % and the mean value 48.97087689882105 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4360}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 46.793531880727365, 'u': '%', 't': 4380}}
+Next expected timestamp of sensor_5 (Humidity): 4400.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4400.0", "timestamp": 4380}
+Next expected value of sensor_5 (Humidity): 48.49772768109953
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 48.49772768109953", "timestamp": 4380}
+WARNING: The measured value 46.793531880727365 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 46.793531880727365 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4380}
+Mean value of sensor_5 (Humidity): 47.113223744184644 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 47.113223744184644 %", "timestamp": 4380}
+WARNING: The measured value 46.793531880727365 % and the mean value 47.113223744184644 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 46.793531880727365 % and the mean value 47.113223744184644 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4380}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.88095771468935, 'u': '%', 't': 4380}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4400.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4400.0", "timestamp": 4380}
+Next expected value of sensor_2 (SoilMoisture): 49.60679063502888
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.60679063502888", "timestamp": 4380}
+WARNING: The measured value 49.88095771468935 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.88095771468935 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4380}
+Mean value of sensor_2 (SoilMoisture): 49.12617899733837 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.12617899733837 %", "timestamp": 4380}
+WARNING: The measured value 49.88095771468935 % and the mean value 49.12617899733837 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 49.88095771468935 % and the mean value 49.12617899733837 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4380}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.51918785791612, 'u': '%', 't': 4401}}
+Next expected timestamp of sensor_5 (Humidity): 4421.111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4421.111111111111", "timestamp": 4401}
+Next expected value of sensor_5 (Humidity): 49.559528904613195
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 49.559528904613195", "timestamp": 4401}
+WARNING: The measured value 49.51918785791612 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.51918785791612 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4401}
+Mean value of sensor_5 (Humidity): 47.64553604546858 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 47.64553604546858 %", "timestamp": 4401}
+WARNING: The measured value 49.51918785791612 % and the mean value 47.64553604546858 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.51918785791612 % and the mean value 47.64553604546858 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4401}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.34771748195292, 'u': '%', 't': 4401}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4421.111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4421.111111111111", "timestamp": 4401}
+Next expected value of sensor_2 (SoilMoisture): 48.968901858673625
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.968901858673625", "timestamp": 4401}
+WARNING: The measured value 47.34771748195292 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 47.34771748195292 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4401}
+Mean value of sensor_2 (SoilMoisture): 48.835415570887314 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 48.835415570887314 %", "timestamp": 4401}
+WARNING: The measured value 47.34771748195292 % and the mean value 48.835415570887314 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 47.34771748195292 % and the mean value 48.835415570887314 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4401}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 47.46830332224492, 'u': '%', 't': 4421}}
+Next expected timestamp of sensor_5 (Humidity): 4441.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4441.0", "timestamp": 4421}
+Next expected value of sensor_5 (Humidity): 48.981176490538445
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 48.981176490538445", "timestamp": 4421}
+WARNING: The measured value 47.46830332224492 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 47.46830332224492 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4421}
+Mean value of sensor_5 (Humidity): 47.74265033485163 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 47.74265033485163 %", "timestamp": 4421}
+WARNING: The measured value 47.46830332224492 % and the mean value 47.74265033485163 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 47.46830332224492 % and the mean value 47.74265033485163 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4421}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.161039405393424, 'u': '%', 't': 4421}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4441.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4441.0", "timestamp": 4421}
+Next expected value of sensor_2 (SoilMoisture): 49.39474043234209
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.39474043234209", "timestamp": 4421}
+WARNING: The measured value 50.161039405393424 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.161039405393424 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4421}
+Mean value of sensor_2 (SoilMoisture): 49.08531717897997 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.08531717897997 %", "timestamp": 4421}
+WARNING: The measured value 50.161039405393424 % and the mean value 49.08531717897997 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 50.161039405393424 % and the mean value 49.08531717897997 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4421}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.266291518002056, 'u': '%', 't': 4440}}
+Next expected timestamp of sensor_5 (Humidity): 4459.888888888889
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4459.888888888889", "timestamp": 4440}
+Next expected value of sensor_5 (Humidity): 48.89773113492757
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 48.89773113492757", "timestamp": 4440}
+WARNING: The measured value 49.266291518002056 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.266291518002056 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4440}
+Mean value of sensor_5 (Humidity): 48.103766053381996 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.103766053381996 %", "timestamp": 4440}
+WARNING: The measured value 49.266291518002056 % and the mean value 48.103766053381996 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.266291518002056 % and the mean value 48.103766053381996 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4440}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.29004244304649, 'u': '%', 't': 4440}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4459.888888888889
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4459.888888888889", "timestamp": 4440}
+Next expected value of sensor_2 (SoilMoisture): 49.56255559625069
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.56255559625069", "timestamp": 4440}
+WARNING: The measured value 49.29004244304649 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.29004244304649 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4440}
+Mean value of sensor_2 (SoilMoisture): 49.14331163565249 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.14331163565249 %", "timestamp": 4440}
+WARNING: The measured value 49.29004244304649 % and the mean value 49.14331163565249 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 49.29004244304649 % and the mean value 49.14331163565249 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4440}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 47.470488982525495, 'u': '%', 't': 4460}}
+Next expected timestamp of sensor_5 (Humidity): 4480.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4480.0", "timestamp": 4460}
+Next expected value of sensor_5 (Humidity): 48.6491332290247
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 48.6491332290247", "timestamp": 4460}
+WARNING: The measured value 47.470488982525495 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 47.470488982525495 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4460}
+Mean value of sensor_5 (Humidity): 48.04304794929735 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.04304794929735 %", "timestamp": 4460}
+WARNING: The measured value 47.470488982525495 % and the mean value 48.04304794929735 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 47.470488982525495 % and the mean value 48.04304794929735 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4460}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.11580382444203, 'u': '%', 't': 4460}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4480.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4480.0", "timestamp": 4460}
+Next expected value of sensor_2 (SoilMoisture): 49.59944666721546
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.59944666721546", "timestamp": 4460}
+WARNING: The measured value 48.11580382444203 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 48.11580382444203 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4460}
+Mean value of sensor_2 (SoilMoisture): 48.98510835375309 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 48.98510835375309 %", "timestamp": 4460}
+WARNING: The measured value 48.11580382444203 % and the mean value 48.98510835375309 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 48.11580382444203 % and the mean value 48.98510835375309 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4460}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.56554345387816, 'u': '%', 't': 4481}}
+Next expected timestamp of sensor_5 (Humidity): 4501.111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4501.111111111111", "timestamp": 4481}
+Next expected value of sensor_5 (Humidity): 49.51370065004559
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 49.51370065004559", "timestamp": 4481}
+WARNING: The measured value 49.56554345387816 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.56554345387816 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4481}
+Mean value of sensor_5 (Humidity): 48.361222291165795 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.361222291165795 %", "timestamp": 4481}
+WARNING: The measured value 49.56554345387816 % and the mean value 48.361222291165795 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.56554345387816 % and the mean value 48.361222291165795 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4481}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.63381892760251, 'u': '%', 't': 4481}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4501.111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4501.111111111111", "timestamp": 4481}
+Next expected value of sensor_2 (SoilMoisture): 48.75608904340326
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.75608904340326", "timestamp": 4481}
+WARNING: The measured value 47.63381892760251 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 47.63381892760251 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4481}
+Mean value of sensor_2 (SoilMoisture): 48.781472284741476 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 48.781472284741476 %", "timestamp": 4481}
+WARNING: The measured value 47.63381892760251 % and the mean value 48.781472284741476 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 47.63381892760251 % and the mean value 48.781472284741476 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4481}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.07625866658795, 'u': '%', 't': 4501}}
+Next expected timestamp of sensor_5 (Humidity): 4521.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4521.0", "timestamp": 4501}
+Next expected value of sensor_5 (Humidity): 49.1671930234984
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 49.1671930234984", "timestamp": 4501}
+WARNING: The measured value 49.07625866658795 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.07625866658795 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4501}
+Mean value of sensor_5 (Humidity): 48.56884369863326 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.56884369863326 %", "timestamp": 4501}
+WARNING: The measured value 49.07625866658795 % and the mean value 48.56884369863326 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.07625866658795 % and the mean value 48.56884369863326 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4501}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.72988207303341, 'u': '%', 't': 4501}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4521.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4521.0", "timestamp": 4501}
+Next expected value of sensor_2 (SoilMoisture): 49.11771517053516
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.11771517053516", "timestamp": 4501}
+WARNING: The measured value 50.72988207303341 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.72988207303341 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4501}
+Mean value of sensor_2 (SoilMoisture): 49.13425575662516 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.13425575662516 %", "timestamp": 4501}
+WARNING: The measured value 50.72988207303341 % and the mean value 49.13425575662516 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 50.72988207303341 % and the mean value 49.13425575662516 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4501}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.59665863624319, 'u': '%', 't': 4520}}
+Next expected timestamp of sensor_5 (Humidity): 4539.888888888889
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4539.888888888889", "timestamp": 4520}
+Next expected value of sensor_5 (Humidity): 49.46627573535111
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 49.46627573535111", "timestamp": 4520}
+WARNING: The measured value 49.59665863624319 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.59665863624319 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4520}
+Mean value of sensor_5 (Humidity): 48.79617786752963 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.79617786752963 %", "timestamp": 4520}
+WARNING: The measured value 49.59665863624319 % and the mean value 48.79617786752963 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.59665863624319 % and the mean value 48.79617786752963 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4520}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.67202792973336, 'u': '%', 't': 4520}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4539.888888888889
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4539.888888888889", "timestamp": 4520}
+Next expected value of sensor_2 (SoilMoisture): 49.36698799193512
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.36698799193512", "timestamp": 4520}
+WARNING: The measured value 50.67202792973336 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.67202792973336 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4520}
+Mean value of sensor_2 (SoilMoisture): 49.413010157264345 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.413010157264345 %", "timestamp": 4520}
+WARNING: The measured value 50.67202792973336 % and the mean value 49.413010157264345 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 50.67202792973336 % and the mean value 49.413010157264345 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4520}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 49.65737224131639, 'u': '%', 't': 4540}}
+Next expected timestamp of sensor_5 (Humidity): 4560.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4560.0", "timestamp": 4540}
+Next expected value of sensor_5 (Humidity): 49.61879884867453
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 49.61879884867453", "timestamp": 4540}
+WARNING: The measured value 49.65737224131639 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.65737224131639 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4540}
+Mean value of sensor_5 (Humidity): 48.99868598673351 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.99868598673351 %", "timestamp": 4540}
+WARNING: The measured value 49.65737224131639 % and the mean value 48.99868598673351 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 49.65737224131639 % and the mean value 48.99868598673351 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4540}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.516081764894125, 'u': '%', 't': 4540}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4560.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4560.0", "timestamp": 4540}
+Next expected value of sensor_2 (SoilMoisture): 49.14028855528178
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.14028855528178", "timestamp": 4540}
+WARNING: The measured value 48.516081764894125 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 48.516081764894125 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4540}
+Mean value of sensor_2 (SoilMoisture): 49.24707429164939 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.24707429164939 %", "timestamp": 4540}
+WARNING: The measured value 48.516081764894125 % and the mean value 49.24707429164939 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 48.516081764894125 % and the mean value 49.24707429164939 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4540}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 46.966414229452326, 'u': '%', 't': 4561}}
+Next expected timestamp of sensor_5 (Humidity): 4581.111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4581.111111111111", "timestamp": 4561}
+Next expected value of sensor_5 (Humidity): 49.029739506649534
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 49.029739506649534", "timestamp": 4561}
+WARNING: The measured value 46.966414229452326 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 46.966414229452326 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4561}
+Mean value of sensor_5 (Humidity): 48.67155020897511 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.67155020897511 %", "timestamp": 4561}
+WARNING: The measured value 46.966414229452326 % and the mean value 48.67155020897511 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 46.966414229452326 % and the mean value 48.67155020897511 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4561}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.102795047264166, 'u': '%', 't': 4561}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4581.111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4581.111111111111", "timestamp": 4561}
+Next expected value of sensor_2 (SoilMoisture): 48.58971389435507
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.58971389435507", "timestamp": 4561}
+WARNING: The measured value 47.102795047264166 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 47.102795047264166 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4561}
+Mean value of sensor_2 (SoilMoisture): 48.85017632110139 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 48.85017632110139 %", "timestamp": 4561}
+WARNING: The measured value 47.102795047264166 % and the mean value 48.85017632110139 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 47.102795047264166 % and the mean value 48.85017632110139 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4561}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 44.94774663033794, 'u': '%', 't': 4581}}
+Next expected timestamp of sensor_5 (Humidity): 4601.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 4601.0", "timestamp": 4581}
+Next expected value of sensor_5 (Humidity): 47.11338091245351
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 47.11338091245351", "timestamp": 4581}
+WARNING: The measured value 44.94774663033794 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 44.94774663033794 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 4581}
+Mean value of sensor_5 (Humidity): 48.018775945602115 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_5 (Humidity): 48.018775945602115 %", "timestamp": 4581}
+WARNING: The measured value 44.94774663033794 % and the mean value 48.018775945602115 % are outside the range. Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/device_1/sensor_5: {"message": "WARNING: The measured value 44.94774663033794 % and the mean value 48.018775945602115 % are outside the range. Action needed for sensor_5 (Humidity)", "timestamp": 4581}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.02053784388616, 'u': '%', 't': 4581}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4601.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4601.0", "timestamp": 4581}
+Next expected value of sensor_2 (SoilMoisture): 48.06843781014834
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.06843781014834", "timestamp": 4581}
+WARNING: The measured value 47.02053784388616 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 47.02053784388616 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4581}
+Mean value of sensor_2 (SoilMoisture): 48.500271081588835 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 48.500271081588835 %", "timestamp": 4581}
+WARNING: The measured value 47.02053784388616 % and the mean value 48.500271081588835 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_1/sensor_2: {"message": "WARNING: The measured value 47.02053784388616 % and the mean value 48.500271081588835 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4581}

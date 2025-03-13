@@ -39,24 +39,17 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
         SendAlert(f"WARNING: Was expecting a value of {sensor_type} from sensor_{sensor_id} at time {expected_timestamp}, but it didn't arrive")
 
     def SendAlert(msg):
-        client.publish(f"greenhouse_{greenhouse_id}/alert", msg)
+        msg = json.dumps({"message": msg, "timestamp": timestamp})
+        client.publish(f"greenhouse_{greenhouse_id}/alert/device_{device_id}", msg)
 
     def SendInfo(msg):
-        client.publish(f"greenhouse_{greenhouse_id}/info", msg)
+        msg = json.dumps({"message": msg, "timestamp": timestamp})
+        client.publish(f"greenhouse_{greenhouse_id}/info/device_{device_id}", msg)
 
     def SendAction(msg):
-        client.publish(f"greenhouse_{greenhouse_id}/sensor_{sensor_id}/action", msg)
+        msg = json.dumps({"message": msg, "timestamp": timestamp})
+        client.publish(f"greenhouse_{greenhouse_id}/action/device_{device_id}/sensor_{sensor_id}", msg)
 
-    def Severity(distance):
-        max = domains[sensor_id]["max"]
-        min = domains[sensor_id]["min"]
-        severity = distance / max - min
-
-        return severity
-    
-    def Is_inside(min_treshold, val, max_treshold):   # function that checks if the value is in the accepted range
-        return min_treshold <= val <= max_treshold
-    
     greenhouse, sensor = topic.split("/")  # split the topic and get all the information contained
     
     greenhouse_id = int(greenhouse.split("_")[1])

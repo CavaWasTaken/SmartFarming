@@ -1,145 +1,497 @@
-Received 3 sensors: [{'sensor_id': 2, 'greenhouse_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 80.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 3, 'greenhouse_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 6.8, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}}, {'sensor_id': 1, 'greenhouse_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 300, 'min': 50}, 'P': {'max': 150, 'min': 30}}, 'domain': {'max': 1000, 'min': 0}}]
+Received 3 sensors: [{'sensor_id': 1, 'greenhouse_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400.0, 'min': 100.0}, 'N': {'max': 150.0, 'min': 50.0}, 'P': {'max': 300.0, 'min': 75.0}}, 'domain': {'max': 1000, 'min': 0}}, {'sensor_id': 2, 'greenhouse_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 80.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 3, 'greenhouse_id': 0, 'type': 'pH', 'name': 'pH', 'unit': None, 'threshold': {'max': 6.8, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}}]
 
+Subscribed to greenhouse_0/sensor_1
 Subscribed to greenhouse_0/sensor_2
 Subscribed to greenhouse_0/sensor_3
-Subscribed to greenhouse_0/sensor_1
 Connected to mqtt.eclipseprojects.io with result code 0
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.09532417454294, 'u': '%', 't': 5781}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5791.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5791.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.993693192335236
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.993693192335236
-Wait to see another value to start the decision making for sensor_2 (SoilMoisture)
-
-Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.812910767606343, 'u': None, 't': 5781}}
-Next expected timestamp of sensor_3 (pH): 5791.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_3 (pH): 5791.111111111111
-Next expected value of sensor_3 (pH): 6.824975967325689
-Published to greenhouse_0/info: Next expected value of sensor_3 (pH): 6.824975967325689
-Wait to see another value to start the decision making for sensor_3 (pH)
-
-Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 142.43599614849313, 'P': 191.5407294283587, 'K': 192.4409625065302}, 'u': 'mg/kg', 't': 5781}}
-Next expected timestamp of sensor_1 (NPK): 5791.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_1 (NPK): 5791.111111111111
-Next expected value of sensor_1 (NPK): {'N': 141.88960978881101, 'P': 191.27875760442126, 'K': 191.2984143838454}
-Published to greenhouse_0/info: Next expected value of sensor_1 (NPK): {'N': 141.88960978881101, 'P': 191.27875760442126, 'K': 191.2984143838454}
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 142.91056842726888, 'P': 193.2212530595032, 'K': 195.92662922585282}, 'u': 'mg/kg', 't': 4321}}
+Next expected timestamp of sensor_1 (NPK): 4341.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4341.111111111111", "timestamp": 4321}
+Next expected value of sensor_1 (NPK): {'N': 144.09094386522594, 'P': 193.2713584601315, 'K': 194.72456923796014}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.09094386522594, 'P': 193.2713584601315, 'K': 194.72456923796014}", "timestamp": 4321}
 Wait to see another value to start the decision making for sensor_1 (NPK)
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.33260244931214, 'u': '%', 't': 5791}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5801.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5801.0
-Next expected value of sensor_2 (SoilMoisture): 48.31930598380183
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 48.31930598380183
-WARNING: The measured value 48.33260244931214 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 48.33260244931214 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 48.06562680854405
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 48.06562680854405
-WARNING: The measured value 48.33260244931214 and the mean value 48.06562680854405 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 48.33260244931214 and the mean value 48.06562680854405 are outside the range. Action needed for sensor_2 (SoilMoisture)
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.773524934147744, 'u': '%', 't': 4321}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4341.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4341.111111111111", "timestamp": 4321}
+Next expected value of sensor_2 (SoilMoisture): 47.89812860473032
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 47.89812860473032", "timestamp": 4321}
+Wait to see another value to start the decision making for sensor_2 (SoilMoisture)
 
-Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.924911729357022, 'u': None, 't': 5791}}
-Next expected timestamp of sensor_3 (pH): 5801.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_3 (pH): 5801.0
-Next expected value of sensor_3 (pH): 6.853340833348539
-Published to greenhouse_0/info: Next expected value of sensor_3 (pH): 6.853340833348539
-WARNING: The measured value 6.924911729357022 None of sensor_3 (pH) went outside the range [6.0, 6.8]
-Published to greenhouse_0/alert: WARNING: The measured value 6.924911729357022 None of sensor_3 (pH) went outside the range [6.0, 6.8]
-Mean value of sensor_3 (pH): 6.847468081439535
-Published to greenhouse_0/info: Mean value of sensor_3 (pH): 6.847468081439535
-WARNING: The measured value 6.924911729357022 and the mean value 6.847468081439535 are outside the range. Action needed for sensor_3 (pH)
-Published to greenhouse_0/sensor_3/action: WARNING: The measured value 6.924911729357022 and the mean value 6.847468081439535 are outside the range. Action needed for sensor_3 (pH)
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.964283884934346, 'u': None, 't': 4321}}
+Next expected timestamp of sensor_3 (pH): 4341.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4341.111111111111", "timestamp": 4321}
+Next expected value of sensor_3 (pH): 6.888586547261979
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.888586547261979", "timestamp": 4321}
+Wait to see another value to start the decision making for sensor_3 (pH)
 
-Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 140.97120509855586, 'P': 193.87282852556186, 'K': 190.29240409481966}, 'u': 'mg/kg', 't': 5791}}
-Next expected timestamp of sensor_1 (NPK): 5801.0
-Published to greenhouse_0/info: Next expected timestamp of sensor_1 (NPK): 5801.0
-Next expected value of sensor_1 (NPK): {'N': 141.45292572845852, 'P': 192.63587576370742, 'K': 190.8738280698593}
-Published to greenhouse_0/info: Next expected value of sensor_1 (NPK): {'N': 141.45292572845852, 'P': 192.63587576370742, 'K': 190.8738280698593}
-The measured value (140.97120509855586 mg/kg) and the next prediction (141.45292572845852 mg/kg) of NPK (NPK - N) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/info: The measured value (140.97120509855586 mg/kg) and the next prediction (141.45292572845852 mg/kg) of NPK (NPK - N) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-WARNING: The measured value 193.87282852556186 mg/kg of sensor_1 (NPK - P) went outside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/alert: WARNING: The measured value 193.87282852556186 mg/kg of sensor_1 (NPK - P) went outside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Mean value of sensor_1 (NPK - P): 192.04256693881229
-Published to greenhouse_0/info: Mean value of sensor_1 (NPK - P): 192.04256693881229
-WARNING: The measured value 193.87282852556186 and the mean value 192.04256693881229 are outside the range. Action needed for sensor_1 (NPK - P)
-Published to greenhouse_0/sensor_1/action: WARNING: The measured value 193.87282852556186 and the mean value 192.04256693881229 are outside the range. Action needed for sensor_1 (NPK - P)
-The measured value (190.29240409481966 mg/kg) and the next prediction (190.8738280698593 mg/kg) of NPK (NPK - K) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/info: The measured value (190.29240409481966 mg/kg) and the next prediction (190.8738280698593 mg/kg) of NPK (NPK - K) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 145.24052175825827, 'P': 193.7101499223621, 'K': 193.0039487267838}, 'u': 'mg/kg', 't': 4341}}
+Next expected timestamp of sensor_1 (NPK): 4361.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4361.0", "timestamp": 4341}
+Next expected value of sensor_1 (NPK): {'N': 144.48729640089243, 'P': 193.56925604269406, 'K': 194.34879446965095}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.48729640089243, 'P': 193.56925604269406, 'K': 194.34879446965095}", "timestamp": 4341}
+The measured value (145.24052175825827 mg/kg) and the next prediction (144.48729640089243 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (145.24052175825827 mg/kg) and the next prediction (144.48729640089243 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4341}
+The measured value (193.7101499223621 mg/kg) and the next prediction (193.56925604269406 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.7101499223621 mg/kg) and the next prediction (193.56925604269406 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4341}
+The measured value (193.0039487267838 mg/kg) and the next prediction (194.34879446965095 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.0039487267838 mg/kg) and the next prediction (194.34879446965095 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4341}
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.74127926298194, 'u': '%', 't': 5800}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5809.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5809.888888888889
-Next expected value of sensor_2 (SoilMoisture): 47.44658883516924
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.44658883516924
-WARNING: The measured value 46.74127926298194 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.74127926298194 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 47.84275795091396
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 47.84275795091396
-WARNING: The measured value 46.74127926298194 and the mean value 47.84275795091396 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.74127926298194 and the mean value 47.84275795091396 are outside the range. Action needed for sensor_2 (SoilMoisture)
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.946033169875626, 'u': '%', 't': 4341}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4361.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4361.0", "timestamp": 4341}
+Next expected value of sensor_2 (SoilMoisture): 48.220801628942795
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.220801628942795", "timestamp": 4341}
+WARNING: The measured value 49.946033169875626 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 49.946033169875626 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4341}
+Mean value of sensor_2 (SoilMoisture): 48.66683561979912 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.66683561979912 %", "timestamp": 4341}
+WARNING: The measured value 49.946033169875626 % and the mean value 48.66683561979912 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 49.946033169875626 % and the mean value 48.66683561979912 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4341}
 
-Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.93467546563346, 'u': None, 't': 5800}}
-Next expected timestamp of sensor_3 (pH): 5809.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_3 (pH): 5809.888888888889
-Next expected value of sensor_3 (pH): 6.901176568160992
-Published to greenhouse_0/info: Next expected value of sensor_3 (pH): 6.901176568160992
-WARNING: The measured value 6.93467546563346 None of sensor_3 (pH) went outside the range [6.0, 6.8]
-Published to greenhouse_0/alert: WARNING: The measured value 6.93467546563346 None of sensor_3 (pH) went outside the range [6.0, 6.8]
-Mean value of sensor_3 (pH): 6.8637092804591875
-Published to greenhouse_0/info: Mean value of sensor_3 (pH): 6.8637092804591875
-WARNING: The measured value 6.93467546563346 and the mean value 6.8637092804591875 are outside the range. Action needed for sensor_3 (pH)
-Published to greenhouse_0/sensor_3/action: WARNING: The measured value 6.93467546563346 and the mean value 6.8637092804591875 are outside the range. Action needed for sensor_3 (pH)
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.7915063081779525, 'u': None, 't': 4341}}
+Next expected timestamp of sensor_3 (pH): 4361.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4361.0", "timestamp": 4341}
+Next expected value of sensor_3 (pH): 6.842718872559779
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.842718872559779", "timestamp": 4341}
+WARNING: The next expected value 6.842718872559779 None of sensor_3 (pH) is outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The next expected value 6.842718872559779 None of sensor_3 (pH) is outside the range [6.0, 6.8]", "timestamp": 4341}
+WARNING: The measured value 6.7915063081779525 None is inside the range, but the next expected value 6.842718872559779 None is predicted to be far from the range. Preventine action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.7915063081779525 None is inside the range, but the next expected value 6.842718872559779 None is predicted to be far from the range. Preventine action needed for sensor_3 (pH)", "timestamp": 4341}
 
-Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 143.82594322905737, 'P': 190.6162540257785, 'K': 190.33446653278517}, 'u': 'mg/kg', 't': 5800}}
-Next expected timestamp of sensor_1 (NPK): 5809.888888888889
-Published to greenhouse_0/info: Next expected timestamp of sensor_1 (NPK): 5809.888888888889
-Next expected value of sensor_1 (NPK): {'N': 142.1761982258788, 'P': 192.33311032137686, 'K': 190.52071365806705}
-Published to greenhouse_0/info: Next expected value of sensor_1 (NPK): {'N': 142.1761982258788, 'P': 192.33311032137686, 'K': 190.52071365806705}
-The measured value (143.82594322905737 mg/kg) and the next prediction (142.1761982258788 mg/kg) of NPK (NPK - N) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/info: The measured value (143.82594322905737 mg/kg) and the next prediction (142.1761982258788 mg/kg) of NPK (NPK - N) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-WARNING: The measured value 190.6162540257785 mg/kg of sensor_1 (NPK - P) went outside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/alert: WARNING: The measured value 190.6162540257785 mg/kg of sensor_1 (NPK - P) went outside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Mean value of sensor_1 (NPK - P): 191.82334918026203
-Published to greenhouse_0/info: Mean value of sensor_1 (NPK - P): 191.82334918026203
-WARNING: The measured value 190.6162540257785 and the mean value 191.82334918026203 are outside the range. Action needed for sensor_1 (NPK - P)
-Published to greenhouse_0/sensor_1/action: WARNING: The measured value 190.6162540257785 and the mean value 191.82334918026203 are outside the range. Action needed for sensor_1 (NPK - P)
-The measured value (190.33446653278517 mg/kg) and the next prediction (190.52071365806705 mg/kg) of NPK (NPK - K) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/info: The measured value (190.33446653278517 mg/kg) and the next prediction (190.52071365806705 mg/kg) of NPK (NPK - K) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 142.90281710663595, 'P': 195.6183705891248, 'K': 195.23459295652532}, 'u': 'mg/kg', 't': 4360}}
+Next expected timestamp of sensor_1 (NPK): 4379.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4379.888888888889", "timestamp": 4360}
+Next expected value of sensor_1 (NPK): {'N': 144.2496399884934, 'P': 194.31804567006503, 'K': 194.71313410571216}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.2496399884934, 'P': 194.31804567006503, 'K': 194.71313410571216}", "timestamp": 4360}
+The measured value (142.90281710663595 mg/kg) and the next prediction (144.2496399884934 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (142.90281710663595 mg/kg) and the next prediction (144.2496399884934 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4360}
+The measured value (195.6183705891248 mg/kg) and the next prediction (194.31804567006503 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (195.6183705891248 mg/kg) and the next prediction (194.31804567006503 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4360}
+The measured value (195.23459295652532 mg/kg) and the next prediction (194.71313410571216 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (195.23459295652532 mg/kg) and the next prediction (194.71313410571216 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4360}
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 46.732338231552674, 'u': '%', 't': 5811}}
-Next expected timestamp of sensor_2 (SoilMoisture): 5821.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_2 (SoilMoisture): 5821.111111111111
-Next expected value of sensor_2 (SoilMoisture): 47.146773456238265
-Published to greenhouse_0/info: Next expected value of sensor_2 (SoilMoisture): 47.146773456238265
-WARNING: The measured value 46.732338231552674 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Published to greenhouse_0/alert: WARNING: The measured value 46.732338231552674 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
-Mean value of sensor_2 (SoilMoisture): 47.613560865464954
-Published to greenhouse_0/info: Mean value of sensor_2 (SoilMoisture): 47.613560865464954
-WARNING: The measured value 46.732338231552674 and the mean value 47.613560865464954 are outside the range. Action needed for sensor_2 (SoilMoisture)
-Published to greenhouse_0/sensor_2/action: WARNING: The measured value 46.732338231552674 and the mean value 47.613560865464954 are outside the range. Action needed for sensor_2 (SoilMoisture)
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.509967287994655, 'u': '%', 't': 4360}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4379.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4379.888888888889", "timestamp": 4360}
+Next expected value of sensor_2 (SoilMoisture): 48.83222120533749
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.83222120533749", "timestamp": 4360}
+WARNING: The measured value 50.509967287994655 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 50.509967287994655 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4360}
+Mean value of sensor_2 (SoilMoisture): 48.97087689882105 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.97087689882105 %", "timestamp": 4360}
+WARNING: The measured value 50.509967287994655 % and the mean value 48.97087689882105 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 50.509967287994655 % and the mean value 48.97087689882105 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4360}
 
-Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.766437726482971, 'u': None, 't': 5811}}
-Next expected timestamp of sensor_3 (pH): 5821.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_3 (pH): 5821.111111111111
-Next expected value of sensor_3 (pH): 6.865096994292393
-Published to greenhouse_0/info: Next expected value of sensor_3 (pH): 6.865096994292393
-WARNING: The next expected value of sensor_3 (pH) is outside the range [6.0, 6.8]
-Published to greenhouse_0/alert: WARNING: The next expected value of sensor_3 (pH) is outside the range [6.0, 6.8]
-WARNING: The measured value 6.766437726482971 is inside the range, but the next expected value 6.865096994292393 is predicted to be far from the range. Preventine action needed for sensor_3 (pH)
-Published to greenhouse_0/sensor_3/action: WARNING: The measured value 6.766437726482971 is inside the range, but the next expected value 6.865096994292393 is predicted to be far from the range. Preventine action needed for sensor_3 (pH)
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.907110638756248, 'u': None, 't': 4360}}
+Next expected timestamp of sensor_3 (pH): 4379.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4379.888888888889", "timestamp": 4360}
+Next expected value of sensor_3 (pH): 6.850177196029355
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.850177196029355", "timestamp": 4360}
+WARNING: The measured value 6.907110638756248 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.907110638756248 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4360}
+Mean value of sensor_3 (pH): 6.8696206061206775 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.8696206061206775 None", "timestamp": 4360}
+WARNING: The measured value 6.907110638756248 None and the mean value 6.8696206061206775 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.907110638756248 None and the mean value 6.8696206061206775 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4360}
 
-Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 143.32943423212336, 'P': 192.66932923854492, 'K': 191.70508942892033}, 'u': 'mg/kg', 't': 5811}}
-Next expected timestamp of sensor_1 (NPK): 5821.111111111111
-Published to greenhouse_0/info: Next expected timestamp of sensor_1 (NPK): 5821.111111111111
-Next expected value of sensor_1 (NPK): {'N': 142.09917748564345, 'P': 192.84047926667165, 'K': 191.01298599975678}
-Published to greenhouse_0/info: Next expected value of sensor_1 (NPK): {'N': 142.09917748564345, 'P': 192.84047926667165, 'K': 191.01298599975678}
-The measured value (143.32943423212336 mg/kg) and the next prediction (142.09917748564345 mg/kg) of NPK (NPK - N) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/info: The measured value (143.32943423212336 mg/kg) and the next prediction (142.09917748564345 mg/kg) of NPK (NPK - N) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-WARNING: The measured value 192.66932923854492 mg/kg of sensor_1 (NPK - P) went outside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/alert: WARNING: The measured value 192.66932923854492 mg/kg of sensor_1 (NPK - P) went outside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Mean value of sensor_1 (NPK - P): 192.01212179176315
-Published to greenhouse_0/info: Mean value of sensor_1 (NPK - P): 192.01212179176315
-WARNING: The measured value 192.66932923854492 and the mean value 192.01212179176315 are outside the range. Action needed for sensor_1 (NPK - P)
-Published to greenhouse_0/sensor_1/action: WARNING: The measured value 192.66932923854492 and the mean value 192.01212179176315 are outside the range. Action needed for sensor_1 (NPK - P)
-The measured value (191.70508942892033 mg/kg) and the next prediction (191.01298599975678 mg/kg) of NPK (NPK - K) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
-Published to greenhouse_0/info: The measured value (191.70508942892033 mg/kg) and the next prediction (191.01298599975678 mg/kg) of NPK (NPK - K) are inside the range [{'N': 50, 'P': 30, 'K': 100}, {'N': 300, 'P': 150, 'K': 400}]
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 143.95361162716125, 'P': 193.3575935720728, 'K': 193.76121741968979}, 'u': 'mg/kg', 't': 4380}}
+Next expected timestamp of sensor_1 (NPK): 4400.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4400.0", "timestamp": 4380}
+Next expected value of sensor_1 (NPK): {'N': 143.83267746765105, 'P': 194.0413274867398, 'K': 194.820905144952}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 143.83267746765105, 'P': 194.0413274867398, 'K': 194.820905144952}", "timestamp": 4380}
+The measured value (143.95361162716125 mg/kg) and the next prediction (143.83267746765105 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (143.95361162716125 mg/kg) and the next prediction (143.83267746765105 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4380}
+The measured value (193.3575935720728 mg/kg) and the next prediction (194.0413274867398 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.3575935720728 mg/kg) and the next prediction (194.0413274867398 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4380}
+The measured value (193.76121741968979 mg/kg) and the next prediction (194.820905144952 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.76121741968979 mg/kg) and the next prediction (194.820905144952 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4380}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.88095771468935, 'u': '%', 't': 4380}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4400.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4400.0", "timestamp": 4380}
+Next expected value of sensor_2 (SoilMoisture): 49.60679063502888
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.60679063502888", "timestamp": 4380}
+WARNING: The measured value 49.88095771468935 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 49.88095771468935 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4380}
+Mean value of sensor_2 (SoilMoisture): 49.12617899733837 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 49.12617899733837 %", "timestamp": 4380}
+WARNING: The measured value 49.88095771468935 % and the mean value 49.12617899733837 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 49.88095771468935 % and the mean value 49.12617899733837 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4380}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.9469621551050516, 'u': None, 't': 4380}}
+Next expected timestamp of sensor_3 (pH): 4400.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4400.0", "timestamp": 4380}
+Next expected value of sensor_3 (pH): 6.89284572325113
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.89284572325113", "timestamp": 4380}
+WARNING: The measured value 6.9469621551050516 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.9469621551050516 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4380}
+Mean value of sensor_3 (pH): 6.882341779412477 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.882341779412477 None", "timestamp": 4380}
+WARNING: The measured value 6.9469621551050516 None and the mean value 6.882341779412477 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.9469621551050516 None and the mean value 6.882341779412477 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4380}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 144.59452508164767, 'P': 193.03265227844477, 'K': 194.2661326559486}, 'u': 'mg/kg', 't': 4401}}
+Next expected timestamp of sensor_1 (NPK): 4421.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4421.111111111111", "timestamp": 4401}
+Next expected value of sensor_1 (NPK): {'N': 143.54096221246385, 'P': 193.96066199769874, 'K': 194.52842492823066}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 143.54096221246385, 'P': 193.96066199769874, 'K': 194.52842492823066}", "timestamp": 4401}
+The measured value (144.59452508164767 mg/kg) and the next prediction (143.54096221246385 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (144.59452508164767 mg/kg) and the next prediction (143.54096221246385 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4401}
+The measured value (193.03265227844477 mg/kg) and the next prediction (193.96066199769874 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.03265227844477 mg/kg) and the next prediction (193.96066199769874 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4401}
+The measured value (194.2661326559486 mg/kg) and the next prediction (194.52842492823066 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (194.2661326559486 mg/kg) and the next prediction (194.52842492823066 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4401}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.34771748195292, 'u': '%', 't': 4401}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4421.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4421.111111111111", "timestamp": 4401}
+Next expected value of sensor_2 (SoilMoisture): 48.968901858673625
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.968901858673625", "timestamp": 4401}
+WARNING: The measured value 47.34771748195292 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 47.34771748195292 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4401}
+Mean value of sensor_2 (SoilMoisture): 48.835415570887314 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.835415570887314 %", "timestamp": 4401}
+WARNING: The measured value 47.34771748195292 % and the mean value 48.835415570887314 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 47.34771748195292 % and the mean value 48.835415570887314 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4401}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.793857875344829, 'u': None, 't': 4401}}
+Next expected timestamp of sensor_3 (pH): 4421.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4421.111111111111", "timestamp": 4401}
+Next expected value of sensor_3 (pH): 6.879661182796789
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.879661182796789", "timestamp": 4401}
+WARNING: The next expected value 6.879661182796789 None of sensor_3 (pH) is outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The next expected value 6.879661182796789 None of sensor_3 (pH) is outside the range [6.0, 6.8]", "timestamp": 4401}
+WARNING: The measured value 6.793857875344829 None is inside the range, but the next expected value 6.879661182796789 None is predicted to be far from the range. Preventine action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.793857875344829 None is inside the range, but the next expected value 6.879661182796789 None is predicted to be far from the range. Preventine action needed for sensor_3 (pH)", "timestamp": 4401}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 145.3451577626632, 'P': 192.55078400052213, 'K': 194.70665420644045}, 'u': 'mg/kg', 't': 4421}}
+Next expected timestamp of sensor_1 (NPK): 4441.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4441.0", "timestamp": 4421}
+Next expected value of sensor_1 (NPK): {'N': 144.14599775440735, 'P': 193.28414149133053, 'K': 194.17148549069248}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.14599775440735, 'P': 193.28414149133053, 'K': 194.17148549069248}", "timestamp": 4421}
+The measured value (145.3451577626632 mg/kg) and the next prediction (144.14599775440735 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (145.3451577626632 mg/kg) and the next prediction (144.14599775440735 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4421}
+The measured value (192.55078400052213 mg/kg) and the next prediction (193.28414149133053 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (192.55078400052213 mg/kg) and the next prediction (193.28414149133053 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4421}
+The measured value (194.70665420644045 mg/kg) and the next prediction (194.17148549069248 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (194.70665420644045 mg/kg) and the next prediction (194.17148549069248 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4421}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.161039405393424, 'u': '%', 't': 4421}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4441.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4441.0", "timestamp": 4421}
+Next expected value of sensor_2 (SoilMoisture): 49.39474043234209
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.39474043234209", "timestamp": 4421}
+WARNING: The measured value 50.161039405393424 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 50.161039405393424 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4421}
+Mean value of sensor_2 (SoilMoisture): 49.08531717897997 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 49.08531717897997 %", "timestamp": 4421}
+WARNING: The measured value 50.161039405393424 % and the mean value 49.08531717897997 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 50.161039405393424 % and the mean value 49.08531717897997 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4421}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.916893298319185, 'u': None, 't': 4421}}
+Next expected timestamp of sensor_3 (pH): 4441.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4441.0", "timestamp": 4421}
+Next expected value of sensor_3 (pH): 6.887999960888044
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.887999960888044", "timestamp": 4421}
+WARNING: The measured value 6.916893298319185 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.916893298319185 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4421}
+Mean value of sensor_3 (pH): 6.876924244129165 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.876924244129165 None", "timestamp": 4421}
+WARNING: The measured value 6.916893298319185 None and the mean value 6.876924244129165 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.916893298319185 None and the mean value 6.876924244129165 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4421}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 144.952880409995, 'P': 195.5700090419267, 'K': 195.74941803112773}, 'u': 'mg/kg', 't': 4440}}
+Next expected timestamp of sensor_1 (NPK): 4459.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4459.888888888889", "timestamp": 4440}
+Next expected value of sensor_1 (NPK): {'N': 144.42228320182682, 'P': 194.32927887123492, 'K': 194.7117913263349}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.42228320182682, 'P': 194.32927887123492, 'K': 194.7117913263349}", "timestamp": 4440}
+The measured value (144.952880409995 mg/kg) and the next prediction (144.42228320182682 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (144.952880409995 mg/kg) and the next prediction (144.42228320182682 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4440}
+The measured value (195.5700090419267 mg/kg) and the next prediction (194.32927887123492 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (195.5700090419267 mg/kg) and the next prediction (194.32927887123492 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4440}
+The measured value (195.74941803112773 mg/kg) and the next prediction (194.7117913263349 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (195.74941803112773 mg/kg) and the next prediction (194.7117913263349 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4440}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.29004244304649, 'u': '%', 't': 4440}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4459.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4459.888888888889", "timestamp": 4440}
+Next expected value of sensor_2 (SoilMoisture): 49.56255559625069
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.56255559625069", "timestamp": 4440}
+WARNING: The measured value 49.29004244304649 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 49.29004244304649 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4440}
+Mean value of sensor_2 (SoilMoisture): 49.14331163565249 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 49.14331163565249 %", "timestamp": 4440}
+WARNING: The measured value 49.29004244304649 % and the mean value 49.14331163565249 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 49.29004244304649 % and the mean value 49.14331163565249 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4440}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.809457576277143, 'u': None, 't': 4440}}
+Next expected timestamp of sensor_3 (pH): 4459.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4459.888888888889", "timestamp": 4440}
+Next expected value of sensor_3 (pH): 6.870671108879707
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.870671108879707", "timestamp": 4440}
+WARNING: The measured value 6.809457576277143 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.809457576277143 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4440}
+Mean value of sensor_3 (pH): 6.865419906879155 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.865419906879155 None", "timestamp": 4440}
+WARNING: The measured value 6.809457576277143 None and the mean value 6.865419906879155 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.809457576277143 None and the mean value 6.865419906879155 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4440}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 145.57229006043625, 'P': 193.0686707366562, 'K': 193.4599473415496}, 'u': 'mg/kg', 't': 4460}}
+Next expected timestamp of sensor_1 (NPK): 4480.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4480.0", "timestamp": 4460}
+Next expected value of sensor_1 (NPK): {'N': 145.15306271762276, 'P': 193.75800494160964, 'K': 194.6033372476027}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 145.15306271762276, 'P': 193.75800494160964, 'K': 194.6033372476027}", "timestamp": 4460}
+The measured value (145.57229006043625 mg/kg) and the next prediction (145.15306271762276 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (145.57229006043625 mg/kg) and the next prediction (145.15306271762276 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4460}
+The measured value (193.0686707366562 mg/kg) and the next prediction (193.75800494160964 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.0686707366562 mg/kg) and the next prediction (193.75800494160964 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4460}
+The measured value (193.4599473415496 mg/kg) and the next prediction (194.6033372476027 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.4599473415496 mg/kg) and the next prediction (194.6033372476027 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4460}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.11580382444203, 'u': '%', 't': 4460}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4480.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4480.0", "timestamp": 4460}
+Next expected value of sensor_2 (SoilMoisture): 49.59944666721546
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.59944666721546", "timestamp": 4460}
+WARNING: The measured value 48.11580382444203 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 48.11580382444203 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4460}
+Mean value of sensor_2 (SoilMoisture): 48.98510835375309 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.98510835375309 %", "timestamp": 4460}
+WARNING: The measured value 48.11580382444203 % and the mean value 48.98510835375309 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 48.11580382444203 % and the mean value 48.98510835375309 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4460}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.808718732103042, 'u': None, 't': 4460}}
+Next expected timestamp of sensor_3 (pH): 4480.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4480.0", "timestamp": 4460}
+Next expected value of sensor_3 (pH): 6.837319083564644
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.837319083564644", "timestamp": 4460}
+WARNING: The measured value 6.808718732103042 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.808718732103042 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4460}
+Mean value of sensor_3 (pH): 6.855478234197297 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.855478234197297 None", "timestamp": 4460}
+WARNING: The measured value 6.808718732103042 None and the mean value 6.855478234197297 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.808718732103042 None and the mean value 6.855478234197297 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4460}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 144.89912713852658, 'P': 194.29513338829514, 'K': 193.72308731580102}, 'u': 'mg/kg', 't': 4481}}
+Next expected timestamp of sensor_1 (NPK): 4501.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4501.111111111111", "timestamp": 4481}
+Next expected value of sensor_1 (NPK): {'N': 145.70457611031352, 'P': 193.75419451206056, 'K': 194.23937000686777}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 145.70457611031352, 'P': 193.75419451206056, 'K': 194.23937000686777}", "timestamp": 4481}
+The measured value (144.89912713852658 mg/kg) and the next prediction (145.70457611031352 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (144.89912713852658 mg/kg) and the next prediction (145.70457611031352 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4481}
+The measured value (194.29513338829514 mg/kg) and the next prediction (193.75419451206056 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (194.29513338829514 mg/kg) and the next prediction (193.75419451206056 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4481}
+The measured value (193.72308731580102 mg/kg) and the next prediction (194.23937000686777 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.72308731580102 mg/kg) and the next prediction (194.23937000686777 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4481}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.63381892760251, 'u': '%', 't': 4481}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4501.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4501.111111111111", "timestamp": 4481}
+Next expected value of sensor_2 (SoilMoisture): 48.75608904340326
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.75608904340326", "timestamp": 4481}
+WARNING: The measured value 47.63381892760251 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 47.63381892760251 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4481}
+Mean value of sensor_2 (SoilMoisture): 48.781472284741476 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.781472284741476 %", "timestamp": 4481}
+WARNING: The measured value 47.63381892760251 % and the mean value 48.781472284741476 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 47.63381892760251 % and the mean value 48.781472284741476 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4481}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.9265479919775785, 'u': None, 't': 4481}}
+Next expected timestamp of sensor_3 (pH): 4501.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4501.111111111111", "timestamp": 4481}
+Next expected value of sensor_3 (pH): 6.861991796026702
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.861991796026702", "timestamp": 4481}
+WARNING: The measured value 6.9265479919775785 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.9265479919775785 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4481}
+Mean value of sensor_3 (pH): 6.867151631700629 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.867151631700629 None", "timestamp": 4481}
+WARNING: The measured value 6.9265479919775785 None and the mean value 6.867151631700629 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.9265479919775785 None and the mean value 6.867151631700629 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4481}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 143.80846482730487, 'P': 193.02067128844817, 'K': 192.14004309632125}, 'u': 'mg/kg', 't': 4501}}
+Next expected timestamp of sensor_1 (NPK): 4521.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4521.0", "timestamp": 4501}
+Next expected value of sensor_1 (NPK): {'N': 145.18124476162424, 'P': 193.59174878509768, 'K': 193.13823845128388}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 145.18124476162424, 'P': 193.59174878509768, 'K': 193.13823845128388}", "timestamp": 4501}
+The measured value (143.80846482730487 mg/kg) and the next prediction (145.18124476162424 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (143.80846482730487 mg/kg) and the next prediction (145.18124476162424 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4501}
+The measured value (193.02067128844817 mg/kg) and the next prediction (193.59174878509768 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.02067128844817 mg/kg) and the next prediction (193.59174878509768 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4501}
+The measured value (192.14004309632125 mg/kg) and the next prediction (193.13823845128388 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (192.14004309632125 mg/kg) and the next prediction (193.13823845128388 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4501}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.72988207303341, 'u': '%', 't': 4501}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4521.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4521.0", "timestamp": 4501}
+Next expected value of sensor_2 (SoilMoisture): 49.11771517053516
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.11771517053516", "timestamp": 4501}
+WARNING: The measured value 50.72988207303341 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 50.72988207303341 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4501}
+Mean value of sensor_2 (SoilMoisture): 49.13425575662516 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 49.13425575662516 %", "timestamp": 4501}
+WARNING: The measured value 50.72988207303341 % and the mean value 49.13425575662516 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 50.72988207303341 % and the mean value 49.13425575662516 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4501}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.925757009481886, 'u': None, 't': 4501}}
+Next expected timestamp of sensor_3 (pH): 4521.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4521.0", "timestamp": 4501}
+Next expected value of sensor_3 (pH): 6.873139380943341
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.873139380943341", "timestamp": 4501}
+WARNING: The measured value 6.925757009481886 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.925757009481886 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4501}
+Mean value of sensor_3 (pH): 6.877446929418179 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.877446929418179 None", "timestamp": 4501}
+WARNING: The measured value 6.925757009481886 None and the mean value 6.877446929418179 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.925757009481886 None and the mean value 6.877446929418179 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4501}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 145.00632867411483, 'P': 191.9518572006529, 'K': 193.42484212134127}, 'u': 'mg/kg', 't': 4520}}
+Next expected timestamp of sensor_1 (NPK): 4539.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4539.888888888889", "timestamp": 4520}
+Next expected value of sensor_1 (NPK): {'N': 145.01147860356508, 'P': 192.74395709630517, 'K': 193.2959529915497}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 145.01147860356508, 'P': 192.74395709630517, 'K': 193.2959529915497}", "timestamp": 4520}
+The measured value (145.00632867411483 mg/kg) and the next prediction (145.01147860356508 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (145.00632867411483 mg/kg) and the next prediction (145.01147860356508 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4520}
+The measured value (191.9518572006529 mg/kg) and the next prediction (192.74395709630517 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (191.9518572006529 mg/kg) and the next prediction (192.74395709630517 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4520}
+The measured value (193.42484212134127 mg/kg) and the next prediction (193.2959529915497 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (193.42484212134127 mg/kg) and the next prediction (193.2959529915497 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4520}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.67202792973336, 'u': '%', 't': 4520}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4539.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4539.888888888889", "timestamp": 4520}
+Next expected value of sensor_2 (SoilMoisture): 49.36698799193512
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.36698799193512", "timestamp": 4520}
+WARNING: The measured value 50.67202792973336 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 50.67202792973336 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4520}
+Mean value of sensor_2 (SoilMoisture): 49.413010157264345 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 49.413010157264345 %", "timestamp": 4520}
+WARNING: The measured value 50.67202792973336 % and the mean value 49.413010157264345 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 50.67202792973336 % and the mean value 49.413010157264345 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4520}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.9106544923299955, 'u': None, 't': 4520}}
+Next expected timestamp of sensor_3 (pH): 4539.888888888889
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4539.888888888889", "timestamp": 4520}
+Next expected value of sensor_3 (pH): 6.908123464619538
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.908123464619538", "timestamp": 4520}
+WARNING: The measured value 6.9106544923299955 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.9106544923299955 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4520}
+Mean value of sensor_3 (pH): 6.883182374014956 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.883182374014956 None", "timestamp": 4520}
+WARNING: The measured value 6.9106544923299955 None and the mean value 6.883182374014956 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.9106544923299955 None and the mean value 6.883182374014956 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4520}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 143.65825803087915, 'P': 194.2996135306044, 'K': 195.05848717607023}, 'u': 'mg/kg', 't': 4540}}
+Next expected timestamp of sensor_1 (NPK): 4560.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4560.0", "timestamp": 4540}
+Next expected value of sensor_1 (NPK): {'N': 144.78802618469015, 'P': 193.0383163037885, 'K': 193.48866046325398}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.78802618469015, 'P': 193.0383163037885, 'K': 193.48866046325398}", "timestamp": 4540}
+The measured value (143.65825803087915 mg/kg) and the next prediction (144.78802618469015 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (143.65825803087915 mg/kg) and the next prediction (144.78802618469015 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4540}
+The measured value (194.2996135306044 mg/kg) and the next prediction (193.0383163037885 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (194.2996135306044 mg/kg) and the next prediction (193.0383163037885 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4540}
+The measured value (195.05848717607023 mg/kg) and the next prediction (193.48866046325398 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (195.05848717607023 mg/kg) and the next prediction (193.48866046325398 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4540}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.516081764894125, 'u': '%', 't': 4540}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4560.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4560.0", "timestamp": 4540}
+Next expected value of sensor_2 (SoilMoisture): 49.14028855528178
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.14028855528178", "timestamp": 4540}
+WARNING: The measured value 48.516081764894125 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 48.516081764894125 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4540}
+Mean value of sensor_2 (SoilMoisture): 49.24707429164939 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 49.24707429164939 %", "timestamp": 4540}
+WARNING: The measured value 48.516081764894125 % and the mean value 49.24707429164939 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 48.516081764894125 % and the mean value 49.24707429164939 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4540}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.859300517949128, 'u': None, 't': 4540}}
+Next expected timestamp of sensor_3 (pH): 4560.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4560.0", "timestamp": 4540}
+Next expected value of sensor_3 (pH): 6.8807708303526764
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.8807708303526764", "timestamp": 4540}
+WARNING: The measured value 6.859300517949128 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.859300517949128 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4540}
+Mean value of sensor_3 (pH): 6.8805558122261985 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.8805558122261985 None", "timestamp": 4540}
+WARNING: The measured value 6.859300517949128 None and the mean value 6.8805558122261985 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.859300517949128 None and the mean value 6.8805558122261985 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4540}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 143.9893197567402, 'P': 192.1344474861119, 'K': 192.26809505627836}, 'u': 'mg/kg', 't': 4561}}
+Next expected timestamp of sensor_1 (NPK): 4581.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4581.111111111111", "timestamp": 4561}
+Next expected value of sensor_1 (NPK): {'N': 144.1740923570472, 'P': 192.93569200218604, 'K': 193.0156149316377}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 144.1740923570472, 'P': 192.93569200218604, 'K': 193.0156149316377}", "timestamp": 4561}
+The measured value (143.9893197567402 mg/kg) and the next prediction (144.1740923570472 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (143.9893197567402 mg/kg) and the next prediction (144.1740923570472 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4561}
+The measured value (192.1344474861119 mg/kg) and the next prediction (192.93569200218604 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (192.1344474861119 mg/kg) and the next prediction (192.93569200218604 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4561}
+The measured value (192.26809505627836 mg/kg) and the next prediction (193.0156149316377 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (192.26809505627836 mg/kg) and the next prediction (193.0156149316377 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4561}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.102795047264166, 'u': '%', 't': 4561}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4581.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4581.111111111111", "timestamp": 4561}
+Next expected value of sensor_2 (SoilMoisture): 48.58971389435507
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.58971389435507", "timestamp": 4561}
+WARNING: The measured value 47.102795047264166 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 47.102795047264166 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4561}
+Mean value of sensor_2 (SoilMoisture): 48.85017632110139 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.85017632110139 %", "timestamp": 4561}
+WARNING: The measured value 47.102795047264166 % and the mean value 48.85017632110139 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 47.102795047264166 % and the mean value 48.85017632110139 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4561}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.802247774448692, 'u': None, 't': 4561}}
+Next expected timestamp of sensor_3 (pH): 4581.111111111111
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4581.111111111111", "timestamp": 4561}
+Next expected value of sensor_3 (pH): 6.856397391296588
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.856397391296588", "timestamp": 4561}
+WARNING: The measured value 6.802247774448692 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.802247774448692 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4561}
+Mean value of sensor_3 (pH): 6.866323402350614 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.866323402350614 None", "timestamp": 4561}
+WARNING: The measured value 6.802247774448692 None and the mean value 6.866323402350614 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.802247774448692 None and the mean value 6.866323402350614 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4561}
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 141.7496922253125, 'P': 194.55801126653424, 'K': 194.38409111130468}, 'u': 'mg/kg', 't': 4581}}
+Next expected timestamp of sensor_1 (NPK): 4601.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_1 (NPK): 4601.0", "timestamp": 4581}
+Next expected value of sensor_1 (NPK): {'N': 142.8679164559856, 'P': 193.43906109142884, 'K': 193.20376548939532}
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_1 (NPK): {'N': 142.8679164559856, 'P': 193.43906109142884, 'K': 193.20376548939532}", "timestamp": 4581}
+The measured value (141.7496922253125 mg/kg) and the next prediction (142.8679164559856 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (141.7496922253125 mg/kg) and the next prediction (142.8679164559856 mg/kg) of NPK (NPK - N) are inside the range [50.0, 150.0]", "timestamp": 4581}
+The measured value (194.55801126653424 mg/kg) and the next prediction (193.43906109142884 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (194.55801126653424 mg/kg) and the next prediction (193.43906109142884 mg/kg) of NPK (NPK - P) are inside the range [75.0, 300.0]", "timestamp": 4581}
+The measured value (194.38409111130468 mg/kg) and the next prediction (193.20376548939532 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]
+Published to greenhouse_0/info/device_3: {"message": "The measured value (194.38409111130468 mg/kg) and the next prediction (193.20376548939532 mg/kg) of NPK (NPK - K) are inside the range [100.0, 400.0]", "timestamp": 4581}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.02053784388616, 'u': '%', 't': 4581}}
+Next expected timestamp of sensor_2 (SoilMoisture): 4601.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 4601.0", "timestamp": 4581}
+Next expected value of sensor_2 (SoilMoisture): 48.06843781014834
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.06843781014834", "timestamp": 4581}
+WARNING: The measured value 47.02053784388616 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 47.02053784388616 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 4581}
+Mean value of sensor_2 (SoilMoisture): 48.500271081588835 %
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_2 (SoilMoisture): 48.500271081588835 %", "timestamp": 4581}
+WARNING: The measured value 47.02053784388616 % and the mean value 48.500271081588835 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/device_3/sensor_2: {"message": "WARNING: The measured value 47.02053784388616 % and the mean value 48.500271081588835 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 4581}
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.955191758114306, 'u': None, 't': 4581}}
+Next expected timestamp of sensor_3 (pH): 4601.0
+Published to greenhouse_0/info/device_3: {"message": "Next expected timestamp of sensor_3 (pH): 4601.0", "timestamp": 4581}
+Next expected value of sensor_3 (pH): 6.911448452575661
+Published to greenhouse_0/info/device_3: {"message": "Next expected value of sensor_3 (pH): 6.911448452575661", "timestamp": 4581}
+WARNING: The measured value 6.955191758114306 None of sensor_3 (pH) went outside the range [6.0, 6.8]
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: The measured value 6.955191758114306 None of sensor_3 (pH) went outside the range [6.0, 6.8]", "timestamp": 4581}
+Mean value of sensor_3 (pH): 6.881805587038005 None
+Published to greenhouse_0/info/device_3: {"message": "Mean value of sensor_3 (pH): 6.881805587038005 None", "timestamp": 4581}
+WARNING: The measured value 6.955191758114306 None and the mean value 6.881805587038005 None are outside the range. Action needed for sensor_3 (pH)
+Published to greenhouse_0/action/device_3/sensor_3: {"message": "WARNING: The measured value 6.955191758114306 None and the mean value 6.881805587038005 None are outside the range. Action needed for sensor_3 (pH)", "timestamp": 4581}
+WARNING: Was expecting a value of NPK from sensor_1 at time 4601.0, but it didn't arrive
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: Was expecting a value of NPK from sensor_1 at time 4601.0, but it didn't arrive", "timestamp": 4581}
+WARNING: Was expecting a value of SoilMoisture from sensor_2 at time 4601.0, but it didn't arrive
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: Was expecting a value of SoilMoisture from sensor_2 at time 4601.0, but it didn't arrive", "timestamp": 4581}
+WARNING: Was expecting a value of pH from sensor_3 at time 4601.0, but it didn't arrive
+Published to greenhouse_0/alert/device_3: {"message": "WARNING: Was expecting a value of pH from sensor_3 at time 4601.0, but it didn't arrive", "timestamp": 4581}

@@ -9,10 +9,28 @@ def write_log(message):
     with open("./logs/WebApp.log", "a") as log_file:
         log_file.write(f"{message}\n")
 
+received_messages = {}
+
 # function for the device connector to receive the needed action and perform it
 def on_message(client, userdata, message):
-    write_log(f"Received action: {message.payload.decode()}")    # write in the log file the action received
+    payload = json.loads(message.payload.decode())  # decode the message received and get the payload
+    topic = message.topic    # get the topic of the message received
+    write_log(f"Received message: {payload} on topic: {topic}")    # write the message received in the log file
+    greenhouse_id = topic.split("/")[0].split("_")[1]    # get the greenhouse id from the topic
+    message_type = topic.split("/")[1]  # get the type of the message from the topic
+    device_id = topic.split("/")[2].split("_")[1]  # get the device id from the topic
+    timestamp = payload["timestamp"]    # get the timestamp of the message received
+    
+    if device_id not in received_messages[greenhouse_id]:    # if the device id is not in the dictionary, add it
+        received_messages[greenhouse_id].update({device_id: []})
+    
+    if len(received_messages[greenhouse_id][device_id]) > 0:    # if the list of messages received is empty, add the message received
+        # if the message received has a timestamp different from the timestamp of the last message received, we are receiving a new transmission, so we can reset the list and save the new
+        if received_messages[greenhouse_id][device_id][-1]['timestamp'] != timestamp:
+            received_messages[greenhouse_id][device_id].clear()    # clear the list of messages received
 
+    received_messages[greenhouse_id][device_id].append({'message': payload["message"], 'type': message_type, 'timestamp': timestamp})    # add the message received to the dictionary
+    
 # each time that the device starts, we clear the log file
 with open("./logs/WebApp.log", "w") as log_file:
     pass
@@ -21,14 +39,11 @@ with open("./logs/WebApp.log", "w") as log_file:
 with open("./WebApp_config.json", "r") as config_fd:
     config = json.load(config_fd)   # read the configuration from the json file
     catalog_url = config["catalog_url"] # read the url of the Catalog
+    dataAnalysis_url = config["dataAnalysis_url"] # read the url of the Data Analysis
     device_id = config["device_id"] # read the device_id of the device connector
     mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
     mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
     keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
-
-# create a client for mqtt
-client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"WebApp_{device_id}", on_message, write_log)    # create a client for mqtt
-client.start()
 
 def runApp(user_id, username):
     print(f"\nWelcome {username}")
@@ -42,6 +57,13 @@ def runApp(user_id, username):
     else:
         print(f"Error: {response.reason}")
         return
+    
+    for greenhouse in greenhouses:
+        greenhouse_id = greenhouse['greenhouse_id']
+        client.subscribe(f"greenhouse_{greenhouse_id}/action/#")    # subscribe to the topic to get all the actions emitted in that greenhouse by the management components
+        client.subscribe(f"greenhouse_{greenhouse_id}/info/#")    # subscribe to the topic to get all the info emitted in that greenhouse by the management components
+        client.subscribe(f"greenhouse_{greenhouse_id}/alert/#")    # subscribe to the topic to get all the alerts emitted in that greenhouse by the management components
+        received_messages.update({str(greenhouse_id): {}})    # create a dictionary with the greenhouse id as key and an empty dictionary as value
 
     while True:
         print(f"\nAvaible greenhouses:")
@@ -109,6 +131,7 @@ def runApp(user_id, username):
                                     try:
                                         max_threshold = float(input("Enter max threshold: "))
                                         min_threshold = float(input("Enter min threshold: "))
+                                        new_threshold = {'max': max_threshold, 'min': min_threshold}
                                     except ValueError:
                                         print("Invalid input")
                                 break
@@ -150,7 +173,29 @@ def runApp(user_id, username):
                     
                     if choice == "4":
                         print("\nCheck IoT devices information:")
-                        # select the device of interest
+                        try:
+                            selected_device = int(input("Enter the id of the device you want to check: "))
+                            found = False
+                            for device in configurations["devices"]:
+                                if selected_device == int(device["device_id"]):
+                                    found = True
+                                    print(f"Selected device: {device['name']} - {device['type']}")
+                                    if received_messages.get(greenhouse_id) == None:
+                                        print("No messages received yet")
+                                        continue
+                                    if received_messages.get(greenhouse_id).get(str(selected_device)) == None:
+                                        print("No messages received yet")
+                                        continue
+                                    print(f"Status of the device:")
+                                    for message in received_messages.get(greenhouse_id).get(str(selected_device)):
+                                        print(f"Message: {message['message']} - Type: {message['type']} - Timestamp: {message['timestamp']}")
+                                    break
+                            if found == False:
+                                print("Device not found")
+                                continue
+                        except ValueError:
+                            print("Invalid input")
+                            continue
                         # here i should see an history of the mqtt communications emitted by the selected device
 
                     if choice == "5":
@@ -165,9 +210,13 @@ def runApp(user_id, username):
                 else:
                     print(f"Error: {response.reason}")
                     return
-        else:
-            print("Invalid greenhouse id")
-            continue
+            else:
+                print("Invalid greenhouse id")
+                continue
+
+# create a client for mqtt
+client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"WebApp_{device_id}", on_message, write_log)    # create a client for mqtt
+client.start()
 
 print("WebApp started")
 while True:

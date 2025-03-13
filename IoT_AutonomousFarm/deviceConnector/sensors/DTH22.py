@@ -8,9 +8,9 @@ class DTH22:
         self.Sensor = Sensor
 
     # DTH22 is the sensor that measures temperature and humidity
-    def get_DTH22_Humidity(time_of_day):
-        # time_of_day = datetime.now()
-        # time_of_day = (time_of_day.hour * 3600 + time_of_day.minute * 60 + time_of_day.second)/3600
+    def get_DTH22_Humidity(self):
+        time_of_day = datetime.now()
+        time_of_day = (time_of_day.hour * 3600 + time_of_day.minute * 60 + time_of_day.second)/3600
 
         # simulate daily humidity variation using a sinusoidal pattern
         if time_of_day > 12:
@@ -28,9 +28,9 @@ class DTH22:
 
         return current_humidity
 
-    def get_DTH22_Temperature(time_of_day):
-        # time_of_day = datetime.now()
-        # time_of_day = (time_of_day.hour * 3600 + time_of_day.minute * 60 + time_of_day.second)/3600
+    def get_DTH22_Temperature(self):
+        time_of_day = datetime.now()
+        time_of_day = (time_of_day.hour * 3600 + time_of_day.minute * 60 + time_of_day.second)/3600
 
         # simulate daily temperature variation using a sinusoidal pattern
         trend = 15 + 10 * math.cos(2 * math.pi * (time_of_day - 14) / 24)
