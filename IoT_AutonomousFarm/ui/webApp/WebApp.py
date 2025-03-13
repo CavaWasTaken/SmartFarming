@@ -24,7 +24,7 @@ def on_message(client, userdata, message):
     if device_id not in received_messages[greenhouse_id]:    # if the device id is not in the dictionary, add it
         received_messages[greenhouse_id].update({device_id: []})
     
-    if len(received_messages[greenhouse_id][device_id]) > 0:    # if the list of messages received is empty, add the message received
+    if len(received_messages[greenhouse_id][device_id]) > 0:    # if the list is empty, we have only to add the new message received
         # if the message received has a timestamp different from the timestamp of the last message received, we are receiving a new transmission, so we can reset the list and save the new
         if received_messages[greenhouse_id][device_id][-1]['timestamp'] != timestamp:
             received_messages[greenhouse_id][device_id].clear()    # clear the list of messages received
