@@ -1,8 +1,17 @@
 import cherrypy
 import psycopg2
 from psycopg2 import sql
+import jinja2
 import bcrypt
 import json
+import os
+from cherrypy_cors import CORS 
+
+
+# Setup jinja2 
+Template_path = "/Users/thatsnegar/SmartFarming/IoT_AutonomousFarm/ui/webApp"
+env = jinja2.Environment(loader=jinja2.FileSystemLoader(Template_path))
+
 
 # class that implements the REST API of the Catalog
 
@@ -15,6 +24,52 @@ def get_db_connection():
         host="localhost",    # host,
         port="5433" # port
     )
+
+
+# get all the greenhouses 
+
+
+def get_all_greenhouses(conn):
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM greenhouses")
+        greenhouses = cur.fetchall()
+        if not greenhouses:
+            raise cherrypy.HTTPError(404, "no greenhouses found")
+
+        greenhouse_list = []
+        for greenhouse in greenhouses:
+            thingspeak_config = greenhouse[4]  # Column where JSON is stored
+
+            # Convert JSON string to dictionary if needed
+            if isinstance(thingspeak_config, str) and thingspeak_config.strip():
+                try:
+                    thingspeak_config = json.loads(thingspeak_config)
+                except json.JSONDecodeError:
+                    print(f"ERROR: Invalid JSON in greenhouse ID {greenhouse[0]}")  
+                    thingspeak_config = {}  
+
+            # Ensure fields exist
+            if not isinstance(thingspeak_config, dict):
+                thingspeak_config = {}
+
+            # Debug: Print actual values before sending to Jinja
+            print(f"Greenhouse ID: {greenhouse[0]} | thingspeak_config: {json.dumps(thingspeak_config, indent=2)}")
+
+            greenhouse_dict = {
+                'greenhouse_id': greenhouse[0],
+                'user_id': greenhouse[1],
+                'name': greenhouse[2],
+                'location': greenhouse[3],
+                'thingspeak_config': thingspeak_config  
+            }
+
+            greenhouse_list.append(greenhouse_dict)
+
+        # Debugging: Print full list
+        print("Final greenhouse_list:\n", json.dumps(greenhouse_list, indent=2))
+
+        template = env.get_template("greenhouses.html")
+        return template.render(greenhouse_list=greenhouse_list)
 
 # given the id of the device connector and the name of the device, return the information of the device
 def get_device_info(conn, device_id, device_name):
@@ -105,7 +160,13 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
         return greenhouse_dict
     
 # function to perform user registration
+@cherrypy.tools.json_out()
+@cherrypy.tools.json_in()
+@cherrypy.tools.allow(methods=['POST'])
 def register(conn, username, email, password):
+    cherrypy.response.headers['Access-Control-Allow-Origin'] = '*'
+    cherrypy.response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     with conn.cursor() as cur:
         # check if the username already exists
         cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
@@ -131,7 +192,12 @@ def register(conn, username, email, password):
         if user is None:
             raise cherrypy.HTTPError(401, "Incorrect username")
         
-        return {'message': 'User registered successfully', 'user_id': user[0], 'username': user[1], 'email': user[2]}
+        return json.dumps({
+            'message': 'User registered successfully',
+              'user_id': user[0],
+                'username': user[1],
+                  'email': user[2]
+                  }),201
     
 # function to perform user login
 def login(conn, username, password):
@@ -332,16 +398,17 @@ def remove_plant_from_greenhouse(conn, greenhouse_id, plant_id):
             return plants_list
         except:
             raise cherrypy.HTTPError(500, "Internal error")
+
 class CatalogREST(object):
     exposed = True
 
     def __init__(self, catalog_connection):
         self.catalog_connection = catalog_connection
 
-    @cherrypy.tools.json_out()  # automatically convert return value
+    # @cherrypy.tools.json_out()  # automatically convert return value
     def GET(self, *uri, **params):
         if len(uri) == 0:
-           raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+           return get_all_greenhouses(conn=self.catalog_connection)
         elif uri[0] == 'get_sensors':
             return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
         elif uri[0] == 'get_greenhouse_info':
@@ -360,6 +427,7 @@ class CatalogREST(object):
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         
     @cherrypy.tools.json_out()  # automatically convert return value
+    # @cherrypy.tools.json_in()  # automatically convert return value
     def POST(self, *uri, **params):
         if len(uri) == 0:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
@@ -388,6 +456,9 @@ class CatalogREST(object):
     @cherrypy.tools.json_out()  # automatically convert return value
     def DELETE(self, *uri, **params):
         raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+    
+    
+
 
 if __name__ == "__main__":
     # configuration of the server
@@ -396,6 +467,10 @@ if __name__ == "__main__":
         '/': {
             'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
             'tools.sessions.on': True
+        },
+        '/ui':{
+            'tools.staticdir.on': True,
+             'tools.staticdir.dir': os.path.abspath("/Users/thatsnegar/SmartFarming/IoT_AutonomousFarm/ui/webApp")
         }
     }
     cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8080})
