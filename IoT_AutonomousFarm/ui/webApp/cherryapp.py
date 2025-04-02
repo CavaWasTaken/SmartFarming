@@ -31,7 +31,11 @@ def getregister():
   cherrypy.response.headers['Content-Type'] = 'text/html'  # Set the Content-Type header
   template = env.get_template('registerform.html')
   return template.render().encode('utf-8')
-  
+
+def getlogin():
+  cherrypy.response.headers['Content-Type'] = 'text/html'  # Set the Content-Type header
+  template = env.get_template('loginform.html')
+  return template.render().encode('utf-8')
     
 def register(conn, username, email, password):
     with conn.cursor() as cur:
@@ -66,6 +70,25 @@ def register(conn, username, email, password):
             'email': user[2]
         }
 
+
+# function to perform user login
+def login(conn, username, password):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+        user = cur.fetchone()
+
+        if user is None:
+            raise cherrypy.HTTPError(401, "Incorrect username")
+
+        stored_hash = bytes(user[3])  # Convert memoryview to bytes
+
+        # Check the hashed password
+        if not bcrypt.checkpw(password.encode('utf-8'), stored_hash):
+            raise cherrypy.HTTPError(401, "Incorrect password")
+
+        return {'message': 'Login successful', 'user_id': user[0], 'username': user[1], 'email': user[2]}
+    
+
 class CatalogREST(object):
     exposed = True
 
@@ -78,6 +101,8 @@ class CatalogREST(object):
            return 'notfound'
         elif uri[0] == 'getregister':
             return getregister()
+        elif uri[0] == 'getlogin':
+            return getlogin()
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
     @cherrypy.tools.cors()
@@ -90,6 +115,9 @@ class CatalogREST(object):
         elif uri[0] == 'register':
             input_json = cherrypy.request.json
             return register(self.catalog_connection, input_json['username'], input_json['email'], input_json['password'])
+        elif uri[0] == 'login':
+            input_json = cherrypy.request.json
+            return login(self.catalog_connection, input_json['username'], input_json['password'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
 

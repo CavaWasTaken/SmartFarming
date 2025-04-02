@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <style media="screen">
       *,
       *:before,
@@ -147,7 +147,7 @@
     <div class="shape"></div>
     <div class="shape"></div>
   </div>
-    <form  id="registerForm">
+    <form  id="loginForm">
       <h3>Login Here</h3>
   
       <label for="username">Username</label>
@@ -156,23 +156,21 @@
       <label for="password">Password</label>
       <input type="password" placeholder="Password" id="password" required>
   
-      <label for="email">Email</label>
-      <input type="email" placeholder="Email" id="email" required>
+
   
-      <button onclick="registerUser()"> Register </button>
+      <button onclick="registerUser()"> Login </button>
     </form>
   
     <script>
-        document.getElementById("registerForm").addEventListener("submit", function(event) {
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent default form submission
             
             const formData = {
                 username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
                 password: document.getElementById("password").value
             };
 
-            fetch("http://127.0.0.1:5004/register", {  // Adjust URL if different
+            fetch("http://127.0.0.1:5004/login", {  // Adjust URL if different
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -182,10 +180,10 @@
             .then(response => response.json())
             .then(data => {
                 if (data.user_id) {
-                    alert("Registration successful!");
+                    alert("Logged In successful!");
                     window.location.href = "/"; // Redirect to another page
                 } else {
-                    alert("Registration failed: " + data.error);
+                    alert("Loggin failed: " + data.error);
                 }
             })
             .catch(error => console.error("Error:", error));
