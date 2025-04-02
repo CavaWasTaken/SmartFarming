@@ -4,6 +4,7 @@ import jinja2
 import cherrypy
 import psycopg2
 from psycopg2 import sql
+import json
 
 
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), '/Users/thatsnegar/SmartFarming/IoT_AutonomousFarm/ui/webApp')  # Path to templates directory
@@ -88,6 +89,80 @@ def login(conn, username, password):
 
         return {'message': 'Login successful', 'user_id': user[0], 'username': user[1], 'email': user[2]}
     
+# function to get all the greenhouses
+
+def get_all_greenhouses(conn):
+    cherrypy.response.headers['Content-Type'] = 'text/html'  # Set the Content-Type header
+
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM greenhouses")
+        greenhouses = cur.fetchall()
+        if not greenhouses:
+            raise cherrypy.HTTPError(404, "no greenhouses found")
+
+        greenhouse_list = []
+        for greenhouse in greenhouses:
+            thingspeak_config = greenhouse[4]  # Column where JSON is stored
+
+            # Convert JSON string to dictionary if needed
+            if isinstance(thingspeak_config, str) and thingspeak_config.strip():
+                try:
+                    thingspeak_config = json.loads(thingspeak_config)
+                except json.JSONDecodeError:
+                    print(f"ERROR: Invalid JSON in greenhouse ID {greenhouse[0]}")  
+                    thingspeak_config = {}  
+
+            # Ensure fields exist
+            if not isinstance(thingspeak_config, dict):
+                thingspeak_config = {}
+
+            # Debug: Print actual values before sending to Jinja
+            print(f"Greenhouse ID: {greenhouse[0]} | thingspeak_config: {json.dumps(thingspeak_config, indent=2)}")
+
+            greenhouse_dict = {
+                'greenhouse_id': greenhouse[0],
+                'user_id': greenhouse[1],
+                'name': greenhouse[2],
+                'location': greenhouse[3],
+                'thingspeak_config': thingspeak_config  
+            }
+
+            greenhouse_list.append(greenhouse_dict)
+
+        # Debugging: Print full list
+        print("Final greenhouse_list:\n", json.dumps(greenhouse_list, indent=2))
+
+        template = env.get_template("greenhouses.html")
+        return template.render(greenhouse_list=greenhouse_list)
+
+
+# get all the greenhouses sensors
+def get_all_sensors(conn, greenhouse_id):
+     cherrypy.response.headers['Content-Type'] = 'text/html'  # Set the Content-Type header
+
+     with conn.cursor() as cur:
+        # get sensors of the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
+        sensors = cur.fetchall()
+        if sensors is None:
+            raise cherrypy.HTTPError(404, "No sensors found")
+
+        sensors_list = []
+        for sensor in sensors:
+            sensor_dict = {
+                'sensor_id': sensor[0],
+                'greenhouse_id': sensor[1],
+                'type': sensor[2],
+                'name': sensor[3],
+                'unit': sensor[4],
+                'threshold': sensor[5],
+                'domain': sensor[6]
+            }
+            sensors_list.append(sensor_dict)
+
+        template = env.get_template("GHSensors.html")
+        return template.render(sensors_list=sensors_list)
+  
 
 class CatalogREST(object):
     exposed = True
@@ -103,6 +178,10 @@ class CatalogREST(object):
             return getregister()
         elif uri[0] == 'getlogin':
             return getlogin()
+        elif uri[0] == 'greenhouses':
+             return get_all_greenhouses(conn=self.catalog_connection)
+        elif uri[0] == 'get_all_sensors':
+            return get_all_sensors(self.catalog_connection, params['greenhouse_id'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
     @cherrypy.tools.cors()
@@ -145,12 +224,15 @@ if __name__ == "__main__":
             'tools.sessions.on': True,
             'tools.response_headers.on': True,
             'tools.response_headers.headers': [('Content-Type', 'application/json')],
-            'tools.cors.on': True
-        },
-        '/ui':{
+            'tools.cors.on': True,
             'tools.staticdir.on': True,
+            'tools.staticdir.dir': '/Users/thatsnegar/SmartFarming/IoT_AutonomousFarm/ui/webApp'
+
+        },
+         '/ui':{
+             'tools.staticdir.on': True,
              'tools.staticdir.dir': os.path.abspath("webApp")
-        }
+         }
     }
     cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 5004})
     cherrypy.tree.mount(catalogClient, '/', conf)

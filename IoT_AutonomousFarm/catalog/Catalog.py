@@ -28,7 +28,6 @@ def get_db_connection():
 
 # get all the greenhouses 
 
-
 def get_all_greenhouses(conn):
     with conn.cursor() as cur:
         cur.execute("SELECT * FROM greenhouses")
