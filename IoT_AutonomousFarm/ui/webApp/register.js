@@ -1,29 +1,21 @@
 function registerUser() {
-    //data from the form
+    // Data from the form
     let username = document.getElementById("username").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    
 
-    let data ={
-        username : username,
-        email : email,
-        password : password
-    }
-
-    console.log(JSON.stringify(data))
     $.ajax({
-        url: "http://0.0.0.0:8080/register",
+        url: "/register",
         type: "POST",
         contentType: "application/json", 
+        data: JSON.stringify({
+            username: username,
+            email: email,
+            password: password
+        }),
         dataType: "json",
-        data: JSON.stringify(data),
-        
-        success: function(response) 
-        {
+        success: function(response) {
             console.log("Success:", response);
-            // let responses = JSON.stringify(response)
-
             if(response && response.message){
                 $("#status").text(response.message); 
             } else {
@@ -32,7 +24,10 @@ function registerUser() {
         },
         error: function(xhr, status, error) {
             console.log("Error:", error);
-            $("#status").text("Failed to register user");
+            console.log("XHR:", xhr);
+            console.log("Status:", status);
+            console.log("Response Text:", xhr.responseText);
+            $("#status").text("Failed to register user: " + xhr.responseText);
         }
     });
 }
