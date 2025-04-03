@@ -36,7 +36,7 @@ $(document).ready(function () {
         </a>
 
         <dt>Sensors</dt>
-       <a href= "/login">
+       <a href= "/get_all_sensors?greenhouse_id=${greenhouseid}">
         <svg width="24" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
         <path d="M15 4H4V1" stroke="white"/>
         <path d="M14.5 4H3.5H0" stroke="white"/>

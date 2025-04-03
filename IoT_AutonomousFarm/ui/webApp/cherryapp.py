@@ -162,7 +162,31 @@ def get_all_sensors(conn, greenhouse_id):
 
         template = env.get_template("GHSensors.html")
         return template.render(sensors_list=sensors_list)
+        # return json.dumps(sensors_list, indent=2)  # Return JSON response
   
+
+# Get all palnts 
+def get_all_plants(conn):
+    cherrypy.response.headers['Content-Type'] = 'text/html'  # Set the Content-Type header
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM plants"))
+        plants = cur.fetchall()
+        if plants is None:
+            raise cherrypy.HTTPError(404, "No plants found")
+        
+        plants_list = []
+        for plant in plants:
+            plant_dict = {
+                'plant_id': plant[0],
+                'name': plant[1],
+                'species': plant[2],
+                'desired_thresholds': plant[3]
+            }
+            plants_list.append(plant_dict)
+        
+        # return json.dumps(plants_list, indent=2)  # Return JSON response
+        template = env.get_template("plants.html")
+        return template.render(plants_list=plants_list)
 
 class CatalogREST(object):
     exposed = True
@@ -182,8 +206,11 @@ class CatalogREST(object):
              return get_all_greenhouses(conn=self.catalog_connection)
         elif uri[0] == 'get_all_sensors':
             return get_all_sensors(self.catalog_connection, params['greenhouse_id'])
+        elif uri[0] == 'get_all_plants':
+            return get_all_plants(self.catalog_connection)
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+        
     @cherrypy.tools.cors()
     @cherrypy.tools.json_out()
     @cherrypy.tools.json_in()
