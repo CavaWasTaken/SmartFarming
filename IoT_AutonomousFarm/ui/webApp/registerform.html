@@ -49,7 +49,7 @@
       }
   
       form {
-        height: 520px;
+        height: 570px;
         width: 400px;
         background-color: rgba(255, 255, 255, 0.13);
         position: absolute;
@@ -139,6 +139,19 @@
       .social i {
         margin-right: 4px;
       }
+
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 20px; /* Space from the components above */
+        font-size: 14px;
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
 
 </head>
@@ -148,47 +161,24 @@
     <div class="shape"></div>
   </div>
     <form  id="registerForm">
-      <h3>Login Here</h3>
-  
+      <h3>Register Here</h3>
       <label for="username">Username</label>
       <input type="text" placeholder="Username" id="username" required>
-  
       <label for="password">Password</label>
       <input type="password" placeholder="Password" id="password" required>
-  
       <label for="email">Email</label>
       <input type="email" placeholder="Email" id="email" required>
-  
-      <button onclick="registerUser()"> Register </button>
+      <button type="submit"> Register </button>
+      <a href="loginform.html">Go to login</a>
     </form>
   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/register.js"></script>
     <script>
+        // inline script that calls registerUser
         document.getElementById("registerForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            const formData = {
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value
-            };
-
-            fetch("http://127.0.0.1:5004/register", {  // Adjust URL if different
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.user_id) {
-                    alert("Registration successful!");
-                    window.location.href = "/"; // Redirect to another page
-                } else {
-                    alert("Registration failed: " + data.error);
-                }
-            })
-            .catch(error => console.error("Error:", error));
+            event.preventDefault();
+            registerUser(); // call the function from register.js
         });
     </script>
 </body>

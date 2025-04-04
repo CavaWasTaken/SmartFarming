@@ -49,7 +49,7 @@
       }
   
       form {
-        height: 520px;
+        height: 470px;
         width: 400px;
         background-color: rgba(255, 255, 255, 0.13);
         position: absolute;
@@ -139,6 +139,19 @@
       .social i {
         margin-right: 4px;
       }
+
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 20px; /* Space from the components above */
+        font-size: 14px;
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
     </style>
 
 </head>
@@ -154,23 +167,33 @@
       <input type="text" placeholder="Username" id="username" required>
   
       <label for="password">Password</label>
-      <input type="password" placeholder="Password" id="password" required>
-  
-
+      <input type="password" placeholder="Password" id="password" required> 
   
       <button onclick="registerUser()"> Login </button>
+
+      <a href="registerform.html">Go to registration</a>
     </form>
   
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent default form submission
             
+            // read the values from the input fields and remove any leading/trailing whitespace
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // check if any of the fields are empty
+            if (!username || !password) {
+                alert("All fields are required!");
+                return;
+            }
+
             const formData = {
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value
+                username: username,
+                password: password
             };
 
-            fetch("http://127.0.0.1:5004/login", {  // Adjust URL if different
+            fetch("http://127.0.0.1:8080/login", {  // Adjust URL if different
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

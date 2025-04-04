@@ -7,11 +7,10 @@ import json
 import os
 from cherrypy_cors import CORS 
 
-
 # Setup jinja2 
-Template_path = "/Users/thatsnegar/SmartFarming/IoT_AutonomousFarm/ui/webApp"
-env = jinja2.Environment(loader=jinja2.FileSystemLoader(Template_path))
-
+# relative path to the template directory
+TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), '../ui/webApp')
+env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH))
 
 # class that implements the REST API of the Catalog
 
@@ -25,9 +24,14 @@ def get_db_connection():
         port="5433" # port
     )
 
+def cors():
+    cherrypy.response.headers['Access-Control-Allow-Origin'] = '*'
+    cherrypy.response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+    cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
 
-# get all the greenhouses 
+cherrypy.tools.cors = cherrypy.Tool('before_handler', cors)
 
+# method to get all the greenhouses in the system
 def get_all_greenhouses(conn):
     with conn.cursor() as cur:
         cur.execute("SELECT * FROM greenhouses")
@@ -70,7 +74,7 @@ def get_all_greenhouses(conn):
         template = env.get_template("greenhouses.html")
         return template.render(greenhouse_list=greenhouse_list)
 
-# given the id of the device connector and the name of the device, return the information of the device
+# given the id of the device and its name, return its information
 def get_device_info(conn, device_id, device_name):
     with conn.cursor() as cur: # create a cursor to execute queries
         cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])    # the query is to get the device info of the device
@@ -87,7 +91,7 @@ def get_device_info(conn, device_id, device_name):
 
         return device_dict
     
-# given the id of the greenhouse, return the location of the greenhouse
+# given the id of the greenhouse, return its location
 def get_greenhouse_location(conn, greenhouse_id):
     with conn.cursor() as cur:
         cur.execute(sql.SQL("SELECT location FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
@@ -96,7 +100,7 @@ def get_greenhouse_location(conn, greenhouse_id):
             raise cherrypy.HTTPError(404, "Greenhouse not found")
         return {'location': location}
 
-# given the id of the device connector, return the list of sensors connected to it
+# given the id of the device, return the list of sensors connected to it
 def get_sensors(conn, device_id, device_name):
     with conn.cursor() as cur: # create a cursor to execute queries
         # the first query is to get the greenhouse_id of the device
@@ -159,27 +163,20 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
         return greenhouse_dict
     
 # function to perform user registration
-@cherrypy.tools.json_out()
-@cherrypy.tools.json_in()
-@cherrypy.tools.allow(methods=['POST'])
 def register(conn, username, email, password):
-    cherrypy.response.headers['Access-Control-Allow-Origin'] = '*'
-    cherrypy.response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-    cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     with conn.cursor() as cur:
         # check if the username already exists
         cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
         user = cur.fetchone()
         if user is not None:
-            raise cherrypy.HTTPError(409, "Username already exists")
+            cherrypy.response.status = 409
+            return {"error": "Username already exists"}
         # insert the new user in the db
         try:
             # salt hash the password
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             cur.execute(sql.SQL("INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)"), [username, email, hashed_password])
             conn.commit()
-        except psycopg2.errors.UniqueViolation:
-            raise cherrypy.HTTPError(409, "Username already exists")
         except psycopg2.errors.NotNullViolation:
             raise cherrypy.HTTPError(400, "Username, email or password not provided")
         except:
@@ -191,12 +188,12 @@ def register(conn, username, email, password):
         if user is None:
             raise cherrypy.HTTPError(401, "Incorrect username")
         
-        return json.dumps({
+        return {
             'message': 'User registered successfully',
-              'user_id': user[0],
-                'username': user[1],
-                  'email': user[2]
-                  }),201
+            'user_id': user[0],
+            'username': user[1],
+            'email': user[2]
+        }
     
 # function to perform user login
 def login(conn, username, password):
@@ -404,7 +401,6 @@ class CatalogREST(object):
     def __init__(self, catalog_connection):
         self.catalog_connection = catalog_connection
 
-    # @cherrypy.tools.json_out()  # automatically convert return value
     def GET(self, *uri, **params):
         if len(uri) == 0:
            return get_all_greenhouses(conn=self.catalog_connection)
@@ -424,9 +420,10 @@ class CatalogREST(object):
             return get_all_plants(self.catalog_connection)
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
-        
-    @cherrypy.tools.json_out()  # automatically convert return value
-    # @cherrypy.tools.json_in()  # automatically convert return value
+    
+    @cherrypy.tools.cors()  # Enable CORS for POST requests
+    @cherrypy.tools.encode(encoding='utf-8')    # Encode the request body
+    @cherrypy.tools.json_out()  # Output JSON response
     def POST(self, *uri, **params):
         if len(uri) == 0:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
@@ -448,31 +445,38 @@ class CatalogREST(object):
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
 
-    @cherrypy.tools.json_out()  # automatically convert return value        
     def PUT(self, *uri, **params):
         raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
         
-    @cherrypy.tools.json_out()  # automatically convert return value
     def DELETE(self, *uri, **params):
         raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-    
-    
 
-
+    @cherrypy.tools.cors()
+    def OPTIONS(self, *args, **kwargs):
+        cherrypy.response.headers['Access-Control-Allow-Origin'] = '*'
+        cherrypy.response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return ''
+    
 if __name__ == "__main__":
     # configuration of the server
     catalogClient = CatalogREST(get_db_connection())
     conf = {
         '/': {
             'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-            'tools.sessions.on': True
+            'tools.sessions.on': True,
+            'tools.response_headers.on': True,
+            'tools.response_headers.headers': [('Content-Type', 'application/json')],
+            'tools.cors.on': True,
+            'tools.staticdir.on': True,
+            'tools.staticdir.dir': os.path.abspath('../ui/webApp')
         },
         '/ui':{
             'tools.staticdir.on': True,
-             'tools.staticdir.dir': os.path.abspath("/Users/thatsnegar/SmartFarming/IoT_AutonomousFarm/ui/webApp")
+            'tools.staticdir.dir': os.path.abspath("../ui/webApp")
         }
     }
-    cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8080})
+    cherrypy.config.update({'server.socket_host': '127.0.0.1', 'server.socket_port': 8080})
     cherrypy.tree.mount(catalogClient, '/', conf)
     cherrypy.engine.start()
     cherrypy.engine.block()
