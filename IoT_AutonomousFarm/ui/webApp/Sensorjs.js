@@ -30,43 +30,70 @@ $(document).ready(function () {
 
 
 // ***********************************************//
-// function fetchDevices() {
-//     $.ajax({
-//         url: "http://0.0.0.0:8080/get_all_device_info",
-//         type: "GET",
-//         dataType: "json",
-//         success: function(response) {
-            
-//             console.log("Success:", response);
-//             // let responses = JSON.stringify(response)
 
-//             let tableBody = $("#devicesTable tbody");
-//             tableBody.empty(); // Clear previous data
-            
-//             // Loop through JSON response and append rows to the table
-//             response.forEach(device => {
-              
-//                 let row = `
-//                     <tr>
-//                         <td>${device.device_id}</td>
-//                         <td>${device.greenhouse_id}</td>
-//                         <td>${device.name}</td>
-//                         <td>${device.type}</td>
-//                         <td>${device.type}</td>
-//                     </tr>
-//                 `;
-//                 tableBody.append(row);
-//             });
 
-//             $("#status").text("Devices loaded successfully!");
-//         },
-//         error: function(xhr, status, error) {
-//             console.error("Error:", error);
-//             $("#status").text("Failed to load devices.");
-//         }
-//     });
-// }
-
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("thresholdModal");
+    const sensorIdInput = document.getElementById("sensor-id");
+    const minThresholdInput = document.getElementById("min-threshold");
+    const maxThresholdInput = document.getElementById("max-threshold");
+    const thresholdForm = document.getElementById("thresholdForm");
+  
+    // Open modal and populate with sensor details
+    document.querySelectorAll(".change-values-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const sensorId = button.getAttribute("data-sensor-id");
+        const thresholdMin = button.getAttribute("data-threshold-min");
+        const thresholdMax = button.getAttribute("data-threshold-max");
+  
+        // Populate modal fields
+        sensorIdInput.value = sensorId;
+        minThresholdInput.value = thresholdMin;
+        maxThresholdInput.value = thresholdMax;
+  
+        // Show modal
+        modal.style.display = "block";
+      });
+    });
+  
+    // Close modal
+    window.closeModal = function () {
+      modal.style.display = "none";
+    };
+  
+    // Handle form submission
+    thresholdForm.addEventListener("submit", event => {
+      event.preventDefault();
+  
+      const sensorId = sensorIdInput.value;
+      const minThreshold = minThresholdInput.value;
+      const maxThreshold = maxThresholdInput.value;
+  
+      // Send updated thresholds to the backend
+      fetch("/set_sensor_threshold", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          sensor_id: sensorId,
+          threshold: {
+            min: minThreshold,
+            max: maxThreshold
+          }
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message || "Threshold updated successfully!");
+          closeModal();
+        })
+        .catch(error => {
+          console.error("Error updating thresholds:", error);
+          alert("Failed to update thresholds.");
+        });
+    });
+  });
     
 
    

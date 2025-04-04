@@ -38,13 +38,18 @@
               <img src="./pics/ph.png"/>
 
              {% endif %}
+
             </div>
             <div class="desc">
               <h6 class="primary-text"> 
                 {{sensor.sensor_id }}
               </h6>
             </div>
-            <button class="primary-text">
+            <button class="primary-text change-values-btn" 
+            data-sensor-id ="{{sensor.sensor_id}}"
+            data-sensor-name="{{sensor.name }}"
+            data-threshold-min="{{sensor.threshold.min}}"
+            data-threshold-max="{{sensor.threshold.max}}">
              Change Values
             </button>
             <div class="details">
@@ -85,7 +90,21 @@
           </div>
         </div>
         {% endfor %}
-
+    <!-- Modal Structure -->
+    <div id="thresholdModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-sensor-name">Change Thresholds</h2>
+        <form id="thresholdForm">
+          <input type="hidden" id="sensor-id" />
+          <label for="min-threshold">Min Threshold:</label>
+          <input type="number" id="min-threshold" required />
+          <label for="max-threshold">Max Threshold:</label>
+          <input type="number" id="max-threshold" required />
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
       </div>
     </div>
     
@@ -93,6 +112,6 @@
     <!-- Bootstrap JavaScript (Place before closing </body>) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="webApp/Sensorjs.js"></script>
+    <script src="./Sensorjs.js"></script>
   </body>
 </html>

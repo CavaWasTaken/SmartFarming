@@ -188,6 +188,27 @@ def get_all_plants(conn):
         template = env.get_template("plants.html")
         return template.render(plants_list=plants_list)
 
+
+# function used by the user to change the threshold of a sensor
+def set_sensor_threshold(conn, sensor_id, threshold):
+    
+    input_json = cherrypy.request.json
+    print(f"📌 Received JSON: {input_json}")
+
+    threshold = json.dumps(threshold)
+    with conn.cursor() as cur:
+        try:
+            cur.execute(sql.SQL("UPDATE sensors SET threshold_range = %s WHERE sensor_id = %s"), [threshold, sensor_id])
+            conn.commit()
+            return {'message': 'Threshold set'}
+        
+        except psycopg2.errors.NotNullViolation:
+            raise cherrypy.HTTPError(400, "Threshold not provided")
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+        
+
+        
 class CatalogREST(object):
     exposed = True
 
@@ -224,6 +245,9 @@ class CatalogREST(object):
         elif uri[0] == 'login':
             input_json = cherrypy.request.json
             return login(self.catalog_connection, input_json['username'], input_json['password'])
+        elif uri[0] == 'set_sensor_threshold':
+            input_json = json.loads(cherrypy.request.body.read())
+            return set_sensor_threshold(self.catalog_connection, input_json['sensor_id'], input_json['threshold'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
 
