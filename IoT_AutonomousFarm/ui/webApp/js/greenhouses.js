@@ -74,9 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
       data.greenhouses.forEach(greenhouse => {
         const row = `
           <tr>
-            <td data-title='greenhouse_id'>${greenhouse.greenhouse_id}</td>
             <td data-title='name'>${greenhouse.name}</td>
-            <td data-title='user_id'>${greenhouse.user_id}</td>
+            <td data-title='user_id'>${username}</td>
             <td data-title='location'>${greenhouse.location}</td>
             <td class="select">
                 <button class="select-button" 
