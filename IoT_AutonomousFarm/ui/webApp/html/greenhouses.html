@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greenhouses</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/greenhouses.css" />
+  </head>
+
+  <body>
+    <header>
+      <a href="home.html" class="header-title">Smart Greenhouse</a>
+      <div class="header-user">
+        <span id="username-display"></span>
+        <button id="logout-button">Logout</button>
+      </div>
+    </header>
+    
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Greenhouse ID</th>
+            <th>Greenhouse Name</th>
+            <th>Owner ID</th>
+            <th>Greenhouse Location</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-title='greenhouse_id'>
+              {{ greenhouse.greenhouse_id }}
+            </td>
+            <td data-title='name'>
+              {{ greenhouse.name }}
+            </td>
+            <td data-title='user_id'>
+              {{ greenhouse.user_id }}
+            </td>
+            <td data-title='location'>
+              {{ greenhouse.location }}
+            </td>
+            <td class="select">
+              <button class="select-button" 
+                      data-greenhouse_id="{{ greenhouse.greenhouse_id }}" 
+                      data-user_id="{{ greenhouse.user_id }}"
+                      data-name="{{ greenhouse.name }}" 
+                      data-location="{{ greenhouse.location }}">
+                  Select
+              </button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class='detail'>
+        <div class='detail-container'>
+          </dl>
+        </div>
+        <div class='detail-nav'>
+          <button class='close'>
+            Close
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/greenhouses.js"></script>

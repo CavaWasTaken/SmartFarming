@@ -6,6 +6,9 @@ import bcrypt
 import json
 import os
 from cherrypy_cors import CORS 
+import jwt
+import datetime
+import secrets
 
 # Setup jinja2 
 # relative path to the template directory
@@ -164,74 +167,146 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
     
 # function to perform user registration
 def register(conn, username, email, password):
-    with conn.cursor() as cur:
-        # check if the username already exists
-        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
-        user = cur.fetchone()
-        if user is not None:
-            cherrypy.response.status = 409
-            return {"error": "Username already exists"}
-        # insert the new user in the db
-        try:
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # check if the username already exists
+            cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+            user = cur.fetchone()
+            if user is not None:
+                cherrypy.response.status = 409
+                return {"error": "Username already exists"}
+        
+            # if the username is new, insert it in the db
             # salt hash the password
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             cur.execute(sql.SQL("INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)"), [username, email, hashed_password])
             conn.commit()
-        except psycopg2.errors.NotNullViolation:
-            raise cherrypy.HTTPError(400, "Username, email or password not provided")
-        except:
-            raise cherrypy.HTTPError(500, "Internal error")
-        
-        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
-        user = cur.fetchone()
 
-        if user is None:
-            raise cherrypy.HTTPError(401, "Incorrect username")
+            # check if the user was inserted correctly
+            cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+            user = cur.fetchone()
+            if user is None:
+                cherrypy.response.status = 500
+                return {"error": "Internal error"}
         
-        return {
-            'message': 'User registered successfully',
-            'user_id': user[0],
-            'username': user[1],
-            'email': user[2]
+            return {
+                'message': 'User registered successfully',
+                'user_id': user[0],
+                'username': user[1],
+                'email': user[2]
+            }
+        
+    except psycopg2.errors.NotNullViolation:
+        cherrypy.response.status = 400
+        return {"error": "Missing required fields"}
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
+    
+# instead of using a json, think to use an env variable
+with open("Catalog_config.json", "r") as config_file:
+    config = json.load(config_file)
+# secret key for JWT encoding and decoding
+SECRET_KEY = config["SECRET_KEY"]
+# function to generate a JWT token for the logged in user    
+def generate_token(user_id, username):
+    try:
+        expiration = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)
+        payload = {
+            "user_id": user_id,
+            "username": username,
+            "exp": int(expiration.timestamp()),
         }
+        token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+        return token
+    
+    except Exception as e:
+        print(f"Error generating token: {e}")
+        raise cherrypy.HTTPError(500, "Internal error")
     
 # function to perform user login
 def login(conn, username, password):
-    with conn.cursor() as cur:
-        cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
-        user = cur.fetchone()
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # check if the username exists
+            cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
+            user = cur.fetchone()
 
-        if user is None:
-            raise cherrypy.HTTPError(401, "Incorrect username")
+            if user is None:
+                cherrypy.response.status = 401
+                return {"error": "Incorrect username"}
 
-        stored_hash = bytes(user[3])  # Convert memoryview to bytes
+            stored_hash = bytes(user[3])  # convert memoryview to bytes
 
-        # Check the hashed password
-        if not bcrypt.checkpw(password.encode('utf-8'), stored_hash):
-            raise cherrypy.HTTPError(401, "Incorrect password")
+            # Check the hashed password
+            if not bcrypt.checkpw(password.encode('utf-8'), stored_hash):
+                cherrypy.response.status = 401
+                return {"error": "Incorrect password"}
+            
+            # generate JWT token
+            token = generate_token(user[0], user[1])
+            cherrypy.response.headers['Authorization'] = f"Bearer {token}"
+            # return the user info
 
-        return {'message': 'Login successful', 'user_id': user[0], 'username': user[1], 'email': user[2]}
+            return {
+                'message': 'Login successful', 
+                'user_id': user[0],
+                'username': user[1],
+                'email': user[2],
+                'token': token
+            }
+                    
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
 
 # function to return the greenhouses of a user
-def get_user_greenhouses(conn, user_id):
-    with conn.cursor() as cur:
-        cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE user_id = %s"), [user_id])
-        greenhouses = cur.fetchall()
-        if greenhouses is None:
-            return {'greenhouses': []}
+def get_user_greenhouses(conn, user_id, username):
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
         
-        greenhouses_list = []
-        for greenhouse in greenhouses:
-            greenhouse_dict = {
-                'greenhouse_id': greenhouse[0],
-                'user_id': greenhouse[1],
-                'name': greenhouse[2],
-                'location': greenhouse[3],
-                'thingSpeak_config': greenhouse[4]
-            }
-            greenhouses_list.append(greenhouse_dict)
+        with conn.cursor() as cur:
+            # chech if the user exists
+            cur.execute(sql.SQL("SELECT * FROM users WHERE user_id = %s AND username = %s"), [user_id, username])
+            user = cur.fetchone()
+            if user is None:
+                cherrypy.response.status = 404
+                return {"error": "User not found"}
+            # get the greenhouses of the user
+            cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE user_id = %s"), [user_id])
+            greenhouses = cur.fetchall()
+            if greenhouses is None:
+                return {'greenhouses': []}
+            
+            greenhouses_list = []
+            for greenhouse in greenhouses:
+                greenhouse_dict = {
+                    'greenhouse_id': greenhouse[0],
+                    'user_id': greenhouse[1],
+                    'name': greenhouse[2],
+                    'location': greenhouse[3],
+                    'thingSpeak_config': greenhouse[4]
+                }
+                greenhouses_list.append(greenhouse_dict)
+            
+            return {'greenhouses': greenhouses_list}
         
-        return {'greenhouses': greenhouses_list}
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
     
 # function to return everything about a greenhouse (plants, sensors, devices)
 def get_greenhouse_configurations(conn, greenhouse_id):
@@ -401,9 +476,11 @@ class CatalogREST(object):
     def __init__(self, catalog_connection):
         self.catalog_connection = catalog_connection
 
+    @cherrypy.tools.cors()  # enable CORS for POST requests
+    @cherrypy.tools.json_out()  # output JSON response
     def GET(self, *uri, **params):
         if len(uri) == 0:
-           return get_all_greenhouses(conn=self.catalog_connection)
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         elif uri[0] == 'get_sensors':
             return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
         elif uri[0] == 'get_greenhouse_info':
@@ -413,7 +490,7 @@ class CatalogREST(object):
         elif uri[0] == 'get_greenhouse_location':
             return get_greenhouse_location(self.catalog_connection, params['greenhouse_id'])
         elif uri[0] == 'get_user_greenhouses':
-            return get_user_greenhouses(self.catalog_connection, params['user_id'])
+            return get_user_greenhouses(self.catalog_connection, params['user_id'], params['username'])
         elif uri[0] == 'get_greenhouse_configurations':
             return get_greenhouse_configurations(self.catalog_connection, params['greenhouse_id'])
         elif uri[0] == 'get_all_plants':
@@ -421,9 +498,9 @@ class CatalogREST(object):
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
     
-    @cherrypy.tools.cors()  # Enable CORS for POST requests
-    @cherrypy.tools.encode(encoding='utf-8')    # Encode the request body
-    @cherrypy.tools.json_out()  # Output JSON response
+    @cherrypy.tools.cors()  # enable CORS for POST requests
+    @cherrypy.tools.encode(encoding='utf-8')    # encode the request body
+    @cherrypy.tools.json_out()  # output JSON response
     def POST(self, *uri, **params):
         if len(uri) == 0:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
@@ -455,7 +532,7 @@ class CatalogREST(object):
     def OPTIONS(self, *args, **kwargs):
         cherrypy.response.headers['Access-Control-Allow-Origin'] = '*'
         cherrypy.response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-        cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
         return ''
     
 if __name__ == "__main__":

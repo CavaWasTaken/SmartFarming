@@ -2,7 +2,108 @@
 //     e.preventDefault();
 //     $(".detail, html, body").toggleClass("open");
 //   });
-  
+
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("user_id");
+  const username = localStorage.getItem("username");
+
+  if (!token || !userId || !username) {
+    alert("You are not logged in. Please log in to access this page.");
+    window.location.href = "loginform.html"; // redirect to login page
+  }
+
+  document.getElementById("username-display").textContent = `Welcome, ${username}`;
+
+  document.getElementById("logout-button").addEventListener("click", () => {
+    // clear the token and user information from local storage and redirect to login page
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("username");
+    window.location.href = "loginform.html";
+  });
+
+  document.querySelector("tbody").addEventListener("click", (event) => {
+    if (event.target.classList.contains("select-button")) {
+      const button = event.target;
+
+      // retrieve data attributes from the clicked button
+      const selectedGreenhouseId = button.getAttribute("data-greenhouse_id");
+      const selectedGreenhouseName = button.getAttribute("data-name");
+      const selectedGreenhouseLocation = button.getAttribute("data-location");
+
+      // store the selected greenhouse information in local storage
+      localStorage.setItem("greenhouse_id", selectedGreenhouseId);
+      localStorage.setItem("greenhouse_name", selectedGreenhouseName);
+      localStorage.setItem("greenhouse_location", selectedGreenhouseLocation);
+      // redirect to the greenhouse details page
+      window.location.href = "greenhouseDetails.html";
+    }
+  });
+
+  const formData = {
+    user_id: userId,
+    username: username
+  };
+
+  // read from the config file to get the API URL
+  fetch("../json/WebApp_config.json")    // this path is relative to the HTML file
+  .then(response => response.json())
+  .then(config => {
+      const catalog_url = config.catalog_url; // read the catalog URL from the config file
+
+      // use the catalog URL to do the HTTP request
+      const queryParams = new URLSearchParams(formData).toString();
+      return fetch(`${catalog_url}/get_user_greenhouses?${queryParams}`, {
+          method: "GET",
+          headers: {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
+      });
+  })
+  .then(async response => {
+      if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.error);
+      }
+      return response.json();
+  })
+  .then(data => {
+    if (data.greenhouses) {
+      const tableBody = document.querySelector("tbody");
+      tableBody.innerHTML = ""; // Clear existing rows
+
+      data.greenhouses.forEach(greenhouse => {
+        const row = `
+          <tr>
+            <td data-title='greenhouse_id'>${greenhouse.greenhouse_id}</td>
+            <td data-title='name'>${greenhouse.name}</td>
+            <td data-title='user_id'>${greenhouse.user_id}</td>
+            <td data-title='location'>${greenhouse.location}</td>
+            <td class="select">
+                <button class="select-button" 
+                        data-greenhouse_id="${greenhouse.greenhouse_id}" 
+                        data-user_id="${greenhouse.user_id}"
+                        data-name="${greenhouse.name}" 
+                        data-location="${greenhouse.location}">
+                    Select
+                </button>
+            </td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML("beforeend", row);
+      });
+    } else {
+      console.error("Failed to fetch greenhouses:", data.error);
+      alert("An error occurred while fetching the greenhouses");
+    }
+  })
+  .catch(error => {
+      console.error("Error:", error.message);
+      alert("An error occurred while fetching the greenhouses");
+  });
+});
+
+
+
 
 $(document).ready(function () {
   $(".select-button").on("click", function () {
