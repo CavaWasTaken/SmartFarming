@@ -97,7 +97,8 @@ header {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.dashboard-cards {
+/* Cards */
+.sensor-cards {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -105,10 +106,58 @@ header {
 	margin-top: 100px; /* Space for the header */
 }
 
-.card {
+.device-cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px; /* Space for the header */
+}
+
+.plant.cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px; /* Space for the header */
+}
+
+.sensor-card {
 	display: flex;
 	flex-direction: column;
 	height: 450px;
+	width: 100%;
+	max-width: 320px;
+	background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	margin: 20px auto; /* Ensure space between cards */
+	border-radius: 8px;
+	-webkit-box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
+	box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
+	font-family: "Poppins", sans-serif;
+}
+
+.device-card {
+	display: flex;
+	flex-direction: column;
+	height: 350px;
+	width: 100%;
+	max-width: 320px;
+	background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	margin: 20px auto; /* Ensure space between cards */
+	border-radius: 8px;
+	-webkit-box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
+	box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
+	font-family: "Poppins", sans-serif;
+}
+
+.plant-card {
+	display: flex;
+	flex-direction: column;
+	height: 350px;
 	width: 100%;
 	max-width: 320px;
 	background-color: rgba(255, 255, 255, 0.06);
@@ -218,6 +267,34 @@ h6 {
 }
 
 .treshbtn {
+	background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	border: none;
+	width: 80%;
+	padding: 5px 0;
+	position: absolute;
+	left: 10%;
+	top: 165px;
+	border-radius: 5px;
+	outline: none;
+}
+
+#check-status-button {
+	background-color: rgba(255, 255, 255, 0.06);
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	border: none;
+	width: 80%;
+	padding: 5px 0;
+	position: absolute;
+	left: 10%;
+	top: 165px;
+	border-radius: 5px;
+	outline: none;
+}
+
+#remove-plant-button {
 	background-color: rgba(255, 255, 255, 0.06);
 	-webkit-backdrop-filter: blur(20px);
 	backdrop-filter: blur(20px);

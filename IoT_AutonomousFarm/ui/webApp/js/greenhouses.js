@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
     localStorage.removeItem("username");
-    window.location.href = "loginform.html";
+    window.location.href = "home.html";
   });
 
   document.querySelector("tbody").addEventListener("click", (event) => {
