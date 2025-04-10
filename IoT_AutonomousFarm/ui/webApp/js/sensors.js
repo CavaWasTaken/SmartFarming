@@ -101,11 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then((data) => {
       const sensors = data.sensors;
-      // each sensor is inserted in a card
+      
+     
       const dashboardCards = document.querySelector(".dashboard-cards");
+
       sensors.forEach((sensor) => {
+        
+        console.log(sensor.threshold);
+
         // handle the threshold in the special case of NPK sensor
-        if (sensor.type === "NPK") {
+        if (sensor.type === "NPK")
+        {
           minThreshold =
             sensor.threshold.N.min +
             ", " +
@@ -125,7 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // create a card for each sensor
         const card = document.createElement("div");
+
         card.className = "card";
+
         card.innerHTML = `
                 <div class="card-img">
                     <svg fill="#e1c61b" viewBox="-5.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>light</title> <path d="M11.875 6v2.469c0 0.844-0.375 1.25-1.156 1.25s-1.156-0.406-1.156-1.25v-2.469c0-0.813 0.375-1.219 1.156-1.219s1.156 0.406 1.156 1.219zM14.219 9.25l1.438-2.031c0.469-0.625 1.063-0.75 1.656-0.313s0.656 1 0.188 1.688l-1.438 2c-0.469 0.688-1.031 0.75-1.656 0.313-0.594-0.438-0.656-0.969-0.188-1.656zM5.781 7.25l1.469 2c0.469 0.688 0.406 1.219-0.219 1.656-0.594 0.469-1.156 0.375-1.625-0.313l-1.469-2c-0.469-0.688-0.406-1.219 0.219-1.656 0.594-0.469 1.156-0.375 1.625 0.313zM10.719 11.125c2.688 0 4.875 2.188 4.875 4.875 0 2.656-2.188 4.813-4.875 4.813s-4.875-2.156-4.875-4.813c0-2.688 2.188-4.875 4.875-4.875zM1.594 11.813l2.375 0.75c0.781 0.25 1.063 0.719 0.813 1.469-0.219 0.75-0.75 0.969-1.563 0.719l-2.313-0.75c-0.781-0.25-1.063-0.75-0.844-1.5 0.25-0.719 0.75-0.938 1.531-0.688zM17.5 12.563l2.344-0.75c0.813-0.25 1.313-0.031 1.531 0.688 0.25 0.75-0.031 1.25-0.844 1.469l-2.313 0.781c-0.781 0.25-1.281 0.031-1.531-0.719-0.219-0.75 0.031-1.219 0.813-1.469zM10.719 18.688c1.5 0 2.719-1.219 2.719-2.688 0-1.5-1.219-2.719-2.719-2.719s-2.688 1.219-2.688 2.719c0 1.469 1.188 2.688 2.688 2.688zM0.906 17.969l2.344-0.75c0.781-0.25 1.313-0.063 1.531 0.688 0.25 0.75-0.031 1.219-0.813 1.469l-2.375 0.781c-0.781 0.25-1.281 0.031-1.531-0.719-0.219-0.75 0.063-1.219 0.844-1.469zM18.219 17.219l2.344 0.75c0.781 0.25 1.063 0.719 0.813 1.469-0.219 0.75-0.719 0.969-1.531 0.719l-2.344-0.781c-0.813-0.25-1.031-0.719-0.813-1.469 0.25-0.75 0.75-0.938 1.531-0.688zM3.938 23.344l1.469-1.969c0.469-0.688 1.031-0.781 1.625-0.313 0.625 0.438 0.688 0.969 0.219 1.656l-1.469 1.969c-0.469 0.688-1.031 0.813-1.656 0.375-0.594-0.438-0.656-1.031-0.188-1.719zM16.063 21.375l1.438 1.969c0.469 0.688 0.406 1.281-0.188 1.719s-1.188 0.281-1.656-0.344l-1.438-2c-0.469-0.688-0.406-1.219 0.188-1.656 0.625-0.438 1.188-0.375 1.656 0.313zM11.875 23.469v2.469c0 0.844-0.375 1.25-1.156 1.25s-1.156-0.406-1.156-1.25v-2.469c0-0.844 0.375-1.25 1.156-1.25s1.156 0.406 1.156 1.25z"></path> </g></svg>
@@ -156,14 +164,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h6 class="secondary-text">Max Threshold</h6>
                     </div>
                 </div>`;
+
         dashboardCards.appendChild(card);
-        const setThresholdBtn = card.querySelector(
-          `#set-threshold-button-${sensor.sensor_id}`
-        );
+
+        const setThresholdBtn = card.querySelector(`#set-threshold-button-${sensor.sensor_id}`);
 
         setThresholdBtn.addEventListener("click", () => {
           const modal = document.createElement("div");
-          modal.className = "modal d-block";
+          modal.className = "modal d-flex";
 
           modal.innerHTML = `
         <div class="modal-content">
@@ -174,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <input type="number" id="min-threshold" value="${
                   sensor.threshold?.min || 0
                 }" required />
-
+                </br>
                 <label for="max-threshold">Max Threshold:</label>
                 <input type="number" id="max-threshold" value="${
                   sensor.threshold?.max || 0

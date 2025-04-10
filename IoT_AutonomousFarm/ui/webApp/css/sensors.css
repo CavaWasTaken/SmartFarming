@@ -97,8 +97,7 @@ header {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Cards */
-.sensor-cards {
+.dashboard-cards {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -106,58 +105,10 @@ header {
 	margin-top: 100px; /* Space for the header */
 }
 
-.device-cards {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	margin-top: 100px; /* Space for the header */
-}
-
-.plant.cards {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	margin-top: 100px; /* Space for the header */
-}
-
-.sensor-card {
+.card {
 	display: flex;
 	flex-direction: column;
 	height: 450px;
-	width: 100%;
-	max-width: 320px;
-	background-color: rgba(255, 255, 255, 0.06);
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-	margin: 20px auto; /* Ensure space between cards */
-	border-radius: 8px;
-	-webkit-box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
-	box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
-	font-family: "Poppins", sans-serif;
-}
-
-.device-card {
-	display: flex;
-	flex-direction: column;
-	height: 350px;
-	width: 100%;
-	max-width: 320px;
-	background-color: rgba(255, 255, 255, 0.06);
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-	margin: 20px auto; /* Ensure space between cards */
-	border-radius: 8px;
-	-webkit-box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
-	box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
-	font-family: "Poppins", sans-serif;
-}
-
-.plant-card {
-	display: flex;
-	flex-direction: column;
-	height: 350px;
 	width: 100%;
 	max-width: 320px;
 	background-color: rgba(255, 255, 255, 0.06);
@@ -280,60 +231,50 @@ h6 {
 	outline: none;
 }
 
-#check-status-button {
-	background-color: rgba(255, 255, 255, 0.06);
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-	border: none;
-	width: 80%;
-	padding: 5px 0;
-	position: absolute;
-	left: 10%;
-	top: 165px;
-	border-radius: 5px;
-	outline: none;
-}
-
-#remove-plant-button {
-	background-color: rgba(255, 255, 255, 0.06);
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-	border: none;
-	width: 80%;
-	padding: 5px 0;
-	position: absolute;
-	left: 10%;
-	top: 165px;
-	border-radius: 5px;
-	outline: none;
-}
-
 /* Modal */
 .modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	backdrop-filter: blur(20px);
-	justify-content: center;
-	align-items: center;
+    display: flex; /* Use flexbox for centering */
+    position: fixed; /* Position the modal relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it appears above other elements */
 }
 
 .modal-content {
-	background: rgba(0, 0, 0, 0.5);
-	padding: 20px;
-	border-radius: 10px;
-	text-align: center;
-	width: 300px;
-	color: white;
+    background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+    padding: 30px; /* Increase padding for better spacing */
+    border-radius: 10px;
+    text-align: center;
+    width: 600px; /* Increase the width */
+    max-width: 90%; /* Ensure it doesn't exceed the screen width */
+    height: auto; /* Allow the height to adjust based on content */
+    max-height: 90%; /* Ensure it doesn't exceed the screen height */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    overflow-y: auto; /* Add scroll if content overflows vertically */
 }
 
 .close {
-	cursor: pointer;
-	color: red;
-	font-size: 18px;
+    cursor: pointer;
+    color: red;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close {
+    cursor: pointer;
+    color: red;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
 
 nav {
@@ -341,3 +282,5 @@ nav {
 	flex-direction: column;
 	align-items: center;
 }
+
+
