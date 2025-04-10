@@ -129,8 +129,7 @@ def get_all_greenhouses(conn):
 
             greenhouse_list.append(greenhouse_dict)
 
-        # Debugging: Print full list
-        print("Final greenhouse_list:\n", json.dumps(greenhouse_list, indent=2))
+        # return json.dumps(greenhouse_list, indent=2)  # Return JSON response
 
         template = env.get_template("greenhouses.html")
         return template.render(greenhouse_list=greenhouse_list)

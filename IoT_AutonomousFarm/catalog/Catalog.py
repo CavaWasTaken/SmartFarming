@@ -34,6 +34,8 @@ def cors():
 
 cherrypy.tools.cors = cherrypy.Tool('before_handler', cors)
 
+
+
 # method to get all the greenhouses in the system
 def get_all_greenhouses(conn):
     with conn.cursor() as cur:
@@ -211,6 +213,7 @@ def register(conn, username, email, password):
 # instead of using a json, think to use an env variable
 with open("Catalog_config.json", "r") as config_file:
     config = json.load(config_file)
+    
 # secret key for JWT encoding and decoding
 SECRET_KEY = config["SECRET_KEY"]
 # function to generate a JWT token for the logged in user    
@@ -480,7 +483,7 @@ class CatalogREST(object):
     @cherrypy.tools.json_out()  # output JSON response
     def GET(self, *uri, **params):
         if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            raise cherrypy.HTTPRedirect("/html/home.html")
         elif uri[0] == 'get_sensors':
             return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
         elif uri[0] == 'get_greenhouse_info':
