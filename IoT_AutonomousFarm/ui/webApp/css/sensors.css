@@ -134,6 +134,7 @@ header {
 	margin: 10px auto 20px auto;
 	left: 0;
 	right: 0;
+	padding: 10px;
 }
 
 .card-img img {
@@ -283,4 +284,16 @@ nav {
 	align-items: center;
 }
 
+label{
+	margin: 10px;
+}
 
+.btnmodal
+{
+	width: 100px;
+    margin: 20px;
+}
+input{
+	font-size: 14px;
+    font-weight: bold;
+}
