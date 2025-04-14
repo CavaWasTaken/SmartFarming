@@ -1,0 +1,6 @@
+Received 2 schedule: [{'greenhouse_id': 0, 'event_type': 'Irrigation', 'frequency': 'Daily', 'status': 'Pending'}, {'greenhouse_id': 0, 'event_type': 'Irrigation', 'frequency': 'Daily', 'status': 'Pending'}]
+Published: {"bn": "greenhouse_0/Irrigation", "e": [{"n": "frequency", "u": "text", "v": "Daily"}]}
+Published: {"bn": "greenhouse_0/Irrigation", "e": [{"n": "frequency", "u": "text", "v": "Daily"}]}
+Received 2 schedule: [{'greenhouse_id': 0, 'event_type': 'Irrigation', 'frequency': 'Daily', 'status': 'Pending'}, {'greenhouse_id': 0, 'event_type': 'Irrigation', 'frequency': 'Daily', 'status': 'Pending'}]
+Published: {"bn": "greenhouse_0/Irrigation", "e": [{"n": "frequency", "u": "text", "v": "Daily"}]}
+Published: {"bn": "greenhouse_0/Irrigation", "e": [{"n": "frequency", "u": "text", "v": "Daily"}]}

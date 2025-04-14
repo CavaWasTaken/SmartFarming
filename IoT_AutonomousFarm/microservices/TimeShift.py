@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import time
 import json
+import requests
 from datetime import datetime, timedelta
 
 # each time that the device starts, we clear the log file
@@ -17,6 +18,11 @@ with open("./TimeShift_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_connection"]["mqtt_port"]
     keep_alive = config["mqtt_connection"]["keep_alive"]
 
+# function to write in a log file the message passed as argument
+def write_log(message):
+    with open("./logs/TimeShift.log", "a") as log_file:
+        log_file.write(f"{message}\n")
+
 # MQTT Client setup
 client = mqtt.Client()
 client.connect(mqtt_broker, mqtt_port, keep_alive)
@@ -32,13 +38,22 @@ while True:
             flag = 0   # to avoid querying the database multiple times at the start of the program
         last_query = current_time
         
-        # Query: select * from schedules where start_date <= current_date and (end_date >= current_date or end_date is NULL) and start_time >= current_time and recurrence like 'daily' or recurrence like 'weekly:%current_day%' order by start_time
-        
+        # Query: get all events. Only events active in the current date are selected
+        response = requests.get(f'{catalog_url}/get_all_scheduled_events')
+        if response.status_code == 200:
+            schedule = response.json() # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+            write_log(f"Received {len(schedule)} schedule: {schedule}")
+        else:
+            write_log(f"Failed to get events from the Catalog\t(Response: {response.reason})")    # in case of error, write the reason of the error in the log file
+            exit(1) # if the request fails, the device connector stops
+        print(schedule)
         for event in schedule:
-            topic = mqtt_topic+"/"+event["event"]
-            # result in senml format
-            result = json.dumps({"bn": topic, "e": [{"n": "start_date", "u": "date", "v": event["start_date"]}, {"n": "end_date", "u": "date", "v": event["end_date"]}, {"n": "start_time", "u": "time", "v": event["start_time"]}, {"n": "end_time", "u": "time", "v": event["end_time"]}, {"n": "recurrence", "u": "text", "v": event["recurrence"]}]})
-            client.publish(topic, result)
-            with open("./logs/TimeShift.log", "a") as f:
-                f.write(f"Published: {result}\n")            
+            # Don't send any event that is "In action" or "Compleated", to avoid duplication or useless messages
+            if (event["status"] == "Pending"):
+                topic = f"greenhouse_{event["greenhouse_id"]}"+"/"+event["event_type"]
+                # result in senml format
+                result = json.dumps({"bn": topic, "e": [{"n": "frequency", "u": "text", "v": event["frequency"]}]})
+                client.publish(topic, result)
+                with open("./logs/TimeShift.log", "a") as f:
+                    f.write(f"Published: {result}\n")            
     time.sleep(5)   # check every 5 seconds

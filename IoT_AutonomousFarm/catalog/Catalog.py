@@ -10,10 +10,19 @@ import jwt
 import datetime
 import secrets
 
+from MqttClient import MqttClient   # import the MqttClient class
+
 # Setup jinja2 
 # relative path to the template directory
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), '../ui/webApp')
 env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH))
+
+# read the mqtt information of the broker from the json file
+with open("./Catalog_config.json", "r") as config_fd:
+    config = json.load(config_fd)   # read the configuration from the json file
+    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
+    mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
+    keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
 
 # class that implements the REST API of the Catalog
 
@@ -34,7 +43,15 @@ def cors():
 
 cherrypy.tools.cors = cherrypy.Tool('before_handler', cors)
 
+# function to write in a log file messages from MQTT client
+def write_log(message):
+    with open("./MQTT_Catalog.log", "a") as log_file:
+        log_file.write(f"{message}\n")
 
+# function triggered when a message of interest is received by the Catalog
+# Because the Catalog is only a publisher, this function should never be used
+def on_message(client, userdata, message):
+    write_log(f"Received message: {message.payload.decode()}")    # write in the log file the action received
 
 # method to get all the greenhouses in the system
 def get_all_greenhouses(conn):
@@ -411,7 +428,7 @@ def add_plant_to_greenhouse(conn, greenhouse_id, plant_id):
         cur.execute(sql.SQL("SELECT * FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
         plant = cur.fetchone()
         if plant is not None:
-            raise cherrypy.HTTPError(409, "Plant already in the greenhouse")
+            raise cherrypy.HTTPError(404, "Plant already in the greenhouse")
         # insert the new plant in the greenhouse
         try:
             cur.execute(sql.SQL("INSERT INTO greenhouse_plants (greenhouse_id, plant_id) VALUES (%s, %s)"), [greenhouse_id, plant_id])
@@ -472,6 +489,35 @@ def remove_plant_from_greenhouse(conn, greenhouse_id, plant_id):
             return plants_list
         except:
             raise cherrypy.HTTPError(500, "Internal error")
+        
+#function to get all scheduled events where current time is between start_time and end_time for a greenhouse
+def get_all_scheduled_events(conn):
+    with conn.cursor() as cur:
+        # Get current timestamp
+        current_time = datetime.datetime.now()
+        # Select only columns without any timestamp because seems that python cannot convert psql timestamps to JSON
+        cur.execute(sql.SQL("SELECT greenhouse_id, event_type, frequency, status FROM scheduled_events WHERE %s >= start_time AND (%s <= end_time or end_time is NULL)"), [current_time, current_time])
+        events = cur.fetchall()
+        if not events:
+            raise cherrypy.HTTPError(404, f"No events found")
+        
+        event_list = []
+        for event in events:
+            event_list.append({'greenhouse_id': event[0],'event_type':event[1], 'frequency':event[2], 'status':event[3]})
+        
+        return event_list
+
+# Function to add one event in the DB
+def add_event(conn, greenhouse_id, event_type, start_time, end_time, frequency):
+    with conn.cursor() as cur:
+        try:
+            # Add the new event in the DB
+            cur.execute(sql.SQL("INSERT INTO scheduled_events (greenhouse_id, event_type, start_time, end_time, frequency, status) VALUES (%s, %s, %s, %s, %s, %s)"), \
+                        [greenhouse_id, event_type, start_time, end_time, frequency, "Pending"])
+            conn.commit()
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+
 
 class CatalogREST(object):
     exposed = True
@@ -498,6 +544,8 @@ class CatalogREST(object):
             return get_greenhouse_configurations(self.catalog_connection, params['greenhouse_id'])
         elif uri[0] == 'get_all_plants':
             return get_all_plants(self.catalog_connection)
+        elif uri[0] == 'get_all_scheduled_events':
+            return get_all_scheduled_events(self.catalog_connection)
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
     
@@ -522,6 +570,9 @@ class CatalogREST(object):
         elif uri[0] == 'remove_plant_from_greenhouse':
             input_json = json.loads(cherrypy.request.body.read())
             return remove_plant_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+        elif uri[0] == 'add_event':
+            input_json = json.loads(cherrypy.request.body.read())
+            return add_event(self.catalog_connection, input_json['greenhouse_id'], input_json['event_type'], input_json['start_time'], input_json['end_time'], input_json['frequency'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
 
@@ -559,4 +610,9 @@ if __name__ == "__main__":
     cherrypy.config.update({'server.socket_host': '127.0.0.1', 'server.socket_port': 8080})
     cherrypy.tree.mount(catalogClient, '/', conf)
     cherrypy.engine.start()
+
+    # Initialize MQTT client
+    client = MqttClient(mqtt_broker, mqtt_port, keep_alive, "Catalog", on_message, write_log)    # create a MQTT client object
+    client.start()  # start the MQTT client
+
     cherrypy.engine.block()

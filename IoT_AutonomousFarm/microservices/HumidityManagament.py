@@ -115,6 +115,9 @@ if __name__ == "__main__":
         expected_value[sensor['sensor_id']] = None
         timers[sensor['sensor_id']] = None
 
+    # Subscribe to events requiring humidity management for the greenhouse handled by the current device
+    mqtt_topics.append(f"greenhouse_{sensors[0]['greenhouse_id']}/Irrigation")
+
     # create the mqtt client
     client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"HumidityManagement_{device_id}", on_message, write_log)
     client.start()
