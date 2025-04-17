@@ -612,7 +612,7 @@ if __name__ == "__main__":
     cherrypy.engine.start()
 
     # Initialize MQTT client
-    client = MqttClient(mqtt_broker, mqtt_port, keep_alive, "Catalog", on_message, write_log)    # create a MQTT client object
-    client.start()  # start the MQTT client
+    # client = MqttClient(mqtt_broker, mqtt_port, keep_alive, "Catalog", on_message, write_log)    # create a MQTT client object
+    # client.start()  # start the MQTT client
 
-    cherrypy.engine.block()
+    # cherrypy.engine.block()
