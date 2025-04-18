@@ -8,9 +8,18 @@
 
 body {
     background-color: #080710;
+    background: url(../pics/background.jpg)
+      no-repeat center center fixed;  
+      padding: 20px;
+    font-family: 'Lato', sans-serif;
+    background-size: cover;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
 }
 
-.background {
+/* .background {
     width: 430px;
     height: 520px;
     position: absolute;
@@ -38,7 +47,7 @@ body {
     #f09819);
     right: -30px;
     bottom: -80px;
-}
+} */
 
 form {
     height: 670px;
@@ -186,3 +195,21 @@ nav {
     display: flex;
     align-items: center;
 }
+
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 30px;
+  }
+  
+  .video-container iframe {
+    border: 5px solid #23a2f6; /* Add a border around the iframe */
+    border-radius: 10px; /* Rounded corners */
+    max-width: 80%; /* Ensure the iframe is responsive */
+    max-height: 80vh; /* Prevent the iframe from exceeding the viewport height */
+  }

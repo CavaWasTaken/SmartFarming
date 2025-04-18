@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("greenhouse_name", selectedGreenhouseName);
       localStorage.setItem("greenhouse_location", selectedGreenhouseLocation);
       // redirect to the greenhouse details page
-      window.location.href = "greenhouseDetails.html";
+      // window.location.href = "greenhouseDetails.html";
     }
   });
 
@@ -78,13 +78,21 @@ document.addEventListener("DOMContentLoaded", () => {
             <td data-title='user_id'>${username}</td>
             <td data-title='location'>${greenhouse.location}</td>
             <td class="select">
-                <button class="select-button" 
-                        data-greenhouse_id="${greenhouse.greenhouse_id}" 
+            <div class="dropdown">
+              <button 
+                 data-greenhouse_id="${greenhouse.greenhouse_id}" 
                         data-user_id="${greenhouse.user_id}"
                         data-name="${greenhouse.name}" 
-                        data-location="${greenhouse.location}">
-                    Select
+                        data-location="${greenhouse.location}"
+                type="button" class="btn select-button dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton-${greenhouse.greenhouse_id}">
+                  Action
                 </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-${greenhouse.greenhouse_id}">
+                  <a class="dropdown-item" href="greenhouseDetails.html">Sensors</a>
+                  <a class="dropdown-item" href="greenhouseplants.html">Plants</a>
+                  <a class="dropdown-item" href="greenhousedevices.html">Devices</a>
+                </div>
+             </div>
             </td>
           </tr>
         `;
