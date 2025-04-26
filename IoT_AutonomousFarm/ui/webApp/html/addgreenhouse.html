@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add greenhouse</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/addgreenhouse.css" />
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+
+    <header>
+      <a href="home.html" class="header-title">Smart Greenhouse</a>
+    </header>
+
+    <form id="greenhouseform">
+      <h3>Add Greenhouse</h3>
+      <label for="name">Green House Name</label>
+      <input type="text" placeholder="name" id="greenhouse-name" required />
+      <label for="password">Green House Location</label>
+      <input
+        type="location"
+        placeholder="location"
+        id="greenhouse-location"
+        required
+      />
+
+      <button type="submit">Add</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/addgreenhouse"></script>
+    <script>
+      // inline script that calls loginUser
+      document
+        .getElementById("greenhouseform")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          addGreenhouse(); // call the function from login.js
+        });
+    </script>
+  </body>
+</html>

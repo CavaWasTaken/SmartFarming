@@ -518,6 +518,129 @@ def add_event(conn, greenhouse_id, event_type, start_time, end_time, frequency):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
 
+# add new greenhouse 
+def add_greenhouse(conn, user_id, name, location, thingspeak_config):
+    try:
+        # Check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # Check if the greenhouse already exists for the same user
+            cur.execute(
+                sql.SQL("SELECT * FROM greenhouses WHERE name = %s AND user_id = %s"),
+                [name, user_id]
+            )
+            if cur.fetchone():
+                cherrypy.response.status = 409
+                return {"error": "Greenhouse with this name already exists for the user"}
+
+            # Insert the new greenhouse
+            cur.execute(
+                sql.SQL("""
+                    INSERT INTO greenhouses (name, location, user_id, thingspeak_config)
+                    VALUES (%s, %s, %s, %s)
+                    RETURNING greenhouse_id, name, location
+                """),
+                [name, location, user_id, json.dumps(thingspeak_config) if thingspeak_config else None]
+            )
+            greenhouse = cur.fetchone()
+            conn.commit()
+
+            return {
+                'message': 'Greenhouse added successfully',
+                'greenhouse_id': greenhouse[0],
+                'name': greenhouse[1],
+                'location': greenhouse[2]
+            }
+
+    except psycopg2.errors.NotNullViolation as e:
+        conn.rollback()
+        cherrypy.response.status = 400
+        return {"error": f"Missing required fields: {str(e)}"}
+    except Exception as e:
+        conn.rollback()
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+
+
+# function to get the entire list of sensors
+def get_all_sensors(conn):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM availablesensors;"))
+        sensors = cur.fetchall()
+        if sensors is None:
+            raise cherrypy.HTTPError(404, "No sensors found")
+        
+        sensors_list = []
+        for sensor in sensors:
+            psensor_dict = {
+                'sensor_id': sensor[0],
+                'name': sensor[1],
+                'type': sensor[2],
+            }
+            sensors_list.append(psensor_dict)
+        
+        return {'sensors': sensors_list}
+    
+
+# add sensors for greenhouses 
+def add_sensor_from_available(conn, greenhouse_id, sensor_id):
+    with conn.cursor() as cur:
+        try:
+            # Step 1: Get sensor info from availablesensors table
+            cur.execute(
+                sql.SQL("SELECT type, name, unit, threshold_range, domain FROM availablesensors WHERE sensor_id = %s"),
+                [sensor_id]
+            )
+            sensor = cur.fetchone()
+
+            if sensor is None:
+                raise cherrypy.HTTPError(404, "Sensor not found in available sensors")
+
+            sensor_type, name, unit, threshold_range, domain = sensor
+
+
+            if isinstance(threshold_range, dict):
+                threshold_range = json.dumps(threshold_range)
+
+            if isinstance(domain, dict):
+                domain = json.dumps(domain)
+
+            # Step 2: Insert into sensors table
+            cur.execute(
+                sql.SQL("""
+                    INSERT INTO sensors (greenhouse_id, type, name, unit, threshold_range, domain)
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    RETURNING sensor_id
+                """),
+                [greenhouse_id, sensor_type, name, unit, threshold_range, domain]
+            )
+            new_sensor_id = cur.fetchone()[0]
+            conn.commit()
+
+            return {
+                'message': 'Sensor added successfully',
+                'sensor_id': new_sensor_id,
+                'greenhouse_id': greenhouse_id,
+                'type': sensor_type,
+                'name': name,
+                'unit': unit,
+                'threshold_range': threshold_range,
+                'domain': domain
+            }
+
+        except psycopg2.Error as e:
+            conn.rollback()
+            raise cherrypy.HTTPError(500, f"Database error: {str(e)}")
+        except Exception as e:
+            conn.rollback()
+            raise cherrypy.HTTPError(500, f"Internal error: {str(e)}")
+
+
+
+
 
 class CatalogREST(object):
     exposed = True
@@ -546,6 +669,8 @@ class CatalogREST(object):
             return get_all_plants(self.catalog_connection)
         elif uri[0] == 'get_all_scheduled_events':
             return get_all_scheduled_events(self.catalog_connection)
+        elif uri[0] == 'get_all_sensors':
+            return get_all_sensors(self.catalog_connection)
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
     
@@ -573,6 +698,12 @@ class CatalogREST(object):
         elif uri[0] == 'add_event':
             input_json = json.loads(cherrypy.request.body.read())
             return add_event(self.catalog_connection, input_json['greenhouse_id'], input_json['event_type'], input_json['start_time'], input_json['end_time'], input_json['frequency'])
+        elif uri[0] == 'add_greenhouse':
+            input_json = json.loads(cherrypy.request.body.read())
+            return add_greenhouse(self.catalog_connection, input_json['user_id'], input_json['name'], input_json['location'], input_json['thingspeak_config'])
+        elif uri[0] == 'add_sensor_from_available':
+            input_json = json.loads(cherrypy.request.body.read())
+            return add_sensor_from_available(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'])
         else:
             raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
 

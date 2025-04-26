@@ -579,3 +579,56 @@ GRANT CREATE ON SCHEMA public TO iotproject;
 -- PostgreSQL database dump complete
 --
 
+
+------- Add sensors and devices table without relation to greenhouse ----
+
+-- Create the sensors table
+CREATE TABLE public.availablesensors (
+    sensor_id SERIAL PRIMARY KEY, -- Auto-incrementing primary key
+    name CHARACTER VARYING(100) NOT NULL, -- Sensor name
+    type CHARACTER VARYING(50) NOT NULL, -- Sensor type (e.g., Temperature, Humidity)
+    unit CHARACTER VARYING(50), -- Unit of measurement (e.g., %, °C)
+    threshold_range JSONB, -- JSONB column for min/max thresholds
+    domain JSONB -- JSONB column for valid domain range
+);
+
+-- Set the owner of the sensors table
+ALTER TABLE public.sensors OWNER TO iotproject;
+
+-- Create a sequence for the sensor_id column
+CREATE SEQUENCE public.availablesensors_sensor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+-- Link the sequence to the sensor_id column
+ALTER SEQUENCE public.availablesensors_sensor_id_seq OWNED BY public.availablesensors.sensor_id;
+
+
+-------------------------------------------------------------
+
+
+-- Create the devices table
+CREATE TABLE public.availabledevices (
+    device_id SERIAL PRIMARY KEY, -- Auto-incrementing primary key
+    name CHARACTER VARYING(100) NOT NULL, -- Device name
+    type CHARACTER VARYING(50) NOT NULL, -- Device type (e.g., Actuator, Controller)
+    status CHARACTER VARYING(20) DEFAULT 'inactive', -- Device status (e.g., active, inactive)
+    configuration JSONB -- JSONB column for device-specific configuration
+);
+
+-- Set the owner of the devices table
+ALTER TABLE public.availabledevices OWNER TO iotproject;
+
+-- Create a sequence for the device_id column
+CREATE SEQUENCE public.availabledevices_device_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+-- Link the sequence to the device_id column
+ALTER SEQUENCE public.availabledevices_device_id_seq OWNED BY public.availabledevices.device_id;

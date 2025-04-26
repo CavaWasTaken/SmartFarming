@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // handle the threshold in the special case of NPK sensor
         if (sensor.type === "NPK") {
+          console.log(sensor.domain);
           minThreshold =
             sensor.threshold.N.min +
             ", " +
@@ -283,13 +284,12 @@ document.addEventListener("DOMContentLoaded", () => {
               let payload;
 
               if (sensor.type === "NPK") {
-                const updatedNMin = document.getElementById(`n-min-threshold-${sensor.sensor_id}`).value;
-                const updatedNMax = document.getElementById(`n-max-threshold-${sensor.sensor_id}`).value;
-                const updatedPMin = document.getElementById(`p-min-threshold-${sensor.sensor_id}`).value;
-                const updatedPMax = document.getElementById(`p-max-threshold-${sensor.sensor_id}`).value;
-                const updatedKMin = document.getElementById(`k-min-threshold-${sensor.sensor_id}`).value;
-                const updatedKMax = document.getElementById(`k-max-threshold-${sensor.sensor_id}`).value;
-
+                const updatedNMin = parseFloat(document.getElementById(`n-min-threshold-${sensor.sensor_id}`).value);
+                const updatedNMax = parseFloat(document.getElementById(`n-max-threshold-${sensor.sensor_id}`).value); 
+                const updatedPMin = parseFloat(document.getElementById(`p-min-threshold-${sensor.sensor_id}`).value);
+                const updatedPMax = parseFloat(document.getElementById(`p-max-threshold-${sensor.sensor_id}`).value);
+                const updatedKMin = parseFloat(document.getElementById(`k-min-threshold-${sensor.sensor_id}`).value);
+                const updatedKMax = parseFloat(document.getElementById(`k-max-threshold-${sensor.sensor_id}`).value);
                 //validate the threshold against domain
                 if (
                   updatedNMin < mindomain || updatedNMax > maxdomain ||
@@ -299,7 +299,12 @@ document.addEventListener("DOMContentLoaded", () => {
                   alert("Threshold values must be within the allowed domain range.");
                   return; // Stop submission if validation fails
                 }
-               
+               //validate that min shpuld be less than max
+               if(updatedNMin > updatedNMax || updatedPMin > updatedPMax || updatedKMin > updatedKMax)
+               {
+                alert("Min threshold should be less than max threshold");
+                return; // Stop submission if validation fails
+               }
                 payload ={
                   sensor_id: sensor.sensor_id,
                   threshold: {
@@ -310,12 +315,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
               }else
               {
-                const updatedMin = document.getElementById(`min-threshold-${sensor.sensor_id}`).value;
-                const updatedMax = document.getElementById(`max-threshold-${sensor.sensor_id}`).value; 
+                const updatedMin = parseFloat(document.getElementById(`min-threshold-${sensor.sensor_id}`).value);
+                const updatedMax = parseFloat(document.getElementById(`max-threshold-${sensor.sensor_id}`).value); 
 
                  // Validate the thresholds against the domain
                   if (updatedMin < mindomain || updatedMax > maxdomain) {
                     alert("Threshold values must be within the allowed domain range.");
+                    return; // Stop submission if validation fails
+                  }
+                  //validate min must be less than max
+                  if(updatedMin > updatedMax)
+                  {
+                    alert("Min threshold should be less than max threshold");
                     return; // Stop submission if validation fails
                   }
                 payload = {
@@ -355,10 +366,85 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
         });
+  
+
       });
+
+        // Add Sensors Button
+    // fetch sensors and show available ones 
+    document.getElementById("add-sensor-btn").addEventListener("click", () => {
+      fetch("../json/WebApp_config.json")
+        .then((res) => res.json())
+        .then((config) => {
+          const catalog_url = config.catalog_url;
+          return fetch(`${catalog_url}/get_all_sensors`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+        })
+        
+        .then((res) => res.json())
+       
+        .then((availableSensors) => {
+          const select = document.getElementById("sensor-select");
+          select.innerHTML = "";
+          availableSensors.sensors.forEach((sensor) => {
+            const option = document.createElement("option");
+            option.value = sensor.sensor_id;
+            option.textContent = `${sensor.name} (${sensor.type})`;
+            select.appendChild(option);
+          });
+          document.getElementById("sensor-modal").classList.remove("d-none");
+        })
+        .catch((err) => {
+          console.error("Failed to load available sensors:", err);
+          alert("Failed to load available sensors.");
+        });
+    });
+
+    document.getElementById("cancel-modal").addEventListener("click", () => {
+      document.getElementById("sensor-modal").classList.add("d-none");
+    });
+
+    document.getElementById("confirm-add-sensor").addEventListener("click", () => {
+      const sensorId = document.getElementById("sensor-select").value;
+      fetch("../json/WebApp_config.json")
+        .then((res) => res.json())
+        .then((config) => {
+          console.log(greenhouseId, sensorId)
+          const catalog_url = config.catalog_url;
+          return fetch(`${catalog_url}/add_sensor_from_available`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            
+            body: JSON.stringify({
+              greenhouse_id: greenhouseId,
+              sensor_id: sensorId,
+            }),
+          });
+        })
+        .then((res) => res.json())
+        .then((result) => {
+          alert(result.message || "sensor added successfully.");
+          location.reload();
+        })
+        .catch((err) => {
+          console.error("Failed to add sensor:", err);
+          alert("Failed to add sensor.");
+          location.reload(); // still reload to reset modal state
+        });
+    });
+
+
     })
     .catch((error) => {
       console.error("Error:", error.message);
       alert("An error occurred while fetching sensor data");
     });
+
+
+
+
 });
