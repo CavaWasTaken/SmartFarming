@@ -28,14 +28,17 @@ with open("./DeviceConnector_config.json", "r") as config_fd:
     mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
     keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
 
-# REST API calls to the Catalog to get the list of sensors connected to this device connector
-response = requests.get(f'{catalog_url}/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
-if response.status_code == 200: # if the request is successful
-    sensors = response.json()["sensors"]    # sensors is a dictionary of sensors connected to the device connector
-    write_log(f"Received {len(sensors)} sensors: {sensors}")
-else:
-    write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
-    exit(1) # if we fail to get the sensor list, the device connector stops
+while True:  # infinite loop to get the list of sensors connected to this device connector
+    # REST API calls to the Catalog to get the list of sensors connected to this device connector
+    response = requests.get(f'{catalog_url}/get_sensors', params={'device_id': device_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
+    if response.status_code == 200: # if the request is successful
+        sensors = response.json()["sensors"]    # sensors is a dictionary of sensors connected to the device connector
+        write_log(f"Received {len(sensors)} sensors: {sensors}")
+        break   # exit the loop if the request is successful
+    else:
+        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}")    # in case of error, write the reason of the error in the log file
+        # try again after 60 seconds
+        time.sleep(60)   # wait for 60 seconds before trying again
 
 # get the location of the greenhouse from the Catalog
 response = requests.get(f'{catalog_url}/get_greenhouse_location', params={'greenhouse_id': sensors[0]["greenhouse_id"]})    # read the greenhouse location from the Catalog

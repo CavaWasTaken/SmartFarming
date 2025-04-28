@@ -211,10 +211,10 @@ CREATE TABLE public.sensors (
     greenhouse_id integer NOT NULL,
     type character varying(100) NOT NULL,
     name character varying(100) NOT NULL,
-    unit character varying(10),
-    threshold_range jsonb,
-    domain jsonb,
-    CONSTRAINT check_sensor_type CHECK (((type)::text = ANY ((ARRAY['Temperature'::character varying, 'Humidity'::character varying, 'SoilMoisture'::character varying, 'LightIntensity'::character varying, 'pH'::character varying, 'NPK'::character varying])::text[])))
+    unit character varying(10) NOT NULL,
+    threshold_range jsonb NOT NULL,
+    domain jsonb NOT NULL,
+    CONSTRAINT check_sensor_type CHECK (((type)::text = ANY (ARRAY[('Temperature'::character varying)::text, ('Humidity'::character varying)::text, ('SoilMoisture'::character varying)::text, ('LightIntensity'::character varying)::text, ('pH'::character varying)::text, ('NPK'::character varying)::text])))
 );
 
 
@@ -380,12 +380,12 @@ COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, e
 --
 
 COPY public.sensors (sensor_id, greenhouse_id, type, name, unit, threshold_range, domain) FROM stdin;
-0	0	Temperature	DTH22	Cel	{}	{"max": 50, "min": -10}
 1	0	NPK	NPK	mg/kg	{"K": {"max": 400.0, "min": 100.0}, "N": {"max": 150.0, "min": 50.0}, "P": {"max": 300.0, "min": 75.0}}	{"max": 1000, "min": 0}
 5	0	Humidity	DTH22	%	{"max": 75.0, "min": 60.0}	{"max": 100, "min": 0}
 2	0	SoilMoisture	SoilMoisture	%	{"max": 80.0, "min": 60.0}	{"max": 100, "min": 0}
-3	0	pH	pH	\N	{"max": 6.8, "min": 6.0}	{"max": 10.0, "min": 3.0}
 4	0	LightIntensity	PAR	umol/m^2/s	{"max": 600.0, "min": 400.0}	{"max": 2500, "min": 0}
+0	0	Temperature	DTH22	Cel	{"max": "25.0", "min": "18.0"}	{"max": 50, "min": -10}
+3	0	pH	pH	-	{"max": 6.8, "min": 6.0}	{"max": 10.0, "min": 3.0}
 \.
 
 
@@ -409,7 +409,7 @@ SELECT pg_catalog.setval('public.devices_device_id_seq', 1, false);
 -- Name: greenhouses_greenhouse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.greenhouses_greenhouse_id_seq', 1, false);
+SELECT pg_catalog.setval('public.greenhouses_greenhouse_id_seq', 1, true);
 
 
 --
@@ -579,56 +579,3 @@ GRANT CREATE ON SCHEMA public TO iotproject;
 -- PostgreSQL database dump complete
 --
 
-
-------- Add sensors and devices table without relation to greenhouse ----
-
--- Create the sensors table
-CREATE TABLE public.availablesensors (
-    sensor_id SERIAL PRIMARY KEY, -- Auto-incrementing primary key
-    name CHARACTER VARYING(100) NOT NULL, -- Sensor name
-    type CHARACTER VARYING(50) NOT NULL, -- Sensor type (e.g., Temperature, Humidity)
-    unit CHARACTER VARYING(50), -- Unit of measurement (e.g., %, °C)
-    threshold_range JSONB, -- JSONB column for min/max thresholds
-    domain JSONB -- JSONB column for valid domain range
-);
-
--- Set the owner of the sensors table
-ALTER TABLE public.sensors OWNER TO iotproject;
-
--- Create a sequence for the sensor_id column
-CREATE SEQUENCE public.availablesensors_sensor_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
--- Link the sequence to the sensor_id column
-ALTER SEQUENCE public.availablesensors_sensor_id_seq OWNED BY public.availablesensors.sensor_id;
-
-
--------------------------------------------------------------
-
-
--- Create the devices table
-CREATE TABLE public.availabledevices (
-    device_id SERIAL PRIMARY KEY, -- Auto-incrementing primary key
-    name CHARACTER VARYING(100) NOT NULL, -- Device name
-    type CHARACTER VARYING(50) NOT NULL, -- Device type (e.g., Actuator, Controller)
-    status CHARACTER VARYING(20) DEFAULT 'inactive', -- Device status (e.g., active, inactive)
-    configuration JSONB -- JSONB column for device-specific configuration
-);
-
--- Set the owner of the devices table
-ALTER TABLE public.availabledevices OWNER TO iotproject;
-
--- Create a sequence for the device_id column
-CREATE SEQUENCE public.availabledevices_device_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
--- Link the sequence to the device_id column
-ALTER SEQUENCE public.availabledevices_device_id_seq OWNED BY public.availabledevices.device_id;

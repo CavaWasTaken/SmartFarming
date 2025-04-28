@@ -12,5 +12,5 @@ psql -h localhost -p 5433 -U iotproject -d smartfarm_db
 sudo docker-compose down
 
 --------------------------------------------------------------------------------------------
-# to add a random hash (unique token) associated to the greenhouse
-UPDATE greenhouses SET token = encode(gen_random_bytes(32), 'hex');
+# to create the dump of the db
+sudo docker exec -t db_db_1 pg_dump -h localhost -p 5432 -U iotproject -d smartfarm_db -F p > backup.sql

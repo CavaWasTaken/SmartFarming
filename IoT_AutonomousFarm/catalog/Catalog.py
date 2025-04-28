@@ -124,43 +124,64 @@ def get_greenhouse_location(conn, greenhouse_id):
 
 # given the id of the device, return the list of sensors connected to it
 def get_sensors(conn, device_id, device_name):
-    with conn.cursor() as cur: # create a cursor to execute queries
-        # the first query is to get the greenhouse_id of the device
-        cur.execute(sql.SQL("SELECT greenhouse_id FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
-        # then the second one returns the list of sensors connected to the greenhouse
-        greenhouse_id = cur.fetchone()[0]
-        if greenhouse_id is None:   # if the greenhouse does not exist, return error 404
-            raise cherrypy.HTTPError(404, "Greenhouse not found")
-        # personalize the query based on the device name, cause each device connector is interested in different sensors
-        authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot"]
-        if device_name in authorized_devices:    # device connector is interested in all the sensors connected to the greenhouse
-            cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"),  [greenhouse_id,])
-        elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
-            cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'Humidity' OR type = 'SoilMoisture'"), [greenhouse_id,])
-        elif device_name == "LightManagement":  # light management is interested in light intensity and temperature sensors
-            cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'LightIntensity' OR type = 'Temperature'"), [greenhouse_id,])
-        elif device_name == "NutrientManagement":   # nutrient management is interested in NPK and pH sensors
-            cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'NPK' OR type = 'pH' OR type = 'SoilMoisture'"), [greenhouse_id,])
-        sensors = cur.fetchall()    # sensors is a list of values (tuples)
-        if sensors is None: # if there are no sensors connected to the greenhouse, return error 404
-            raise cherrypy.HTTPError(404, "No sensors found")
+    try: 
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
         
-        # convert the list of sensors to a list of dictionaries, associating the values to the keys (columns of the db)
-        sensors_list = []
-        for sensor in sensors:  # for each sensor in the list
-            sensor_dict = { # associate the values to the keys
-                'sensor_id': sensor[0],
-                'greenhouse_id': sensor[1],
-                'type': sensor[2],
-                'name': sensor[3],
-                'unit': sensor[4],
-                'threshold': sensor[5],
-                'domain': sensor[6]
-            }
-            sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
+        with conn.cursor() as cur: # create a cursor to execute queries
+            # check if the device exists
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
+            result = cur.fetchone()
+            if result is None:  # if the device doesn't exist
+                cherrypy.response.status = 404
+                return {"error": "Unexisting device"}
 
-        return {'sensors': sensors_list}
+            # the first query is to get the greenhouse_id of the device
+            cur.execute(sql.SQL("SELECT greenhouse_id FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
+            # then the second one returns the list of sensors connected to the greenhouse
+            result = cur.fetchone()
+            if result is None:   # if the greenhouse does not exist, return error 404
+                cherrypy.response.status = 404
+                return {"error": "Greenhouse not found"}
+            greenhouse_id = result[0]
+            
+            # personalize the query based on the device name, cause each device connector is interested in different sensors
+            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot"]
+            if device_name in authorized_devices:    # device connector is interested in all the sensors connected to the greenhouse
+                cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"),  [greenhouse_id,])
+            elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
+                cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'Humidity' OR type = 'SoilMoisture'"), [greenhouse_id,])
+            elif device_name == "LightManagement":  # light management is interested in light intensity and temperature sensors
+                cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'LightIntensity' OR type = 'Temperature'"), [greenhouse_id,])
+            elif device_name == "NutrientManagement":   # nutrient management is interested in NPK and pH sensors
+                cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND type = 'NPK' OR type = 'pH' OR type = 'SoilMoisture'"), [greenhouse_id,])
+            sensors = cur.fetchall()    # sensors is a list of values (tuples)
+            if sensors is None: # if there are no sensors connected to the greenhouse, return error 404
+                cherrypy.response.status = 404
+                return {"error": "No sensors found"}
+            
+            # convert the list of sensors to a list of dictionaries, associating the values to the keys (columns of the db)
+            sensors_list = []
+            for sensor in sensors:  # for each sensor in the list
+                sensor_dict = { # associate the values to the keys
+                    'sensor_id': sensor[0],
+                    'greenhouse_id': sensor[1],
+                    'type': sensor[2],
+                    'name': sensor[3],
+                    'unit': sensor[4],
+                    'threshold': sensor[5],
+                    'domain': sensor[6]
+                }
+                sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
 
+            return {'sensors': sensors_list}
+        
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
+    
 # return the info about the greenhouse by greenhouse_id. The device id is used to see if who made the request is connected to the greenhouse
 def get_greenhouse_info(conn, greenhouse_id, device_id):
     with conn.cursor() as cur: # create a cursor to execute queries
@@ -652,7 +673,7 @@ class CatalogREST(object):
     @cherrypy.tools.json_out()  # output JSON response
     def GET(self, *uri, **params):
         if len(uri) == 0:
-            raise cherrypy.HTTPRedirect("/html/home.html")
+            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
         elif uri[0] == 'get_sensors':
             return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
         elif uri[0] == 'get_greenhouse_info':
