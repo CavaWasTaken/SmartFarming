@@ -115,12 +115,26 @@ def get_device_info(conn, device_id, device_name):
     
 # given the id of the greenhouse, return its location
 def get_greenhouse_location(conn, greenhouse_id):
-    with conn.cursor() as cur:
-        cur.execute(sql.SQL("SELECT location FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
-        location = cur.fetchone()[0]
-        if location is None:
-            raise cherrypy.HTTPError(404, "Greenhouse not found")
-        return {'location': location}
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        # check if the greenhouse exists
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("SELECT location FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
+            result = cur.fetchone()
+            if result is None:
+                cherrypy.response.status = 404
+                return {"error": "Greenhouse not found"}
+            
+            location = result[0]  # get the location from the result
+            return {'location': location}
+        
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
 
 # given the id of the device, return the list of sensors connected to it
 def get_sensors(conn, device_id, device_name):
@@ -658,10 +672,6 @@ def add_sensor_from_available(conn, greenhouse_id, sensor_id):
         except Exception as e:
             conn.rollback()
             raise cherrypy.HTTPError(500, f"Internal error: {str(e)}")
-
-
-
-
 
 class CatalogREST(object):
     exposed = True

@@ -19,14 +19,25 @@ def ActionReceived(client, userdata, message):
 with open("./logs/DeviceConnector.log", "w") as log_file:
     pass
 
-# read the device_id and mqtt information of the broker from the json file
-with open("./DeviceConnector_config.json", "r") as config_fd:
-    config = json.load(config_fd)   # read the configuration from the json file
-    catalog_url = config["catalog_url"] # read the url of the Catalog
-    device_id = config["device_id"] # read the device_id of the device connector
-    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
-    mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
-    keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
+try:
+    # read the device_id and mqtt information of the broker from the json file
+    with open("./DeviceConnector_config.json", "r") as config_fd:
+        config = json.load(config_fd)   # read the configuration from the json file
+        catalog_url = config["catalog_url"] # read the url of the Catalog
+        device_id = config["device_id"] # read the device_id of the device connector
+        mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
+        mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
+        keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
+
+except FileNotFoundError:
+    write_log("DeviceConnector_config.json file not found")
+    exit(1)   # exit the program if the file is not found
+except json.JSONDecodeError:
+    write_log("Error decoding JSON file")
+    exit(1)
+except KeyError as e:
+    write_log(f"Missing key in JSON file: {e}")
+    exit(1)
 
 while True:  # infinite loop to get the list of sensors connected to this device connector
     # REST API calls to the Catalog to get the list of sensors connected to this device connector
@@ -35,29 +46,38 @@ while True:  # infinite loop to get the list of sensors connected to this device
         sensors = response.json()["sensors"]    # sensors is a dictionary of sensors connected to the device connector
         write_log(f"Received {len(sensors)} sensors: {sensors}")
         break   # exit the loop if the request is successful
+
     else:
-        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}")    # in case of error, write the reason of the error in the log file
-        # try again after 60 seconds
+        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds")    # in case of error, write the reason of the error in the log file
         time.sleep(60)   # wait for 60 seconds before trying again
 
-# get the location of the greenhouse from the Catalog
-response = requests.get(f'{catalog_url}/get_greenhouse_location', params={'greenhouse_id': sensors[0]["greenhouse_id"]})    # read the greenhouse location from the Catalog
-if response.status_code == 200: # if the request is successful
-    greenhouse_location = response.json()["location"]    # get the location from the response
-    write_log(f"Received greenhouse location: {greenhouse_location}")
-    classSensor = Sensor.Sensor(location=greenhouse_location)    # create a sensor object with the location of the greenhouse
-    classDTH22 = DTH22.DTH22(classSensor)    # create a DTH22 object with the sensor object
-    classLight = Light.Light(classSensor)  # create a LightIntensity object with the sensor object
-    classNPK = NPK.NPK(classSensor)  # create a NPK object with the sensor object
-    classpH = pH.pH(classSensor)    # create a pH object with the sensor object
-    classSoilMoisture = SoilMoisture.SoilMoisture(classSensor)  # create a SoilMoisture object with the sensor object
-else:
-    write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
-    exit(1)
+while True:  # infinite loop to get the location of the greenhouse
+    # get the location of the greenhouse from the Catalog
+    response = requests.get(f'{catalog_url}/get_greenhouse_location', params={'greenhouse_id': sensors[0]["greenhouse_id"]})    # read the greenhouse location from the Catalog
+    if response.status_code == 200: # if the request is successful
+        greenhouse_location = response.json()["location"]    # get the location from the response
+        write_log(f"Received greenhouse location: {greenhouse_location}")
+        classSensor = Sensor.Sensor(location=greenhouse_location)    # create a sensor object with the location of the greenhouse
+        classDTH22 = DTH22.DTH22(classSensor)    # create a DTH22 object with the sensor object
+        classLight = Light.Light(classSensor)  # create a LightIntensity object with the sensor object
+        classNPK = NPK.NPK(classSensor)  # create a NPK object with the sensor object
+        classpH = pH.pH(classSensor)    # create a pH object with the sensor object
+        classSoilMoisture = SoilMoisture.SoilMoisture(classSensor)  # create a SoilMoisture object with the sensor object
+        break   # exit the loop if the request is successful
 
-# MQTT Client setup
-client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DeviceConnector_{device_id}", ActionReceived, write_log)    # create a MQTT client object
-client.start()  # start the MQTT client
+    else:
+        write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}\nTrying again in 60 seconds")    # in case of error, write the reason of the error in the log file
+        time.sleep(60)   # wait for 60 seconds before trying again
+
+while True:  # infinite loop to start the MQTT client
+    try:
+        # MQTT Client setup
+        client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DeviceConnector_{device_id}", ActionReceived, write_log)    # create a MQTT client object
+        client.start()  # start the MQTT client
+        break   # exit the loop if the client is started successfully
+    except Exception as e:
+        write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+        time.sleep(60)   # wait for 60 seconds before trying again
 
 write_log("")
 
@@ -66,12 +86,12 @@ for sensor in sensors:  # iterate over the list of sensors
     client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action")    # subscribe to the topic to receive actions from the Catalog
 
 start_time = datetime.now() # get the current time
-start_time = (start_time.hour*3600 + start_time.minute*60 + start_time.second)/3600  # convert the time to hours
+start_time = start_time.hour + start_time.minute / 60 + start_time.second / 3600  # convert the time to hours
 
 while True:
     timestamp = datetime.now()  # get the current time
-    timestamp = (timestamp.hour*3600 + timestamp.minute*60 + timestamp.second)/3600  # convert the time to hours
-    timestamp -= start_time  # calculate the time passed since the start of the simulation
+    timestamp = timestamp.hour + timestamp.minute / 60 + timestamp.second / 3600  # convert the time to hours
+    timestamp -= start_time  # calculate the time elapsed since the start of the simulation
 
     write_log("")
     for sensor in sensors:  # iterate over the list of sensors
@@ -101,6 +121,6 @@ while True:
         senML_dictionary = json.loads(senML)
         client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
 
-    time.sleep(20)   # wait for 2 minutes before reading the sensors again
+    time.sleep(10)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
