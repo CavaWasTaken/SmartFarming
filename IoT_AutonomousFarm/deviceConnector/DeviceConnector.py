@@ -48,7 +48,7 @@ while True:  # infinite loop to get the list of sensors connected to this device
         break   # exit the loop if the request is successful
 
     else:
-        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds")    # in case of error, write the reason of the error in the log file
+        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
         time.sleep(60)   # wait for 60 seconds before trying again
 
 while True:  # infinite loop to get the location of the greenhouse
@@ -66,7 +66,7 @@ while True:  # infinite loop to get the location of the greenhouse
         break   # exit the loop if the request is successful
 
     else:
-        write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}\nTrying again in 60 seconds")    # in case of error, write the reason of the error in the log file
+        write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
         time.sleep(60)   # wait for 60 seconds before trying again
 
 while True:  # infinite loop to start the MQTT client
@@ -75,6 +75,7 @@ while True:  # infinite loop to start the MQTT client
         client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DeviceConnector_{device_id}", ActionReceived, write_log)    # create a MQTT client object
         client.start()  # start the MQTT client
         break   # exit the loop if the client is started successfully
+
     except Exception as e:
         write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
         time.sleep(60)   # wait for 60 seconds before trying again
@@ -83,7 +84,14 @@ write_log("")
 
 # connection to topics to receive needed action
 for sensor in sensors:  # iterate over the list of sensors
-    client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action")    # subscribe to the topic to receive actions from the Catalog
+    while True:
+        try:
+            client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action")    # subscribe to the topic to receive actions from the Catalog
+            break
+
+        except Exception as e:
+            write_log(f"Error subscribing the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action"}): {e}\nTrying again in 60 seconds...")
+            time.sleep(60)  # wait for 60 seconds before trying again            
 
 start_time = datetime.now() # get the current time
 start_time = start_time.hour + start_time.minute / 60 + start_time.second / 3600  # convert the time to hours

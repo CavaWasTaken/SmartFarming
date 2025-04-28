@@ -14,18 +14,27 @@ def write_log(message):
 # each time that the device starts, we clear the log file
 with open("./logs/DataAnalysis.log", "w") as log_file:
     pass
-    
-# MQTT Sub
 
-# read the device_id and mqtt information of the broker from the json file
-with open("./DataAnalysis_config.json", "r") as config_fd:
-    config = json.load(config_fd)
-    catalog_url = config["catalog_url"]
-    thingSpeak_url = config["thingSpeak_url"]
-    device_id = config["device_id"]
-    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
-    mqtt_port = config["mqtt_connection"]["mqtt_port"]
-    keep_alive = config["mqtt_connection"]["keep_alive"]
+try:
+    # read the device_id and mqtt information of the broker from the json file
+    with open("./DataAnalysis_config.json", "r") as config_fd:
+        config = json.load(config_fd)
+        catalog_url = config["catalog_url"]
+        thingSpeak_url = config["thingSpeak_url"]
+        device_id = config["device_id"]
+        mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
+        mqtt_port = config["mqtt_connection"]["mqtt_port"]
+        keep_alive = config["mqtt_connection"]["keep_alive"]
+
+except FileNotFoundError:
+    write_log("DataAnalysis_config.json file not found")
+    exit(1) # exit the program if the file is not found
+except json.JSONDecodeError:
+    write_log("Error decoding JSON file")
+    exit(1)
+except KeyError as e:
+    write_log(f"Missing key in JSON file: {e}")
+    exit(1)
 
 global N   # N is the number of values to keep track of
 
@@ -114,16 +123,29 @@ def handle_message(topic, sensor_type, val, timestamp):
 
 # function to be performed when a message on a topic of interest is received from the MQTT broker
 def on_message(client, userdata, msg):
-    message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
-    write_log(f"\nReceived: {message}")
-    for topic in mqtt_topics:
-        if message["bn"] == topic:
-            message = message["e"]  # get the message from the dictionary
-            sensor_type = message["n"]  # get the type of the sensor
-            val = message["v"]  # get the value of the message
-            timestamp = message["t"]    # get the timestamp of the message
-            handle_message(topic, sensor_type, val, timestamp)
-            break   # if the message is processed, exit the loop
+    try:
+        message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
+        write_log(f"\nReceived: {message}")
+        for topic in mqtt_topics:
+            if message["bn"] == topic:
+                try:
+                    message = message["e"]  # get the message from the dictionary
+                    sensor_type = message["n"]  # get the type of the sensor
+                    val = message["v"]  # get the value of the message
+                    timestamp = message["t"]  # get the timestamp of the message
+                    handle_message(topic, sensor_type, val, timestamp)
+                    
+                except KeyError as e:
+                    write_log(f"Missing key in the message: {e}")
+                except Exception as e:
+                    write_log(f"Error processing the message: {e}")
+                finally:
+                    break  # if the message is processed, exit the loop
+
+    except json.JSONDecodeError:
+        write_log("Error decoding the MQTT message payload")
+    except Exception as e:
+        write_log(f"Unexpected error in on_message: {e}")
 
 # dictionaries to store the values of each sensor
 timestamps = {} # arrays of timestamps of the received value
@@ -248,26 +270,36 @@ if __name__ == "__main__":
     cherrypy.tree.mount(dataAnalysisClient, '/', conf)
     cherrypy.engine.start()
 
-    # it has to read the parameter N from the catalog
-    response = requests.get(f"{catalog_url}/get_device_info", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
-    if response.status_code == 200:
-        device_info = response.json()    # device_info is a dictionary with the information of the device
-        write_log(f"Received device information: {device_info}")
-    else:
-        write_log(f"Failed to get device information from the Catalog\nResponse: {response.reason}")
-        exit(1) # if the request fails, the device connector stops
+    while True:
+        # it has to read the parameter N from the catalog
+        response = requests.get(f"{catalog_url}/get_device_info", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
+        if response.status_code == 200:
+            device_info = response.json()    # device_info is a dictionary with the information of the device
+            write_log(f"Received device information: {device_info}")
+            
+            try:
+                N = device_info["params"]['N']    # get the number of values to keep track of from the device information
+                break   # exit the loop if the progeram has red the N param inside the device info
 
-    N = device_info["params"]['N']    # get the number of values to keep track of from the device information
+            except KeyError as e:
+                write_log(f"Missing key in JSON device configuration: {e}\nTrying again in 60 seconds...")
+                time.sleep(60)  # wait for 60 seconds before trying again
+                
+        else:
+            write_log(f"Failed to get device information from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")
+            time.sleep(60)  # wait for 60 seconds before trying again
 
-    # MQTT Sub
-    # it has to read the sensors from the catalog
-    response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})
-    if response.status_code == 200:
-        sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
-        write_log(f"Received {len(sensors)} sensors: {sensors}")
-    else:
-        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
-        exit(1) # if the request fails, the device connector stops
+    while True:
+        # it has to read the sensors from the catalog
+        response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})
+        if response.status_code == 200:
+            sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+            write_log(f"Received {len(sensors)} sensors: {sensors}")
+            break   # exit the loop if the request is successful
+        
+        else:
+            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            time.sleep(60)   # wait for 60 seconds before trying again
 
     mqtt_topics = [] # initialize the array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
@@ -305,8 +337,22 @@ if __name__ == "__main__":
 
     # askDataForPlot("Temperature", 10)
 
-    # creation of the MQTT client
-    client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DataAnalysis_{device_id}", on_message, write_log)
-    client.start()
+    while True:
+        try:
+            client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DataAnalysis_{device_id}", on_message, write_log)
+            client.start()
+            break   # exit the loop if the client is started successfully
+
+        except Exception as e:
+            write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            time.sleep(60)   # wait for 60 seconds before trying again
+
     for topic in mqtt_topics:
-        client.subscribe(topic)
+        while True:
+            try:
+                client.subscribe(topic)
+                break
+
+            except Exception as e:
+                write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
+                time.sleep(60)  # wait for 60 seconds before trying again

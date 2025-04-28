@@ -98,21 +98,32 @@ def get_all_greenhouses(conn):
 
 # given the id of the device and its name, return its information
 def get_device_info(conn, device_id, device_name):
-    with conn.cursor() as cur: # create a cursor to execute queries
-        cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])    # the query is to get the device info of the device
-        device = cur.fetchone() # device is a tuple
-        if device is None:  # if the device does not exist, return error 404
-            raise cherrypy.HTTPError(404, "Device not found")
-        device_dict = { # associate the values to the keys
-            'device_id': device[0],
-            'greenhouse_id': device[1],
-            'name': device[2],
-            'type': device[3],
-            'params': device[4]
-        }
-
-        return device_dict
-    
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # check the existance of the device
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
+            device = cur.fetchone() # device is a tuple
+            if device is None:  # if the device doesn't exist
+                cherrypy.response.status = 404
+                return {"error": "Device not found"}
+            
+            return {
+                'device_id': device[0],
+                'greenhouse_id': device[1],
+                'name': device[2],
+                'type': device[3],
+                'params': device[4]
+            }
+        
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
+            
 # given the id of the greenhouse, return its location
 def get_greenhouse_location(conn, greenhouse_id):
     try:
@@ -121,7 +132,6 @@ def get_greenhouse_location(conn, greenhouse_id):
             cherrypy.response.status = 500
             return {"error": "Database connection is closed"}
         
-        # check if the greenhouse exists
         with conn.cursor() as cur:
             cur.execute(sql.SQL("SELECT location FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
             result = cur.fetchone()
@@ -136,7 +146,7 @@ def get_greenhouse_location(conn, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
 
-# given the id of the device, return the list of sensors connected to it
+# given the id of the device, return the list of sensors connected to the greenhouse where it is working
 def get_sensors(conn, device_id, device_name):
     try: 
         # check if the connection is closed
