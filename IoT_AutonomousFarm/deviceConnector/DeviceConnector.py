@@ -121,6 +121,6 @@ while True:
         senML_dictionary = json.loads(senML)
         client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
 
-    time.sleep(10)   # wait for 2 minutes before reading the sensors again
+    time.sleep(120)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
