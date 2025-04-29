@@ -238,26 +238,36 @@ def get_sensors(conn, device_id, device_name):
     
 # return the info about the greenhouse by greenhouse_id. The device id is used to see if who made the request is connected to the greenhouse
 def get_greenhouse_info(conn, greenhouse_id, device_id):
-    with conn.cursor() as cur: # create a cursor to execute queries
-        # check if the device is connected to the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND greenhouse_id = %s"), [device_id, greenhouse_id])
-        device = cur.fetchone() # device is a tuple
-        if device is None:  # if the device is not connected to the greenhouse, return error 404
-            raise cherrypy.HTTPError(404, "Device not connected to the greenhouse")
-        # the first query is to get the greenhouse info of the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
-        greenhouse = cur.fetchone() # greenhouse is a tuple
-        if greenhouse is None:  # if the greenhouse does not exist, return error 404
-            raise cherrypy.HTTPError(404, "Greenhouse not found")
-        greenhouse_dict = { # associate the values to the keys
-            'greenhouse_id': greenhouse[0],
-            'user_id': greenhouse[1],
-            'name': greenhouse[2],
-            'location': greenhouse[3],
-            'thingSpeak_config': greenhouse[4]
-        }
-        
-        return greenhouse_dict
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+
+        with conn.cursor() as cur: # create a cursor to execute queries
+            # check if the device is connected to the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND greenhouse_id = %s"), [device_id, greenhouse_id])
+            device = cur.fetchone() # device is a tuple
+            if device is None:  # if the device is not connected to the greenhouse, return error 404
+                raise cherrypy.HTTPError(404, "Device not connected to the greenhouse")
+            # the first query is to get the greenhouse info of the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
+            greenhouse = cur.fetchone() # greenhouse is a tuple
+            if greenhouse is None:  # if the greenhouse does not exist, return error 404
+                raise cherrypy.HTTPError(404, "Greenhouse not found")
+            greenhouse_dict = { # associate the values to the keys
+                'greenhouse_id': greenhouse[0],
+                'user_id': greenhouse[1],
+                'name': greenhouse[2],
+                'location': greenhouse[3],
+                'thingSpeak_config': greenhouse[4]
+            }
+            
+            return greenhouse_dict
+    
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
     
 # function to perform user registration
 def register(conn, username, email, password):
@@ -405,62 +415,72 @@ def get_user_greenhouses(conn, user_id, username):
     
 # function to return everything about a greenhouse (plants, sensors, devices)
 def get_greenhouse_configurations(conn, greenhouse_id):
-    with conn.cursor() as cur:
-        # get sensors of the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
-        sensors = cur.fetchall()
-        if sensors is None:
-            raise cherrypy.HTTPError(404, "No sensors found")
-
-        sensors_list = []
-        for sensor in sensors:
-            sensor_dict = {
-                'sensor_id': sensor[0],
-                'greenhouse_id': sensor[1],
-                'type': sensor[2],
-                'name': sensor[3],
-                'unit': sensor[4],
-                'threshold': sensor[5],
-                'domain': sensor[6]
-            }
-            sensors_list.append(sensor_dict)
-
-        # get devices of the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s"), [greenhouse_id])
-        devices = cur.fetchall()
-        if devices is None:
-            raise cherrypy.HTTPError(404, "No devices found")
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
         
-        devices_list = []
-        for device in devices:
-            device_dict = {
-                'device_id': device[0],
-                'greenhouse_id': device[1],
-                'name': device[2],
-                'type': device[3],
-                'params': device[4]
+        with conn.cursor() as cur:
+            # get sensors of the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
+            sensors = cur.fetchall()
+            if sensors is None:
+                cherrypy.response.status = 404
+                return {"error": "No sensors found"}
+
+            sensors_list = []
+            for sensor in sensors:
+                sensor_dict = {
+                    'sensor_id': sensor[0],
+                    'greenhouse_id': sensor[1],
+                    'type': sensor[2],
+                    'name': sensor[3],
+                    'unit': sensor[4],
+                    'threshold': sensor[5],
+                    'domain': sensor[6]
+                }
+                sensors_list.append(sensor_dict)
+
+            # get devices of the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s"), [greenhouse_id])
+            devices = cur.fetchall()
+            if devices is None:
+                cherrypy.response.status = 404
+                return {"error": "No devices found"}
+            
+            devices_list = []
+            for device in devices:
+                device_dict = {
+                    'device_id': device[0],
+                    'greenhouse_id': device[1],
+                    'name': device[2],
+                    'type': device[3],
+                    'params': device[4]
             }
             devices_list.append(device_dict)
 
-        # get plants of the greenhouse
-        cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
-        plants = cur.fetchall()
-        if plants is None:
-            raise cherrypy.HTTPError(404, "No plants found")
-        
-        plants_list = []
-        for plant in plants:
-            cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
-            plant = cur.fetchone()
-            plant_dict = {
-                'plant_id': plant[0],
-                'name': plant[1],
-                'species': plant[2],
-                'desired_thresholds': plant[3],
-            }
-            plants_list.append(plant_dict)
+            # get plants of the greenhouse
+            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            plants = cur.fetchall()
+            
+            plants_list = []
+            for plant in plants:
+                cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
+                plant = cur.fetchone()
+                plant_dict = {
+                    'plant_id': plant[0],
+                    'name': plant[1],
+                    'species': plant[2],
+                    'desired_thresholds': plant[3],
+                }
+                plants_list.append(plant_dict)
 
-        return {'sensors': sensors_list, 'devices': devices_list, 'plants': plants_list}
+            return {'sensors': sensors_list, 'devices': devices_list, 'plants': plants_list}
+        
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
     
 # function used by the user to change the threshold of a sensor
 def set_sensor_threshold(conn, sensor_id, threshold):
@@ -478,23 +498,34 @@ def set_sensor_threshold(conn, sensor_id, threshold):
         
 # function to get the entire list of plants
 def get_all_plants(conn):
-    with conn.cursor() as cur:
-        cur.execute(sql.SQL("SELECT * FROM plants"))
-        plants = cur.fetchall()
-        if plants is None:
-            raise cherrypy.HTTPError(404, "No plants found")
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
         
-        plants_list = []
-        for plant in plants:
-            plant_dict = {
-                'plant_id': plant[0],
-                'name': plant[1],
-                'species': plant[2],
-                'desired_thresholds': plant[3]
-            }
-            plants_list.append(plant_dict)
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("SELECT * FROM plants"))
+            plants = cur.fetchall()
+            if plants is None:
+                cherrypy.response.status = 404
+                return {"error": "No plants found"}
+            
+            plants_list = []
+            for plant in plants:
+                plant_dict = {
+                    'plant_id': plant[0],
+                    'name': plant[1],
+                    'species': plant[2],
+                    'desired_thresholds': plant[3]
+                }
+                plants_list.append(plant_dict)
+            
+            return {'plants': plants_list}
         
-        return {'plants': plants_list}
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
     
 # function to add a plant to a greenhouse
 def add_plant_to_greenhouse(conn, greenhouse_id, plant_id):
