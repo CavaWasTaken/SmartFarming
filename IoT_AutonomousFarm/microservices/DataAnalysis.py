@@ -235,7 +235,8 @@ class DataAnalysisREST(object):
     @cherrypy.tools.json_out()  # automatically convert return value
     def GET(self, *uri, **params):
         if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
         elif uri[0] == 'get_mean_value':
             return get_mean_value(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
         elif uri[0] == 'get_next_timestamp':
@@ -243,53 +244,79 @@ class DataAnalysisREST(object):
         elif uri[0] == 'get_next_value':
             return get_next_value(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
         else:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
         
     @cherrypy.tools.json_out()  # automatically convert return value
     def POST(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
 
     @cherrypy.tools.json_out()  # automatically convert return value        
     def PUT(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-        
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
+
     @cherrypy.tools.json_out()  # automatically convert return value
     def DELETE(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
+        
 if __name__ == "__main__":
-    # RESR API exposed by the DataAnalysis microservice and used by management components to get statistics
-    dataAnalysisClient = DataAnalysisREST(None)
-    conf = {
-        '/': {
-            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-            'tools.sessions.on': True,
+    try:
+        # RESR API exposed by the DataAnalysis microservice and used by management components to get statistics
+        dataAnalysisClient = DataAnalysisREST(None)
+        conf = {
+            '/': {
+                'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+                'tools.sessions.on': True,
+            }
         }
-    }
-    cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8081})
-    cherrypy.tree.mount(dataAnalysisClient, '/', conf)
-    cherrypy.engine.start()
+        cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8081})
+        cherrypy.tree.mount(dataAnalysisClient, '/', conf)
+        cherrypy.engine.start()
 
-    while True:
-        # it has to read the parameter N from the catalog
-        response = requests.get(f"{catalog_url}/get_device_info", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
-        if response.status_code == 200:
-            device_info = response.json()    # device_info is a dictionary with the information of the device
-            write_log(f"Received device information: {device_info}")
-            
-            try:
-                N = device_info["params"]['N']    # get the number of values to keep track of from the device information
-                break   # exit the loop if the progeram has red the N param inside the device info
+    except Exception as e:
+        write_log(f"Error starting the REST API: {e}")
+        exit(1)
 
-            except KeyError as e:
-                write_log(f"Missing key in JSON device configuration: {e}\nTrying again in 60 seconds...")
-                time.sleep(60)  # wait for 60 seconds before trying again
+    for _ in range(5):
+        try:
+            # it has to read the parameter N from the catalog
+            response = requests.get(f"{catalog_url}/get_device_info", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
+            if response.status_code == 200:
+                device_info = response.json()    # device_info is a dictionary with the information of the device
+                write_log(f"Received device information: {device_info}")
                 
-        else:
-            write_log(f"Failed to get device information from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")
+                try:
+                    N = device_info["params"]['N']    # get the number of values to keep track of from the device information
+                    break   # exit the loop if the progeram has red the N param inside the device info
+
+                except KeyError as e:
+                    write_log(f"Missing key in JSON device configuration: {e}\nTrying again in 60 seconds...")
+                    if _ == 4:  # if it is the last attempt
+                        write_log("Failed to get device information from the Catalog after 5 attempts")
+                        exit(1)  # exit the program if the device information is not found
+                
+                    time.sleep(60)  # wait for 60 seconds before trying again
+                    
+            else:
+                write_log(f"Failed to get device information from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")
+                if _ == 4:  # if it is the last attempt
+                    write_log("Failed to get device information from the Catalog after 5 attempts")
+                    exit(1)  # exit the program if the device information is not found
+
+                time.sleep(60)  # wait for 60 seconds before trying again
+
+        except Exception as e:
+            write_log(f"Error getting device information from the Catalog: {e}\nTrying again in 60 seconds...")
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to get device information from the Catalog after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+
             time.sleep(60)  # wait for 60 seconds before trying again
 
-    while True:
+    for _ in range(5):
         # it has to read the sensors from the catalog
         response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})
         if response.status_code == 200:
@@ -299,6 +326,10 @@ if __name__ == "__main__":
         
         else:
             write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to get sensors from the Catalog after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+            
             time.sleep(60)   # wait for 60 seconds before trying again
 
     mqtt_topics = [] # initialize the array of topics where the microservice is subscribed
@@ -337,7 +368,7 @@ if __name__ == "__main__":
 
     # askDataForPlot("Temperature", 10)
 
-    while True:
+    for _ in range(5):
         try:
             client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DataAnalysis_{device_id}", on_message, write_log)
             client.start()
@@ -345,14 +376,21 @@ if __name__ == "__main__":
 
         except Exception as e:
             write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to start MQTT client after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+            
             time.sleep(60)   # wait for 60 seconds before trying again
 
     for topic in mqtt_topics:
-        while True:
+        for _ in range(5):
             try:
                 client.subscribe(topic)
                 break
 
             except Exception as e:
                 write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
-                time.sleep(60)  # wait for 60 seconds before trying again
+                if _ == 4:  # if it is the last attempt
+                    write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
+                else:
+                    time.sleep(60)  # wait for 60 seconds before trying again

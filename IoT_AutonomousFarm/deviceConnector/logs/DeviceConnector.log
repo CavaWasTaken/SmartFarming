@@ -1,17 +1,3 @@
-Received 6 sensors: [{'sensor_id': 1, 'greenhouse_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400.0, 'min': 100.0}, 'N': {'max': 150.0, 'min': 50.0}, 'P': {'max': 300.0, 'min': 75.0}}, 'domain': {'max': 1000, 'min': 0}}, {'sensor_id': 5, 'greenhouse_id': 0, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 75.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 2, 'greenhouse_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 80.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 4, 'greenhouse_id': 0, 'type': 'LightIntensity', 'name': 'PAR', 'unit': 'umol/m^2/s', 'threshold': {'max': 600.0, 'min': 400.0}, 'domain': {'max': 2500, 'min': 0}}, {'sensor_id': 0, 'greenhouse_id': 0, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': '25.0', 'min': '18.0'}, 'domain': {'max': 50, 'min': -10}}, {'sensor_id': 3, 'greenhouse_id': 0, 'type': 'pH', 'name': 'pH', 'unit': '-', 'threshold': {'max': 6.8, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}}]
-Received greenhouse location: Torino
-
-Subscribed to greenhouse_0/sensor_1/action
-Subscribed to greenhouse_0/sensor_5/action
-Subscribed to greenhouse_0/sensor_2/action
-Subscribed to greenhouse_0/sensor_4/action
-Subscribed to greenhouse_0/sensor_0/action
-Subscribed to greenhouse_0/sensor_3/action
-
-Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 150.00219193821962, "P": 199.59176217269473, "K": 201.01901986033752}, "u": "mg/kg", "t": 0}}
-Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 54.46441213320815, "u": "%", "t": 0}}
-Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.310995577548866, "u": "%", "t": 0}}
-Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 500.0271698063313, "u": "umol/m^2/s", "t": 0}}
-Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 19.198740678520206, "u": "Cel", "t": 0}}
-Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.993442181778083, "u": "-", "t": 0}}
-Connected to mqtt.eclipseprojects.io with result code 0
+Failed to get sensors from the Catalog
+Response: device_id param is missing or not an integer
+Trying again in 60 seconds...

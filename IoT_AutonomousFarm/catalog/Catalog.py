@@ -8,33 +8,68 @@ import os
 from cherrypy_cors import CORS 
 import jwt
 import datetime
-import secrets
+import time
 
 from MqttClient import MqttClient   # import the MqttClient class
 
-# Setup jinja2 
-# relative path to the template directory
-TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), '../ui/webApp')
-env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH))
+# function to write in a log file the message passed as argument
+def write_log(message):
+    with open("./logs/Catalog.log", "a") as log_file:
+        log_file.write(f"{message}\n")
 
-# read the mqtt information of the broker from the json file
-with open("./Catalog_config.json", "r") as config_fd:
-    config = json.load(config_fd)   # read the configuration from the json file
-    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
-    mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
-    keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
+# each time that the catalog starts, we clear the log file
+with open("./logs/Catalog.log", "w") as log_file:
+    pass
+
+try:
+    # Setup jinja2 
+    # relative path to the template directory
+    TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), '../ui/webApp')
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH))
+
+except Exception as e:
+    write_log(f"Error setting up Jinja2: {e}")
+    exit(1)
+
+try:
+    # read the mqtt information of the broker from the json file
+    with open("./Catalog_config.json", "r") as config_fd:
+        config = json.load(config_fd)   # read the configuration from the json file
+        mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
+        mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
+        keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
+
+except FileNotFoundError:
+    write_log("Catalog_config.json file not found")
+    exit(1)   # exit the program if the file is not found
+except json.JSONDecodeError:
+    write_log("Error decoding JSON file")
+    exit(1)
+except KeyError as e:
+    write_log(f"Missing key in JSON file: {e}")
+    exit(1)
 
 # class that implements the REST API of the Catalog
 
 # method to get a connection to the database
 def get_db_connection():
-    return psycopg2.connect(
-        dbname="smartfarm_db",  # db name
-        user="iotproject",  # username postgre sql
-        password="WeWillDieForIoT", # password postgre sql
-        host="localhost",    # host,
-        port="5433" # port
-    )
+    for _ in range(5):  # try to connect to the database 5 times
+        try:
+            return psycopg2.connect(
+                dbname="smartfarm_db",  # db name
+                user="iotproject",  # username postgre sql
+                password="WeWillDieForIoT", # password postgre sql
+                host="localhost",    # host,
+                port="5433" # port
+            )
+        
+        except psycopg2.Error as e:
+            write_log(f"Error connecting to database: {e}")
+            if _ == 4:  # if this is the last attempt
+                write_log("Failed to connect to the database after 5 attempts")
+                raise Exception("Unable to connect to the database")
+            
+            time.sleep(60)  # wait for 60 seconds before trying again
 
 def cors():
     cherrypy.response.headers['Access-Control-Allow-Origin'] = '*'
@@ -42,11 +77,6 @@ def cors():
     cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
 
 cherrypy.tools.cors = cherrypy.Tool('before_handler', cors)
-
-# function to write in a log file messages from MQTT client
-def write_log(message):
-    with open("./MQTT_Catalog.log", "a") as log_file:
-        log_file.write(f"{message}\n")
 
 # function triggered when a message of interest is received by the Catalog
 # Because the Catalog is only a publisher, this function should never be used
@@ -693,66 +723,218 @@ class CatalogREST(object):
     @cherrypy.tools.json_out()  # output JSON response
     def GET(self, *uri, **params):
         if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+        
         elif uri[0] == 'get_sensors':
-            return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
+            # check the existence of the parameters
+            if 'device_id' in params and 'device_name' in params:
+                return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
         elif uri[0] == 'get_greenhouse_info':
-            return get_greenhouse_info(self.catalog_connection, params['greenhouse_id'], params['device_id'])
+            # check the existence of the parameters
+            if 'greenhouse_id' in params and 'device_id' in params:
+                return get_greenhouse_info(self.catalog_connection, greenhouse_id, params['device_id'])
+
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
         elif uri[0] == 'get_device_info':
-            return get_device_info(self.catalog_connection, params['device_id'], params['device_name'])
+            # check the existence of the parameters
+            if 'device_id' in params and 'device_name' in params:
+                return get_device_info(self.catalog_connection, params['device_id'], params['device_name'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+
         elif uri[0] == 'get_greenhouse_location':
-            return get_greenhouse_location(self.catalog_connection, params['greenhouse_id'])
+            # check the existence of the parameters
+            if 'greenhouse_id' in params:
+                return get_greenhouse_location(self.catalog_connection, params['greenhouse_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
         elif uri[0] == 'get_user_greenhouses':
-            return get_user_greenhouses(self.catalog_connection, params['user_id'], params['username'])
+            # check the existence of the parameters
+            if 'user_id' in params and 'username' in params:
+                return get_user_greenhouses(self.catalog_connection, params['user_id'], params['username'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
         elif uri[0] == 'get_greenhouse_configurations':
-            return get_greenhouse_configurations(self.catalog_connection, params['greenhouse_id'])
+            # check the existence of the parameters
+            if 'greenhouse_id' in params:
+                return get_greenhouse_configurations(self.catalog_connection, params['greenhouse_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
         elif uri[0] == 'get_all_plants':
+            # check that no parameters are passed
+            if len(params) > 0:
+                cherrypy.response.status = 400
+                return {"error": "No parameters allowed"}
+            
             return get_all_plants(self.catalog_connection)
+        
         elif uri[0] == 'get_all_scheduled_events':
+            # check that no parameters are passed
+            if len(params) > 0:
+                cherrypy.response.status = 400
+                return {"error": "No parameters allowed"}
+            
             return get_all_scheduled_events(self.catalog_connection)
+        
         elif uri[0] == 'get_all_sensors':
+            # check that no parameters are passed
+            if len(params) > 0:
+                cherrypy.response.status = 400
+                return {"error": "No parameters allowed"}
+            
             return get_all_sensors(self.catalog_connection)
+        
         else:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
-    
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+
     @cherrypy.tools.cors()  # enable CORS for POST requests
     @cherrypy.tools.encode(encoding='utf-8')    # encode the request body
     @cherrypy.tools.json_out()  # output JSON response
     def POST(self, *uri, **params):
         if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+        
         elif uri[0] == 'register':
-            input_json = json.loads(cherrypy.request.body.read())
-            return register(self.catalog_connection, input_json['username'], input_json['email'], input_json['password'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'username' not in input_json or 'email' not in input_json or 'password' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return register(self.catalog_connection, input_json['username'], input_json['email'], input_json['password'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+        
         elif uri[0] == 'login':
-            input_json = json.loads(cherrypy.request.body.read())
-            return login(self.catalog_connection, input_json['username'], input_json['password'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'username' not in input_json or 'password' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return login(self.catalog_connection, input_json['username'], input_json['password'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+        
         elif uri[0] == 'set_sensor_threshold':
-            input_json = json.loads(cherrypy.request.body.read())
-            return set_sensor_threshold(self.catalog_connection, input_json['sensor_id'], input_json['threshold'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'sensor_id' not in input_json or 'threshold' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                if not isinstance(input_json['threshold'], dict):
+                    cherrypy.response.status = 400
+                    return {"error": "Threshold must be a dictionary"}
+                
+                return set_sensor_threshold(self.catalog_connection, input_json['sensor_id'], input_json['threshold'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+        
         elif uri[0] == 'add_plant_to_greenhouse':
-            input_json = json.loads(cherrypy.request.body.read())
-            return add_plant_to_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'greenhouse_id' not in input_json or 'plant_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return add_plant_to_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+
         elif uri[0] == 'remove_plant_from_greenhouse':
-            input_json = json.loads(cherrypy.request.body.read())
-            return remove_plant_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'greenhouse_id' not in input_json or 'plant_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return remove_plant_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+        
         elif uri[0] == 'add_event':
-            input_json = json.loads(cherrypy.request.body.read())
-            return add_event(self.catalog_connection, input_json['greenhouse_id'], input_json['event_type'], input_json['start_time'], input_json['end_time'], input_json['frequency'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'greenhouse_id' not in input_json or 'event_type' not in input_json or 'start_time' not in input_json or 'end_time' not in input_json or 'frequency' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return add_event(self.catalog_connection, input_json['greenhouse_id'], input_json['event_type'], input_json['start_time'], input_json['end_time'], input_json['frequency'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+
         elif uri[0] == 'add_greenhouse':
-            input_json = json.loads(cherrypy.request.body.read())
-            return add_greenhouse(self.catalog_connection, input_json['user_id'], input_json['name'], input_json['location'], input_json['thingspeak_config'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'user_id' not in input_json or 'name' not in input_json or 'location' not in input_json or 'thingspeak_config' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return add_greenhouse(self.catalog_connection, input_json['user_id'], input_json['name'], input_json['location'], input_json['thingspeak_config'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+  
         elif uri[0] == 'add_sensor_from_available':
-            input_json = json.loads(cherrypy.request.body.read())
-            return add_sensor_from_available(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'])
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'greenhouse_id' not in input_json or 'sensor_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return add_sensor_from_available(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
         else:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
 
     def PUT(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-        
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
+
     def DELETE(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
 
     @cherrypy.tools.cors()
     def OPTIONS(self, *args, **kwargs):
@@ -762,26 +944,31 @@ class CatalogREST(object):
         return ''
     
 if __name__ == "__main__":
-    # configuration of the server
-    catalogClient = CatalogREST(get_db_connection())
-    conf = {
-        '/': {
-            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-            'tools.sessions.on': True,
-            'tools.response_headers.on': True,
-            'tools.response_headers.headers': [('Content-Type', 'application/json')],
-            'tools.cors.on': True,
-            'tools.staticdir.on': True,
-            'tools.staticdir.dir': os.path.abspath('../ui/webApp')
-        },
-        '/ui':{
-            'tools.staticdir.on': True,
-            'tools.staticdir.dir': os.path.abspath("../ui/webApp")
+    try:
+        # configuration of the server
+        catalogClient = CatalogREST(get_db_connection())
+        conf = {
+            '/': {
+                'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+                'tools.sessions.on': True,
+                'tools.response_headers.on': True,
+                'tools.response_headers.headers': [('Content-Type', 'application/json')],
+                'tools.cors.on': True,
+                'tools.staticdir.on': True,
+                'tools.staticdir.dir': os.path.abspath('../ui/webApp')
+            },
+            '/ui':{
+                'tools.staticdir.on': True,
+                'tools.staticdir.dir': os.path.abspath("../ui/webApp")
+            }
         }
-    }
-    cherrypy.config.update({'server.socket_host': '127.0.0.1', 'server.socket_port': 8080})
-    cherrypy.tree.mount(catalogClient, '/', conf)
-    cherrypy.engine.start()
+        cherrypy.config.update({'server.socket_host': '127.0.0.1', 'server.socket_port': 8080})
+        cherrypy.tree.mount(catalogClient, '/', conf)
+        cherrypy.engine.start()
+
+    except Exception as e:
+        write_log(f"Error starting the REST API: {e}")
+        exit(1)
 
     # Initialize MQTT client
     # client = MqttClient(mqtt_broker, mqtt_port, keep_alive, "Catalog", on_message, write_log)    # create a MQTT client object

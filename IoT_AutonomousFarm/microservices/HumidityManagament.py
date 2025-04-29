@@ -120,7 +120,8 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
     except json.JSONDecodeError:
         write_log("Error decoding the MQTT message payload")
     except Exception as e:
-        write_log(f"Unexpected error in on_message: {e}")
+        write_log(f"Unexpected error on handling the message: {e}")
+
 if __name__ == "__main__":
     while True:
         response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'HumidityManagement'})    # get the device information from the catalog
