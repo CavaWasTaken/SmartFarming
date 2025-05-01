@@ -424,7 +424,7 @@ def get_greenhouse_configurations(conn, greenhouse_id):
         with conn.cursor() as cur:
             # get sensors of the greenhouse
             cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
-            sensors = cur.fetchall()
+            sensors = cur.fetchall() or [] # fall back to empty list if no sensors are found
             if sensors is None:
                 cherrypy.response.status = 404
                 return {"error": "No sensors found"}
@@ -444,7 +444,7 @@ def get_greenhouse_configurations(conn, greenhouse_id):
 
             # get devices of the greenhouse
             cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s"), [greenhouse_id])
-            devices = cur.fetchall()
+            devices = cur.fetchall() or [] # fall back to empty list if no devices are found
             if devices is None:
                 cherrypy.response.status = 404
                 return {"error": "No devices found"}
@@ -457,18 +457,19 @@ def get_greenhouse_configurations(conn, greenhouse_id):
                     'name': device[2],
                     'type': device[3],
                     'params': device[4]
-            }
-            devices_list.append(device_dict)
+                }
+                devices_list.append(device_dict)
 
             # get plants of the greenhouse
             cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
-            plants = cur.fetchall()
+            plants = cur.fetchall() or [] # fall back to empty list if no plants are found
             
             plants_list = []
             for plant in plants:
                 cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
                 plant = cur.fetchone()
-                plant_dict = {
+                if plant: # if the plant exists
+                    plant_dict = {
                     'plant_id': plant[0],
                     'name': plant[1],
                     'species': plant[2],
@@ -478,9 +479,9 @@ def get_greenhouse_configurations(conn, greenhouse_id):
 
             return {'sensors': sensors_list, 'devices': devices_list, 'plants': plants_list}
         
-    except:
+    except Exception as e:
         cherrypy.response.status = 500
-        return {"error": "Internal error"}
+        return {"error": f"Internal error : {str(e)}"}
     
 # function used by the user to change the threshold of a sensor
 def set_sensor_threshold(conn, sensor_id, threshold):
@@ -593,6 +594,40 @@ def remove_plant_from_greenhouse(conn, greenhouse_id, plant_id):
                 plants_list.append(plant_dict)
 
             return plants_list
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+        
+# delete sensor from greenhouse function
+def remove_sensor_from_greenhouse(conn, greenhouse_id, sensor_id):
+    with conn.cursor() as cur:
+        # check if the sensor is in the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND sensor_id = %s"), [greenhouse_id, sensor_id])
+        sensor = cur.fetchone()
+        if sensor is None:
+            raise cherrypy.HTTPError(404, "Sensor is not in the greenhouse")
+        # remove the plant from the greenhouse
+        try:
+            cur.execute(sql.SQL("DELETE FROM sensors WHERE greenhouse_id = %s AND sensor_id = %s"), [greenhouse_id, sensor_id])
+            conn.commit()
+            # return the updated list of sensors in the greenhouse
+            cur.execute(sql.SQL("SELECT sensor_id FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
+            sensors = cur.fetchall()
+            if sensors is None:
+                raise cherrypy.HTTPError(404, "No sensors found")
+            
+            sensor_list = []
+            for sensor in sensors:
+                cur.execute(sql.SQL("SELECT * FROM sensors WHERE sensor_id = %s"), [sensor[0]])
+                sensor = cur.fetchone()
+                sensor_dict = {
+                    'sensor_id': sensor[0],
+                    'name': sensor[1],
+                    'type': sensor[2],
+                    'domain': sensor[3]
+                }
+                sensor_list.append(sensor_dict)
+
+            return sensor_list
         except:
             raise cherrypy.HTTPError(500, "Internal error")
         
@@ -719,7 +754,7 @@ def add_sensor_from_available(conn, greenhouse_id, sensor_id):
                 sql.SQL("""
                     INSERT INTO sensors (greenhouse_id, type, name, unit, threshold_range, domain)
                     VALUES (%s, %s, %s, %s, %s, %s)
-                    RETURNING sensor_id
+                    RETURNING greenhouse_id
                 """),
                 [greenhouse_id, sensor_type, name, unit, threshold_range, domain]
             )
@@ -916,6 +951,19 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
         
+        elif uri[0] == 'remove_sensor_from_greenhouse':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'sensor_id' not in input_json or 'sensor_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return remove_sensor_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'])
+
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
         elif uri[0] == 'add_event':
             try:
                 input_json = json.loads(cherrypy.request.body.read())

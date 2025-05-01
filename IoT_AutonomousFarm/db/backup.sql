@@ -220,6 +220,7 @@ CREATE TABLE public.sensors (
 
 ALTER TABLE public.sensors OWNER TO iotproject;
 
+
 --
 -- Name: sensors_sensor_id_seq; Type: SEQUENCE; Schema: public; Owner: iotproject
 --
@@ -234,6 +235,24 @@ CREATE SEQUENCE public.sensors_sensor_id_seq
 
 
 ALTER SEQUENCE public.sensors_sensor_id_seq OWNER TO iotproject;
+
+
+---------- Added BY Negar ----------
+----- here added this query bc auto increment was not working-----
+
+-- Ensure sequence exists
+CREATE SEQUENCE IF NOT EXISTS public.sensors_sensor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    OWNED BY public.sensors.sensor_id;
+
+-- Ensure sensor_id auto-increments
+ALTER TABLE public.sensors
+ALTER COLUMN sensor_id SET DEFAULT nextval('public.sensors_sensor_id_seq'::regclass);
+
+-- Sync sequence to max sensor_id
+SELECT setval('public.sensors_sensor_id_seq', (SELECT MAX(sensor_id) FROM public.sensors) + 1, false);
+
 
 --
 -- Name: sensors_sensor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: iotproject

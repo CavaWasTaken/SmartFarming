@@ -147,6 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const sensorIcon = sensorIcons[sensor.type] || sensorIcons.Default;
 
         card.innerHTML = `
+          <button class="delete-btn" title="Delete Sensor" style="position:absolute; right:10px; top:10px; background:none; border:none; font-size:20px; cursor:pointer;">
+            <!-- svg content -->
+            <svg fill="#ed0c0c" width="20px" height="20px" viewBox="-3.5 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg" stroke="#ed0c0c"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z"></path></g></svg>
+          </button>
                 <div class="card-img">
                    ${sensorIcon}
                 </div>
@@ -186,6 +190,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
 
         dashboardCards.appendChild(card);
+
+        //delete sensor 
+        card.querySelector(".delete-btn").addEventListener("click", () => {
+          if (confirm(`Are you sure you want to delete ${sensor.name}?`)) {
+            fetch("../json/WebApp_config.json")
+              .then((res) => res.json())
+              .then((config) => {
+                const catalog_url = config.catalog_url;
+                return fetch(`${catalog_url}/remove_sensor_from_greenhouse`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                  },
+                  body: JSON.stringify({
+                    greenhouse_id: greenhouseId,
+                    sensor_id: sensor.sensor_id,
+                  }),
+                });
+              })
+              .then((res) => res.json())
+              .then((result) => {
+                alert(result.message || "Sensor deleted successfully.");
+                card.remove();
+              })
+              .catch((err) => {
+                console.error("Error deleting sensor:", err);
+                alert("Failed to delete sensor.");
+              });
+          }
+        });
+
 
         // Modal for setting threshold
         const setThresholdBtn = card.querySelector(
