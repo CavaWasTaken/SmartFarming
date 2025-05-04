@@ -50,6 +50,14 @@ CREATE TABLE public.devices (
 );
 
 
+-- Ensure auto-increment is set on the device_id column
+ALTER TABLE public.devices
+ALTER COLUMN device_id SET DEFAULT nextval('devices_device_id_seq'::regclass);
+
+-- Sync the sequence with current max value
+SELECT setval('devices_device_id_seq', (SELECT MAX(device_id) FROM public.devices) + 1, false);
+
+
 ALTER TABLE public.devices OWNER TO iotproject;
 
 --
@@ -597,4 +605,43 @@ GRANT CREATE ON SCHEMA public TO iotproject;
 --
 -- PostgreSQL database dump complete
 --
+
+----- available senosrs -----
+-- Create availablesensors table
+CREATE TABLE public.availablesensors (
+    sensor_id SERIAL PRIMARY KEY,
+    name CHARACTER VARYING(100) NOT NULL,
+    type CHARACTER VARYING(50) NOT NULL,
+    unit CHARACTER VARYING(50),
+    threshold_range JSONB,
+    domain JSONB
+);
+
+-- Make sure the sequence is owned by the column (good practice)
+ALTER SEQUENCE public.availablesensors_sensor_id_seq OWNED BY public.availablesensors.sensor_id;
+
+-- Set the owner if needed
+ALTER TABLE public.availablesensors OWNER TO iotproject;
+
+
+
+-- Create availabledevices table
+
+-- Recreate availabledevices without greenhouse_id
+CREATE TABLE public.availabledevices (
+    device_id SERIAL PRIMARY KEY,
+    name CHARACTER VARYING(100) NOT NULL,
+    type CHARACTER VARYING(100) NOT NULL,
+    configuration JSONB
+);
+
+-- Set sequence ownership (optional but good practice)
+ALTER SEQUENCE public.availabledevices_device_id_seq OWNED BY public.availabledevices.device_id;
+
+-- Set the owner if needed
+ALTER TABLE public.availabledevices OWNER TO iotproject;
+
+
+
+
 

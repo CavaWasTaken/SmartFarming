@@ -297,7 +297,7 @@ input{
     font-weight: bold;
 }
 
-#add-plant-btn{
+#add-device-btn{
 	padding: 10px 20px;
     font-size: 1.4rem;
     font-weight: bold;
@@ -310,7 +310,7 @@ input{
 }
 
 
-#add-plant-btn:hover {
+#add-device-btn:hover {
     /* background: linear-gradient(45deg, #23a2f6, #1845ad); */
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);

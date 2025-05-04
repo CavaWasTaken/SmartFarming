@@ -121,6 +121,10 @@ $(document).ready(function () {
           const deviceIcon = deviceIcons[device.type] || sensorIcons.Default;
   
           card.innerHTML = `
+          <button class="delete-btn" title="Delete Device" style="position:absolute; right:10px; top:10px; background:none; border:none; font-size:20px; cursor:pointer;">
+            <!-- svg content -->
+            <svg fill="#ed0c0c" width="20px" height="20px" viewBox="-3.5 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg" stroke="#ed0c0c"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z"></path></g></svg>
+          </button>
                   <div class="card-img">
                   ${deviceIcon}
                   </div>
@@ -137,8 +141,100 @@ $(document).ready(function () {
                   </div>`;
   
           dashboardCards.appendChild(card);
- 
+
+          //Delet Device
+          card.querySelector(".delete-btn").addEventListener("click", () => {
+            if (confirm(`Are you sure you want to delete ${device.name}?`)) {
+              fetch("../json/WebApp_config.json")
+                .then((res) => res.json())
+                .then((config) => {
+                  const catalog_url = config.catalog_url;
+                  return fetch(`${catalog_url}/remove_device_from_greenhouse`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                      greenhouse_id: greenhouseId,
+                      device_id: device.device_id,
+                    }),
+                  });
+                })
+                .then((res) => res.json())
+                .then((result) => {
+                  alert(result.message || "Device deleted successfully.");
+                  card.remove();
+                })
+                .catch((err) => {
+                  console.error("Error deleting device:", err);
+                  alert("Failed to delete device.");
+                });
+            }
+          });
         })
+
+        // Add Device 
+        document.getElementById("add-device-btn").addEventListener("click", () => {
+          fetch("../json/WebApp_config.json")
+            .then((res) => res.json())
+            .then((config) => {
+              const catalog_url = config.catalog_url;
+              return fetch(`${catalog_url}/get_all_devices`, {
+                headers: { Authorization: `Bearer ${token}` },
+              });
+            })
+            .then((res) => res.json())
+            .then((availableDevices) => {
+              const select = document.getElementById("device-select");
+              select.innerHTML = "";
+              availableDevices.devices.forEach((avldevice) => {
+                const option = document.createElement("option");
+                option.value = avldevice.device_id;
+                option.textContent = `${avldevice.name} (${avldevice.type})`;
+                select.appendChild(option);
+              });
+              document.getElementById("device-modal").classList.remove("d-none");
+            })
+            .catch((err) => {
+              console.error("Failed to load available devices:", err);
+              alert("Failed to load available devices.");
+            });
+        });
+  
+        document.getElementById("cancel-modal").addEventListener("click", () => {
+          document.getElementById("device-modal").classList.add("d-none");
+        });
+  
+        document.getElementById("confirm-add-device").addEventListener("click", () => {
+          const plantId = document.getElementById("device-select").value;
+          fetch("../json/WebApp_config.json")
+            .then((res) => res.json())
+            .then((config) => {
+              const catalog_url = config.catalog_url;
+              return fetch(`${catalog_url}/add_device_from_available`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  greenhouse_id: greenhouseId,
+                  device_id: plantId,
+                }),
+              });
+            })
+            .then((res) => res.json())
+            .then((result) => {
+              alert(result.message || "Device added successfully.");
+              location.reload();
+            })
+            .catch((err) => {
+              console.error("Failed to add device:", err);
+              alert("Failed to add device.");
+              location.reload(); // still reload to reset modal state
+            });
+        });
     })
         .catch((error) => {
             console.error("Error:", error.message);

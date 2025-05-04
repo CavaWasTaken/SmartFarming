@@ -631,6 +631,40 @@ def remove_sensor_from_greenhouse(conn, greenhouse_id, sensor_id):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
         
+# Delete Device from greenhouse 
+def remove_device_from_greenhouse(conn, greenhouse_id, device_id):
+    with conn.cursor() as cur:
+        # check if the device is in the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s AND device_id = %s"), [greenhouse_id, device_id])
+        device = cur.fetchone()
+        if device is None:
+            raise cherrypy.HTTPError(404, "device is not in the greenhouse")
+        # remove the device from the greenhouse
+        try:
+            cur.execute(sql.SQL("DELETE FROM devices WHERE greenhouse_id = %s AND device_id = %s"), [greenhouse_id, device_id])
+            conn.commit()
+            # return the updated list of devices in the greenhouse
+            cur.execute(sql.SQL("SELECT device_id FROM devices WHERE device_id = %s"), [greenhouse_id])
+            devices = cur.fetchall()
+            if devices is None:
+                raise cherrypy.HTTPError(404, "No devices found")
+            
+            device_list = []
+            for device in devices:
+                cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s"), [device[0]])
+                device = cur.fetchone()
+                device_dict = {
+                    'device_id': device[0],
+                    'name': device[1],
+                    'type': device[2],
+                    'params': device[3]
+                }
+                device_list.append(device_dict)
+
+            return device_list
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+        
 #function to get all scheduled events where current time is between start_time and end_time for a greenhouse
 def get_all_scheduled_events(conn):
     with conn.cursor() as cur:
@@ -716,15 +750,33 @@ def get_all_sensors(conn):
         
         sensors_list = []
         for sensor in sensors:
-            psensor_dict = {
+            sensor_dict = {
                 'sensor_id': sensor[0],
                 'name': sensor[1],
                 'type': sensor[2],
             }
-            sensors_list.append(psensor_dict)
+            sensors_list.append(sensor_dict)
         
         return {'sensors': sensors_list}
     
+# get the list of all the available devices 
+def get_all_devices(conn):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT * FROM availabledevices;"))
+        devices = cur.fetchall()
+        if devices is None:
+            raise cherrypy.HTTPError(404, "No sensors found")
+        
+        device_list = []
+        for device in devices:
+            device_dict = {
+                'device_id': device[0],
+                'name': device[1],
+                'type': device[2],
+            }
+            device_list.append(device_dict)
+        
+        return {'devices': device_list}
 
 # add sensors for greenhouses 
 def add_sensor_from_available(conn, greenhouse_id, sensor_id):
@@ -770,6 +822,57 @@ def add_sensor_from_available(conn, greenhouse_id, sensor_id):
                 'unit': unit,
                 'threshold_range': threshold_range,
                 'domain': domain
+            }
+
+        except psycopg2.Error as e:
+            conn.rollback()
+            raise cherrypy.HTTPError(500, f"Database error: {str(e)}")
+        except Exception as e:
+            conn.rollback()
+            raise cherrypy.HTTPError(500, f"Internal error: {str(e)}")
+        
+
+# add devices for greenhouses
+def add_device_from_available(conn, greenhouse_id, device_id):
+    with conn.cursor() as cur:
+        try:
+            # Step 1: Get device info from availabledevice table
+            cur.execute(
+                sql.SQL("SELECT name, type, configuration FROM availabledevices WHERE device_id = %s"),
+                [device_id]
+            )
+            device = cur.fetchone()
+
+            if device is None:
+                raise cherrypy.HTTPError(404, "Device not found in available Devices")
+
+            name, type, configuration = device
+
+
+            if isinstance(configuration, dict):
+                configuration = json.dumps(configuration)
+
+            
+
+            # Step 2: Insert into device table
+            cur.execute(
+                sql.SQL("""
+                    INSERT INTO devices (greenhouse_id, name, type, params)
+                    VALUES (%s, %s, %s, %s)
+                    RETURNING greenhouse_id
+                """),
+                [greenhouse_id, name, type, configuration]
+            )
+            new_device_id = cur.fetchone()[0]
+            conn.commit()
+
+            return {
+                'message': 'Device added successfully',
+                'device_id': new_device_id,
+                'greenhouse_id': greenhouse_id,
+                'type': type,
+                'name': name,
+                'config': configuration
             }
 
         except psycopg2.Error as e:
@@ -870,6 +973,14 @@ class CatalogREST(object):
             
             return get_all_sensors(self.catalog_connection)
         
+        elif uri[0] == 'get_all_devices':
+            # check that no parameters are passed
+            if len(params) > 0:
+                cherrypy.response.status = 400
+                return {"error": "No parameters allowed"}
+            
+            return get_all_devices(self.catalog_connection)
+        
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}
@@ -964,6 +1075,18 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
             
+        elif uri[0] == 'remove_device_from_greenhouse':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'device_id' not in input_json or 'device_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return remove_device_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['device_id'])
+
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
         elif uri[0] == 'add_event':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
@@ -998,6 +1121,19 @@ class CatalogREST(object):
                     return {"error": "Missing required fields"}
                 
                 return add_sensor_from_available(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
+        elif uri[0] == 'add_device_from_available':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'greenhouse_id' not in input_json or 'device_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return add_device_from_available(self.catalog_connection, input_json['greenhouse_id'], input_json['device_id'])
             
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
