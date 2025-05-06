@@ -59,7 +59,7 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
 
     def SendAction(msg):
         msg = json.dumps({"message": msg, "timestamp": timestamp})
-        client.publish(f"greenhouse_{greenhouse_id}/action/device_{device_id}/sensor_{sensor_id}", msg)
+        client.publish(f"greenhouse_{greenhouse_id}/action/sensor_{sensor_id}", msg)
         
     greenhouse, sensor = topic.split("/")  # split the topic and get all the information contained
 

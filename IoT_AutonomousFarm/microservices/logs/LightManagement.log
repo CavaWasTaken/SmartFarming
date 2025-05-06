@@ -4,163 +4,42 @@ Subscribed to greenhouse_0/sensor_0
 Subscribed to greenhouse_0/Lighting
 Connected to mqtt.eclipseprojects.io with result code 0
 
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 691.9984942964002, 'u': 'umol/m^2/s', 't': 1119}}
-Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=4&sensor_type=LightIntensity&timestamp=1119 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7bb6935a8470>: Failed to establish a new connection: [Errno 111] Connection refused'))
-
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.72612289328725, 'u': 'Cel', 't': 1119}}
-Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=0&sensor_type=Temperature&timestamp=1119 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7bb6935a8e60>: Failed to establish a new connection: [Errno 111] Connection refused'))
-
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 689.2777486003265, 'u': 'umol/m^2/s', 't': 1129}}
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.7596455397329, 'u': 'umol/m^2/s', 't': 119}}
 WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found", "timestamp": 1129}
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found", "timestamp": 119}
 
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 23.894503527068377, 'u': 'Cel', 't': 1129}}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.72461159774131, 'u': 'Cel', 't': 119}}
 WARNING: Next expected timestamp of sensor_0 (Temperature) not found
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_0 (Temperature) not found", "timestamp": 1129}
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_0 (Temperature) not found", "timestamp": 119}
 
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 689.928929235622, 'u': 'umol/m^2/s', 't': 1139}}
-Next expected timestamp of sensor_4 (LightIntensity): 1149.0
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1149.0", "timestamp": 1139}
-Next expected value of sensor_4 (LightIntensity): 690.5801098709176
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 690.5801098709176", "timestamp": 1139}
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 693.0895734422261, 'u': 'umol/m^2/s', 't': 239}}
+Next expected timestamp of sensor_4 (LightIntensity): 359.0
+Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 359.0", "timestamp": 239}
+Next expected value of sensor_4 (LightIntensity): 693.4195013447193
+Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 693.4195013447193", "timestamp": 239}
 Wait to see another value to start the decision making for sensor_4 (LightIntensity)
 
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.63790755150761, 'u': 'Cel', 't': 1139}}
-Next expected timestamp of sensor_0 (Temperature): 1149.0
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1149.0", "timestamp": 1139}
-Next expected value of sensor_0 (Temperature): 25.38131157594684
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 25.38131157594684", "timestamp": 1139}
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.686332862523983, 'u': 'Cel', 't': 239}}
+Next expected timestamp of sensor_0 (Temperature): 359.0
+Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 359.0", "timestamp": 239}
+Next expected value of sensor_0 (Temperature): 24.648054127306658
+Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 24.648054127306658", "timestamp": 239}
 Wait to see another value to start the decision making for sensor_0 (Temperature)
+WARNING: Was expecting a value of LightIntensity from sensor_4 at time 359.0, but it didn't arrive
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Was expecting a value of LightIntensity from sensor_4 at time 359.0, but it didn't arrive", "timestamp": 239}
+WARNING: Was expecting a value of Temperature from sensor_0 at time 359.0, but it didn't arrive
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Was expecting a value of Temperature from sensor_0 at time 359.0, but it didn't arrive", "timestamp": 239}
 
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 689.1662176812769, 'u': 'umol/m^2/s', 't': 1150}}
-Next expected timestamp of sensor_4 (LightIntensity): 1160.5
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1160.5", "timestamp": 1150}
-Next expected value of sensor_4 (LightIntensity): 689.3226968955454
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 689.3226968955454", "timestamp": 1150}
-WARNING: The measured value 689.1662176812769 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 689.1662176812769 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1150}
-Mean value of sensor_4 (LightIntensity): 689.4390433525668 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 689.4390433525668 umol/m^2/s", "timestamp": 1150}
-WARNING: The measured value 689.1662176812769 umol/m^2/s and the mean value 689.4390433525668 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 689.1662176812769 umol/m^2/s and the mean value 689.4390433525668 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1150}
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 685.5253079122533, 'u': 'umol/m^2/s', 't': 360}}
+WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found", "timestamp": 360}
 
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.77588015016901, 'u': 'Cel', 't': 1150}}
-Next expected timestamp of sensor_0 (Temperature): 1160.5
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1160.5", "timestamp": 1150}
-Next expected value of sensor_0 (Temperature): 25.314118799606135
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 25.314118799606135", "timestamp": 1150}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 25.284083158089324, 'u': 'Cel', 't': 360}}
+WARNING: Next expected timestamp of sensor_0 (Temperature) not found
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_0 (Temperature) not found", "timestamp": 360}
 
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 688.1801184869818, 'u': 'umol/m^2/s', 't': 1160}}
-Next expected timestamp of sensor_4 (LightIntensity): 1170.3333333333333
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1170.3333333333333", "timestamp": 1160}
-Next expected value of sensor_4 (LightIntensity): 688.1255400237291
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 688.1255400237291", "timestamp": 1160}
-WARNING: The measured value 688.1801184869818 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 688.1801184869818 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1160}
-Mean value of sensor_4 (LightIntensity): 688.9354734063329 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 688.9354734063329 umol/m^2/s", "timestamp": 1160}
-WARNING: The measured value 688.1801184869818 umol/m^2/s and the mean value 688.9354734063329 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 688.1801184869818 umol/m^2/s and the mean value 688.9354734063329 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1160}
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 683.2773233315858, 'u': 'umol/m^2/s', 't': 480}}
+WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found
+Published to greenhouse_0/alert/device_2: {"message": "WARNING: Next expected timestamp of sensor_4 (LightIntensity) not found", "timestamp": 480}
 
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.706014939649037, 'u': 'Cel', 't': 1160}}
-Next expected timestamp of sensor_0 (Temperature): 1170.3333333333333
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1170.3333333333333", "timestamp": 1160}
-Next expected value of sensor_0 (Temperature): 25.14044586097832
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 25.14044586097832", "timestamp": 1160}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
-
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.1931874242391, 'u': 'umol/m^2/s', 't': 1169}}
-Next expected timestamp of sensor_4 (LightIntensity): 1179.0
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1179.0", "timestamp": 1169}
-Next expected value of sensor_4 (LightIntensity): 690.8700670853627
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 690.8700670853627", "timestamp": 1169}
-WARNING: The measured value 692.1931874242391 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 692.1931874242391 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1169}
-Mean value of sensor_4 (LightIntensity): 690.0213780789683 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 690.0213780789683 umol/m^2/s", "timestamp": 1169}
-WARNING: The measured value 692.1931874242391 umol/m^2/s and the mean value 690.0213780789683 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 692.1931874242391 umol/m^2/s and the mean value 690.0213780789683 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1169}
-
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.239284052649655, 'u': 'Cel', 't': 1169}}
-Next expected timestamp of sensor_0 (Temperature): 1179.0
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1179.0", "timestamp": 1169}
-Next expected value of sensor_0 (Temperature): 24.68715698317802
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 24.68715698317802", "timestamp": 1169}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
-
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 693.7008873797688, 'u': 'umol/m^2/s', 't': 1179}}
-Next expected timestamp of sensor_4 (LightIntensity): 1189.0
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1189.0", "timestamp": 1179}
-Next expected value of sensor_4 (LightIntensity): 693.102712727249
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 693.102712727249", "timestamp": 1179}
-WARNING: The measured value 693.7008873797688 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 693.7008873797688 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1179}
-Mean value of sensor_4 (LightIntensity): 691.0726664506255 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 691.0726664506255 umol/m^2/s", "timestamp": 1179}
-WARNING: The measured value 693.7008873797688 umol/m^2/s and the mean value 691.0726664506255 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 693.7008873797688 umol/m^2/s and the mean value 691.0726664506255 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1179}
-
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.38881343204212, 'u': 'Cel', 't': 1179}}
-Next expected timestamp of sensor_0 (Temperature): 1189.0
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1189.0", "timestamp": 1179}
-Next expected value of sensor_0 (Temperature): 24.5716409872153
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 24.5716409872153", "timestamp": 1179}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
-
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.3022523298816, 'u': 'umol/m^2/s', 't': 1190}}
-Next expected timestamp of sensor_4 (LightIntensity): 1200.1666666666667
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1200.1666666666667", "timestamp": 1190}
-Next expected value of sensor_4 (LightIntensity): 693.4604310837144
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 693.4604310837144", "timestamp": 1190}
-WARNING: The measured value 692.3022523298816 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 692.3022523298816 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1190}
-Mean value of sensor_4 (LightIntensity): 691.3800629204396 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 691.3800629204396 umol/m^2/s", "timestamp": 1190}
-WARNING: The measured value 692.3022523298816 umol/m^2/s and the mean value 691.3800629204396 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 692.3022523298816 umol/m^2/s and the mean value 691.3800629204396 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1190}
-
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.089382799747042, 'u': 'Cel', 't': 1190}}
-Next expected timestamp of sensor_0 (Temperature): 1200.1666666666667
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1200.1666666666667", "timestamp": 1190}
-Next expected value of sensor_0 (Temperature): 24.331464986676806
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 24.331464986676806", "timestamp": 1190}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
-
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 696.6553640948999, 'u': 'umol/m^2/s', 't': 1200}}
-Next expected timestamp of sensor_4 (LightIntensity): 1210.142857142857
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1210.142857142857", "timestamp": 1200}
-Next expected value of sensor_4 (LightIntensity): 695.755760864916
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 695.755760864916", "timestamp": 1200}
-WARNING: The measured value 696.6553640948999 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 696.6553640948999 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1200}
-Mean value of sensor_4 (LightIntensity): 692.5523520703197 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 692.5523520703197 umol/m^2/s", "timestamp": 1200}
-WARNING: The measured value 696.6553640948999 umol/m^2/s and the mean value 692.5523520703197 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 696.6553640948999 umol/m^2/s and the mean value 692.5523520703197 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1200}
-
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.88890900995574, 'u': 'Cel', 't': 1200}}
-Next expected timestamp of sensor_0 (Temperature): 1210.142857142857
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1210.142857142857", "timestamp": 1200}
-Next expected value of sensor_0 (Temperature): 24.597565969123757
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 24.597565969123757", "timestamp": 1200}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
-
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.4634682081241, 'u': 'umol/m^2/s', 't': 1210}}
-Next expected timestamp of sensor_4 (LightIntensity): 1220.125
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_4 (LightIntensity): 1220.125", "timestamp": 1210}
-Next expected value of sensor_4 (LightIntensity): 695.2431401654293
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_4 (LightIntensity): 695.2431401654293", "timestamp": 1210}
-WARNING: The measured value 692.4634682081241 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]
-Published to greenhouse_0/alert/device_2: {"message": "WARNING: The measured value 692.4634682081241 umol/m^2/s of sensor_4 (LightIntensity) went outside the range [400.0, 600.0]", "timestamp": 1210}
-Mean value of sensor_4 (LightIntensity): 692.5345752978806 umol/m^2/s
-Published to greenhouse_0/info/device_2: {"message": "Mean value of sensor_4 (LightIntensity): 692.5345752978806 umol/m^2/s", "timestamp": 1210}
-WARNING: The measured value 692.4634682081241 umol/m^2/s and the mean value 692.5345752978806 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)
-Published to greenhouse_0/action/device_2/sensor_4: {"message": "WARNING: The measured value 692.4634682081241 umol/m^2/s and the mean value 692.5345752978806 umol/m^2/s are outside the range. Action needed for sensor_4 (LightIntensity)", "timestamp": 1210}
-
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 25.312606186998202, 'u': 'Cel', 't': 1210}}
-Next expected timestamp of sensor_0 (Temperature): 1220.125
-Published to greenhouse_0/info/device_2: {"message": "Next expected timestamp of sensor_0 (Temperature): 1220.125", "timestamp": 1210}
-Next expected value of sensor_0 (Temperature): 24.94779772083151
-Published to greenhouse_0/info/device_2: {"message": "Next expected value of sensor_0 (Temperature): 24.94779772083151", "timestamp": 1210}
-Error processing the message: '<=' not supported between instances of 'str' and 'float'
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.752912955994262, 'u': 'Cel', 't': 480}}
