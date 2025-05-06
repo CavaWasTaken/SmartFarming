@@ -49,15 +49,6 @@ CREATE TABLE public.devices (
     CONSTRAINT device_type_check CHECK (((type)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('Microservices'::character varying)::text, ('UI'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text])))
 );
 
-
--- Ensure auto-increment is set on the device_id column
-ALTER TABLE public.devices
-ALTER COLUMN device_id SET DEFAULT nextval('devices_device_id_seq'::regclass);
-
--- Sync the sequence with current max value
-SELECT setval('devices_device_id_seq', (SELECT MAX(device_id) FROM public.devices) + 1, false);
-
-
 ALTER TABLE public.devices OWNER TO iotproject;
 
 --
@@ -72,7 +63,6 @@ CREATE SEQUENCE public.devices_device_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
 ALTER SEQUENCE public.devices_device_id_seq OWNER TO iotproject;
 
 --
@@ -80,7 +70,6 @@ ALTER SEQUENCE public.devices_device_id_seq OWNER TO iotproject;
 --
 
 ALTER SEQUENCE public.devices_device_id_seq OWNED BY public.devices.device_id;
-
 
 --
 -- Name: greenhouse_plants; Type: TABLE; Schema: public; Owner: iotproject

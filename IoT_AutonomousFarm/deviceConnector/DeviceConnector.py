@@ -109,13 +109,13 @@ write_log("")
 for sensor in sensors:  # iterate over the list of sensors
     for _ in range(5):
         try:
-            client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action")    # subscribe to the topic to receive actions from the Catalog
+            client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/action/sensor_{sensor['sensor_id']}")    # subscribe to the topic to receive actions from the Catalog
             break
 
         except Exception as e:
-            write_log(f"Error subscribing the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action"}): {e}\nTrying again in 60 seconds...")
+            write_log(f"Error subscribing the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/action/sensor_{sensor['sensor_id']}"}): {e}\nTrying again in 60 seconds...")
             if _ == 4:  # if this is the last attempt
-                write_log(f"Failed to subscribe the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}/action"}) after 5 attempts")
+                write_log(f"Failed to subscribe the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/action/sensor_{sensor['sensor_id']}"}) after 5 attempts")
             else:
                 time.sleep(60)  # wait for 60 seconds before trying again            
 
@@ -170,6 +170,6 @@ while True:
             write_log(f"Error publishing value from sensor {sensor['name']}: {e}")
             continue
 
-    time.sleep(10)   # wait for 2 minutes before reading the sensors again
+    time.sleep(120)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
