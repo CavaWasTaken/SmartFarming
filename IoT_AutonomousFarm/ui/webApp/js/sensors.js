@@ -61,24 +61,24 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "greenhouses.html"; // redirect to available greenhouses page
   }
 
-  document.getElementById(
-    "username-display"
-  ).textContent = `Greenhouse owner: ${username}`;
+  // document.getElementById(
+  //   "username-display"
+  // ).textContent = `Greenhouse owner: ${username}`;
 
-  document.getElementById(
-    "title"
-  ).textContent = `${greenhouseName} - ${greenhouseLocation}`;
+  // document.getElementById(
+  //   "title"
+  // ).textContent = `${greenhouseName} - ${greenhouseLocation}`;
 
-  document.getElementById("logout-button").addEventListener("click", () => {
-    // clear the token and user information from local storage and redirect to login page
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("username");
-    localStorage.removeItem("greenhouse_id");
-    localStorage.removeItem("greenhouse_name");
-    localStorage.removeItem("greenhouse_location");
-    window.location.href = "loginform.html";
-  });
+  // document.getElementById("logout-button").addEventListener("click", () => {
+  //   // clear the token and user information from local storage and redirect to login page
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user_id");
+  //   localStorage.removeItem("username");
+  //   localStorage.removeItem("greenhouse_id");
+  //   localStorage.removeItem("greenhouse_name");
+  //   localStorage.removeItem("greenhouse_location");
+  //   window.location.href = "loginform.html";
+  // });
 
   // read from the config file to get the API URL
   fetch("../json/WebApp_config.json") // this path is relative to the HTML file

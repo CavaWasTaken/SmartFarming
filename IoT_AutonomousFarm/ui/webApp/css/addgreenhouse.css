@@ -54,7 +54,7 @@ form {
 }
 
 form * {
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
@@ -165,7 +165,7 @@ header {
     font-weight: bold;
     color: #ffffff;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     letter-spacing: 1px;
 }
 
@@ -175,7 +175,7 @@ header {
     margin-left: 30px;
     font-size: 16px;
     font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     transition: color 0.3s ease;
 }
 

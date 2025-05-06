@@ -18,7 +18,7 @@
     /* background: url(../pics/background.jpg)
       no-repeat center center fixed;   */
 
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
     background-size: cover;
     font-size: 1.6rem;
     line-height: 1.6;
@@ -26,68 +26,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Header */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(to right, #445D48, #001524);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
-  }
-
-  .header-title {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 1px;
-  }
-
-  .header-user {
-    display: flex;
-    align-items: center;
-  }
-
-  .header-user #username-display {
-    margin-right: 20px;
-    font-size: 1.6rem;
-    color: #ffffff;
-  }
-
-  .header-user #logout-button {
-    padding: 10px 20px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #ffffff;
-    background: linear-gradient(45deg, #1845ad, #23a2f6);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .header-user #logout-button:hover {
-    background: linear-gradient(45deg, #23a2f6, #1845ad);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .header-user #logout-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-
+  
   /* Main Content */
   main {
-    background-color: #2C3845;
+    background-color: #445d48;
     margin-top: 80px; /* Space for the fixed header */
     padding: 20px;
   }
@@ -100,7 +42,7 @@
   }
 
   thead th {
-    background-color: #202932;
+    background-color: #344c40;
     color: #fff;
     font-weight: 700;
     text-align: left;
@@ -115,7 +57,7 @@
   }
 
   tbody tr:nth-child(even) td {
-    background-color: #242e39;
+    background-color: #344c40;
   }
 
   tfoot th {
@@ -162,7 +104,7 @@
     font-size: 1.4rem;
     font-weight: bold;
     color: #ffffff;
-    background: linear-gradient(45deg, #1845ad, #23a2f6);
+    background: linear-gradient(45deg, #983c2a, #ef816c);
     border: none;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -171,7 +113,7 @@
   }
 
   .select-button:hover {
-    background: linear-gradient(45deg, #23a2f6, #1845ad);
+    background: linear-gradient(45deg, #983c2a, #ef816c);
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
   }
@@ -313,4 +255,9 @@
   
   .profile{
       margin-right: 0;
+  }
+
+
+  .dropdown-menu{
+    font-size: 15px;
   }
