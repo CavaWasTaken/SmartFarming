@@ -4,42 +4,364 @@ Subscribed to greenhouse_0/sensor_2
 Subscribed to greenhouse_0/Irrigation
 Connected to mqtt.eclipseprojects.io with result code 0
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 39.328941865827616, 'u': '%', 't': 119}}
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 39.76113626295495, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24650>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.657119472662714, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24fe0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 37.77573923428853, 'u': '%', 't': 10}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=10 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef25ac0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.78111833652767, 'u': '%', 't': 10}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=10 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173f0f7ec0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 38.25138823243881, 'u': '%', 't': 20}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=20 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef257c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.68025969281758, 'u': '%', 't': 20}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=20 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24aa0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 41.15454751444555, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef26630>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.840938911494796, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef27050>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 37.8858866856474, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef26e40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.32417352110949, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef244a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 37.36094420777538, 'u': '%', 't': 10}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=10 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24f80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.93442328448459, 'u': '%', 't': 10}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=10 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef259a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 40.00836526811766, 'u': '%', 't': 19}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=19 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef276b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.88031083465444, 'u': '%', 't': 19}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=19 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef25760>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 37.36656587403339, 'u': '%', 't': 29}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=29 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef245f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.007336401475975, 'u': '%', 't': 29}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=29 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef26a50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 42.284227832309526, 'u': '%', 't': 39}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=39 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef27ad0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.24739524876215, 'u': '%', 't': 39}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=39 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef26810>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 40.082950570076676, 'u': '%', 't': 49}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=49 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef26db0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.469000625793925, 'u': '%', 't': 49}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=49 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef241a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 40.706622526693664, 'u': '%', 't': 59}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=59 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef25610>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.02163760309819, 'u': '%', 't': 59}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=59 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef2c6b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 40.53889461549802, 'u': '%', 't': 69}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=69 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef26e70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.75127586389, 'u': '%', 't': 69}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=69 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24980>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 40.1072684873586, 'u': '%', 't': 79}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=79 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef27800>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.46443470722654, 'u': '%', 't': 79}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=79 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef2c890>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 40.680934811871886, 'u': '%', 't': 89}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=89 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef27c20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.33878780944765, 'u': '%', 't': 89}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=89 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef264b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 41.99673190222443, 'u': '%', 't': 99}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=99 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef241a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.303250571214015, 'u': '%', 't': 99}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=99 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef253d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 38.41380335110536, 'u': '%', 't': 109}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=109 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef2d460>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.53919149377903, 'u': '%', 't': 109}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=109 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef257f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef278c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.5144209667896, 'u': '%', 't': 0}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=0 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef27d40>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 10}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=10 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef2d0d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.45837244553068, 'u': '%', 't': 10}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=10 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef27e90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 19}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=19 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef244a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.70042600276906, 'u': '%', 't': 19}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=19 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24fb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 29}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=5&sensor_type=Humidity&timestamp=29 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef24590>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.44076082774131, 'u': '%', 't': 29}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=2&sensor_type=SoilMoisture&timestamp=29 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x72173ef2d820>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 39}}
 WARNING: Next expected timestamp of sensor_5 (Humidity) not found
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_5 (Humidity) not found", "timestamp": 119}
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_5 (Humidity) not found", "timestamp": 39}
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.698267889516764, 'u': '%', 't': 119}}
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.206429499071284, 'u': '%', 't': 39}}
 WARNING: Next expected timestamp of sensor_2 (SoilMoisture) not found
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_2 (SoilMoisture) not found", "timestamp": 119}
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_2 (SoilMoisture) not found", "timestamp": 39}
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 42.34576879302964, 'u': '%', 't': 239}}
-Next expected timestamp of sensor_5 (Humidity): 359.0
-Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 359.0", "timestamp": 239}
-Next expected value of sensor_5 (Humidity): 45.36259572023167
-Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 45.36259572023167", "timestamp": 239}
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 49}}
+Next expected timestamp of sensor_5 (Humidity): 59.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 59.0", "timestamp": 49}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 49}
 Wait to see another value to start the decision making for sensor_5 (Humidity)
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.68254256702233, 'u': '%', 't': 239}}
-Next expected timestamp of sensor_2 (SoilMoisture): 359.0
-Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 359.0", "timestamp": 239}
-Next expected value of sensor_2 (SoilMoisture): 45.6668172445279
-Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 45.6668172445279", "timestamp": 239}
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.733345955868515, 'u': '%', 't': 49}}
+Next expected timestamp of sensor_2 (SoilMoisture): 59.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 59.0", "timestamp": 49}
+Next expected value of sensor_2 (SoilMoisture): 48.26026241266574
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.26026241266574", "timestamp": 49}
 Wait to see another value to start the decision making for sensor_2 (SoilMoisture)
-WARNING: Was expecting a value of Humidity from sensor_5 at time 359.0, but it didn't arrive
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Was expecting a value of Humidity from sensor_5 at time 359.0, but it didn't arrive", "timestamp": 239}
-WARNING: Was expecting a value of SoilMoisture from sensor_2 at time 359.0, but it didn't arrive
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Was expecting a value of SoilMoisture from sensor_2 at time 359.0, but it didn't arrive", "timestamp": 239}
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 39.41613753903227, 'u': '%', 't': 360}}
-WARNING: Next expected timestamp of sensor_5 (Humidity) not found
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_5 (Humidity) not found", "timestamp": 360}
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 59}}
+Next expected timestamp of sensor_5 (Humidity): 69.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 69.0", "timestamp": 59}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 59}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 59}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 59}
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.368121284349456, 'u': '%', 't': 360}}
-WARNING: Next expected timestamp of sensor_2 (SoilMoisture) not found
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_2 (SoilMoisture) not found", "timestamp": 360}
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.37398817279022, 'u': '%', 't': 59}}
+Next expected timestamp of sensor_2 (SoilMoisture): 69.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 69.0", "timestamp": 59}
+Next expected value of sensor_2 (SoilMoisture): 48.272146549628935
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 48.272146549628935", "timestamp": 59}
+WARNING: The measured value 49.37398817279022 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.37398817279022 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 59}
+Mean value of sensor_2 (SoilMoisture): 49.7991809881965 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.7991809881965 %", "timestamp": 59}
+WARNING: The measured value 49.37398817279022 % and the mean value 49.7991809881965 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 49.37398817279022 % and the mean value 49.7991809881965 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 59}
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 38.37504520619697, 'u': '%', 't': 480}}
-WARNING: Next expected timestamp of sensor_5 (Humidity) not found
-Published to greenhouse_0/alert/device_1: {"message": "WARNING: Next expected timestamp of sensor_5 (Humidity) not found", "timestamp": 480}
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 69}}
+Next expected timestamp of sensor_5 (Humidity): 79.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 79.0", "timestamp": 69}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 69}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 69}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 69}
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.42841861652617, 'u': '%', 't': 480}}
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.134344841328904, 'u': '%', 't': 69}}
+Next expected timestamp of sensor_2 (SoilMoisture): 79.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 79.0", "timestamp": 69}
+Next expected value of sensor_2 (SoilMoisture): 49.21812417818836
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.21812417818836", "timestamp": 69}
+WARNING: The measured value 50.134344841328904 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.134344841328904 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 69}
+Mean value of sensor_2 (SoilMoisture): 49.933246529449455 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.933246529449455 %", "timestamp": 69}
+WARNING: The measured value 50.134344841328904 % and the mean value 49.933246529449455 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 50.134344841328904 % and the mean value 49.933246529449455 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 69}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 79}}
+Next expected timestamp of sensor_5 (Humidity): 89.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 89.0", "timestamp": 79}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 79}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 79}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 79}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.090399288884825, 'u': '%', 't': 79}}
+Next expected timestamp of sensor_2 (SoilMoisture): 89.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 89.0", "timestamp": 79}
+Next expected value of sensor_2 (SoilMoisture): 49.558383091114976
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.558383091114976", "timestamp": 79}
+WARNING: The measured value 50.090399288884825 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.090399288884825 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 79}
+Mean value of sensor_2 (SoilMoisture): 49.98563078259458 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.98563078259458 %", "timestamp": 79}
+WARNING: The measured value 50.090399288884825 % and the mean value 49.98563078259458 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 50.090399288884825 % and the mean value 49.98563078259458 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 79}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 89}}
+Next expected timestamp of sensor_5 (Humidity): 99.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 99.0", "timestamp": 89}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 89}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 89}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 89}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.31520587858681, 'u': '%', 't': 89}}
+Next expected timestamp of sensor_2 (SoilMoisture): 99.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 99.0", "timestamp": 89}
+Next expected value of sensor_2 (SoilMoisture): 49.87982546260494
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.87982546260494", "timestamp": 89}
+WARNING: The measured value 50.31520587858681 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.31520587858681 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 89}
+Mean value of sensor_2 (SoilMoisture): 50.079795095735214 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 50.079795095735214 %", "timestamp": 89}
+WARNING: The measured value 50.31520587858681 % and the mean value 50.079795095735214 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 50.31520587858681 % and the mean value 50.079795095735214 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 89}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 99}}
+Next expected timestamp of sensor_5 (Humidity): 109.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 109.0", "timestamp": 99}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 99}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 99}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 99}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.42745476055463, 'u': '%', 't': 99}}
+Next expected timestamp of sensor_2 (SoilMoisture): 109.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 109.0", "timestamp": 99}
+Next expected value of sensor_2 (SoilMoisture): 50.1177678775809
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 50.1177678775809", "timestamp": 99}
+WARNING: The measured value 50.42745476055463 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.42745476055463 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 99}
+Mean value of sensor_2 (SoilMoisture): 50.166710011940076 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 50.166710011940076 %", "timestamp": 99}
+WARNING: The measured value 50.42745476055463 % and the mean value 50.166710011940076 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 50.42745476055463 % and the mean value 50.166710011940076 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 99}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 109}}
+Next expected timestamp of sensor_5 (Humidity): 119.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 119.0", "timestamp": 109}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 109}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 109}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 109}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.87756962778587, 'u': '%', 't': 109}}
+Next expected timestamp of sensor_2 (SoilMoisture): 119.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 119.0", "timestamp": 109}
+Next expected value of sensor_2 (SoilMoisture): 50.481354707897005
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 50.481354707897005", "timestamp": 109}
+WARNING: The measured value 50.87756962778587 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.87756962778587 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 109}
+Mean value of sensor_2 (SoilMoisture): 50.32467881546136 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 50.32467881546136 %", "timestamp": 109}
+WARNING: The measured value 50.87756962778587 % and the mean value 50.32467881546136 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 50.87756962778587 % and the mean value 50.32467881546136 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 109}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 119}}
+Next expected timestamp of sensor_5 (Humidity): 129.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 129.0", "timestamp": 119}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 119}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 119}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 119}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.786791448026584, 'u': '%', 't': 119}}
+Next expected timestamp of sensor_2 (SoilMoisture): 129.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 129.0", "timestamp": 119}
+Next expected value of sensor_2 (SoilMoisture): 50.21966269346307
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 50.21966269346307", "timestamp": 119}
+WARNING: The measured value 49.786791448026584 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 49.786791448026584 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 119}
+Mean value of sensor_2 (SoilMoisture): 50.217101341974406 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 50.217101341974406 %", "timestamp": 119}
+WARNING: The measured value 49.786791448026584 % and the mean value 50.217101341974406 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 49.786791448026584 % and the mean value 50.217101341974406 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 119}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 130}}
+Next expected timestamp of sensor_5 (Humidity): 140.11111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 140.11111111111111", "timestamp": 130}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 130}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 130}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 130}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.95953044143519, 'u': '%', 't': 130}}
+Next expected timestamp of sensor_2 (SoilMoisture): 140.11111111111111
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 140.11111111111111", "timestamp": 130}
+Next expected value of sensor_2 (SoilMoisture): 49.70598740155746
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.70598740155746", "timestamp": 130}
+WARNING: The measured value 48.95953044143519 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 48.95953044143519 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 130}
+Mean value of sensor_2 (SoilMoisture): 49.988452087330906 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.988452087330906 %", "timestamp": 130}
+WARNING: The measured value 48.95953044143519 % and the mean value 49.988452087330906 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 48.95953044143519 % and the mean value 49.988452087330906 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 130}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 139}}
+Next expected timestamp of sensor_5 (Humidity): 149.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 149.0", "timestamp": 139}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 139}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 139}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 139}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.59992501824107, 'u': '%', 't': 139}}
+Next expected timestamp of sensor_2 (SoilMoisture): 149.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 149.0", "timestamp": 139}
+Next expected value of sensor_2 (SoilMoisture): 49.416168592969335
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.416168592969335", "timestamp": 139}
+WARNING: The measured value 48.59992501824107 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 48.59992501824107 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 139}
+Mean value of sensor_2 (SoilMoisture): 49.71743736493232 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.71743736493232 %", "timestamp": 139}
+WARNING: The measured value 48.59992501824107 % and the mean value 49.71743736493232 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 48.59992501824107 % and the mean value 49.71743736493232 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 139}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 0, 'u': '%', 't': 149}}
+Next expected timestamp of sensor_5 (Humidity): 159.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_5 (Humidity): 159.0", "timestamp": 149}
+Next expected value of sensor_5 (Humidity): 0.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_5 (Humidity): 0.0", "timestamp": 149}
+WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 0 % of sensor_5 (Humidity) went outside the range [60.0, 75.0]", "timestamp": 149}
+WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)
+Published to greenhouse_0/action/sensor_5: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 149}
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.027507494399536, 'u': '%', 't': 149}}
+Next expected timestamp of sensor_2 (SoilMoisture): 159.0
+Published to greenhouse_0/info/device_1: {"message": "Next expected timestamp of sensor_2 (SoilMoisture): 159.0", "timestamp": 149}
+Next expected value of sensor_2 (SoilMoisture): 49.46811239560895
+Published to greenhouse_0/info/device_1: {"message": "Next expected value of sensor_2 (SoilMoisture): 49.46811239560895", "timestamp": 149}
+WARNING: The measured value 50.027507494399536 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]
+Published to greenhouse_0/alert/device_1: {"message": "WARNING: The measured value 50.027507494399536 % of sensor_2 (SoilMoisture) went outside the range [60.0, 80.0]", "timestamp": 149}
+Mean value of sensor_2 (SoilMoisture): 49.75337408330492 %
+Published to greenhouse_0/info/device_1: {"message": "Mean value of sensor_2 (SoilMoisture): 49.75337408330492 %", "timestamp": 149}
+WARNING: The measured value 50.027507494399536 % and the mean value 49.75337408330492 % are outside the range. Action needed for sensor_2 (SoilMoisture)
+Published to greenhouse_0/action/sensor_2: {"message": "WARNING: The measured value 50.027507494399536 % and the mean value 49.75337408330492 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 149}

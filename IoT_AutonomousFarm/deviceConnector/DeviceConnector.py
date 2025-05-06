@@ -13,7 +13,112 @@ def write_log(message):
 
 # function for the device connector to receive the needed action and perform it
 def ActionReceived(client, userdata, message):
-    write_log(f"Received action: {message.payload.decode()}")    # write in the log file the action received
+    action = json.loads(message.payload.decode())    # decode the message received
+    write_log(f"Received action: {action}")    # write in the log file the action received
+    try:
+        sensor_type = action["sensor_type"]    # get the sensor type from the action
+        action = action["message"]["action"]    # get the action from the action
+        if action == "increase":
+            goal = action["message"]["min_treshold"]    # get the goal from the action
+
+            if sensor_type == "Humidity":
+                classDTH22.goal = goal
+                classDTH22.humidityIncrease = True
+                classDTH22.humidityDecrease = False
+                write_log(f"Humidity increase action received")
+            
+            elif sensor_type == "Temperature":
+                classDTH22.goal = goal
+                classDTH22.temperatureIncrease = True
+                classDTH22.temperatureDecrease = False
+                write_log(f"Temperature increase action received")
+            
+            elif sensor_type == "SoilMoisture":
+                classSoilMoisture.goal = goal
+                classSoilMoisture.soilMoistureIncrease = True
+                classSoilMoisture.soilMoistureDecrease = False
+                write_log(f"Soil moisture increase action received")
+            
+            elif sensor_type == "NPK":
+                nutrient = action["message"]["nutrient"]
+            
+                if nutrient == "N":
+                    classNPK.goalN = goal
+                    classNPK.nitrogenIncrease = True
+                    classNPK.nitrogenDecrease = False
+                    write_log(f"Nitrogen increase action received")
+            
+                elif nutrient == "P":
+                    classNPK.goalP = goal
+                    classNPK.phosphorusIncrease = True
+                    classNPK.phosphorusDecrease = False
+                    write_log(f"Phosphorus increase action received")
+            
+                elif nutrient == "K":
+                    classNPK.goalK = goal
+                    classNPK.potassiumIncrease = True
+                    classNPK.potassiumDecrease = False
+                    write_log(f"Potassium increase action received")
+            
+            elif sensor_type == "LightIntensity":
+                classLight.goal = goal
+                classLight.lightIncrease = True
+                classLight.lightDecrease = False
+                write_log(f"Light increase action received")
+        
+        elif action == "decrease":
+            goal = action["message"]["max_treshold"]    # get the goal from the action
+
+            if sensor_type == "Humidity":
+                classDTH22.goal = goal
+                classDTH22.humidityDecrease = True
+                classDTH22.humidityIncrease = False
+                write_log(f"Humidity decrease action received")
+        
+            elif sensor_type == "Temperature":
+                classDTH22.goal = goal
+                classDTH22.temperatureDecrease = True
+                classDTH22.temperatureIncrease = False
+                write_log(f"Temperature decrease action received")
+        
+            elif sensor_type == "SoilMoisture":
+                classSoilMoisture.goal = goal
+                classSoilMoisture.soilMoistureDecrease = True
+                classSoilMoisture.soilMoistureIncrease = False
+                write_log(f"Soil moisture decrease action received")
+        
+            elif sensor_type == "NPK":
+                nutrient = action["message"]["nutrient"]
+        
+                if nutrient == "N":
+                    classNPK.goalN = goal
+                    classNPK.nitrogenDecrease = True
+                    classNPK.nitrogenIncrease = False
+                    write_log(f"Nitrogen decrease action received")
+        
+                elif nutrient == "P":
+                    classNPK.goalP = goal
+                    classNPK.phosphorusDecrease = True
+                    classNPK.phosphorusIncrease = False
+                    write_log(f"Phosphorus decrease action received")
+        
+                elif nutrient == "K":
+                    classNPK.goalK = goal
+                    classNPK.potassiumDecrease = True
+                    classNPK.potassiumIncrease = False
+                    write_log(f"Potassium decrease action received")
+        
+            elif sensor_type == "LightIntensity":
+                classLight.lightDecrease = True
+                classLight.lightIncrease = False
+                write_log(f"Light decrease action received")
+
+    except KeyError as e:
+        write_log(f"Error processing action: {e}")
+    
+    except Exception as e:
+        write_log(f"Error processing action: {e}")
+
 
 # each time that the device starts, we clear the log file
 with open("./logs/DeviceConnector.log", "w") as log_file:
@@ -123,6 +228,8 @@ start_time = datetime.now() # get the current time
 start_time = start_time.hour + start_time.minute / 60 + start_time.second / 3600  # convert the time to hours
 
 while True:
+    # cal set method to update the status on the Catalog
+
     timestamp = datetime.now()  # get the current time
     timestamp = timestamp.hour + timestamp.minute / 60 + timestamp.second / 3600  # convert the time to hours
     timestamp -= start_time  # calculate the time elapsed since the start of the simulation
@@ -170,6 +277,6 @@ while True:
             write_log(f"Error publishing value from sensor {sensor['name']}: {e}")
             continue
 
-    time.sleep(120)   # wait for 2 minutes before reading the sensors again
+    time.sleep(10)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
