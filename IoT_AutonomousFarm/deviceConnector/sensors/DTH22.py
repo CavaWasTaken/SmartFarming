@@ -6,6 +6,10 @@ class DTH22:
 
     def __init__(self, Sensor):
         self.Sensor = Sensor
+        self.humidityIncrease = False
+        self.humidityDecrease = False
+        self.temperatureIncrease = False
+        self.temperatureDecrease = False
 
     # DTH22 is the sensor that measures temperature and humidity
     def get_DTH22_Humidity(self):
@@ -20,6 +24,11 @@ class DTH22:
 
         # add some random noise
         noise = random.uniform(-3.0, 3.0)
+
+        if self.humidityIncrease:
+            trend += 5
+        elif self.humidityDecrease:
+            trend -= 5
 
         # update the current humidity
         current_humidity = trend + noise
@@ -37,6 +46,11 @@ class DTH22:
 
         # add some random noise
         noise = random.uniform(-1.0, 1.0)
+
+        if self.temperatureIncrease:
+            trend += 2
+        elif self.temperatureDecrease:
+            trend -= 2
 
         # update the current temperature
         current_temperature = trend + noise

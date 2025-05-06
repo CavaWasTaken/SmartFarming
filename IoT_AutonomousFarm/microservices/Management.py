@@ -63,7 +63,20 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
 
                     if severity > 0.5:  # if the severity is high enough, action is needed
                         write_log(f"WARNING: The measured value {nutrient_val} {unit} is highly outside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}] (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")  # ALERT TO BE SENT TO THE UI
-                        SendAction(f"WARNING: The measured value {nutrient_val} {unit} is highly outside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}] (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
+                        
+                        if nutrient_val > max_treshold[nutrient]:  # if the value is higher than the max treshold
+                            action = f"decrease"
+                        else:   # nutrient_val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_t
+                            action = f"increase"
+
+                        SendAction({
+                            "action": action,
+                            "val": nutrient_val,
+                            "min_treshold": min_treshold[nutrient],
+                            "max_treshold": max_treshold[nutrient],
+                            "nutrient": nutrient
+                        })
+                        # SendAction(f"WARNING: The measured value {nutrient_val} {unit} is highly outside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}] (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
                     else:   # if the severity isn't high enough
                         # get the updated mean
                         response = requests.get(f"{dataAnalysis_url}/get_mean_value", params={'sensor_id': sensor_id, 'sensor_type':sensor_type, 'timestamp': timestamp})    # get the mean value from the data analysis
@@ -79,17 +92,56 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
                             if not Is_inside(min_treshold[nutrient], mean_value, max_treshold[nutrient]):    # if the mean value is outside the range, action is needed
                                 # take preventive action by following the expected severity
                                 write_log(f"WARNING: The measured value {nutrient_val} {unit} and the mean value {mean_value} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")   # ALERT TO BE SENT TO THE UI
-                                SendAction(f"WARNING: The measured value {nutrient_val} {unit} and the mean value {mean_value} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
+                                
+                                if nutrient_val > max_treshold[nutrient]:
+                                    action = f"decrease"
+                                else:
+                                    action = f"increase"
+
+                                SendAction({
+                                    "action": action,
+                                    "val": nutrient_val,
+                                    "min_treshold": min_treshold[nutrient],
+                                    "max_treshold": max_treshold[nutrient],
+                                    "nutrient": nutrient
+                                })
+                                # SendAction(f"WARNING: The measured value {nutrient_val} {unit} and the mean value {mean_value} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
                             else:   # if the mean value is inside the range
                                 if abs(nutrient_val - mean_value) > 5:    # if the value is far from the mean, action is needed
                                     # take preventive action by following the expected severity
                                     write_log(f"WARNING: The measured value {nutrient_val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")   # ALERT TO BE SENT TO THE UI
-                                    SendAction(f"WARNING: The measured value {nutrient_val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
+                                    
+                                    if nutrient_val > max_treshold[nutrient]:  # if the value is higher than the max treshold
+                                        action = f"decrease"
+                                    else:   # nutrient_val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_t
+                                        action = f"increase"
+
+                                    SendAction({
+                                        "action": action,
+                                        "val": nutrient_val,
+                                        "min_treshold": min_treshold[nutrient],
+                                        "max_treshold": max_treshold[nutrient],
+                                        "nutrient": nutrient
+                                    })
+                                    # SendAction(f"WARNING: The measured value {nutrient_val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
                                 else:   # if the value is near the mean, check if the next expected value is in the range
                                     if not Is_inside(min_treshold[nutrient], expected_nutrient_val, max_treshold[nutrient]):    # if the expected value is outside the range, action is needed
                                         # take preventive action by following the expected severity
                                         write_log(f"WARNING: The measured value {nutrient_val} {unit} and the next expected one {expected_nutrient_val} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")   # ALERT TO BE SENT TO THE UI
-                                        SendAction(f"WARNING: The measured value {nutrient_val} {unit} and the next expected one {expected_nutrient_val} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
+                                        
+                                        if nutrient_val > max_treshold[nutrient]:
+                                            action = f"decrease"
+                                        else:
+                                            action = f"increase"
+
+                                        SendAction({
+                                            "action": action,
+                                            "val": nutrient_val,
+                                            "min_treshold": min_treshold[nutrient],
+                                            "max_treshold": max_treshold[nutrient],
+                                            "nutrient": nutrient
+                                        })
+                                        # SendAction(f"WARNING: The measured value {nutrient_val} {unit} and the next expected one {expected_nutrient_val} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
                         else:
                             write_log(f"Failed to get mean value of sensor_{sensor_id} ({sensor_type} - {nutrient}) from the DataAnalysis\t(Response: {response.reason})")    # ALERT TO BE SENT TO THE UI
                             SendAlert(f"Failed to get mean value of sensor_{sensor_id} ({sensor_type} - {nutrient}) from the DataAnalysis\t(Response: {response.reason})")
@@ -107,7 +159,20 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
                         severity = Severity(distance, domains[sensor_id])   # evaluate the severity of the problem
                         # take preventive action by following the expected severity
                         write_log(f"WARNING: The measured value {nutrient_val} {unit} is inside the range, but the next expected value {expected_nutrient_val} {unit} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")    # ALERT TO BE SENT TO THE UI
-                        SendAction(f"WARNING: The measured value {nutrient_val} {unit} is inside the range, but the next expected value {expected_nutrient_val} {unit} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
+                        
+                        if expected_nutrient_val > max_treshold[nutrient]:
+                            action = f"decrease"
+                        else:
+                            action = f"increase"
+
+                        SendAction({
+                            "action": action,
+                            "val": nutrient_val,
+                            "min_treshold": min_treshold[nutrient],
+                            "max_treshold": max_treshold[nutrient],
+                            "nutrient": nutrient
+                        })
+                        # SendAction(f"WARNING: The measured value {nutrient_val} {unit} is inside the range, but the next expected value {expected_nutrient_val} {unit} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")
                     else:   # if the next expected value is inside the range
                         write_log(f"The measured value ({nutrient_val} {unit}) and the next prediction ({expected_nutrient_val} {unit}) of {sensor_type} ({sensor_type} - {nutrient}) are inside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}]")    # THIS INFO CAN BE SENT TO THE UI
                         SendInfo(f"The measured value ({nutrient_val} {unit}) and the next prediction ({expected_nutrient_val} {unit}) of {sensor_type} ({sensor_type} - {nutrient}) are inside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}]")
@@ -138,7 +203,19 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
 
                 if severity > 0.5:  # if the severity is high enough, action is needed
                     write_log(f"WARNING: The measured value {val} {unit} is highly outside the range [{min_treshold}, {max_treshold}] (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type})")  # ALERT TO BE SENT TO THE UI
-                    SendAction(f"WARNING: The measured value {val} {unit} is highly outside the range [{min_treshold}, {max_treshold}] (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type})")
+                    
+                    if val > max_treshold:  # if the value is higher than the max treshold
+                        action = "decrease"
+                    else:   # val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_treshold
+                        action = "increase"
+                    
+                    SendAction({
+                        "action": action,
+                        "val": val,
+                        "min_treshold": min_treshold,
+                        "max_treshold": max_treshold
+                    })
+                    # SendAction(f"WARNING: The measured value {val} {unit} is highly outside the range [{min_treshold}, {max_treshold}] (Severity: {severity}). Action needed for sensor_{sensor_id} ({sensor_type})")
                 else:   # if the severity isn't high enough
                     # get the updated mean
                     response = requests.get(f"{dataAnalysis_url}/get_mean_value", params={'sensor_id': sensor_id, 'sensor_type':sensor_type, 'timestamp': timestamp})    # get the mean value from the data analysis
@@ -154,17 +231,53 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
                         if not Is_inside(min_treshold, mean_value, max_treshold):    # if the mean value is outside the range, action is needed
                             # take preventive action by following the expected severity
                             write_log(f"WARNING: The measured value {val} {unit} and the mean value {mean_value} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})")   # ALERT TO BE SENT TO THE UI
-                            SendAction(f"WARNING: The measured value {val} {unit} and the mean value {mean_value} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})")
+                            
+                            if val > max_treshold:  # if the value is higher than the max treshold
+                                action = "decrease"
+                            else:   # val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_treshold
+                                action = "increase"
+                            
+                            SendAction({
+                                "action": action,
+                                "val": val,
+                                "min_treshold": min_treshold,
+                                "max_treshold": max_treshold
+                            })
+                            # SendAction(f"WARNING: The measured value {val} {unit} and the mean value {mean_value} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})")
                         else:   # if the mean value is inside the range
                             if abs(val - mean_value) > 5:    # if the value is far from the mean, action is needed
                                 # take preventive action by following the expected severity
                                 write_log(f"WARNING: The measured value {val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type})")   # ALERT TO BE SENT TO THE UI
-                                SendAction(f"WARNING: The measured value {val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type})")
+                                
+                                if val > max_treshold:  # if the value is higher than the max treshold
+                                    action = "decrease"
+                                else:   # val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_treshold
+                                    action = "increase"
+                                
+                                SendAction({
+                                    "action": action,
+                                    "val": val,
+                                    "min_treshold": min_treshold,
+                                    "max_treshold": max_treshold
+                                })
+                                # SendAction(f"WARNING: The measured value {val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type})")
                             else:   # if the value is near the mean, check if the next expected value is in the range
                                 if not Is_inside(min_treshold, expected_val, max_treshold):    # if the expected value is outside the range, action is needed
                                     # take preventive action by following the expected severity
                                     write_log(f"WARNING: The measured value {val} {unit} and the next expected one {expected_val} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})")   # ALERT TO BE SENT TO THE UI
-                                    SendAction(f"WARNING: The measured value {val} {unit} and the next expected one {expected_val} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})")
+                                    
+                                    if val > max_treshold:  # if the value is higher than the max treshold
+                                        action = "decrease"
+                                    else:   # val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_treshold
+                                        action = "increase"
+                                    
+                                    SendAction({
+                                        "action": action,
+                                        "val": val,
+                                        "min_treshold": min_treshold,
+                                        "max_treshold": max_treshold
+                                    })
+                                    # SendAction(f"WARNING: The measured value {val} {unit} and the next expected one {expected_val} {unit} are outside the range. Action needed for sensor_{sensor_id} ({sensor_type})")
                     else:
                         write_log(f"Failed to get mean value of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\t(Response: {response.reason})")    # ALERT TO BE SENT TO THE UI
                         SendAlert(f"Failed to get mean value of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\t(Response: {response.reason})")
@@ -182,7 +295,19 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
                     severity = Severity(distance, domains[sensor_id])   # evaluate the severity of the problem
                     # take preventive action by following the expected severity
                     write_log(f"WARNING: The measured value {val} {unit} is inside the range, but the next expected value {expected_val} {unit} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type})")    # ALERT TO BE SENT TO THE UI
-                    SendAction(f"WARNING: The measured value {val} {unit} is inside the range, but the next expected value {expected_val} {unit} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type})")
+                    
+                    if expected_val > max_treshold:  # if the value is higher than the max treshold
+                        action = "decrease"
+                    else:   # val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_treshold
+                        action = "increase"
+                    
+                    SendAction({
+                        "action": action,
+                        "val": val,
+                        "min_treshold": min_treshold,
+                        "max_treshold": max_treshold
+                    })
+                    # SendAction(f"WARNING: The measured value {val} {unit} is inside the range, but the next expected value {expected_val} {unit} is predicted to be far from the range. Preventine action needed for sensor_{sensor_id} ({sensor_type})")
                 else:   # if the next expected value is inside the range
                     write_log(f"The measured value ({val} {unit}) and the next prediction ({expected_val} {unit}) of {sensor_type} ({sensor_type}) are inside the range [{min_treshold}, {max_treshold}]")    # THIS INFO CAN BE SENT TO THE UI
                     SendInfo(f"The measured value ({val} {unit}) and the next prediction ({expected_val} {unit}) of {sensor_type} ({sensor_type}) are inside the range [{min_treshold}, {max_treshold}]")

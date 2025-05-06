@@ -1,3 +1,142 @@
-Failed to get sensors from the Catalog
-Response: device_id param is missing or not an integer
-Trying again in 60 seconds...
+Received 6 sensors: [{'sensor_id': 1, 'greenhouse_id': 0, 'type': 'NPK', 'name': 'NPK', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400.0, 'min': 100.0}, 'N': {'max': 150.0, 'min': 50.0}, 'P': {'max': 300.0, 'min': 75.0}}, 'domain': {'max': 1000, 'min': 0}}, {'sensor_id': 5, 'greenhouse_id': 0, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 75.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 2, 'greenhouse_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 80.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 4, 'greenhouse_id': 0, 'type': 'LightIntensity', 'name': 'PAR', 'unit': 'umol/m^2/s', 'threshold': {'max': 600.0, 'min': 400.0}, 'domain': {'max': 2500, 'min': 0}}, {'sensor_id': 0, 'greenhouse_id': 0, 'type': 'Temperature', 'name': 'DTH22', 'unit': 'Cel', 'threshold': {'max': '25.0', 'min': '18.0'}, 'domain': {'max': 50, 'min': -10}}, {'sensor_id': 3, 'greenhouse_id': 0, 'type': 'pH', 'name': 'pH', 'unit': '-', 'threshold': {'max': 6.8, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}}]
+Received greenhouse location: Torino
+
+Subscribed to greenhouse_0/action/sensor_1
+Subscribed to greenhouse_0/action/sensor_5
+Subscribed to greenhouse_0/action/sensor_2
+Subscribed to greenhouse_0/action/sensor_4
+Subscribed to greenhouse_0/action/sensor_0
+Subscribed to greenhouse_0/action/sensor_3
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 151.18113825821558, "P": 201.62843163419765, "K": 199.12191096145565}, "u": "mg/kg", "t": 0}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 0}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 51.5144209667896, "u": "%", "t": 0}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.7682444268365, "u": "umol/m^2/s", "t": 0}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.939935800918708, "u": "Cel", "t": 0}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.022884096028832, "u": "-", "t": 0}}
+Connected to mqtt.eclipseprojects.io with result code 0
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 151.65897203816303, "P": 200.06856778220057, "K": 200.17977060247316}, "u": "mg/kg", "t": 10}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 10}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 49.45837244553068, "u": "%", "t": 10}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 666.969291702164, "u": "umol/m^2/s", "t": 10}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 25.206992750395276, "u": "Cel", "t": 10}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.918508576158322, "u": "-", "t": 10}}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.1306400948607, "P": 200.22396701704673, "K": 201.94571390977507}, "u": "mg/kg", "t": 19}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 19}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 51.70042600276906, "u": "%", "t": 19}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.9351477346139, "u": "umol/m^2/s", "t": 19}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.788082953863103, "u": "Cel", "t": 19}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.90697400553647, "u": "-", "t": 19}}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 151.82992653140352, "P": 198.73856880973486, "K": 199.51535389155774}, "u": "mg/kg", "t": 29}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 29}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 51.44076082774131, "u": "%", "t": 29}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 666.6916118942906, "u": "umol/m^2/s", "t": 29}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.771765842852496, "u": "Cel", "t": 29}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.911368921911557, "u": "-", "t": 29}}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.8970467656148, "P": 198.4304301009224, "K": 198.71099782429525}, "u": "mg/kg", "t": 39}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 39}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 51.206429499071284, "u": "%", "t": 39}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.0524768128316, "u": "umol/m^2/s", "t": 39}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 25.05744103344936, "u": "Cel", "t": 39}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.95970040792929, "u": "-", "t": 39}}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 150.6261701573653, "P": 200.25227044871184, "K": 200.47382697139435}, "u": "mg/kg", "t": 49}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 49}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 49.733345955868515, "u": "%", "t": 49}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 671.7769597319093, "u": "umol/m^2/s", "t": 49}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.14288827779752, "u": "Cel", "t": 49}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.053222883709369, "u": "-", "t": 49}}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 151.76229358069492, "P": 199.77809217985248, "K": 201.37370840352486}, "u": "mg/kg", "t": 59}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 59}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 49.37398817279022, "u": "%", "t": 59}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 664.866121437385, "u": "umol/m^2/s", "t": 59}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 25.51925698534146, "u": "Cel", "t": 59}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.057835422125141, "u": "-", "t": 59}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 59}
+Received action: {"message": "WARNING: The measured value 49.37398817279022 % and the mean value 49.7991809881965 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 59}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.06217793948846, "P": 198.93554572443333, "K": 199.6863968267822}, "u": "mg/kg", "t": 69}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 69}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.134344841328904, "u": "%", "t": 69}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.7660417840351, "u": "umol/m^2/s", "t": 69}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 23.95527987733211, "u": "Cel", "t": 69}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.03210425505723, "u": "-", "t": 69}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 69}
+Received action: {"message": "WARNING: The measured value 50.134344841328904 % and the mean value 49.933246529449455 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 69}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.3907626336566, "P": 199.54065474941723, "K": 200.473577455544}, "u": "mg/kg", "t": 79}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 79}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.090399288884825, "u": "%", "t": 79}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 667.8733867762473, "u": "umol/m^2/s", "t": 79}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.85415532174881, "u": "Cel", "t": 79}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.014240933696822, "u": "-", "t": 79}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 79}
+Received action: {"message": "WARNING: The measured value 50.090399288884825 % and the mean value 49.98563078259458 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 79}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.82988567886264, "P": 200.7412632957589, "K": 199.77850885651287}, "u": "mg/kg", "t": 89}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 89}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.31520587858681, "u": "%", "t": 89}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.1667971403741, "u": "umol/m^2/s", "t": 89}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.136174255101494, "u": "Cel", "t": 89}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.9992362835087425, "u": "-", "t": 89}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 89}
+Received action: {"message": "WARNING: The measured value 50.31520587858681 % and the mean value 50.079795095735214 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 89}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 147.94428894042576, "P": 201.1251053739448, "K": 200.196227416781}, "u": "mg/kg", "t": 99}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 99}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.42745476055463, "u": "%", "t": 99}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.7816471606243, "u": "umol/m^2/s", "t": 99}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.901526320224754, "u": "Cel", "t": 99}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.945081119460239, "u": "-", "t": 99}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 99}
+Received action: {"message": "WARNING: The measured value 50.42745476055463 % and the mean value 50.166710011940076 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 99}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.09097531776996, "P": 200.66961013001847, "K": 198.68642503136127}, "u": "mg/kg", "t": 109}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 109}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.87756962778587, "u": "%", "t": 109}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 663.9731597576949, "u": "umol/m^2/s", "t": 109}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.10739793942822, "u": "Cel", "t": 109}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.015509467925021, "u": "-", "t": 109}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 109}
+Received action: {"message": "WARNING: The measured value 50.87756962778587 % and the mean value 50.32467881546136 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 109}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.14576711475306, "P": 199.4208917668722, "K": 201.65681998538508}, "u": "mg/kg", "t": 119}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 119}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 49.786791448026584, "u": "%", "t": 119}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 667.1860569801261, "u": "umol/m^2/s", "t": 119}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 25.673773150689847, "u": "Cel", "t": 119}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.027111826071647, "u": "-", "t": 119}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 119}
+Received action: {"message": "WARNING: The measured value 49.786791448026584 % and the mean value 50.217101341974406 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 119}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 149.63101910364327, "P": 200.42331439358077, "K": 199.20725937163473}, "u": "mg/kg", "t": 130}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 130}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 48.95953044143519, "u": "%", "t": 130}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 670.8944083378242, "u": "umol/m^2/s", "t": 130}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 25.774556292879055, "u": "Cel", "t": 130}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 7.073406798681406, "u": "-", "t": 130}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 130}
+Received action: {"message": "WARNING: The measured value 48.95953044143519 % and the mean value 49.988452087330906 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 130}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 151.74602858737418, "P": 199.1526601289953, "K": 200.61408595079757}, "u": "mg/kg", "t": 139}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 139}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 48.59992501824107, "u": "%", "t": 139}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 666.900387471273, "u": "umol/m^2/s", "t": 139}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 23.981452825614177, "u": "Cel", "t": 139}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.923107554136375, "u": "-", "t": 139}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 139}
+Received action: {"message": "WARNING: The measured value 48.59992501824107 % and the mean value 49.71743736493232 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 139}
+
+Published to greenhouse_0/sensor_1: {"bn": "greenhouse_0/sensor_1", "e": {"n": "NPK", "v": {"N": 151.57007867258864, "P": 201.04207886231114, "K": 197.89460472412574}, "u": "mg/kg", "t": 149}}
+Published to greenhouse_0/sensor_5: {"bn": "greenhouse_0/sensor_5", "e": {"n": "Humidity", "v": 0, "u": "%", "t": 149}}
+Published to greenhouse_0/sensor_2: {"bn": "greenhouse_0/sensor_2", "e": {"n": "SoilMoisture", "v": 50.027507494399536, "u": "%", "t": 149}}
+Published to greenhouse_0/sensor_4: {"bn": "greenhouse_0/sensor_4", "e": {"n": "LightIntensity", "v": 672.695169357003, "u": "umol/m^2/s", "t": 149}}
+Published to greenhouse_0/sensor_0: {"bn": "greenhouse_0/sensor_0", "e": {"n": "Temperature", "v": 24.397264956846612, "u": "Cel", "t": 149}}
+Published to greenhouse_0/sensor_3: {"bn": "greenhouse_0/sensor_3", "e": {"n": "pH", "v": 6.920286523815115, "u": "-", "t": 149}}
+Received action: {"message": "WARNING: The measured value 0 % is highly outside the range [60.0, 75.0] (Severity: 0.6). Action needed for sensor_5 (Humidity)", "timestamp": 149}
+Received action: {"message": "WARNING: The measured value 50.027507494399536 % and the mean value 49.75337408330492 % are outside the range. Action needed for sensor_2 (SoilMoisture)", "timestamp": 149}
