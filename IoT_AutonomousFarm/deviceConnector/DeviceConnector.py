@@ -170,6 +170,6 @@ while True:
             write_log(f"Error publishing value from sensor {sensor['name']}: {e}")
             continue
 
-    time.sleep(120)   # wait for 2 minutes before reading the sensors again
+    time.sleep(10)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client

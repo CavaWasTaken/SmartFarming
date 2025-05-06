@@ -9,20 +9,410 @@ Subscribed to greenhouse_0/sensor_0
 Subscribed to greenhouse_0/sensor_3
 Connected to mqtt.eclipseprojects.io with result code 0
 
-Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 150.00219193821962, 'P': 199.59176217269473, 'K': 201.01901986033752}, 'u': 'mg/kg', 't': 0}}
-Missing key in the message: 'e1'
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 149.5564191274698, 'P': 199.19275285868673, 'K': 197.11263353208074}, 'u': 'mg/kg', 't': 1129}}
+Not enough data to calculate the linear regression
+Sensor 1: Weighted mean NPK: {'N': 149.5564191274698, 'P': 199.19275285868673, 'K': 197.11263353208074}
+Sensor 1: Expected next timestamp of NPK: None
+Sensor 1: Expected next value of NPK: None
 
-Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 54.46441213320815, 'u': '%', 't': 0}}
-Missing key in the message: 'e1'
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 41.723657213651656, 'u': '%', 't': 1129}}
+Not enough data to calculate the linear regression
+Sensor 5: Weighted mean Humidity: 41.723657213651656
+Sensor 5: Expected next timestamp of Humidity: None
+Sensor 5: Expected next value of Humidity: None
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1129
+[]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1129 cannot be evaluated, wait to receive more values
 
-Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.310995577548866, 'u': '%', 't': 0}}
-Missing key in the message: 'e1'
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.16823321834058, 'u': '%', 't': 1129}}
+Not enough data to calculate the linear regression
+Sensor 2: Weighted mean SoilMoisture: 49.16823321834058
+Sensor 2: Expected next timestamp of SoilMoisture: None
+Sensor 2: Expected next value of SoilMoisture: None
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1129
+[]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1129 cannot be evaluated, wait to receive more values
 
-Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 500.0271698063313, 'u': 'umol/m^2/s', 't': 0}}
-Missing key in the message: 'e1'
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 689.2777486003265, 'u': 'umol/m^2/s', 't': 1129}}
+Not enough data to calculate the linear regression
+Sensor 4: Weighted mean LightIntensity: 689.2777486003265
+Sensor 4: Expected next timestamp of LightIntensity: None
+Sensor 4: Expected next value of LightIntensity: None
 
-Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 19.198740678520206, 'u': 'Cel', 't': 0}}
-Missing key in the message: 'e1'
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 23.894503527068377, 'u': 'Cel', 't': 1129}}
+Not enough data to calculate the linear regression
+Sensor 0: Weighted mean Temperature: 23.894503527068377
+Sensor 0: Expected next timestamp of Temperature: None
+Sensor 0: Expected next value of Temperature: None
 
-Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.993442181778083, 'u': '-', 't': 0}}
-Missing key in the message: 'e1'
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.966928938764618, 'u': '-', 't': 1129}}
+Not enough data to calculate the linear regression
+Sensor 3: Weighted mean pH: 6.966928938764618
+Sensor 3: Expected next timestamp of pH: None
+Sensor 3: Expected next value of pH: None
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 146.54298511949736, 'P': 199.28508294065878, 'K': 197.1076312330068}, 'u': 'mg/kg', 't': 1139}}
+Sensor 1: Weighted mean NPK: {'N': 147.54746312215482, 'P': 199.2543062466681, 'K': 197.10929866603146}
+Sensor 1: Expected next timestamp of NPK: 1149.0
+Sensor 1: Expected next value of NPK: {'N': 143.52955111152494, 'P': 199.3774130226308, 'K': 197.1026289339329}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 37.70899297017482, 'u': '%', 't': 1139}}
+Sensor 5: Weighted mean Humidity: 39.04721438466709
+Sensor 5: Expected next timestamp of Humidity: 1149.0
+Sensor 5: Expected next value of Humidity: 33.69432872669796
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1139
+[1129]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1139 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.19143599372273, 'u': '%', 't': 1139}}
+Sensor 2: Weighted mean SoilMoisture: 48.51703506859534
+Sensor 2: Expected next timestamp of SoilMoisture: 1149.0
+Sensor 2: Expected next value of SoilMoisture: 47.214638769104866
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 689.928929235622, 'u': 'umol/m^2/s', 't': 1139}}
+Sensor 4: Weighted mean LightIntensity: 689.7118690238568
+Sensor 4: Expected next timestamp of LightIntensity: 1149.0
+Sensor 4: Expected next value of LightIntensity: 690.5801098709176
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.63790755150761, 'u': 'Cel', 't': 1139}}
+Sensor 0: Weighted mean Temperature: 24.390106210027866
+Sensor 0: Expected next timestamp of Temperature: 1149.0
+Sensor 0: Expected next value of Temperature: 25.38131157594684
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.980506011804839, 'u': '-', 't': 1139}}
+Sensor 3: Weighted mean pH: 6.975980320791432
+Sensor 3: Expected next timestamp of pH: 1149.0
+Sensor 3: Expected next value of pH: 6.99408308484506
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1139 is arrived (1149.0)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1139
+The requested next value of sensor_4 (LightIntensity) at timestamp 1139 is ready (690.5801098709176)
+
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1139
+[1129, 1139]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1139 is ready (1149.0)
+Received request for next value of sensor_0 (Temperature) at timestamp 1139
+The requested next value of sensor_0 (Temperature) at timestamp 1139 is ready (25.38131157594684)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 147.67802326304542, 'P': 197.60759565275413, 'K': 200.3887261894703}, 'u': 'mg/kg', 't': 1150}}
+Sensor 1: Weighted mean NPK: {'N': 147.61274319260013, 'P': 198.43095094971113, 'K': 198.7490124277509}
+Sensor 1: Expected next timestamp of NPK: 1160.5
+Sensor 1: Expected next value of NPK: {'N': 146.10025663374836, 'P': 197.07031884120323, 'K': 201.55513088505745}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 41.42295528559241, 'u': '%', 't': 1150}}
+Sensor 5: Weighted mean Humidity: 40.235084835129754
+Sensor 5: Expected next timestamp of Humidity: 1160.5
+Sensor 5: Expected next value of Humidity: 40.10589913514586
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1150
+[1129, 1139]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1150 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 51.551165587571546, 'u': '%', 't': 1150}}
+Sensor 2: Weighted mean SoilMoisture: 50.03410032808345
+Sensor 2: Expected next timestamp of SoilMoisture: 1160.5
+Sensor 2: Expected next value of SoilMoisture: 52.106303038972214
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 689.1662176812769, 'u': 'umol/m^2/s', 't': 1150}}
+Sensor 4: Weighted mean LightIntensity: 689.4390433525668
+Sensor 4: Expected next timestamp of LightIntensity: 1160.5
+Sensor 4: Expected next value of LightIntensity: 689.3226968955454
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.77588015016901, 'u': 'Cel', 't': 1150}}
+Sensor 0: Weighted mean Temperature: 24.582993180098438
+Sensor 0: Expected next timestamp of Temperature: 1160.5
+Sensor 0: Expected next value of Temperature: 25.314118799606135
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.945905603185577, 'u': '-', 't': 1150}}
+Sensor 3: Weighted mean pH: 6.960942961988504
+Sensor 3: Expected next timestamp of pH: 1160.5
+Sensor 3: Expected next value of pH: 6.942502459492027
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1150 is arrived (1160.5)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1150
+The requested next value of sensor_4 (LightIntensity) at timestamp 1150 is ready (689.3226968955454)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1150
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1150 is ready (689.4390433525668)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1150
+[1129, 1139, 1150]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1150 is ready (1160.5)
+Received request for next value of sensor_0 (Temperature) at timestamp 1150
+The requested next value of sensor_0 (Temperature) at timestamp 1150 is ready (25.314118799606135)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 147.86080669690776, 'P': 198.45105101452367, 'K': 197.24791633185635}, 'u': 'mg/kg', 't': 1160}}
+Sensor 1: Weighted mean NPK: {'N': 147.7119685943232, 'P': 198.43899097563616, 'K': 198.14857398939307}
+Sensor 1: Expected next timestamp of NPK: 1170.3333333333333
+Sensor 1: Expected next value of NPK: {'N': 146.9526611866498, 'P': 197.64459609615662, 'K': 198.92607228581983}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 39.513232701575795, 'u': '%', 't': 1160}}
+Sensor 5: Weighted mean Humidity: 39.94634398170817
+Sensor 5: Expected next timestamp of Humidity: 1170.3333333333333
+Sensor 5: Expected next value of Humidity: 39.43158353647364
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1160
+[1129, 1139, 1150]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1160 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.973810070376814, 'u': '%', 't': 1160}}
+Sensor 2: Weighted mean SoilMoisture: 49.209984225000795
+Sensor 2: Expected next timestamp of SoilMoisture: 1170.3333333333333
+Sensor 2: Expected next value of SoilMoisture: 49.2194877319124
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 688.1801184869818, 'u': 'umol/m^2/s', 't': 1160}}
+Sensor 4: Weighted mean LightIntensity: 688.9354734063329
+Sensor 4: Expected next timestamp of LightIntensity: 1170.3333333333333
+Sensor 4: Expected next value of LightIntensity: 688.1255400237291
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.706014939649037, 'u': 'Cel', 't': 1160}}
+Sensor 0: Weighted mean Temperature: 24.632201883918675
+Sensor 0: Expected next timestamp of Temperature: 1170.3333333333333
+Sensor 0: Expected next value of Temperature: 25.14044586097832
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.96481632427597, 'u': '-', 't': 1160}}
+Sensor 3: Weighted mean pH: 6.96249230690349
+Sensor 3: Expected next timestamp of pH: 1170.3333333333333
+Sensor 3: Expected next value of pH: 6.953888447894412
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1160 is arrived (1170.3333333333333)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1160
+The requested next value of sensor_4 (LightIntensity) at timestamp 1160 is ready (688.1255400237291)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1160
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1160 is ready (688.9354734063329)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1160
+[1129, 1139, 1150, 1160]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1160 is ready (1170.3333333333333)
+Received request for next value of sensor_0 (Temperature) at timestamp 1160
+The requested next value of sensor_0 (Temperature) at timestamp 1160 is ready (25.14044586097832)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 147.93472433215996, 'P': 198.59065553222945, 'K': 200.3304018610012}, 'u': 'mg/kg', 't': 1169}}
+Sensor 1: Weighted mean NPK: {'N': 147.78622050693545, 'P': 198.4895458278339, 'K': 198.87584994659576}
+Sensor 1: Expected next timestamp of NPK: 1179.0
+Sensor 1: Expected next value of NPK: {'N': 147.3480400096198, 'P': 198.0000805179514, 'K': 200.36557592888207}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 43.307313661247846, 'u': '%', 't': 1169}}
+Sensor 5: Weighted mean Humidity: 41.066667208221396
+Sensor 5: Expected next timestamp of Humidity: 1179.0
+Sensor 5: Expected next value of Humidity: 42.16077394674429
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1169
+[1129, 1139, 1150, 1160]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1169 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 50.85112672596762, 'u': '%', 't': 1169}}
+Sensor 2: Weighted mean SoilMoisture: 49.75703172532307
+Sensor 2: Expected next timestamp of SoilMoisture: 1179.0
+Sensor 2: Expected next value of SoilMoisture: 50.47214788263465
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.1931874242391, 'u': 'umol/m^2/s', 't': 1169}}
+Sensor 4: Weighted mean LightIntensity: 690.0213780789683
+Sensor 4: Expected next timestamp of LightIntensity: 1179.0
+Sensor 4: Expected next value of LightIntensity: 690.8700670853627
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.239284052649655, 'u': 'Cel', 't': 1169}}
+Sensor 0: Weighted mean Temperature: 24.501229273495667
+Sensor 0: Expected next timestamp of Temperature: 1179.0
+Sensor 0: Expected next value of Temperature: 24.68715698317802
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.935011994716635, 'u': '-', 't': 1169}}
+Sensor 3: Weighted mean pH: 6.953332202841206
+Sensor 3: Expected next timestamp of pH: 1179.0
+Sensor 3: Expected next value of pH: 6.935393734610807
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1169 is arrived (1179.0)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1169
+The requested next value of sensor_4 (LightIntensity) at timestamp 1169 is ready (690.8700670853627)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1169
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1169 is ready (690.0213780789683)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1169
+[1129, 1139, 1150, 1160, 1169]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1169 is ready (1179.0)
+Received request for next value of sensor_0 (Temperature) at timestamp 1169
+The requested next value of sensor_0 (Temperature) at timestamp 1169 is ready (24.68715698317802)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 149.34228298722596, 'P': 197.08261344274757, 'K': 198.16472301232747}, 'u': 'mg/kg', 't': 1179}}
+Sensor 1: Weighted mean NPK: {'N': 148.23080978701844, 'P': 198.08756514638068, 'K': 198.67267082251914}
+Sensor 1: Expected next timestamp of NPK: 1189.0
+Sensor 1: Expected next value of NPK: {'N': 148.4627261195635, 'P': 197.1879382880303, 'K': 199.5755621566264}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 42.765840466155424, 'u': '%', 't': 1179}}
+Sensor 5: Weighted mean Humidity: 41.55214528191683
+Sensor 5: Expected next timestamp of Humidity: 1189.0
+Sensor 5: Expected next value of Humidity: 43.03865246755107
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1179
+[1129, 1139, 1150, 1160, 1169]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1179 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 47.90559537712935, 'u': '%', 't': 1179}}
+Sensor 2: Weighted mean SoilMoisture: 49.228049911553434
+Sensor 2: Expected next timestamp of SoilMoisture: 1189.0
+Sensor 2: Expected next value of SoilMoisture: 49.10373456014896
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 693.7008873797688, 'u': 'umol/m^2/s', 't': 1179}}
+Sensor 4: Weighted mean LightIntensity: 691.0726664506255
+Sensor 4: Expected next timestamp of LightIntensity: 1189.0
+Sensor 4: Expected next value of LightIntensity: 693.102712727249
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.38881343204212, 'u': 'Cel', 't': 1179}}
+Sensor 0: Weighted mean Temperature: 24.4691104616518
+Sensor 0: Expected next timestamp of Temperature: 1189.0
+Sensor 0: Expected next value of Temperature: 24.5716409872153
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.991003678881359, 'u': '-', 't': 1179}}
+Sensor 3: Weighted mean pH: 6.964095481709821
+Sensor 3: Expected next timestamp of pH: 1189.0
+Sensor 3: Expected next value of pH: 6.963962967070598
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1179 is arrived (1189.0)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1179
+The requested next value of sensor_4 (LightIntensity) at timestamp 1179 is ready (693.102712727249)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1179
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1179 is ready (691.0726664506255)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1179
+[1129, 1139, 1150, 1160, 1169, 1179]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1179 is ready (1189.0)
+Received request for next value of sensor_0 (Temperature) at timestamp 1179
+The requested next value of sensor_0 (Temperature) at timestamp 1179 is ready (24.5716409872153)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 147.91155524182585, 'P': 199.22660958214163, 'K': 199.17519872496632}, 'u': 'mg/kg', 't': 1190}}
+Sensor 1: Weighted mean NPK: {'N': 148.15099615072032, 'P': 198.37232625532093, 'K': 198.79830279813092}
+Sensor 1: Expected next timestamp of NPK: 1200.1666666666667
+Sensor 1: Expected next value of NPK: {'N': 148.23714489092745, 'P': 198.01223012770123, 'K': 199.70430415491379}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 37.846722901197104, 'u': '%', 't': 1190}}
+Sensor 5: Weighted mean Humidity: 40.6257896867369
+Sensor 5: Expected next timestamp of Humidity: 1200.1666666666667
+Sensor 5: Expected next value of Humidity: 40.62152440933888
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1190
+[1129, 1139, 1150, 1160, 1169, 1179]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1190 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.570477265500514, 'u': '%', 't': 1190}}
+Sensor 2: Weighted mean SoilMoisture: 49.0636567500402
+Sensor 2: Expected next timestamp of SoilMoisture: 1200.1666666666667
+Sensor 2: Expected next value of SoilMoisture: 48.741990402442006
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.3022523298816, 'u': 'umol/m^2/s', 't': 1190}}
+Sensor 4: Weighted mean LightIntensity: 691.3800629204396
+Sensor 4: Expected next timestamp of LightIntensity: 1200.1666666666667
+Sensor 4: Expected next value of LightIntensity: 693.4604310837144
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.089382799747042, 'u': 'Cel', 't': 1190}}
+Sensor 0: Weighted mean Temperature: 24.37417854617561
+Sensor 0: Expected next timestamp of Temperature: 1200.1666666666667
+Sensor 0: Expected next value of Temperature: 24.331464986676806
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.949817583709387, 'u': '-', 't': 1190}}
+Sensor 3: Weighted mean pH: 6.960526007209713
+Sensor 3: Expected next timestamp of pH: 1200.1666666666667
+Sensor 3: Expected next value of pH: 6.955722692651986
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1190 is arrived (1200.1666666666667)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1190
+The requested next value of sensor_4 (LightIntensity) at timestamp 1190 is ready (693.4604310837144)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1190
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1190 is ready (691.3800629204396)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1190
+[1129, 1139, 1150, 1160, 1169, 1179, 1190]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1190 is ready (1200.1666666666667)
+Received request for next value of sensor_0 (Temperature) at timestamp 1190
+The requested next value of sensor_0 (Temperature) at timestamp 1190 is ready (24.331464986676806)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 147.68375559640467, 'P': 196.38548387231273, 'K': 196.64523263871587}, 'u': 'mg/kg', 't': 1200}}
+Sensor 1: Weighted mean NPK: {'N': 148.04716491642793, 'P': 197.93080572576355, 'K': 198.31984276270535}
+Sensor 1: Expected next timestamp of NPK: 1210.142857142857
+Sensor 1: Expected next value of NPK: {'N': 147.98796127920954, 'P': 197.07511372173673, 'K': 198.46079542347076}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 38.06071779266135, 'u': '%', 't': 1200}}
+Sensor 5: Weighted mean Humidity: 40.055773710275666
+Sensor 5: Expected next timestamp of Humidity: 1210.142857142857
+Sensor 5: Expected next value of Humidity: 39.33459247402925
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1200
+[1129, 1139, 1150, 1160, 1169, 1179, 1190]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1200 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 48.80674158294293, 'u': '%', 't': 1200}}
+Sensor 2: Weighted mean SoilMoisture: 49.00656449068525
+Sensor 2: Expected next timestamp of SoilMoisture: 1210.142857142857
+Sensor 2: Expected next value of SoilMoisture: 48.668120656433985
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 696.6553640948999, 'u': 'umol/m^2/s', 't': 1200}}
+Sensor 4: Weighted mean LightIntensity: 692.5523520703197
+Sensor 4: Expected next timestamp of LightIntensity: 1210.142857142857
+Sensor 4: Expected next value of LightIntensity: 695.755760864916
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 24.88890900995574, 'u': 'Cel', 't': 1200}}
+Sensor 0: Weighted mean Temperature: 24.488563093682306
+Sensor 0: Expected next timestamp of Temperature: 1210.142857142857
+Sensor 0: Expected next value of Temperature: 24.597565969123757
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.999714290732876, 'u': '-', 't': 1200}}
+Sensor 3: Weighted mean pH: 6.969234514659304
+Sensor 3: Expected next timestamp of pH: 1210.142857142857
+Sensor 3: Expected next value of pH: 6.976318387812754
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1200 is arrived (1210.142857142857)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1200
+The requested next value of sensor_4 (LightIntensity) at timestamp 1200 is ready (695.755760864916)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1200
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1200 is ready (692.5523520703197)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1200
+[1129, 1139, 1150, 1160, 1169, 1179, 1190, 1200]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1200 is ready (1210.142857142857)
+Received request for next value of sensor_0 (Temperature) at timestamp 1200
+The requested next value of sensor_0 (Temperature) at timestamp 1200 is ready (24.597565969123757)
+
+
+Received: {'bn': 'greenhouse_0/sensor_1', 'e': {'n': 'NPK', 'v': {'N': 146.41892547381423, 'P': 199.9198608990605, 'K': 197.49219413525066}, 'u': 'mg/kg', 't': 1210}}
+Sensor 1: Weighted mean NPK: {'N': 147.72151702790518, 'P': 198.32861676042296, 'K': 198.1543130372144}
+Sensor 1: Expected next timestamp of NPK: 1220.125
+Sensor 1: Expected next value of NPK: {'N': 147.2727597098357, 'P': 198.08785790617188, 'K': 198.07124218304656}
+
+Received: {'bn': 'greenhouse_0/sensor_5', 'e': {'n': 'Humidity', 'v': 38.09878919090124, 'u': '%', 't': 1210}}
+Sensor 5: Weighted mean Humidity: 39.66437680640078
+Sensor 5: Expected next timestamp of Humidity: 1220.125
+Sensor 5: Expected next value of Humidity: 38.57334606643686
+Received request for the next timestamp of sensor_4 (LightIntensity) at timestamp 1210
+[1129, 1139, 1150, 1160, 1169, 1179, 1190, 1200]
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1210 is not yet ready
+
+
+Received: {'bn': 'greenhouse_0/sensor_2', 'e': {'n': 'SoilMoisture', 'v': 49.21784564492459, 'u': '%', 't': 1210}}
+Sensor 2: Weighted mean SoilMoisture: 49.04882072153312
+Sensor 2: Expected next timestamp of SoilMoisture: 1220.125
+Sensor 2: Expected next value of SoilMoisture: 48.81178010077862
+
+Received: {'bn': 'greenhouse_0/sensor_4', 'e': {'n': 'LightIntensity', 'v': 692.4634682081241, 'u': 'umol/m^2/s', 't': 1210}}
+Sensor 4: Weighted mean LightIntensity: 692.5345752978806
+Sensor 4: Expected next timestamp of LightIntensity: 1220.125
+Sensor 4: Expected next value of LightIntensity: 695.2431401654293
+
+Received: {'bn': 'greenhouse_0/sensor_0', 'e': {'n': 'Temperature', 'v': 25.312606186998202, 'u': 'Cel', 't': 1210}}
+Sensor 0: Weighted mean Temperature: 24.653371712345486
+Sensor 0: Expected next timestamp of Temperature: 1220.125
+Sensor 0: Expected next value of Temperature: 24.94779772083151
+
+Received: {'bn': 'greenhouse_0/sensor_3', 'e': {'n': 'pH', 'v': 6.907248438331271, 'u': '-', 't': 1210}}
+Sensor 3: Weighted mean pH: 6.956837299393698
+Sensor 3: Expected next timestamp of pH: 1220.125
+Sensor 3: Expected next value of pH: 6.947683805879854
+The requested next timestamp of sensor_4 (LightIntensity) at timestamp 1210 is arrived (1220.125)
+Received request for next value of sensor_4 (LightIntensity) at timestamp 1210
+The requested next value of sensor_4 (LightIntensity) at timestamp 1210 is ready (695.2431401654293)
+
+Received request for the mean value of sensor_4 (LightIntensity) at timestamp 1210
+The requested mean value of sensor_4 (LightIntensity) at timestamp 1210 is ready (692.5345752978806)
+Received request for the next timestamp of sensor_0 (Temperature) at timestamp 1210
+[1129, 1139, 1150, 1160, 1169, 1179, 1190, 1200, 1210]
+The requested next timestamp of sensor_0 (Temperature) at timestamp 1210 is ready (1220.125)
+Received request for next value of sensor_0 (Temperature) at timestamp 1210
+The requested next value of sensor_0 (Temperature) at timestamp 1210 is ready (24.94779772083151)
+

@@ -907,7 +907,7 @@ class CatalogREST(object):
         elif uri[0] == 'get_greenhouse_info':
             # check the existence of the parameters
             if 'greenhouse_id' in params and 'device_id' in params:
-                return get_greenhouse_info(self.catalog_connection, greenhouse_id, params['device_id'])
+                return get_greenhouse_info(self.catalog_connection, params['greenhouse_id'], params['device_id'])
 
             else:
                 cherrypy.response.status = 400

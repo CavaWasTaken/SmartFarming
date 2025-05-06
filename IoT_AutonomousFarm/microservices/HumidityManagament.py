@@ -123,7 +123,7 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
         write_log(f"Unexpected error on handling the message: {e}")
 
 if __name__ == "__main__":
-    while True:
+    for _ in range(5):  # try to get the sensors from the catalog for 5 times
         response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'HumidityManagement'})    # get the device information from the catalog
         if response.status_code == 200:
             sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
@@ -132,6 +132,10 @@ if __name__ == "__main__":
 
         else:
             write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()["error"]})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to get sensors from the Catalog after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+            
             time.sleep(60)
 
     mqtt_topics = [] # array of topics where the microservice is subscribed
@@ -145,7 +149,7 @@ if __name__ == "__main__":
     # Subscribe to events requiring humidity management for the greenhouse handled by the current device
     mqtt_topics.append(f"greenhouse_{sensors[0]['greenhouse_id']}/Irrigation")
 
-    while True:
+    for _ in range(5):  # try to start the MQTT client for 5 times
         try:
             client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"HumidityManagement_{device_id}", on_message, write_log)
             client.start()
@@ -153,17 +157,25 @@ if __name__ == "__main__":
 
         except Exception as e:
             write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to start MQTT client after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+            
+            
             time.sleep(60)   # wait for 60 seconds before trying again
 
     for topic in mqtt_topics:
-        while True:
+        for _ in range(5):
             try:
                 client.subscribe(topic)
                 break
 
             except Exception as e:
                 write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
-                time.sleep(60)  # wait for 60 seconds before trying again
+                if _ == 4:  # if it is the last attempt
+                    write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
+                else:
+                    time.sleep(60)  # wait for 60 seconds before trying again
 
     while True:
         time.sleep(1)   # keep the microservice running
