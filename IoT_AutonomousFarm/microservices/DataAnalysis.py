@@ -268,21 +268,21 @@ class DataAnalysisREST(object):
         elif uri[0] == 'get_mean_value':
             if 'sensor_id' not in params or 'sensor_type' not in params or 'timestamp' not in params:
                 cherrypy.response.status = 400
-                return {"error": "Missing parameters"}
+                return {"error": "MISSING PARAMETERS"}
             
             return get_mean_value(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
         
         elif uri[0] == 'get_next_timestamp':
             if 'sensor_id' not in params or 'sensor_type' not in params or 'timestamp' not in params:
                 cherrypy.response.status = 400
-                return {"error": "Missing parameters"}
+                return {"error": "MISSING PARAMETERS"}
             
             return get_next_timestamp(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
         
         elif uri[0] == 'get_next_value':
             if 'sensor_id' not in params or 'sensor_type' not in params or 'timestamp' not in params:
                 cherrypy.response.status = 400
-                return {"error": "Missing parameters"}
+                return {"error": "MISSING PARAMETERS"}
             
             return get_next_value(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
         else:
@@ -359,20 +359,29 @@ if __name__ == "__main__":
             time.sleep(60)  # wait for 60 seconds before trying again
 
     for _ in range(5):
-        # it has to read the sensors from the catalog
-        response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})
-        if response.status_code == 200:
-            sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
-            write_log(f"Received {len(sensors)} sensors: {sensors}")
-            break   # exit the loop if the request is successful
-        
-        else:
-            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+        try:
+            # it has to read the sensors from the catalog
+            response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})
+            if response.status_code == 200:
+                sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+                write_log(f"Received {len(sensors)} sensors: {sensors}")
+                break   # exit the loop if the request is successful
+            
+            else:
+                write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+                if _ == 4:  # if it is the last attempt
+                    write_log("Failed to get sensors from the Catalog after 5 attempts")
+                    exit(1)  # exit the program if the device information is not found
+                
+                time.sleep(60)   # wait for 60 seconds before trying again
+
+        except Exception as e:
+            write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
             if _ == 4:  # if it is the last attempt
                 write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)  # exit the program if the device information is not found
-            
-            time.sleep(60)   # wait for 60 seconds before trying again
+                exit(1)
+
+            time.sleep(60)  # wait for 60 seconds before trying again
 
     mqtt_topics = [] # initialize the array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics

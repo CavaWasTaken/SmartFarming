@@ -6,6 +6,8 @@ class DTH22:
 
     def __init__(self, Sensor):
         self.Sensor = Sensor
+        self.humidityGoal = None
+        self.temperatureGoal = None
         self.humidityIncrease = False
         self.humidityDecrease = False
         self.temperatureIncrease = False
@@ -35,6 +37,25 @@ class DTH22:
 
         current_humidity = max(0, min(100, current_humidity))
 
+        # check if we have a goal for humidity, to know when to stop the action
+        if self.humidityGoal is not None:
+            
+            # if the command is to increase humidity, we check if the current humidity has reached the goal
+            if self.humidityIncrease:
+            
+                if current_humidity >= self.humidityGoal:
+                    # stop the action
+                    self.humidityIncrease = False
+                    self.humidityGoal = None
+            
+            # if the command is to decrease humidity, we check if the current humidity has reached the goal
+            elif self.humidityDecrease:
+            
+                if current_humidity <= self.humidityGoal:
+                    # stop the action
+                    self.humidityDecrease = False
+                    self.humidityGoal = None
+
         return current_humidity
 
     def get_DTH22_Temperature(self):
@@ -56,6 +77,25 @@ class DTH22:
         current_temperature = trend + noise
 
         current_temperature = max(-10, min(40, current_temperature))
+
+        # check if we have a goal for temperature, to know when to stop the action
+        if self.temperatureGoal is not None:   
+
+            # if the command is to increase temperature, we check if the current temperature has reached the goal
+            if self.temperatureIncrease:
+            
+                if current_temperature >= self.temperatureGoal:
+                    # stop the action
+                    self.temperatureIncrease = False
+                    self.temperatureGoal = None
+            
+            # if the command is to decrease temperature, we check if the current temperature has reached the goal
+            elif self.temperatureDecrease:
+            
+                if current_temperature <= self.temperatureGoal:
+                    # stop the action
+                    self.temperatureDecrease = False
+                    self.temperatureGoal = None
 
         return current_temperature
 

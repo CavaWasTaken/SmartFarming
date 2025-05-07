@@ -63,49 +63,74 @@ def handle_message(topic, sensor_type, val):
         fields[key] = ""
 
 def on_message(client, userdata, msg):    # when a new message of one of the topic where it is subscribed arrives to the broker
-    message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
-    write_log(f"Received: {message}")
-    for topic in mqtt_topics:
-        if message["bn"] == topic:
-            message = message["e"]
-            sensor_type = message["n"]
-            val = message["v"]
-            handle_message(topic, sensor_type, val)
-            break   # if the message is processed, break the loop
+    try:
+        message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
+        write_log(f"Received: {message}")
+        for topic in mqtt_topics:
+            if message["bn"] == topic:
+                try:
+                    message = message["e"]
+                    sensor_type = message["n"]
+                    val = message["v"]
+                    handle_message(topic, sensor_type, val)
+                    break   # if the message is processed, break the loop
 
+                except KeyError as e:
+                    write_log(f"Missing key in the message: {e}")
+                except Exception as e:
+                    write_log(f"Error processing the message: {e}")
+                finally:
+                    break  # if the message is processed, exit the loop
+
+    except json.JSONDecodeError:
+        write_log("Error decoding the MQTT message payload")
+    except Exception as e:
+        write_log(f"Unexpected error in on_message: {e}")
+        
 def get_field_data(field, n):
     write_log(f"Request to get last {n} values of field '{field}'")
+    try:
     # ask to the ThingSpeak API the last N data of the field
-    response = requests.get(f"{read_url}/{thingSpeak_config["channel_id"]}/feeds.json", params={'api_key': thingSpeak_config["read_api_key"], 'results': 0})
-    if response.status_code == 200:
-        data = response.json()
-        channel_info = data.get("channel", {})
-        field_num = None
+        response = requests.get(f"{read_url}/{thingSpeak_config["channel_id"]}/feeds.json", params={'api_key': thingSpeak_config["read_api_key"], 'results': 0})
+        if response.status_code == 200:
+            data = response.json()
+            channel_info = data.get("channel", {})
+            field_num = None
 
-        for key, value in channel_info.items():
-            if value == field and key.startswith("field"):
-                field_number = key.replace("field", "")  # Extract the number
-                break
+            for key, value in channel_info.items():
+                if value == field and key.startswith("field"):
+                    field_number = key.replace("field", "")  # Extract the number
+                    break
 
-        if field_number:
-            response = requests.get(f"{read_url}/{thingSpeak_config['channel_id']}/fields/{field_number}.json", params={"api_key": thingSpeak_config["read_api_key"], "results": n})
+            if field_number:
+                response = requests.get(f"{read_url}/{thingSpeak_config['channel_id']}/fields/{field_number}.json", params={"api_key": thingSpeak_config["read_api_key"], "results": n})
 
-            if response.status_code == 200:
-                field_data = response.json()
-                entries = field_data.get("feeds", [])
-                values = [entry.get(f"field{field_number}") for entry in entries if entry.get(f"field{field_number}") is not None]
+                if response.status_code == 200:
+                    field_data = response.json()
+                    entries = field_data.get("feeds", [])
+                    values = [entry.get(f"field{field_number}") for entry in entries if entry.get(f"field{field_number}") is not None]
 
-                write_log(f"Successfully fetched {len(values)} values of field '{field}': {values}")
-                return {"values": values}
+                    write_log(f"Successfully fetched {len(values)} values of field '{field}': {values}")
+                    return {"values": values}
+                
+                else:
+                    write_log(f"Failed to fetch data from ThingSpeak. Response: {response.reason}")
+                    cherrypy.response.status = 500
+                    return {"error": "Failed to fetch data from ThingSpeak"}
+
             else:
-                write_log(f"Failed to fetch data from ThingSpeak. Response: {response.reason}")
-                raise cherrypy.HTTPError(status=500, message='Failed to fetch data from ThingSpeak')
+                write_log(f"Failed to fetch data from ThingSpeak. Field '{field}' not found in the channel")
+                cherrypy.response.status = 404
+                return {"error": "Field not found in the channel"}
+
         else:
-            write_log(f"Failed to fetch data from ThingSpeak. Field '{field}' not found in the channel")
-            raise cherrypy.HTTPError(status=404, message='Field not found in the channel')
-    else:
-        write_log(f"Failed to fetch data from ThingSpeak. Response: {response.reason}")
-        raise cherrypy.HTTPError(status=500, message='Failed to fetch data from ThingSpeak')
+            write_log(f"Failed to fetch data from ThingSpeak. Response: {response.reason}")
+            cherrypy.response.status = 500
+            return {"error": "Failed to fetch data from ThingSpeak"}
+        
+    except Exception as e:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
 
 # REST API exposed by the ThingSpeak Adaptor
 class ThingSpeakAdaptorRestAPI(object):
@@ -117,53 +142,100 @@ class ThingSpeakAdaptorRestAPI(object):
     @cherrypy.tools.json_out()
     def GET(self, *uri, **params):
         if len(uri) == 0:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+        
         elif uri[0] == "get_field_data":
+            if 'field' not in params or 'n' not in params:
+                cherrypy.response.status = 400
+                return {"error": "MISSING PARAMETERS"}
+            
             return get_field_data(params['field'], params['n'])
+        
         else:
-            raise cherrypy.HTTPError(status=400, message='UNABLE TO MANAGE THIS URL')
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
     
     @cherrypy.tools.json_out()  # automatically convert return value
     def POST(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
+    
     @cherrypy.tools.json_out()  # automatically convert return value        
     def PUT(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-        
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
+            
     @cherrypy.tools.json_out()  # automatically convert return value
     def DELETE(self, *uri, **params):
-        raise cherrypy.HTTPError(status=405, message='METHOD NOT ALLOWED')
-
+        cherrypy.response.status = 405
+        return {"error": "METHOD NOT ALLOWED"}
+    
 if __name__ == "__main__":
-    thingSpeakClient = ThingSpeakAdaptorRestAPI(None)
-    conf = {
-        '/': {
-            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-            'tools.sessions.on': True,
+    try:
+        thingSpeakClient = ThingSpeakAdaptorRestAPI(None)
+        conf = {
+            '/': {
+                'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
+                'tools.sessions.on': True,
+            }
         }
-    }
-    cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8082})
-    cherrypy.tree.mount(thingSpeakClient, '/', conf)
-    cherrypy.engine.start()
-
-    # instead of reading the topics like this, i would like to change it and make that the microservices build the topics by itself by knowing the greenhouse where it is connected and the plant that it contains
-    response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'ThingSpeakAdaptor'})    # get the device information from the catalog
-    if response.status_code == 200:
-        sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
-        write_log(f"Received {len(sensors)} sensors: {sensors}")
-    else:
-        write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
-        exit(1) # if the request fails, the device connector stops
-        
-    response = requests.get(f"{catalog_url}/get_greenhouse_info", params={'greenhouse_id': sensors[0]["greenhouse_id"], 'device_id': device_id})    # get the greenhouse information from the catalog
-    if response.status_code == 200:
-        greenhouse_info = response.json()    # greenhouse_info is a dictionary with the information of the greenhouse
-        write_log(f"Received greenhouse information: {greenhouse_info}")
-        thingSpeak_config = greenhouse_info["thingSpeak_config"]
-    else:
-        write_log(f"Failed to get greenhouse information from the Catalog\nResponse: {response.reason}")
+        cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8082})
+        cherrypy.tree.mount(thingSpeakClient, '/', conf)
+        cherrypy.engine.start()
+    
+    except Exception as e:
+        write_log(f"Error starting ThingSpeakAdaptor: {e}")
         exit(1)
+
+    for _ in range(5):
+        try: 
+            response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'ThingSpeakAdaptor'})    # get the device information from the catalog
+            if response.status_code == 200:
+                sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+                write_log(f"Received {len(sensors)} sensors: {sensors}")
+                break
+
+            else:
+                write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
+                if _ == 4:
+                    write_log("Failed to get sensors from the Catalog after 5 attempts")
+                    exit(1)
+                
+                time.sleep(60)  # wait 60 seconds before retrying
+
+        except Exception as e:
+            write_log(f"Error getting sensors from the Catalog: {e}")
+            if _ == 4:
+                write_log("Failed to get sensors from the Catalog after 5 attempts")
+                exit(1)
+            
+            time.sleep(60)
+        
+    for _ in range(5):
+        try:
+            response = requests.get(f"{catalog_url}/get_greenhouse_info", params={'greenhouse_id': sensors[0]["greenhouse_id"], 'device_id': device_id})    # get the greenhouse information from the catalog
+            if response.status_code == 200:
+                greenhouse_info = response.json()    # greenhouse_info is a dictionary with the information of the greenhouse
+                write_log(f"Received greenhouse information: {greenhouse_info}")
+                thingSpeak_config = greenhouse_info["thingSpeak_config"]
+                break
+
+            else:
+                write_log(f"Failed to get greenhouse information from the Catalog\nResponse: {response.reason}")
+                if _ == 4:
+                    write_log("Failed to get greenhouse information from the Catalog after 5 attempts")
+                    exit(1)
+                
+                time.sleep(60)  # wait 60 seconds before retrying
+
+        except Exception as e:
+            write_log(f"Error getting greenhouse information from the Catalog: {e}")
+            if _ == 4:
+                write_log("Failed to get greenhouse information from the Catalog after 5 attempts")
+                exit(1)
+            
+            time.sleep(60)
 
     mqtt_topics = [] # array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
@@ -171,12 +243,33 @@ if __name__ == "__main__":
 
     write_log("")
 
-    # create the mqtt client
-    client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"ThingSpeakAdaptor_{device_id}", on_message, write_log)
-    client.start()
+    for _ in range(5):
+        try:
+            # create the mqtt client
+            client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"ThingSpeakAdaptor_{device_id}", on_message, write_log)
+            client.start()
+            break
+
+        except Exception as e:
+            write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to start MQTT client after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+            
+            time.sleep(60)   # wait for 60 seconds before trying again
+
     for topic in mqtt_topics:
-        client.subscribe(topic)
-    write_log("")
+        for _ in range(5):
+            try:
+                client.subscribe(topic)
+                break
+
+            except Exception as e:
+                write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
+                if _ == 4:  # if it is the last attempt
+                    write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
+                else:
+                    time.sleep(60)  # wait for 60 seconds before trying again
 
     while True:
         time.sleep(1)

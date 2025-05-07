@@ -7,6 +7,9 @@ class Light:
     
     def __init__(self, Sensor):
         self.Sensor = Sensor
+        self.goal = None
+        self.lightIncrease = False
+        self.lightDecrease = False
 
     # ldr sensor is the sensor that measures light intensity
     def get_LightIntensity_Values(self):
@@ -22,12 +25,36 @@ class Light:
             # introduce gradual change
             trend = 100 + 600 * math.sin(math.pi * time_of_day / 24)  # simulate daily light intensity variation
             
+            if self.lightIncrease:
+                trend += 5
+            elif self.lightDecrease:
+                trend -= 5
+
             # update the current light intensity value
             current_light_intensity = noise + trend
             
             # ensure light intensity stays within realistic bounds (0 to 1000)
             current_light_intensity = max(0.0, min(1000.0, current_light_intensity))
         
+            # check if we have a goal for light intensity, to know when to stop the action
+            if self.goal is not None:
+            
+                # if the command is to increase light intensity, we check if the current light intensity has reached the goal
+                if self.lightIncrease:
+            
+                    if current_light_intensity >= self.goal:
+                        # stop the action
+                        self.lightIncrease = False
+                        self.goal = None
+            
+                # if the command is to decrease light intensity, we check if the current light intensity has reached the goal
+                elif self.lightDecrease:
+            
+                    if current_light_intensity <= self.goal:
+                        # stop the action
+                        self.lightDecrease = False
+                        self.goal = None
+
         return current_light_intensity
 
     # start_time = datetime.now()
