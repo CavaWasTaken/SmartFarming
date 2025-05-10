@@ -731,9 +731,18 @@ def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequen
             if event is None:
                 cherrypy.response.status = 500
                 return {"error": "Event not inserted"}
-                
-            return {'message': 'Event scheduled successfully'}
             
+            cherrypy.response.status = 201
+            return {
+                'event_id': event[0],
+                'greenhouse_id': event[1],
+                'frequency': event[2],
+                'sensor_id': event[3],
+                'parameter': event[4],
+                'execution_time': str(event[5]),
+                'value': str(event[6])
+            }
+                            
     except psycopg2.errors.NotNullViolation as e:
         cherrypy.response.status = 400
         return {"error": f"Missing required fields: {str(e)}"}
@@ -766,9 +775,10 @@ def delete_event(conn, device_id, event_id):
             if event is not None:
                 cherrypy.response.status = 500
                 return {"error": "Event not deleted"}
-                
-            return {'message': 'Event deleted successfully'}
             
+            cherrypy.response.status = 200
+            return
+                            
     except Exception as e:
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
@@ -1270,12 +1280,11 @@ class CatalogREST(object):
     def DELETE(self, *uri, **params):
         if uri[0] == 'delete_event':
             try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'device_id' not in input_json and 'event_id' not in input_json:
+                if "device_id" not in params and "event_id" not in params:
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
-                
-                return delete_event(self.catalog_connection, input_json['device_id'], input_json['event_id'])
+
+                return delete_event(self.catalog_connection, params["device_id"], params["event_id"])
             
             except json.JSONDecodeError:
                 cherrypy.response.status = 400

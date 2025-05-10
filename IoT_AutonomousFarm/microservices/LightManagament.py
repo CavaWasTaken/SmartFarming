@@ -130,7 +130,7 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
 
     # depending on the frequency, we can schedule the next event
     # first we always delete the event from the catalog
-    response = requests.delete(f"{catalog_url}/delete_event", json={'device_id': device_id, 'event_id': event_id})
+    response = requests.delete(f"{catalog_url}/delete_event", params={'device_id': device_id, 'event_id': event_id})
     if response.status_code == 200:
         write_log(f"Event {event_id} deleted from the Catalog")
     
@@ -211,7 +211,7 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
                         sensor_id = event["sensor_id"]
                         parameter = event["parameter"]
                         frequency = event["frequency"]
-                        desired_value = event["value"]
+                        desired_value = float(event["value"])
                         execution_time = event["execution_time"]
 
                         handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desired_value, execution_time)
