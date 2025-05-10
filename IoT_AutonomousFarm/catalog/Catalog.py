@@ -529,19 +529,19 @@ def get_all_plants(conn):
         return {"error": "Internal error"}
     
 # function to add a plant to a greenhouse
-def add_plant_to_greenhouse(conn, greenhouse_id, plant_id):
+def add_plant_to_greenhouse(conn, greenhouse_id, plant_id, area_id):
     with conn.cursor() as cur:
         # check if the plant is already in the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
+        cur.execute(sql.SQL("SELECT * FROM area_plants WHERE greenhouse_id = %s AND plant_id = %s AND area_id=%s"), [greenhouse_id, plant_id, area_id])
         plant = cur.fetchone()
         if plant is not None:
             raise cherrypy.HTTPError(404, "Plant already in the greenhouse")
         # insert the new plant in the greenhouse
         try:
-            cur.execute(sql.SQL("INSERT INTO greenhouse_plants (greenhouse_id, plant_id) VALUES (%s, %s)"), [greenhouse_id, plant_id])
+            cur.execute(sql.SQL("INSERT INTO area_plants (greenhouse_id, plant_id, area_id) VALUES (%s, %s,%s)"), [greenhouse_id, plant_id, area_id])
             conn.commit()
             # return the updated list of plants in the greenhouse
-            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            cur.execute(sql.SQL("SELECT plant_id FROM area_plants WHERE greenhouse_id = %s AND area_id=%s"), [greenhouse_id, area_id])
             plants = cur.fetchall()
             if plants is None:
                 raise cherrypy.HTTPError(404, "No plants found")
@@ -1103,7 +1103,37 @@ def get_sensors_area(conn, greenhouse_id, area_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# get the plants of each area of the greenhouse
+def get_plants_area(conn, greenhouse_id, area_id):
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # get plants of the greenhouse
+            cur.execute(sql.SQL("SELECT plant_id FROM area_plants WHERE greenhouse_id = %s and area_id = %s"), [greenhouse_id, area_id])
+            plants = cur.fetchall() or [] # fall back to empty list if no plants are found
+            
+            plants_list = []
+            for plant in plants:
+                cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
+                plant = cur.fetchone() or [] # fall back to empty list if no plants are found
+                if plant: # if the plant exists
+                    plant_dict = {
+                    'plant_id': plant[0],
+                    'name': plant[1],
+                    'species': plant[2],
+                    'desired_thresholds': plant[3],
+                }
+                plants_list.append(plant_dict)
 
+            return {'plants': plants_list}
+    except Exception:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
+        
 
 
 
@@ -1225,6 +1255,15 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Missing parameters"}
         
+        elif uri[0] == 'get_plants_area':
+            # check the existence of the parameters
+            if 'greenhouse_id' in params and 'area_id' in params:
+                return get_plants_area(self.catalog_connection, params['greenhouse_id'], params['area_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+        
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}
@@ -1283,11 +1322,11 @@ class CatalogREST(object):
         elif uri[0] == 'add_plant_to_greenhouse':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
-                if 'greenhouse_id' not in input_json or 'plant_id' not in input_json:
+                if 'greenhouse_id' not in input_json or 'plant_id' not in input_json or 'area_id' not in input_json:
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
                 
-                return add_plant_to_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+                return add_plant_to_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'], input_json['area_id'])
             
             except json.JSONDecodeError:
                 cherrypy.response.status = 400

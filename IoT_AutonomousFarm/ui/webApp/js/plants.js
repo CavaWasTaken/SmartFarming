@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const greenhouseId = localStorage.getItem("greenhouse_id");
   const greenhouseName = localStorage.getItem("greenhouse_name");
   const greenhouseLocation = localStorage.getItem("greenhouse_location");
+  const areaId = localStorage.getItem("area_id");
+
 
   if (!token || !userId || !username) {
     alert("You are not logged in. Please log in to access this page.");
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((config) => {
       const catalog_url = config.catalog_url;
 
-      return fetch(`${catalog_url}/get_greenhouse_configurations?greenhouse_id=${greenhouseId}`, {
+      return fetch(`${catalog_url}/get_plants_area?greenhouse_id=${greenhouseId}&area_id=${areaId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -191,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
               body: JSON.stringify({
                 greenhouse_id: greenhouseId,
                 plant_id: plantId,
+                area_id: areaId,
               }),
             });
           })
