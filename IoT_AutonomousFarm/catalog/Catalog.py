@@ -694,34 +694,19 @@ def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
                     'frequency': event[2],
                     'sensor_id': event[3],
                     'parameter': event[4],
-                    'execution_time': event[5],
-                    'value': event[6]
+                    'execution_time': str(event[5]),
+                    'value': str(event[6])
                 }
                 events_list.append(event_dict)    # create a dictionary containing the information of each event
 
             return {'events': events_list}
             
-    except:
+    except Exception as e:
         cherrypy.response.status = 500
-        return {"error": "Internal error"}
-    
-    # with conn.cursor() as cur:
-    #     # Get current timestamp
-    #     current_time = datetime.datetime.now()
-    #     # Select only columns without any timestamp because seems that python cannot convert psql timestamps to JSON
-    #     cur.execute(sql.SQL("SELECT greenhouse_id, event_type, frequency, status FROM scheduled_events WHERE %s >= start_time AND (%s <= end_time or end_time is NULL)"), [current_time, current_time])
-    #     events = cur.fetchall()
-    #     if not events:
-    #         raise cherrypy.HTTPError(404, f"No events found")
-        
-    #     event_list = []
-    #     for event in events:
-    #         event_list.append({'greenhouse_id': event[0],'event_type':event[1], 'frequency':event[2], 'status':event[3]})
-        
-    #     return event_list
+        return {"error": "Internal error: " + str(e)}
 
 # Function to add one event in the DB
-def schedule_event(conn, device_id, greenhouse_id, frequency, sensor_id, parameter, execution_time, value):
+def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequency, value, execution_time):
     try:
         # check if the connection is closed
         if conn.closed:
@@ -1094,7 +1079,7 @@ class CatalogREST(object):
         elif uri[0] == 'get_scheduled_events':
             # check the existence of the parameters
             if 'device_id' in params and 'device_name' in params and 'greenhouse_id' in params:
-                return get_scheduled_events(self.catalog_connection, params['device_id'], params['device_name'], params['greenhouse_id'])
+                return get_scheduled_events(self.catalog_connection, params["device_id"], params["device_name"], params["greenhouse_id"])
             
             else:
                 cherrypy.response.status = 400

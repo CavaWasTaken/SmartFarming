@@ -81,24 +81,32 @@ while True:
 
         else:
             write_log(f"Failed to get events from the Catalog\t(Response: {response.json()["error"]})")    # in case of error, write the reason of the error in the log file
-            pass    # if the request fails, we just pass and wait for the next iteration
+            time.sleep(60)   # repeat every 60 seconds
+            continue   # if the request fails, we continue to the next iteration of the loop
 
     except Exception as e:
         write_log(f"Error getting events from the Catalog: {e}")
+        time.sleep(60)   # repeat every 60 seconds
+        continue
 
     if events == []:
         write_log(f"No events scheduled for the greenhouse {greenhouse_id}")
-        pass
+        time.sleep(60)   # repeat every 60 secondsù 
+        continue
 
-    # check which events are scheduled for the current time
-    for event in events:
+    try:
+        # check which events are scheduled for the current time
+        for event in events:
 
-        event_time = datetime.strptime(event['execution_time'], '%Y-%m-%d %H:%M:%S')   # convert the event time to a datetime object  
-        # extract the events that are scheduled for the current time and the next minute
-        if current_time <= event_time <= current_time + timedelta(minutes=1):
-            write_log(f"Event {event['event_id']} scheduled for the current time: {event_time}")
-            senML = json.dumps({"bn": f"greenhouse_{greenhouse_id}/event/sensor_{event['sensor_id']}", "e": event})   # create the senML message
-            senML_dictionary = json.loads(senML)
-            client.publish(senML_dictionary["bn"], senML)   # publish the senML message to the MQTT broker
+            event_time = datetime.strptime(event['execution_time'], '%Y-%m-%d %H:%M:%S')   # convert the event time to a datetime object  
+            # extract the events that are scheduled for the current time and the next minute
+            if current_time <= event_time <= current_time + timedelta(minutes=1):
+                write_log(f"Event {event['event_id']} scheduled for the current time: {event_time}")
+                senML = json.dumps({"bn": f"greenhouse_{greenhouse_id}/event/sensor_{event['sensor_id']}", "e": event})   # create the senML message
+                senML_dictionary = json.loads(senML)
+                client.publish(senML_dictionary["bn"], senML)   # publish the senML message to the MQTT broker
+
+    except Exception as e:
+        write_log(f"Error processing events: {e}")
         
     time.sleep(60)   # repeat every 60 seconds

@@ -123,9 +123,6 @@ def ActionReceived(client, userdata, message):
                 classpH.pHDecrease = True
                 classpH.pHIncrease = False
                 write_log(f"pH decrease action received")
-
-    except KeyError as e:
-        write_log(f"Error processing action: {e}")
     
     except Exception as e:
         write_log(f"Error processing action: {e}")
