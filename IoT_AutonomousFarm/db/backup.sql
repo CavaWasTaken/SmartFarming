@@ -36,6 +36,80 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: availabledevices; Type: TABLE; Schema: public; Owner: iotproject
+--
+
+CREATE TABLE public.availabledevices (
+    device_id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    type character varying(100) NOT NULL,
+    configuration jsonb
+);
+
+
+ALTER TABLE public.availabledevices OWNER TO iotproject;
+
+--
+-- Name: availabledevices_device_id_seq; Type: SEQUENCE; Schema: public; Owner: iotproject
+--
+
+CREATE SEQUENCE public.availabledevices_device_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.availabledevices_device_id_seq OWNER TO iotproject;
+
+--
+-- Name: availabledevices_device_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: iotproject
+--
+
+ALTER SEQUENCE public.availabledevices_device_id_seq OWNED BY public.availabledevices.device_id;
+
+
+--
+-- Name: availablesensors; Type: TABLE; Schema: public; Owner: iotproject
+--
+
+CREATE TABLE public.availablesensors (
+    sensor_id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    type character varying(50) NOT NULL,
+    unit character varying(50),
+    threshold_range jsonb,
+    domain jsonb
+);
+
+
+ALTER TABLE public.availablesensors OWNER TO iotproject;
+
+--
+-- Name: availablesensors_sensor_id_seq; Type: SEQUENCE; Schema: public; Owner: iotproject
+--
+
+CREATE SEQUENCE public.availablesensors_sensor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.availablesensors_sensor_id_seq OWNER TO iotproject;
+
+--
+-- Name: availablesensors_sensor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: iotproject
+--
+
+ALTER SEQUENCE public.availablesensors_sensor_id_seq OWNED BY public.availablesensors.sensor_id;
+
+
+--
 -- Name: devices; Type: TABLE; Schema: public; Owner: iotproject
 --
 
@@ -48,6 +122,7 @@ CREATE TABLE public.devices (
     CONSTRAINT device_name_check CHECK (((name)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('HumidityManagement'::character varying)::text, ('LightManagement'::character varying)::text, ('NutrientManagement'::character varying)::text, ('DataAnalysis'::character varying)::text, ('TimeShift'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text, ('TelegramBot'::character varying)::text, ('WebApp'::character varying)::text]))),
     CONSTRAINT device_type_check CHECK (((type)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('Microservices'::character varying)::text, ('UI'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text])))
 );
+
 
 ALTER TABLE public.devices OWNER TO iotproject;
 
@@ -63,6 +138,7 @@ CREATE SEQUENCE public.devices_device_id_seq
     NO MAXVALUE
     CACHE 1;
 
+
 ALTER SEQUENCE public.devices_device_id_seq OWNER TO iotproject;
 
 --
@@ -70,6 +146,7 @@ ALTER SEQUENCE public.devices_device_id_seq OWNER TO iotproject;
 --
 
 ALTER SEQUENCE public.devices_device_id_seq OWNED BY public.devices.device_id;
+
 
 --
 -- Name: greenhouse_plants; Type: TABLE; Schema: public; Owner: iotproject
@@ -163,15 +240,13 @@ ALTER SEQUENCE public.plants_plant_id_seq OWNED BY public.plants.plant_id;
 CREATE TABLE public.scheduled_events (
     event_id integer NOT NULL,
     greenhouse_id integer NOT NULL,
-    event_type character varying(100) NOT NULL,
-    start_time timestamp without time zone NOT NULL,
-    end_time timestamp without time zone NOT NULL,
     frequency character varying(50) NOT NULL,
-    status character varying(50) NOT NULL,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT event_values CHECK (((event_type)::text = ANY (ARRAY[('Irrigation'::character varying)::text, ('Fertilization'::character varying)::text, ('Lighting'::character varying)::text]))),
+    sensor_id integer NOT NULL,
+    parameter character varying(50) NOT NULL,
+    execution_time timestamp without time zone NOT NULL,
+    value numeric NOT NULL,
     CONSTRAINT frequency_values CHECK (((frequency)::text = ANY (ARRAY[('Once'::character varying)::text, ('Daily'::character varying)::text, ('Weekly'::character varying)::text, ('Monthly'::character varying)::text]))),
-    CONSTRAINT status_values CHECK (((status)::text = ANY (ARRAY[('Pending'::character varying)::text, ('In action'::character varying)::text, ('Compleated'::character varying)::text])))
+    CONSTRAINT scheduled_events_parameter_check CHECK (((parameter)::text = ANY (ARRAY[('Nitrogen'::character varying)::text, ('Phosphorus'::character varying)::text, ('Potassium'::character varying)::text, ('Temperature'::character varying)::text, ('Humidity'::character varying)::text, ('SoilMoisture'::character varying)::text, ('pH'::character varying)::text, ('LightIntensity'::character varying)::text])))
 );
 
 
@@ -217,7 +292,6 @@ CREATE TABLE public.sensors (
 
 ALTER TABLE public.sensors OWNER TO iotproject;
 
-
 --
 -- Name: sensors_sensor_id_seq; Type: SEQUENCE; Schema: public; Owner: iotproject
 --
@@ -232,24 +306,6 @@ CREATE SEQUENCE public.sensors_sensor_id_seq
 
 
 ALTER SEQUENCE public.sensors_sensor_id_seq OWNER TO iotproject;
-
-
----------- Added BY Negar ----------
------ here added this query bc auto increment was not working-----
-
--- Ensure sequence exists
-CREATE SEQUENCE IF NOT EXISTS public.sensors_sensor_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    OWNED BY public.sensors.sensor_id;
-
--- Ensure sensor_id auto-increments
-ALTER TABLE public.sensors
-ALTER COLUMN sensor_id SET DEFAULT nextval('public.sensors_sensor_id_seq'::regclass);
-
--- Sync sequence to max sensor_id
-SELECT setval('public.sensors_sensor_id_seq', (SELECT MAX(sensor_id) FROM public.sensors) + 1, false);
-
 
 --
 -- Name: sensors_sensor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: iotproject
@@ -295,6 +351,20 @@ ALTER SEQUENCE public.users_user_id_seq OWNED BY public.users.user_id;
 
 
 --
+-- Name: availabledevices device_id; Type: DEFAULT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.availabledevices ALTER COLUMN device_id SET DEFAULT nextval('public.availabledevices_device_id_seq'::regclass);
+
+
+--
+-- Name: availablesensors sensor_id; Type: DEFAULT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.availablesensors ALTER COLUMN sensor_id SET DEFAULT nextval('public.availablesensors_sensor_id_seq'::regclass);
+
+
+--
 -- Name: devices device_id; Type: DEFAULT; Schema: public; Owner: iotproject
 --
 
@@ -337,6 +407,22 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 
 
 --
+-- Data for Name: availabledevices; Type: TABLE DATA; Schema: public; Owner: iotproject
+--
+
+COPY public.availabledevices (device_id, name, type, configuration) FROM stdin;
+\.
+
+
+--
+-- Data for Name: availablesensors; Type: TABLE DATA; Schema: public; Owner: iotproject
+--
+
+COPY public.availablesensors (sensor_id, name, type, unit, threshold_range, domain) FROM stdin;
+\.
+
+
+--
 -- Data for Name: devices; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
@@ -368,7 +454,7 @@ COPY public.greenhouse_plants (greenhouse_id, plant_id) FROM stdin;
 --
 
 COPY public.greenhouses (greenhouse_id, user_id, name, location, thingspeak_config) FROM stdin;
-0	0	greenhouse_0	Torino	{"fields": {"pH": "", "Humidity": "", "Nitrogen": "", "Potassium": "", "Phosphorus": "", "Temperature": "", "SoilMoisture": "", "LightIntensity": ""}, "channel_id": 2794826, "read_api_key": "E8FA7YO31E86NVDU", "write_api_key": "DIOMNEBEJT9EW5PQ"}
+0	0	greenhouse_0	Torino	{"fields": {"pH": "", "Humidity": "", "Nitrogen": "", "Potassium": "", "Phosphorus": "", "Temperature": "", "SoilMoisture": "", "LightIntensity": ""}, "channel_id": 2951876, "read_api_key": "5U088CB9IWB6KLK0", "write_api_key": "5PQUMK3ZB0E18SJL"}
 \.
 
 
@@ -387,7 +473,7 @@ COPY public.plants (plant_id, name, species, desired_thresholds) FROM stdin;
 -- Data for Name: scheduled_events; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, end_time, frequency, status, created_at) FROM stdin;
+COPY public.scheduled_events (event_id, greenhouse_id, frequency, sensor_id, parameter, execution_time, value) FROM stdin;
 \.
 
 
@@ -412,6 +498,20 @@ COPY public.sensors (sensor_id, greenhouse_id, type, name, unit, threshold_range
 COPY public.users (user_id, username, email, password_hash) FROM stdin;
 0	Lorenzo	s346742@studenti.polito.it	\\x2432622431322438756e7534385057784c50745369767177586950642e557a6a7a775066705648713734463530715475414742504930444e6b717432
 \.
+
+
+--
+-- Name: availabledevices_device_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
+--
+
+SELECT pg_catalog.setval('public.availabledevices_device_id_seq', 1, false);
+
+
+--
+-- Name: availablesensors_sensor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
+--
+
+SELECT pg_catalog.setval('public.availablesensors_sensor_id_seq', 1, false);
 
 
 --
@@ -454,6 +554,22 @@ SELECT pg_catalog.setval('public.sensors_sensor_id_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('public.users_user_id_seq', 1, true);
+
+
+--
+-- Name: availabledevices availabledevices_pkey; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.availabledevices
+    ADD CONSTRAINT availabledevices_pkey PRIMARY KEY (device_id);
+
+
+--
+-- Name: availablesensors availablesensors_pkey; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.availablesensors
+    ADD CONSTRAINT availablesensors_pkey PRIMARY KEY (sensor_id);
 
 
 --
@@ -577,6 +693,14 @@ ALTER TABLE ONLY public.scheduled_events
 
 
 --
+-- Name: scheduled_events scheduled_events_sensor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.scheduled_events
+    ADD CONSTRAINT scheduled_events_sensor_id_fkey FOREIGN KEY (sensor_id) REFERENCES public.sensors(sensor_id);
+
+
+--
 -- Name: sensors sensors_greenhouse_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
 --
 
@@ -594,43 +718,4 @@ GRANT CREATE ON SCHEMA public TO iotproject;
 --
 -- PostgreSQL database dump complete
 --
-
------ available senosrs -----
--- Create availablesensors table
-CREATE TABLE public.availablesensors (
-    sensor_id SERIAL PRIMARY KEY,
-    name CHARACTER VARYING(100) NOT NULL,
-    type CHARACTER VARYING(50) NOT NULL,
-    unit CHARACTER VARYING(50),
-    threshold_range JSONB,
-    domain JSONB
-);
-
--- Make sure the sequence is owned by the column (good practice)
-ALTER SEQUENCE public.availablesensors_sensor_id_seq OWNED BY public.availablesensors.sensor_id;
-
--- Set the owner if needed
-ALTER TABLE public.availablesensors OWNER TO iotproject;
-
-
-
--- Create availabledevices table
-
--- Recreate availabledevices without greenhouse_id
-CREATE TABLE public.availabledevices (
-    device_id SERIAL PRIMARY KEY,
-    name CHARACTER VARYING(100) NOT NULL,
-    type CHARACTER VARYING(100) NOT NULL,
-    configuration JSONB
-);
-
--- Set sequence ownership (optional but good practice)
-ALTER SEQUENCE public.availabledevices_device_id_seq OWNED BY public.availabledevices.device_id;
-
--- Set the owner if needed
-ALTER TABLE public.availabledevices OWNER TO iotproject;
-
-
-
-
 
