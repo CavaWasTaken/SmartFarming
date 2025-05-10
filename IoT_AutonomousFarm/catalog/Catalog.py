@@ -423,24 +423,24 @@ def get_greenhouse_configurations(conn, greenhouse_id):
         
         with conn.cursor() as cur:
             # get sensors of the greenhouse
-            cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
-            sensors = cur.fetchall() or [] # fall back to empty list if no sensors are found
-            if sensors is None:
-                cherrypy.response.status = 404
-                return {"error": "No sensors found"}
+            # cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
+            # sensors = cur.fetchall() or [] # fall back to empty list if no sensors are found
+            # if sensors is None:
+            #     cherrypy.response.status = 404
+            #     return {"error": "No sensors found"}
 
-            sensors_list = []
-            for sensor in sensors:
-                sensor_dict = {
-                    'sensor_id': sensor[0],
-                    'greenhouse_id': sensor[1],
-                    'type': sensor[2],
-                    'name': sensor[3],
-                    'unit': sensor[4],
-                    'threshold': sensor[5],
-                    'domain': sensor[6]
-                }
-                sensors_list.append(sensor_dict)
+            # sensors_list = []
+            # for sensor in sensors:
+            #     sensor_dict = {
+            #         'sensor_id': sensor[0],
+            #         'greenhouse_id': sensor[1],
+            #         'type': sensor[2],
+            #         'name': sensor[3],
+            #         'unit': sensor[4],
+            #         'threshold': sensor[5],
+            #         'domain': sensor[6]
+            #     }
+            #     sensors_list.append(sensor_dict)
 
             # get devices of the greenhouse
             cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s"), [greenhouse_id])
@@ -461,23 +461,23 @@ def get_greenhouse_configurations(conn, greenhouse_id):
                 devices_list.append(device_dict)
 
             # get plants of the greenhouse
-            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
-            plants = cur.fetchall() or [] # fall back to empty list if no plants are found
+            # cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            # plants = cur.fetchall() or [] # fall back to empty list if no plants are found
             
-            plants_list = []
-            for plant in plants:
-                cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
-                plant = cur.fetchone()
-                if plant: # if the plant exists
-                    plant_dict = {
-                    'plant_id': plant[0],
-                    'name': plant[1],
-                    'species': plant[2],
-                    'desired_thresholds': plant[3],
-                }
-                plants_list.append(plant_dict)
+            # plants_list = []
+            # for plant in plants:
+            #     cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
+            #     plant = cur.fetchone()
+            #     if plant: # if the plant exists
+            #         plant_dict = {
+            #         'plant_id': plant[0],
+            #         'name': plant[1],
+            #         'species': plant[2],
+            #         'desired_thresholds': plant[3],
+            #     }
+            #     plants_list.append(plant_dict)
 
-            return {'sensors': sensors_list, 'devices': devices_list, 'plants': plants_list}
+            return { 'devices': devices_list}
         
     except Exception as e:
         cherrypy.response.status = 500
@@ -721,13 +721,52 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
                 [name, location, user_id, json.dumps(thingspeak_config) if thingspeak_config else None]
             )
             greenhouse = cur.fetchone()
+
+
+            # add default area 
+            cur.execute(
+                sql.SQL("""
+                    INSERT INTO areas (greenhouse_id, name)
+                    VALUES (%s, %s)
+                    RETURNING area_id
+                """),
+                [greenhouse[0], "Main Area"]
+            )
+
+            main_area_id = cur.fetchone()[0]
+
+
+            # add default devices 
+            
+
+            default_devices = [
+            ("DeviceConnector", "DeviceConnector", None),
+            ("HumidityManagement", "Microservices", None),
+            ("LightManagement", "Microservices", None),
+            ("NutrientManagement", "Microservices", None),
+            ("ThingSpeakAdaptor", "ThingSpeakAdaptor", None),
+            ("WebApp", "UI", None),
+            ("TelegramBot", "UI", None),
+            ]
+
+            for name, dev_type, params in default_devices:
+                cur.execute(
+                    """
+                    INSERT INTO devices (greenhouse_id, name, type, params)
+                    VALUES (%s, %s, %s, %s)
+                    """,
+                    (greenhouse[0], name, dev_type, json.dumps(params) if params else None)
+                )
+
             conn.commit()
+
 
             return {
                 'message': 'Greenhouse added successfully',
                 'greenhouse_id': greenhouse[0],
                 'name': greenhouse[1],
-                'location': greenhouse[2]
+                'location': greenhouse[2],
+                'area_id': main_area_id
             }
 
     except psycopg2.errors.NotNullViolation as e:
