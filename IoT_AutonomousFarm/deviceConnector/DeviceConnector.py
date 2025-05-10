@@ -13,34 +13,33 @@ def write_log(message):
 
 # function for the device connector to receive the needed action and perform it
 def ActionReceived(client, userdata, message):
-    action = json.loads(message.payload.decode())    # decode the message received
-    write_log(f"Received action: {action}")    # write in the log file the action received
+    msg = json.loads(message.payload.decode())    # decode the message received
+    write_log(f"Received action: {msg}")    # write in the log file the action received
     try:
-        sensor_type = action["sensor_type"]    # get the sensor type from the action
-        action = action["message"]["action"]    # get the action from the action
+        sensor_type = msg['sensor_type']    # get the sensor type from the action
+        action = msg['message']['action']    # get the action from the action
         if action == "increase":
-            goal = action["message"]["min_treshold"]    # get the goal from the action
 
-            if sensor_type == "Humidity":
-                classDTH22.goal = goal
+            if sensor_type == "Humidity":   # active fogging system
+                classDTH22.humidityGoal = msg['message']['min_treshold']    # get the goal from the action
                 classDTH22.humidityIncrease = True
                 classDTH22.humidityDecrease = False
                 write_log(f"Humidity increase action received")
             
-            elif sensor_type == "Temperature":
-                classDTH22.goal = goal
+            elif sensor_type == "Temperature":  # turn on heaters
+                classDTH22.temperatureGoal = msg['message']['min_treshold']    # get the goal from the action
                 classDTH22.temperatureIncrease = True
                 classDTH22.temperatureDecrease = False
                 write_log(f"Temperature increase action received")
             
-            elif sensor_type == "SoilMoisture":
-                classSoilMoisture.goal = goal
+            elif sensor_type == "SoilMoisture": # active irrigation system
+                classSoilMoisture.goal = msg['message']['min_treshold']    # get the goal from the action
                 classSoilMoisture.soilMoistureIncrease = True
                 classSoilMoisture.soilMoistureDecrease = False
                 write_log(f"Soil moisture increase action received")
             
-            elif sensor_type == "NPK":
-                nutrient = action["message"]["nutrient"]
+            elif sensor_type == "NPK":  # inject fertilizer
+                nutrient = msg['message']['nutrient']
             
                 if nutrient == "N":
                     classNPK.goalN = goal
@@ -60,35 +59,41 @@ def ActionReceived(client, userdata, message):
                     classNPK.potassiumDecrease = False
                     write_log(f"Potassium increase action received")
             
-            elif sensor_type == "LightIntensity":
+            elif sensor_type == "LightIntensity":   # turn on lights
                 classLight.goal = goal
                 classLight.lightIncrease = True
                 classLight.lightDecrease = False
                 write_log(f"Light increase action received")
+
+            elif sensor_type == "pH":
+                classpH.goal = msg['message']['min_treshold']
+                classpH.pHIncrease = True
+                classpH.pHDecrease = False
+                write_log(f"pH increase action received")
         
         elif action == "decrease":
-            goal = action["message"]["max_treshold"]    # get the goal from the action
+            goal = msg['message']['max_treshold']    # get the goal from the action
 
-            if sensor_type == "Humidity":
+            if sensor_type == "Humidity":   # use dehumidifier
                 classDTH22.goal = goal
                 classDTH22.humidityDecrease = True
                 classDTH22.humidityIncrease = False
                 write_log(f"Humidity decrease action received")
         
-            elif sensor_type == "Temperature":
+            elif sensor_type == "Temperature":  # active ventilation fans
                 classDTH22.goal = goal
                 classDTH22.temperatureDecrease = True
                 classDTH22.temperatureIncrease = False
                 write_log(f"Temperature decrease action received")
         
-            elif sensor_type == "SoilMoisture":
+            elif sensor_type == "SoilMoisture": # improve drainage
                 classSoilMoisture.goal = goal
                 classSoilMoisture.soilMoistureDecrease = True
                 classSoilMoisture.soilMoistureIncrease = False
                 write_log(f"Soil moisture decrease action received")
         
-            elif sensor_type == "NPK":
-                nutrient = action["message"]["nutrient"]
+            elif sensor_type == "NPK":  # soil dilution
+                nutrient = msg['message']['nutrient']
         
                 if nutrient == "N":
                     classNPK.goalN = goal
@@ -108,10 +113,16 @@ def ActionReceived(client, userdata, message):
                     classNPK.potassiumIncrease = False
                     write_log(f"Potassium decrease action received")
         
-            elif sensor_type == "LightIntensity":
+            elif sensor_type == "LightIntensity":   # use shading screens
                 classLight.lightDecrease = True
                 classLight.lightIncrease = False
                 write_log(f"Light decrease action received")
+
+            elif sensor_type == "pH":
+                classpH.goal = msg['message']['max_treshold']
+                classpH.pHDecrease = True
+                classpH.pHIncrease = False
+                write_log(f"pH decrease action received")
 
     except KeyError as e:
         write_log(f"Error processing action: {e}")
@@ -164,7 +175,6 @@ for _ in range(5):  # try 5 times to get the list of sensors connected to this d
             exit(1)   # exit the program if the request fails after 5 attempts
 
         time.sleep(60)   # wait for 60 seconds before trying again
-
 
 for _ in range(5):  # try 5 times to get the location of the greenhouse
     try:
@@ -277,6 +287,6 @@ while True:
             write_log(f"Error publishing value from sensor {sensor['name']}: {e}")
             continue
 
-    time.sleep(10)   # wait for 2 minutes before reading the sensors again
+    time.sleep(20)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
