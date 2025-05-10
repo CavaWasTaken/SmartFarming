@@ -13,15 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "loginform.html"; // redirect to login page
   }
 
-  document.getElementById("username-display").textContent = `Welcome, ${username}`;
+  // document.getElementById("username-display").textContent = `Welcome, ${username}`;
 
-  document.getElementById("logout-button").addEventListener("click", () => {
-    // clear the token and user information from local storage and redirect to login page
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("username");
-    window.location.href = "home.html";
-  });
+  // document.getElementById("logout-button").addEventListener("click", () => {
+  //   // clear the token and user information from local storage and redirect to login page
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user_id");
+  //   localStorage.removeItem("username");
+  //   window.location.href = "home.html";
+  // });
 
   document.querySelector("tbody").addEventListener("click", (event) => {
     if (event.target.classList.contains("select-button")) {
