@@ -202,7 +202,7 @@ def get_sensors(conn, device_id, device_name):
             greenhouse_id = result[0]
             
             # personalize the query based on the device name, cause each device connector is interested in different sensors
-            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot"]
+            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot", "TimeShift"]
             if device_name in authorized_devices:    # device connector is interested in all the sensors connected to the greenhouse
                 cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"),  [greenhouse_id,])
             elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
@@ -479,9 +479,9 @@ def get_greenhouse_configurations(conn, greenhouse_id):
 
             return {'sensors': sensors_list, 'devices': devices_list, 'plants': plants_list}
         
-    except Exception as e:
+    except Exception:
         cherrypy.response.status = 500
-        return {"error": f"Internal error : {str(e)}"}
+        return {"error": "Internal error"}
     
 # function used by the user to change the threshold of a sensor
 def set_sensor_threshold(conn, sensor_id, threshold):
@@ -666,32 +666,127 @@ def remove_device_from_greenhouse(conn, greenhouse_id, device_id):
             raise cherrypy.HTTPError(500, "Internal error")
         
 #function to get all scheduled events where current time is between start_time and end_time for a greenhouse
-def get_all_scheduled_events(conn):
-    with conn.cursor() as cur:
-        # Get current timestamp
-        current_time = datetime.datetime.now()
-        # Select only columns without any timestamp because seems that python cannot convert psql timestamps to JSON
-        cur.execute(sql.SQL("SELECT greenhouse_id, event_type, frequency, status FROM scheduled_events WHERE %s >= start_time AND (%s <= end_time or end_time is NULL)"), [current_time, current_time])
-        events = cur.fetchall()
-        if not events:
-            raise cherrypy.HTTPError(404, f"No events found")
+def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
         
-        event_list = []
-        for event in events:
-            event_list.append({'greenhouse_id': event[0],'event_type':event[1], 'frequency':event[2], 'status':event[3]})
+        with conn.cursor() as cur:
+            # check if the device is connected to the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s AND greenhouse_id = %s"), [device_id, device_name, greenhouse_id])
+            device = cur.fetchone() # device is a tuple
+            if device is None:  # if the device doesn't exist
+                cherrypy.response.status = 404
+                return {"error": "Device not found"}
+
+            # get all the scheduled events for the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM scheduled_events WHERE greenhouse_id = %s"), [greenhouse_id])
+            events = cur.fetchall() # events is a list of values (tuples)
+            
+            # convert the list of events to a list of dictionaries, associating the values to the keys (columns of the db)
+            events_list = []
+            for event in events:  # for each event in the list
+                event_dict = { # associate the values to the keys
+                    'event_id': event[0],
+                    'greenhouse_id': event[1],
+                    'frequency': event[2],
+                    'sensor_id': event[3],
+                    'parameter': event[4],
+                    'execution_time': event[5],
+                    'value': event[6]
+                }
+                events_list.append(event_dict)    # create a dictionary containing the information of each event
+
+            return {'events': events_list}
+            
+    except:
+        cherrypy.response.status = 500
+        return {"error": "Internal error"}
+    
+    # with conn.cursor() as cur:
+    #     # Get current timestamp
+    #     current_time = datetime.datetime.now()
+    #     # Select only columns without any timestamp because seems that python cannot convert psql timestamps to JSON
+    #     cur.execute(sql.SQL("SELECT greenhouse_id, event_type, frequency, status FROM scheduled_events WHERE %s >= start_time AND (%s <= end_time or end_time is NULL)"), [current_time, current_time])
+    #     events = cur.fetchall()
+    #     if not events:
+    #         raise cherrypy.HTTPError(404, f"No events found")
         
-        return event_list
+    #     event_list = []
+    #     for event in events:
+    #         event_list.append({'greenhouse_id': event[0],'event_type':event[1], 'frequency':event[2], 'status':event[3]})
+        
+    #     return event_list
 
 # Function to add one event in the DB
-def add_event(conn, greenhouse_id, event_type, start_time, end_time, frequency):
-    with conn.cursor() as cur:
-        try:
-            # Add the new event in the DB
-            cur.execute(sql.SQL("INSERT INTO scheduled_events (greenhouse_id, event_type, start_time, end_time, frequency, status) VALUES (%s, %s, %s, %s, %s, %s)"), \
-                        [greenhouse_id, event_type, start_time, end_time, frequency, "Pending"])
+def schedule_event(conn, device_id, greenhouse_id, frequency, sensor_id, parameter, execution_time, value):
+    try:
+        # check if the connection is closed
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # check if the device is connected to the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND greenhouse_id = %s"), [device_id, greenhouse_id])
+            device = cur.fetchone() # device is a tuple
+            if device is None:  # if the device doesn't exist
+                cherrypy.response.status = 404
+                return {"error": "Device not found"}
+
+            # insert the event in the DB
+            cur.execute(sql.SQL("INSERT INTO scheduled_events (greenhouse_id, frequency, sensor_id, parameter, execution_time, value) VALUES (%s, %s, %s, %s, %s, %s)"), [greenhouse_id, frequency, sensor_id, parameter, execution_time, value])
             conn.commit()
-        except:
-            raise cherrypy.HTTPError(500, "Internal error")
+
+            # check if the event was inserted
+            cur.execute(sql.SQL("SELECT * FROM scheduled_events WHERE greenhouse_id = %s AND frequency = %s AND sensor_id = %s AND parameter = %s AND execution_time = %s AND value = %s"), [greenhouse_id, frequency, sensor_id, parameter, execution_time, value])
+            event = cur.fetchone()
+            if event is None:
+                cherrypy.response.status = 500
+                return {"error": "Event not inserted"}
+                
+            return {'message': 'Event scheduled successfully'}
+            
+    except psycopg2.errors.NotNullViolation as e:
+        cherrypy.response.status = 400
+        return {"error": f"Missing required fields: {str(e)}"}
+    
+    except Exception as e:
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+        
+def delete_event(conn, device_id, event_id):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # check if the device is connected to the greenhouse
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s"), [device_id])
+            device = cur.fetchone() # device is a tuple
+            if device is None:  # if the device doesn't exist
+                cherrypy.response.status = 404
+                return {"error": "Device not found"}
+
+            # delete the event from the DB
+            cur.execute(sql.SQL("DELETE FROM scheduled_events WHERE event_id = %s"), [event_id])
+            conn.commit()
+
+            # check if the event was deleted
+            cur.execute(sql.SQL("SELECT * FROM scheduled_events WHERE event_id = %s"), [event_id])
+            event = cur.fetchone()
+            if event is not None:
+                cherrypy.response.status = 500
+                return {"error": "Event not deleted"}
+                
+            return {'message': 'Event deleted successfully'}
+            
+    except Exception as e:
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
 
 # add new greenhouse 
 def add_greenhouse(conn, user_id, name, location, thingspeak_config):
@@ -957,13 +1052,14 @@ class CatalogREST(object):
             
             return get_all_plants(self.catalog_connection)
         
-        elif uri[0] == 'get_all_scheduled_events':
-            # check that no parameters are passed
-            if len(params) > 0:
-                cherrypy.response.status = 400
-                return {"error": "No parameters allowed"}
+        elif uri[0] == 'get_scheduled_events':
+            # check the existence of the parameters
+            if 'device_id' in params and 'device_name' in params and 'greenhouse_id' in params:
+                return get_scheduled_events(self.catalog_connection, params['device_id'], params['device_name'], params['greenhouse_id'])
             
-            return get_all_scheduled_events(self.catalog_connection)
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
         
         elif uri[0] == 'get_all_sensors':
             # check that no parameters are passed
@@ -1087,14 +1183,14 @@ class CatalogREST(object):
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
-        elif uri[0] == 'add_event':
+        elif uri[0] == 'schedule_event':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
-                if 'greenhouse_id' not in input_json or 'event_type' not in input_json or 'start_time' not in input_json or 'end_time' not in input_json or 'frequency' not in input_json:
+                if 'device_id' not in input_json or 'greenhouse_id' not in input_json or 'sensor_id' not in input_json or 'parameter' not in input_json or 'frequency' not in input_json or 'desired_value' not in input_json or 'execution_time' not in input_json:
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
                 
-                return add_event(self.catalog_connection, input_json['greenhouse_id'], input_json['event_type'], input_json['start_time'], input_json['end_time'], input_json['frequency'])
+                return schedule_event(self.catalog_connection, input_json['greenhouse_id'], input_json['device_id'], input_json['sensor_id'], input_json['parameter'], input_json['frequency'], input_json['desired_value'], input_json['execution_time'])
             
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
@@ -1148,8 +1244,22 @@ class CatalogREST(object):
         return {"error": "METHOD NOT ALLOWED"}
 
     def DELETE(self, *uri, **params):
-        cherrypy.response.status = 405
-        return {"error": "METHOD NOT ALLOWED"}
+        if uri[0] == 'delete_event':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'device_id' not in input_json and 'event_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return delete_event(self.catalog_connection, input_json['device_id'], input_json['event_id'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
+        else:
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
 
     @cherrypy.tools.cors()
     def OPTIONS(self, *args, **kwargs):

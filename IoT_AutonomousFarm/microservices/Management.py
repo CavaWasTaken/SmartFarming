@@ -112,9 +112,9 @@ def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, 
                                     write_log(f"WARNING: The measured value {nutrient_val} {unit} is far from the mean value {mean_value} {unit}. Action needed for sensor_{sensor_id} ({sensor_type} - {nutrient})")   # ALERT TO BE SENT TO THE UI
                                     
                                     if nutrient_val > max_treshold[nutrient]:  # if the value is higher than the max treshold
-                                        action = f"decrease"
+                                        action = "decrease"
                                     else:   # nutrient_val < min_treshold - we know that we are outside the interval, so clearly if it is not higher than max, then it is lower than min_t
-                                        action = f"increase"
+                                        action = "increase"
 
                                     SendAction({
                                         "action": action,

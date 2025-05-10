@@ -4,6 +4,7 @@ import threading
 from functools import partial
 import time
 import Management
+from datetime import datetime, timedelta
 
 from MqttClient import MqttClient   # import the MqttClient class
 
@@ -42,6 +43,8 @@ timers = {} # dictionary to save the timer (interval of time for waiting the nex
 tresholds = {}  # dictionary to save the treshold interval for each sensor
 domains = {}    # dictionary  to save the domain of the values collectable by each sensor
 
+liveValue = {}  # dictionary to save the last value received for each sensor
+
 # function that handles the received message from the broker
 def handle_message(topic, sensor_type, val, unit, timestamp):
     # function that sends an alert to the user when the expected value doesn't arrive (timer expiration)
@@ -70,6 +73,8 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
     min_treshold = treshold["min"]
     max_treshold = treshold["max"]
 
+    liveValue[sensor_id] = val  # save the last value received for the sensor
+
     # get from the DataAnalysis the next expected timestamp
     response = requests.get(f"{dataAnalysis_url}/get_next_timestamp", params={'sensor_id': sensor_id, 'sensor_type': sensor_type, 'timestamp': timestamp})
     if response.status_code == 200:
@@ -95,6 +100,102 @@ def handle_message(topic, sensor_type, val, unit, timestamp):
 
     Management.Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, SendAlert, SendInfo, SendAction)
 
+def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desired_value, execution_time):
+    def SendAlert(msg):
+        msg = json.dumps({"message": msg, "timestamp": execution_time})
+        client.publish(f"greenhouse_{greenhouse_id}/alert/device_{device_id}", msg)
+    
+    def SendAction(msg, sensor_type):
+        msg = json.dumps({"message": msg, "sensor_type": sensor_type, "timestamp": execution_time})
+        client.publish(f"greenhouse_{greenhouse_id}/action/sensor_{sensor_id}", msg)
+
+    # check if the action needed to reach the desired value is to increase or decrease the value
+    if desired_value < liveValue[sensor_id]:
+        SendAction({
+            "action": "decrease",
+            "val": liveValue[sensor_id],
+            "max_treshold": desired_value,
+        }, parameter)
+
+    elif desired_value > liveValue[sensor_id]:
+        SendAction({
+            "action": "increase",
+            "val": liveValue[sensor_id],
+            "min_treshold": desired_value,
+        }, parameter)
+
+    else:
+        write_log(f"WARNING: The desired value of {parameter} is equal to the current value. No action needed.")
+        SendAlert(f"WARNING: The desired value of {parameter} is equal to the current value. No action needed.")
+
+    # depending on the frequency, we can schedule the next event
+    # first we always delete the event from the catalog
+    response = requests.delete(f"{catalog_url}/delete_event", json={'device_id': device_id, 'event_id': event_id})
+    if response.status_code == 200:
+        write_log(f"Event {event_id} deleted from the Catalog")
+    
+    else:
+        write_log(f"WARNING: Failed to delete the event {event_id} from the Catalog\t(Response: {response.json()["error"]})")
+    
+    if frequency == "Daily":
+    
+        # schedule the next event for the next day
+        response = requests.post(f"{catalog_url}/schedule_event", json={
+            "device_id": device_id,
+            "greenhouse_id": greenhouse_id,
+            "sensor_id": sensor_id,
+            "parameter": parameter,
+            "frequency": frequency,
+            "desired_value": desired_value,
+            "execution_time": (datetime.strptime(execution_time, "%Y-%m-%d %H:%M:%S") + timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
+        })
+        if response.status_code == 200:
+            write_log(f"Event {sensor_id} scheduled for the next day")
+        
+        else:
+            write_log(f"WARNING: Failed to schedule the event {sensor_id} for the next day\t(Response: {response.json()["error"]})")
+    
+    elif frequency == "Weekly":
+        
+        # schedule the next event for the next week
+        response = requests.post(f"{catalog_url}/schedule_event", json={
+            "device_id": device_id,
+            "greenhouse_id": greenhouse_id,
+            "sensor_id": sensor_id,
+            "parameter": parameter,
+            "frequency": frequency,
+            "desired_value": desired_value,
+            "execution_time": (datetime.strptime(execution_time, "%Y-%m-%d %H:%M:%S") + timedelta(weeks=1)).strftime("%Y-%m-%d %H:%M:%S")
+        })
+        if response.status_code == 200:
+            write_log(f"Event {sensor_id} scheduled for the next week")
+        
+        else:
+            write_log(f"WARNING: Failed to schedule the event {sensor_id} for the next week\t(Response: {response.json()["error"]})")
+    
+    elif frequency == "Monthly":
+    
+        # schedule the next event for the next month
+        response = requests.post(f"{catalog_url}/schedule_event", json={
+            "device_id": device_id,
+            "greenhouse_id": greenhouse_id,
+            "sensor_id": sensor_id,
+            "parameter": parameter,
+            "frequency": frequency,
+            "desired_value": desired_value,
+            "execution_time": (datetime.strptime(execution_time, "%Y-%m-%d %H:%M:%S") + timedelta(weeks=4)).strftime("%Y-%m-%d %H:%M:%S")
+        })
+        if response.status_code == 200:
+            write_log(f"Event {sensor_id} scheduled for the next month")
+        
+        else:
+            write_log(f"WARNING: Failed to schedule the event {sensor_id} for the next month\t(Response: {response.json()["error"]})")
+    
+    elif frequency != "Once":
+        write_log(f"WARNING: Frequency {frequency} not supported. Event not scheduled.")
+        SendAlert(f"WARNING: Frequency {frequency} not supported. Event not scheduled.")
+        return
+
 def on_message(client, userdata, msg):    # when a new message of one of the topic where it is subscribed arrives to the broker
     try: 
         message = json.loads(msg.payload.decode())  # decode the message from JSON format, so we can access the values of the message as a dictionary
@@ -102,12 +203,27 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
         for topic in mqtt_topics:
             if message["bn"] == topic:
                 try:
-                    message = message["e"]
-                    sensor_type = message["n"]
-                    val = message["v"]
-                    unit = message["u"]
-                    timestamp = message["t"]
-                    handle_message(topic, sensor_type, val, unit, timestamp)
+                    # split the topic to get if is an event or a sensor message
+                    if "event" in topic:
+                        event = message["e"]
+                        event_id = event["event_id"]
+                        greenhouse_id = event["greenhouse_id"]
+                        sensor_id = event["sensor_id"]
+                        parameter = event["parameter"]
+                        frequency = event["frequency"]
+                        desired_value = event["value"]
+                        execution_time = event["execution_time"]
+
+                        handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desired_value, execution_time)
+
+                    else:
+                        message = message["e"]
+                        sensor_type = message["n"]
+                        val = message["v"]
+                        unit = message["u"]
+                        timestamp = message["t"]
+
+                        handle_message(topic, sensor_type, val, unit, timestamp)
 
                 except KeyError as e:
                     write_log(f"Missing key in the message: {e}")
@@ -123,30 +239,42 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
 
 if __name__ == "__main__":
     for _ in range(5):  # try to get the sensors from the catalog for 5 times
-        response = requests.get(f"{catalog_url}/get_sensors", params={"device_id": device_id, 'device_name': 'LightManagement'})
-        if response.status_code == 200:
-            sensors = response.json()["sensors"]  # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
-            write_log(f"Received {len(sensors)} sensors: {sensors}")
-            break
+        try:
+            response = requests.get(f"{catalog_url}/get_sensors", params={"device_id": device_id, 'device_name': 'LightManagement'})
+            if response.status_code == 200:
+                sensors = response.json()["sensors"]  # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+                write_log(f"Received {len(sensors)} sensors: {sensors}")
+                break
 
-        else:
-            write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            else:
+                write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+                if _ == 4:  # if it is the last attempt
+                    write_log("Failed to get sensors from the Catalog after 5 attempts")
+                    exit(1)  # exit the program if the device information is not found
+                
+                time.sleep(60)  # wait 60 seconds before trying again
+
+        except Exception as e:
+            write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
             if _ == 4:  # if it is the last attempt
                 write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)  # exit the program if the device information is not found
-            
-            time.sleep(60)  # wait 60 seconds before trying again
+                exit(1)
+
+            time.sleep(60)   # wait for 60 seconds before trying again
 
     mqtt_topics = [] # array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor, build the topic and append it to the mqtt_topic array
-        mqtt_topics.append(f"greenhouse_{sensor["greenhouse_id"]}/sensor_{sensor['sensor_id']}")
-        tresholds[sensor['sensor_id']] = sensor['threshold']    # associate the threshold to the sensor id into the dictionary
-        domains[sensor['sensor_id']] = sensor['domain']    # associate the domain to the sensor id into the dictionary
-        expected_value[sensor['sensor_id']] = None
-        timers[sensor['sensor_id']] = None
+        try:
+            mqtt_topics.append(f"greenhouse_{sensor["greenhouse_id"]}/sensor_{sensor['sensor_id']}")
+            mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/event/sensor_{sensor['sensor_id']}")  # add the action topic to the list of topics
+            tresholds[sensor['sensor_id']] = sensor['threshold']    # associate the threshold to the sensor id into the dictionary
+            domains[sensor['sensor_id']] = sensor['domain']    # associate the domain to the sensor id into the dictionary
+            expected_value[sensor['sensor_id']] = None
+            timers[sensor['sensor_id']] = None
 
-    # Subscribe to events requiring lighting management for the greenhouse handled by the current device
-    mqtt_topics.append(f"greenhouse_{sensors[0]['greenhouse_id']}/Lighting")
+        except Exception as e:
+            write_log(f"Unexpected error in building the topic: {e}")
+            exit(1)
 
     for _ in range(5):  # try to start the MQTT client for 5 times
         try:
