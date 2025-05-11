@@ -14,3 +14,9 @@ sudo docker-compose down
 --------------------------------------------------------------------------------------------
 # to create the dump of the db
 sudo docker exec -t db_db_1 pg_dump -h localhost -p 5432 -U iotproject -d smartfarm_db -F p > backup.sql
+
+--------------------------------------------------------------------------------------------
+# to run the db with the configuration contained in the backup.sql file
+sudo docker volume ls   # to see the volume's name
+sudo docker volume rm name_of_the_volume    # to remove the volume and reset the local changes
+sudo docker-compose up -d   # to run again the db with the configuration contained in the backup.sql file
