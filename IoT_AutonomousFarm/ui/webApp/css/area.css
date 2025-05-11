@@ -8,13 +8,20 @@ html, body {
 	padding: 0;
 }
 
+
+a{
+	color: white;
+    text-decoration: none;
+}
+
+
 html {
 	font-size: 62.5%; /* Base font size for rem units */
 }
 
 body {
 	padding: 20px;
-	background:  url(../pics/background.jpg)
+	background:  url(../pics/9701.jpg)
 		no-repeat center center fixed;
 	font-family: 'Lato', sans-serif;
 	background-size: cover;
@@ -325,3 +332,21 @@ input{
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
+#add-area-btn
+{
+	padding: 10px 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffffff;
+	background: linear-gradient(45deg, #0eaa78, #3d5644);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#add-area-btn:hover {
+    /* background: linear-gradient(45deg, #23a2f6, #1845ad); */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}

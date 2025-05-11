@@ -563,20 +563,20 @@ def add_plant_to_greenhouse(conn, greenhouse_id, plant_id, area_id):
             raise cherrypy.HTTPError(500, "Internal error")
         
 # function to remove a plant from the greenhouse
-def remove_plant_from_greenhouse(conn, greenhouse_id, plant_id):
+def remove_plant_from_greenhouse(conn, area_id, plant_id):
     with conn.cursor() as cur:
         # check if the plant is in the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
+        cur.execute(sql.SQL("SELECT * FROM area_plants WHERE area_id = %s AND plant_id = %s"), [area_id, plant_id])
         plant = cur.fetchone()
         if plant is None:
             raise cherrypy.HTTPError(404, "Plant not in the greenhouse")
         # remove the plant from the greenhouse
         try:
-            cur.execute(sql.SQL("DELETE FROM greenhouse_plants WHERE greenhouse_id = %s AND plant_id = %s"), [greenhouse_id, plant_id])
+            cur.execute(sql.SQL("DELETE FROM area_plants WHERE area_id = %s AND plant_id = %s"), [area_id, plant_id])
             conn.commit()
             # return the updated list of plants in the greenhouse
-            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
-            cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
+            cur.execute(sql.SQL("SELECT plant_id FROM area_plants WHERE area_id = %s"), [area_id])
+            cur.execute(sql.SQL("SELECT plant_id FROM area_plants WHERE area_id = %s"), [area_id])
             plants = cur.fetchall()
             if plants is None:
                 raise cherrypy.HTTPError(404, "No plants found")
@@ -598,19 +598,21 @@ def remove_plant_from_greenhouse(conn, greenhouse_id, plant_id):
             raise cherrypy.HTTPError(500, "Internal error")
         
 # delete sensor from greenhouse function
-def remove_sensor_from_greenhouse(conn, greenhouse_id, sensor_id):
+def remove_sensor_from_greenhouse(conn, area_id, sensor_id):
     with conn.cursor() as cur:
         # check if the sensor is in the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s AND sensor_id = %s"), [greenhouse_id, sensor_id])
+        cur.execute("SELECT * FROM sensors WHERE area_id = %s AND sensor_id = %s", [area_id, sensor_id])
         sensor = cur.fetchone()
         if sensor is None:
             raise cherrypy.HTTPError(404, "Sensor is not in the greenhouse")
         # remove the plant from the greenhouse
         try:
-            cur.execute(sql.SQL("DELETE FROM sensors WHERE greenhouse_id = %s AND sensor_id = %s"), [greenhouse_id, sensor_id])
+            cur.execute("DELETE FROM sensors WHERE area_id = %s AND sensor_id = %s", [area_id, sensor_id])
+           
+
             conn.commit()
             # return the updated list of sensors in the greenhouse
-            cur.execute(sql.SQL("SELECT sensor_id FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
+            cur.execute("SELECT sensor_id FROM sensors WHERE area_id = %s", [area_id])
             sensors = cur.fetchall()
             if sensors is None:
                 raise cherrypy.HTTPError(404, "No sensors found")
@@ -1358,11 +1360,11 @@ class CatalogREST(object):
         elif uri[0] == 'remove_sensor_from_greenhouse':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
-                if 'sensor_id' not in input_json or 'sensor_id' not in input_json:
+                if 'sensor_id' not in input_json or 'area_id' not in input_json:
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
                 
-                return remove_sensor_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'])
+                return remove_sensor_from_greenhouse(self.catalog_connection, input_json['area_id'], input_json['sensor_id'])
 
             except json.JSONDecodeError:
                 cherrypy.response.status = 400

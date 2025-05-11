@@ -88,8 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   Action
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-${greenhouse.greenhouse_id}">
-                  <a class="dropdown-item" href="greenhouseDetails.html">Sensors</a>
-                  <a class="dropdown-item" href="greenhouseplants.html">Plants</a>
+                  <a class="dropdown-item" href="addarea.html">Areas</a>
                   <a class="dropdown-item" href="greenhousedevices.html">Devices</a>
                 </div>
              </div>

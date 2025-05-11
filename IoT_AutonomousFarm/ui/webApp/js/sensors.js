@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     Authorization: `Bearer ${token}`,
                   },
                   body: JSON.stringify({
-                    greenhouse_id: greenhouseId,
+                    area_id: areaId,
                     sensor_id: sensor.sensor_id,
                   }),
                 });
@@ -216,6 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
               .then((result) => {
                 alert(result.message || "Sensor deleted successfully.");
                 card.remove();
+                // Optionally, refresh the page or update the UI
+                 location.reload();
               })
               .catch((err) => {
                 console.error("Error deleting sensor:", err);

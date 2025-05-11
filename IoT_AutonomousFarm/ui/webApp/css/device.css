@@ -14,7 +14,7 @@ html {
 
 body {
 	padding: 20px;
-	background:  url(../pics/background.jpg)
+	background:  url(../pics/9701.jpg)
 		no-repeat center center fixed;
 	font-family: 'Lato', sans-serif;
 	background-size: cover;
@@ -22,6 +22,12 @@ body {
 	line-height: 1.6;
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
+}
+
+
+a{
+	color: white;
+    text-decoration: none;
 }
 
 /* Header */
@@ -302,7 +308,7 @@ input{
     font-size: 1.4rem;
     font-weight: bold;
     color: #ffffff;
-    background: linear-gradient(45deg, #fd005c, #23a2f6);
+	background: linear-gradient(45deg, #0eaa78, #3d5644);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -312,6 +318,6 @@ input{
 
 #add-device-btn:hover {
     /* background: linear-gradient(45deg, #23a2f6, #1845ad); */
-    transform: translateY(-2px);
+	transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }

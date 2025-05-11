@@ -47,36 +47,36 @@ $(document).ready(function () {
       Default: `<svg fill="#000000" width="100px" height="100px" viewBox="0 0 24 24" id="device-projector" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path id="secondary" d="M4,8H7.18a3,3,0,1,0,5.64,0H20a1,1,0,0,1,1,1v6a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V9A1,1,0,0,1,4,8Z" style="fill: #2ca9bc; stroke-width: 2;"></path><path id="primary" d="M13,8h7a1,1,0,0,1,1,1v6a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V9A1,1,0,0,1,4,8H7" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M19,16H17v2h2ZM5,18H7V16H5ZM10,6A3,3,0,1,1,7,9,3,3,0,0,1,10,6Z" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`,
     };
   
-    if (!token || !userId || !username) {
-      alert("You are not logged in. Please log in to access this page.");
-      window.location.href = "loginform.html"; // redirect to login page
-    }
+    // if (!token || !userId || !username) {
+    //   alert("You are not logged in. Please log in to access this page.");
+    //   window.location.href = "loginform.html"; // redirect to login page
+    // }
   
-    if (!greenhouseId || !greenhouseName || !greenhouseLocation) {
-      alert(
-        "No greenhouse selected. Please select a greenhouse to access this page."
-      );
-      window.location.href = "greenhouses.html"; // redirect to available greenhouses page
-    }
+    // if (!greenhouseId || !greenhouseName || !greenhouseLocation) {
+    //   alert(
+    //     "No greenhouse selected. Please select a greenhouse to access this page."
+    //   );
+    //   window.location.href = "greenhouses.html"; // redirect to available greenhouses page
+    // }
   
-    document.getElementById(
-      "username-display"
-    ).textContent = `Greenhouse owner: ${username}`;
+    // document.getElementById(
+    //   "username-display"
+    // ).textContent = `Greenhouse owner: ${username}`;
   
-    document.getElementById(
-      "title"
-    ).textContent = `${greenhouseName} - ${greenhouseLocation}`;
+    // document.getElementById(
+    //   "title"
+    // ).textContent = `${greenhouseName} - ${greenhouseLocation}`;
   
-    document.getElementById("logout-button").addEventListener("click", () => {
-      // clear the token and user information from local storage and redirect to login page
-      localStorage.removeItem("token");
-      localStorage.removeItem("user_id");
-      localStorage.removeItem("username");
-      localStorage.removeItem("greenhouse_id");
-      localStorage.removeItem("greenhouse_name");
-      localStorage.removeItem("greenhouse_location");
-      window.location.href = "loginform.html";
-    });
+    // document.getElementById("logout-button").addEventListener("click", () => {
+    //   // clear the token and user information from local storage and redirect to login page
+    //   localStorage.removeItem("token");
+    //   localStorage.removeItem("user_id");
+    //   localStorage.removeItem("username");
+    //   localStorage.removeItem("greenhouse_id");
+    //   localStorage.removeItem("greenhouse_name");
+    //   localStorage.removeItem("greenhouse_location");
+    //   window.location.href = "loginform.html";
+    // });
   
     // read from the config file to get the API URL
     fetch("../json/WebApp_config.json") // this path is relative to the HTML file
@@ -175,66 +175,66 @@ $(document).ready(function () {
         })
 
         // Add Device 
-        document.getElementById("add-device-btn").addEventListener("click", () => {
-          fetch("../json/WebApp_config.json")
-            .then((res) => res.json())
-            .then((config) => {
-              const catalog_url = config.catalog_url;
-              return fetch(`${catalog_url}/get_all_devices`, {
-                headers: { Authorization: `Bearer ${token}` },
-              });
-            })
-            .then((res) => res.json())
-            .then((availableDevices) => {
-              const select = document.getElementById("device-select");
-              select.innerHTML = "";
-              availableDevices.devices.forEach((avldevice) => {
-                const option = document.createElement("option");
-                option.value = avldevice.device_id;
-                option.textContent = `${avldevice.name} (${avldevice.type})`;
-                select.appendChild(option);
-              });
-              document.getElementById("device-modal").classList.remove("d-none");
-            })
-            .catch((err) => {
-              console.error("Failed to load available devices:", err);
-              alert("Failed to load available devices.");
-            });
-        });
+        // document.getElementById("add-device-btn").addEventListener("click", () => {
+        //   fetch("../json/WebApp_config.json")
+        //     .then((res) => res.json())
+        //     .then((config) => {
+        //       const catalog_url = config.catalog_url;
+        //       return fetch(`${catalog_url}/get_all_devices`, {
+        //         headers: { Authorization: `Bearer ${token}` },
+        //       });
+        //     })
+        //     .then((res) => res.json())
+        //     .then((availableDevices) => {
+        //       const select = document.getElementById("device-select");
+        //       select.innerHTML = "";
+        //       availableDevices.devices.forEach((avldevice) => {
+        //         const option = document.createElement("option");
+        //         option.value = avldevice.device_id;
+        //         option.textContent = `${avldevice.name} (${avldevice.type})`;
+        //         select.appendChild(option);
+        //       });
+        //       document.getElementById("device-modal").classList.remove("d-none");
+        //     })
+        //     .catch((err) => {
+        //       console.error("Failed to load available devices:", err);
+        //       alert("Failed to load available devices.");
+        //     });
+        // });
   
-        document.getElementById("cancel-modal").addEventListener("click", () => {
-          document.getElementById("device-modal").classList.add("d-none");
-        });
+        // document.getElementById("cancel-modal").addEventListener("click", () => {
+        //   document.getElementById("device-modal").classList.add("d-none");
+        // });
   
-        document.getElementById("confirm-add-device").addEventListener("click", () => {
-          const plantId = document.getElementById("device-select").value;
-          fetch("../json/WebApp_config.json")
-            .then((res) => res.json())
-            .then((config) => {
-              const catalog_url = config.catalog_url;
-              return fetch(`${catalog_url}/add_device_from_available`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                  greenhouse_id: greenhouseId,
-                  device_id: plantId,
-                }),
-              });
-            })
-            .then((res) => res.json())
-            .then((result) => {
-              alert(result.message || "Device added successfully.");
-              location.reload();
-            })
-            .catch((err) => {
-              console.error("Failed to add device:", err);
-              alert("Failed to add device.");
-              location.reload(); // still reload to reset modal state
-            });
-        });
+        // document.getElementById("confirm-add-device").addEventListener("click", () => {
+        //   const plantId = document.getElementById("device-select").value;
+        //   fetch("../json/WebApp_config.json")
+        //     .then((res) => res.json())
+        //     .then((config) => {
+        //       const catalog_url = config.catalog_url;
+        //       return fetch(`${catalog_url}/add_device_from_available`, {
+        //         method: "POST",
+        //         headers: {
+        //           "Content-Type": "application/json",
+        //           Authorization: `Bearer ${token}`,
+        //         },
+        //         body: JSON.stringify({
+        //           greenhouse_id: greenhouseId,
+        //           device_id: plantId,
+        //         }),
+        //       });
+        //     })
+        //     .then((res) => res.json())
+        //     .then((result) => {
+        //       alert(result.message || "Device added successfully.");
+        //       location.reload();
+        //     })
+        //     .catch((err) => {
+        //       console.error("Failed to add device:", err);
+        //       alert("Failed to add device.");
+        //       location.reload(); // still reload to reset modal state
+        //     });
+        // });
     })
         .catch((error) => {
             console.error("Error:", error.message);

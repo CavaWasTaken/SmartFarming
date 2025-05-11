@@ -52,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  document.getElementById("username-display").textContent = `Greenhouse owner: ${username}`;
-  document.getElementById("title").textContent = `${greenhouseName} - ${greenhouseLocation}`;
+  // document.getElementById("username-display").textContent = `Greenhouse owner: ${username}`;
+  // document.getElementById("title").textContent = `${greenhouseName} - ${greenhouseLocation}`;
 
-  document.getElementById("logout-button").addEventListener("click", () => {
-    localStorage.clear();
-    window.location.href = "loginform.html";
-  });
+  // document.getElementById("logout-button").addEventListener("click", () => {
+  //   localStorage.clear();
+  //   window.location.href = "loginform.html";
+  // });
 
   fetch("../json/WebApp_config.json")
     .then((response) => response.json())
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     Authorization: `Bearer ${token}`,
                   },
                   body: JSON.stringify({
-                    greenhouse_id: greenhouseId,
+                    area_id: greenhouseId,
                     plant_id: plant.plant_id,
                   }),
                 });
