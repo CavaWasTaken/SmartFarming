@@ -9,7 +9,7 @@ def Severity(distance, domain):
     
 # function that checks if the value is in the accepted range
 def Is_inside(min_treshold, val, max_treshold):
-    return min_treshold <= val <= max_treshold
+    return float(min_treshold) <= float(val) <= float(max_treshold)
     
 # function that checks if an action is needed, and updates the user
 def Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, SendAlert, SendInfo, SendAction): 

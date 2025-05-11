@@ -106,6 +106,16 @@ while True:
                 senML_dictionary = json.loads(senML)
                 client.publish(senML_dictionary["bn"], senML)   # publish the senML message to the MQTT broker
 
+            if event_time < current_time:
+                # if the event time is in the past, we remove it from the list of events
+                write_log(f"Event {event['event_id']} is in the past: {event_time}")
+                response = requests.delete(f"{catalog_url}/delete_event", params={'device_id': device_id, 'event_id': event['event_id']})
+                if response.status_code == 200:
+                    write_log(f"Event {event['event_id']} deleted from the Catalog")
+                
+                else:
+                    write_log(f"WARNING: Failed to delete the event {event['event_id']} from the Catalog\t(Response: {response.json()["error"]})")
+    
     except Exception as e:
         write_log(f"Error processing events: {e}")
         
