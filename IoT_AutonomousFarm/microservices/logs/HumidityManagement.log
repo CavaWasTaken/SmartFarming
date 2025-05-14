@@ -1,6 +1,157 @@
-Received 2 sensors: [{'sensor_id': 5, 'greenhouse_id': 0, 'type': 'Humidity', 'name': 'DTH22', 'unit': '%', 'threshold': {'max': 75.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}, {'sensor_id': 2, 'greenhouse_id': 0, 'type': 'SoilMoisture', 'name': 'SoilMoisture', 'unit': '%', 'threshold': {'max': 80.0, 'min': 60.0}, 'domain': {'max': 100, 'min': 0}}]
-Subscribed to greenhouse_0/sensor_5
-Subscribed to greenhouse_0/event/sensor_5
-Subscribed to greenhouse_0/sensor_2
-Subscribed to greenhouse_0/event/sensor_2
+Device id: 43
+Received 2 sensors: [{'sensor_id': 5, 'area_id': 6, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 20}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 1, 'area_id': 4, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 25}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}]
+Subscribed to greenhouse_13/area_6/sensor_5
+Subscribed to greenhouse_13/area_6/event/sensor_5
+Subscribed to greenhouse_13/area_4/sensor_1
+Subscribed to greenhouse_13/area_4/event/sensor_1
 Connected to mqtt.eclipseprojects.io with result code 0
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.64997802268728, 'u': '%', 't': 0}}
+WARNING: Next expected timestamp of sensor_5 (SoilMoisture) not found
+Published to greenhouse_13/area_6/alert/device_43: {"message": "WARNING: Next expected timestamp of sensor_5 (SoilMoisture) not found", "timestamp": 0}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.067511823785814, 'u': '%', 't': 0}}
+WARNING: Next expected timestamp of sensor_1 (SoilMoisture) not found
+Published to greenhouse_13/area_4/alert/device_43: {"message": "WARNING: Next expected timestamp of sensor_1 (SoilMoisture) not found", "timestamp": 0}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.561282943606244, 'u': '%', 't': 20}}
+Next expected timestamp of sensor_5 (SoilMoisture): 40.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 40.0", "timestamp": 20}
+Next expected value of sensor_5 (SoilMoisture): 52.47258786452521
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 52.47258786452521", "timestamp": 20}
+Wait to see another value to start the decision making for sensor_5 (SoilMoisture)
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.57935958261933, 'u': '%', 't': 20}}
+Next expected timestamp of sensor_1 (SoilMoisture): 40.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 40.0", "timestamp": 20}
+Next expected value of sensor_1 (SoilMoisture): 52.09120734145286
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 52.09120734145286", "timestamp": 20}
+Wait to see another value to start the decision making for sensor_1 (SoilMoisture)
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.723993548919076, 'u': '%', 't': 40}}
+Next expected timestamp of sensor_5 (SoilMoisture): 60.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 60.0", "timestamp": 40}
+Next expected value of sensor_5 (SoilMoisture): 49.38576703130266
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 49.38576703130266", "timestamp": 40}
+The measured value (48.723993548919076 %) and the next prediction (49.38576703130266 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (48.723993548919076 %) and the next prediction (49.38576703130266 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 40}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.84112769085692, 'u': '%', 't': 40}}
+Next expected timestamp of sensor_1 (SoilMoisture): 60.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 60.0", "timestamp": 40}
+Next expected value of sensor_1 (SoilMoisture): 52.269615566158464
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 52.269615566158464", "timestamp": 40}
+The measured value (51.84112769085692 %) and the next prediction (52.269615566158464 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (51.84112769085692 %) and the next prediction (52.269615566158464 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 40}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.22414597540318, 'u': '%', 't': 60}}
+Next expected timestamp of sensor_5 (SoilMoisture): 80.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 80.0", "timestamp": 60}
+Next expected value of sensor_5 (SoilMoisture): 49.26115373851908
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 49.26115373851908", "timestamp": 60}
+The measured value (49.22414597540318 %) and the next prediction (49.26115373851908 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (49.22414597540318 %) and the next prediction (49.26115373851908 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 60}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 50.227866560406184, 'u': '%', 't': 60}}
+Next expected timestamp of sensor_1 (SoilMoisture): 80.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 80.0", "timestamp": 60}
+Next expected value of sensor_1 (SoilMoisture): 50.614674493941735
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 50.614674493941735", "timestamp": 60}
+The measured value (50.227866560406184 %) and the next prediction (50.614674493941735 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (50.227866560406184 %) and the next prediction (50.614674493941735 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 60}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.86229975589262, 'u': '%', 't': 80}}
+Next expected timestamp of sensor_5 (SoilMoisture): 100.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 100.0", "timestamp": 80}
+Next expected value of sensor_5 (SoilMoisture): 50.53059199876397
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 50.53059199876397", "timestamp": 80}
+The measured value (50.86229975589262 %) and the next prediction (50.53059199876397 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (50.86229975589262 %) and the next prediction (50.53059199876397 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 80}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.06660670388949, 'u': '%', 't': 80}}
+Next expected timestamp of sensor_1 (SoilMoisture): 100.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 100.0", "timestamp": 80}
+Next expected value of sensor_1 (SoilMoisture): 48.3505034937098
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 48.3505034937098", "timestamp": 80}
+The measured value (48.06660670388949 %) and the next prediction (48.3505034937098 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (48.06660670388949 %) and the next prediction (48.3505034937098 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 80}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.37996493754383, 'u': '%', 't': 100}}
+Next expected timestamp of sensor_5 (SoilMoisture): 120.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 120.0", "timestamp": 100}
+Next expected value of sensor_5 (SoilMoisture): 50.072257941104645
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 50.072257941104645", "timestamp": 100}
+The measured value (49.37996493754383 %) and the next prediction (50.072257941104645 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (49.37996493754383 %) and the next prediction (50.072257941104645 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 100}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 50.494963147927294, 'u': '%', 't': 100}}
+Next expected timestamp of sensor_1 (SoilMoisture): 120.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 120.0", "timestamp": 100}
+Next expected value of sensor_1 (SoilMoisture): 49.04481293698755
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 49.04481293698755", "timestamp": 100}
+The measured value (50.494963147927294 %) and the next prediction (49.04481293698755 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (50.494963147927294 %) and the next prediction (49.04481293698755 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 100}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.847510164099454, 'u': '%', 't': 120}}
+Next expected timestamp of sensor_5 (SoilMoisture): 140.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 140.0", "timestamp": 120}
+Next expected value of sensor_5 (SoilMoisture): 50.65963456674813
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 50.65963456674813", "timestamp": 120}
+The measured value (50.847510164099454 %) and the next prediction (50.65963456674813 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (50.847510164099454 %) and the next prediction (50.65963456674813 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 120}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.50882699368678, 'u': '%', 't': 120}}
+Next expected timestamp of sensor_1 (SoilMoisture): 140.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 140.0", "timestamp": 120}
+Next expected value of sensor_1 (SoilMoisture): 48.88098487950332
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 48.88098487950332", "timestamp": 120}
+The measured value (49.50882699368678 %) and the next prediction (48.88098487950332 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (49.50882699368678 %) and the next prediction (48.88098487950332 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 120}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.007188556718056, 'u': '%', 't': 140}}
+Next expected timestamp of sensor_5 (SoilMoisture): 160.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 160.0", "timestamp": 140}
+Next expected value of sensor_5 (SoilMoisture): 50.56084965527186
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 50.56084965527186", "timestamp": 140}
+The measured value (50.007188556718056 %) and the next prediction (50.56084965527186 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (50.007188556718056 %) and the next prediction (50.56084965527186 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 140}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.12078379912331, 'u': '%', 't': 140}}
+Next expected timestamp of sensor_1 (SoilMoisture): 160.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 160.0", "timestamp": 140}
+Next expected value of sensor_1 (SoilMoisture): 48.62162118407586
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 48.62162118407586", "timestamp": 140}
+The measured value (49.12078379912331 %) and the next prediction (48.62162118407586 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (49.12078379912331 %) and the next prediction (48.62162118407586 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 140}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.082580330882244, 'u': '%', 't': 160}}
+Next expected timestamp of sensor_5 (SoilMoisture): 180.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 180.0", "timestamp": 160}
+Next expected value of sensor_5 (SoilMoisture): 49.63246421491273
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 49.63246421491273", "timestamp": 160}
+The measured value (48.082580330882244 %) and the next prediction (49.63246421491273 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (48.082580330882244 %) and the next prediction (49.63246421491273 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 160}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.01199158458718, 'u': '%', 't': 160}}
+Next expected timestamp of sensor_1 (SoilMoisture): 180.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 180.0", "timestamp": 160}
+Next expected value of sensor_1 (SoilMoisture): 49.32472811681178
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 49.32472811681178", "timestamp": 160}
+The measured value (51.01199158458718 %) and the next prediction (49.32472811681178 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (51.01199158458718 %) and the next prediction (49.32472811681178 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 160}
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.70706815422745, 'u': '%', 't': 180}}
+Next expected timestamp of sensor_5 (SoilMoisture): 200.0
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected timestamp of sensor_5 (SoilMoisture): 200.0", "timestamp": 180}
+Next expected value of sensor_5 (SoilMoisture): 50.47015542838223
+Published to greenhouse_13/area_6/info/device_43: {"message": "Next expected value of sensor_5 (SoilMoisture): 50.47015542838223", "timestamp": 180}
+The measured value (51.70706815422745 %) and the next prediction (50.47015542838223 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]
+Published to greenhouse_13/area_6/info/device_43: {"message": "The measured value (51.70706815422745 %) and the next prediction (50.47015542838223 %) of SoilMoisture (SoilMoisture) are inside the range [20, 80]", "timestamp": 180}
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.68943418710678, 'u': '%', 't': 180}}
+Next expected timestamp of sensor_1 (SoilMoisture): 200.0
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected timestamp of sensor_1 (SoilMoisture): 200.0", "timestamp": 180}
+Next expected value of sensor_1 (SoilMoisture): 50.07068865969475
+Published to greenhouse_13/area_4/info/device_43: {"message": "Next expected value of sensor_1 (SoilMoisture): 50.07068865969475", "timestamp": 180}
+The measured value (51.68943418710678 %) and the next prediction (50.07068865969475 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]
+Published to greenhouse_13/area_4/info/device_43: {"message": "The measured value (51.68943418710678 %) and the next prediction (50.07068865969475 %) of SoilMoisture (SoilMoisture) are inside the range [25, 80]", "timestamp": 180}

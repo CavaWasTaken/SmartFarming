@@ -3,11 +3,14 @@ import json
 import requests
 from datetime import datetime, timedelta
 from MqttClient import MqttClient   # import the MqttClient class
+import os
 
 # function to write in a log file the message passed as argument
 def write_log(message):
     with open("./logs/TimeShift.log", "a") as log_file:
         log_file.write(f"{message}\n")
+
+os.makedirs("./logs", exist_ok=True)   # create the logs directory if it doesn't exist
 
 # each time that the device starts, we clear the log file
 with open("./logs/TimeShift.log", "w") as log_file:
@@ -19,7 +22,7 @@ try:
         config = json.load(config_fd)
         catalog_url = config["catalog_url"]
         dataAnalysis_url = config["dataAnalysis_url"]
-        device_id = config["device_id"]
+        greenhouse_id = config["greenhouse_id"] # get the id of the greenhouse
         mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
         mqtt_port = config["mqtt_connection"]["mqtt_port"]
         keep_alive = config["mqtt_connection"]["keep_alive"]

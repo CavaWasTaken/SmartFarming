@@ -1,6 +1,6 @@
 {
     "catalog_url": "http://localhost:8080",
-    "device_id": "0",
+    "greenhouse_id": "13",
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,

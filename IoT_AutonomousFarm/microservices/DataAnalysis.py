@@ -3,6 +3,7 @@ import requests
 import cherrypy
 from scipy.stats import linregress
 import time
+import os
 
 from MqttClient import MqttClient   # import the MqttClient class
 
@@ -10,6 +11,8 @@ from MqttClient import MqttClient   # import the MqttClient class
 def write_log(message):
     with open("./logs/DataAnalysis.log", "a") as log_file:
         log_file.write(f"{message}\n")
+
+os.makedirs("./logs", exist_ok=True)   # create the logs directory if it does not exist
 
 # each time that the device starts, we clear the log file
 with open("./logs/DataAnalysis.log", "w") as log_file:
@@ -21,7 +24,7 @@ try:
         config = json.load(config_fd)
         catalog_url = config["catalog_url"]
         thingSpeak_url = config["thingSpeak_url"]
-        device_id = config["device_id"]
+        greenhouse_id = config["greenhouse_id"] # get the id of the greenhouse
         mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
         mqtt_port = config["mqtt_connection"]["mqtt_port"]
         keep_alive = config["mqtt_connection"]["keep_alive"]
@@ -39,7 +42,7 @@ except KeyError as e:
 global N   # N is the number of values to keep track of
 
 # function to evaluate means, expected values and timestamps of the last N values received for each sensor
-def handle_message(topic, sensor_type, val, timestamp):
+def handle_message(topic, sensor_type, val, timestamp, area_id, sensor_id):
     # evaluation of the weighted mean on array of (at max N if the array is full) N values
     def weighted_mean(values, weights):    # calculate the weighted mean of a list of values
         if sensor_type == "NPK":
@@ -116,10 +119,7 @@ def handle_message(topic, sensor_type, val, timestamp):
         write_log(f"Sensor {sensor_id}: Expected next timestamp of {sensor_type}: {next_timestamp[sensor_id]}")
         write_log(f"Sensor {sensor_id}: Expected next value of {sensor_type}: {next_value[sensor_id]}")
 
-    greenhouse, sensor = topic.split("/")  # split the topic and get all the information contained
-    # sensor = "sensor_1" -> sensor_id = 1
-    sensor = sensor.split("_")[1]   # get the sensor_id from the topic
-    handle_sensor(int(sensor), val)
+    handle_sensor(sensor_id, val)
 
 # function to be performed when a message on a topic of interest is received from the MQTT broker
 def on_message(client, userdata, msg):
@@ -133,7 +133,12 @@ def on_message(client, userdata, msg):
                     sensor_type = message["n"]  # get the type of the sensor
                     val = message["v"]  # get the value of the message
                     timestamp = message["t"]  # get the timestamp of the message
-                    handle_message(topic, sensor_type, val, timestamp)
+
+                    # extract from the topic the area_id and the sensor_id
+                    area_id = int(topic.split("/")[1].split("_")[1])
+                    sensor_id = int(topic.split("/")[2].split("_")[1])
+
+                    handle_message(topic, sensor_type, val, timestamp, area_id, sensor_id)  # call the function to handle the message
                     
                 except KeyError as e:
                     write_log(f"Missing key in the message: {e}")
@@ -322,48 +327,17 @@ if __name__ == "__main__":
         write_log(f"Error starting the REST API: {e}")
         exit(1)
 
-    for _ in range(5):
-        try:
-            # it has to read the parameter N from the catalog
-            response = requests.get(f"{catalog_url}/get_device_info", params={'device_id': device_id, 'device_name': 'DataAnalysis'})    # get the device information from the catalog
-            if response.status_code == 200:
-                device_info = response.json()    # device_info is a dictionary with the information of the device
-                write_log(f"Received device information: {device_info}")
-                
-                try:
-                    N = device_info["params"]['N']    # get the number of values to keep track of from the device information
-                    break   # exit the loop if the progeram has red the N param inside the device info
-
-                except KeyError as e:
-                    write_log(f"Missing key in JSON device configuration: {e}\nTrying again in 60 seconds...")
-                    if _ == 4:  # if it is the last attempt
-                        write_log("Failed to get device information from the Catalog after 5 attempts")
-                        exit(1)  # exit the program if the device information is not found
-                
-                    time.sleep(60)  # wait for 60 seconds before trying again
-                    
-            else:
-                write_log(f"Failed to get device information from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")
-                if _ == 4:  # if it is the last attempt
-                    write_log("Failed to get device information from the Catalog after 5 attempts")
-                    exit(1)  # exit the program if the device information is not found
-
-                time.sleep(60)  # wait for 60 seconds before trying again
-
-        except Exception as e:
-            write_log(f"Error getting device information from the Catalog: {e}\nTrying again in 60 seconds...")
-            if _ == 4:  # if it is the last attempt
-                write_log("Failed to get device information from the Catalog after 5 attempts")
-                exit(1)  # exit the program if the device information is not found
-
-            time.sleep(60)  # wait for 60 seconds before trying again
+    N = 10  # number of values to keep track of
 
     for _ in range(5):
         try:
             # it has to read the sensors from the catalog
-            response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'DataAnalysis'})
+            response = requests.get(f"{catalog_url}/get_sensors", params={'greenhouse_id': greenhouse_id, 'device_name': 'DataAnalysis'})
             if response.status_code == 200:
-                sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+                response = response.json()
+                device_id = response["device_id"]    # get the device_id from the response
+                write_log(f"Device ID: {device_id}")
+                sensors = response["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
                 write_log(f"Received {len(sensors)} sensors: {sensors}")
                 break   # exit the loop if the request is successful
             
@@ -385,7 +359,7 @@ if __name__ == "__main__":
 
     mqtt_topics = [] # initialize the array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
-        mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}")
+        mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/sensor_{sensor['sensor_id']}")
         timestamps[sensor["sensor_id"]] = []
         values[sensor["sensor_id"]] = []
         mean_value[sensor["sensor_id"]] = 0

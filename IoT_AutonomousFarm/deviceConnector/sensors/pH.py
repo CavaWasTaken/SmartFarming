@@ -5,11 +5,11 @@ class pH:
     def __init__(self, Sensor):
         self.Sensor = Sensor
         self.goal = None
-        self.pHIncrease = False
-        self.pHDecrease = False
+        self.increase = False
+        self.decrease = False
         
     # analog pH sensor is the sensor that measures pH values of the soil
-    def get_pH_Values(self, elapsed_time):
+    def getValue(self, elapsed_time):
         start_pH = 7.0  # default pH value for the simulation
 
         # add some random noise
@@ -17,9 +17,9 @@ class pH:
         # introduce gradual change
         trend = -0.1 * elapsed_time  # small decrease over time
         
-        if self.pHIncrease:
+        if self.increase:
             trend += 0.2
-        elif self.pHDecrease:
+        elif self.decrease:
             trend -= 0.2
 
         # update the current pH value
@@ -32,19 +32,19 @@ class pH:
         if self.goal is not None:
             
             # if the command is to increase pH, we check if the current pH has reached the goal
-            if self.pHIncrease:
+            if self.increase:
             
                 if pH >= self.goal:
                     # stop the action
-                    self.pHIncrease = False
+                    self.increase = False
                     self.goal = None
             
             # if the command is to decrease pH, we check if the current pH has reached the goal
-            elif self.pHDecrease:
+            elif self.decrease:
             
                 if pH <= self.goal:
                     # stop the action
-                    self.pHDecrease = False
+                    self.decrease = False
                     self.goal = None
         
         return pH

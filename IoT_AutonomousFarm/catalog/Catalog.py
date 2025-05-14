@@ -10,12 +10,12 @@ import jwt
 import datetime
 import time
 
-from MqttClient import MqttClient   # import the MqttClient class
-
 # function to write in a log file the message passed as argument
 def write_log(message):
     with open("./logs/Catalog.log", "a") as log_file:
         log_file.write(f"{message}\n")
+
+os.makedirs("./logs", exist_ok=True)  # create the logs directory if it doesn't exist
 
 # each time that the catalog starts, we clear the log file
 with open("./logs/Catalog.log", "w") as log_file:
@@ -177,7 +177,7 @@ def get_greenhouse_location(conn, greenhouse_id):
         return {"error": "Internal error"}
 
 # given the id of the device, return the list of sensors connected to the greenhouse where it is working
-def get_sensors(conn, device_id, device_name):
+def get_sensors(conn, greenhouse_id, device_name):
     try: 
         # check if the connection is closed
         if conn.closed:
@@ -186,20 +186,13 @@ def get_sensors(conn, device_id, device_name):
         
         with conn.cursor() as cur: # create a cursor to execute queries
             # check if the device exists
-            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
+            cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s AND name = %s"), [greenhouse_id, device_name])
             result = cur.fetchone()
             if result is None:  # if the device doesn't exist
                 cherrypy.response.status = 404
                 return {"error": "Unexisting device"}
-
-            # the first query is to get the greenhouse_id of the device
-            cur.execute(sql.SQL("SELECT greenhouse_id FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
-            # then the second one returns the list of sensors connected to the greenhouse
-            result = cur.fetchone()
-            if result is None:   # if the greenhouse does not exist, return error 404
-                cherrypy.response.status = 404
-                return {"error": "Greenhouse not found"}
-            greenhouse_id = result[0]
+            
+            device_id = result[0]  # get the device id from the result
             
             # personalize the query based on the device name, cause each device connector is interested in different sensors
             authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot", "TimeShift"]
@@ -221,16 +214,20 @@ def get_sensors(conn, device_id, device_name):
             for sensor in sensors:  # for each sensor in the list
                 sensor_dict = { # associate the values to the keys
                     'sensor_id': sensor[0],
-                    'greenhouse_id': sensor[1],
+                    'area_id': sensor[1],
                     'type': sensor[2],
                     'name': sensor[3],
                     'unit': sensor[4],
                     'threshold': sensor[5],
-                    'domain': sensor[6]
+                    'domain': sensor[6],
+                    'greenhouse_id': sensor[7]
                 }
                 sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
 
-            return {'sensors': sensors_list}
+            return {
+                'device_id': device_id,
+                'sensors': sensors_list
+            }
         
     except:
         cherrypy.response.status = 500
@@ -832,22 +829,24 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
             
 
             default_devices = [
-            ("DeviceConnector", "DeviceConnector", None),
-            ("HumidityManagement", "Microservices", None),
-            ("LightManagement", "Microservices", None),
-            ("NutrientManagement", "Microservices", None),
-            ("ThingSpeakAdaptor", "ThingSpeakAdaptor", None),
-            ("WebApp", "UI", None),
-            ("TelegramBot", "UI", None),
+                ("DeviceConnector", "DeviceConnector"),
+                ("HumidityManagement", "Microservices"),
+                ("LightManagement", "Microservices"),
+                ("NutrientManagement", "Microservices"),
+                ("DataAnalysis", "Microservices"),
+                ("TimeShift", "Microservices"),
+                ("ThingSpeakAdaptor", "ThingSpeakAdaptor"),
+                ("WebApp", "UI"),
+                ("TelegramBot", "UI"),
             ]
 
-            for name, dev_type, params in default_devices:
+            for name, dev_type in default_devices:
                 cur.execute(
                     """
-                    INSERT INTO devices (greenhouse_id, name, type, params)
+                    INSERT INTO devices (greenhouse_id, name, type)
                     VALUES (%s, %s, %s, %s)
                     """,
-                    (greenhouse[0], name, dev_type, json.dumps(params) if params else None)
+                    (greenhouse[0], name, dev_type)
                 )
 
             conn.commit()
@@ -1164,8 +1163,8 @@ class CatalogREST(object):
         
         elif uri[0] == 'get_sensors':
             # check the existence of the parameters
-            if 'device_id' in params and 'device_name' in params:
-                return get_sensors(self.catalog_connection, params['device_id'], params['device_name'])
+            if 'greenhouse_id' in params and 'device_name' in params:
+                return get_sensors(self.catalog_connection, params['greenhouse_id'], params['device_name'])
                 
             else:
                 cherrypy.response.status = 400

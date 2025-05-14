@@ -5,11 +5,11 @@ class SoilMoisture:
     def __init__(self, Sensor):
         self.Sensor = Sensor
         self.goal = None
-        self.soilMoistureIncrease = False
-        self.soilMoistureDecrease = False
+        self.increase = False
+        self.decrease = False
         
     # capacitive soil moisture sensor is the sensor that measures soil moisture
-    def get_SoilMoisture_Values(self, elapsed_time):
+    def getValue(self, elapsed_time):
         start_soil_moisture = 50.0  # default soil moisture value for the simulation
 
         # add some random noise
@@ -17,9 +17,9 @@ class SoilMoisture:
         # introduce gradual decrease
         trend = -elapsed_time  # small decrease over time
 
-        if self.soilMoistureIncrease:
+        if self.increase:
             trend += 5
-        elif self.soilMoistureDecrease:
+        elif self.decrease:
             trend -= 5
         
         # update the current soil moisture value
@@ -32,19 +32,19 @@ class SoilMoisture:
         if self.goal is not None:
             
             # if the command is to increase soil moisture, we check if the current soil moisture has reached the goal
-            if self.soilMoistureIncrease:
+            if self.increase:
             
                 if soil_moisture >= self.goal:
                     # stop the action
-                    self.soilMoistureIncrease = False
+                    self.increase = False
                     self.goal = None
             
             # if the command is to decrease soil moisture, we check if the current soil moisture has reached the goal
-            elif self.soilMoistureDecrease:
+            elif self.decrease:
             
                 if soil_moisture <= self.goal:
                     # stop the action
-                    self.soilMoistureDecrease = False
+                    self.decrease = False
                     self.goal = None
         
         return soil_moisture

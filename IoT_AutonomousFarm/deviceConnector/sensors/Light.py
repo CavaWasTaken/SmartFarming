@@ -8,11 +8,11 @@ class Light:
     def __init__(self, Sensor):
         self.Sensor = Sensor
         self.goal = None
-        self.lightIncrease = False
-        self.lightDecrease = False
+        self.increse = False
+        self.decrease = False
 
     # ldr sensor is the sensor that measures light intensity
-    def get_LightIntensity_Values(self):
+    def getValue(self):
         time_of_day = datetime.now()
         time_of_day = (time_of_day.hour * 3600 + time_of_day.minute * 60 + time_of_day.second)/3600
 
@@ -25,9 +25,9 @@ class Light:
             # introduce gradual change
             trend = 100 + 600 * math.sin(math.pi * time_of_day / 24)  # simulate daily light intensity variation
             
-            if self.lightIncrease:
+            if self.increse:
                 trend += 5
-            elif self.lightDecrease:
+            elif self.decrease:
                 trend -= 5
 
             # update the current light intensity value
@@ -40,28 +40,19 @@ class Light:
             if self.goal is not None:
             
                 # if the command is to increase light intensity, we check if the current light intensity has reached the goal
-                if self.lightIncrease:
+                if self.increse:
             
                     if current_light_intensity >= self.goal:
                         # stop the action
-                        self.lightIncrease = False
+                        self.increse = False
                         self.goal = None
             
                 # if the command is to decrease light intensity, we check if the current light intensity has reached the goal
-                elif self.lightDecrease:
+                elif self.decrease:
             
                     if current_light_intensity <= self.goal:
                         # stop the action
-                        self.lightDecrease = False
+                        self.decrease = False
                         self.goal = None
 
         return current_light_intensity
-
-    # start_time = datetime.now()
-    # start_time = (start_time.hour * 3600 + start_time.minute * 60 + start_time.second)/3600
-    # current_light_intensity = 5 * math.sin(math.pi * start_time / 24)
-
-    # for i in range(72):
-    #     time = start_time + i
-    #     time = time % 24
-    #     print(f"Hour: {time}, {get_LightIntensity_Values(current_light_intensity, time)}")

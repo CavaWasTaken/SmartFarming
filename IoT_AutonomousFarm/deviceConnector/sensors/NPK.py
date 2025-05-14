@@ -15,7 +15,7 @@ class NPK:
         self.potassiumDecrease = False
         
     # grove NPK sensor is the sensor that measures NPK values
-    def get_NPK_Values(self, elapsed_time):    
+    def getValue(self, elapsed_time):    
         start_npk = {"N": 150.0, "P": 200.0, "K": 200.0}
 
         # add some random noise
