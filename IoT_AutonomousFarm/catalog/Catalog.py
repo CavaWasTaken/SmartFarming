@@ -869,7 +869,6 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
-
 # function to get the entire list of sensors
 def get_all_sensors(conn):
     with conn.cursor() as cur:
@@ -1145,7 +1144,98 @@ def get_plants_area(conn, greenhouse_id, area_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
         
+# remove area
+def remove_area_from_greenhouse(conn, greenhouse_id, area_id):
+    with conn.cursor() as cur:
+        # check if the area is in the greenhouse
+        cur.execute(sql.SQL("SELECT * FROM areas WHERE greenhouse_id = %s AND area_id = %s"), [greenhouse_id, area_id])
+        area = cur.fetchone()
+        if area is None:
+            raise cherrypy.HTTPError(404, "area is not in the greenhouse")
+        # remove the area from the greenhouse
+        try:
+            cur.execute(sql.SQL("DELETE FROM areas WHERE greenhouse_id = %s AND area_id = %s"), [greenhouse_id, area_id])
+            conn.commit()
+            # return the updated list of areas in the greenhouse
+            cur.execute(sql.SQL("SELECT area_id FROM areas WHERE area_id = %s"), [area_id])
+            areas = cur.fetchall()
+            if areas is None:
+                raise cherrypy.HTTPError(404, "No areas found")
+            
+            area_list = []
+            for area in areas:
+                cur.execute(sql.SQL("SELECT * FROM areas WHERE area_id = %s"), [area[0]])
+                area = cur.fetchone()
+                area_dict = {
+                    'area_id': area[0],
+                    'name': area[1],
+                }
+                area_list.append(area_dict)
 
+            return area_list
+        except:
+            raise cherrypy.HTTPError(500, "Internal error")
+
+
+# get userInfo 
+def get_user_info(conn, user_id):
+    with conn.cursor() as cur:
+        cur.execute(sql.SQL("SELECT username, email FROM users WHERE user_id = %s;"), [user_id])  
+        user = cur.fetchone()  # Use fetchone() for a single user
+
+        if user is None:
+            raise cherrypy.HTTPError(404, "No user found")
+        
+        user_dict = {
+            'username': user[0],
+            'email': user[1]
+        }
+
+        return user_dict  # Just return the dictionary, not a list
+
+# update user info 
+def update_user_info(conn, user_id, username, email, new_password=None):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # Check if user exists
+            cur.execute(sql.SQL("SELECT * FROM users WHERE user_id = %s"), [user_id])
+            user = cur.fetchone()
+            if not user:
+                cherrypy.response.status = 404
+                return {"error": "User not found"}
+
+            # Update username and email
+            cur.execute(
+                sql.SQL("UPDATE users SET username = %s, email = %s WHERE user_id = %s"),
+                [username, email, user_id]
+            )
+
+            # Optionally update password
+            if new_password:
+                hashed_pw = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+                cur.execute(
+                    sql.SQL("UPDATE users SET password_hash = %s WHERE user_id = %s"),
+                    [hashed_pw, user_id]
+                )
+
+            conn.commit()
+
+            return {"message": "User information updated successfully"}
+    
+    except psycopg2.errors.UniqueViolation:
+        conn.rollback()
+        cherrypy.response.status = 409
+        return {"error": "Username or email already in use"}
+    
+    except Exception as e:
+        conn.rollback()
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+    
 
 
 class CatalogREST(object):
@@ -1274,6 +1364,15 @@ class CatalogREST(object):
             else:
                 cherrypy.response.status = 400
                 return {"error": "Missing parameters"}
+
+        elif uri[0] == 'get_user_info':
+            # check the existence of the parameters
+            if 'user_id' in params:
+                return get_user_info(self.catalog_connection, params['user_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}        
         
         else:
             cherrypy.response.status = 400
@@ -1445,7 +1544,32 @@ class CatalogREST(object):
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
+
+        elif uri[0] == 'remove_area_from_greenhouse':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'area_id' not in input_json or 'greenhouse_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return remove_area_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['area_id'])
+
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"} 
             
+        elif uri[0] == 'update_user_info':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'user_id' not in input_json or 'username' not in input_json or 'email' not in input_json or 'new_password' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return update_user_info(self.catalog_connection, input_json['user_id'], input_json['username'], input_json['email'], input_json['new_password'])
+
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"} 
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}
