@@ -1,32 +1,40 @@
-
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch("partialheader.html")
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("partialheader.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("header-container").innerHTML = data;
 
       const token = localStorage.getItem("token");
       const username = localStorage.getItem("username");
+
+      const userInfoLink = document.getElementById("userinfo");
       const userProfile = document.getElementById("userProfile");
-  
-      if (userProfile) {
-        if (token && username) {
+
+      if (token && username) {
+        //  Show profile name
+        if (userProfile) {
           userProfile.textContent = `Welcome, ${username}`;
           userProfile.style.cursor = "pointer";
           userProfile.onclick = () => {
             const confirmLogout = confirm("Log out?");
             if (confirmLogout) {
-              
-              localStorage.removeItem("token");
-              localStorage.removeItem("user_id");
-              localStorage.removeItem("username");
-              localStorage.removeItem("greenhouse_id");
-              localStorage.removeItem("greenhouse_name");
-              localStorage.removeItem("greenhouse_location");
+              localStorage.clear();
               window.location.href = "loginform.html";
             }
           };
-        } else {
+        }
+
+        // Show User Profile menu item
+        if (userInfoLink) {
+          userInfoLink.style.display = "inline-block";
+        }
+      } else {
+        // Hide User Profile menu item
+        if (userInfoLink) {
+          userInfoLink.style.display = "none";
+        }
+
+        if (userProfile) {
           userProfile.textContent = "Login";
           userProfile.style.cursor = "pointer";
           userProfile.onclick = () => {
@@ -35,5 +43,5 @@
         }
       }
     });
-   
-  });
+});
+
