@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 17.4 (Debian 17.4-1.pgdg120+2)
--- Dumped by pg_dump version 17.4 (Debian 17.4-1.pgdg120+2)
+-- Dumped from database version 17.2 (Debian 17.2-1.pgdg120+1)
+-- Dumped by pg_dump version 17.2 (Debian 17.2-1.pgdg120+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -166,7 +166,6 @@ CREATE TABLE public.devices (
     greenhouse_id integer NOT NULL,
     name character varying(100) NOT NULL,
     type character varying(100) NOT NULL,
-    params jsonb,
     CONSTRAINT device_name_check CHECK (((name)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('HumidityManagement'::character varying)::text, ('LightManagement'::character varying)::text, ('NutrientManagement'::character varying)::text, ('DataAnalysis'::character varying)::text, ('TimeShift'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text, ('TelegramBot'::character varying)::text, ('WebApp'::character varying)::text]))),
     CONSTRAINT device_type_check CHECK (((type)::text = ANY (ARRAY[('DeviceConnector'::character varying)::text, ('Microservices'::character varying)::text, ('UI'::character varying)::text, ('ThingSpeakAdaptor'::character varying)::text])))
 );
@@ -325,7 +324,7 @@ CREATE TABLE public.sensors (
     threshold_range jsonb NOT NULL,
     domain jsonb NOT NULL,
     greenhouse_id integer,
-    CONSTRAINT check_sensor_type CHECK (((type)::text = ANY ((ARRAY['Temperature'::character varying, 'Humidity'::character varying, 'SoilMoisture'::character varying, 'LightIntensity'::character varying, 'pH'::character varying, 'NPK'::character varying])::text[])))
+    CONSTRAINT check_sensor_type CHECK (((type)::text = ANY (ARRAY[('Temperature'::character varying)::text, ('Humidity'::character varying)::text, ('SoilMoisture'::character varying)::text, ('LightIntensity'::character varying)::text, ('pH'::character varying)::text, ('NPK'::character varying)::text])))
 );
 
 
@@ -509,14 +508,16 @@ COPY public.availablesensors (sensor_id, name, type, unit, threshold_range, doma
 -- Data for Name: devices; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.devices (device_id, greenhouse_id, name, type, params) FROM stdin;
-42	13	DeviceConnector	DeviceConnector	\N
-43	13	HumidityManagement	Microservices	\N
-44	13	LightManagement	Microservices	\N
-45	13	NutrientManagement	Microservices	\N
-46	13	ThingSpeakAdaptor	ThingSpeakAdaptor	\N
-47	13	WebApp	UI	\N
-48	13	TelegramBot	UI	\N
+COPY public.devices (device_id, greenhouse_id, name, type) FROM stdin;
+42	13	DeviceConnector	DeviceConnector
+43	13	HumidityManagement	Microservices
+44	13	LightManagement	Microservices
+45	13	NutrientManagement	Microservices
+46	13	ThingSpeakAdaptor	ThingSpeakAdaptor
+47	13	WebApp	UI
+48	13	TelegramBot	UI
+49	13	DataAnalysis	Microservices
+50	13	TimeShift	Microservices
 \.
 
 
@@ -615,7 +616,7 @@ SELECT pg_catalog.setval('public.availablesensors_sensor_id_seq', 1, false);
 -- Name: devices_device_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.devices_device_id_seq', 48, true);
+SELECT pg_catalog.setval('public.devices_device_id_seq', 50, true);
 
 
 --
@@ -723,6 +724,14 @@ ALTER TABLE ONLY public.scheduled_events
 
 ALTER TABLE ONLY public.sensors
     ADD CONSTRAINT sensors_pkey PRIMARY KEY (sensor_id);
+
+
+--
+-- Name: devices unique_greenhouse_device; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.devices
+    ADD CONSTRAINT unique_greenhouse_device UNIQUE (greenhouse_id, name);
 
 
 --

@@ -2,6 +2,7 @@ import json
 import requests
 import cherrypy
 import time
+import os
 
 from MqttClient import MqttClient   # import the MqttClient class
 
@@ -9,6 +10,8 @@ from MqttClient import MqttClient   # import the MqttClient class
 def write_log(message):
     with open("./logs/ThingSpeakAdaptor.log", "a") as log_file:
         log_file.write(f"{message}\n")
+
+os.makedirs("./logs", exist_ok=True)   # create the logs directory if it doesn't exist
 
 # each time that the device starts, we clear the log file
 with open("./logs/ThingSpeakAdaptor.log", "w") as log_file:
@@ -18,7 +21,7 @@ with open("./logs/ThingSpeakAdaptor.log", "w") as log_file:
 with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
     config = json.load(config_fd)   # load the configuration from the file as a dictionary
     catalog_url = config["catalog_url"] # get the url of the catalog
-    device_id = config["device_id"] # get the id of the device
+    greenhouse_id = config["greenhouse_id"] # get the id of the greenhouse
     mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # mqtt broker
     mqtt_port = config["mqtt_connection"]["mqtt_port"]  # mqtt port
     keep_alive = config["mqtt_connection"]["keep_alive"]    # keep alive time
@@ -28,10 +31,6 @@ with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
 thingSpeak_config = {}  # dictionary containing the configuration of the ThingSpeak channel
 
 def handle_message(topic, sensor_type, val):
-    greenhouse, sensor = topic.split("/")  # split the topic and get all the information contained
-    greenhouse_id = greenhouse.split("_")[1]    # extract the id of the greenhouse from the topic
-    sensor_id = sensor.split("_")[1]    # extract the id of the sensor from the topic
-
     fields = thingSpeak_config["fields"]    # get the fields of the ThingSpeak channel
     if sensor_type == "NPK":
         fields["Nitrogen"] = val["N"]
@@ -95,7 +94,6 @@ def get_field_data(field, n):
         if response.status_code == 200:
             data = response.json()
             channel_info = data.get("channel", {})
-            field_num = None
 
             for key, value in channel_info.items():
                 if value == field and key.startswith("field"):
@@ -190,31 +188,35 @@ if __name__ == "__main__":
 
     for _ in range(5):
         try: 
-            response = requests.get(f"{catalog_url}/get_sensors", params={'device_id': device_id, 'device_name': 'ThingSpeakAdaptor'})    # get the device information from the catalog
-            if response.status_code == 200:
-                sensors = response.json()["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+            # get the list of sensors connected to this device connector from the Catalog
+            response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Catalog
+            if response.status_code == 200: # if the request is successful
+                response = response.json()  # convert the response to a dictionary
+                device_id = response["device_id"]    # get the device id from the response
+                write_log(f"Device id: {device_id}")
+                sensors = response["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
                 write_log(f"Received {len(sensors)} sensors: {sensors}")
                 break
 
             else:
-                write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}")    # in case of error, write the reason of the error in the log file
-                if _ == 4:
+                write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()["error"]})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+                if _ == 4:  # if it is the last attempt
                     write_log("Failed to get sensors from the Catalog after 5 attempts")
-                    exit(1)
+                    exit(1)  # exit the program if the device information is not found
                 
-                time.sleep(60)  # wait 60 seconds before retrying
+                time.sleep(60)
 
         except Exception as e:
-            write_log(f"Error getting sensors from the Catalog: {e}")
-            if _ == 4:
+            write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
+            if _ == 4:  # if this is the last attempt
                 write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)
-            
-            time.sleep(60)
-        
+                exit(1)   # exit the program if the request fails after 5 attempts
+
+            time.sleep(60)   # wait for 60 seconds before trying again
+
     for _ in range(5):
         try:
-            response = requests.get(f"{catalog_url}/get_greenhouse_info", params={'greenhouse_id': sensors[0]["greenhouse_id"], 'device_id': device_id})    # get the greenhouse information from the catalog
+            response = requests.get(f"{catalog_url}/get_greenhouse_info", params={'greenhouse_id': greenhouse_id, 'device_id': device_id})    # get the greenhouse information from the catalog
             if response.status_code == 200:
                 greenhouse_info = response.json()    # greenhouse_info is a dictionary with the information of the greenhouse
                 write_log(f"Received greenhouse information: {greenhouse_info}")
@@ -239,7 +241,7 @@ if __name__ == "__main__":
 
     mqtt_topics = [] # array of topics where the microservice is subscribed
     for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
-        mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/sensor_{sensor['sensor_id']}")
+        mqtt_topics.append(f"greenhouse_{greenhouse_id}/area_{sensor['area_id']}/sensor_{sensor['sensor_id']}")
 
     write_log("")
 

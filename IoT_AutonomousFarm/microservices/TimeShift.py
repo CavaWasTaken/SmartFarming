@@ -37,6 +37,34 @@ except KeyError as e:
     write_log(f"Missing key in JSON file: {e}")
     exit(1)
 
+for _ in range(5):  # try 5 times to get the list of sensors connected
+    try:
+        # get the list of sensors connected to this device connector from the Catalog
+        response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Catalog
+        if response.status_code == 200: # if the request is successful
+            response = response.json()  # convert the response to a dictionary
+            device_id = response["device_id"]    # get the device id from the response
+            write_log(f"Device id: {device_id}")
+            sensors = response["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+            write_log(f"Received {len(sensors)} sensors: {sensors}")
+            break
+
+        else:
+            write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()["error"]})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            if _ == 4:  # if it is the last attempt
+                write_log("Failed to get sensors from the Catalog after 5 attempts")
+                exit(1)  # exit the program if the device information is not found
+            
+            time.sleep(60)
+
+    except Exception as e:
+        write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
+        if _ == 4:  # if this is the last attempt
+            write_log("Failed to get sensors from the Catalog after 5 attempts")
+            exit(1)   # exit the program if the request fails after 5 attempts
+
+        time.sleep(60)   # wait for 60 seconds before trying again
+
 for _ in range(5):  # try 5 times to start the MQTT client
     try:
         # MQTT Client setup
@@ -52,31 +80,9 @@ for _ in range(5):  # try 5 times to start the MQTT client
 
         time.sleep(60)   # wait for 60 seconds before trying again
 
-for _ in range(5):  # try 5 times to get the list of sensors connected to this device connector
-    try:
-        # get the list of sensors connected to this device connector from the Catalog
-        response = requests.get(f'{catalog_url}/get_sensors', params={'device_id': device_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Catalog
-        if response.status_code == 200: # if the request is successful
-            sensors = response.json()["sensors"]    # sensors is a dictionary of sensors connected to the device connector
-            write_log(f"Received {len(sensors)} sensors: {sensors}")
-            break   # exit the loop if the request is successful
-
-        else:
-            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-            time.sleep(60)   # wait for 60 seconds before trying again
-
-    except Exception as e:
-        write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-        if _ == 4:  # if this is the last attempt
-            write_log("Failed to get sensors from the Catalog after 5 attempts")
-            exit(1)   # exit the program if the request fails after 5 attempts
-
-        time.sleep(60)   # wait for 60 seconds before trying again
-
 while True:
     current_time = datetime.now()   # get the current time
     try:
-        greenhouse_id = sensors[0]['greenhouse_id']   # get the greenhouse id from the first sensor
         response = requests.get(f'{catalog_url}/get_scheduled_events', params={'device_id': device_id, 'device_name': 'TimeShift', 'greenhouse_id': greenhouse_id})    # read the list of sensors from the Catalog
         if response.status_code == 200:
             events = response.json()['events']   # events is a dictionary of scheduled events for this greenhouse
