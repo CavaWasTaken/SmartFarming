@@ -1,20 +1,26 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user_id");
+    const username = localStorage.getItem("username");
+
+    if (!token || !userId || !username) {
+        alert("You are not logged in. Please log in to access this page.");
+        window.location.href = "loginform.html"; // redirect to login page
+    }
+});
+
 function addGreenhouse() {        
     // Read the values from the input fields and remove any leading/trailing whitespace
     const greenhouseName = document.getElementById("greenhouse-name").value.trim();
     const greenhouseLocation = document.getElementById("greenhouse-location").value.trim();
+    const userId = localStorage.getItem("user_id");
 
     // Check if any of the fields are empty
     if (!greenhouseName || !greenhouseLocation) {
         alert("Both name and location are required!");
         return;
     }
-
-    // Get the logged-in user's ID from localStorage
-    const userId = localStorage.getItem("user_id");
-    if (!userId) {
-         alert("User is not logged in. Please log in to add a greenhouse.");
-        return;
-    }
+    
     // Example JSON data for thingspeak_config
     const thingspeak_config = {
         api_key: "",
@@ -41,19 +47,25 @@ function addGreenhouse() {
             body: JSON.stringify(formData)
         });
     })
-    .then(response => {
+    .then(async response => {
         if (!response.ok) {
-            throw new Error("Failed to add greenhouse");
+            const err = await response.json();
+            throw new Error(err.error);
         }
         return response.json();
     })
     .then(data => {
         alert(data.message || "Greenhouse added successfully!");
-        // Optionally, reload the page or redirect the user
-        location.reload();
+        // redirect to the greenhouses page
+        window.location.href = "greenhouses.html"; // Redirect to the greenhouses page
     })
     .catch(error => {
         console.error("Error:", error.message);
         alert("An error occurred while adding the greenhouse.");
+        document.getElementById("addGreenhouseForm").reset(); // Reset the form
     });
 }
+
+document.getElementById("AddGreenhouseButton")?.addEventListener("click", function () {
+    addGreenhouse();
+});

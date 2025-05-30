@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #080710;
+  background-color: #D6CC99;
 }
 
 .background {
@@ -19,29 +19,11 @@ body {
     top: 50%;
 }
 
-.background .shape {
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-
-.shape:first-child {
-    background: linear-gradient(#1845ad,#23a2f6);
-    left: -80px;
-    top: -80px;
-}
-
-.shape:last-child {
-    background: linear-gradient(to right,#ff512f,#f09819);
-    right: -30px;
-    bottom: -80px;
-}
-
 form {
     height: 450px;
     width: 85%;
-    background-color: rgba(255, 255, 255, 0.13);
+    background-color: #344c40;
+    color: #fff;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -92,15 +74,51 @@ input {
 }
 
 button {
-    margin-top: 35px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #080710;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.22);
+}
+
+button:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+}
+
+.select-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(45deg, #983c2a, #ef816c);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-button:hover {
+  background: linear-gradient(45deg, #983c2a, #ef816c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.select-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .social {
@@ -128,58 +146,4 @@ button {
 
 .social i {
     margin-right: 4px;
-}
-
-/* Links */
-a {
-    display: block;
-    text-align: center;
-    margin-top: 20px; /* Space from the components above */
-    font-size: 14px;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-#register-link:hover {
-    text-decoration: underline;
-}
-
-/* Header */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(to right, #1845ad, #23a2f6);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.header-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-    /* font-family: 'Poppins', sans-serif; */
-    letter-spacing: 1px;
-}
-
-.header-link {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    /* font-family: 'Poppins', sans-serif; */
-    transition: color 0.3s ease;
-}
-
-.header-link:hover {
-    color: #ffcc00;
-    text-decoration: underline;
 }

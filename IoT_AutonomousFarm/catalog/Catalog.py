@@ -9,6 +9,7 @@ from cherrypy_cors import CORS
 import jwt
 import datetime
 import time
+import requests
 
 # function to write in a log file the message passed as argument
 def write_log(message):
@@ -22,22 +23,13 @@ with open("./logs/Catalog.log", "w") as log_file:
     pass
 
 try:
-    # Setup jinja2 
-    # relative path to the template directory
-    TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), '../ui/webApp')
-    env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_PATH))
-
-except Exception as e:
-    write_log(f"Error setting up Jinja2: {e}")
-    exit(1)
-
-try:
     # read the mqtt information of the broker from the json file
     with open("./Catalog_config.json", "r") as config_fd:
         config = json.load(config_fd)   # read the configuration from the json file
         mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
         mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
         keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
+        telegram_token = config["telegram_token"]  # read the token of the telegram bot
 
 except FileNotFoundError:
     write_log("Catalog_config.json file not found")
@@ -77,11 +69,6 @@ def cors():
     cherrypy.response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
 
 cherrypy.tools.cors = cherrypy.Tool('before_handler', cors)
-
-# function triggered when a message of interest is received by the Catalog
-# Because the Catalog is only a publisher, this function should never be used
-def on_message(client, userdata, message):
-    write_log(f"Received message: {message.payload.decode()}")    # write in the log file the action received
 
 # method to get all the greenhouses in the system
 def get_all_greenhouses(conn):
@@ -411,7 +398,7 @@ def get_user_greenhouses(conn, user_id, username):
         return {"error": "Internal error"}
     
 # function to return everything about a greenhouse (plants, sensors, devices)
-def get_greenhouse_configurations(conn, greenhouse_id):
+def get_devices(conn, greenhouse_id):
     try:
         # check if the connection is closed
         if conn.closed:
@@ -419,26 +406,6 @@ def get_greenhouse_configurations(conn, greenhouse_id):
             return {"error": "Database connection is closed"}
         
         with conn.cursor() as cur:
-            # get sensors of the greenhouse
-            # cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"), [greenhouse_id])
-            # sensors = cur.fetchall() or [] # fall back to empty list if no sensors are found
-            # if sensors is None:
-            #     cherrypy.response.status = 404
-            #     return {"error": "No sensors found"}
-
-            # sensors_list = []
-            # for sensor in sensors:
-            #     sensor_dict = {
-            #         'sensor_id': sensor[0],
-            #         'greenhouse_id': sensor[1],
-            #         'type': sensor[2],
-            #         'name': sensor[3],
-            #         'unit': sensor[4],
-            #         'threshold': sensor[5],
-            #         'domain': sensor[6]
-            #     }
-            #     sensors_list.append(sensor_dict)
-
             # get devices of the greenhouse
             cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s"), [greenhouse_id])
             devices = cur.fetchall() or [] # fall back to empty list if no devices are found
@@ -453,26 +420,8 @@ def get_greenhouse_configurations(conn, greenhouse_id):
                     'greenhouse_id': device[1],
                     'name': device[2],
                     'type': device[3],
-                    'params': device[4]
                 }
                 devices_list.append(device_dict)
-
-            # get plants of the greenhouse
-            # cur.execute(sql.SQL("SELECT plant_id FROM greenhouse_plants WHERE greenhouse_id = %s"), [greenhouse_id])
-            # plants = cur.fetchall() or [] # fall back to empty list if no plants are found
-            
-            # plants_list = []
-            # for plant in plants:
-            #     cur.execute(sql.SQL("SELECT * FROM plants WHERE plant_id = %s"), [plant[0]])
-            #     plant = cur.fetchone()
-            #     if plant: # if the plant exists
-            #         plant_dict = {
-            #         'plant_id': plant[0],
-            #         'name': plant[1],
-            #         'species': plant[2],
-            #         'desired_thresholds': plant[3],
-            #     }
-            #     plants_list.append(plant_dict)
 
             return { 'devices': devices_list}
         
@@ -811,7 +760,6 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
             )
             greenhouse = cur.fetchone()
 
-
             # add default area 
             cur.execute(
                 sql.SQL("""
@@ -824,10 +772,7 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
 
             main_area_id = cur.fetchone()[0]
 
-
             # add default devices 
-            
-
             default_devices = [
                 ("DeviceConnector", "DeviceConnector"),
                 ("HumidityManagement", "Microservices"),
@@ -837,20 +782,19 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
                 ("TimeShift", "Microservices"),
                 ("ThingSpeakAdaptor", "ThingSpeakAdaptor"),
                 ("WebApp", "UI"),
-                ("TelegramBot", "UI"),
+                ("TelegramBot", "UI")
             ]
 
             for name, dev_type in default_devices:
                 cur.execute(
                     """
                     INSERT INTO devices (greenhouse_id, name, type)
-                    VALUES (%s, %s, %s, %s)
+                    VALUES (%s, %s, %s)
                     """,
                     (greenhouse[0], name, dev_type)
                 )
 
             conn.commit()
-
 
             return {
                 'message': 'Greenhouse added successfully',
@@ -864,6 +808,7 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
         conn.rollback()
         cherrypy.response.status = 400
         return {"error": f"Missing required fields: {str(e)}"}
+    
     except Exception as e:
         conn.rollback()
         cherrypy.response.status = 500
@@ -1192,6 +1137,61 @@ def get_user_info(conn, user_id):
         }
 
         return user_dict  # Just return the dictionary, not a list
+    
+def get_telegram_user(conn, telegram_user_id):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        # check if the user exists and get their Telegram user ID
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("SELECT user_id, username FROM users WHERE telegram_user_id = %s;"), [telegram_user_id])  
+            user = cur.fetchone()
+
+            if user is None:
+                cherrypy.response.status = 404
+                return {"error": "No user found with this Telegram ID"}
+            
+            return {
+                'user_id': user[0],
+                'username': user[1]
+            }
+
+    except Exception as e:
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+    
+def get_telegram_chat_id(conn, greenhouse_id):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        # check if the greenhouse exists and get its Telegram chat ID
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("SELECT user_id FROM greenhouses WHERE greenhouse_id = %s;"), [greenhouse_id])  
+            chat_id = cur.fetchone()
+
+            if chat_id is None:
+                cherrypy.response.status = 404
+                return {"error": "No greenhouse found with this ID"}
+            
+            # use the user_id to get the Telegram chat ID
+            cur.execute(sql.SQL("SELECT telegram_user_id FROM users WHERE user_id = %s;"), [chat_id[0]])
+            chat_id = cur.fetchone()
+
+            if chat_id is None:
+                cherrypy.response.status = 404
+                return {"error": "No Telegram chat ID found for this user"}
+
+            return {
+                'telegram_chat_id': chat_id[0]
+            }
+
+    except Exception as e:
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
 
 # update user info 
 def update_user_info(conn, user_id, username, email, new_password=None):
@@ -1236,7 +1236,83 @@ def update_user_info(conn, user_id, username, email, new_password=None):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
     
+def otp(conn, user_id, otp_code):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # if the user has already an OTP code, update it, otherwise create a new one
+            cur.execute(sql.SQL("SELECT * FROM otps WHERE telegram_user_id = %s"), [user_id])
+            user = cur.fetchone()
+            if not user:
+                cur.execute(sql.SQL("INSERT INTO otps (telegram_user_id, otp) VALUES (%s, %s)"), [user_id, otp_code])
 
+            else:
+                cur.execute(sql.SQL("UPDATE otps SET otp = %s WHERE telegram_user_id = %s"), [otp_code, user_id])
+
+            conn.commit()
+
+            return {"message": "OTP code updated successfully"}
+    
+    except Exception as e:
+        conn.rollback()
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+
+def verify_telegram_otp(conn, user_id, otp_code):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # check if the OTP code exists
+            cur.execute(sql.SQL("SELECT telegram_user_id FROM otps WHERE otp = %s"), [otp_code])
+            telegramUser = cur.fetchone()
+            if not telegramUser:
+                cherrypy.response.status = 404
+                return {"error": "OTP code not found"}
+            
+            # delete the OTP code from the database
+            cur.execute(sql.SQL("DELETE FROM otps WHERE otp = %s"), [otp_code])
+            
+            # get the username and email of the user
+            cur.execute(sql.SQL("SELECT username, email FROM users WHERE user_id = %s"), [user_id])
+            user_info = cur.fetchone()
+            if not user_info:
+                cherrypy.response.status = 404
+                return {"error": "User not found"}
+            
+            # associate the user to the Telegram user ID
+            cur.execute(sql.SQL("UPDATE users SET telegram_user_id = %s WHERE user_id = %s"), [telegramUser[0], user_id])
+            conn.commit()
+
+            # send to telegram bot the user ID
+            message = f"Welcome {user_info[0]}!"
+            url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
+            payload = {
+                "chat_id": telegramUser[0],
+                "text": message
+            }
+            try:
+                response = requests.post(url, json=payload, timeout=5)
+                if response.ok:
+                    write_log(f"Telegram message sent successfully to user {telegramUser[0]}")
+                else:
+                    write_log(f"Failed to send Telegram message: {response.text}")
+
+            except Exception as e:
+                write_log(f"Failed to send Telegram message: {e}")
+
+            # if found, return the user ID
+            return {"telegram_user_id": telegramUser[0]}
+    
+    except Exception as e:
+        conn.rollback()
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
 
 class CatalogREST(object):
     exposed = True
@@ -1296,10 +1372,10 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Missing parameters"}
             
-        elif uri[0] == 'get_greenhouse_configurations':
+        elif uri[0] == 'get_devices':
             # check the existence of the parameters
             if 'greenhouse_id' in params:
-                return get_greenhouse_configurations(self.catalog_connection, params['greenhouse_id'])
+                return get_devices(self.catalog_connection, params['greenhouse_id'])
                 
             else:
                 cherrypy.response.status = 400
@@ -1372,7 +1448,25 @@ class CatalogREST(object):
                 
             else:
                 cherrypy.response.status = 400
-                return {"error": "Missing parameters"}        
+                return {"error": "Missing parameters"}     
+
+        elif uri[0] == 'get_telegram_user':
+            # check the existence of the parameters
+            if 'telegram_user_id' in params:
+                return get_telegram_user(self.catalog_connection, params['telegram_user_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
+        elif uri[0] == 'get_telegram_chat_id':
+            # check the existence of the parameters
+            if 'greenhouse_id' in params:
+                return get_telegram_chat_id(self.catalog_connection, params['greenhouse_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
         
         else:
             cherrypy.response.status = 400
@@ -1570,6 +1664,33 @@ class CatalogREST(object):
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"} 
+            
+        elif uri[0] == 'otp':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'user_id' not in input_json or 'otp_code' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return otp(self.catalog_connection, input_json['user_id'], input_json['otp_code'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
+        elif uri[0] == 'verify_telegram_otp':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'user_id' not in input_json or 'otp' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return verify_telegram_otp(self.catalog_connection, input_json['user_id'], input_json['otp'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}

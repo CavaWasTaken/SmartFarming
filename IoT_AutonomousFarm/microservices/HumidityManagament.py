@@ -30,6 +30,7 @@ try:
         mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # mqtt broker
         mqtt_port = config["mqtt_connection"]["mqtt_port"]  # mqtt port
         keep_alive = config["mqtt_connection"]["keep_alive"]    # keep alive time
+        telegram_token = config["telegram_token"]  # telegram token for the bot
 
 except FileNotFoundError:
     write_log("HumidityManagement_config.json file not found")
@@ -48,6 +49,40 @@ domains = {}    # dictionary  to save the domain of the values collectable by ea
 
 liveValue = {}  # dictionary to save the last value received for each sensor
 
+def sendTelegramMessage(message):
+    # get the telegram user ID from the catalog
+    try:
+        response = requests.get(f"{catalog_url}/get_telegram_chat_id", params={'greenhouse_id': greenhouse_id})
+        if response.status_code == 200:
+            telegram_chat_id = response.json()["telegram_chat_id"]  # get the telegram user ID from the response
+            if not telegram_chat_id:
+                write_log("No Telegram user found for this greenhouse")
+                return
+            
+        else:
+            write_log(f"Failed to get Telegram user from the Catalog\t(Response: {response.json()['error']})")
+            return
+        
+    except Exception as e:
+        write_log(f"Error getting Telegram user from the Catalog: {e}")
+        return
+    
+    # send to telegram bot the user ID
+    url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
+    payload = {
+        "chat_id": telegram_chat_id,
+        "text": message
+    }
+    try:
+        response = requests.post(url, json=payload, timeout=5)
+        if response.ok:
+            write_log(f"Telegram message sent successfully to user {telegram_chat_id}")
+        else:
+            write_log(f"Failed to send Telegram message: {response.text}")
+
+    except Exception as e:
+        write_log(f"Failed to send Telegram message: {e}")
+
 # function that handles the received message from the broker
 def handle_message(topic, sensor_type, val, unit, timestamp, area_id, sensor_id):
     # function that sends an alert to the user when the expected value doesn't arrive (timer expiration)
@@ -56,12 +91,14 @@ def handle_message(topic, sensor_type, val, unit, timestamp, area_id, sensor_id)
         SendAlert(f"WARNING: Was expecting a value of {sensor_type} from sensor_{sensor_id} at time {expected_timestamp}, but it didn't arrive")
 
     def SendAlert(msg):
-        msg = json.dumps({"message": msg, "timestamp": timestamp})
-        client.publish(f"greenhouse_{greenhouse_id}/area_{area_id}/alert/device_{device_id}", msg)
+        msg = {"message": msg, "timestamp": timestamp}
+        sendTelegramMessage(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n" + msg["message"])  # send the alert to the telegram bot
+        # client.publish(f"greenhouse_{greenhouse_id}/area_{area_id}/alert/device_{device_id}", msg)
 
     def SendInfo(msg):
-        msg = json.dumps({"message": msg, "timestamp": timestamp})
-        client.publish(f"greenhouse_{greenhouse_id}/area_{area_id}/info/device_{device_id}", msg)
+        msg = {"message": msg, "timestamp": timestamp}
+        sendTelegramMessage(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n" + msg["message"])  # send the alert to the telegram bot
+        # client.publish(f"greenhouse_{greenhouse_id}/area_{area_id}/info/device_{device_id}", msg)
 
     def SendAction(msg):
         msg = json.dumps({"message": msg, "sensor_type": sensor_type, "timestamp": timestamp})
@@ -78,15 +115,17 @@ def handle_message(topic, sensor_type, val, unit, timestamp, area_id, sensor_id)
     if response.status_code == 200:
         next_timestamp = response.json()["next_timestamp"]
         if next_timestamp is not None:
-            write_log(f"Next expected timestamp of sensor_{sensor_id} ({sensor_type}): {next_timestamp}")  # THIS INFO CAN BE SENT TO THE UI
-            SendInfo(f"Next expected timestamp of sensor_{sensor_id} ({sensor_type}): {next_timestamp}")
+            # evaluate the datetime of when the next value is expected to arrive
+            time_next_timestamp = (datetime.now() + timedelta(seconds=(next_timestamp - timestamp))).strftime("%Y-%m-%d %H:%M:%S")
+            write_log(f"The next value of {sensor_type} (sensor_{sensor_id}) is expected to be received at: {next_timestamp}")
+            # SendInfo(f"The next value of {sensor_type} (sensor_{sensor_id}) is expected to be received at: {time_next_timestamp}")
         else:   # if the response is None, we consider the prediction lost
-            write_log(f"WARNING: Next expected timestamp of sensor_{sensor_id} ({sensor_type}) not found")   # ALERT TO BE SENT TO THE UI
-            SendAlert(f"WARNING: Next expected timestamp of sensor_{sensor_id} ({sensor_type}) not found")
+            write_log(f"WARNING: Failed to get when the next value of {sensor_type} (sensor_{sensor_id}) is expected to arrive")  # ALERT TO BE SENT TO THE UI
+            SendAlert(f"WARNING: Failed to get when the next value of {sensor_type} (sensor_{sensor_id}) is expected to arrive")
             return
     else:
-        write_log(f"WARNING: Impossible to get the next expected timestamp of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\t(Response: {response.reason})")  # ALERT TO BE SENT TO THE UI
-        SendAlert(f"WARNING: Impossible to get the next expected timestamp of sensor_{sensor_id} ({sensor_type}) from the DataAnalysis\t(Response: {response.reason})")
+        write_log(f"WARNING: A problem with DataAnalysis component occured while getting when the next value of {sensor_type} (sensor_{sensor_id}) is expected to arrive\t(Response: {response.json()['error']})")
+        SendAlert(f"WARNING: A problem with DataAnalysis component occured while getting when the next value of {sensor_type} (sensor_{sensor_id}) is expected to arrive")
         return
     
     if next_timestamp is not None:  # when the data analysis make prediction with just 1 value, it can't predict the next value so it is None
@@ -242,7 +281,8 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
         write_log(f"Unexpected error on handling the message: {e}")
 
 if __name__ == "__main__":
-    for _ in range(5):  # try to get the sensors from the catalog for 5 times
+    # try to get the sensors from the catalog for 5 times
+    for _ in range(5):
         try:
             response = requests.get(f"{catalog_url}/get_sensors", params={'greenhouse_id': greenhouse_id, 'device_name': 'HumidityManagement'})    # get the device information from the catalog
             if response.status_code == 200:

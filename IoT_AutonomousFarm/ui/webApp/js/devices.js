@@ -47,17 +47,17 @@ $(document).ready(function () {
       Default: `<svg fill="#000000" width="100px" height="100px" viewBox="0 0 24 24" id="device-projector" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path id="secondary" d="M4,8H7.18a3,3,0,1,0,5.64,0H20a1,1,0,0,1,1,1v6a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V9A1,1,0,0,1,4,8Z" style="fill: #2ca9bc; stroke-width: 2;"></path><path id="primary" d="M13,8h7a1,1,0,0,1,1,1v6a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V9A1,1,0,0,1,4,8H7" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M19,16H17v2h2ZM5,18H7V16H5ZM10,6A3,3,0,1,1,7,9,3,3,0,0,1,10,6Z" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`,
     };
   
-    // if (!token || !userId || !username) {
-    //   alert("You are not logged in. Please log in to access this page.");
-    //   window.location.href = "loginform.html"; // redirect to login page
-    // }
+    if (!token || !userId || !username) {
+      alert("You are not logged in. Please log in to access this page.");
+      window.location.href = "loginform.html";
+      return;
+    }
   
-    // if (!greenhouseId || !greenhouseName || !greenhouseLocation) {
-    //   alert(
-    //     "No greenhouse selected. Please select a greenhouse to access this page."
-    //   );
-    //   window.location.href = "greenhouses.html"; // redirect to available greenhouses page
-    // }
+    if (!greenhouseId || !greenhouseName || !greenhouseLocation) {
+      alert("No greenhouse selected. Please select a greenhouse.");
+      window.location.href = "greenhouses.html";
+      return;
+    }
   
     // document.getElementById(
     //   "username-display"
@@ -90,7 +90,7 @@ $(document).ready(function () {
         };
         const queryParams = new URLSearchParams(formData).toString();
         return fetch(
-          `${catalog_url}/get_greenhouse_configurations?${queryParams}`,
+          `${catalog_url}/get_devices?${queryParams}`,
           {
             method: "GET",
             headers: {

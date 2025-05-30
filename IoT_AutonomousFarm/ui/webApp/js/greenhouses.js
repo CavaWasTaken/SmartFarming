@@ -1,8 +1,3 @@
-// $(".button, .close").on("click", function (e) {
-//     e.preventDefault();
-//     $(".detail, html, body").toggleClass("open");
-//   });
-
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("user_id");
@@ -12,16 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("You are not logged in. Please log in to access this page.");
     window.location.href = "loginform.html"; // redirect to login page
   }
-
-  // document.getElementById("username-display").textContent = `Welcome, ${username}`;
-
-  // document.getElementById("logout-button").addEventListener("click", () => {
-  //   // clear the token and user information from local storage and redirect to login page
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("user_id");
-  //   localStorage.removeItem("username");
-  //   window.location.href = "home.html";
-  // });
 
   document.querySelector("tbody").addEventListener("click", (event) => {
     if (event.target.classList.contains("select-button")) {
@@ -80,16 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
             <td class="select">
             <div class="dropdown">
               <button 
-                 data-greenhouse_id="${greenhouse.greenhouse_id}" 
-                        data-user_id="${greenhouse.user_id}"
-                        data-name="${greenhouse.name}" 
-                        data-location="${greenhouse.location}"
+                data-greenhouse_id="${greenhouse.greenhouse_id}" 
+                data-user_id="${greenhouse.user_id}"
+                data-name="${greenhouse.name}" 
+                data-location="${greenhouse.location}"
                 type="button" class="btn select-button dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton-${greenhouse.greenhouse_id}">
                   Action
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-${greenhouse.greenhouse_id}">
-                  <a class="dropdown-item" href="addarea.html">Areas</a>
-                  <a class="dropdown-item" href="greenhousedevices.html">Devices</a>
+                  <a class="dropdown-item" href="areas.html">Areas</a>
+                  <a class="dropdown-item" href="devices.html">Devices</a>
                 </div>
              </div>
             </td>
@@ -107,9 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("An error occurred while fetching the greenhouses");
   });
 });
-
-
-
 
 $(document).ready(function () {
   $(".select-button").on("click", function () {
@@ -179,4 +161,8 @@ $(document).ready(function () {
     // Close details section
     $(".detail, html, body").removeClass("open");
   });
+});
+
+document.getElementById("AddGreenhouseButton")?.addEventListener("click", function () {
+  window.location.href = "addgreenhouse.html";
 });

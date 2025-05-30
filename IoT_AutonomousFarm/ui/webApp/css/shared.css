@@ -10,19 +10,27 @@ body{
 ul{
 	display: flex;
 	width: 100%;
-	height: 80vh;
 	margin: auto;
 	max-width: 1000px;
 	justify-content: space-between;
 	text-align: center;
 }
+
 li {
 	padding: 1rem 2rem 1.15rem;
   text-transform: uppercase;
   cursor: pointer;
   color: #ebebeb;
 	min-width: 80px;
-	margin: auto;
+}
+
+li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
 }
 
 li:hover {
@@ -32,9 +40,6 @@ li:hover {
   animation: spring 300ms ease-out;
   text-shadow: 0 -1px 0 #ef816c;
 	font-weight: bold;
-}
-li:active {
-  transform: translateY(4px);
 }
 
 @keyframes spring {

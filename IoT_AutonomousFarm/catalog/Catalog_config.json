@@ -4,5 +4,6 @@
         "mqtt_port": 1883,
         "keep_alive": 180,
         "mqtt_broker": "mqtt.eclipseprojects.io"
-    }
+    },
+    "telegram_token": "7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4"
 }

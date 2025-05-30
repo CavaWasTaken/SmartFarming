@@ -233,6 +233,18 @@ ALTER SEQUENCE public.greenhouses_greenhouse_id_seq OWNED BY public.greenhouses.
 
 
 --
+-- Name: otps; Type: TABLE; Schema: public; Owner: iotproject
+--
+
+CREATE TABLE public.otps (
+    telegram_user_id bigint NOT NULL,
+    otp character(6) NOT NULL
+);
+
+
+ALTER TABLE public.otps OWNER TO iotproject;
+
+--
 -- Name: plants; Type: TABLE; Schema: public; Owner: iotproject
 --
 
@@ -360,7 +372,8 @@ CREATE TABLE public.users (
     user_id integer NOT NULL,
     username character varying(100) NOT NULL,
     email character varying(100) NOT NULL,
-    password_hash bytea
+    password_hash bytea,
+    telegram_user_id bigint
 );
 
 
@@ -458,6 +471,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 COPY public.area_plants (area_id, plant_id, greenhouse_id) FROM stdin;
 4	2	13
 4	0	13
+5	1	13
 \.
 
 
@@ -469,7 +483,6 @@ COPY public.areas (area_id, name, greenhouse_id) FROM stdin;
 4	Main Area	13
 5	north zone	13
 6	south zone	13
-7	east zone	13
 \.
 
 
@@ -531,6 +544,14 @@ COPY public.greenhouses (greenhouse_id, user_id, name, location, thingspeak_conf
 
 
 --
+-- Data for Name: otps; Type: TABLE DATA; Schema: public; Owner: iotproject
+--
+
+COPY public.otps (telegram_user_id, otp) FROM stdin;
+\.
+
+
+--
 -- Data for Name: plants; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
@@ -554,11 +575,11 @@ COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, e
 --
 
 COPY public.sensors (sensor_id, area_id, type, name, unit, threshold_range, domain, greenhouse_id) FROM stdin;
-4	5	NPK	NPK Sensor	mg/kg	{"K": {"max": 400, "min": 100}, "N": {"max": 150, "min": 50}, "P": {"max": 300, "min": 75}}	{"max": 1000, "min": 0}	13
 5	6	SoilMoisture	Soil Moisture Sensor	%	{"max": 80, "min": 20}	{"max": 100, "min": 0}	13
 1	4	SoilMoisture	Soil Moisture Sensor	%	{"max": 80, "min": 25}	{"max": 100, "min": 0}	13
 3	4	pH	pH Sensor	pH	{"max": 7.5, "min": 5}	{"max": 10.0, "min": 3.0}	13
 2	4	NPK	NPK Sensor	mg/kg	{"K": {"max": 400, "min": 100}, "N": {"max": 152, "min": 56}, "P": {"max": 300, "min": 75}}	{"max": 1000, "min": 0}	13
+7	5	LightIntensity	Light Intensity Sensor	lux	{"max": 800, "min": 400}	{"max": 2000, "min": 0}	13
 \.
 
 
@@ -566,28 +587,28 @@ COPY public.sensors (sensor_id, area_id, type, name, unit, threshold_range, doma
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.users (user_id, username, email, password_hash) FROM stdin;
-0	Lorenzo	s346742@studenti.polito.it	\\x2432622431322438756e7534385057784c50745369767177586950642e557a6a7a775066705648713734463530715475414742504930444e6b717432
-2	username	thatsnegar@gmail.com	\\x243262243132246378306272593044362f314e526358504a4a514d74754d374c504d2e3830374d34335743472e4e5131716142356434436e73794353
-3	thatsnegar	thatsnegar@gmail.com	\\x24326224313224614e776270656b3655396a36536f685a505252764c75514d4a776943424142442f52713331684746336a3077755567416473534d61
-4	negar	negar.polito@it.com	\\x243262243132246b557575527354766c4f77354c722f46364e2e65452e673776336b73712e6b33524e4c7644697650523676536d742f355468473247
-5	sam	sam@polito.it	\\x243262243132246e524a2f756f66584e546866627039327167706e2f4f7649326770376178457955534f5a364279714b4d392f5a645432383232484f
-6	jzk	sam@polito.it	\\x243262243132246a5842724b58374e4a3959496a68497567314c4d6d656e627a6e5748544f654167734377543572476b564933456169764164563275
-7	test	test@polito.it	\\x243262243132242e4473676f7376394b4373543874524d37714b623465392f70305a596a796233527242597637393055324f684a39684756776f2f4b
-8	test1	test@polito.it	\\x24326224313224426354694b35444178583065524f746d6c424f4f382e494533396c682f526b2e344a4a664267426c6451495241465a596c30545257
-9	test3	test@gmail.com	\\x24326224313224636c6e67304243594338733059515562684839636365427a694b6f636638626878514c667236414f793055346b2e34625334437732
-10	test4	test@gmail.com	\\x24326224313224566256514742456f4438585476585062424e4f7268756b4159646e45394f777478736777704238666179635365793738456b72486d
-11	test6	test@gmail.com	\\x243262243132247665735850706832526a3363425741542e754d5a594f4b7445484953625370302f50754d574d38682e4d6a762f724f4c4173666f2e
-13	thatsnegar123	thatsnegar@gmail.com	\\x24326224313224547134463779506e764535483832353343426d4a4d75516a4e35364c48565767706f4c6c4a666d5a3338387878633378657a6e7461
-14	thatsnegar1234	thatsnegar@gmail.com	\\x243262243132242f364954326552354a7237524976472f426a4442492e42683579786e777159373859596579512e63413772366a35436264505a6671
-15	someone	thatsnegar@gmail.com	\\x24326224313224633163714645614f72634b3876786b6c776e3855542e6e2f68347a5066424f522f645544582e6131486a676e59576f353037685957
-16	newuser3	test@gmail.com	\\x243262243132246433662f68716d4631506e63486d682e76304b71734f72426937744647393641616c546d42375a3036524465693138705136356b61
-17	user45	thatsnegar@gmail.com	\\x24326224313224686d566871344139536c7972436f502f33666e415a755a53307558494c2e564361595539795848445978666e78557774324d715547
-18	user456	thatsnegar@gmail.com	\\x2432622431322437477452386746397a77567a544f57792f4b7466554f3154413544624b444a68684837654a79536d654679526c4d32667759437065
-19	testuser5	thatsnegar@gmail.com	\\x2432622431322452466f6461664254314862746238367544643430692e554477784342783637744a53582e684e313973746d3174324f7a3047457661
-20	negggar	negar.abdi@studenti.polito.it	\\x2432622431322455716438526a696a50707851736d626a414965772e756269575149465052583276503750494a703246784c5835366b6555516c302e
-21	testingfinal	testingfinal@gmail.com	\\x243262243132246a522e364e41497a777a72326e34636552333656754f59314e45376f4a356a746b56694566726d4a646b7878614d7931724c776f2e
-22	newuser123	newuser123@gmail.com	\\x24326224313224576d6642786e2e6472346c793137524237396d337265656d452e77476f4c75464370655034474b5837694e734d6c7948346b62464b
+COPY public.users (user_id, username, email, password_hash, telegram_user_id) FROM stdin;
+2	username	thatsnegar@gmail.com	\\x243262243132246378306272593044362f314e526358504a4a514d74754d374c504d2e3830374d34335743472e4e5131716142356434436e73794353	\N
+3	thatsnegar	thatsnegar@gmail.com	\\x24326224313224614e776270656b3655396a36536f685a505252764c75514d4a776943424142442f52713331684746336a3077755567416473534d61	\N
+4	negar	negar.polito@it.com	\\x243262243132246b557575527354766c4f77354c722f46364e2e65452e673776336b73712e6b33524e4c7644697650523676536d742f355468473247	\N
+5	sam	sam@polito.it	\\x243262243132246e524a2f756f66584e546866627039327167706e2f4f7649326770376178457955534f5a364279714b4d392f5a645432383232484f	\N
+6	jzk	sam@polito.it	\\x243262243132246a5842724b58374e4a3959496a68497567314c4d6d656e627a6e5748544f654167734377543572476b564933456169764164563275	\N
+7	test	test@polito.it	\\x243262243132242e4473676f7376394b4373543874524d37714b623465392f70305a596a796233527242597637393055324f684a39684756776f2f4b	\N
+8	test1	test@polito.it	\\x24326224313224426354694b35444178583065524f746d6c424f4f382e494533396c682f526b2e344a4a664267426c6451495241465a596c30545257	\N
+9	test3	test@gmail.com	\\x24326224313224636c6e67304243594338733059515562684839636365427a694b6f636638626878514c667236414f793055346b2e34625334437732	\N
+10	test4	test@gmail.com	\\x24326224313224566256514742456f4438585476585062424e4f7268756b4159646e45394f777478736777704238666179635365793738456b72486d	\N
+11	test6	test@gmail.com	\\x243262243132247665735850706832526a3363425741542e754d5a594f4b7445484953625370302f50754d574d38682e4d6a762f724f4c4173666f2e	\N
+13	thatsnegar123	thatsnegar@gmail.com	\\x24326224313224547134463779506e764535483832353343426d4a4d75516a4e35364c48565767706f4c6c4a666d5a3338387878633378657a6e7461	\N
+14	thatsnegar1234	thatsnegar@gmail.com	\\x243262243132242f364954326552354a7237524976472f426a4442492e42683579786e777159373859596579512e63413772366a35436264505a6671	\N
+15	someone	thatsnegar@gmail.com	\\x24326224313224633163714645614f72634b3876786b6c776e3855542e6e2f68347a5066424f522f645544582e6131486a676e59576f353037685957	\N
+16	newuser3	test@gmail.com	\\x243262243132246433662f68716d4631506e63486d682e76304b71734f72426937744647393641616c546d42375a3036524465693138705136356b61	\N
+17	user45	thatsnegar@gmail.com	\\x24326224313224686d566871344139536c7972436f502f33666e415a755a53307558494c2e564361595539795848445978666e78557774324d715547	\N
+18	user456	thatsnegar@gmail.com	\\x2432622431322437477452386746397a77567a544f57792f4b7466554f3154413544624b444a68684837654a79536d654679526c4d32667759437065	\N
+19	testuser5	thatsnegar@gmail.com	\\x2432622431322452466f6461664254314862746238367544643430692e554477784342783637744a53582e684e313973746d3174324f7a3047457661	\N
+20	negggar	negar.abdi@studenti.polito.it	\\x2432622431322455716438526a696a50707851736d626a414965772e756269575149465052583276503750494a703246784c5835366b6555516c302e	\N
+21	testingfinal	testingfinal@gmail.com	\\x243262243132246a522e364e41497a777a72326e34636552333656754f59314e45376f4a356a746b56694566726d4a646b7878614d7931724c776f2e	\N
+22	newuser123	newuser123@gmail.com	\\x24326224313224576d6642786e2e6472346c793137524237396d337265656d452e77476f4c75464370655034474b5837694e734d6c7948346b62464b	\N
+0	Lorenzo	s346742@studenti.polito.it	\\x2432622431322438756e7534385057784c50745369767177586950642e557a6a7a775066705648713734463530715475414742504930444e6b717432	2070801980
 \.
 
 
@@ -595,7 +616,7 @@ COPY public.users (user_id, username, email, password_hash) FROM stdin;
 -- Name: areas_area_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.areas_area_id_seq', 7, true);
+SELECT pg_catalog.setval('public.areas_area_id_seq', 19, true);
 
 
 --
@@ -616,14 +637,14 @@ SELECT pg_catalog.setval('public.availablesensors_sensor_id_seq', 1, false);
 -- Name: devices_device_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.devices_device_id_seq', 50, true);
+SELECT pg_catalog.setval('public.devices_device_id_seq', 59, true);
 
 
 --
 -- Name: greenhouses_greenhouse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.greenhouses_greenhouse_id_seq', 13, true);
+SELECT pg_catalog.setval('public.greenhouses_greenhouse_id_seq', 25, true);
 
 
 --
@@ -644,7 +665,7 @@ SELECT pg_catalog.setval('public.scheduled_events_event_id_seq', 1, false);
 -- Name: sensors_sensor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.sensors_sensor_id_seq', 5, true);
+SELECT pg_catalog.setval('public.sensors_sensor_id_seq', 7, true);
 
 
 --
@@ -700,6 +721,14 @@ ALTER TABLE ONLY public.devices
 
 ALTER TABLE ONLY public.greenhouses
     ADD CONSTRAINT greenhouses_pkey PRIMARY KEY (greenhouse_id);
+
+
+--
+-- Name: otps otps_pkey; Type: CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.otps
+    ADD CONSTRAINT otps_pkey PRIMARY KEY (telegram_user_id);
 
 
 --
@@ -759,11 +788,11 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: devices devices_greenhouse_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
+-- Name: devices devices_greeenhouse_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
 --
 
 ALTER TABLE ONLY public.devices
-    ADD CONSTRAINT devices_greenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id);
+    ADD CONSTRAINT devices_greeenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id) ON DELETE CASCADE;
 
 
 --

@@ -99,24 +99,24 @@ $(document).ready(function () {
               <h1 class="primary-text">${area.name}</h1>
             </div>
             <div class = "row d-flex">
-               <button class="primary-text sensorbtn">
-                     Sensors
-                </button>
-                </div>
-               <div class="row d-flex">
-                  <button class="primary-text plantsbtn">
-                     Areas
-                </button>
-                </div>
+              <button class="primary-text sensorbtn">
+                Sensors
+              </button>
+            </div>
+            <div class="row d-flex">
+              <button class="primary-text plantsbtn">
+                Plants
+              </button>
+            </div>
           `;
           card.querySelector(".sensorbtn").addEventListener("click", () => {
             localStorage.setItem("area_id", area.area_id);
-            window.location.href = "greenhouseDetails.html";
+            window.location.href = "sensors.html";
           });
           
           card.querySelector(".plantsbtn").addEventListener("click", () => {
             localStorage.setItem("area_id", area.area_id);
-            window.location.href = "addarea.html";
+            window.location.href = "plants.html";
           });
           
           dashboardCards.appendChild(card);

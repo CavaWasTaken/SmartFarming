@@ -29,11 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
           userInfoLink.style.display = "inline-block";
         }
       } else {
-        // Hide User Profile menu item
+        // hide User Profile menu item
         if (userInfoLink) {
           userInfoLink.style.display = "none";
         }
 
+        // set the login link
         if (userProfile) {
           userProfile.textContent = "Login";
           userProfile.style.cursor = "pointer";

@@ -10,7 +10,7 @@ class Temperature:
         self.increase = False
         self.decrease = False
 
-    def getValue(self):
+    def getValue(self, elapsed_time):
         time_of_day = datetime.now()
         time_of_day = (time_of_day.hour * 3600 + time_of_day.minute * 60 + time_of_day.second)/3600
 
