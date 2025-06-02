@@ -1,9 +1,22 @@
 
+/* General Reset */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
 body{
   
   font-family: 'Poppins', sans-serif;
-  /* font-size: 1.6rem; */
 }
+
+
 
 /* navbar style */
 
@@ -22,6 +35,7 @@ li {
   cursor: pointer;
   color: #ebebeb;
 	min-width: 80px;
+  font-size: 16px;
 }
 
 li a {
@@ -34,7 +48,7 @@ li a {
 }
 
 li:hover {
-  background-image: url('https://scottyzen.sirv.com/Images/v/button.png');
+  background-image: url('../pics/button-back.avif');
   background-size: 100% 100%;
   color: #27262c;
   animation: spring 300ms ease-out;

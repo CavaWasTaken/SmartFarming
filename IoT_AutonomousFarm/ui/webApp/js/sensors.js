@@ -189,49 +189,49 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.innerHTML = `
         <div class="modal-content">
             <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
-            <h1>Set Threshold for ${sensor.name}</h1>
+            <h4>Set Threshold for ${sensor.name}</h4>
             <form id="thresholdForm-${sensor.sensor_id}">
                 <div class="form-group">
                 <label for="min-threshold"> N Min Threshold:</label>
-                <input class="form-control fs-4" type="number" id="n-min-threshold-${sensor.sensor_id}" value="${
+                <input class="form-control fs-6" type="number" id="n-min-threshold-${sensor.sensor_id}" value="${
                   sensor.threshold.N.min || 0
                 }" required />
                 </div>
                 
                 <div class="form-group">
                 <label for="max-threshold"> N Max Threshold:</label>
-                <input class="form-control fs-4" type="number" id="n-max-threshold-${sensor.sensor_id}" value="${
+                <input class="form-control fs-6" type="number" id="n-max-threshold-${sensor.sensor_id}" value="${
                   sensor.threshold.N.max || 0
                 }" required />
                 </div>
 
                  <div class="form-group">
                 <label for="max-threshold">P Min Threshold:</label>
-                <input class="form-control fs-4" type="number" id="p-min-threshold-${sensor.sensor_id}" value="${
+                <input class="form-control fs-6" type="number" id="p-min-threshold-${sensor.sensor_id}" value="${
                   sensor.threshold.P.min || 0
                 }" required />
                 </div>
                  <div class="form-group">
                 <label for="max-threshold"> P Max Threshold:</label>
-                <input class="form-control fs-4" type="number" id="p-max-threshold-${sensor.sensor_id}" value="${
+                <input class="form-control fs-6" type="number" id="p-max-threshold-${sensor.sensor_id}" value="${
                   sensor.threshold.P.max || 0
                 }" required />
                 </div>
 
                  <div class="form-group">
                 <label for="max-threshold"> K Min Threshold:</label>
-                <input class="form-control fs-4" type="number" id="k-min-threshold-${sensor.sensor_id}" value="${
+                <input class="form-control fs-6" type="number" id="k-min-threshold-${sensor.sensor_id}" value="${
                   sensor.threshold.K.min || 0
                 }" required />
                 </div>
                  <div class="form-group">
                 <label for="max-threshold"> K Max Threshold:</label>
-                <input class="form-control fs-4" type="number" id="k-max-threshold-${sensor.sensor_id}" value="${
+                <input class="form-control fs-6" type="number" id="k-max-threshold-${sensor.sensor_id}" value="${
                   sensor.threshold.K.max || 0
                 }" required />
                 </div>
 
-                <button class="btn btn-primary btn-lg btnmodal fs-4" type="submit">Save</button>
+                <button class="btn btn-primary btn-lg btnmodal fs-6" type="submit">Save</button>
             </form>
         </div>
     `;
@@ -239,23 +239,23 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.innerHTML = `
             <div class="modal-content">
                 <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
-                <h1>Set Threshold for ${sensor.name}</h1>
+                <h4>Set Threshold for ${sensor.name}</h4>
                 <form id="thresholdForm-${sensor.sensor_id}">
                     <div class="form-group">
                     <label for="min-threshold">Min Threshold:</label>
-                    <input class="form-control fs-4" type="number" id="min-threshold-${sensor.sensor_id}" value="${
+                    <input class="form-control fs-6" type="number" id="min-threshold-${sensor.sensor_id}" value="${
                       sensor.threshold?.min || 0
                     }" required />
                     </div>
                     
                     <div class="form-group">
                     <label for="max-threshold">Max Threshold:</label>
-                    <input class="form-control fs-4" type="number" id="max-threshold-${sensor.sensor_id}" value="${
+                    <input class="form-control fs-6" type="number" id="max-threshold-${sensor.sensor_id}" value="${
                       sensor.threshold?.max || 0
                     }" required />
                     </div>
     
-                    <button class="btn btn-primary btn-lg btnmodal fs-4" type="submit">Save</button>
+                    <button class="btn btn-primary btn-lg btnmodal fs-6" type="submit">Save</button>
                 </form>
             </div>
         `;
