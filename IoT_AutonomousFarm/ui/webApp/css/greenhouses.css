@@ -131,9 +131,10 @@ td:before {
   color: #fff;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.18); */
   cursor: pointer;
   margin: 20px 0;
+  background: linear-gradient(45deg, #983c2a, #ef816c);
 }
 
 #AddGreenhouseButton:hover {
@@ -284,3 +285,7 @@ li:active {
 .dropdown-menu{
   font-size: 15px;
 }
+
+ .main{
+  margin-top: 80px;
+} 

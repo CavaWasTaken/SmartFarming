@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     Authorization: `Bearer ${token}`,
                   },
                   body: JSON.stringify({
-                    area_id: greenhouseId,
+                    area_id: areaId,
                     plant_id: plant.plant_id,
                   }),
                 });

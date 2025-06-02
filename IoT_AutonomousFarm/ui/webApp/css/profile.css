@@ -192,7 +192,7 @@ header {
 }
 
 .header-title {
-    font-size: 28px;
+    /* font-size: 28px; */
     font-weight: bold;
     color: #ffffff;
     text-decoration: none;

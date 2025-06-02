@@ -1539,11 +1539,11 @@ class CatalogREST(object):
         elif uri[0] == 'remove_plant_from_greenhouse':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
-                if 'greenhouse_id' not in input_json or 'plant_id' not in input_json:
+                if 'area_id' not in input_json or 'plant_id' not in input_json:
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
                 
-                return remove_plant_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'])
+                return remove_plant_from_greenhouse(self.catalog_connection, input_json['area_id'], input_json['plant_id'])
 
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
