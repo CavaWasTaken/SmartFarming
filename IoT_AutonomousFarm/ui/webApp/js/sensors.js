@@ -1,35 +1,3 @@
-$(document).ready(function () {
-  var zindex = 10;
-
-  // When clicking on a card, only show the card (don't close it)
-  $("div.card").click(function (e) {
-    e.preventDefault();
-
-    if (!$(this).hasClass("d-card-show")) {
-      if (!$("div.dashboard-cards").hasClass("showing")) {
-        $("div.dashboard-cards").addClass("showing");
-      }
-      $(this).css({ zIndex: zindex }).addClass("d-card-show");
-      zindex++;
-    }
-  });
-
-  // Close the card only when clicking the close button
-  $(".close-btn").click(function (e) {
-    e.stopPropagation(); // Prevent triggering the card click event
-
-    var card = $(this).closest(".card"); // Find the closest parent card
-    card.removeClass("d-card-show");
-
-    // If no more cards are open, remove "showing" class from dashboard
-    if ($(".card.d-card-show").length === 0) {
-      $("div.dashboard-cards").removeClass("showing");
-    }
-  });
-});
-
-// ***********************************************//
-
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("user_id");
@@ -54,32 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("You are not logged in. Please log in to access this page.");
     window.location.href = "loginform.html"; // redirect to login page
   }
-
-  if (!greenhouseId || !greenhouseName || !greenhouseLocation) {
-    alert(
-      "No greenhouse selected. Please select a greenhouse to access this page."
-    );
-    window.location.href = "greenhouses.html"; // redirect to available greenhouses page
+  else {
+    if (!greenhouseId || !greenhouseName || !greenhouseLocation) {
+      alert(
+        "No greenhouse selected. Please select a greenhouse to access this page."
+      );
+      window.location.href = "greenhouses.html"; // redirect to available greenhouses page
+    }
   }
-
-  // document.getElementById(
-  //   "username-display"
-  // ).textContent = `Greenhouse owner: ${username}`;
-
-  // document.getElementById(
-  //   "title"
-  // ).textContent = `${greenhouseName} - ${greenhouseLocation}`;
-
-  // document.getElementById("logout-button").addEventListener("click", () => {
-  //   // clear the token and user information from local storage and redirect to login page
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("user_id");
-  //   localStorage.removeItem("username");
-  //   localStorage.removeItem("greenhouse_id");
-  //   localStorage.removeItem("greenhouse_name");
-  //   localStorage.removeItem("greenhouse_location");
-  //   window.location.href = "loginform.html";
-  // });
 
   // read from the config file to get the API URL
   fetch("../json/WebApp_config.json") // this path is relative to the HTML file
@@ -477,15 +427,37 @@ document.addEventListener("DOMContentLoaded", () => {
           location.reload(); // still reload to reset modal state
         });
     });
-
-
     })
-    // .catch((error) => {
-    //   console.error("Error:", error.message);
-    //   alert("An error occurred while fetching sensor data");
-    // });
-
-
-
-
 });
+
+$(document).ready(function () {
+  var zindex = 10;
+
+  // When clicking on a card, only show the card (don't close it)
+  $("div.card").click(function (e) {
+    e.preventDefault();
+
+    if (!$(this).hasClass("d-card-show")) {
+      if (!$("div.dashboard-cards").hasClass("showing")) {
+        $("div.dashboard-cards").addClass("showing");
+      }
+      $(this).css({ zIndex: zindex }).addClass("d-card-show");
+      zindex++;
+    }
+  });
+
+  // Close the card only when clicking the close button
+  $(".close-btn").click(function (e) {
+    e.stopPropagation(); // Prevent triggering the card click event
+
+    var card = $(this).closest(".card"); // Find the closest parent card
+    card.removeClass("d-card-show");
+
+    // If no more cards are open, remove "showing" class from dashboard
+    if ($(".card.d-card-show").length === 0) {
+      $("div.dashboard-cards").removeClass("showing");
+    }
+  });
+});
+
+// ***********************************************//

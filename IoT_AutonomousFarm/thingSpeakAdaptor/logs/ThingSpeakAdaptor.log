@@ -8,23 +8,13 @@ Subscribed to greenhouse_13/area_4/sensor_1
 Subscribed to greenhouse_13/area_4/sensor_3
 Subscribed to greenhouse_13/area_4/sensor_2
 Connected to mqtt.eclipseprojects.io with result code 0
-Received: {'bn': 'greenhouse_13/area_5/sensor_4', 'e': {'n': 'NPK', 'v': {'N': 147.11586995132, 'P': 197.55030745408996, 'K': 200.35315084678197}, 'u': 'mg/kg', 't': 979}}
+Received: {'bn': 'greenhouse_13/area_5/sensor_4', 'e': {'n': 'NPK', 'v': {'N': 150.1469092034053, 'P': 200.69290241433995, 'K': 200.6282680699271}, 'u': 'mg/kg', 't': 460}}
 Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.02568642363608, 'u': '%', 't': 979}}
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.14487965134831, 'u': '%', 't': 460}}
 Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.07879028088686, 'u': '%', 't': 979}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.9676945523039, 'u': '%', 't': 460}}
 Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.938625774750236, 'u': 'pH', 't': 979}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.0650329055329655, 'u': 'pH', 't': 460}}
 Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 148.0257025794345, 'P': 197.74291092552969, 'K': 197.1688608877364}, 'u': 'mg/kg', 't': 979}}
-Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_5/sensor_4', 'e': {'n': 'NPK', 'v': {'N': 147.36067945550187, 'P': 200.38596279342934, 'K': 200.10109654580023}, 'u': 'mg/kg', 't': 1000}}
-Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.07124138814695, 'u': '%', 't': 1000}}
-Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 50.783376526580476, 'u': '%', 't': 1000}}
-Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.946157257616257, 'u': 'pH', 't': 1000}}
-Missing key in the message: 'fields'
-Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 146.84411348449984, 'P': 200.56149012606562, 'K': 197.46639629511506}, 'u': 'mg/kg', 't': 1000}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 149.07868198982302, 'P': 200.14802562156538, 'K': 199.7760639922521}, 'u': 'mg/kg', 't': 460}}
 Missing key in the message: 'fields'
