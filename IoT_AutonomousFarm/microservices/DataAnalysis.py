@@ -39,6 +39,40 @@ except KeyError as e:
     write_log(f"Missing key in JSON file: {e}")
     exit(1)
 
+def checkSensors():
+    # check for updates in the list of sensors in the Catalog
+    try:
+        response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'DataAnalysis'})
+        if response.status_code == 200:
+            new_sensors = response.json()["sensors"]
+            global sensors
+            if new_sensors != sensors:  # if the list of sensors has changed
+                write_log("Sensors list updated")
+                # find sensors to add and remove
+                new_sensor_ids = {s["sensor_id"] for s in new_sensors}
+                old_sensor_ids = {s["sensor_id"] for s in sensors}
+
+                # remove topics for sensors that are no longer present
+                for removed_id in old_sensor_ids - new_sensor_ids:
+                    removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
+                    client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+
+                # add topics for new sensors
+                for added_id in new_sensor_ids - old_sensor_ids:
+                    added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
+                    mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
+                    client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")  # subscribe to the topic to receive actions from the Catalog
+                    timestamps[added_sensor["sensor_id"]] = []
+                    values[added_sensor["sensor_id"]] = []
+                    mean_value[added_sensor["sensor_id"]] = 0
+                    next_timestamp[added_sensor["sensor_id"]] = 0
+                    next_value[added_sensor["sensor_id"]] = 0
+
+                sensors = new_sensors  # update the list of sensors
+
+    except Exception as e:
+        write_log(f"Error checking for updates in the Catalog: {e}")
+
 global N   # N is the number of values to keep track of
 
 # function to evaluate means, expected values and timestamps of the last N values received for each sensor
@@ -137,6 +171,8 @@ def on_message(client, userdata, msg):
                     # extract from the topic the area_id and the sensor_id
                     area_id = int(topic.split("/")[1].split("_")[1])
                     sensor_id = int(topic.split("/")[2].split("_")[1])
+
+                    checkSensors()  # check if the sensors list has been updated
 
                     handle_message(topic, sensor_type, val, timestamp, area_id, sensor_id)  # call the function to handle the message
                     
@@ -337,6 +373,7 @@ if __name__ == "__main__":
                 response = response.json()
                 device_id = response["device_id"]    # get the device_id from the response
                 write_log(f"Device ID: {device_id}")
+                global sensors
                 sensors = response["sensors"]    # sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
                 write_log(f"Received {len(sensors)} sensors: {sensors}")
                 break   # exit the loop if the request is successful

@@ -291,6 +291,6 @@ while True:
     
     write_log("")
 
-    time.sleep(2)   # wait for 2 minutes before reading the sensors again
+    time.sleep(20)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client

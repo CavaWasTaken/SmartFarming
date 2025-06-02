@@ -1749,9 +1749,3 @@ if __name__ == "__main__":
     except Exception as e:
         write_log(f"Error starting the REST API: {e}")
         exit(1)
-
-    # Initialize MQTT client
-    # client = MqttClient(mqtt_broker, mqtt_port, keep_alive, "Catalog", on_message, write_log)    # create a MQTT client object
-    # client.start()  # start the MQTT client
-
-    # cherrypy.engine.block()
