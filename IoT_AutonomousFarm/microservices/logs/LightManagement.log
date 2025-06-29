@@ -1,3 +1,65 @@
 Device ID: 44
-Received 0 sensors: []
+Received 2 sensors: [{'sensor_id': 7, 'area_id': 5, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 800, 'min': 400}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 10, 'area_id': 5, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 13}]
+Subscribed to greenhouse_13/area_5/sensor_7
+Subscribed to greenhouse_13/area_5/event/sensor_7
+Subscribed to greenhouse_13/area_5/sensor_10
+Subscribed to greenhouse_13/area_5/event/sensor_10
 Connected to mqtt.eclipseprojects.io with result code 0
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 549.6680034724915, 'u': 'lux', 't': 60}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=7&sensor_type=LightIntensity&timestamp=60 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7398a4e8d4f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_10', 'e': {'n': 'Temperature', 'v': 20.940178379839445, 'u': '°C', 't': 60}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=10&sensor_type=Temperature&timestamp=60 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7398a4e8df10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 549.3001302050419, 'u': 'lux', 't': 80}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=7&sensor_type=LightIntensity&timestamp=80 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7398a4e8e9c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_10', 'e': {'n': 'Temperature', 'v': 21.693321545023267, 'u': '°C', 't': 80}}
+Error processing the message: HTTPConnectionPool(host='localhost', port=8081): Max retries exceeded with url: /get_next_timestamp?sensor_id=10&sensor_type=Temperature&timestamp=80 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7398a4e8f3e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 553.5098220236002, 'u': 'lux', 't': 100}}
+WARNING: Failed to get when the next value of LightIntensity (sensor_7) is expected to arrive
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_10', 'e': {'n': 'Temperature', 'v': 21.330690916279654, 'u': '°C', 't': 100}}
+WARNING: Failed to get when the next value of Temperature (sensor_10) is expected to arrive
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 545.6558073150765, 'u': 'lux', 't': 120}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 140.0
+The next value of LightIntensity (sensor_7) is expected to be: 537.8017926065528 lux
+Wait to see another value to start the decision making for sensor_7 (LightIntensity)
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_10', 'e': {'n': 'Temperature', 'v': 20.795839229874563, 'u': '°C', 't': 120}}
+The next value of Temperature (sensor_10) is expected to be received at: 140.0
+The next value of Temperature (sensor_10) is expected to be: 20.260987543469472 °C
+Wait to see another value to start the decision making for sensor_10 (Temperature)
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 548.026850851733, 'u': 'lux', 't': 140}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 160.0
+The next value of LightIntensity (sensor_7) is expected to be: 543.5811888916027 lux
+WARNING: The measured value 548.026850851733 lux of LightIntensity (sensor_7) is unexpected. (Expected value was 543.5811888916027 lux)	Waiting to receive another value
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_10', 'e': {'n': 'Temperature', 'v': 21.09738431475419, 'u': '°C', 't': 140}}
+The next value of Temperature (sensor_10) is expected to be received at: 160.0
+The next value of Temperature (sensor_10) is expected to be: 20.84133155211067 °C
+The measured value (21.09738431475419 °C) and the next prediction (20.84133155211067 °C) of sensor_10 (Temperature) are inside the range [-10, 50]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 553.2821071204128, 'u': 'lux', 't': 160}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 180.0
+The next value of LightIntensity (sensor_7) is expected to be: 550.5406215344791 lux
+WARNING: The measured value 553.2821071204128 lux of LightIntensity (sensor_7) is unexpected. (Expected value was 550.5406215344791 lux)	Waiting to receive another value
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_10', 'e': {'n': 'Temperature', 'v': 21.174144772156335, 'u': '°C', 't': 160}}
+The next value of Temperature (sensor_10) is expected to be received at: 180.0
+The next value of Temperature (sensor_10) is expected to be: 21.057491471393604 °C
+The measured value (21.174144772156335 °C) and the next prediction (21.057491471393604 °C) of sensor_10 (Temperature) are inside the range [-10, 50]
+Telegram message sent successfully to user 2070801980
+WARNING: Was expecting a value of LightIntensity from sensor_7 at time 180.0, but it didn't arrive
+Telegram message sent successfully to user 2070801980
+WARNING: Was expecting a value of Temperature from sensor_10 at time 180.0, but it didn't arrive
+Telegram message sent successfully to user 2070801980

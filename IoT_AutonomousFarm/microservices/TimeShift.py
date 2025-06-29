@@ -83,6 +83,21 @@ for _ in range(5):  # try 5 times to start the MQTT client
 while True:
     current_time = datetime.now()   # get the current time
     try:
+        response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Data Analysis service
+        if response.status_code == 200: # if the request is successful
+            new_sensors = response.json()["sensors"]  # new_sensors is a list of dictionaries, each correspond to a sensor of the greenhouse
+            if new_sensors != sensors:  # if the list of sensors has changed
+                write_log("Sensors list updated")
+                # find sensors to add and remove
+                new_sensor_ids = {s["sensor_id"] for s in new_sensors}
+                old_sensor_ids = {s["sensor_id"] for s in sensors}
+
+                sensors = new_sensors  # update the sensors list
+
+    except Exception as e:
+        write_log(f"Error checking for updates in the Catalog: {e}")
+
+    try:
         response = requests.get(f'{catalog_url}/get_scheduled_events', params={'device_id': device_id, 'device_name': 'TimeShift', 'greenhouse_id': greenhouse_id})    # read the list of sensors from the Catalog
         if response.status_code == 200:
             events = response.json()['events']   # events is a dictionary of scheduled events for this greenhouse

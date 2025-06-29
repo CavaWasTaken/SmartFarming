@@ -60,7 +60,6 @@ def checkSensors():
                 # add topics for new sensors
                 for added_id in new_sensor_ids - old_sensor_ids:
                     added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
-                    mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
                     client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")  # subscribe to the topic to receive actions from the Catalog
                     timestamps[added_sensor["sensor_id"]] = []
                     values[added_sensor["sensor_id"]] = []

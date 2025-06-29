@@ -42,6 +42,40 @@ except KeyError as e:
     write_log(f"Missing key in JSON file: {e}")
     exit(1)
 
+def checkSensors():
+    # check for updates in the list of sensors in the Catalog
+    try:
+        response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'DataAnalysis'})
+        if response.status_code == 200:
+            new_sensors = response.json()["sensors"]
+            global sensors
+            if new_sensors != sensors:  # if the list of sensors has changed
+                write_log("Sensors list updated")
+                # find sensors to add and remove
+                new_sensor_ids = {s["sensor_id"] for s in new_sensors}
+                old_sensor_ids = {s["sensor_id"] for s in sensors}
+
+                # remove topics for sensors that are no longer present
+                for removed_id in old_sensor_ids - new_sensor_ids:
+                    removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
+                    client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/event/sensor_{removed_id}")  # unsubscribe from the event topic to stop receiving events for the removed sensor
+                    client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+
+                # add topics for new sensors
+                for added_id in new_sensor_ids - old_sensor_ids:
+                    added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
+                    client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/event/sensor_{added_id}")  # subscribe to the event topic to receive events for the new sensor
+                    client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
+                    tresholds[added_sensor['sensor_id']] = added_sensor['threshold']    # associate the threshold to the sensor id into the dictionary
+                    domains[added_sensor['sensor_id']] = added_sensor['domain']    # associate the domain to the sensor id into the dictionary  
+                    expected_value[added_sensor['sensor_id']] = None
+                    timers[added_sensor['sensor_id']] = None
+ 
+                sensors = new_sensors  # update the list of sensors
+
+    except Exception as e:
+        write_log(f"Error checking for updates in the Catalog: {e}")
+
 expected_value = {} # dictionary to save the next expected value for each sensor
 timers = {} # dictionary to save the timer (interval of time for waiting the next value of that sensor) for each sensor
 tresholds = {}  # dictionary to save the treshold interval for each sensor
@@ -265,6 +299,8 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
                         # extract from the topic the area_id and the sensor_id
                         area_id = int(topic.split("/")[1].split("_")[1])
                         sensor_id = int(topic.split("/")[2].split("_")[1])
+
+                        checkSensors()  # check if the sensors list has changed
 
                         handle_message(topic, sensor_type, val, unit, timestamp, area_id, sensor_id)
 
