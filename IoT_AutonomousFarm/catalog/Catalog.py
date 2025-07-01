@@ -1,11 +1,9 @@
 import cherrypy
 import psycopg2
 from psycopg2 import sql
-import jinja2
 import bcrypt
 import json
 import os
-from cherrypy_cors import CORS 
 import jwt
 import datetime
 import time
@@ -47,12 +45,13 @@ except KeyError as e:
 def get_db_connection():
     for _ in range(5):  # try to connect to the database 5 times
         try:
+            write_log("Database connection estabilished")
             return psycopg2.connect(
                 dbname="smartfarm_db",  # db name
                 user="iotproject",  # username postgre sql
                 password="WeWillDieForIoT", # password postgre sql
-                host="localhost",    # host,
-                port="5433" # port
+                host="db",    # host,
+                port="5432" # port
             )
         
         except psycopg2.Error as e:
@@ -1314,6 +1313,25 @@ def verify_telegram_otp(conn, user_id, otp_code):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
+def logout_telegram(conn, user_id):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+
+            # remove the Telegram user ID from the user
+            cur.execute(sql.SQL("UPDATE users SET telegram_user_id = NULL WHERE telegram_user_id = %s"), [user_id])
+            conn.commit()
+
+            return {"message": "User logged out successfully"}
+    
+    except Exception as e:
+        conn.rollback()
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+
 class CatalogREST(object):
     exposed = True
 
@@ -1691,6 +1709,19 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
             
+        elif uri[0] == 'logout_telegram':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'user_id' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return logout_telegram(self.catalog_connection, input_json['user_id'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}
@@ -1725,6 +1756,8 @@ class CatalogREST(object):
     
 if __name__ == "__main__":
     try:
+        write_log("Catalog service starting...")
+
         # configuration of the server
         catalogClient = CatalogREST(get_db_connection())
         conf = {
@@ -1734,15 +1767,15 @@ if __name__ == "__main__":
                 'tools.response_headers.on': True,
                 'tools.response_headers.headers': [('Content-Type', 'application/json')],
                 'tools.cors.on': True,
-                'tools.staticdir.on': True,
-                'tools.staticdir.dir': os.path.abspath('../ui/webApp')
+                # 'tools.staticdir.on': True,
+                # 'tools.staticdir.dir': os.path.abspath('../ui/webApp')
             },
-            '/ui':{
-                'tools.staticdir.on': True,
-                'tools.staticdir.dir': os.path.abspath("../ui/webApp")
-            }
+            # '/ui':{
+            #     'tools.staticdir.on': True,
+            #     'tools.staticdir.dir': os.path.abspath("../ui/webApp")
+            # }
         }
-        cherrypy.config.update({'server.socket_host': '127.0.0.1', 'server.socket_port': 8080})
+        cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8080})
         cherrypy.tree.mount(catalogClient, '/', conf)
         cherrypy.engine.start()
 

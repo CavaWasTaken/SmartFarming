@@ -1,0 +1,4 @@
+Device ID: 44
+Received 1 sensors: [{'sensor_id': 7, 'area_id': 5, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 800, 'min': 400}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 13}]
+Error starting MQTT client: timed out
+Trying again in 60 seconds...

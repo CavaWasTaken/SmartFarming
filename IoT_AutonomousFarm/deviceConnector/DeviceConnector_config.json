@@ -1,5 +1,5 @@
 {
-    "catalog_url": "http://localhost:8080",
+    "catalog_url": "http://catalog:8080",
     "greenhouse_id": "13",
     "mqtt_connection": {
         "mqtt_port": 1883,

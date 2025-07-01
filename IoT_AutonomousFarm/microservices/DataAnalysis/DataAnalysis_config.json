@@ -1,9 +1,10 @@
 {
     "catalog_url": "http://catalog:8080",
+    "thingSpeak_url": "http://localhost:8082",
+    "greenhouse_id": 13,
     "mqtt_connection": {
         "mqtt_port": 1883,
-        "keep_alive": 180,
+        "keep_alive": 120,
         "mqtt_broker": "mqtt.eclipseprojects.io"
-    },
-    "telegram_token": "7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4"
+    }
 }

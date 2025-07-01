@@ -123,7 +123,7 @@ for _ in range(5):  # try 5 times to get the list of sensors connected to this d
             break   # exit the loop if the request is successful
 
         else:
-            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()["error"]}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
             if _ == 4:  # if this is the last attempt
                 write_log("Failed to get sensors from the Catalog after 5 attempts")
                 exit(1)   # exit the program if the request fails after 5 attempts
@@ -208,15 +208,16 @@ write_log("")
 
 # connection to topics to receive needed action
 for sensor in sensors:  # iterate over the list of sensors
+    topic = f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/action/sensor_{sensor['sensor_id']}"  # create the topic to subscribe to
     for _ in range(5):
         try:
-            client.subscribe(f"greenhouse_{sensor['greenhouse_id']}/area_{sensor["area_id"]}/action/sensor_{sensor['sensor_id']}")    # subscribe to the topic to receive actions from the Catalog
+            client.subscribe(topic)    # subscribe to the topic to receive actions from the Catalog
             break
 
         except Exception as e:
-            write_log(f"Error subscribing the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/action/sensor_{sensor['sensor_id']}"}): {e}\nTrying again in 60 seconds...")
+            write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
             if _ == 4:  # if this is the last attempt
-                write_log(f"Failed to subscribe the client to the topic ({f"greenhouse_{sensor['greenhouse_id']}/action/sensor_{sensor['sensor_id']}"}) after 5 attempts")
+                write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
             else:
                 time.sleep(60)  # wait for 60 seconds before trying again            
 
@@ -281,7 +282,7 @@ while True:
             
         try:
             # we want to pusblish values with senML format, so we create a dictionary of the value read from the sensor
-            senML = json.dumps({"bn": f"greenhouse_{sensor["greenhouse_id"]}/area_{sensor["area_id"]}/sensor_{sensor['sensor_id']}", "e": {"n": sensor["type"], "v": val, "u": sensor["unit"], "t": int(timestamp*3600)}})
+            senML = json.dumps({"bn": f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/sensor_{sensor['sensor_id']}", "e": {"n": sensor["type"], "v": val, "u": sensor["unit"], "t": int(timestamp*3600)}})
             senML_dictionary = json.loads(senML)
             client.publish(senML_dictionary["bn"], senML)  # publish the value read from the sensor to the MQTT broker
             

@@ -1,0 +1,143 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: smartfarm_db
+      POSTGRES_USER: iotproject
+      POSTGRES_PASSWORD: WeWillDieForIoT
+    ports:
+      - "5433:5432"  # PostgreSQL default port
+    volumes:
+      - pgdata:/var/lib/postgresql/data # persist data storage
+      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # initial data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iotproject -d smartfarm_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  catalog:
+    build: ./catalog
+    container_name: catalog_service
+    ports:
+      - "8080:8080"  # expose catalog service to localhost:8080
+    volumes:
+      - ./catalog:/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  deviceconnector:
+    build: ./deviceConnector
+    container_name: device_connector
+    volumes:
+      - ./deviceConnector:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  dataanalysis:
+    build: ./microservices/DataAnalysis
+    container_name: data_analysis
+    volumes:
+      - ./microservices/DataAnalysis:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      deviceconnector:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  humiditymanagement:
+    build: ./microservices/HumidityManagement
+    container_name: humidity_management
+    volumes:
+      - ./microservices/HumidityManagement:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      deviceconnector:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  lightmanagement:
+    build: ./microservices/LightManagement
+    container_name: light_management
+    volumes:
+      - ./microservices/LightManagement:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      deviceconnector:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  nutrientmanagement:
+    build: ./microservices/NutrientManagement
+    container_name: nutrient_management
+    volumes:
+      - ./microservices/NutrientManagement:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      deviceconnector:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  timeshift:
+    build: ./microservices/TimeShift
+    container_name: time_shift
+    volumes:
+      - ./microservices/TimeShift:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      deviceconnector:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  thingspeak:
+    build: ./thingSpeakAdaptor
+    container_name: thingspeak_adaptor
+    volumes:
+      - ./thingSpeakAdaptor:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      deviceconnector:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  telegrambot:
+    build: ./ui/telegramBot
+    container_name: telegram_bot
+    volumes:
+      - ./ui/telegramBot:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+  webapp:
+    build: ./ui/webApp
+    container_name: web_app
+    ports:
+      - "8000:80"  # adjust for your app
+    depends_on:
+      catalog:
+        condition: service_started
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata: # docker volume for persisting data

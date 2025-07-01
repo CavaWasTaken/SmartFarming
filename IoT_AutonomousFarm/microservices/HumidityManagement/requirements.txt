@@ -1,0 +1,4 @@
+cherrypy
+scipy>=1.11.0
+paho-mqtt
+requests

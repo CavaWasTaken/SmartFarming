@@ -2,7 +2,6 @@ import json
 import requests
 import random
 import os
-import time
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
@@ -40,18 +39,20 @@ except KeyError as e:
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         # send a welcome message to the user
-        await context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to the IoT Autonomous Farm Bot!\nUse /login connect telegram to your Smart Greehouse.")
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to the IoT Autonomous Farm Bot!\nList of available commands:" \
+        "/login to connect telegram to your Smart Greenhouse.\n" \
+        "/logout to disconnect telegram from your Smart Greenhouse.\n")
     except Exception as e:
         write_log(f"Error sending start message: {e}")
 
 async def login(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="Generating OTP code...\nInsert it into your web application to connect telegram to your account.")
-    user_id = update.effective_user.id
-    # generate a random OTP code
-    otp_code = str(random.randint(100000, 999999))  # generate a 6-digit OTP code
-    await context.bot.send_message(chat_id=update.effective_chat.id, text=f"Your OTP code is: {otp_code}")
-    # send the OTP to the Catalog service
     try:
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="Generating OTP code...\nInsert it into your web application to connect telegram to your Smart Greenhouse.")
+        user_id = update.effective_user.id
+        # generate a random OTP code
+        otp_code = str(random.randint(100000, 999999))  # generate a 6-digit OTP code
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=f"Your OTP code is: {otp_code}")
+        # send the OTP to the Catalog service
         response = requests.post(
             f"{catalog_url}/otp",
             json={"user_id": user_id, "otp_code": otp_code}
@@ -61,9 +62,36 @@ async def login(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         else:
             write_log(f"Failed to send OTP for user {user_id}: {response.text}")
+            await context.bot.send_message(chat_id=update.effective_chat.id, text="Failed to send OTP. Please try again later.")
 
     except requests.RequestException as e:
         write_log(f"Error sending OTP: {e}")
+    
+    except Exception as e:
+        write_log(f"Error in login command: {e}")
+
+async def logout(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    try:
+        # ask to the catalog service to remove the association between the telegram user and the greenhouse
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="Logging out...\nYou will be disconnected from your Smart Greenhouse.")
+        user_id = update.effective_user.id
+        response = requests.post(
+            f"{catalog_url}/logout_telegram",
+            json={"user_id": user_id}
+        )
+        if response.status_code == 200:
+            await context.bot.send_message(chat_id=update.effective_chat.id, text="You have been logged out successfully.")
+            write_log(f"User {user_id} logged out successfully.")
+        else:
+            error_msg = response.json().get("error", "Unknown error")
+            await context.bot.send_message(chat_id=update.effective_chat.id, text=f"Failed to log out.")
+            write_log(f"Failed to log out user {user_id}: {error_msg}")
+
+    except requests.RequestException as e:
+        write_log(f"Error during logout: {e}")
+
+    except Exception as e:
+        write_log(f"Error in logout command: {e}")
 
 # try:
 #     # get the user id associated with this Telegram chat from the Catalog
@@ -89,6 +117,7 @@ def main():
 
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('login', login))
+    application.add_handler(CommandHandler('logout', logout))
 
     application.run_polling()
 

@@ -1,0 +1,5 @@
+cherrypy
+psycopg2-binary
+bcrypt
+pyjwt
+requests

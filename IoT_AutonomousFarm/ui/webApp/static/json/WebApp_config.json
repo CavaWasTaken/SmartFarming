@@ -1,9 +1,9 @@
 {
-    "catalog_url": "http://catalog:8080",
+    "catalog_url": "/api",
+    "device_id": "7",
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,
         "mqtt_broker": "mqtt.eclipseprojects.io"
-    },
-    "telegram_token": "7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4"
+    }
 }

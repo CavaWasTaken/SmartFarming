@@ -17,16 +17,55 @@ os.makedirs("./logs", exist_ok=True)   # create the logs directory if it doesn't
 with open("./logs/ThingSpeakAdaptor.log", "w") as log_file:
     pass
 
-# read the info from the json file
-with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
-    config = json.load(config_fd)   # load the configuration from the file as a dictionary
-    catalog_url = config["catalog_url"] # get the url of the catalog
-    greenhouse_id = config["greenhouse_id"] # get the id of the greenhouse
-    mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # mqtt broker
-    mqtt_port = config["mqtt_connection"]["mqtt_port"]  # mqtt port
-    keep_alive = config["mqtt_connection"]["keep_alive"]    # keep alive time
-    write_url = config["write_url"] # url to write data to the ThingSpeak channel
-    read_url = config["read_url"]   # url to read data from the ThingSpeak channel
+try:
+    # read the info from the json file
+    with open("./ThingSpeakAdaptor_config.json", "r") as config_fd:
+        config = json.load(config_fd)   # load the configuration from the file as a dictionary
+        catalog_url = config["catalog_url"] # get the url of the catalog
+        greenhouse_id = config["greenhouse_id"] # get the id of the greenhouse
+        mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # mqtt broker
+        mqtt_port = config["mqtt_connection"]["mqtt_port"]  # mqtt port
+        keep_alive = config["mqtt_connection"]["keep_alive"]    # keep alive time
+        write_url = config["write_url"] # url to write data to the ThingSpeak channel
+        read_url = config["read_url"]   # url to read data from the ThingSpeak channel
+
+except FileNotFoundError:
+    write_log("ThingSpeakAdaptor_config.json file not found")
+    exit(1)
+except json.JSONDecodeError:
+    write_log("Error decoding JSON file")
+    exit(1)
+except KeyError as e:
+    write_log(f"Missing key in JSON file: {e}")
+    exit(1)
+
+def checkSensors():
+    # check for updates in the list of sensors in the Catalog
+    try:
+        response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'ThingSpeakAdaptor'})  # read the list of sensors from the Catalog
+        if response.status_code == 200:
+            new_sensors = response.json()["sensors"]
+            global sensors
+            if new_sensors != sensors:  # if the list of sensors has changed
+                write_log("Sensors list updated")
+                # find sensors to add and remove
+                new_sensor_ids = {s["sensor_id"] for s in new_sensors}
+                old_sensor_ids = {s["sensor_id"] for s in sensors}
+
+                # remove topics for sensors that are no longer present
+                for removed_id in old_sensor_ids - new_sensor_ids:
+                    removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
+                    client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+
+                # add topics for new sensors
+                for added_id in new_sensor_ids - old_sensor_ids:
+                    added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
+                    client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
+ 
+                sensors = new_sensors  # update the list of sensors
+
+    except Exception as e:
+        write_log(f"Error checking for updates in the Catalog: {e}")
 
 thingSpeak_config = {}  # dictionary containing the configuration of the ThingSpeak channel
 
@@ -71,8 +110,10 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
                     message = message["e"]
                     sensor_type = message["n"]
                     val = message["v"]
+
+                    checkSensors()
+
                     handle_message(topic, sensor_type, val)
-                    break   # if the message is processed, break the loop
 
                 except KeyError as e:
                     write_log(f"Missing key in the message: {e}")
@@ -90,7 +131,7 @@ def get_field_data(field, n):
     write_log(f"Request to get last {n} values of field '{field}'")
     try:
     # ask to the ThingSpeak API the last N data of the field
-        response = requests.get(f"{read_url}/{thingSpeak_config["channel_id"]}/feeds.json", params={'api_key': thingSpeak_config["read_api_key"], 'results': 0})
+        response = requests.get(f"{read_url}/{thingSpeak_config['channel_id']}/feeds.json", params={'api_key': thingSpeak_config["read_api_key"], 'results': 0})
         if response.status_code == 200:
             data = response.json()
             channel_info = data.get("channel", {})
@@ -199,7 +240,7 @@ if __name__ == "__main__":
                 break
 
             else:
-                write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()["error"]})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
+                write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()['error']})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
                 if _ == 4:  # if it is the last attempt
                     write_log("Failed to get sensors from the Catalog after 5 attempts")
                     exit(1)  # exit the program if the device information is not found
