@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // read from the config file to get the API URL
-  fetch("../json/WebApp_config.json") // this path is relative to the HTML file
+  fetch("./json/WebApp_config.json") // this path is relative to the HTML file
     .then((response) => response.json())
     .then((config) => {
       const catalog_url = config.catalog_url; // read the catalog URL from the config file
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //delete sensor 
         card.querySelector(".delete-btn").addEventListener("click", () => {
           if (confirm(`Are you sure you want to delete ${sensor.name}?`)) {
-            fetch("../json/WebApp_config.json")
+            fetch("./json/WebApp_config.json")
               .then((res) => res.json())
               .then((config) => {
                 const catalog_url = config.catalog_url;
@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
               }
 
-              fetch("../json/WebApp_config.json")
+              fetch("./json/WebApp_config.json")
                 .then((response) => response.json())
                 .then((config) => {
                   const catalog_url = config.catalog_url;
@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Add Sensors Button
     // fetch sensors and show available ones 
     document.getElementById("add-sensor-btn").addEventListener("click", () => {
-      fetch("../json/WebApp_config.json")
+      fetch("./json/WebApp_config.json")
         .then((res) => res.json())
         .then((config) => {
           const catalog_url = config.catalog_url;
@@ -397,7 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("confirm-add-sensor").addEventListener("click", () => {
       const sensorId = document.getElementById("sensor-select").value;
-      fetch("../json/WebApp_config.json")
+      fetch("./json/WebApp_config.json")
         .then((res) => res.json())
         .then((config) => {
           console.log(greenhouseId, sensorId)

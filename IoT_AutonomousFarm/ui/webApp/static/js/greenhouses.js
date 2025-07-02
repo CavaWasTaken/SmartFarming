@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // read from the config file to get the API URL
-  fetch("../json/WebApp_config.json")    // this path is relative to the HTML file
+  fetch("./json/WebApp_config.json")    // this path is relative to the HTML file
   .then(response => response.json())
   .then(config => {
       const catalog_url = config.catalog_url; // read the catalog URL from the config file

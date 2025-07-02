@@ -40,6 +40,8 @@ tbody td {
   padding: 10px;
   text-align: center;
   border: 1px solid #28333f;
+  background-color: rgba(52, 76, 64, 0.6);
+  font-size: 1.2rem;
   color: #000000;
 }
 

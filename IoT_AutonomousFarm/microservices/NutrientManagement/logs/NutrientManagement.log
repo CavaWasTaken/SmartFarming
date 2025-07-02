@@ -2,5 +2,76 @@ Device ID: 45
 
 Received 4 sensors: [{'sensor_id': 5, 'area_id': 6, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 20}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 1, 'area_id': 4, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 25}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 3, 'area_id': 4, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 7.5, 'min': 5}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 13}, {'sensor_id': 2, 'area_id': 4, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 152, 'min': 56}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 13}]
 
-Error starting MQTT client: timed out
-Trying again in 60 seconds...
+Subscribed to greenhouse_13/area_6/sensor_5
+Subscribed to greenhouse_13/area_6/event/sensor_5
+Subscribed to greenhouse_13/area_4/sensor_1
+Subscribed to greenhouse_13/area_4/event/sensor_1
+Subscribed to greenhouse_13/area_4/sensor_3
+Subscribed to greenhouse_13/area_4/event/sensor_3
+Subscribed to greenhouse_13/area_4/sensor_2
+Subscribed to greenhouse_13/area_4/event/sensor_2
+Connected to mqtt.eclipseprojects.io with result code 0
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.59036777834774, 'u': '%', 't': 20}}
+WARNING: Failed to get when the next value of SoilMoisture (sensor_5) is expected to arrive
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.492354996289315, 'u': '%', 't': 20}}
+WARNING: Failed to get when the next value of SoilMoisture (sensor_1) is expected to arrive
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.943280839842039, 'u': 'pH', 't': 20}}
+WARNING: Failed to get when the next value of pH (sensor_3) is expected to arrive
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.0945100689371, 'P': 201.14895934341223, 'K': 200.88153261657814}, 'u': 'mg/kg', 't': 20}}
+WARNING: Failed to get when the next value of NPK (sensor_2) is expected to arrive
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.94942481689777, 'u': '%', 't': 40}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 60.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.17945999381043, 'u': '%', 't': 40}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 60.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.071702668529679, 'u': 'pH', 't': 40}}
+The next value of pH (sensor_3) is expected to be received at: 60.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.0079780264633, 'P': 198.6213635886562, 'K': 198.945348471863}, 'u': 'mg/kg', 't': 40}}
+The next value of NPK (sensor_2) is expected to be received at: 60.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.43703836408243, 'u': '%', 't': 60}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 80.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.270368725189364, 'u': '%', 't': 60}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 80.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.972366658778426, 'u': 'pH', 't': 60}}
+The next value of pH (sensor_3) is expected to be received at: 80.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.39330579383073, 'P': 201.47326763502048, 'K': 200.52298680057794}, 'u': 'mg/kg', 't': 60}}
+The next value of NPK (sensor_2) is expected to be received at: 80.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.98742130331092, 'u': '%', 't': 80}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.37357390301232, 'u': '%', 't': 80}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.953372531116375, 'u': 'pH', 't': 80}}
+The next value of pH (sensor_3) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.633209598577, 'P': 200.20113750644916, 'K': 200.41497423319996}, 'u': 'mg/kg', 't': 80}}
+The next value of NPK (sensor_2) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'

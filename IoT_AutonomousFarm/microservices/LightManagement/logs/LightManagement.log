@@ -1,4 +1,21 @@
 Device ID: 44
 Received 1 sensors: [{'sensor_id': 7, 'area_id': 5, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 800, 'min': 400}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 13}]
-Error starting MQTT client: timed out
-Trying again in 60 seconds...
+Subscribed to greenhouse_13/area_5/sensor_7
+Subscribed to greenhouse_13/area_5/event/sensor_7
+Connected to mqtt.eclipseprojects.io with result code 0
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 570.9617249183509, 'u': 'lux', 't': 20}}
+WARNING: Failed to get when the next value of LightIntensity (sensor_7) is expected to arrive
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 566.3381761410234, 'u': 'lux', 't': 40}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 60.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 570.4994110704114, 'u': 'lux', 't': 60}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 80.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 571.7893532536792, 'u': 'lux', 't': 80}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'

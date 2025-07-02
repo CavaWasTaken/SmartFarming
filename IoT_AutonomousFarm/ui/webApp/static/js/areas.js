@@ -58,7 +58,7 @@ $(document).ready(function () {
     //   window.location.href = "loginform.html";
     // });
   
-    fetch("../json/WebApp_config.json")
+    fetch("./json/WebApp_config.json")
       .then((response) => response.json())
       .then((config) => {
         const catalog_url = config.catalog_url;
@@ -123,7 +123,7 @@ $(document).ready(function () {
   
           card.querySelector(".delete-btn").addEventListener("click", () => {
             if (confirm(`Are you sure you want to delete ${area.name}?`)) {
-              fetch("../json/WebApp_config.json")
+              fetch("./json/WebApp_config.json")
                 .then((res) => res.json())
                 .then((config) => {
                   const catalog_url = config.catalog_url;
@@ -175,7 +175,7 @@ $(document).ready(function () {
             return;
         }
 
-        fetch("../json/WebApp_config.json")
+        fetch("./json/WebApp_config.json")
             .then((res) => res.json())
             .then((config) => {
             const catalog_url = config.catalog_url;

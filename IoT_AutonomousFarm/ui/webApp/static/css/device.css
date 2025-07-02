@@ -29,7 +29,7 @@ a{
 .card {
 	display: flex;
 	flex-direction: column;
-	height: 450px;
+	height: 400px;
 	width: 100%;
 	max-width: 320px;
 	background-color: rgba(255, 255, 255, 0.06);
@@ -234,4 +234,103 @@ input{
     /* background: linear-gradient(45deg, #23a2f6, #1845ad); */
 	transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Telegram Bot Section */
+.telegram-bot-section {
+    position: absolute;
+    top: 170px;
+    left: 10%;
+    width: 80%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.telegram-input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+}
+
+.telegram-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.telegram-send-btn {
+    width: 100%;
+    padding: 6px 12px;
+    background: linear-gradient(45deg, #1845ad, #23a2f6);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.telegram-send-btn:hover {
+    background: linear-gradient(45deg, #23a2f6, #1845ad);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ThingSpeak Adaptor Section */
+.thingspeak-adaptor-section {
+    position: absolute;
+    top: 170px;
+    left: 10%;
+    width: 80%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.thingspeak-input,
+.thingspeak-field-input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+}
+
+.thingspeak-input::placeholder,
+.thingspeak-field-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.thingspeak-send-btn {
+    width: 100%;
+    padding: 6px 12px;
+    background: linear-gradient(45deg, #0eaa78, #3d5644);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.thingspeak-send-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }

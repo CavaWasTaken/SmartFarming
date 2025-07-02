@@ -69,8 +69,8 @@ def checkSensors():
 
 thingSpeak_config = {}  # dictionary containing the configuration of the ThingSpeak channel
 
-def handle_message(topic, sensor_type, val):
-    fields = thingSpeak_config["fields"]    # get the fields of the ThingSpeak channel
+def handle_message(sensor_type, val):
+    fields = thingSpeak_config["fields"]    # get the fields of the ThingSpeak channel - one field for each area
     if sensor_type == "NPK":
         fields["Nitrogen"] = val["N"]
         fields["Phosphorus"] = val["P"]
@@ -113,7 +113,7 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
 
                     checkSensors()
 
-                    handle_message(topic, sensor_type, val)
+                    handle_message(sensor_type, val)
 
                 except KeyError as e:
                     write_log(f"Missing key in the message: {e}")

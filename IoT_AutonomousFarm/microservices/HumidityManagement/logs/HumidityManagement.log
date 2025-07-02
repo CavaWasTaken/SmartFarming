@@ -1,4 +1,49 @@
 Device id: 43
 Received 2 sensors: [{'sensor_id': 5, 'area_id': 6, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 20}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 1, 'area_id': 4, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 25}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}]
-Error starting MQTT client: timed out
-Trying again in 60 seconds...
+Subscribed to greenhouse_13/area_6/sensor_5
+Subscribed to greenhouse_13/area_6/event/sensor_5
+Subscribed to greenhouse_13/area_4/sensor_1
+Subscribed to greenhouse_13/area_4/event/sensor_1
+Connected to mqtt.eclipseprojects.io with result code 0
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.59036777834774, 'u': '%', 't': 20}}
+WARNING: Failed to get when the next value of SoilMoisture (sensor_5) is expected to arrive
+Missing key in the message: 'next_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.492354996289315, 'u': '%', 't': 20}}
+WARNING: Failed to get when the next value of SoilMoisture (sensor_1) is expected to arrive
+Missing key in the message: 'next_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.94942481689777, 'u': '%', 't': 40}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 60.0
+The next value of SoilMoisture (sensor_5) is expected to be: 51.30848185544779 %
+Wait to see another value to start the decision making for sensor_5 (SoilMoisture)
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.17945999381043, 'u': '%', 't': 40}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 60.0
+The next value of SoilMoisture (sensor_1) is expected to be: 52.86656499133155 %
+Wait to see another value to start the decision making for sensor_1 (SoilMoisture)
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.43703836408243, 'u': '%', 't': 60}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 80.0
+The next value of SoilMoisture (sensor_5) is expected to be: 47.83894757217734 %
+The measured value (48.43703836408243 %) and the next prediction (47.83894757217734 %) of sensor_5 (SoilMoisture) are inside the range [20, 80]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.270368725189364, 'u': '%', 't': 60}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 80.0
+The next value of SoilMoisture (sensor_1) is expected to be: 49.758741633996415 %
+The measured value (49.270368725189364 %) and the next prediction (49.758741633996415 %) of sensor_1 (SoilMoisture) are inside the range [25, 80]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.98742130331092, 'u': '%', 't': 80}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 100.0
+The next value of SoilMoisture (sensor_5) is expected to be: 47.91075659617826 %
+The measured value (48.98742130331092 %) and the next prediction (47.91075659617826 %) of sensor_5 (SoilMoisture) are inside the range [20, 80]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.37357390301232, 'u': '%', 't': 80}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 100.0
+The next value of SoilMoisture (sensor_1) is expected to be: 49.262580767462346 %
+The measured value (49.37357390301232 %) and the next prediction (49.262580767462346 %) of sensor_1 (SoilMoisture) are inside the range [25, 80]
+Telegram message sent successfully to user 2070801980

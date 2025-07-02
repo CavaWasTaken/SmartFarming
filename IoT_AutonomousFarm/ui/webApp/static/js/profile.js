@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
   
-    fetch("../json/WebApp_config.json")
+    fetch("./json/WebApp_config.json")
       .then(res => res.json())
       .then(config => {
         const catalog_url = config.catalog_url;
@@ -55,7 +55,7 @@ document.getElementById("profileForm").addEventListener("submit", function(event
       return;
     }
   
-    fetch("../json/WebApp_config.json")
+    fetch("./json/WebApp_config.json")
       .then(res => res.json())
       .then(config => {
         const catalog_url = config.catalog_url;
@@ -99,7 +99,7 @@ document.getElementById("telegramForm").addEventListener("submit", function(even
     return;
   }
 
-  fetch("../json/WebApp_config.json")
+  fetch("./json/WebApp_config.json")
     .then(res => res.json())
     .then(config => {
       const catalog_url = config.catalog_url;

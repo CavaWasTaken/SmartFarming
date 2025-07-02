@@ -56,10 +56,8 @@ function loginUser() {
         }
     })
     .catch(error => {
-        console.error("Error:", error.message);
         console.error("Full error:", error);
-        console.error("Error name:", error.name);
-        alert(`An error occurred during login: ${error.message}`);
+        alert(`An error occurred during login`);
         document.getElementById("loginForm").reset(); // reset the form
     });
 }

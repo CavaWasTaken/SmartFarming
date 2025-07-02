@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   window.location.href = "loginform.html";
   // });
 
-  fetch("../json/WebApp_config.json")
+  fetch("./json/WebApp_config.json")
     .then((response) => response.json())
     .then((config) => {
       const catalog_url = config.catalog_url;
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card.querySelector(".delete-btn").addEventListener("click", () => {
           if (confirm(`Are you sure you want to delete ${plant.name}?`)) {
-            fetch("../json/WebApp_config.json")
+            fetch("./json/WebApp_config.json")
               .then((res) => res.json())
               .then((config) => {
                 const catalog_url = config.catalog_url;
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add Plant Button
       document.getElementById("add-plant-btn").addEventListener("click", () => {
-        fetch("../json/WebApp_config.json")
+        fetch("./json/WebApp_config.json")
           .then((res) => res.json())
           .then((config) => {
             const catalog_url = config.catalog_url;
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById("confirm-add-plant").addEventListener("click", () => {
         const plantId = document.getElementById("plant-select").value;
-        fetch("../json/WebApp_config.json")
+        fetch("./json/WebApp_config.json")
           .then((res) => res.json())
           .then((config) => {
             const catalog_url = config.catalog_url;
