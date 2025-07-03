@@ -10,68 +10,308 @@ Subscribed to greenhouse_13/area_4/sensor_3
 Subscribed to greenhouse_13/area_4/event/sensor_3
 Subscribed to greenhouse_13/area_4/sensor_2
 Subscribed to greenhouse_13/area_4/event/sensor_2
-Connected to mqtt.eclipseprojects.io with result code 0
+Connected to broker.hivemq.com with result code 0
 
-Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.59036777834774, 'u': '%', 't': 20}}
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.852805548369986, 'u': '%', 't': 20}}
 WARNING: Failed to get when the next value of SoilMoisture (sensor_5) is expected to arrive
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.492354996289315, 'u': '%', 't': 20}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.910030298579166, 'u': '%', 't': 20}}
 WARNING: Failed to get when the next value of SoilMoisture (sensor_1) is expected to arrive
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.943280839842039, 'u': 'pH', 't': 20}}
-WARNING: Failed to get when the next value of pH (sensor_3) is expected to arrive
-Error processing the message: module 'Management' has no attribute 'Check_value'
-
-Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.0945100689371, 'P': 201.14895934341223, 'K': 200.88153261657814}, 'u': 'mg/kg', 't': 20}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 148.46131514790378, 'P': 198.75499537056436, 'K': 200.34705851576174}, 'u': 'mg/kg', 't': 20}}
 WARNING: Failed to get when the next value of NPK (sensor_2) is expected to arrive
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.94942481689777, 'u': '%', 't': 40}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.045016565355113, 'u': 'pH', 't': 20}}
+WARNING: Failed to get when the next value of pH (sensor_3) is expected to arrive
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.486040475992404, 'u': '%', 't': 40}}
 The next value of SoilMoisture (sensor_5) is expected to be received at: 60.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.17945999381043, 'u': '%', 't': 40}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.674577403077514, 'u': '%', 't': 40}}
 The next value of SoilMoisture (sensor_1) is expected to be received at: 60.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.071702668529679, 'u': 'pH', 't': 40}}
-The next value of pH (sensor_3) is expected to be received at: 60.0
-Error processing the message: module 'Management' has no attribute 'Check_value'
-
-Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.0079780264633, 'P': 198.6213635886562, 'K': 198.945348471863}, 'u': 'mg/kg', 't': 40}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 148.4940860457043, 'P': 200.35764201318997, 'K': 198.2583634991663}, 'u': 'mg/kg', 't': 40}}
 The next value of NPK (sensor_2) is expected to be received at: 60.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.43703836408243, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.027065781060514, 'u': 'pH', 't': 40}}
+The next value of pH (sensor_3) is expected to be received at: 60.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.62010815046567, 'u': '%', 't': 60}}
 The next value of SoilMoisture (sensor_5) is expected to be received at: 80.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.270368725189364, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.13727162179072, 'u': '%', 't': 60}}
 The next value of SoilMoisture (sensor_1) is expected to be received at: 80.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.972366658778426, 'u': 'pH', 't': 60}}
-The next value of pH (sensor_3) is expected to be received at: 80.0
-Error processing the message: module 'Management' has no attribute 'Check_value'
-
-Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.39330579383073, 'P': 201.47326763502048, 'K': 200.52298680057794}, 'u': 'mg/kg', 't': 60}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 149.5527675238727, 'P': 199.49508010521302, 'K': 200.38984897157272}, 'u': 'mg/kg', 't': 60}}
 The next value of NPK (sensor_2) is expected to be received at: 80.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.98742130331092, 'u': '%', 't': 80}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.968182694324397, 'u': 'pH', 't': 60}}
+The next value of pH (sensor_3) is expected to be received at: 80.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.47160591994616, 'u': '%', 't': 80}}
 The next value of SoilMoisture (sensor_5) is expected to be received at: 100.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.37357390301232, 'u': '%', 't': 80}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.204063998889204, 'u': '%', 't': 80}}
 The next value of SoilMoisture (sensor_1) is expected to be received at: 100.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.953372531116375, 'u': 'pH', 't': 80}}
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.44440095238556, 'P': 200.71109297226386, 'K': 201.6299965397829}, 'u': 'mg/kg', 't': 80}}
+The next value of NPK (sensor_2) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.903372788022837, 'u': 'pH', 't': 80}}
 The next value of pH (sensor_3) is expected to be received at: 100.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.633209598577, 'P': 200.20113750644916, 'K': 200.41497423319996}, 'u': 'mg/kg', 't': 80}}
-The next value of NPK (sensor_2) is expected to be received at: 100.0
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 49.68681643169473, 'u': '%', 't': 100}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 120.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.54603608179382, 'u': '%', 't': 100}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 120.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 149.12045576554453, 'P': 198.01996383146684, 'K': 201.1326777490852}, 'u': 'mg/kg', 't': 100}}
+The next value of NPK (sensor_2) is expected to be received at: 120.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.063608699832559, 'u': 'pH', 't': 100}}
+The next value of pH (sensor_3) is expected to be received at: 120.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.74361226563131, 'u': '%', 't': 120}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 140.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.29097877988773, 'u': '%', 't': 120}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 140.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 149.77096638328985, 'P': 197.89612053142974, 'K': 200.5619134115381}, 'u': 'mg/kg', 't': 120}}
+The next value of NPK (sensor_2) is expected to be received at: 140.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.049298268997584, 'u': 'pH', 't': 120}}
+The next value of pH (sensor_3) is expected to be received at: 140.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.54431777582236, 'u': '%', 't': 140}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 160.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.798172140203114, 'u': '%', 't': 140}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 160.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.2709465824468, 'P': 200.39195735096834, 'K': 199.60439159258118}, 'u': 'mg/kg', 't': 140}}
+The next value of NPK (sensor_2) is expected to be received at: 160.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.929642780503544, 'u': 'pH', 't': 140}}
+The next value of pH (sensor_3) is expected to be received at: 160.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.517582172427765, 'u': '%', 't': 160}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 180.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.55229787272116, 'u': '%', 't': 160}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 180.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.51484091979466, 'P': 201.0065258458617, 'K': 199.9230380207476}, 'u': 'mg/kg', 't': 160}}
+The next value of NPK (sensor_2) is expected to be received at: 180.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.042188397169409, 'u': 'pH', 't': 160}}
+The next value of pH (sensor_3) is expected to be received at: 180.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.9409335412453, 'u': '%', 't': 180}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 200.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.88433413612186, 'u': '%', 't': 180}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 200.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 151.44008203255385, 'P': 199.40056784588617, 'K': 197.8858832886803}, 'u': 'mg/kg', 't': 180}}
+The next value of NPK (sensor_2) is expected to be received at: 200.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.010451560930439, 'u': 'pH', 't': 180}}
+The next value of pH (sensor_3) is expected to be received at: 200.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.483025920936974, 'u': '%', 't': 200}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 220.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.73562708867047, 'u': '%', 't': 200}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 220.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.46493692742249, 'P': 201.68242713404155, 'K': 201.29839932040278}, 'u': 'mg/kg', 't': 200}}
+The next value of NPK (sensor_2) is expected to be received at: 220.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.054014038719729, 'u': 'pH', 't': 200}}
+The next value of pH (sensor_3) is expected to be received at: 220.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.48859170797981, 'u': '%', 't': 220}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 240.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.87762848215554, 'u': '%', 't': 220}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 240.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 147.76739262934456, 'P': 199.404479848581, 'K': 201.00761136534945}, 'u': 'mg/kg', 't': 220}}
+The next value of NPK (sensor_2) is expected to be received at: 240.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.912023005847903, 'u': 'pH', 't': 220}}
+The next value of pH (sensor_3) is expected to be received at: 240.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.51968269472906, 'u': '%', 't': 240}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 260.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.48224360959525, 'u': '%', 't': 240}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 260.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 148.34977909823948, 'P': 199.8844031695475, 'K': 199.21159695129947}, 'u': 'mg/kg', 't': 240}}
+The next value of NPK (sensor_2) is expected to be received at: 260.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.015640826611613, 'u': 'pH', 't': 240}}
+The next value of pH (sensor_3) is expected to be received at: 260.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.20612013880951, 'u': '%', 't': 260}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 280.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.200639919662585, 'u': '%', 't': 260}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 280.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.78542096002732, 'P': 200.35495972599395, 'K': 200.01743854183087}, 'u': 'mg/kg', 't': 260}}
+The next value of NPK (sensor_2) is expected to be received at: 280.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.909092842267752, 'u': 'pH', 't': 260}}
+The next value of pH (sensor_3) is expected to be received at: 280.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.69624489909644, 'u': '%', 't': 280}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 300.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.86625952923206, 'u': '%', 't': 280}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 300.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 148.82671564716563, 'P': 201.2038334991466, 'K': 198.8447952445834}, 'u': 'mg/kg', 't': 280}}
+The next value of NPK (sensor_2) is expected to be received at: 300.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.0058139005367925, 'u': 'pH', 't': 280}}
+The next value of pH (sensor_3) is expected to be received at: 300.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.76439411339767, 'u': '%', 't': 300}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 320.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.42245406264819, 'u': '%', 't': 300}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 320.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 149.02913606345805, 'P': 200.72969540507515, 'K': 199.95756286528396}, 'u': 'mg/kg', 't': 300}}
+The next value of NPK (sensor_2) is expected to be received at: 320.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.047021448372814, 'u': 'pH', 't': 300}}
+The next value of pH (sensor_3) is expected to be received at: 320.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.560084768416296, 'u': '%', 't': 320}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 340.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 49.08996123640156, 'u': '%', 't': 320}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 340.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.16809771147607, 'P': 198.85896048549412, 'K': 199.85852472724392}, 'u': 'mg/kg', 't': 320}}
+The next value of NPK (sensor_2) is expected to be received at: 340.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.914294598616402, 'u': 'pH', 't': 320}}
+The next value of pH (sensor_3) is expected to be received at: 340.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 50.490550175526174, 'u': '%', 't': 340}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 360.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 51.0602815524501, 'u': '%', 't': 340}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 360.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 150.56677397384485, 'P': 199.75049075419065, 'K': 199.9070239863974}, 'u': 'mg/kg', 't': 340}}
+The next value of NPK (sensor_2) is expected to be received at: 360.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.984195955936474, 'u': 'pH', 't': 340}}
+The next value of pH (sensor_3) is expected to be received at: 360.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 48.950159439468614, 'u': '%', 't': 360}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 380.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.03426800934933, 'u': '%', 't': 360}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 380.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 151.0384489915794, 'P': 199.22200021295018, 'K': 200.34479170690724}, 'u': 'mg/kg', 't': 360}}
+The next value of NPK (sensor_2) is expected to be received at: 380.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 6.986365676941785, 'u': 'pH', 't': 360}}
+The next value of pH (sensor_3) is expected to be received at: 380.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_6/sensor_5', 'e': {'n': 'SoilMoisture', 'v': 51.43103677535614, 'u': '%', 't': 380}}
+The next value of SoilMoisture (sensor_5) is expected to be received at: 400.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_1', 'e': {'n': 'SoilMoisture', 'v': 48.24666768289163, 'u': '%', 't': 380}}
+The next value of SoilMoisture (sensor_1) is expected to be received at: 400.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_2', 'e': {'n': 'NPK', 'v': {'N': 149.33445360526224, 'P': 200.29196118358772, 'K': 199.12256606178076}, 'u': 'mg/kg', 't': 380}}
+The next value of NPK (sensor_2) is expected to be received at: 400.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_4/sensor_3', 'e': {'n': 'pH', 'v': 7.041411987027487, 'u': 'pH', 't': 380}}
+The next value of pH (sensor_3) is expected to be received at: 400.0
 Error processing the message: module 'Management' has no attribute 'Check_value'

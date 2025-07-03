@@ -4,7 +4,7 @@
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,
-        "mqtt_broker": "mqtt.eclipseprojects.io"
+        "mqtt_broker": "broker.hivemq.com"
     },
     "write_url": "https://api.thingspeak.com/update",
     "read_url": "https://api.thingspeak.com/channels"

@@ -2,20 +2,80 @@ Device ID: 44
 Received 1 sensors: [{'sensor_id': 7, 'area_id': 5, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 800, 'min': 400}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 13}]
 Subscribed to greenhouse_13/area_5/sensor_7
 Subscribed to greenhouse_13/area_5/event/sensor_7
-Connected to mqtt.eclipseprojects.io with result code 0
+Connected to broker.hivemq.com with result code 0
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 570.9617249183509, 'u': 'lux', 't': 20}}
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.3499611367565, 'u': 'lux', 't': 20}}
 WARNING: Failed to get when the next value of LightIntensity (sensor_7) is expected to arrive
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 566.3381761410234, 'u': 'lux', 't': 40}}
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 434.995345753492, 'u': 'lux', 't': 40}}
 The next value of LightIntensity (sensor_7) is expected to be received at: 60.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 570.4994110704114, 'u': 'lux', 't': 60}}
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.2731416477612, 'u': 'lux', 't': 60}}
 The next value of LightIntensity (sensor_7) is expected to be received at: 80.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 571.7893532536792, 'u': 'lux', 't': 80}}
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 430.8138081691627, 'u': 'lux', 't': 80}}
 The next value of LightIntensity (sensor_7) is expected to be received at: 100.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.6573324316661, 'u': 'lux', 't': 100}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 120.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 427.0083732242924, 'u': 'lux', 't': 120}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 140.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.55424789453514, 'u': 'lux', 't': 140}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 160.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.0446725009145, 'u': 'lux', 't': 160}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 180.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.1581469657717, 'u': 'lux', 't': 180}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 200.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 426.83558896564415, 'u': 'lux', 't': 200}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 220.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.51031608590813, 'u': 'lux', 't': 220}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 240.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 432.13295923927666, 'u': 'lux', 't': 240}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 260.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.9789312536232, 'u': 'lux', 't': 260}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 280.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.94369952884483, 'u': 'lux', 't': 280}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 300.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 432.0468982893046, 'u': 'lux', 't': 300}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 320.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 424.5155380505707, 'u': 'lux', 't': 320}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 340.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 430.29064901824523, 'u': 'lux', 't': 340}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 360.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 422.0259346895276, 'u': 'lux', 't': 360}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 380.0
+Error processing the message: module 'Management' has no attribute 'Check_value'
+
+Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 425.21054895692265, 'u': 'lux', 't': 380}}
+The next value of LightIntensity (sensor_7) is expected to be received at: 400.0
 Error processing the message: module 'Management' has no attribute 'Check_value'

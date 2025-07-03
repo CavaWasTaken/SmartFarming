@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const userInfoLink = document.getElementById("userinfo");
       const userProfile = document.getElementById("userProfile");
+      const greenhouseLink = document.getElementById("greenhouse");
 
       if (token && username) {
         //  Show profile name
@@ -32,6 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // hide User Profile menu item
         if (userInfoLink) {
           userInfoLink.style.display = "none";
+        }
+
+        // hide Greenhouse menu item
+        if (greenhouseLink) {
+          greenhouseLink.style.display = "none";
         }
 
         // set the login link

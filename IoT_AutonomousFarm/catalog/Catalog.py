@@ -24,9 +24,6 @@ try:
     # read the mqtt information of the broker from the json file
     with open("./Catalog_config.json", "r") as config_fd:
         config = json.load(config_fd)   # read the configuration from the json file
-        mqtt_broker = config["mqtt_connection"]["mqtt_broker"]  # read the mqtt broker address
-        mqtt_port = config["mqtt_connection"]["mqtt_port"]  # read the mqtt broker port
-        keep_alive = config["mqtt_connection"]["keep_alive"]    # read the keep alive time of the mqtt connection
         telegram_token = config["telegram_token"]  # read the token of the telegram bot
 
 except FileNotFoundError:
@@ -69,77 +66,7 @@ def cors():
 
 cherrypy.tools.cors = cherrypy.Tool('before_handler', cors)
 
-# method to get all the greenhouses in the system
-def get_all_greenhouses(conn):
-    with conn.cursor() as cur:
-        cur.execute("SELECT * FROM greenhouses")
-        greenhouses = cur.fetchall()
-        if not greenhouses:
-            raise cherrypy.HTTPError(404, "no greenhouses found")
-
-        greenhouse_list = []
-        for greenhouse in greenhouses:
-            thingspeak_config = greenhouse[4]  # Column where JSON is stored
-
-            # Convert JSON string to dictionary if needed
-            if isinstance(thingspeak_config, str) and thingspeak_config.strip():
-                try:
-                    thingspeak_config = json.loads(thingspeak_config)
-                except json.JSONDecodeError:
-                    print(f"ERROR: Invalid JSON in greenhouse ID {greenhouse[0]}")  
-                    thingspeak_config = {}  
-
-            # Ensure fields exist
-            if not isinstance(thingspeak_config, dict):
-                thingspeak_config = {}
-
-            # Debug: Print actual values before sending to Jinja
-            print(f"Greenhouse ID: {greenhouse[0]} | thingspeak_config: {json.dumps(thingspeak_config, indent=2)}")
-
-            greenhouse_dict = {
-                'greenhouse_id': greenhouse[0],
-                'user_id': greenhouse[1],
-                'name': greenhouse[2],
-                'location': greenhouse[3],
-                'thingspeak_config': thingspeak_config  
-            }
-
-            greenhouse_list.append(greenhouse_dict)
-
-        # Debugging: Print full list
-        print("Final greenhouse_list:\n", json.dumps(greenhouse_list, indent=2))
-
-        template = env.get_template("greenhouses.html")
-        return template.render(greenhouse_list=greenhouse_list)
-
-# given the id of the device and its name, return its information
-def get_device_info(conn, device_id, device_name):
-    try:
-        # check if the connection is closed
-        if conn.closed:
-            cherrypy.response.status = 500
-            return {"error": "Database connection is closed"}
-        
-        with conn.cursor() as cur:
-            # check the existance of the device
-            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s"), [device_id, device_name])
-            device = cur.fetchone() # device is a tuple
-            if device is None:  # if the device doesn't exist
-                cherrypy.response.status = 404
-                return {"error": "Device not found"}
-            
-            return {
-                'device_id': device[0],
-                'greenhouse_id': device[1],
-                'name': device[2],
-                'type': device[3],
-                'params': device[4]
-            }
-        
-    except:
-        cherrypy.response.status = 500
-        return {"error": "Internal error"}
-            
+# used
 # given the id of the greenhouse, return its location
 def get_greenhouse_location(conn, greenhouse_id):
     try:
@@ -162,6 +89,7 @@ def get_greenhouse_location(conn, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
 
+# used
 # given the id of the device, return the list of sensors connected to the greenhouse where it is working
 def get_sensors(conn, greenhouse_id, device_name):
     try: 
@@ -181,7 +109,7 @@ def get_sensors(conn, greenhouse_id, device_name):
             device_id = result[0]  # get the device id from the result
             
             # personalize the query based on the device name, cause each device connector is interested in different sensors
-            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "WebApp", "TelegramBot", "TimeShift"]
+            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "TelegramBot", "TimeShift"]
             if device_name in authorized_devices:    # device connector is interested in all the sensors connected to the greenhouse
                 cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"),  [greenhouse_id,])
             elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
@@ -219,8 +147,9 @@ def get_sensors(conn, greenhouse_id, device_name):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# used
 # return the info about the greenhouse by greenhouse_id. The device id is used to see if who made the request is connected to the greenhouse
-def get_greenhouse_info(conn, greenhouse_id, device_id):
+def get_greenhouse_info(conn, greenhouse_id):
     try:
         # check if the connection is closed
         if conn.closed:
@@ -228,11 +157,6 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
             return {"error": "Database connection is closed"}
 
         with conn.cursor() as cur: # create a cursor to execute queries
-            # check if the device is connected to the greenhouse
-            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND greenhouse_id = %s"), [device_id, greenhouse_id])
-            device = cur.fetchone() # device is a tuple
-            if device is None:  # if the device is not connected to the greenhouse, return error 404
-                raise cherrypy.HTTPError(404, "Device not connected to the greenhouse")
             # the first query is to get the greenhouse info of the greenhouse
             cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id,])
             greenhouse = cur.fetchone() # greenhouse is a tuple
@@ -252,6 +176,7 @@ def get_greenhouse_info(conn, greenhouse_id, device_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# used
 # function to perform user registration
 def register(conn, username, email, password):
     try:
@@ -295,10 +220,6 @@ def register(conn, username, email, password):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
-# instead of using a json, think to use an env variable
-with open("Catalog_config.json", "r") as config_file:
-    config = json.load(config_file)
-    
 # secret key for JWT encoding and decoding
 SECRET_KEY = config["SECRET_KEY"]
 # function to generate a JWT token for the logged in user    
@@ -317,6 +238,7 @@ def generate_token(user_id, username):
         print(f"Error generating token: {e}")
         raise cherrypy.HTTPError(500, "Internal error")
     
+# used
 # function to perform user login
 def login(conn, username, password):
     try:
@@ -358,6 +280,7 @@ def login(conn, username, password):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
 
+# used
 # function to return the greenhouses of a user
 def get_user_greenhouses(conn, user_id, username):
     try:
@@ -396,6 +319,7 @@ def get_user_greenhouses(conn, user_id, username):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# used
 # function to return everything about a greenhouse (plants, sensors, devices)
 def get_devices(conn, greenhouse_id):
     try:
@@ -428,6 +352,7 @@ def get_devices(conn, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# used
 # function used by the user to change the threshold of a sensor
 def set_sensor_threshold(conn, sensor_id, threshold):
     threshold = json.dumps(threshold)
@@ -442,6 +367,7 @@ def set_sensor_threshold(conn, sensor_id, threshold):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
         
+# used
 # function to get the entire list of plants
 def get_all_plants(conn):
     try:
@@ -473,6 +399,7 @@ def get_all_plants(conn):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# used
 # function to add a plant to a greenhouse
 def add_plant_to_greenhouse(conn, greenhouse_id, plant_id, area_id):
     with conn.cursor() as cur:
@@ -507,6 +434,7 @@ def add_plant_to_greenhouse(conn, greenhouse_id, plant_id, area_id):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
         
+# used
 # function to remove a plant from the greenhouse
 def remove_plant_from_greenhouse(conn, area_id, plant_id):
     with conn.cursor() as cur:
@@ -542,6 +470,7 @@ def remove_plant_from_greenhouse(conn, area_id, plant_id):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
         
+# used
 # delete sensor from greenhouse function
 def remove_sensor_from_greenhouse(conn, area_id, sensor_id):
     with conn.cursor() as cur:
@@ -578,40 +507,7 @@ def remove_sensor_from_greenhouse(conn, area_id, sensor_id):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
         
-# Delete Device from greenhouse 
-def remove_device_from_greenhouse(conn, greenhouse_id, device_id):
-    with conn.cursor() as cur:
-        # check if the device is in the greenhouse
-        cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s AND device_id = %s"), [greenhouse_id, device_id])
-        device = cur.fetchone()
-        if device is None:
-            raise cherrypy.HTTPError(404, "device is not in the greenhouse")
-        # remove the device from the greenhouse
-        try:
-            cur.execute(sql.SQL("DELETE FROM devices WHERE greenhouse_id = %s AND device_id = %s"), [greenhouse_id, device_id])
-            conn.commit()
-            # return the updated list of devices in the greenhouse
-            cur.execute(sql.SQL("SELECT device_id FROM devices WHERE device_id = %s"), [greenhouse_id])
-            devices = cur.fetchall()
-            if devices is None:
-                raise cherrypy.HTTPError(404, "No devices found")
-            
-            device_list = []
-            for device in devices:
-                cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s"), [device[0]])
-                device = cur.fetchone()
-                device_dict = {
-                    'device_id': device[0],
-                    'name': device[1],
-                    'type': device[2],
-                    'params': device[3]
-                }
-                device_list.append(device_dict)
-
-            return device_list
-        except:
-            raise cherrypy.HTTPError(500, "Internal error")
-        
+# used
 #function to get all scheduled events where current time is between start_time and end_time for a greenhouse
 def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
     try:
@@ -652,7 +548,8 @@ def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": "Internal error: " + str(e)}
 
-# Function to add one event in the DB
+# used
+# method to add one event in the DB
 def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequency, value, execution_time):
     try:
         # check if the connection is closed
@@ -698,6 +595,8 @@ def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequen
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
         
+# used
+# method to delete the scheduled event from the DB
 def delete_event(conn, device_id, event_id):
     try:
         if conn.closed:
@@ -730,7 +629,8 @@ def delete_event(conn, device_id, event_id):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
-# add new greenhouse 
+# used
+# method called through the web app to initialize a new greenhouse with default areas and devices
 def add_greenhouse(conn, user_id, name, location, thingspeak_config):
     try:
         # Check if the connection is closed
@@ -755,7 +655,7 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
                     VALUES (%s, %s, %s, %s)
                     RETURNING greenhouse_id, name, location
                 """),
-                [name, location, user_id, json.dumps(thingspeak_config) if thingspeak_config else None]
+                [name, location, user_id, json.dumps(thingspeak_config) if thingspeak_config else json.dumps({"api_key": "", "channel_id": ""})]
             )
             greenhouse = cur.fetchone()
 
@@ -780,7 +680,6 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
                 ("DataAnalysis", "Microservices"),
                 ("TimeShift", "Microservices"),
                 ("ThingSpeakAdaptor", "ThingSpeakAdaptor"),
-                ("WebApp", "UI"),
                 ("TelegramBot", "UI")
             ]
 
@@ -813,6 +712,7 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
+# used
 # function to get the entire list of sensors
 def get_all_sensors(conn):
     with conn.cursor() as cur:
@@ -831,26 +731,8 @@ def get_all_sensors(conn):
             sensors_list.append(sensor_dict)
         
         return {'sensors': sensors_list}
-    
-# get the list of all the available devices 
-def get_all_devices(conn):
-    with conn.cursor() as cur:
-        cur.execute(sql.SQL("SELECT * FROM availabledevices;"))
-        devices = cur.fetchall()
-        if devices is None:
-            raise cherrypy.HTTPError(404, "No sensors found")
-        
-        device_list = []
-        for device in devices:
-            device_dict = {
-                'device_id': device[0],
-                'name': device[1],
-                'type': device[2],
-            }
-            device_list.append(device_dict)
-        
-        return {'devices': device_list}
 
+# used
 # add sensors for greenhouses 
 def add_sensor_from_available(conn, greenhouse_id, sensor_id, area_id):
     with conn.cursor() as cur:
@@ -904,59 +786,9 @@ def add_sensor_from_available(conn, greenhouse_id, sensor_id, area_id):
         except Exception as e:
             conn.rollback()
             raise cherrypy.HTTPError(500, f"Internal error: {str(e)}")
-        
 
-# add devices for greenhouses
-def add_device_from_available(conn, greenhouse_id, device_id):
-    with conn.cursor() as cur:
-        try:
-            # Step 1: Get device info from availabledevice table
-            cur.execute(
-                sql.SQL("SELECT name, type, configuration FROM availabledevices WHERE device_id = %s"),
-                [device_id]
-            )
-            device = cur.fetchone()
-
-            if device is None:
-                raise cherrypy.HTTPError(404, "Device not found in available Devices")
-
-            name, type, configuration = device
-
-
-            if isinstance(configuration, dict):
-                configuration = json.dumps(configuration)
-
-            
-
-            # Step 2: Insert into device table
-            cur.execute(
-                sql.SQL("""
-                    INSERT INTO devices (greenhouse_id, name, type, params)
-                    VALUES (%s, %s, %s, %s)
-                    RETURNING greenhouse_id
-                """),
-                [greenhouse_id, name, type, configuration]
-            )
-            new_device_id = cur.fetchone()[0]
-            conn.commit()
-
-            return {
-                'message': 'Device added successfully',
-                'device_id': new_device_id,
-                'greenhouse_id': greenhouse_id,
-                'type': type,
-                'name': name,
-                'config': configuration
-            }
-
-        except psycopg2.Error as e:
-            conn.rollback()
-            raise cherrypy.HTTPError(500, f"Database error: {str(e)}")
-        except Exception as e:
-            conn.rollback()
-            raise cherrypy.HTTPError(500, f"Internal error: {str(e)}")
-
-# get areas of greenhouse
+# used
+# method to get the areas contained in the greenhouse
 def get_areas_by_greenhouse(conn, greenhouse_id):
     try:
         if conn.closed:
@@ -984,7 +816,8 @@ def get_areas_by_greenhouse(conn, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
-# add new area for existing greenhouse
+# used
+# method to add new area for existing greenhouse
 def add_area(conn, greenhouse_id, name):
     try:
         if conn.closed:
@@ -1022,6 +855,7 @@ def add_area(conn, greenhouse_id, name):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
+# used
 # get the sensors of each area of the greenhouse
 def get_sensors_area(conn, greenhouse_id, area_id):
     try:
@@ -1057,6 +891,7 @@ def get_sensors_area(conn, greenhouse_id, area_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
     
+# used
 # get the plants of each area of the greenhouse
 def get_plants_area(conn, greenhouse_id, area_id):
     try:
@@ -1088,7 +923,8 @@ def get_plants_area(conn, greenhouse_id, area_id):
         cherrypy.response.status = 500
         return {"error": "Internal error"}
         
-# remove area
+# used
+# method to remove an area from the greenhouse
 def remove_area_from_greenhouse(conn, greenhouse_id, area_id):
     with conn.cursor() as cur:
         # check if the area is in the greenhouse
@@ -1120,8 +956,8 @@ def remove_area_from_greenhouse(conn, greenhouse_id, area_id):
         except:
             raise cherrypy.HTTPError(500, "Internal error")
 
-
-# get userInfo 
+# used
+# method to get the username and email of a logged user
 def get_user_info(conn, user_id):
     with conn.cursor() as cur:
         cur.execute(sql.SQL("SELECT username, email FROM users WHERE user_id = %s;"), [user_id])  
@@ -1137,30 +973,8 @@ def get_user_info(conn, user_id):
 
         return user_dict  # Just return the dictionary, not a list
     
-def get_telegram_user(conn, telegram_user_id):
-    try:
-        if conn.closed:
-            cherrypy.response.status = 500
-            return {"error": "Database connection is closed"}
-        
-        # check if the user exists and get their Telegram user ID
-        with conn.cursor() as cur:
-            cur.execute(sql.SQL("SELECT user_id, username FROM users WHERE telegram_user_id = %s;"), [telegram_user_id])  
-            user = cur.fetchone()
-
-            if user is None:
-                cherrypy.response.status = 404
-                return {"error": "No user found with this Telegram ID"}
-            
-            return {
-                'user_id': user[0],
-                'username': user[1]
-            }
-
-    except Exception as e:
-        cherrypy.response.status = 500
-        return {"error": f"Internal error: {str(e)}"}
-    
+# used
+# method to read get the telegram chat id associated to the greenhouse
 def get_telegram_chat_id(conn, greenhouse_id):
     try:
         if conn.closed:
@@ -1192,7 +1006,8 @@ def get_telegram_chat_id(conn, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
-# update user info 
+# used
+# method to save the updated info of the user (username, email, new_pass)
 def update_user_info(conn, user_id, username, email, new_password=None):
     try:
         if conn.closed:
@@ -1235,7 +1050,9 @@ def update_user_info(conn, user_id, username, email, new_password=None):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
     
-def otp(conn, user_id, otp_code):
+# used 
+# method to associate an otp code to a telegram chat
+def otp(conn, telegram_chat_id, otp_code):
     try:
         if conn.closed:
             cherrypy.response.status = 500
@@ -1243,13 +1060,13 @@ def otp(conn, user_id, otp_code):
         
         with conn.cursor() as cur:
             # if the user has already an OTP code, update it, otherwise create a new one
-            cur.execute(sql.SQL("SELECT * FROM otps WHERE telegram_user_id = %s"), [user_id])
+            cur.execute(sql.SQL("SELECT * FROM otps WHERE telegram_user_id = %s"), [telegram_chat_id])
             user = cur.fetchone()
             if not user:
-                cur.execute(sql.SQL("INSERT INTO otps (telegram_user_id, otp) VALUES (%s, %s)"), [user_id, otp_code])
+                cur.execute(sql.SQL("INSERT INTO otps (telegram_user_id, otp) VALUES (%s, %s)"), [telegram_chat_id, otp_code])
 
             else:
-                cur.execute(sql.SQL("UPDATE otps SET otp = %s WHERE telegram_user_id = %s"), [otp_code, user_id])
+                cur.execute(sql.SQL("UPDATE otps SET otp = %s WHERE telegram_user_id = %s"), [otp_code, telegram_chat_id])
 
             conn.commit()
 
@@ -1260,6 +1077,8 @@ def otp(conn, user_id, otp_code):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
+# used
+# method to associate the otp to an user
 def verify_telegram_otp(conn, user_id, otp_code):
     try:
         if conn.closed:
@@ -1284,9 +1103,15 @@ def verify_telegram_otp(conn, user_id, otp_code):
                 cherrypy.response.status = 404
                 return {"error": "User not found"}
             
-            # associate the user to the Telegram user ID
-            cur.execute(sql.SQL("UPDATE users SET telegram_user_id = %s WHERE user_id = %s"), [telegramUser[0], user_id])
-            conn.commit()
+            try:
+                # associate the user to the Telegram user ID
+                cur.execute(sql.SQL("UPDATE users SET telegram_user_id = %s WHERE user_id = %s"), [telegramUser[0], user_id])
+                conn.commit()
+
+            except psycopg2.errors.UniqueViolation:
+                conn.rollback()
+                cherrypy.status = 409   # conflict
+                return {"error": f"Unique violation {str(e)}"}
 
             # send to telegram bot the user ID
             message = f"Welcome {user_info[0]}!"
@@ -1313,6 +1138,8 @@ def verify_telegram_otp(conn, user_id, otp_code):
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
 
+# used
+# method to remove the association between the telegram chat and the greenhouse
 def logout_telegram(conn, user_id):
     try:
         if conn.closed:
@@ -1326,6 +1153,36 @@ def logout_telegram(conn, user_id):
             conn.commit()
 
             return {"message": "User logged out successfully"}
+    
+    except Exception as e:
+        conn.rollback()
+        cherrypy.response.status = 500
+        return {"error": f"Internal error: {str(e)}"}
+    
+# used
+# method to update the thingspeak configuration of a greenhouse
+def update_thingspeak_config(conn, greenhouse_id, channel_id, api_key):
+    try:
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
+        
+        with conn.cursor() as cur:
+            # Check if the greenhouse exists
+            cur.execute(sql.SQL("SELECT * FROM greenhouses WHERE greenhouse_id = %s"), [greenhouse_id])
+            greenhouse = cur.fetchone()
+            if not greenhouse:
+                cherrypy.response.status = 404
+                return {"error": "Greenhouse not found"}
+
+            # Update the ThingSpeak configuration
+            cur.execute(
+                sql.SQL("UPDATE greenhouses SET thingspeak_config = %s WHERE greenhouse_id = %s"),
+                [json.dumps({"channel_id": channel_id, "api_key": api_key}), greenhouse_id]
+            )
+            conn.commit()
+
+            return {"message": "ThingSpeak configuration updated successfully"}
     
     except Exception as e:
         conn.rollback()
@@ -1356,22 +1213,13 @@ class CatalogREST(object):
             
         elif uri[0] == 'get_greenhouse_info':
             # check the existence of the parameters
-            if 'greenhouse_id' in params and 'device_id' in params:
-                return get_greenhouse_info(self.catalog_connection, params['greenhouse_id'], params['device_id'])
+            if 'greenhouse_id' in params:
+                return get_greenhouse_info(self.catalog_connection, params['greenhouse_id'])
 
             else:
                 cherrypy.response.status = 400
                 return {"error": "Missing parameters"}
             
-        elif uri[0] == 'get_device_info':
-            # check the existence of the parameters
-            if 'device_id' in params and 'device_name' in params:
-                return get_device_info(self.catalog_connection, params['device_id'], params['device_name'])
-                
-            else:
-                cherrypy.response.status = 400
-                return {"error": "Missing parameters"}
-
         elif uri[0] == 'get_greenhouse_location':
             # check the existence of the parameters
             if 'greenhouse_id' in params:
@@ -1424,14 +1272,6 @@ class CatalogREST(object):
             
             return get_all_sensors(self.catalog_connection)
         
-        elif uri[0] == 'get_all_devices':
-            # check that no parameters are passed
-            if len(params) > 0:
-                cherrypy.response.status = 400
-                return {"error": "No parameters allowed"}
-            
-            return get_all_devices(self.catalog_connection)
-        
         elif uri[0] == 'get_areas_by_greenhouse':
             # check the existence of the parameters
             if 'greenhouse_id' in params:
@@ -1467,16 +1307,7 @@ class CatalogREST(object):
             else:
                 cherrypy.response.status = 400
                 return {"error": "Missing parameters"}     
-
-        elif uri[0] == 'get_telegram_user':
-            # check the existence of the parameters
-            if 'telegram_user_id' in params:
-                return get_telegram_user(self.catalog_connection, params['telegram_user_id'])
-                
-            else:
-                cherrypy.response.status = 400
-                return {"error": "Missing parameters"}
-            
+   
         elif uri[0] == 'get_telegram_chat_id':
             # check the existence of the parameters
             if 'greenhouse_id' in params:
@@ -1580,18 +1411,6 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
             
-        elif uri[0] == 'remove_device_from_greenhouse':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'device_id' not in input_json or 'device_id' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                
-                return remove_device_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['device_id'])
-
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
         elif uri[0] == 'schedule_event':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
@@ -1631,19 +1450,6 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
             
-        elif uri[0] == 'add_device_from_available':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'greenhouse_id' not in input_json or 'device_id' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                
-                return add_device_from_available(self.catalog_connection, input_json['greenhouse_id'], input_json['device_id'])
-            
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
         elif uri[0] == 'add_area':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
@@ -1721,6 +1527,20 @@ class CatalogREST(object):
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
+            
+        elif uri[0] == 'update_thingspeak_config':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                write_log(f"Received input JSON: {input_json}")
+                if 'greenhouse_id' not in input_json or 'channel_id' not in input_json or 'api_key' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                
+                return update_thingspeak_config(self.catalog_connection, input_json['greenhouse_id'], input_json['channel_id'], input_json['api_key'])
+            
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
 
         else:
             cherrypy.response.status = 400
@@ -1767,13 +1587,7 @@ if __name__ == "__main__":
                 'tools.response_headers.on': True,
                 'tools.response_headers.headers': [('Content-Type', 'application/json')],
                 'tools.cors.on': True,
-                # 'tools.staticdir.on': True,
-                # 'tools.staticdir.dir': os.path.abspath('../ui/webApp')
             },
-            # '/ui':{
-            #     'tools.staticdir.on': True,
-            #     'tools.staticdir.dir': os.path.abspath("../ui/webApp")
-            # }
         }
         cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8080})
         cherrypy.tree.mount(catalogClient, '/', conf)

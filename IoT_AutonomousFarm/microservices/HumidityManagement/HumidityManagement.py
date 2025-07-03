@@ -84,7 +84,20 @@ domains = {}    # dictionary  to save the domain of the values collectable by ea
 liveValue = {}  # dictionary to save the last value received for each sensor
 
 def sendTelegramMessage(msg):
-    msg = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n" + msg
+    # get greenhouse information by passing the greenhouse_id and device_id
+    try:
+        response = requests.get(f"{catalog_url}/get_greenhouse_info", params={'greenhouse_id': greenhouse_id, 'device_id': device_id})
+        if response.status_code == 200:
+            greenhouse_info = response.json()
+            greenhouse_name = greenhouse_info["name"]
+        else:
+            write_log(f"Failed to get greenhouse info from the Catalog\t(Response: {response.json()['error']})")
+            return
+    except Exception as e:
+        write_log(f"Error getting greenhouse info from the Catalog: {e}")
+        return
+
+    msg = f"{greenhouse_name}:\n" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n" + msg
     # get the telegram user ID from the catalog
     try:
         response = requests.get(f"{catalog_url}/get_telegram_chat_id", params={'greenhouse_id': greenhouse_id})

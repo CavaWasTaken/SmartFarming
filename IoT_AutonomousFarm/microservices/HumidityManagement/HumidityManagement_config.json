@@ -5,7 +5,7 @@
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,
-        "mqtt_broker": "mqtt.eclipseprojects.io"
+        "mqtt_broker": "broker.hivemq.coms"
     },
     "telegram_token": "7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4"
 }

@@ -87,53 +87,53 @@ document.getElementById("profileForm").addEventListener("submit", function(event
       });
   });
 
-document.getElementById("telegramForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+// document.getElementById("telegramForm").addEventListener("submit", function(event) {
+//   event.preventDefault();
 
-  const token = localStorage.getItem("token");
-  const userId = localStorage.getItem("user_id");
-  const otp = document.getElementById("otp").value;
+//   const token = localStorage.getItem("token");
+//   const userId = localStorage.getItem("user_id");
+//   const otp = document.getElementById("otp").value;
 
-  if (!otp) {
-    alert("Please enter the OTP.");
-    return;
-  }
+//   if (!otp) {
+//     alert("Please enter the OTP.");
+//     return;
+//   }
 
-  fetch("./json/WebApp_config.json")
-    .then(res => res.json())
-    .then(config => {
-      const catalog_url = config.catalog_url;
+//   fetch("./json/WebApp_config.json")
+//     .then(res => res.json())
+//     .then(config => {
+//       const catalog_url = config.catalog_url;
 
-      return fetch(`${catalog_url}/verify_telegram_otp`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          user_id: userId,
-          otp: otp
-        })
-      });
-    })
-    .then(async response => {
-      if (!response.ok) {
-          const err = await response.json();
-          throw new Error(err.error);
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data) {
-        alert("OTP verified successfully!");
-        document.getElementById("otp").value = ""; // clear the OTP input
-      } else {
-        alert("Failed to verify OTP.");
-      }
-    })
-    .catch(err => {
-      console.error("Error verifying OTP:", err);
-      alert(err.message || "Failed to verify OTP.");
-      document.getElementById("otp").value = ""; // clear the OTP input
-    });
-});
+//       return fetch(`${catalog_url}/verify_telegram_otp`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           "Authorization": `Bearer ${token}`
+//         },
+//         body: JSON.stringify({
+//           user_id: userId,
+//           otp: otp
+//         })
+//       });
+//     })
+//     .then(async response => {
+//       if (!response.ok) {
+//           const err = await response.json();
+//           throw new Error(err.error);
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       if (data) {
+//         alert("OTP verified successfully!");
+//         document.getElementById("otp").value = ""; // clear the OTP input
+//       } else {
+//         alert("Failed to verify OTP.");
+//       }
+//     })
+//     .catch(err => {
+//       console.error("Error verifying OTP:", err);
+//       alert(err.message || "Failed to verify OTP.");
+//       document.getElementById("otp").value = ""; // clear the OTP input
+//     });
+// });

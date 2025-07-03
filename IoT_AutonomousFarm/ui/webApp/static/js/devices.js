@@ -13,19 +13,6 @@ $(document).ready(function () {
         zindex++;
       }
     });
-  
-    // Close the card only when clicking the close button
-    $(".close-btn").click(function (e) {
-      e.stopPropagation(); // Prevent triggering the card click event
-  
-      var card = $(this).closest(".card"); // Find the closest parent card
-      card.removeClass("d-card-show");
-  
-      // If no more cards are open, remove "showing" class from dashboard
-      if ($(".card.d-card-show").length === 0) {
-        $("div.dashboard-cards").removeClass("showing");
-      }
-    });
 });
   
 // ***********************************************//
@@ -58,25 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "greenhouses.html";
     return;
   }
-
-  // document.getElementById(
-  //   "username-display"
-  // ).textContent = `Greenhouse owner: ${username}`;
-
-  // document.getElementById(
-  //   "title"
-  // ).textContent = `${greenhouseName} - ${greenhouseLocation}`;
-
-  // document.getElementById("logout-button").addEventListener("click", () => {
-  //   // clear the token and user information from local storage and redirect to login page
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("user_id");
-  //   localStorage.removeItem("username");
-  //   localStorage.removeItem("greenhouse_id");
-  //   localStorage.removeItem("greenhouse_name");
-  //   localStorage.removeItem("greenhouse_location");
-  //   window.location.href = "loginform.html";
-  // });
 
   // read from the config file to get the API URL
   fetch("./json/WebApp_config.json") // this path is relative to the HTML file
@@ -130,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
           extraContent = `
             <div class="thingspeak-adaptor-section">
               <input type="text" class="thingspeak-input" placeholder="Channel ID" />
-              <input type="text" class="thingspeak-field-input" placeholder="READ API Key..." />
+              <input type="text" class="thingspeak-field-input" placeholder="WRITE API Key..." />
               <button type="submit" class="thingspeak-send-btn">Save</button>
             </div>
           `;
@@ -156,6 +124,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
         dashboardCards.appendChild(card);
       });
+
+      fetch("./json/WebApp_config.json")
+        .then(res => res.json())
+        .then(config => {
+          const catalog_url = config.catalog_url;
+          return fetch(
+            `${catalog_url}/get_greenhouse_info?greenhouse_id=${encodeURIComponent(greenhouseId)}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+        })
+        .then(async response => {
+          if (!response.ok) {
+            const err = await response.json();
+            throw new Error(err.message);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data && data.thingSpeak_config) {
+            console.log("ThingSpeak Config:", data.thingSpeak_config);
+            const { channel_id, api_key } = data.thingSpeak_config;
+            document.querySelectorAll('.thingspeak-adaptor-section').forEach(section => {
+              const channelInput = section.querySelector('.thingspeak-input');
+              const apiKeyInput = section.querySelector('.thingspeak-field-input');
+              if (channelInput && channel_id) channelInput.value = channel_id;
+              if (apiKeyInput && api_key) apiKeyInput.value = api_key;
+            });
+          }
+        })
+        .catch(err => {
+          console.error("Error fetching ThingSpeak config:", err);
+        });
 
       document.querySelectorAll('.telegram-bot-section .telegram-send-btn').forEach(btn => {
         btn.addEventListener('click', function (e) {
@@ -204,67 +210,63 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      // Add Device 
-      // document.getElementById("add-device-btn").addEventListener("click", () => {
-      //   fetch("./json/WebApp_config.json")
-      //     .then((res) => res.json())
-      //     .then((config) => {
-      //       const catalog_url = config.catalog_url;
-      //       return fetch(`${catalog_url}/get_all_devices`, {
-      //         headers: { Authorization: `Bearer ${token}` },
-      //       });
-      //     })
-      //     .then((res) => res.json())
-      //     .then((availableDevices) => {
-      //       const select = document.getElementById("device-select");
-      //       select.innerHTML = "";
-      //       availableDevices.devices.forEach((avldevice) => {
-      //         const option = document.createElement("option");
-      //         option.value = avldevice.device_id;
-      //         option.textContent = `${avldevice.name} (${avldevice.type})`;
-      //         select.appendChild(option);
-      //       });
-      //       document.getElementById("device-modal").classList.remove("d-none");
-      //     })
-      //     .catch((err) => {
-      //       console.error("Failed to load available devices:", err);
-      //       alert("Failed to load available devices.");
-      //     });
-      // });
-
-      // document.getElementById("cancel-modal").addEventListener("click", () => {
-      //   document.getElementById("device-modal").classList.add("d-none");
-      // });
-
-      // document.getElementById("confirm-add-device").addEventListener("click", () => {
-      //   const plantId = document.getElementById("device-select").value;
-      //   fetch("./json/WebApp_config.json")
-      //     .then((res) => res.json())
-      //     .then((config) => {
-      //       const catalog_url = config.catalog_url;
-      //       return fetch(`${catalog_url}/add_device_from_available`, {
-      //         method: "POST",
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //           Authorization: `Bearer ${token}`,
-      //         },
-      //         body: JSON.stringify({
-      //           greenhouse_id: greenhouseId,
-      //           device_id: plantId,
-      //         }),
-      //       });
-      //     })
-      //     .then((res) => res.json())
-      //     .then((result) => {
-      //       alert(result.message || "Device added successfully.");
-      //       location.reload();
-      //     })
-      //     .catch((err) => {
-      //       console.error("Failed to add device:", err);
-      //       alert("Failed to add device.");
-      //       location.reload(); // still reload to reset modal state
-      //     });
-      // });
+      document.querySelectorAll('.thingspeak-adaptor-section .thingspeak-send-btn').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          const thingspeakSection = this.closest('.thingspeak-adaptor-section');
+          const channelInput = thingspeakSection.querySelector('.thingspeak-input');
+          const apiKeyInput = thingspeakSection.querySelector('.thingspeak-field-input');
+          
+          const channelId = channelInput.value.trim();
+          const apiKey = apiKeyInput.value.trim();
+          
+          if (!channelId || !apiKey) {
+            alert('Please enter both Channel ID and WRITE API Key.');
+            channelInput.value = ""; // clear the Channel ID input
+            apiKeyInput.value = ""; // clear the API Key input
+            return;
+          }
+          
+          fetch('./json/WebApp_config.json')
+            .then(res => res.json())
+            .then(config => {
+              const catalog_url = config.catalog_url;
+              return fetch(`${catalog_url}/update_thingspeak_config`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  greenhouse_id: greenhouseId,
+                  channel_id: channelId,
+                  api_key: apiKey,
+                }),
+              });
+            })
+            .then(async response => {
+              if (!response.ok) {
+                  const err = await response.json();
+                  throw new Error(err.error);
+              }
+              return response.json();
+            })
+            .then(data => {
+              if (data) {
+                alert("ThingSpeak configuration saved successfully!");
+                this.textContent = "Configured";
+                this.disabled = true;
+                window.location.reload(); 
+              } else {
+                alert("Failed to save ThingSpeak configuration.");
+              }
+            })
+            .catch(err => {
+              console.error("Error saving ThingSpeak config:", err);
+              alert(err.message || "Failed to save ThingSpeak configuration.");
+              window.location.reload();
+            });
+        });
+      });
   })
   .catch((error) => {
       console.error("Error:", error.message);
