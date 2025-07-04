@@ -128,9 +128,9 @@ def handle_message(timestamp, area_id, sensor_type, val):
             return
         
     # if at the given timestamp tall the fields are filled, send the data to ThingSpeak
-    payload = {"api_key": thingSpeak_config["api_key"]}
+    payload = {"write_key": thingSpeak_config["write_key"]}
     payload.update({
-        f"field{i+1}": json.dumps(fields[timestamp][type])
+        f"{type}": json.dumps(fields[timestamp][type])
         for i, type in enumerate(fields[timestamp].keys())
     })
 
@@ -160,7 +160,7 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
 
                     checkSensors()  # check for updates in the list of sensors
 
-                    if thingSpeak_config.get("api_key") == "" or thingSpeak_config.get("channel_id") == "":
+                    if thingSpeak_config.get("write_key") == "" or thingSpeak_config.get("channel_id") == "":
                         write_log("ThingSpeak configuration is missing. Please check the configuration file.")
                         return
                     
@@ -180,7 +180,7 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
 
 if __name__ == "__main__":
 
-    for _ in range(5):
+    while True:   # try to get the device information from the Catalog for 5 times
         try: 
             # get the list of sensors connected to this device connector from the Catalog
             response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Catalog
@@ -194,18 +194,10 @@ if __name__ == "__main__":
 
             else:
                 write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()['error']})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-                if _ == 4:  # if it is the last attempt
-                    write_log("Failed to get sensors from the Catalog after 5 attempts")
-                    exit(1)  # exit the program if the device information is not found
-                
                 time.sleep(60)
 
         except Exception as e:
             write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-            if _ == 4:  # if this is the last attempt
-                write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)   # exit the program if the request fails after 5 attempts
-
             time.sleep(60)   # wait for 60 seconds before trying again
 
     for _ in range(5):

@@ -110,7 +110,7 @@ except KeyError as e:
     write_log(f"Missing key in JSON file: {e}")
     exit(1)
 
-for _ in range(5):  # try 5 times to get the list of sensors connected to this device connector
+while True:
     try:
         # get the list of sensors connected to this device connector from the Catalog
         response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'DeviceConnector'})    # read the list of sensors from the Catalog
@@ -124,18 +124,10 @@ for _ in range(5):  # try 5 times to get the list of sensors connected to this d
 
         else:
             write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-            if _ == 4:  # if this is the last attempt
-                write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)   # exit the program if the request fails after 5 attempts
-            
             time.sleep(60)   # wait for 60 seconds before trying again
 
     except Exception as e:
         write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-        if _ == 4:  # if this is the last attempt
-            write_log("Failed to get sensors from the Catalog after 5 attempts")
-            exit(1)   # exit the program if the request fails after 5 attempts
-
         time.sleep(60)   # wait for 60 seconds before trying again
 
 for _ in range(5):  # try 5 times to get the location of the greenhouse

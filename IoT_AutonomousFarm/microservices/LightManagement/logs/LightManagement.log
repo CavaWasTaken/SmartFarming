@@ -1,81 +1,75 @@
-Device ID: 44
-Received 1 sensors: [{'sensor_id': 7, 'area_id': 5, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 800, 'min': 400}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 13}]
-Subscribed to greenhouse_13/area_5/sensor_7
-Subscribed to greenhouse_13/area_5/event/sensor_7
+Device ID: 78
+Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
+Error starting MQTT client: timed out
+Trying again in 60 seconds...
+Subscribed to greenhouse_28/area_22/sensor_10
+Subscribed to greenhouse_28/area_22/event/sensor_10
 Connected to broker.hivemq.com with result code 0
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.3499611367565, 'u': 'lux', 't': 20}}
-WARNING: Failed to get when the next value of LightIntensity (sensor_7) is expected to arrive
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.30870367007138, 'u': '°C', 't': 20}}
+WARNING: Failed to get when the next value of Temperature (sensor_10) is expected to arrive
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 434.995345753492, 'u': 'lux', 't': 40}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 60.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.05867382357884, 'u': '°C', 't': 40}}
+The next value of Temperature (sensor_10) is expected to be received at: 60.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.2731416477612, 'u': 'lux', 't': 60}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 80.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.370890358755457, 'u': '°C', 't': 60}}
+The next value of Temperature (sensor_10) is expected to be received at: 80.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 430.8138081691627, 'u': 'lux', 't': 80}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 100.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.66650018718564, 'u': '°C', 't': 80}}
+The next value of Temperature (sensor_10) is expected to be received at: 100.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.6573324316661, 'u': 'lux', 't': 100}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 120.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.97405435763929, 'u': '°C', 't': 100}}
+The next value of Temperature (sensor_10) is expected to be received at: 120.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 427.0083732242924, 'u': 'lux', 't': 120}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 140.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.499964750090474, 'u': '°C', 't': 120}}
+The next value of Temperature (sensor_10) is expected to be received at: 140.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.55424789453514, 'u': 'lux', 't': 140}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 160.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.343294819197908, 'u': '°C', 't': 140}}
+The next value of Temperature (sensor_10) is expected to be received at: 160.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.0446725009145, 'u': 'lux', 't': 160}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 180.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.42997155859379, 'u': '°C', 't': 160}}
+The next value of Temperature (sensor_10) is expected to be received at: 180.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.1581469657717, 'u': 'lux', 't': 180}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 200.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.911003229693943, 'u': '°C', 't': 180}}
+The next value of Temperature (sensor_10) is expected to be received at: 200.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 426.83558896564415, 'u': 'lux', 't': 200}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 220.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.20757181419983, 'u': '°C', 't': 200}}
+The next value of Temperature (sensor_10) is expected to be received at: 220.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.51031608590813, 'u': 'lux', 't': 220}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 240.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.752430800116866, 'u': '°C', 't': 220}}
+The next value of Temperature (sensor_10) is expected to be received at: 240.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 432.13295923927666, 'u': 'lux', 't': 240}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 260.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.011263990316962, 'u': '°C', 't': 240}}
+The next value of Temperature (sensor_10) is expected to be received at: 260.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 431.9789312536232, 'u': 'lux', 't': 260}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 280.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.060412301016388, 'u': '°C', 't': 260}}
+The next value of Temperature (sensor_10) is expected to be received at: 280.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 428.94369952884483, 'u': 'lux', 't': 280}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 300.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.24148554706482, 'u': '°C', 't': 280}}
+The next value of Temperature (sensor_10) is expected to be received at: 300.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 432.0468982893046, 'u': 'lux', 't': 300}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 320.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.80921355621033, 'u': '°C', 't': 300}}
+The next value of Temperature (sensor_10) is expected to be received at: 320.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 424.5155380505707, 'u': 'lux', 't': 320}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 340.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.713268914198746, 'u': '°C', 't': 320}}
+The next value of Temperature (sensor_10) is expected to be received at: 340.0
 Error processing the message: module 'Management' has no attribute 'Check_value'
 
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 430.29064901824523, 'u': 'lux', 't': 340}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 360.0
-Error processing the message: module 'Management' has no attribute 'Check_value'
-
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 422.0259346895276, 'u': 'lux', 't': 360}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 380.0
-Error processing the message: module 'Management' has no attribute 'Check_value'
-
-Received: {'bn': 'greenhouse_13/area_5/sensor_7', 'e': {'n': 'LightIntensity', 'v': 425.21054895692265, 'u': 'lux', 't': 380}}
-The next value of LightIntensity (sensor_7) is expected to be received at: 400.0
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.365428233602263, 'u': '°C', 't': 340}}
+The next value of Temperature (sensor_10) is expected to be received at: 360.0
 Error processing the message: module 'Management' has no attribute 'Check_value'

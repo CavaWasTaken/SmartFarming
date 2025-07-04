@@ -29,7 +29,7 @@ a{
 .card {
 	display: flex;
 	flex-direction: column;
-	height: 400px;
+	height: 500px;
 	width: 100%;
 	max-width: 320px;
 	background-color: rgba(255, 255, 255, 0.06);
@@ -299,8 +299,9 @@ input{
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.thingspeak-input,
-.thingspeak-field-input {
+.thingspeak-channelID,
+.thingspeak-write-key,
+.thingspeak-read-key {
     width: 100%;
     padding: 8px 12px;
     margin-bottom: 8px;
@@ -312,8 +313,9 @@ input{
     outline: none;
 }
 
-.thingspeak-input::placeholder,
-.thingspeak-field-input::placeholder {
+.thingspeak-channelID::placeholder,
+.thingspeak-write-key::placeholder,
+.thingspeak-read-key::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 

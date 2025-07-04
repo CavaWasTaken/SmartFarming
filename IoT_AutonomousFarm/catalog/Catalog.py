@@ -655,7 +655,7 @@ def add_greenhouse(conn, user_id, name, location, thingspeak_config):
                     VALUES (%s, %s, %s, %s)
                     RETURNING greenhouse_id, name, location
                 """),
-                [name, location, user_id, json.dumps(thingspeak_config) if thingspeak_config else json.dumps({"api_key": "", "channel_id": ""})]
+                [name, location, user_id, json.dumps(thingspeak_config) if thingspeak_config else json.dumps({"write_key": "", "read_key": "", "channel_id": ""})]
             )
             greenhouse = cur.fetchone()
 
@@ -745,7 +745,8 @@ def add_sensor_from_available(conn, greenhouse_id, sensor_id, area_id):
             sensor = cur.fetchone()
 
             if sensor is None:
-                raise cherrypy.HTTPError(404, "Sensor not found in available sensors")
+                cherrypy.response.status = 404
+                return {"error": "Sensor not found in available sensors"}
 
             sensor_type, name, unit, threshold_range, domain = sensor
 
@@ -756,17 +757,22 @@ def add_sensor_from_available(conn, greenhouse_id, sensor_id, area_id):
             if isinstance(domain, dict):
                 domain = json.dumps(domain)
 
-            # Step 2: Insert into sensors table
-            cur.execute(
-                sql.SQL("""
-                    INSERT INTO sensors (greenhouse_id, type, name, unit, threshold_range, domain, area_id)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s)
-                    RETURNING greenhouse_id
-                """),
-                [greenhouse_id, sensor_type, name, unit, threshold_range, domain, area_id]
-            )
-            new_sensor_id = cur.fetchone()[0]
-            conn.commit()
+            try:
+                # Step 2: Insert into sensors table
+                cur.execute(
+                    sql.SQL("""
+                        INSERT INTO sensors (greenhouse_id, type, name, unit, threshold_range, domain, area_id)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                        RETURNING greenhouse_id
+                    """),
+                    [greenhouse_id, sensor_type, name, unit, threshold_range, domain, area_id]
+                )
+                new_sensor_id = cur.fetchone()[0]
+                conn.commit()
+            except psycopg2.errors.UniqueViolation:
+                conn.rollback()
+                cherrypy.response.status = 409
+                return {"error": "Sensor already exists in this greenhouse"}
 
             return {
                 'message': 'Sensor added successfully',
@@ -1161,7 +1167,7 @@ def logout_telegram(conn, user_id):
     
 # used
 # method to update the thingspeak configuration of a greenhouse
-def update_thingspeak_config(conn, greenhouse_id, channel_id, api_key):
+def update_thingspeak_config(conn, greenhouse_id, channel_id, write_key, read_key):
     try:
         if conn.closed:
             cherrypy.response.status = 500
@@ -1178,7 +1184,7 @@ def update_thingspeak_config(conn, greenhouse_id, channel_id, api_key):
             # Update the ThingSpeak configuration
             cur.execute(
                 sql.SQL("UPDATE greenhouses SET thingspeak_config = %s WHERE greenhouse_id = %s"),
-                [json.dumps({"channel_id": channel_id, "api_key": api_key}), greenhouse_id]
+                [json.dumps({"channel_id": channel_id, "write_key": write_key, "read_key": read_key}), greenhouse_id]
             )
             conn.commit()
 
@@ -1532,11 +1538,11 @@ class CatalogREST(object):
             try:
                 input_json = json.loads(cherrypy.request.body.read())
                 write_log(f"Received input JSON: {input_json}")
-                if 'greenhouse_id' not in input_json or 'channel_id' not in input_json or 'api_key' not in input_json:
+                if 'greenhouse_id' not in input_json or 'channel_id' not in input_json or 'writeKey' not in input_json or 'readKey' not in input_json:
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
                 
-                return update_thingspeak_config(self.catalog_connection, input_json['greenhouse_id'], input_json['channel_id'], input_json['api_key'])
+                return update_thingspeak_config(self.catalog_connection, input_json['greenhouse_id'], input_json['channel_id'], input_json['writeKey'], input_json['readKey'])
             
             except json.JSONDecodeError:
                 cherrypy.response.status = 400

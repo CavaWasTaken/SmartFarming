@@ -197,37 +197,37 @@ next_value = {} # expected value of the next value
 # REST
 
 # methods called from management components to get the mean statistics on the last N values received
-def get_mean_value(sensor_id, sensor_type, timestamp):
-    write_log(f"Received request for the mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp}")
-    try:
-        count = 0   # count how many seconds we are waiting
-        if timestamps[sensor_id] == []:
-            write_log(f"The requested next timestamp of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} cannot be evaluated, wait to receive more values")
-            return {'next_timestamp': None}
+# def get_mean_value(sensor_id, sensor_type, timestamp):
+#     write_log(f"Received request for the mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp}")
+#     try:
+#         count = 0   # count how many seconds we are waiting
+#         if timestamps[sensor_id] == []:
+#             write_log(f"The requested next timestamp of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} cannot be evaluated, wait to receive more values")
+#             return {'next_timestamp': None}
         
-        # to check if at the time of the request the DataAnalysis has already evaluated the updated mean value or not
-        if float(timestamps[sensor_id][-1]) == float(timestamp):  # if the timestamp is the same as the last received, return the mean value
-            write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is ready ({mean_value[sensor_id]})")
-            return {'mean_value': mean_value[sensor_id]}   # the value has been updated, so we can return it
+#         # to check if at the time of the request the DataAnalysis has already evaluated the updated mean value or not
+#         if float(timestamps[sensor_id][-1]) == float(timestamp):  # if the timestamp is the same as the last received, return the mean value
+#             write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is ready ({mean_value[sensor_id]})")
+#             return {'mean_value': mean_value[sensor_id]}   # the value has been updated, so we can return it
         
-        else:   # the value has not been updated yet, so we wait for it until it is updated
-            write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is not yet ready")
-            # loop to wait for the value to be updated with a maximum of 60 seconds
-            while float(timestamps[sensor_id][-1]) != float(timestamp):   # wait for the value to be updated
-                write_log(f"{float(timestamps[sensor_id][-1])} != {float(timestamp)} : {float(timestamps[sensor_id][-1]) != float(timestamp)}")
-                if count < 60:  # wait for a maximum of 60 seconds
-                    time.sleep(1)   # wait for 1 second
-                else:   # if we waited for 60 seconds, return None
-                    write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is considered lost")
-                    return {'mean_value': None}
+#         else:   # the value has not been updated yet, so we wait for it until it is updated
+#             write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is not yet ready")
+#             # loop to wait for the value to be updated with a maximum of 60 seconds
+#             while float(timestamps[sensor_id][-1]) != float(timestamp):   # wait for the value to be updated
+#                 write_log(f"{float(timestamps[sensor_id][-1])} != {float(timestamp)} : {float(timestamps[sensor_id][-1]) != float(timestamp)}")
+#                 if count < 60:  # wait for a maximum of 60 seconds
+#                     time.sleep(1)   # wait for 1 second
+#                 else:   # if we waited for 60 seconds, return None
+#                     write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is considered lost")
+#                     return {'mean_value': None}
                 
-                count += 1  # increment the counter
-            write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is ready ({mean_value[sensor_id]})")
-            return {'mean_value': mean_value[sensor_id]}   # the value has been updated, so we can return it
+#                 count += 1  # increment the counter
+#             write_log(f"The requested mean value of sensor_{sensor_id} ({sensor_type}) at timestamp {timestamp} is ready ({mean_value[sensor_id]})")
+#             return {'mean_value': mean_value[sensor_id]}   # the value has been updated, so we can return it
         
-    except:
-        cherrypy.response.status = 500
-        return {"error": "Internal error"}
+#     except:
+#         cherrypy.response.status = 500
+#         return {"error": "Internal error"}
 
 # methods called from management components to get the predictions on when the next value will be received by the sensor
 def get_next_timestamp(sensor_id, sensor_type, timestamp):
@@ -305,12 +305,12 @@ class DataAnalysisREST(object):
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}
         
-        elif uri[0] == 'get_mean_value':
-            if 'sensor_id' not in params or 'sensor_type' not in params or 'timestamp' not in params:
-                cherrypy.response.status = 400
-                return {"error": "MISSING PARAMETERS"}
+        # elif uri[0] == 'get_mean_value':
+        #     if 'sensor_id' not in params or 'sensor_type' not in params or 'timestamp' not in params:
+        #         cherrypy.response.status = 400
+        #         return {"error": "MISSING PARAMETERS"}
             
-            return get_mean_value(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
+        #     return get_mean_value(int(params['sensor_id']), params['sensor_type'], params['timestamp'])
         
         elif uri[0] == 'get_next_timestamp':
             if 'sensor_id' not in params or 'sensor_type' not in params or 'timestamp' not in params:

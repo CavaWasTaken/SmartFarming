@@ -28,7 +28,7 @@ table {
 }
 
 thead th {
-  background-color: #121a16;
+  background-color: #344c40;
   color: #fff;
   font-weight: 700;
   text-align: left;
@@ -46,7 +46,7 @@ tbody td {
 }
 
 tbody tr:nth-child(even) td {
-  background-color: #344c40;
+  background-color: rgba(52, 76, 64, 0.6);
 }
 
 tfoot th {

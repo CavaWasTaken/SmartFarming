@@ -175,7 +175,7 @@ def handle_message(sensor_type, val, unit, timestamp, area_id, sensor_id):
         timers[sensor_id] = threading.Timer(next_timestamp + 5 - timestamp, partial(TimerExpiration, sensor_id, next_timestamp)) # timer that will wait the next timestamp
         timers[sensor_id].start()   # start the timer
 
-    Management.Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction)
+    Management.checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction)
 
 def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desired_value, execution_time, area_id):
     def SendAction(msg, sensor_type):
@@ -317,7 +317,7 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
         write_log(f"Unexpected error in on handling the message: {e}")
 
 if __name__ == "__main__":
-    for _ in range(5):  # try to get the sensors from the catalog for 5 times
+    while True:
         try:
             response = requests.get(f"{catalog_url}/get_sensors", params={"greenhouse_id": greenhouse_id, 'device_name': 'LightManagement'})
             if response.status_code == 200:
@@ -330,18 +330,10 @@ if __name__ == "__main__":
 
             else:
                 write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()['error']}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-                if _ == 4:  # if it is the last attempt
-                    write_log("Failed to get sensors from the Catalog after 5 attempts")
-                    exit(1)  # exit the program if the device information is not found
-                
                 time.sleep(60)  # wait 60 seconds before trying again
 
         except Exception as e:
             write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-            if _ == 4:  # if it is the last attempt
-                write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)
-
             time.sleep(60)   # wait for 60 seconds before trying again
 
     mqtt_topics = [] # array of topics where the microservice is subscribed

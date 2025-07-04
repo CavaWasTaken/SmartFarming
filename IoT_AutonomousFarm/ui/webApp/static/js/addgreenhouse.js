@@ -23,7 +23,8 @@ function addGreenhouse() {
     
     // Example JSON data for thingspeak_config
     const thingspeak_config = {
-        api_key: "",
+        read_key: "",
+        write_key: "",
         channel_id: ""
     };
 

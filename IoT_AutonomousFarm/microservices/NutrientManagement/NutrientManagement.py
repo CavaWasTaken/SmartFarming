@@ -182,12 +182,12 @@ def handle_message(sensor_type, val, unit, timestamp, area_id, sensor_id):
         min_treshold_K = treshold["K"]["min"]
         max_treshold_K = treshold["K"]["max"]
 
-        Management.Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, {"N": min_treshold_N, "P": min_treshold_P, "K": min_treshold_K}, {"N": max_treshold_N, "P": max_treshold_P, "K": max_treshold_K}, expected_value, domains, write_log, sendTelegramMessage, sendAction)
+        Management.checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, {"N": min_treshold_N, "P": min_treshold_P, "K": min_treshold_K}, {"N": max_treshold_N, "P": max_treshold_P, "K": max_treshold_K}, expected_value, domains, write_log, sendTelegramMessage, sendAction)
     else:
         min_treshold = treshold["min"]
         max_treshold = treshold["max"]
 
-        Management.Check_value(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction)
+        Management.checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction)
 
 def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desired_value, execution_time, area_id):
     
@@ -338,7 +338,7 @@ def on_message(client, userdata, msg):
         write_log(f"Unexpected error on handling the message: {e}")
 
 if __name__ == "__main__":
-    for _ in range(5):  # try to get the sensors from the catalog for 5 times
+    while True:
         try:
             response = requests.get(f"{catalog_url}/get_sensors", params={'greenhouse_id': greenhouse_id, 'device_name': 'NutrientManagement'})    # get the device information from the catalog
             if response.status_code == 200:
@@ -351,18 +351,10 @@ if __name__ == "__main__":
 
             else:
                 write_log(f"Failed to get sensors from the Catalog\nResponse: {response.reason}\n")    # in case of error, write the reason of the error in the log file
-                if _ == 4:  # if it is the last attempt
-                    write_log("Failed to get sensors from the Catalog after 5 attempts")
-                    exit(1)  # exit the program if the device information is not found
-                
                 time.sleep(60)
 
         except Exception as e:
             write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-            if _ == 4:
-                write_log("Failed to get sensors from the Catalog after 5 attempts")
-                exit(1)
-
             time.sleep(60)   # wait for 60 seconds before trying again
 
     mqtt_topics = [] # array of topics where the device is subscribed

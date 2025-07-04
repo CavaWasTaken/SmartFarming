@@ -103,43 +103,46 @@ document.addEventListener("DOMContentLoaded", () => {
             <!-- svg content -->
             <svg fill="#ed0c0c" width="20px" height="20px" viewBox="-3.5 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg" stroke="#ed0c0c"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z"></path></g></svg>
           </button>
-                <div class="card-img">
-                   ${sensorIcon}
-                </div>
-                <div class="desc">
-                    <h6 class="primary-text">
-                        ${sensor.name}
-                    </h6>
-                </div>
-                <button class="primary-text treshbtn" id="set-threshold-button-${sensor.sensor_id}">
-                    Set Threshold
-                </button>
-                <div class="details">
-                    <div class="rating">
-                        <h6 class="primary-text">${sensor.type}</h6>
-                        <h6 class="secondary-text">Type</h6>  
-                    </div>
-                    <div class="rating">
-                        <h6 class="primary-text">${sensor.unit}</h6>
-                        <h6 class="secondary-text">Unit</h6>
-                    </div>
-                    <div class="rating">
-                        <h6 class="primary-text">${minThreshold}</h6>
-                        <h6 class="secondary-text">Min Threshold</h6>
-                    </div>
-                    <div class="rating">
-                        <h6 class="primary-text">${maxThreshold}</h6>
-                        <h6 class="secondary-text">Max Threshold</h6>
-                    </div>
-                    <div class="rating">
-                        <h6 class="primary-text">${mindomain}</h6>
-                        <h6 class="secondary-text">Min Domain</h6>
-                    </div>
-                    <div class="rating">
-                        <h6 class="primary-text">${maxdomain}</h6>
-                        <h6 class="secondary-text">Max Domain</h6>
-                    </div>
-                </div>`;
+          <div class="card-img">
+              ${sensorIcon}
+          </div>
+          <div class="desc">
+              <h6 class="primary-text">
+                  ${sensor.name}
+              </h6>
+          </div>
+          <button class="primary-text treshbtn threshold-btn" id="set-threshold-button-${sensor.sensor_id}">
+              Set Threshold
+          </button>
+          <button class="primary-text treshbtn plot-btn" id="see-plot-button-${sensor.type}">
+              See Plot
+          </button>
+          <div class="details">
+              <div class="rating">
+                  <h6 class="primary-text">${sensor.type}</h6>
+                  <h6 class="secondary-text">Type</h6>  
+              </div>
+              <div class="rating">
+                  <h6 class="primary-text">${sensor.unit}</h6>
+                  <h6 class="secondary-text">Unit</h6>
+              </div>
+              <div class="rating">
+                  <h6 class="primary-text">${minThreshold}</h6>
+                  <h6 class="secondary-text">Min Threshold</h6>
+              </div>
+              <div class="rating">
+                  <h6 class="primary-text">${maxThreshold}</h6>
+                  <h6 class="secondary-text">Max Threshold</h6>
+              </div>
+              <div class="rating">
+                  <h6 class="primary-text">${mindomain}</h6>
+                  <h6 class="secondary-text">Min Domain</h6>
+              </div>
+              <div class="rating">
+                  <h6 class="primary-text">${maxdomain}</h6>
+                  <h6 class="secondary-text">Max Domain</h6>
+              </div>
+          </div>`;
 
         dashboardCards.appendChild(card);
 
@@ -187,79 +190,88 @@ document.addEventListener("DOMContentLoaded", () => {
           modal.className = "modal d-flex";
           if (sensor.type === "NPK") {
             modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
-            <h4>Set Threshold for ${sensor.name}</h4>
-            <form id="thresholdForm-${sensor.sensor_id}">
-                <div class="form-group">
-                <label for="min-threshold"> N Min Threshold:</label>
-                <input class="form-control fs-6" type="number" id="n-min-threshold-${sensor.sensor_id}" value="${
-                  sensor.threshold.N.min || 0
-                }" required />
-                </div>
-                
-                <div class="form-group">
-                <label for="max-threshold"> N Max Threshold:</label>
-                <input class="form-control fs-6" type="number" id="n-max-threshold-${sensor.sensor_id}" value="${
-                  sensor.threshold.N.max || 0
-                }" required />
-                </div>
+              <div class="modal-content">
+                  <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
+                  <h4>Set Threshold for ${sensor.name}</h4>
+                  <form id="thresholdForm-${sensor.sensor_id}">
+                      <div class="form-group">
+                      <label for="min-threshold"> N Min Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="n-min-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold.N.min || 0
+                      }" required />
+                      </div>
+                      
+                      <div class="form-group">
+                      <label for="max-threshold"> N Max Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="n-max-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold.N.max || 0
+                      }" required />
+                      </div>
 
-                 <div class="form-group">
-                <label for="max-threshold">P Min Threshold:</label>
-                <input class="form-control fs-6" type="number" id="p-min-threshold-${sensor.sensor_id}" value="${
-                  sensor.threshold.P.min || 0
-                }" required />
-                </div>
-                 <div class="form-group">
-                <label for="max-threshold"> P Max Threshold:</label>
-                <input class="form-control fs-6" type="number" id="p-max-threshold-${sensor.sensor_id}" value="${
-                  sensor.threshold.P.max || 0
-                }" required />
-                </div>
+                      <div class="form-group">
+                      <label for="max-threshold">P Min Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="p-min-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold.P.min || 0
+                      }" required />
+                      </div>
+                      <div class="form-group">
+                      <label for="max-threshold"> P Max Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="p-max-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold.P.max || 0
+                      }" required />
+                      </div>
 
-                 <div class="form-group">
-                <label for="max-threshold"> K Min Threshold:</label>
-                <input class="form-control fs-6" type="number" id="k-min-threshold-${sensor.sensor_id}" value="${
-                  sensor.threshold.K.min || 0
-                }" required />
-                </div>
-                 <div class="form-group">
-                <label for="max-threshold"> K Max Threshold:</label>
-                <input class="form-control fs-6" type="number" id="k-max-threshold-${sensor.sensor_id}" value="${
-                  sensor.threshold.K.max || 0
-                }" required />
-                </div>
+                      <div class="form-group">
+                      <label for="max-threshold"> K Min Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="k-min-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold.K.min || 0
+                      }" required />
+                      </div>
+                      <div class="form-group">
+                      <label for="max-threshold"> K Max Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="k-max-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold.K.max || 0
+                      }" required />
+                      </div>
 
-                <button class="btn btn-primary btn-lg btnmodal fs-6" type="submit">Save</button>
-            </form>
-        </div>
-    `;
+                      <button class="btn btn-primary btn-lg btnmodal fs-6" type="submit">Save</button>
+                  </form>
+              </div>
+          `;
           } else {
             modal.innerHTML = `
-            <div class="modal-content">
-                <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
-                <h4>Set Threshold for ${sensor.name}</h4>
-                <form id="thresholdForm-${sensor.sensor_id}">
-                    <div class="form-group">
-                    <label for="min-threshold">Min Threshold:</label>
-                    <input class="form-control fs-6" type="number" id="min-threshold-${sensor.sensor_id}" value="${
-                      sensor.threshold?.min || 0
-                    }" required />
-                    </div>
-                    
-                    <div class="form-group">
-                    <label for="max-threshold">Max Threshold:</label>
-                    <input class="form-control fs-6" type="number" id="max-threshold-${sensor.sensor_id}" value="${
-                      sensor.threshold?.max || 0
-                    }" required />
-                    </div>
-    
-                    <button class="btn btn-primary btn-lg btnmodal fs-6" type="submit">Save</button>
-                </form>
-            </div>
-        `;
+              <div class="modal-content">
+                  <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
+                  <h4>Set Threshold for ${sensor.name}</h4>
+                  <form id="thresholdForm-${sensor.sensor_id}">
+                      <div class="form-group">
+                      <label for="min-threshold">Min Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="min-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold?.min || 0
+                      }" required />
+                      </div>
+                      
+                      <div class="form-group">
+                      <label for="max-threshold">Max Threshold:</label>
+                      <input class="form-control fs-6" type="number" id="max-threshold-${sensor.sensor_id}" value="${
+                        sensor.threshold?.max || 0
+                      }" required />
+                      </div>
+      
+                      <button class="btn btn-primary btn-lg btnmodal fs-6" type="submit">Save</button>
+                  </form>
+              </div>
+            `;
           }
+
+          // handle the plot button
+          const seePlotBtn = card.querySelector(
+            `#see-plot-button-${sensor.type}`
+          );
+          seePlotBtn.addEventListener("click", () => {
+            // move to statistics page with sensor type and area id
+            window.location.href = `statistics.html?area_id=${areaId}&sensor_type=${sensor.type}`;
+          });
 
           document.body.appendChild(modal);
 
@@ -377,7 +389,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((availableSensors) => {
           const select = document.getElementById("sensor-select");
           select.innerHTML = "";
-          availableSensors.sensors.forEach((sensor) => {
+
+          const existingSensorIds = sensors.map(sensor => sensor.type);
+          console.log("Existing Sensor IDs:", existingSensorIds);
+          console.log("Available Sensors:", availableSensors.sensors);
+          const filteredSensors = availableSensors.sensors.filter(sensor => 
+            !existingSensorIds.includes(sensor.type)
+          );
+          console.log("Filtered Sensors:", filteredSensors);
+
+          filteredSensors.forEach((sensor) => {
             const option = document.createElement("option");
             option.value = sensor.sensor_id;
             option.textContent = `${sensor.name} (${sensor.type})`;

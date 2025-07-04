@@ -78,8 +78,8 @@ document.getElementById("profileForm").addEventListener("submit", function(event
       .then(data => {
         alert(data.message || "User updated successfully.")
         location.reload();
-       
-
+        // change the username stored in localStorage
+        localStorage.setItem("username", username);
       })
       .catch(err => {
         console.error("Error updating user info:", err);

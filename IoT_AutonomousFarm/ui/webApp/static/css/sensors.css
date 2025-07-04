@@ -35,7 +35,7 @@ body {
 .card {
 	display: flex;
 	flex-direction: column;
-	height: 450px;
+	height: 500px;
 	width: 100%;
 	max-width: 320px;
 	background-color: rgba(255, 255, 255, 0.06);
@@ -145,17 +145,24 @@ h6 {
 }
 
 .treshbtn {
-	background-color: rgba(255, 255, 255, 0.06);
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-	border: none;
-	width: 80%;
-	padding: 5px 0;
-	position: absolute;
-	left: 10%;
-	top: 165px;
-	border-radius: 5px;
-	outline: none;
+    background-color: rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: none;
+    width: 80%;
+    padding: 5px 0;
+    position: absolute;
+    left: 10%;
+    border-radius: 5px;
+    outline: none;
+}
+
+.treshbtn:first-of-type {
+    top: 180px;
+}
+
+.treshbtn:last-of-type {
+	top: 200px;
 }
 
 /* Modal */

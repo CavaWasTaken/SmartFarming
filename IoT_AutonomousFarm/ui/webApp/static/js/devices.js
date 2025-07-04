@@ -97,8 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if(device.name === "ThingSpeakAdaptor") {
           extraContent = `
             <div class="thingspeak-adaptor-section">
-              <input type="text" class="thingspeak-input" placeholder="Channel ID" />
-              <input type="text" class="thingspeak-field-input" placeholder="WRITE API Key..." />
+              <input type="text" class="thingspeak-channelID" placeholder="Channel ID" />
+              <input type="text" class="thingspeak-write-key" placeholder="WRITE API Key..." />
+              <input type="text" class="thingspeak-read-key" placeholder="READ API Key..." />
               <button type="submit" class="thingspeak-send-btn">Save</button>
             </div>
           `;
@@ -150,12 +151,18 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
           if (data && data.thingSpeak_config) {
             console.log("ThingSpeak Config:", data.thingSpeak_config);
-            const { channel_id, api_key } = data.thingSpeak_config;
+            const { channel_id, write_key, read_key} = data.thingSpeak_config;
             document.querySelectorAll('.thingspeak-adaptor-section').forEach(section => {
-              const channelInput = section.querySelector('.thingspeak-input');
-              const apiKeyInput = section.querySelector('.thingspeak-field-input');
-              if (channelInput && channel_id) channelInput.value = channel_id;
-              if (apiKeyInput && api_key) apiKeyInput.value = api_key;
+              const channelID = section.querySelector('.thingspeak-channelID');
+              const writeKey = section.querySelector('.thingspeak-write-key');
+              const readKey = section.querySelector('.thingspeak-read-key');
+              if (channelID && channel_id) channelID.value = channel_id;
+              if (writeKey && write_key) writeKey.value = write_key;
+              if (readKey && read_key) readKey.value = read_key;
+              if (channelID && writeKey && readKey) {
+                const sendBtn = section.querySelector('.thingspeak-send-btn');
+                sendBtn.textContent = "Configured";
+              }
             });
           }
         })
@@ -213,16 +220,17 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('.thingspeak-adaptor-section .thingspeak-send-btn').forEach(btn => {
         btn.addEventListener('click', function (e) {
           const thingspeakSection = this.closest('.thingspeak-adaptor-section');
-          const channelInput = thingspeakSection.querySelector('.thingspeak-input');
-          const apiKeyInput = thingspeakSection.querySelector('.thingspeak-field-input');
+          const channelID = thingspeakSection.querySelector('.thingspeak-channelID');
+          const writeKey = thingspeakSection.querySelector('.thingspeak-write-key');
+          const readKey = thingspeakSection.querySelector('.thingspeak-read-key');
           
-          const channelId = channelInput.value.trim();
-          const apiKey = apiKeyInput.value.trim();
+          const channelId = channelID.value.trim();
+          const write_key = writeKey.value.trim();
+          const read_key = readKey.value.trim();
           
-          if (!channelId || !apiKey) {
-            alert('Please enter both Channel ID and WRITE API Key.');
-            channelInput.value = ""; // clear the Channel ID input
-            apiKeyInput.value = ""; // clear the API Key input
+          if (!channelId || !write_key || !read_key) {
+            alert('Please enter all required fields: Channel ID, WRITE API Key, and READ API Key.');
+            window.location.reload(); // reload the page to reset the form
             return;
           }
           
@@ -239,7 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({
                   greenhouse_id: greenhouseId,
                   channel_id: channelId,
-                  api_key: apiKey,
+                  writeKey: write_key,
+                  readKey: read_key,
                 }),
               });
             })
@@ -254,8 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
               if (data) {
                 alert("ThingSpeak configuration saved successfully!");
                 this.textContent = "Configured";
-                this.disabled = true;
-                window.location.reload(); 
               } else {
                 alert("Failed to save ThingSpeak configuration.");
               }
@@ -271,5 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
   .catch((error) => {
       console.error("Error:", error.message);
       alert("An error occurred while fetching sensor data");
+      window.location.reload(); // reload the page to reset the form
     });
 })

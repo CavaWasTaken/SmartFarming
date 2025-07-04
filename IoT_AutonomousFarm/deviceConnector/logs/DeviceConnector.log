@@ -1,366 +1,44 @@
-Error getting sensors from the Catalog: HTTPConnectionPool(host='catalog', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=13&device_name=DeviceConnector (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x70e77fa92910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Received device id: 76
+Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
+Received greenhouse location: Torino
+Error starting MQTT client: timed out
 Trying again in 60 seconds...
-Received device id: 42
-Received 5 sensors: [{'sensor_id': 5, 'area_id': 6, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 20}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 1, 'area_id': 4, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 25}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 3, 'area_id': 4, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 7.5, 'min': 5}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 13}, {'sensor_id': 2, 'area_id': 4, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 152, 'min': 56}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 7, 'area_id': 5, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 800, 'min': 400}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 13}]
-Received greenhouse location: Turin
 
-Subscribed to greenhouse_13/area_6/action/sensor_5
-Subscribed to greenhouse_13/area_4/action/sensor_1
-Subscribed to greenhouse_13/area_4/action/sensor_3
-Subscribed to greenhouse_13/area_4/action/sensor_2
-Subscribed to greenhouse_13/area_5/action/sensor_7
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.078322970960556, "u": "%", "t": 0}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.27067602077372, "u": "%", "t": 0}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.941297618307338, "u": "pH", "t": 0}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.92976220510195, "P": 199.62100662706945, "K": 200.57372879304037}, "u": "mg/kg", "t": 0}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 0}}
+Subscribed to greenhouse_28/area_22/action/sensor_10
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.721029941737104, "u": "\u00b0C", "t": 0}}
 
 Connected to broker.hivemq.com with result code 0
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.79028931476436, "u": "%", "t": 20}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.468805258843844, "u": "%", "t": 20}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.905081270582379, "u": "pH", "t": 20}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.96171988025534, "P": 201.0139746830291, "K": 199.46512523339592}, "u": "mg/kg", "t": 20}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 20}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.30870367007138, "u": "\u00b0C", "t": 20}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.00580414764749, "u": "%", "t": 40}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.53136362501982, "u": "%", "t": 40}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.966270150035766, "u": "pH", "t": 40}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.5611981216856, "P": 199.1452438551986, "K": 201.44089265797518}, "u": "mg/kg", "t": 40}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 40}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.05867382357884, "u": "\u00b0C", "t": 40}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.62891212941744, "u": "%", "t": 60}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.157483307045716, "u": "%", "t": 60}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.089779864264357, "u": "pH", "t": 60}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.96973406612898, "P": 197.94026998126031, "K": 198.0447912531559}, "u": "mg/kg", "t": 60}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 60}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.370890358755457, "u": "\u00b0C", "t": 60}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.18626423651853, "u": "%", "t": 80}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.826303656142095, "u": "%", "t": 80}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.0192534015622465, "u": "pH", "t": 80}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.63639824593633, "P": 199.27970297399858, "K": 200.31257103925273}, "u": "mg/kg", "t": 80}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 80}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.66650018718564, "u": "\u00b0C", "t": 80}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.49155069309699, "u": "%", "t": 100}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.28812371118503, "u": "%", "t": 100}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.898707946255906, "u": "pH", "t": 100}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.40769810071353, "P": 199.51987207080927, "K": 198.5826344313439}, "u": "mg/kg", "t": 100}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 100}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.97405435763929, "u": "\u00b0C", "t": 100}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.12898300238717, "u": "%", "t": 120}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.16083589875139, "u": "%", "t": 120}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.992744918490718, "u": "pH", "t": 120}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.60582824158672, "P": 200.7615051017771, "K": 198.7240228483761}, "u": "mg/kg", "t": 120}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 120}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.499964750090474, "u": "\u00b0C", "t": 120}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.275823149778226, "u": "%", "t": 140}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.58232126678335, "u": "%", "t": 140}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.042990950455245, "u": "pH", "t": 140}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.43107615447184, "P": 200.14138549894116, "K": 198.16060072688308}, "u": "mg/kg", "t": 140}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 140}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.343294819197908, "u": "\u00b0C", "t": 140}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.2487318224074, "u": "%", "t": 160}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.37979067558203, "u": "%", "t": 160}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.021494525275582, "u": "pH", "t": 160}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.40122979742387, "P": 201.76382737234368, "K": 199.55319939715724}, "u": "mg/kg", "t": 160}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 160}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.42997155859379, "u": "\u00b0C", "t": 160}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.117612930513324, "u": "%", "t": 180}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.75301117524721, "u": "%", "t": 180}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.082370543750433, "u": "pH", "t": 180}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.0168130064691, "P": 198.440837090659, "K": 198.76297580540376}, "u": "mg/kg", "t": 180}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 180}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.911003229693943, "u": "\u00b0C", "t": 180}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.34318856085904, "u": "%", "t": 200}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.41055335754814, "u": "%", "t": 200}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.913525822740544, "u": "pH", "t": 200}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.6208039710671, "P": 199.33192969866994, "K": 199.3858641239564}, "u": "mg/kg", "t": 200}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 200}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.20757181419983, "u": "\u00b0C", "t": 200}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.30574538259641, "u": "%", "t": 220}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.37414257976681, "u": "%", "t": 220}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.974260651457902, "u": "pH", "t": 220}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.3140096579645, "P": 200.30241717250618, "K": 199.05519803336017}, "u": "mg/kg", "t": 220}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 220}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.752430800116866, "u": "\u00b0C", "t": 220}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.491893795091094, "u": "%", "t": 240}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.8172710654021, "u": "%", "t": 240}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.997957487590546, "u": "pH", "t": 240}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 151.6301137855171, "P": 199.82112342404704, "K": 199.51790551572998}, "u": "mg/kg", "t": 240}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 240}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.011263990316962, "u": "\u00b0C", "t": 240}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.074499748659335, "u": "%", "t": 260}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.485115349468515, "u": "%", "t": 260}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.898159486472206, "u": "pH", "t": 260}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.41334602567017, "P": 200.39498290260977, "K": 197.77718873998836}, "u": "mg/kg", "t": 260}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 260}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.060412301016388, "u": "\u00b0C", "t": 260}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.921409305036306, "u": "%", "t": 280}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.821624447574905, "u": "%", "t": 280}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.061218250184183, "u": "pH", "t": 280}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.64191363531947, "P": 198.0534052910865, "K": 200.5415008190976}, "u": "mg/kg", "t": 280}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 280}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.24148554706482, "u": "\u00b0C", "t": 280}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.67096795469847, "u": "%", "t": 300}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.95462940363344, "u": "%", "t": 300}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.99471924564664, "u": "pH", "t": 300}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 147.91163575304464, "P": 198.55764073957636, "K": 199.76156856654066}, "u": "mg/kg", "t": 300}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 300}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.80921355621033, "u": "\u00b0C", "t": 300}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.89860814464405, "u": "%", "t": 320}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.17234355215919, "u": "%", "t": 320}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.070713231549206, "u": "pH", "t": 320}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.07354187808681, "P": 200.9118211527081, "K": 198.19483619981668}, "u": "mg/kg", "t": 320}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 320}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.713268914198746, "u": "\u00b0C", "t": 320}}
 
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.836523255637836, "u": "%", "t": 340}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.81215498470146, "u": "%", "t": 340}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.9973645347895035, "u": "pH", "t": 340}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.56772846799018, "P": 198.46955486616184, "K": 197.55654370422033}, "u": "mg/kg", "t": 340}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 340}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.75689747698076, "u": "%", "t": 360}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.85532850274671, "u": "%", "t": 360}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.897471414554292, "u": "pH", "t": 360}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.69056104779526, "P": 201.43912168586374, "K": 200.41830045947555}, "u": "mg/kg", "t": 360}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 360}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.54662600108289, "u": "%", "t": 380}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.105087483706086, "u": "%", "t": 380}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.924431306751119, "u": "pH", "t": 380}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.88422676991524, "P": 200.0743333124912, "K": 200.1081612335847}, "u": "mg/kg", "t": 380}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 380}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.77781777450129, "u": "%", "t": 400}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.27836943870153, "u": "%", "t": 400}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.906525324169123, "u": "pH", "t": 400}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.11771280569812, "P": 201.02895489284174, "K": 199.37972738978084}, "u": "mg/kg", "t": 400}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 400}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.03180894571955, "u": "%", "t": 420}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.80704736443628, "u": "%", "t": 420}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.941873042958952, "u": "pH", "t": 420}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.2306246436014, "P": 197.51088058891906, "K": 199.06318792251034}, "u": "mg/kg", "t": 420}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 420}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.61126396189495, "u": "%", "t": 440}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.36071056369447, "u": "%", "t": 440}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.015507475673959, "u": "pH", "t": 440}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.27476329522327, "P": 200.72470233213917, "K": 198.67279618353587}, "u": "mg/kg", "t": 440}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 440}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.4006699742084, "u": "%", "t": 460}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.24607014845026, "u": "%", "t": 460}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.905596054356663, "u": "pH", "t": 460}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.4673827129035, "P": 197.75904066885832, "K": 200.86465338615687}, "u": "mg/kg", "t": 460}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 460}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.63674108205721, "u": "%", "t": 480}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.343443691871784, "u": "%", "t": 480}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.063563985552012, "u": "pH", "t": 480}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.79320656987693, "P": 199.2108834155682, "K": 199.40048861148205}, "u": "mg/kg", "t": 480}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 480}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.787770735579066, "u": "%", "t": 500}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.5726081604737, "u": "%", "t": 500}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.977676443630024, "u": "pH", "t": 500}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.71611361202838, "P": 200.4597378583032, "K": 199.3409783896457}, "u": "mg/kg", "t": 500}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 500}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.99076402687375, "u": "%", "t": 520}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.056958186014924, "u": "%", "t": 520}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.920311632658648, "u": "pH", "t": 520}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.1129827792071, "P": 199.96268170675287, "K": 198.11775692719593}, "u": "mg/kg", "t": 520}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 520}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.77778083282625, "u": "%", "t": 540}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.094501950594456, "u": "%", "t": 540}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.0442965541976275, "u": "pH", "t": 540}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.59132325687324, "P": 201.14161957358823, "K": 200.5073201741674}, "u": "mg/kg", "t": 540}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 540}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.223352311550514, "u": "%", "t": 560}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.817585893766285, "u": "%", "t": 560}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.992244327147718, "u": "pH", "t": 560}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.7395869398045, "P": 198.39641885016567, "K": 201.2024629420732}, "u": "mg/kg", "t": 560}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 560}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.35588670473328, "u": "%", "t": 580}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.602483303149526, "u": "%", "t": 580}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.032251831170337, "u": "pH", "t": 580}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 147.49973896025926, "P": 198.20375085583166, "K": 199.08733787921062}, "u": "mg/kg", "t": 580}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 580}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.882057402916864, "u": "%", "t": 600}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.346865445856345, "u": "%", "t": 600}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.9946237601558865, "u": "pH", "t": 600}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.5985741021443, "P": 200.27262629494115, "K": 198.2120814295965}, "u": "mg/kg", "t": 600}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 600}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 47.98450762537465, "u": "%", "t": 620}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.68218521833789, "u": "%", "t": 620}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.958002805519182, "u": "pH", "t": 620}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.09919071062296, "P": 200.6133628689493, "K": 199.2785952275449}, "u": "mg/kg", "t": 620}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 620}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.64438314382615, "u": "%", "t": 640}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.81600364758271, "u": "%", "t": 640}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.034105860537463, "u": "pH", "t": 640}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.05281514853905, "P": 201.02291812279546, "K": 199.87341113203496}, "u": "mg/kg", "t": 640}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 640}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.621106939518526, "u": "%", "t": 660}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.80485481754041, "u": "%", "t": 660}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.990434007840471, "u": "pH", "t": 660}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.47398425568122, "P": 197.84406684386113, "K": 199.37273587365027}, "u": "mg/kg", "t": 660}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 660}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.372358703357584, "u": "%", "t": 680}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.336937511093055, "u": "%", "t": 680}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.914835988241273, "u": "pH", "t": 680}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.92045881939828, "P": 199.07914131890314, "K": 197.66339479215432}, "u": "mg/kg", "t": 680}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 680}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.63320240834898, "u": "%", "t": 700}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.08067527589082, "u": "%", "t": 700}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.064192198365634, "u": "pH", "t": 700}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.18183626893727, "P": 200.59316168064407, "K": 198.32164428899503}, "u": "mg/kg", "t": 700}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 700}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.175700686861475, "u": "%", "t": 720}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.603542422758665, "u": "%", "t": 720}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.942385965587, "u": "pH", "t": 720}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.93640543101637, "P": 199.46418105670782, "K": 199.66252903891075}, "u": "mg/kg", "t": 720}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 720}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.35667574798272, "u": "%", "t": 740}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.36297621925761, "u": "%", "t": 740}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.905600879221678, "u": "pH", "t": 740}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.23265920401985, "P": 198.46910976636335, "K": 199.0490062981272}, "u": "mg/kg", "t": 740}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 740}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.86266633712768, "u": "%", "t": 760}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 47.85111298069687, "u": "%", "t": 760}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.924893719937833, "u": "pH", "t": 760}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.9756144741381, "P": 199.67767357961176, "K": 197.51511186175836}, "u": "mg/kg", "t": 760}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 760}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.05683379861517, "u": "%", "t": 780}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.604502722823995, "u": "%", "t": 780}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.991520540762228, "u": "pH", "t": 780}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.58749959552694, "P": 200.12604244609247, "K": 196.99556316753777}, "u": "mg/kg", "t": 780}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 780}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.65780015487253, "u": "%", "t": 800}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.81142790499362, "u": "%", "t": 800}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.931965051568519, "u": "pH", "t": 800}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.35214789942967, "P": 198.90747481377954, "K": 200.73088240747546}, "u": "mg/kg", "t": 800}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 800}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.911685943841796, "u": "%", "t": 820}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.33459748210905, "u": "%", "t": 820}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.939489728134903, "u": "pH", "t": 820}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 147.08167740076388, "P": 197.5907480535762, "K": 198.06423301126935}, "u": "mg/kg", "t": 820}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 820}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.69069108218067, "u": "%", "t": 840}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.688543748935196, "u": "%", "t": 840}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.043686916969904, "u": "pH", "t": 840}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 147.07313007950228, "P": 199.7669315758839, "K": 197.33475307474404}, "u": "mg/kg", "t": 840}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 840}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.200966947926005, "u": "%", "t": 860}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.11998088479588, "u": "%", "t": 860}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.990541164695001, "u": "pH", "t": 860}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.6306974227383, "P": 200.73514820229528, "K": 200.18466464752962}, "u": "mg/kg", "t": 860}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 860}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.94289395281704, "u": "%", "t": 880}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.753970215036546, "u": "%", "t": 880}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.947633079682591, "u": "pH", "t": 880}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.15019408610115, "P": 197.9324945979059, "K": 200.37591224389558}, "u": "mg/kg", "t": 880}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 880}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.18052727944797, "u": "%", "t": 900}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.650966133038715, "u": "%", "t": 900}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.912742106818284, "u": "pH", "t": 900}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.18606220281598, "P": 199.18185795333866, "K": 196.9508508772621}, "u": "mg/kg", "t": 900}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 900}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.48171705824682, "u": "%", "t": 920}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.683006781626936, "u": "%", "t": 920}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.036265747552053, "u": "pH", "t": 920}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.14392996964818, "P": 199.5228665207036, "K": 198.40412685320436}, "u": "mg/kg", "t": 920}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 920}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.1328134361816, "u": "%", "t": 940}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.190096464138854, "u": "%", "t": 940}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.009843076129032, "u": "pH", "t": 940}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.6864066650975, "P": 200.05140519141267, "K": 197.68677652309955}, "u": "mg/kg", "t": 940}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 940}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.3561266633151, "u": "%", "t": 960}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.17451505184548, "u": "%", "t": 960}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.059722835247788, "u": "pH", "t": 960}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.23058462830167, "P": 199.6360625287012, "K": 199.54472053749592}, "u": "mg/kg", "t": 960}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 960}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.15542638381265, "u": "%", "t": 980}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.72944484227298, "u": "%", "t": 980}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.012332415610444, "u": "pH", "t": 980}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.28921183995328, "P": 200.0695193818739, "K": 200.569285490187}, "u": "mg/kg", "t": 980}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 980}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.428188399520415, "u": "%", "t": 1000}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.66600015464956, "u": "%", "t": 1000}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.008908382040361, "u": "pH", "t": 1000}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 147.30359216988538, "P": 196.76190874808535, "K": 200.2752042379396}, "u": "mg/kg", "t": 1000}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1000}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.98605316163945, "u": "%", "t": 1020}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 49.57492121624873, "u": "%", "t": 1020}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.991268383092452, "u": "pH", "t": 1020}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.6109512974751, "P": 199.27401300683957, "K": 199.24864905587177}, "u": "mg/kg", "t": 1020}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1020}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 48.530120287963676, "u": "%", "t": 1040}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.60866140649463, "u": "%", "t": 1040}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.953234494275949, "u": "pH", "t": 1040}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 146.98437179049537, "P": 198.28820849512536, "K": 199.68129516759123}, "u": "mg/kg", "t": 1040}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1040}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.0952376035803, "u": "%", "t": 1060}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.8300888352265, "u": "%", "t": 1060}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.040536269940072, "u": "pH", "t": 1060}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 146.81303009855918, "P": 197.32234046844934, "K": 197.0447755175315}, "u": "mg/kg", "t": 1060}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1060}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 51.21039098980098, "u": "%", "t": 1080}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.28216472602914, "u": "%", "t": 1080}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.968869792764472, "u": "pH", "t": 1080}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 148.49650351042473, "P": 197.1532374105797, "K": 199.87422228982874}, "u": "mg/kg", "t": 1080}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1080}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.21922433421572, "u": "%", "t": 1100}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 48.342922426157116, "u": "%", "t": 1100}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.873255803298296, "u": "pH", "t": 1100}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 150.26052557274932, "P": 196.78608698528342, "K": 198.02513740417808}, "u": "mg/kg", "t": 1100}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1100}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.12847887666116, "u": "%", "t": 1120}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.784697383637834, "u": "%", "t": 1120}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.942226937949171, "u": "pH", "t": 1120}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.28846012011778, "P": 198.07106937239783, "K": 198.27604795478976}, "u": "mg/kg", "t": 1120}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1120}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 49.490115142613384, "u": "%", "t": 1140}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 51.144089751682785, "u": "%", "t": 1140}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 7.009575029199696, "u": "pH", "t": 1140}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 149.96227395636691, "P": 199.97840417326725, "K": 200.37963997261602}, "u": "mg/kg", "t": 1140}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1140}}
-
-Published to greenhouse_13/area_6/sensor_5: {"bn": "greenhouse_13/area_6/sensor_5", "e": {"n": "SoilMoisture", "v": 50.03429625196265, "u": "%", "t": 1160}}
-Published to greenhouse_13/area_4/sensor_1: {"bn": "greenhouse_13/area_4/sensor_1", "e": {"n": "SoilMoisture", "v": 50.43355767928238, "u": "%", "t": 1160}}
-Published to greenhouse_13/area_4/sensor_3: {"bn": "greenhouse_13/area_4/sensor_3", "e": {"n": "pH", "v": 6.896768645598375, "u": "pH", "t": 1160}}
-Published to greenhouse_13/area_4/sensor_2: {"bn": "greenhouse_13/area_4/sensor_2", "e": {"n": "NPK", "v": {"N": 147.08160820308598, "P": 196.43478950551156, "K": 199.39955385468105}, "u": "mg/kg", "t": 1160}}
-Published to greenhouse_13/area_5/sensor_7: {"bn": "greenhouse_13/area_5/sensor_7", "e": {"n": "LightIntensity", "v": 0.0, "u": "lux", "t": 1160}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.365428233602263, "u": "\u00b0C", "t": 340}}
 
