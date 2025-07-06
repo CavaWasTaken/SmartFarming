@@ -286,16 +286,14 @@ ALTER SEQUENCE public.plants_plant_id_seq OWNED BY public.plants.plant_id;
 
 CREATE TABLE public.scheduled_events (
     event_id integer NOT NULL,
-    greenhouse_id integer NOT NULL,
-    event_type character varying(100) NOT NULL,
-    start_time timestamp without time zone NOT NULL,
-    end_time timestamp without time zone NOT NULL,
     frequency character varying(50) NOT NULL,
-    status character varying(50) NOT NULL,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT event_values CHECK (((event_type)::text = ANY (ARRAY[('Irrigation'::character varying)::text, ('Fertilization'::character varying)::text, ('Lighting'::character varying)::text]))),
+    execution_time timestamp without time zone NOT NULL,
+    sensor_id integer NOT NULL,
+    greenhouse_id integer NOT NULL,
+    parameter character varying(20) NOT NULL,
+    value numeric(10,2) NOT NULL,
     CONSTRAINT frequency_values CHECK (((frequency)::text = ANY (ARRAY[('Once'::character varying)::text, ('Daily'::character varying)::text, ('Weekly'::character varying)::text, ('Monthly'::character varying)::text]))),
-    CONSTRAINT status_values CHECK (((status)::text = ANY (ARRAY[('Pending'::character varying)::text, ('In action'::character varying)::text, ('Compleated'::character varying)::text])))
+    CONSTRAINT scheduled_events_parameter_check CHECK (((parameter)::text = ANY ((ARRAY['Temperature'::character varying, 'Humidity'::character varying, 'SoilMoisture'::character varying, 'pH'::character varying, 'Nitrogen'::character varying, 'Phosphorus'::character varying, 'Potassium'::character varying, 'LightIntensity'::character varying])::text[])))
 );
 
 
@@ -469,9 +467,6 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.area_plants (area_id, plant_id, greenhouse_id) FROM stdin;
-4	2	13
-4	0	13
-5	1	13
 \.
 
 
@@ -480,9 +475,8 @@ COPY public.area_plants (area_id, plant_id, greenhouse_id) FROM stdin;
 --
 
 COPY public.areas (area_id, name, greenhouse_id) FROM stdin;
-4	Main Area	13
-5	north zone	13
-6	south zone	13
+22	Main Area	28
+23	North Area	28
 \.
 
 
@@ -522,15 +516,14 @@ COPY public.availablesensors (sensor_id, name, type, unit, threshold_range, doma
 --
 
 COPY public.devices (device_id, greenhouse_id, name, type) FROM stdin;
-42	13	DeviceConnector	DeviceConnector
-43	13	HumidityManagement	Microservices
-44	13	LightManagement	Microservices
-45	13	NutrientManagement	Microservices
-46	13	ThingSpeakAdaptor	ThingSpeakAdaptor
-47	13	WebApp	UI
-48	13	TelegramBot	UI
-49	13	DataAnalysis	Microservices
-50	13	TimeShift	Microservices
+76	28	DeviceConnector	DeviceConnector
+77	28	HumidityManagement	Microservices
+78	28	LightManagement	Microservices
+79	28	NutrientManagement	Microservices
+80	28	DataAnalysis	Microservices
+81	28	TimeShift	Microservices
+82	28	ThingSpeakAdaptor	ThingSpeakAdaptor
+83	28	TelegramBot	UI
 \.
 
 
@@ -539,7 +532,7 @@ COPY public.devices (device_id, greenhouse_id, name, type) FROM stdin;
 --
 
 COPY public.greenhouses (greenhouse_id, user_id, name, location, thingspeak_config) FROM stdin;
-13	0	greenhouse#1	Turin	{"api_key": "", "channel_id": ""}
+28	0	MyGreenhouse	Torino	{"read_key": "ZPZG4DZDXG31P2FU", "write_key": "B1VQS0V9EO4UZFXB", "channel_id": "3002703"}
 \.
 
 
@@ -566,7 +559,7 @@ COPY public.plants (plant_id, name, species, desired_thresholds) FROM stdin;
 -- Data for Name: scheduled_events; Type: TABLE DATA; Schema: public; Owner: iotproject
 --
 
-COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, end_time, frequency, status, created_at) FROM stdin;
+COPY public.scheduled_events (event_id, frequency, execution_time, sensor_id, greenhouse_id, parameter, value) FROM stdin;
 \.
 
 
@@ -575,11 +568,10 @@ COPY public.scheduled_events (event_id, greenhouse_id, event_type, start_time, e
 --
 
 COPY public.sensors (sensor_id, area_id, type, name, unit, threshold_range, domain, greenhouse_id) FROM stdin;
-5	6	SoilMoisture	Soil Moisture Sensor	%	{"max": 80, "min": 20}	{"max": 100, "min": 0}	13
-1	4	SoilMoisture	Soil Moisture Sensor	%	{"max": 80, "min": 25}	{"max": 100, "min": 0}	13
-3	4	pH	pH Sensor	pH	{"max": 7.5, "min": 5}	{"max": 10.0, "min": 3.0}	13
-2	4	NPK	NPK Sensor	mg/kg	{"K": {"max": 400, "min": 100}, "N": {"max": 152, "min": 56}, "P": {"max": 300, "min": 75}}	{"max": 1000, "min": 0}	13
-7	5	LightIntensity	Light Intensity Sensor	lux	{"max": 800, "min": 400}	{"max": 2000, "min": 0}	13
+13	23	NPK	NPK Sensor	mg/kg	{"K": {"max": 300, "min": 200}, "N": {"max": 100, "min": 50}, "P": {"max": 200, "min": 150}}	{"max": 1000, "min": 0}	28
+12	23	Humidity	Humidity Sensor	%	{"max": 85, "min": 80}	{"max": 100, "min": 0}	28
+10	22	Temperature	Temperature Sensor	°C	{"max": 30, "min": 25}	{"max": 100, "min": -50}	28
+11	22	Humidity	Humidity Sensor	%	{"max": 85, "min": 75}	{"max": 100, "min": 0}	28
 \.
 
 
@@ -607,8 +599,8 @@ COPY public.users (user_id, username, email, password_hash, telegram_user_id) FR
 20	negggar	negar.abdi@studenti.polito.it	\\x2432622431322455716438526a696a50707851736d626a414965772e756269575149465052583276503750494a703246784c5835366b6555516c302e	\N
 21	testingfinal	testingfinal@gmail.com	\\x243262243132246a522e364e41497a777a72326e34636552333656754f59314e45376f4a356a746b56694566726d4a646b7878614d7931724c776f2e	\N
 22	newuser123	newuser123@gmail.com	\\x24326224313224576d6642786e2e6472346c793137524237396d337265656d452e77476f4c75464370655034474b5837694e734d6c7948346b62464b	\N
-0	Lorenzo	s346742@studenti.polito.it	\\x2432622431322438756e7534385057784c50745369767177586950642e557a6a7a775066705648713734463530715475414742504930444e6b717432	\N
 2	username	thatsnegar@gmail.com	\\x243262243132246378306272593044362f314e526358504a4a514d74754d374c504d2e3830374d34335743472e4e5131716142356434436e73794353	\N
+0	Lorenzo	s346742@studenti.polito.it	\\x24326224313224732f64633664424a70456e37767069487a657a756f2e384f476952797863556433536c592f61336165505475464e4a41784643544f	2070801980
 \.
 
 
@@ -616,7 +608,7 @@ COPY public.users (user_id, username, email, password_hash, telegram_user_id) FR
 -- Name: areas_area_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.areas_area_id_seq', 19, true);
+SELECT pg_catalog.setval('public.areas_area_id_seq', 23, true);
 
 
 --
@@ -637,14 +629,14 @@ SELECT pg_catalog.setval('public.availablesensors_sensor_id_seq', 1, false);
 -- Name: devices_device_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.devices_device_id_seq', 59, true);
+SELECT pg_catalog.setval('public.devices_device_id_seq', 83, true);
 
 
 --
 -- Name: greenhouses_greenhouse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.greenhouses_greenhouse_id_seq', 25, true);
+SELECT pg_catalog.setval('public.greenhouses_greenhouse_id_seq', 28, true);
 
 
 --
@@ -658,14 +650,14 @@ SELECT pg_catalog.setval('public.plants_plant_id_seq', 1, false);
 -- Name: scheduled_events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.scheduled_events_event_id_seq', 1, false);
+SELECT pg_catalog.setval('public.scheduled_events_event_id_seq', 9, true);
 
 
 --
 -- Name: sensors_sensor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.sensors_sensor_id_seq', 7, true);
+SELECT pg_catalog.setval('public.sensors_sensor_id_seq', 13, true);
 
 
 --
@@ -848,7 +840,15 @@ ALTER TABLE ONLY public.greenhouses
 --
 
 ALTER TABLE ONLY public.scheduled_events
-    ADD CONSTRAINT scheduled_events_greenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id) ON DELETE CASCADE;
+    ADD CONSTRAINT scheduled_events_greenhouse_id_fkey FOREIGN KEY (greenhouse_id) REFERENCES public.greenhouses(greenhouse_id);
+
+
+--
+-- Name: scheduled_events scheduled_events_sensor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: iotproject
+--
+
+ALTER TABLE ONLY public.scheduled_events
+    ADD CONSTRAINT scheduled_events_sensor_id_fkey FOREIGN KEY (sensor_id) REFERENCES public.sensors(sensor_id);
 
 
 --
