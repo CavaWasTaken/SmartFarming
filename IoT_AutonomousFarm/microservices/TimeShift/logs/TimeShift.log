@@ -1,10 +1,10 @@
 Device id: 81
-Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
-Error starting MQTT client: timed out
-Trying again in 60 seconds...
+Received 4 sensors: [{'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 70, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 25, 'min': 20}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
+Connected to mosquitto with result code 0
 Received 0 events: []
 No events scheduled for the greenhouse 28
-Connected to broker.hivemq.com with result code 0
+Received 0 events: []
+No events scheduled for the greenhouse 28
 Received 0 events: []
 No events scheduled for the greenhouse 28
 Received 0 events: []

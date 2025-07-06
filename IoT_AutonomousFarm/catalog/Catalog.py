@@ -100,16 +100,20 @@ def get_sensors(conn, greenhouse_id, device_name):
         
         with conn.cursor() as cur: # create a cursor to execute queries
             # check if the device exists
-            cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s AND name = %s"), [greenhouse_id, device_name])
-            result = cur.fetchone()
-            if result is None:  # if the device doesn't exist
-                cherrypy.response.status = 404
-                return {"error": "Unexisting device"}
-            
-            device_id = result[0]  # get the device id from the result
-            
+            if device_name is not None and device_name != "WebApp":  # if the device name is not WebApp, we check if it exists in the db
+                cur.execute(sql.SQL("SELECT * FROM devices WHERE greenhouse_id = %s AND name = %s"), [greenhouse_id, device_name])
+                result = cur.fetchone()
+                if result is None:  # if the device doesn't exist
+                    cherrypy.response.status = 404
+                    return {"error": "Unexisting device"}
+                
+                device_id = result[0]  # get the device id from the result
+            else:
+                device_id = None  # if the device name is WebApp, we don't need the device id
+                
+            write_log(device_name)
             # personalize the query based on the device name, cause each device connector is interested in different sensors
-            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "TelegramBot", "TimeShift"]
+            authorized_devices = ["DeviceConnector", "DataAnalysis", "ThingSpeakAdaptor", "TelegramBot", "TimeShift", "WebApp"]  # these devices are interested in all the sensors connected to the greenhouse
             if device_name in authorized_devices:    # device connector is interested in all the sensors connected to the greenhouse
                 cur.execute(sql.SQL("SELECT * FROM sensors WHERE greenhouse_id = %s"),  [greenhouse_id,])
             elif device_name == "HumidityManagement":   # humidity management is interested in humidity and soil moisture sensors
@@ -137,7 +141,7 @@ def get_sensors(conn, greenhouse_id, device_name):
                     'greenhouse_id': sensor[7]
                 }
                 sensors_list.append(sensor_dict)    # create a dictionary containing the information of each sensor
-
+            write_log(sensors_list)
             return {
                 'device_id': device_id,
                 'sensors': sensors_list
@@ -517,12 +521,12 @@ def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
             return {"error": "Database connection is closed"}
         
         with conn.cursor() as cur:
-            # check if the device is connected to the greenhouse
-            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s AND greenhouse_id = %s"), [device_id, device_name, greenhouse_id])
-            device = cur.fetchone() # device is a tuple
-            if device is None:  # if the device doesn't exist
-                cherrypy.response.status = 404
-                return {"error": "Device not found"}
+            # # check if the device is connected to the greenhouse
+            # cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND name = %s AND greenhouse_id = %s"), [device_id, device_name, greenhouse_id])
+            # device = cur.fetchone() # device is a tuple
+            # if device is None:  # if the device doesn't exist
+            #     cherrypy.response.status = 404
+            #     return {"error": "Device not found"}
 
             # get all the scheduled events for the greenhouse
             cur.execute(sql.SQL("SELECT * FROM scheduled_events WHERE greenhouse_id = %s"), [greenhouse_id])
@@ -533,11 +537,11 @@ def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
             for event in events:  # for each event in the list
                 event_dict = { # associate the values to the keys
                     'event_id': event[0],
-                    'greenhouse_id': event[1],
-                    'frequency': event[2],
+                    'frequency': event[1],
+                    'execution_time': str(event[2]),
                     'sensor_id': event[3],
-                    'parameter': event[4],
-                    'execution_time': str(event[5]),
+                    'greenhouse_id': event[4],
+                    'parameter': event[5],
                     'value': str(event[6])
                 }
                 events_list.append(event_dict)    # create a dictionary containing the information of each event
@@ -558,12 +562,12 @@ def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequen
             return {"error": "Database connection is closed"}
         
         with conn.cursor() as cur:
-            # check if the device is connected to the greenhouse
-            cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND greenhouse_id = %s"), [device_id, greenhouse_id])
-            device = cur.fetchone() # device is a tuple
-            if device is None:  # if the device doesn't exist
-                cherrypy.response.status = 404
-                return {"error": "Device not found"}
+            # # check if the device is connected to the greenhouse
+            # cur.execute(sql.SQL("SELECT * FROM devices WHERE device_id = %s AND greenhouse_id = %s"), [device_id, greenhouse_id])
+            # device = cur.fetchone() # device is a tuple
+            # if device is None:  # if the device doesn't exist
+            #     cherrypy.response.status = 404
+            #     return {"error": "Device not found"}
 
             # insert the event in the DB
             cur.execute(sql.SQL("INSERT INTO scheduled_events (greenhouse_id, frequency, sensor_id, parameter, execution_time, value) VALUES (%s, %s, %s, %s, %s, %s)"), [greenhouse_id, frequency, sensor_id, parameter, execution_time, value])
@@ -579,11 +583,11 @@ def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequen
             cherrypy.response.status = 201
             return {
                 'event_id': event[0],
-                'greenhouse_id': event[1],
-                'frequency': event[2],
+                'frequency': event[1],
+                'execution_time': str(event[2]),
                 'sensor_id': event[3],
-                'parameter': event[4],
-                'execution_time': str(event[5]),
+                'greenhouse_id': event[4],
+                'parameter': event[5],
                 'value': str(event[6])
             }
                             
@@ -615,12 +619,12 @@ def delete_event(conn, device_id, event_id):
             cur.execute(sql.SQL("DELETE FROM scheduled_events WHERE event_id = %s"), [event_id])
             conn.commit()
 
-            # check if the event was deleted
-            cur.execute(sql.SQL("SELECT * FROM scheduled_events WHERE event_id = %s"), [event_id])
-            event = cur.fetchone()
-            if event is not None:
-                cherrypy.response.status = 500
-                return {"error": "Event not deleted"}
+            # # check if the event was deleted
+            # cur.execute(sql.SQL("SELECT * FROM scheduled_events WHERE event_id = %s"), [event_id])
+            # event = cur.fetchone()
+            # if event is not None:
+            #     cherrypy.response.status = 500
+            #     return {"error": "Event not deleted"}
             
             cherrypy.response.status = 200
             return
@@ -1194,6 +1198,52 @@ def update_thingspeak_config(conn, greenhouse_id, channel_id, write_key, read_ke
         conn.rollback()
         cherrypy.response.status = 500
         return {"error": f"Internal error: {str(e)}"}
+    
+# used
+# method to get area information by greenhouse_id and area_id
+def get_area_info(self, greenhouse_id, area_id):
+    try:
+        greenhouse_id = int(greenhouse_id)
+        area_id = int(area_id)
+        
+        # Connect to the database
+        conn = psycopg2.connect(**self.db_config)
+        cursor = conn.cursor()
+        
+        # Query to get area information
+        query = """
+            SELECT area_id, name, description, greenhouse_id
+            FROM areas 
+            WHERE greenhouse_id = %s AND area_id = %s
+        """
+        
+        cursor.execute(query, (greenhouse_id, area_id))
+        result = cursor.fetchone()
+        
+        cursor.close()
+        conn.close()
+        
+        if result:
+            area_info = {
+                "area_id": result[0],
+                "name": result[1],
+                "description": result[2],
+                "greenhouse_id": result[3]
+            }
+            return area_info
+        else:
+            cherrypy.response.status = 404
+            return {"error": f"Area {area_id} not found in greenhouse {greenhouse_id}"}
+            
+    except ValueError:
+        cherrypy.response.status = 400
+        return {"error": "Invalid greenhouse_id or area_id. Must be integers."}
+    except psycopg2.Error as e:
+        cherrypy.response.status = 500
+        return {"error": f"Database error: {str(e)}"}
+    except Exception as e:
+        cherrypy.response.status = 500
+        return {"error": f"Internal server error: {str(e)}"}
 
 class CatalogREST(object):
     exposed = True
@@ -1318,6 +1368,15 @@ class CatalogREST(object):
             # check the existence of the parameters
             if 'greenhouse_id' in params:
                 return get_telegram_chat_id(self.catalog_connection, params['greenhouse_id'])
+                
+            else:
+                cherrypy.response.status = 400
+                return {"error": "Missing parameters"}
+            
+        elif uri[0] == 'get_area_info':
+            # check the existence of the parameters
+            if 'greenhouse_id' in params and 'area_id' in params:
+                return get_area_info(self.catalog_connection, params['greenhouse_id'], params['area_id'])
                 
             else:
                 cherrypy.response.status = 400

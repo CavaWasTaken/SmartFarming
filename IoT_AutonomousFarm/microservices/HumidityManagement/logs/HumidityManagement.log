@@ -1,6 +1,100 @@
-Device id: 43
-Received 2 sensors: [{'sensor_id': 5, 'area_id': 6, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 20}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}, {'sensor_id': 1, 'area_id': 4, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 25}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 13}]
-Error starting MQTT client: [Errno -2] Name or service not known
-Trying again in 60 seconds...
-Error starting MQTT client: [Errno -2] Name or service not known
-Trying again in 60 seconds...
+Device id: 77
+Received 2 sensors: [{'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 70, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
+Connected to mosquitto with result code 0
+Subscribed to greenhouse_28/area_22/sensor_11
+Subscribed to greenhouse_28/area_22/event/sensor_11
+Subscribed to greenhouse_28/area_23/sensor_12
+Subscribed to greenhouse_28/area_23/event/sensor_12
+Started periodic sensor checking thread
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.73, 'u': '%', 't': 60}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+WARNING: Failed to get when the next value of Humidity (sensor_11) is expected to arrive
+WARNING: Failed to get the next expected value of Humidity (sensor_11)
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.97, 'u': '%', 't': 60}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+WARNING: Failed to get when the next value of Humidity (sensor_12) is expected to arrive
+WARNING: Failed to get the next expected value of Humidity (sensor_12)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.52, 'u': '%', 't': 120}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_11) is expected to be received at: 180.0
+The next value of Humidity (sensor_11) is expected to be: 40.31000000000001 %
+Wait to see another value to start the decision making for sensor_11 (Humidity)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 40.29, 'u': '%', 't': 120}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_12) is expected to be received at: 180.0
+The next value of Humidity (sensor_12) is expected to be: 40.60999999999999 %
+Wait to see another value to start the decision making for sensor_12 (Humidity)
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.62, 'u': '%', 't': 180}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_11) is expected to be received at: 240.0
+The next value of Humidity (sensor_11) is expected to be: 40.513333333333335 %
+The measured value (40.62 %) and the next prediction (40.513333333333335 %) of sensor_11 (Humidity) are inside the range [30, 70]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.48, 'u': '%', 't': 180}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_12) is expected to be received at: 240.0
+The next value of Humidity (sensor_12) is expected to be: 39.423333333333325 %
+The measured value (39.48 %) and the next prediction (39.423333333333325 %) of sensor_12 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.26, 'u': '%', 't': 240}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_11) is expected to be received at: 300.0
+The next value of Humidity (sensor_11) is expected to be: 40.205 %
+The measured value (40.26 %) and the next prediction (40.205 %) of sensor_11 (Humidity) are inside the range [30, 70]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.34, 'u': '%', 't': 240}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_12) is expected to be received at: 300.0
+The next value of Humidity (sensor_12) is expected to be: 39.095 %
+The measured value (39.34 %) and the next prediction (39.095 %) of sensor_12 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.64, 'u': '%', 't': 300}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_11) is expected to be received at: 360.0
+The next value of Humidity (sensor_11) is expected to be: 40.422 %
+The measured value (40.64 %) and the next prediction (40.422 %) of sensor_11 (Humidity) are inside the range [30, 70]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.93, 'u': '%', 't': 300}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_12) is expected to be received at: 360.0
+The next value of Humidity (sensor_12) is expected to be: 39.493 %
+The measured value (39.93 %) and the next prediction (39.493 %) of sensor_12 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.88, 'u': '%', 't': 360}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_11) is expected to be received at: 420.0
+The next value of Humidity (sensor_11) is expected to be: 40.68333333333333 %
+The measured value (40.88 %) and the next prediction (40.68333333333333 %) of sensor_11 (Humidity) are inside the range [30, 70]
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.41, 'u': '%', 't': 360}}
+Failed to get area info from the Catalog	(Response: Internal server error: 'psycopg2.extensions.connection' object has no attribute 'db_config')
+The next value of Humidity (sensor_12) is expected to be received at: 420.0
+The next value of Humidity (sensor_12) is expected to be: 39.334666666666664 %
+The measured value (39.41 %) and the next prediction (39.334666666666664 %) of sensor_12 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980

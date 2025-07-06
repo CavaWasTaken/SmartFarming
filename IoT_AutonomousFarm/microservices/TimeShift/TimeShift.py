@@ -84,7 +84,19 @@ while True:
                 new_sensor_ids = {s["sensor_id"] for s in new_sensors}
                 old_sensor_ids = {s["sensor_id"] for s in sensors}
 
-                sensors = new_sensors  # update the sensors list
+                # remove topics for sensors that are no longer present
+                for removed_id in old_sensor_ids - new_sensor_ids:
+                    removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
+                    client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/event/sensor_{removed_id}")  # unsubscribe from the event topic to stop receiving events for the removed sensor
+                    client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+
+                # add topics for new sensors
+                for added_id in new_sensor_ids - old_sensor_ids:
+                    added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
+                    client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/event/sensor_{added_id}")  # subscribe to the event topic to receive events for the new sensor
+                    client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
+ 
+                sensors = new_sensors  # update the list of sensors
 
     except Exception as e:
         write_log(f"Error checking for updates in the Catalog: {e}")

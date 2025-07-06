@@ -157,12 +157,12 @@ h6 {
     outline: none;
 }
 
-.treshbtn:first-of-type {
-    top: 180px;
+.threshold-btn {
+    top: 160px; /* Position for Set Threshold button */
 }
 
-.treshbtn:last-of-type {
-	top: 200px;
+.plot-btn {
+    top: 200px; /* Position for See Plot button, with some spacing */
 }
 
 /* Modal */

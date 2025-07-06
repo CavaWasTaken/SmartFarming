@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const userInfoLink = document.getElementById("userinfo");
       const userProfile = document.getElementById("userProfile");
       const greenhouseLink = document.getElementById("greenhouse");
+      const schedulingLink = document.getElementById("scheduling-link");
+      const greenhouseId = localStorage.getItem("greenhouse_id");
 
       if (token && username) {
         //  Show profile name
@@ -29,6 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (userInfoLink) {
           userInfoLink.style.display = "inline-block";
         }
+
+        // Show/hide scheduling link based on greenhouse selection
+        if (schedulingLink) {
+          schedulingLink.style.display = greenhouseId ? "inline-block" : "none";
+        }
       } else {
         // hide User Profile menu item
         if (userInfoLink) {
@@ -38,6 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // hide Greenhouse menu item
         if (greenhouseLink) {
           greenhouseLink.style.display = "none";
+        }
+
+        // hide Scheduling menu item
+        if (schedulingLink) {
+          schedulingLink.style.display = "none";
         }
 
         // set the login link

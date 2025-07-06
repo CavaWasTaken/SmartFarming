@@ -1,8 +1,8 @@
 import json
 import requests
-import cherrypy
 import time
 import os
+import threading
 
 from MqttClient import MqttClient   # import the MqttClient class
 
@@ -61,11 +61,13 @@ def checkSensors():
                 for removed_id in old_sensor_ids - new_sensor_ids:
                     removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
                     client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+                    mqtt_topics.remove(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # remove the topic from the list of topics
 
                 # add topics for new sensors
                 for added_id in new_sensor_ids - old_sensor_ids:
                     added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
                     client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
+                    mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
 
                 sensors = new_sensors  # update the list of sensors
         
@@ -84,6 +86,17 @@ def checkSensors():
 
     except Exception as e:
         write_log(f"Error checking for updates in the Catalog: {e}")
+
+def periodic_sensor_check():
+    """Function to periodically check for sensor updates"""
+    while True:
+        try:
+            time.sleep(60)  # Check every 60 seconds
+            write_log("Periodic sensor check started")
+            checkSensors()
+            write_log("Periodic sensor check completed")
+        except Exception as e:
+            write_log(f"Error in periodic sensor check: {e}")
 
 def handle_message(timestamp, area_id, sensor_type, val):
     global fields, field_map
@@ -127,12 +140,24 @@ def handle_message(timestamp, area_id, sensor_type, val):
               sensor["area_id"] not in fields[timestamp][sensor["type"]].keys()):
             return
         
+    FIELD_MAPPING = {
+        "Temperature": 1,
+        "Humidity": 2,
+        "SoilMoisture": 3,
+        "pH": 4,
+        "LightIntensity": 5,
+        "Nitrogen": 6,
+        "Phosphorus": 7,
+        "Potassium": 8
+    }
     # if at the given timestamp tall the fields are filled, send the data to ThingSpeak
-    payload = {"write_key": thingSpeak_config["write_key"]}
-    payload.update({
-        f"{type}": json.dumps(fields[timestamp][type])
-        for i, type in enumerate(fields[timestamp].keys())
-    })
+    payload = {"api_key": thingSpeak_config["write_key"]}
+    for sensor_type in fields[timestamp].keys():
+        if sensor_type in FIELD_MAPPING:
+            field_number = FIELD_MAPPING[sensor_type]
+            payload[f"field{field_number}"] = json.dumps(fields[timestamp][sensor_type])
+        else:
+            write_log(f"Warning: Unknown sensor type '{sensor_type}' - not mapped to any ThingSpeak field")
 
     response = requests.post(write_url, data=payload)
     if response.status_code == 200:
@@ -157,8 +182,6 @@ def on_message(client, userdata, msg):    # when a new message of one of the top
                     timestamp = message["t"] 
 
                     area_id = int(topic.split("/")[1].split("_")[1])  # extract the area id from the topic
-
-                    checkSensors()  # check for updates in the list of sensors
 
                     if thingSpeak_config.get("write_key") == "" or thingSpeak_config.get("channel_id") == "":
                         write_log("ThingSpeak configuration is missing. Please check the configuration file.")
@@ -259,6 +282,11 @@ if __name__ == "__main__":
                 else:
                     time.sleep(60)  # wait for 60 seconds before trying again
 
+    # start the periodic sensor checking thread
+    sensor_check_thread = threading.Thread(target=periodic_sensor_check, daemon=True)
+    sensor_check_thread.start()
+    write_log("Started periodic sensor checking thread")
+
     while True:
         time.sleep(1)
-    client.stop()
+    client.stop()   # stop the client

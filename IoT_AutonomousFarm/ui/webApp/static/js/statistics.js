@@ -126,50 +126,139 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Process ThingSpeak data based on sensor type
-  function processThingSpeakData(feeds, sensorType) {
+  function processThingSpeakData(feeds, sensorType, areaId) {
     const processedData = [];
     
     feeds.forEach(feed => {
       const timestamp = new Date(feed.created_at);
       let value = null;
 
-      // Map sensor types to ThingSpeak field names
-      // You may need to adjust these mappings based on your ThingSpeak channel setup
-      switch(sensorType) {
-        case 'Temperature':
-          value = parseFloat(feed.field1);
-          break;
-        case 'Humidity':
-          value = parseFloat(feed.field2);
-          break;
-        case 'SoilMoisture':
-          value = parseFloat(feed.field3);
-          break;
-        case 'pH':
-          value = parseFloat(feed.field4);
-          break;
-        case 'LightIntensity':
-          value = parseFloat(feed.field5);
-          break;
-        case 'NPK':
-          // For NPK, you might want to handle N, P, K separately
-          // or combine them based on your requirements
-          value = {
-            N: parseFloat(feed.field6),
-            P: parseFloat(feed.field7),
-            K: parseFloat(feed.field8)
-          };
-          break;
-        default:
-          value = parseFloat(feed.field1);
-      }
+      try {
+        // Map sensor types to ThingSpeak field names
+        let fieldData = null;
+        
+        switch(sensorType) {
+          case 'Temperature':
+            fieldData = JSON.parse(feed.field1 || '{}');
+            console.log(fieldData);
+            value = parseFloat(fieldData[areaId]);
+            console.log(`Temperature for area ${areaId}: ${value}`);
+            break;
+          case 'Humidity':
+            fieldData = JSON.parse(feed.field2 || '{}');
+            value = parseFloat(fieldData[areaId]);
+            break;
+          case 'SoilMoisture':
+            fieldData = JSON.parse(feed.field3 || '{}');
+            value = parseFloat(fieldData[areaId]);
+            break;
+          case 'pH':
+            fieldData = JSON.parse(feed.field4 || '{}');
+            value = parseFloat(fieldData[areaId]);
+            break;
+          case 'LightIntensity':
+            fieldData = JSON.parse(feed.field5 || '{}');
+            value = parseFloat(fieldData[areaId]);
+            break;
+          case 'NPK':
+            // For NPK, parse each component separately
+            const nData = JSON.parse(feed.field6 || '{}');
+            const pData = JSON.parse(feed.field7 || '{}');
+            const kData = JSON.parse(feed.field8 || '{}');
+            
+            value = {
+              N: parseFloat(nData[areaId]),
+              P: parseFloat(pData[areaId]),
+              K: parseFloat(kData[areaId])
+            };
+            break;
+          default:
+            fieldData = JSON.parse(feed.field1 || '{}');
+            value = parseFloat(fieldData[areaId]);
+        }
 
-      if (value !== null && !isNaN(value)) {
-        processedData.push({ timestamp, value });
+        // Validate the extracted value
+        if (sensorType === 'NPK') {
+          if (value && !isNaN(value.N) && !isNaN(value.P) && !isNaN(value.K)) {
+            processedData.push({ timestamp, value });
+          }
+        } else {
+          if (value !== null && !isNaN(value)) {
+            processedData.push({ timestamp, value });
+          }
+        }
+      } catch (error) {
+        console.warn(`Failed to parse data for timestamp ${timestamp}:`, error);
       }
     });
 
     return processedData;
+  }
+
+  // Process ThingSpeak data for multiple areas
+  function processThingSpeakDataForAllAreas(feeds, sensorType) {
+    const areaData = {};
+    
+    feeds.forEach(feed => {
+      const timestamp = new Date(feed.created_at);
+
+      try {
+        let fieldData = null;
+        
+        switch(sensorType) {
+          case 'Temperature':
+            fieldData = JSON.parse(feed.field1 || '{}');
+            break;
+          case 'Humidity':
+            fieldData = JSON.parse(feed.field2 || '{}');
+            break;
+          case 'SoilMoisture':
+            fieldData = JSON.parse(feed.field3 || '{}');
+            break;
+          case 'pH':
+            fieldData = JSON.parse(feed.field4 || '{}');
+            break;
+          case 'LightIntensity':
+            fieldData = JSON.parse(feed.field5 || '{}');
+            break;
+          case 'NPK':
+            // Handle NPK separately if needed
+            const nData = JSON.parse(feed.field6 || '{}');
+            const pData = JSON.parse(feed.field7 || '{}');
+            const kData = JSON.parse(feed.field8 || '{}');
+            
+            Object.keys(nData).forEach(area => {
+              if (!areaData[area]) areaData[area] = [];
+              const value = {
+                N: parseFloat(nData[area]),
+                P: parseFloat(pData[area]),
+                K: parseFloat(kData[area])
+              };
+              if (!isNaN(value.N) && !isNaN(value.P) && !isNaN(value.K)) {
+                areaData[area].push({ timestamp, value });
+              }
+            });
+            return; // Skip the general processing for NPK
+          default:
+            fieldData = JSON.parse(feed.field1 || '{}');
+        }
+
+        // Process data for each area
+        if (fieldData) {
+          Object.keys(fieldData).forEach(area => {
+            if (!areaData[area]) areaData[area] = [];
+            const value = parseFloat(fieldData[area]);
+            if (!isNaN(value)) {
+              areaData[area].push({ timestamp, value });
+            }
+          });
+        }
+      } catch (error) {
+        console.warn(`Failed to parse data for timestamp ${timestamp}:`, error);
+      }
+    });
+
+    return areaData;
   }
 
   // Update chart with new data
@@ -224,11 +313,74 @@ document.addEventListener("DOMContentLoaded", () => {
     sensorChart.update();
   }
 
+  // Update chart with multiple areas
+  function updateChartMultipleAreas(areaData, sensorType) {
+    if (!sensorChart) return;
+
+    const colors = [
+      'rgb(75, 192, 192)',
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(153, 102, 255)',
+      'rgb(255, 159, 64)'
+    ];
+
+    sensorChart.data.labels = [];
+    sensorChart.data.datasets = [];
+
+    // Get all timestamps for consistent x-axis
+    const allTimestamps = new Set();
+    Object.values(areaData).forEach(data => {
+      data.forEach(point => allTimestamps.add(point.timestamp.getTime()));
+    });
+    const sortedTimestamps = Array.from(allTimestamps).sort().map(t => new Date(t));
+    sensorChart.data.labels = sortedTimestamps;
+
+    // Create datasets for each area
+    Object.keys(areaData).forEach((area, index) => {
+      const color = colors[index % colors.length];
+      const data = areaData[area];
+
+      if (sensorType === 'NPK') {
+        // Create separate datasets for N, P, K for each area
+        ['N', 'P', 'K'].forEach((component, compIndex) => {
+          const componentColor = colors[(index * 3 + compIndex) % colors.length];
+          sensorChart.data.datasets.push({
+            label: `Area ${area} - ${component}`,
+            data: data.map(point => ({
+              x: point.timestamp,
+              y: point.value[component]
+            })),
+            borderColor: componentColor,
+            backgroundColor: componentColor.replace('rgb', 'rgba').replace(')', ', 0.2)'),
+            tension: 0.1,
+            fill: false,
+          });
+        });
+      } else {
+        sensorChart.data.datasets.push({
+          label: `Area ${area}`,
+          data: data.map(point => ({
+            x: point.timestamp,
+            y: point.value
+          })),
+          borderColor: color,
+          backgroundColor: color.replace('rgb', 'rgba').replace(')', ', 0.2)'),
+          tension: 0.1,
+          fill: false,
+        });
+      }
+    });
+
+    sensorChart.update();
+  }
+
   // Load and display data
   function loadSensorData(numResults = 100) {
     fetchThingSpeakData(numResults)
       .then(feeds => {
-        const processedData = processThingSpeakData(feeds, sensorType);
+        const processedData = processThingSpeakData(feeds, sensorType, areaId);
         updateChart(processedData, sensorType);
       })
       .catch(error => {

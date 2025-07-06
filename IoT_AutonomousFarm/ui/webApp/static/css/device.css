@@ -336,3 +336,30 @@ input{
     transform: translateY(-1px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
+
+/* Scheduling Button Styles */
+#manageSchedulingBtn {
+    position: absolute;
+    top: 250px;  /* Adjust this value to move it lower */
+    left: 10%;
+    width: 80%;
+    padding: 6px 12px;
+    background: linear-gradient(45deg, #17a2b8, #138496);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#manageSchedulingBtn:hover {
+    background: linear-gradient(45deg, #138496, #17a2b8);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#manageSchedulingBtn i {
+    margin-right: 8px;
+}

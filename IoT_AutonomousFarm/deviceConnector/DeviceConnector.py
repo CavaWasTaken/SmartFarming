@@ -17,62 +17,57 @@ def ActionReceived(client, userdata, message):
     msg = json.loads(message.payload.decode())    # decode the message received
     write_log(f"Received action: {msg}")    # write in the log file the action received
     try:
-        sensor_type = msg['sensor_type']    # get the sensor type from the action
+        parameter = msg['parameter']    # get the sensor type from the action
         action = msg['message']['action']    # get the action from the action
         # get the sensor id from the topic
-        sensor_id = message.topic.split("/")[-1].split("_")[-1]    # get the sensor id from the topic
+        sensor_id = int(message.topic.split("/")[-1].split("_")[-1])    # get the sensor id from the topic
         if action == "increase":
+            goal = float(msg['message']['min_treshold'])    # get the goal from the action
 
-            if sensor_type == "NPK":  # inject fertilizer
-                nutrient = msg['message']['nutrient']
-            
-                if nutrient == "N":
-                    sensorClasses[sensor_id].goalN = goal
-                    sensorClasses[sensor_id].nitrogenIncrease = True
-                    sensorClasses[sensor_id].nitrogenDecrease = False
-                    write_log(f"Nitrogen increase action received")
-            
-                elif nutrient == "P":
-                    sensorClasses[sensor_id].goalP = goal
-                    sensorClasses[sensor_id].phosphorusIncrease = True
-                    sensorClasses[sensor_id].phosphorusDecrease = False
-                    write_log(f"Phosphorus increase action received")
-            
-                elif nutrient == "K":
-                    sensorClasses[sensor_id].goalK = goal
-                    sensorClasses[sensor_id].potassiumIncrease = True
-                    sensorClasses[sensor_id].potassiumDecrease = False
-                    write_log(f"Potassium increase action received")
+            if parameter == "Nitrogen":
+                sensorClasses[sensor_id].goalN = goal
+                sensorClasses[sensor_id].nitrogenIncrease = True
+                sensorClasses[sensor_id].nitrogenDecrease = False
+                write_log(f"Nitrogen increase action received")
+        
+            elif parameter == "Phosphorus":
+                sensorClasses[sensor_id].goalP = goal
+                sensorClasses[sensor_id].phosphorusIncrease = True
+                sensorClasses[sensor_id].phosphorusDecrease = False
+                write_log(f"Phosphorus increase action received")
+        
+            elif parameter == "Potassium":
+                sensorClasses[sensor_id].goalK = goal
+                sensorClasses[sensor_id].potassiumIncrease = True
+                sensorClasses[sensor_id].potassiumDecrease = False
+                write_log(f"Potassium increase action received")
 
             else:
-                sensorClasses[sensor_id].goal = msg['message']['min_treshold']    # get the goal from the action
+                sensorClasses[sensor_id].goal = goal    # get the goal from the action
                 sensorClasses[sensor_id].increase = True
                 sensorClasses[sensor_id].decrease = False
             
         elif action == "decrease":
-            goal = msg['message']['max_treshold']    # get the goal from the action
+            goal = float(msg['message']['max_treshold'])    # get the goal from the action
 
-            if sensor_type == "NPK":  # soil dilution
-                nutrient = msg['message']['nutrient']
+            if parameter == "Nitrogen":
+                sensorClasses[sensor_id].goalN = goal
+                sensorClasses[sensor_id].nitrogenDecrease = True
+                sensorClasses[sensor_id].nitrogenIncrease = False
+                write_log(f"Nitrogen decrease action received")
+    
+            elif parameter == "Phosphorus":
+                sensorClasses[sensor_id].goalP = goal
+                sensorClasses[sensor_id].phosphorusDecrease = True
+                sensorClasses[sensor_id].phosphorusIncrease = False
+                write_log(f"Phosphorus decrease action received")
+    
+            elif parameter == "Potassium":
+                sensorClasses[sensor_id].goalK = goal
+                sensorClasses[sensor_id].potassiumDecrease = True
+                sensorClasses[sensor_id].potassiumIncrease = False
+                write_log(f"Potassium decrease action received")
         
-                if nutrient == "N":
-                    sensorClasses[sensor_id].goalN = goal
-                    sensorClasses[sensor_id].nitrogenDecrease = True
-                    sensorClasses[sensor_id].nitrogenIncrease = False
-                    write_log(f"Nitrogen decrease action received")
-        
-                elif nutrient == "P":
-                    sensorClasses[sensor_id].goalP = goal
-                    sensorClasses[sensor_id].phosphorusDecrease = True
-                    sensorClasses[sensor_id].phosphorusIncrease = False
-                    write_log(f"Phosphorus decrease action received")
-        
-                elif nutrient == "K":
-                    sensorClasses[sensor_id].goalK = goal
-                    sensorClasses[sensor_id].potassiumDecrease = True
-                    sensorClasses[sensor_id].potassiumIncrease = False
-                    write_log(f"Potassium decrease action received")
-            
             else:
                 sensorClasses[sensor_id].goal = goal
                 sensorClasses[sensor_id].decrease = True
@@ -284,6 +279,6 @@ while True:
     
     write_log("")
 
-    time.sleep(20)   # wait for 2 minutes before reading the sensors again
+    time.sleep(60)   # wait for 2 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client

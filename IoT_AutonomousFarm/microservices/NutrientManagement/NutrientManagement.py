@@ -60,30 +60,51 @@ def checkSensors():
                     removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
                     client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/event/sensor_{removed_id}")  # unsubscribe from the event topic to stop receiving events for the removed sensor
                     client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+                    mqtt_topics.remove(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/event/sensor_{removed_id}")  # remove the topic from the list of topics
+                    mqtt_topics.remove(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # remove the topic from the list of topics
+                    thresholds.pop(removed_id, None)  # remove the threshold for the removed sensor
+                    domains.pop(removed_id, None)  # remove the domain for the removed sensor
+                    expected_value.pop(removed_id, None)  # remove the expected value for the removed
+                    if removed_id in timers.keys() and timers[removed_id] is not None:  # if the timer is running
+                        timers[removed_id].cancel()  # stop the timer for the removed sensor
+                        timers.pop(removed_id, None)  # remove the timer for the removed sensor
 
                 # add topics for new sensors
                 for added_id in new_sensor_ids - old_sensor_ids:
                     added_sensor = next((s for s in new_sensors if s["sensor_id"] == added_id), None)
                     client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/event/sensor_{added_id}")  # subscribe to the event topic to receive events for the new sensor
                     client.subscribe(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")
-                    tresholds[added_sensor['sensor_id']] = added_sensor['threshold']    # associate the threshold to the sensor id into the dictionary
+                    thresholds[added_sensor['sensor_id']] = added_sensor['threshold']    # associate the threshold to the sensor id into the dictionary
                     domains[added_sensor['sensor_id']] = added_sensor['domain']    # associate the domain to the sensor id into the dictionary  
                     expected_value[added_sensor['sensor_id']] = None
                     timers[added_sensor['sensor_id']] = None
+                    mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/event/sensor_{added_id}")  # add the topic to the list of topics
+                    mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")  # add the topic to the list of topics
  
                 sensors = new_sensors  # update the list of sensors
 
     except Exception as e:
         write_log(f"Error checking for updates in the Catalog: {e}")
 
+def periodic_sensor_check():
+    """Function to periodically check for sensor updates"""
+    while True:
+        try:
+            time.sleep(60)  # Check every 60 seconds
+            write_log("Periodic sensor check started")
+            checkSensors()
+            write_log("Periodic sensor check completed")
+        except Exception as e:
+            write_log(f"Error in periodic sensor check: {e}")
+
 expected_value = {} # dictionary to save the next expected value for each sensor
 timers = {} # dictionary to save the timer (interval of time for waiting the next value of that sensor) for each sensor
-tresholds = {}  # dictionary to save the treshold interval for each sensor
+thresholds = {}  # dictionary to save the treshold interval for each sensor
 domains = {}    # dictionary  to save the domain of the values collectable by each sensor
 
 liveValue = {}  # dictionary to save the last value received from each sensor
 
-def sendTelegramMessage(msg):
+def sendTelegramMessage(msg, area_name):
     # get greenhouse information by passing the greenhouse_id and device_id
     try:
         response = requests.get(f"{catalog_url}/get_greenhouse_info", params={'greenhouse_id': greenhouse_id, 'device_id': device_id})
@@ -97,7 +118,7 @@ def sendTelegramMessage(msg):
         write_log(f"Error getting greenhouse info from the Catalog: {e}")
         return
 
-    msg = f"{greenhouse_name}:\n" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n" + msg
+    msg = f"{greenhouse_name} - {area_name}:\n" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n" + msg
     # get the telegram user ID from the catalog
     try:
         response = requests.get(f"{catalog_url}/get_telegram_chat_id", params={'greenhouse_id': greenhouse_id})
@@ -119,7 +140,8 @@ def sendTelegramMessage(msg):
     url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
     payload = {
         "chat_id": telegram_chat_id,
-        "text": msg
+        "text": msg,
+        "parse_mode": "Markdown"
     }
     try:
         response = requests.post(url, json=payload, timeout=5)
@@ -137,18 +159,32 @@ def handle_message(sensor_type, val, unit, timestamp, area_id, sensor_id):
     def TimerExpiration(sensor_id, expected_timestamp):
         write_log(f"WARNING: Was expecting a value of {sensor_type} from sensor_{sensor_id} at time {expected_timestamp}, but it didn't arrive")   # ALERT TO BE SENT TO THE UI
         sendTelegramMessage(
-            f"⚠️ *Sensor Data Missing!*\n\n"
-            f"*Sensor Type:* {sensor_type}\n"
-            f"*Sensor ID:* {sensor_id}\n"
-            f"*Expected Time:* {expected_timestamp}\n\n"
+            f"⚠️ **Sensor Data Missing!**\n\n"
+            f"**Sensor Type:** {sensor_type}\n"
+            f"**Sensor ID:** {sensor_id}\n"
+            f"**Expected Time:** {expected_timestamp}\n\n"
             "No data was received from this sensor as expected. Please check the device or connection."
-        )
+        , area_name)
 
-    def sendAction(msg):
-        msg = json.dumps({"message": msg, "sensor_type": sensor_type, "timestamp": timestamp})
+    def sendAction(msg, parameter):
+        msg = json.dumps({"message": msg, "parameter": parameter, "timestamp": timestamp})
         client.publish(f"greenhouse_{greenhouse_id}/area_{area_id}/action/sensor_{sensor_id}", msg)
-       
-    treshold = tresholds[sensor_id]    # get the treshold for the sensor
+    
+        # Get area name using area_id
+    try:
+        response = requests.get(f"{catalog_url}/get_area_info", params={'greenhouse_id': greenhouse_id, 'area_id': area_id})
+        if response.status_code == 200:
+            area_info = response.json()
+            area_name = area_info.get("name")
+        else:
+            area_name = f"Area {area_id}"
+            write_log(f"Failed to get area info from the Catalog\t(Response: {response.json().get('error', 'Unknown error')})")
+
+    except Exception as e:
+        area_name = f"Area {area_id}"
+        write_log(f"Error getting area info from the Catalog: {e}")
+
+    treshold = thresholds[sensor_id]    # get the treshold for the sensor
 
     liveValue[sensor_id] = val  # save the last value received from the sensor
 
@@ -182,17 +218,17 @@ def handle_message(sensor_type, val, unit, timestamp, area_id, sensor_id):
         min_treshold_K = treshold["K"]["min"]
         max_treshold_K = treshold["K"]["max"]
 
-        Management.checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, {"N": min_treshold_N, "P": min_treshold_P, "K": min_treshold_K}, {"N": max_treshold_N, "P": max_treshold_P, "K": max_treshold_K}, expected_value, domains, write_log, sendTelegramMessage, sendAction)
+        Management.checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, timestamp, {"N": min_treshold_N, "P": min_treshold_P, "K": min_treshold_K}, {"N": max_treshold_N, "P": max_treshold_P, "K": max_treshold_K}, expected_value, domains, write_log, sendTelegramMessage, sendAction)
     else:
         min_treshold = treshold["min"]
         max_treshold = treshold["max"]
 
-        Management.checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction)
+        Management.checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction)
 
 def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desired_value, execution_time, area_id):
     
     def sendAction(msg, sensor_type):
-        msg = json.dumps({"message": msg, "sensor_type": sensor_type, "timestamp": execution_time})
+        msg = json.dumps({"message": msg, "parameter": parameter, "timestamp": execution_time})
         client.publish(f"greenhouse_{greenhouse_id}/area_{area_id}/action/sensor_{sensor_id}", msg)
 
     if parameter == "Nitrogen":
@@ -224,7 +260,7 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
 
     # depending on the frequency, we can schedule the next event
     # first we always delete the event from the catalog
-    response = requests.delete(f"{catalog_url}/delete_event", json={'device_id': device_id, 'event_id': event_id})
+    response = requests.delete(f"{catalog_url}/delete_event", params={'device_id': device_id, 'event_id': event_id})
     if response.status_code == 200:
         write_log(f"Event {event_id} deleted from the Catalog")
     
@@ -321,8 +357,6 @@ def on_message(client, userdata, msg):
                         area_id = int(topic.split("/")[1].split("_")[1])  # get the area id from the topic
                         sensor_id = int(topic.split("/")[2].split("_")[1])  # get the sensor id from the topic
 
-                        checkSensors()  # check if the sensors list has changed
-
                         handle_message(sensor_type, val, unit, timestamp, area_id, sensor_id)
 
                 except KeyError as e:
@@ -362,7 +396,7 @@ if __name__ == "__main__":
         try:
             mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/sensor_{sensor['sensor_id']}")
             mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/event/sensor_{sensor['sensor_id']}")  # add the action topic to the list of topics
-            tresholds[sensor['sensor_id']] = sensor['threshold']    # associate the threshold to the sensor id into the dictionary
+            thresholds[sensor['sensor_id']] = sensor['threshold']    # associate the threshold to the sensor id into the dictionary
             domains[sensor['sensor_id']] = sensor['domain']    # associate the domain to the sensor id into the dictionary
             expected_value[sensor['sensor_id']] = None
             timers[sensor['sensor_id']] = None
@@ -373,7 +407,7 @@ if __name__ == "__main__":
 
     for _ in range(5):  # try to start the MQTT client for 5 times
         try:
-            client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"HumidityManagement_{device_id}", on_message, write_log)
+            client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"NutrientManagement_{device_id}", on_message, write_log)
             client.start()
             break
 
@@ -398,6 +432,11 @@ if __name__ == "__main__":
                     write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
                 else:
                     time.sleep(60)  # wait for 60 seconds before trying again
+
+    # start the periodic sensor checking thread
+    sensor_check_thread = threading.Thread(target=periodic_sensor_check, daemon=True)
+    sensor_check_thread.start()
+    write_log("Started periodic sensor checking thread")
 
     while True:
         time.sleep(1)   # keep the microservice running

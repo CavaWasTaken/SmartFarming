@@ -185,6 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
           `#set-threshold-button-${sensor.sensor_id}`
         );
 
+        // Handle the plot button - MOVE THIS OUTSIDE
+        const seePlotBtn = card.querySelector(
+          `#see-plot-button-${sensor.type}`
+        );
+        seePlotBtn.addEventListener("click", () => {
+          // move to statistics page with sensor type and area id
+          window.location.href = `statistics.html?area_id=${areaId}&sensor_type=${sensor.type}`;
+        });
+
         setThresholdBtn.addEventListener("click", () => {
           const modal = document.createElement("div");
           modal.className = "modal d-flex";
@@ -263,15 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             `;
           }
-
-          // handle the plot button
-          const seePlotBtn = card.querySelector(
-            `#see-plot-button-${sensor.type}`
-          );
-          seePlotBtn.addEventListener("click", () => {
-            // move to statistics page with sensor type and area id
-            window.location.href = `statistics.html?area_id=${areaId}&sensor_type=${sensor.type}`;
-          });
 
           document.body.appendChild(modal);
 

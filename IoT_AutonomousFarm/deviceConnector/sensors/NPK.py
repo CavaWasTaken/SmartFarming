@@ -1,4 +1,6 @@
+import math
 import random
+from datetime import datetime
 
 class NPK:
 
@@ -14,132 +16,147 @@ class NPK:
         self.potassiumIncrease = False
         self.potassiumDecrease = False
         
+        # Current state tracking
+        self.current_npk = None  # Store actual current NPK values
+        self.last_update = None
+        self.artificial_offset = {"N": 0.0, "P": 0.0, "K": 0.0}  # Persistent offset from fertilizers
+        
+        # Action parameters for each nutrient
+        self.action_strength = {"N": 8.0, "P": 5.0, "K": 6.0}  # How fast fertilizers add nutrients (mg/kg per minute)
+        self.decay_rate = {"N": 0.15, "P": 0.08, "K": 0.12}     # How fast nutrients are consumed by plants (per minute)
+        
     # grove NPK sensor is the sensor that measures NPK values
-    def getValue(self, elapsed_time):    
-        start_npk = {"N": 150.0, "P": 200.0, "K": 200.0}
-
-        # add some random noise
+    def getValue(self, elapsed_time):
+        current_time = datetime.now()
+        
+        # Initialize if first call
+        if self.current_npk is None or self.last_update is None:
+            self.last_update = current_time
+            # Start with moderate NPK levels (typical agricultural soil)
+            self.current_npk = {
+                "N": 150.0 + random.uniform(-10, 10),  # Nitrogen: varies more
+                "P": 200.0 + random.uniform(-15, 15),  # Phosphorus: more stable
+                "K": 200.0 + random.uniform(-12, 12)   # Potassium: moderate variation
+            }
+            return self.current_npk.copy()
+        
+        # Calculate time elapsed since last update (in minutes)
+        time_delta = (current_time - self.last_update).total_seconds() / 60.0
+        self.last_update = current_time
+        
+        # Calculate natural nutrient depletion (plant consumption)
+        natural_npk = {
+            "N": 150.0,  # Base nitrogen level
+            "P": 200.0,  # Base phosphorus level  
+            "K": 200.0   # Base potassium level
+        }
+        
+        # Different consumption rates for each nutrient
+        consumption_rates = {
+            "N": 0.3,   # Nitrogen consumed fastest (mobile nutrient)
+            "P": 0.1,   # Phosphorus consumed slowly (less mobile)
+            "K": 0.2    # Potassium moderate consumption
+        }
+        
+        # Apply plant consumption over time
+        for nutrient in ["N", "P", "K"]:
+            natural_depletion = consumption_rates[nutrient] * time_delta
+            natural_npk[nutrient] -= natural_depletion
+        
+        # Apply artificial actions (fertilizers)
+        if self.nitrogenIncrease:
+            self.artificial_offset["N"] += self.action_strength["N"] * time_delta
+        elif self.nitrogenDecrease:
+            self.artificial_offset["N"] -= self.action_strength["N"] * time_delta
+            
+        if self.phosphorusIncrease:
+            self.artificial_offset["P"] += self.action_strength["P"] * time_delta
+        elif self.phosphorusDecrease:
+            self.artificial_offset["P"] -= self.action_strength["P"] * time_delta
+            
+        if self.potassiumIncrease:
+            self.artificial_offset["K"] += self.action_strength["K"] * time_delta
+        elif self.potassiumDecrease:
+            self.artificial_offset["K"] -= self.action_strength["K"] * time_delta
+        
+        # Natural decay of artificial effects (nutrient consumption/leaching)
+        for nutrient in ["N", "P", "K"]:
+            if not (getattr(self, f"{nutrient.lower()}{'nitrogen' if nutrient == 'N' else nutrient.lower()}Increase") or 
+                   getattr(self, f"{nutrient.lower()}{'nitrogen' if nutrient == 'N' else nutrient.lower()}Decrease")):
+                if self.artificial_offset[nutrient] > 0:
+                    # Excess nutrients consumed by plants or leached
+                    self.artificial_offset[nutrient] = max(0, self.artificial_offset[nutrient] - 
+                                                          self.decay_rate[nutrient] * time_delta)
+                elif self.artificial_offset[nutrient] < 0:
+                    # Soil slowly recovers nutrients from organic matter decomposition
+                    recovery_rate = self.decay_rate[nutrient] * 0.3
+                    self.artificial_offset[nutrient] = min(0, self.artificial_offset[nutrient] + 
+                                                          recovery_rate * time_delta)
+        
+        # Calculate target NPK levels
+        target_npk = {}
+        for nutrient in ["N", "P", "K"]:
+            target_npk[nutrient] = natural_npk[nutrient] + self.artificial_offset[nutrient]
+        
+        # Soil nutrient availability rate (how fast nutrients become available)
+        availability_rates = {
+            "N": 0.08,  # Nitrogen becomes available quickly
+            "P": 0.04,  # Phosphorus released slowly
+            "K": 0.06   # Potassium moderate availability
+        }
+        
+        # Update current NPK towards target
+        for nutrient in ["N", "P", "K"]:
+            npk_diff = target_npk[nutrient] - self.current_npk[nutrient]
+            self.current_npk[nutrient] += npk_diff * availability_rates[nutrient] * time_delta
+        
+        # Add random noise (sensor fluctuations and soil heterogeneity)
         noise = {
             'N': random.uniform(-2.0, 2.0),
-            'P': random.uniform(-2.0, 2.0),
-            'K': random.uniform(-2.0, 2.0)
+            'P': random.uniform(-1.5, 1.5),
+            'K': random.uniform(-1.8, 1.8)
         }
-        # introduce gradual decrease
-        trend = {
-            'N': -5 * elapsed_time,  # small decrease over time
-            'P': -5 * elapsed_time,  # small decrease over time
-            'K': -5 * elapsed_time   # small decrease over time
-        }
-
-        if self.nitrogenIncrease:
-            trend['N'] += 5
-        elif self.nitrogenDecrease:
-            trend['N'] -= 5
-        if self.phosphorusIncrease:
-            trend['P'] += 5
-        elif self.phosphorusDecrease:
-            trend['P'] -= 5
-        if self.potassiumIncrease:
-            trend['K'] += 5
-        elif self.potassiumDecrease:
-            trend['K'] -= 5
-
-        npk = {}
         
-        # update the current NPK values
-        npk['N'] = start_npk['N'] + noise['N'] + trend['N']
-        npk['P'] = start_npk['P'] + noise['P'] + trend['P']
-        npk['K'] = start_npk['K'] + noise['K'] + trend['K']
-
-        # ensure NPK values stay within realistic bounds (0 to 1000)
-        npk['N'] = max(0.0, min(1000.0, npk['N']))
-        npk['P'] = max(0.0, min(1000.0, npk['P']))
-        npk['K'] = max(0.0, min(1000.0, npk['K']))
-
-        # check if we have a goal for NPK, to know when to stop the action
+        for nutrient in ["N", "P", "K"]:
+            self.current_npk[nutrient] += noise[nutrient]
+        
+        # Ensure NPK values stay within realistic bounds (0 to 1000 mg/kg)
+        self.current_npk['N'] = max(0.0, min(1000.0, self.current_npk['N']))
+        self.current_npk['P'] = max(0.0, min(1000.0, self.current_npk['P']))
+        self.current_npk['K'] = max(0.0, min(1000.0, self.current_npk['K']))
+        
+        # Check if we have reached goals
+        tolerance = {"N": 5.0, "P": 3.0, "K": 4.0}  # Different tolerances for each nutrient
+        
         if self.goalN is not None:
-        
-            # if the command is to increase nitrogen, we check if the current nitrogen has reached the goal
-            if self.nitrogenIncrease:
-        
-                if npk['N'] >= self.goalN:
-                    # stop the action
-                    self.nitrogenIncrease = False
-                    self.goalN = None
-        
-            # if the command is to decrease nitrogen, we check if the current nitrogen has reached the goal
-            elif self.nitrogenDecrease:
-        
-                if npk['N'] <= self.goalN:
-                    # stop the action
-                    self.nitrogenDecrease = False
-                    self.goalN = None
+            if self.nitrogenIncrease and self.current_npk['N'] >= (self.goalN - tolerance["N"]):
+                self.nitrogenIncrease = False
+                self.goalN = None
+            elif self.nitrogenDecrease and self.current_npk['N'] <= (self.goalN + tolerance["N"]):
+                self.nitrogenDecrease = False
+                self.goalN = None
         
         if self.goalP is not None:
-        
-            # if the command is to increase phosphorus, we check if the current phosphorus has reached the goal
-            if self.phosphorusIncrease:
-        
-                if npk['P'] >= self.goalP:
-                    # stop the action
-                    self.phosphorusIncrease = False
-                    self.goalP = None
-        
-            # if the command is to decrease phosphorus, we check if the current phosphorus has reached the goal
-            elif self.phosphorusDecrease:
-        
-                if npk['P'] <= self.goalP:
-                    # stop the action
-                    self.phosphorusDecrease = False
-                    self.goalP = None
+            if self.phosphorusIncrease and self.current_npk['P'] >= (self.goalP - tolerance["P"]):
+                self.phosphorusIncrease = False
+                self.goalP = None
+            elif self.phosphorusDecrease and self.current_npk['P'] <= (self.goalP + tolerance["P"]):
+                self.phosphorusDecrease = False
+                self.goalP = None
         
         if self.goalK is not None:
+            if self.potassiumIncrease and self.current_npk['K'] >= (self.goalK - tolerance["K"]):
+                self.potassiumIncrease = False
+                self.goalK = None
+            elif self.potassiumDecrease and self.current_npk['K'] <= (self.goalK + tolerance["K"]):
+                self.potassiumDecrease = False
+                self.goalK = None
         
-            # if the command is to increase potassium, we check if the current potassium has reached the goal
-            if self.potassiumIncrease:
+        # Round values for realistic sensor precision
+        result = {
+            'N': round(self.current_npk['N'], 1),
+            'P': round(self.current_npk['P'], 1),
+            'K': round(self.current_npk['K'], 1)
+        }
         
-                if npk['K'] >= self.goalK:
-                    # stop the action
-                    self.potassiumIncrease = False
-                    self.goalK = None
-        
-            # if the command is to decrease potassium, we check if the current potassium has reached the goal
-            elif self.potassiumDecrease:
-        
-                if npk['K'] <= self.goalK:
-                    # stop the action
-                    self.potassiumDecrease = False
-                    self.goalK = None
-        
-        return npk
-
-    # start_time = time.time()
-    # starting_hour = datetime.datetime.now().hour
-    # current_npk = {"N": 500.0, "P": 500.0, "K": 500.0}  # default NPK values for the simulation
-
-    # npk_values = []
-    # for i in range(72):
-    #     npk_values.append(get_NPK_Values(current_npk.copy(), i))
-    #     print(f"Hour {(i+starting_hour)%24}: NPK={npk_values[-1]}")
-
-    # plt.figure()
-    # plt.subplot(3, 1, 1)
-    # plt.plot([npk['N'] for npk in npk_values])
-    # plt.title('NPK Nitrogen')
-    # plt.ylabel('N (%)')
-    # plt.xlabel('Time (hours)')
-    # plt.grid()
-    # plt.subplot(3, 1, 2)
-    # plt.plot([npk['P'] for npk in npk_values])
-    # plt.title('NPK Phosphorus')
-    # plt.ylabel('P (%)')
-    # plt.xlabel('Time (hours)')
-    # plt.grid()
-    # plt.subplot(3, 1, 3)
-    # plt.plot([npk['K'] for npk in npk_values])
-    # plt.title('NPK Potassium')
-    # plt.ylabel('K (%)')
-    # plt.xlabel('Time (hours)')
-    # plt.tight_layout()
-    # plt.grid()
-    # plt.show()
+        return result

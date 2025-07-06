@@ -4,6 +4,7 @@ import cherrypy
 from scipy.stats import linregress
 import time
 import os
+import threading  # Add this import
 
 from MqttClient import MqttClient
 
@@ -56,6 +57,12 @@ def checkSensors():
                 for removed_id in old_sensor_ids - new_sensor_ids:
                     removed_sensor = next((s for s in sensors if s["sensor_id"] == removed_id), None)
                     client.unsubscribe(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # unsubscribe from the topic to stop receiving actions for the removed sensor
+                    mqtt_topics.remove(f"greenhouse_{removed_sensor['greenhouse_id']}/area_{removed_sensor['area_id']}/sensor_{removed_id}")  # remove the topic from the list of topics
+                    timestamps.pop(removed_id, None)  # remove the timestamps for the removed sensor
+                    values.pop(removed_id, None)  # remove the values for the removed sensor
+                    mean_value.pop(removed_id, None)  # remove the mean value for the removed sensor
+                    next_timestamp.pop(removed_id, None)  # remove the next timestamp for the removed sensor
+                    next_value.pop(removed_id, None)  # remove the next value for the removed sensor                
 
                 # add topics for new sensors
                 for added_id in new_sensor_ids - old_sensor_ids:
@@ -66,11 +73,21 @@ def checkSensors():
                     mean_value[added_sensor["sensor_id"]] = 0
                     next_timestamp[added_sensor["sensor_id"]] = 0
                     next_value[added_sensor["sensor_id"]] = 0
+                    mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")                    
 
                 sensors = new_sensors  # update the list of sensors
 
     except Exception as e:
         write_log(f"Error checking for updates in the Catalog: {e}")
+
+def periodic_sensor_check():
+    """Function to periodically check for sensor updates"""
+    while True:
+        try:
+            time.sleep(60)  # Check every 60 seconds
+            checkSensors()
+        except Exception as e:
+            write_log(f"Error in periodic sensor check: {e}")
 
 global N   # N is the number of values to keep track of
 
@@ -170,8 +187,6 @@ def on_message(client, userdata, msg):
                     # extract from the topic the area_id and the sensor_id
                     area_id = int(topic.split("/")[1].split("_")[1])
                     sensor_id = int(topic.split("/")[2].split("_")[1])
-
-                    checkSensors()  # check if the sensors list has been updated
 
                     handle_message(topic, sensor_type, val, timestamp, area_id, sensor_id)  # call the function to handle the message
                     
@@ -430,3 +445,16 @@ if __name__ == "__main__":
                     write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
                 else:
                     time.sleep(60)  # wait for 60 seconds before trying again
+
+    # start the periodic sensor checking thread
+    sensor_check_thread = threading.Thread(target=periodic_sensor_check, daemon=True)
+    sensor_check_thread.start()
+    write_log("Started periodic sensor checking thread")
+
+    # Keep the main thread alive
+    try:
+        cherrypy.engine.block()
+    except KeyboardInterrupt:
+        write_log("Shutting down...")
+        client.stop()
+        cherrypy.engine.exit()

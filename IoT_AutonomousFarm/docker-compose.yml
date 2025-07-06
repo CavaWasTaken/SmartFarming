@@ -17,6 +17,23 @@ services:
       timeout: 5s
       retries: 5
   
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_broker
+    ports:
+      - "1883:1883"    # MQTT port
+      - "9001:9001"    # WebSocket port (optional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mosquitto_pub -h localhost -t test -m 'health-check' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   catalog:
     build: ./catalog
     container_name: catalog_service
@@ -36,6 +53,8 @@ services:
     depends_on:
       catalog:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -49,6 +68,8 @@ services:
         condition: service_started
       deviceconnector:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -62,6 +83,8 @@ services:
         condition: service_started
       deviceconnector:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -75,6 +98,8 @@ services:
         condition: service_started
       deviceconnector:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -88,6 +113,8 @@ services:
         condition: service_started
       deviceconnector:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -101,6 +128,8 @@ services:
         condition: service_started
       deviceconnector:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -114,6 +143,8 @@ services:
         condition: service_started
       deviceconnector:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 
@@ -125,6 +156,8 @@ services:
     depends_on:
       catalog:
         condition: service_started
+      mosquitto:
+        condition: service_healthy
       db:
         condition: service_healthy
 

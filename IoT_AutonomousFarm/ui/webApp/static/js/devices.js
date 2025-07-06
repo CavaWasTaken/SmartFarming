@@ -104,6 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
         }
+        if(device.name === "TimeShift") {
+          extraContent = `
+            <div class="time-shift-section">
+              <button id="manageSchedulingBtn" class="manage-scheduling-btn">Manage Scheduling</button>
+            </div>
+          `;
+        }
 
         card.innerHTML = `
           <div class="card-img">
@@ -124,6 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         dashboardCards.appendChild(card);
+      });
+
+      // Add event listener for scheduling button
+      document.getElementById('manageSchedulingBtn').addEventListener('click', () => {
+        window.location.href = `scheduling.html?greenhouse_id=${encodeURIComponent(greenhouseId)}`;
       });
 
       fetch("./json/WebApp_config.json")

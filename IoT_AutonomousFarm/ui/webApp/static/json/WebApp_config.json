@@ -3,6 +3,6 @@
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,
-        "mqtt_broker": "mqtt.eclipseprojects.io"
+        "mqtt_broker": "mosquitto"
     }
 }

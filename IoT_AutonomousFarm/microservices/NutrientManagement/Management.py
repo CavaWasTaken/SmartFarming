@@ -4,7 +4,7 @@ import requests
 def Severity(distance, domain):
     max = domain["max"]
     min = domain["min"]
-    severity = distance / max - min
+    severity = distance / (max - min)
     return severity
     
 # function that checks if the value is in the accepted range
@@ -12,7 +12,7 @@ def isInside(min_treshold, val, max_treshold):
     return float(min_treshold) <= float(val) <= float(max_treshold)
     
 # function that checks if an action is needed, and updates the user
-def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction):
+def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, timestamp, min_treshold, max_treshold, expected_value, domains, write_log, sendTelegramMessage, sendAction):
 
     # get the value that we expect from that sensor in the next reading
     response = requests.get(f"{dataAnalysis_url}/get_next_value", params={'sensor_id': sensor_id, 'sensor_type': sensor_type, 'timestamp': timestamp})    # get the expected value from the data analysis
@@ -24,21 +24,21 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
         else:   # if the response is None, we consider the prediction lost
             write_log(f"WARNING: Failed to get the next expected value of {sensor_type} (sensor_{sensor_id})")
             sendTelegramMessage(
-                f"⚠️ *Failed to predict the next value!*\n\n"
-                f"*Sensor Type:* {sensor_type}\n"
-                f"*Sensor ID:* {sensor_id}\n"
+                f"⚠️ **Failed to predict the next value!**\n\n"
+                f"**Sensor Type:** {sensor_type}\n"
+                f"**Sensor ID:** {sensor_id}\n"
                 "The next expected value of the sensor is not available. This may be due to a lack of data or a problem with the Data Analysis component.\n"
-            )
+            , area_name)
             return  # terminate the function
 
     else:   # if the request fails, we consider the prediction lost
         write_log(f"WARNING: A problem with DataAnalysis component occured while getting the next expected value of {sensor_type} (sensor_{sensor_id})\t(Response: {response.reason})")
         sendTelegramMessage(
-            f"⚠️ *Data Analysis error!*\n\n"
-            f"*Sensor Type:* {sensor_type}\n"
-            f"*Sensor ID:* {sensor_id}\n"
+            f"⚠️ **Data Analysis error!**\n\n"
+            f"**Sensor Type:** {sensor_type}\n"
+            f"**Sensor ID:** {sensor_id}\n"
             "Data Analysis component is not responding correctly. The next expected value of the sensor is not available.\n"
-        )        
+        , area_name)
         return
 
     # starts to perform decision making after two values are received from the sensor
@@ -54,12 +54,13 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
 
             if (abs(nutrient_val - expected_nutrient_val) / abs(expected_nutrient_val)) > 0.5:    # if the value was unexpected, alert the user and wait for the next value
                 write_log(f"WARNING: The measured value {nutrient_val} {unit} of {sensor_type} - {nutrient} (sensor_{sensor_id}) is unexpected. (Expected value was {expected_nutrient_val} {unit})\tWaiting to receive another value")   # ALERT TO BE SENT TO THE UI
-                sendTelegramMessage(f"⚠️ *Unexpected Value!*\n\n"
-                                    f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                    f"*Sensor ID:* {sensor_id}\n"
-                                    f"*Measured Value:* {nutrient_val} {unit}\n"
-                                    f"*Expected Value:* {expected_nutrient_val} {unit}\n"
-                                    f"Waiting to receive another value...")
+                sendTelegramMessage(f"⚠️ **Unexpected Value!**\n\n"
+                                    f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                    f"**Sensor ID:** {sensor_id}\n"
+                                    f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                    f"**Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
+                                    f"Waiting to receive another value..."
+                , area_name)
 
             else:   # if the value was expected
                 if not isInside(min_treshold[nutrient], nutrient_val, max_treshold[nutrient]):  # if the value is outside the range of accepted values, alert the user
@@ -82,21 +83,21 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
                             action = "increase"
 
                         write_log(f"WARNING: The measured value {nutrient_val} {unit} of {sensor_type} - {nutrient} (sensor_{sensor_id}) is highly outside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}] (Severity: {severity}).\nAction needed to {action} the value")  # ALERT TO BE SENT TO THE UI
-                        sendTelegramMessage(f"⚠️ *Action Needed for Value!*\n\n"
-                                            f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                            f"*Sensor ID:* {sensor_id}\n"
-                                            f"*Measured Value:* {nutrient_val} {unit}\n"
-                                            f"*Range:* [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n"
-                                            f"*Action:* {action}"
-                                            f"The measured value is far from the desired range.")
+                        sendTelegramMessage(f"⚠️ **Action Needed for Value!**\n\n"
+                                            f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                            f"**Sensor ID:** {sensor_id}\n"
+                                            f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                            f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
+                                            f"**Action:** {action}"
+                                            f"The measured value is far from the desired range."
+                        , area_name)
 
                         sendAction({
                             "action": action,
                             "val": nutrient_val,
                             "min_treshold": min_treshold[nutrient],
                             "max_treshold": max_treshold[nutrient],
-                            "nutrient": nutrient
-                        })
+                        }, nutrient)   # send the action to the device connector
 
                     else:   # if the severity isn't high enough, or if is it None, check if the next expected value is in the range
                         if not isInside(min_treshold[nutrient], expected_nutrient_val, max_treshold[nutrient]):    # if the expected value is outside the range, action is needed
@@ -106,34 +107,33 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
                                 action = f"increase"
 
                             write_log(f"WARNING: The measured value {nutrient_val} {unit} and the next expected one {expected_nutrient_val} {unit} of {sensor_type} - {nutrient} (sensor_{sensor_id}) are outside the range.\nAction needed to {action} the value")   # ALERT TO BE SENT TO THE UI
-                            sendTelegramMessage(f"⚠️ *Action Needed for Value!*\n\n"
-                                                f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                                f"*Sensor ID:* {sensor_id}\n"
-                                                f"*Measured Value:* {nutrient_val} {unit}\n"
-                                                f"*Next Expected Value:* {expected_nutrient_val} {unit}\n"
-                                                f"*Range:* [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n"
-                                                f"*Action:* {action}"
+                            sendTelegramMessage(f"⚠️ **Action Needed for Value!**\n\n"
+                                                f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                                f"**Sensor ID:** {sensor_id}\n"
+                                                f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                                f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
+                                                f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
+                                                f"**Action:** {action}"
                                                 f"Both the measured value and the next expected value are outside the desired range. Corrective action is needed."
-                                            )        
+                            , area_name)  
 
                             sendAction({
                                 "action": action,
                                 "val": nutrient_val,
                                 "min_treshold": min_treshold[nutrient],
                                 "max_treshold": max_treshold[nutrient],
-                                "nutrient": nutrient
-                            })
+                            }, nutrient)
                         
                         else:
                             sendTelegramMessage(
-                                f"ℹ️ *No Action Needed for Value!*\n\n"
-                                f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                f"*Sensor ID:* {sensor_id}\n"
-                                f"*Measured Value:* {nutrient_val} {unit}\n"
-                                f"*Next Expected Value:* {expected_nutrient_val} {unit}\n"
-                                f"*Range:* [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n"
+                                f"ℹ️ **No Action Needed for Value!**\n\n"
+                                f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                f"**Sensor ID:** {sensor_id}\n"
+                                f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
+                                f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
                                 "The measured value is currently outside the desired range, but the next expected value is predicted to return within the range. No action is needed at this time."
-                            )
+                            , area_name)
 
                 else:   # if the value is inside the range, check if the value is expected to go far from the range
                     if not isInside(min_treshold[nutrient], expected_nutrient_val, max_treshold[nutrient]):    # check if the next expected value is outside the range, and measure the distance from the range
@@ -156,41 +156,43 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
 
                             # take preventive action by following the expected severity
                             write_log(f"WARNING: The measured value {nutrient_val} {unit} is inside the range, but the next expected value {expected_nutrient_val} {unit} of {sensor_type} - {nutrient} (sensor_{sensor_id}) is predicted to be far from the range.\nPreventine action needed to {action} the value")    # ALERT TO BE SENT TO THE UI
-                            sendTelegramMessage(f"⚠️ *Preventive Action Needed for Value!*\n\n"
-                                                f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                                f"*Sensor ID:* {sensor_id}\n"
-                                                f"*Measured Value:* {nutrient_val} {unit}\n"
-                                                f"*Next Expected Value:* {expected_nutrient_val} {unit}\n"
-                                                f"*Range:* [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n"
-                                                f"*Action:* {action}"
-                                                f"The next expected value is predicted to be far from the desired range.")
+                            sendTelegramMessage(f"⚠️ **Preventive Action Needed for Value!**\n\n"
+                                                f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                                f"**Sensor ID:** {sensor_id}\n"
+                                                f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                                f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
+                                                f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
+                                                f"**Action:** {action}"
+                                                f"The next expected value is predicted to be far from the desired range."
+                            , area_name)
 
                             sendAction({
                                 "action": action,
                                 "val": nutrient_val,
                                 "min_treshold": min_treshold[nutrient],
                                 "max_treshold": max_treshold[nutrient],
-                                "nutrient": nutrient
-                            })
+                            }, nutrient)
 
                         else:
-                            sendTelegramMessage(f"ℹ️ *No Action Needed for Value!*\n\n"
-                                                f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                                f"*Sensor ID:* {sensor_id}\n"
-                                                f"*Measured Value:* {nutrient_val} {unit}\n"
-                                                f"*Next Expected Value:* {expected_nutrient_val} {unit}\n"
-                                                f"*Range:* [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n"
-                                                "The measured value is inside the desired range, but the next expected value is predicted to go slightly outside the range. Wait to see the next value before taking any action.")
+                            sendTelegramMessage(f"ℹ️ **No Action Needed for Value!**\n\n"
+                                                f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                                f"**Sensor ID:** {sensor_id}\n"
+                                                f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                                f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
+                                                f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
+                                                "The measured value is inside the desired range, but the next expected value is predicted to go slightly outside the range. Wait to see the next value before taking any action."
+                            , area_name)
 
                     else:   # if the next expected value is inside the range
                         write_log(f"The measured value ({nutrient_val} {unit}) and the next prediction ({expected_nutrient_val} {unit}) of {sensor_type} - {nutrient} (sensor_{sensor_id}) are inside the range [{min_treshold[nutrient]}, {max_treshold[nutrient]}]")    # THIS INFO CAN BE SENT TO THE UI
-                        sendTelegramMessage(f"ℹ️ *Value Within Range!*\n\n"
-                                            f"*Sensor Type:* {sensor_type} - {nutrient}\n"
-                                            f"*Sensor ID:* {sensor_id}\n"
-                                            f"*Measured Value:* {nutrient_val} {unit}\n"
-                                            f"*Next Expected Value:* {expected_nutrient_val} {unit}\n"
-                                            f"*Range:* [{min_treshold[nutrient]}, {max_treshold[nutrient]}]\n"
-                                            "Both the measured value and the next expected value are within the desired range. No action is needed at this time.")
+                        sendTelegramMessage(f"ℹ️ **Value Within Range!**\n\n"
+                                            f"**Sensor Type:** {sensor_type} - {nutrient}\n"
+                                            f"**Sensor ID:** {sensor_id}\n"
+                                            f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
+                                            f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
+                                            f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
+                                            "Both the measured value and the next expected value are within the desired range. No action is needed at this time."
+                        , area_name)
                         
             expected_value[sensor_id][nutrient] = expected_nutrient_val   # update the next expected value
 
@@ -198,12 +200,13 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
         # we use the previous expected value to check if the measured value is unexpected
         if (abs(val - expected_value[sensor_id]) / abs(expected_value[sensor_id])) > 0.5:    # if the value was unexpected, alert the user and wait for the next value
             write_log(f"WARNING: The measured value {val} {unit} of {sensor_type} (sensor_{sensor_id}) is unexpected. (Expected value was {expected_val} {unit})\tWaiting to receive another value")   # ALERT TO BE SENT TO THE UI
-            sendTelegramMessage(f"⚠️ *Unexpected Value!*\n\n"
-                                f"*Sensor Type:* {sensor_type}\n"
-                                f"*Sensor ID:* {sensor_id}\n"
-                                f"*Measured Value:* {val} {unit}\n"
-                                f"*Expected Value:* {expected_val} {unit}\n"
-                                "Waiting to receive another value...")
+            sendTelegramMessage(f"⚠️ **Unexpected Value!**\n\n"
+                                f"**Sensor Type:** {sensor_type}\n"
+                                f"**Sensor ID:** {sensor_id}\n"
+                                f"**Measured Value:** {val:.2f} {unit}\n"
+                                f"**Expected Value:** {expected_val:.2f} {unit}\n"
+                                "Waiting to receive another value..."
+            , area_name)
 
         else:   # if the value was expected
             if not isInside(min_treshold, val, max_treshold):  # if the value is outside the range of accepted values, alert the user
@@ -226,20 +229,21 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
                         action = "increase"
 
                     write_log(f"WARNING: The measured value {val} {unit} of {sensor_type} (sensor_{sensor_id}) is highly outside the range [{min_treshold}, {max_treshold}] (Severity: {severity}).\nAction needed to {action} the value")  # ALERT TO BE SENT TO THE UI
-                    sendTelegramMessage(f"⚠️ *Action Needed!*\n\n"
-                                        f"*Sensor Type:* {sensor_type}\n"
-                                        f"*Sensor ID:* {sensor_id}\n"
-                                        f"*Measured Value:* {val} {unit}\n"
-                                        f"*Range:* [{min_treshold}, {max_treshold}]\n"
-                                        f"*Action:* {action}"
-                                        f"The measured value is far from the desired range.")
+                    sendTelegramMessage(f"⚠️ **Action Needed!**\n\n"
+                                        f"**Sensor Type:** {sensor_type}\n"
+                                        f"**Sensor ID:** {sensor_id}\n"
+                                        f"**Measured Value:** {val:.2f} {unit}\n"
+                                        f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
+                                        f"**Action:** {action}"
+                                        f"The measured value is far from the desired range."
+                    , area_name)
 
                     sendAction({
                         "action": action,
                         "val": val,
                         "min_treshold": min_treshold,
                         "max_treshold": max_treshold
-                    })
+                    }, sensor_type)
 
                 else:   # if the severity isn't high enough, or if is it None, check if the next expected value is in the range
                     if not isInside(min_treshold, expected_val, max_treshold):    # if the expected value is outside the range, action is needed                                    
@@ -249,31 +253,32 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
                             action = "increase"
 
                         write_log(f"WARNING: The measured value {val} {unit} and the next expected one {expected_val} {unit} of sensor_{sensor_id} ({sensor_type}) are outside the range [{min_treshold}, {max_treshold}].\nAction needed to {action} the value")   # ALERT TO BE SENT TO THE UI
-                        sendTelegramMessage(f"⚠️ *Action Needed for Value!*\n\n"
-                                            f"*Sensor Type:* {sensor_type}\n"
-                                            f"*Sensor ID:* {sensor_id}\n"
-                                            f"*Measured Value:* {val} {unit}\n"
-                                            f"*Next Expected Value:* {expected_val} {unit}\n"
-                                            f"*Range:* [{min_treshold}, {max_treshold}]\n"
-                                            f"*Action:* {action}"
+                        sendTelegramMessage(f"⚠️ **Action Needed for Value!**\n\n"
+                                            f"**Sensor Type:** {sensor_type}\n"
+                                            f"**Sensor ID:** {sensor_id}\n"
+                                            f"**Measured Value:** {val:.2f} {unit}\n"
+                                            f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
+                                            f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
+                                            f"**Action:** {action}"
                                             f"Both the measured value and the next expected value are outside the desired range. Corrective action is needed."
-                                        )
+                        , area_name)
 
                         sendAction({
                             "action": action,
                             "val": val,
                             "min_treshold": min_treshold,
                             "max_treshold": max_treshold
-                        })
+                        }, sensor_type)
 
                     else:
-                        sendTelegramMessage(f"ℹ️ *No Action Needed for Value!*\n\n"
-                                            f"*Sensor Type:* {sensor_type}\n"
-                                            f"*Sensor ID:* {sensor_id}\n"
-                                            f"*Measured Value:* {val} {unit}\n"
-                                            f"*Next Expected Value:* {expected_val} {unit}\n"
-                                            f"*Range:* [{min_treshold}, {max_treshold}]\n"
-                                            "The measured value is currently outside the desired range, but the next expected value is predicted to return within the range. No action is needed at this time.")
+                        sendTelegramMessage(f"ℹ️ **No Action Needed for Value!**\n\n"
+                                            f"**Sensor Type:** {sensor_type}\n"
+                                            f"**Sensor ID:** {sensor_id}\n"
+                                            f"**Measured Value:** {val:.2f} {unit}\n"
+                                            f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
+                                            f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
+                                            "The measured value is currently outside the desired range, but the next expected value is predicted to return within the range. No action is needed at this time."
+                        , area_name)
 
 
             else:   # if the value is inside the range
@@ -297,39 +302,42 @@ def checkValue(dataAnalysis_url, sensor_id, sensor_type, val, unit, timestamp, m
                             action = "increase"
 
                         write_log(f"WARNING: The measured value {val} {unit} is inside the range, but the next expected value {expected_val} {unit} of sensor_{sensor_id} ({sensor_type}) is predicted to be far from the range.\nPreventine action needed to {action} the value")    # ALERT TO BE SENT TO THE UI
-                        sendTelegramMessage(f"⚠️ *Preventive Action Needed for Value!*\n\n"
-                                            f"*Sensor Type:* {sensor_type}\n"
-                                            f"*Sensor ID:* {sensor_id}\n"
-                                            f"*Measured Value:* {val} {unit}\n"
-                                            f"*Next Expected Value:* {expected_val} {unit}\n"
-                                            f"*Range:* [{min_treshold}, {max_treshold}]\n"
-                                            f"*Action:* {action}"
-                                            f"The next expected value is predicted to be far from the desired range.")
+                        sendTelegramMessage(f"⚠️ **Preventive Action Needed for Value!**\n\n"
+                                            f"**Sensor Type:** {sensor_type}\n"
+                                            f"**Sensor ID:** {sensor_id}\n"
+                                            f"**Measured Value:** {val:.2f} {unit}\n"
+                                            f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
+                                            f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
+                                            f"**Action:** {action}"
+                                            f"The next expected value is predicted to be far from the desired range."
+                        , area_name)
 
                         sendAction({
                             "action": action,
                             "val": val,
                             "min_treshold": min_treshold,
                             "max_treshold": max_treshold
-                        })
+                        }, sensor_type)
 
                     else:
-                        sendTelegramMessage(f"ℹ️ *No Action Needed for Value!*\n\n"
-                                            f"*Sensor Type:* {sensor_type}\n"
-                                            f"*Sensor ID:* {sensor_id}\n"
-                                            f"*Measured Value:* {val} {unit}\n"
-                                            f"*Next Expected Value:* {expected_val} {unit}\n"
-                                            f"*Range:* [{min_treshold}, {max_treshold}]\n"
-                                            "The measured value is inside the desired range, but the next expected value is predicted to go slightly outside the range. Wait to see the next value before taking any action.")
+                        sendTelegramMessage(f"ℹ️ **No Action Needed for Value!**\n\n"
+                                            f"**Sensor Type:** {sensor_type}\n"
+                                            f"**Sensor ID:** {sensor_id}\n"
+                                            f"**Measured Value:** {val:.2f} {unit}\n"
+                                            f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
+                                            f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
+                                            "The measured value is inside the desired range, but the next expected value is predicted to go slightly outside the range. Wait to see the next value before taking any action."
+                        , area_name)
 
                 else:   # if the next expected value is inside the range
                     write_log(f"The measured value ({val} {unit}) and the next prediction ({expected_val} {unit}) of sensor_{sensor_id} ({sensor_type}) are inside the range [{min_treshold}, {max_treshold}]")
-                    sendTelegramMessage(f"ℹ️ *Value Within Range!*\n\n"
-                                        f"*Sensor Type:* {sensor_type}\n"
-                                        f"*Sensor ID:* {sensor_id}\n"
-                                        f"*Measured Value:* {val} {unit}\n"
-                                        f"*Next Expected Value:* {expected_val} {unit}\n"
-                                        f"*Range:* [{min_treshold}, {max_treshold}]\n"
-                                        "Both the measured value and the next expected value are within the desired range. No action is needed at this time.")
+                    sendTelegramMessage(f"ℹ️ **Value Within Range!**\n\n"
+                                        f"**Sensor Type:** {sensor_type}\n"
+                                        f"**Sensor ID:** {sensor_id}\n"
+                                        f"**Measured Value:** {val:.2f} {unit}\n"
+                                        f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
+                                        f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
+                                        "Both the measured value and the next expected value are within the desired range. No action is needed at this time."
+                    , area_name)
 
         expected_value[sensor_id] = expected_val   # update the next expected value

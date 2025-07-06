@@ -1,44 +1,48 @@
 Received device id: 76
-Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
+Received 4 sensors: [{'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 70, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 25, 'min': 20}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
 Received greenhouse location: Torino
-Error starting MQTT client: timed out
-Trying again in 60 seconds...
+Connected to mosquitto with result code 0
 
+Subscribed to greenhouse_28/area_22/action/sensor_11
+Subscribed to greenhouse_28/area_23/action/sensor_12
+Subscribed to greenhouse_28/area_23/action/sensor_13
 Subscribed to greenhouse_28/area_22/action/sensor_10
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.721029941737104, "u": "\u00b0C", "t": 0}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.00551718222137, "u": "%", "t": 0}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 40.00551718222137, "u": "%", "t": 0}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 145.91034973877905, "P": 198.84926782466198, "K": 199.2231501939711}, "u": "mg/kg", "t": 0}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 6.224699657612847, "u": "\u00b0C", "t": 0}}
 
-Connected to broker.hivemq.com with result code 0
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.30870367007138, "u": "\u00b0C", "t": 20}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.73, "u": "%", "t": 60}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 39.97, "u": "%", "t": 60}}
+Error reading value from sensor NPK Sensor: 'NPK' object has no attribute 'nnitrogenIncrease'
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 6.39, "u": "\u00b0C", "t": 60}}
 
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.05867382357884, "u": "\u00b0C", "t": 40}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.52, "u": "%", "t": 120}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 40.29, "u": "%", "t": 120}}
+Error reading value from sensor NPK Sensor: 'NPK' object has no attribute 'nnitrogenIncrease'
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 6.62, "u": "\u00b0C", "t": 120}}
 
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.370890358755457, "u": "\u00b0C", "t": 60}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.62, "u": "%", "t": 180}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 39.48, "u": "%", "t": 180}}
+Error reading value from sensor NPK Sensor: 'NPK' object has no attribute 'nnitrogenIncrease'
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 7.0, "u": "\u00b0C", "t": 180}}
 
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.66650018718564, "u": "\u00b0C", "t": 80}}
+Received action: {'message': {'action': 'increase', 'val': 7.0, 'min_treshold': 20, 'max_treshold': 25}, 'parameter': 'Temperature', 'timestamp': 180}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.26, "u": "%", "t": 240}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 39.34, "u": "%", "t": 240}}
+Error reading value from sensor NPK Sensor: 'NPK' object has no attribute 'nnitrogenIncrease'
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 6.56, "u": "\u00b0C", "t": 240}}
 
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.97405435763929, "u": "\u00b0C", "t": 100}}
+Received action: {'message': {'action': 'increase', 'val': 6.56, 'min_treshold': 20, 'max_treshold': 25}, 'parameter': 'Temperature', 'timestamp': 240}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.64, "u": "%", "t": 300}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 39.93, "u": "%", "t": 300}}
+Error reading value from sensor NPK Sensor: 'NPK' object has no attribute 'nnitrogenIncrease'
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 6.85, "u": "\u00b0C", "t": 300}}
 
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.499964750090474, "u": "\u00b0C", "t": 120}}
+Received action: {'message': {'action': 'increase', 'val': 6.85, 'min_treshold': 20, 'max_treshold': 25}, 'parameter': 'Temperature', 'timestamp': 300}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 40.88, "u": "%", "t": 360}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 39.41, "u": "%", "t": 360}}
+Error reading value from sensor NPK Sensor: 'NPK' object has no attribute 'nnitrogenIncrease'
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 6.81, "u": "\u00b0C", "t": 360}}
 
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.343294819197908, "u": "\u00b0C", "t": 140}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.42997155859379, "u": "\u00b0C", "t": 160}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.911003229693943, "u": "\u00b0C", "t": 180}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.20757181419983, "u": "\u00b0C", "t": 200}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.752430800116866, "u": "\u00b0C", "t": 220}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.011263990316962, "u": "\u00b0C", "t": 240}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.060412301016388, "u": "\u00b0C", "t": 260}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.24148554706482, "u": "\u00b0C", "t": 280}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.80921355621033, "u": "\u00b0C", "t": 300}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.713268914198746, "u": "\u00b0C", "t": 320}}
-
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.365428233602263, "u": "\u00b0C", "t": 340}}
-
+Received action: {'message': {'action': 'increase', 'val': 6.81, 'min_treshold': 20, 'max_treshold': 25}, 'parameter': 'Temperature', 'timestamp': 360}

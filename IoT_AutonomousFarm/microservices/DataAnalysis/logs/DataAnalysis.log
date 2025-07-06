@@ -1,129 +1,195 @@
 Device ID: 80
-Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
+Received 4 sensors: [{'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 70, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 25, 'min': 20}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
 
-Error starting MQTT client: timed out
-Trying again in 60 seconds...
+Connected to mosquitto with result code 0
+Subscribed to greenhouse_28/area_22/sensor_11
+Subscribed to greenhouse_28/area_23/sensor_12
+Subscribed to greenhouse_28/area_23/sensor_13
 Subscribed to greenhouse_28/area_22/sensor_10
-Connected to broker.hivemq.com with result code 0
+Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.30870367007138, 'u': '°C', 't': 20}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.73, 'u': '%', 't': 60}}
 Not enough data to calculate the linear regression
-Sensor 10: Weighted mean Temperature: 22.30870367007138
+Sensor 11: Weighted mean Humidity: 40.73
+Sensor 11: Expected next timestamp of Humidity: None
+Sensor 11: Expected next value of Humidity: None
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.97, 'u': '%', 't': 60}}
+Not enough data to calculate the linear regression
+Sensor 12: Weighted mean Humidity: 39.97
+Sensor 12: Expected next timestamp of Humidity: None
+Sensor 12: Expected next value of Humidity: None
+Received request for the next timestamp of sensor_11 (Humidity) at timestamp 60
+The requested next timestamp of sensor_11 (Humidity) at timestamp 60 is ready (None)
+Received request for the next timestamp of sensor_10 (Temperature) at timestamp 60
+The requested next timestamp of sensor_10 (Temperature) at timestamp 60 cannot be evaluated, wait to receive more values
+Received request for next value of sensor_11 (Humidity) at timestamp 60
+The requested next value of sensor_11 (Humidity) at timestamp 60 is ready (None)
+
+Received request for next value of sensor_10 (Temperature) at timestamp 60
+The requested next timestamp of sensor_10 (Temperature) at timestamp 60 cannot be evaluated, wait to receive more values
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 6.39, 'u': '°C', 't': 60}}
+Not enough data to calculate the linear regression
+Sensor 10: Weighted mean Temperature: 6.39
 Sensor 10: Expected next timestamp of Temperature: None
 Sensor 10: Expected next value of Temperature: None
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 20
-The requested next timestamp of sensor_10 (Temperature) at timestamp 20 is ready (None)
+Received request for the next timestamp of sensor_12 (Humidity) at timestamp 60
+The requested next timestamp of sensor_12 (Humidity) at timestamp 60 is ready (None)
+Received request for next value of sensor_12 (Humidity) at timestamp 60
+The requested next value of sensor_12 (Humidity) at timestamp 60 is ready (None)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.05867382357884, 'u': '°C', 't': 40}}
-Sensor 10: Weighted mean Temperature: 22.808683772409683
-Sensor 10: Expected next timestamp of Temperature: 60.0
-Sensor 10: Expected next value of Temperature: 23.8086439770863
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 40
-The requested next timestamp of sensor_10 (Temperature) at timestamp 40 is ready (60.0)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.370890358755457, 'u': '°C', 't': 60}}
-Sensor 10: Weighted mean Temperature: 22.58978706558257
-Sensor 10: Expected next timestamp of Temperature: 80.0
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 60
-Sensor 10: Expected next value of Temperature: 22.64160930615264
-The requested next timestamp of sensor_10 (Temperature) at timestamp 60 is ready (80.0)
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.52, 'u': '%', 't': 120}}
+Sensor 11: Weighted mean Humidity: 40.59
+Sensor 11: Expected next timestamp of Humidity: 180.0
+Sensor 11: Expected next value of Humidity: 40.31000000000001
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.66650018718564, 'u': '°C', 't': 80}}
-Sensor 10: Weighted mean Temperature: 23.0204723142238
-Sensor 10: Expected next timestamp of Temperature: 100.0
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 80
-The requested next timestamp of sensor_10 (Temperature) at timestamp 80 is ready (100.0)
-Sensor 10: Expected next value of Temperature: 23.697593531527676
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 40.29, 'u': '%', 't': 120}}
+Sensor 12: Weighted mean Humidity: 40.18333333333333
+Sensor 12: Expected next timestamp of Humidity: 180.0
+Sensor 12: Expected next value of Humidity: 40.60999999999999
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.97405435763929, 'u': '°C', 't': 100}}
-Sensor 10: Weighted mean Temperature: 23.00499966202896
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 100
-Sensor 10: Expected next timestamp of Temperature: 120.0
-The requested next timestamp of sensor_10 (Temperature) at timestamp 100 is ready (120.0)
-Sensor 10: Expected next value of Temperature: 23.457322801068905
-
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.499964750090474, 'u': '°C', 't': 120}}
-Sensor 10: Weighted mean Temperature: 22.86070397290368
-Sensor 10: Expected next timestamp of Temperature: 140.0
-Sensor 10: Expected next value of Temperature: 23.01293687429088
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 120
-The requested next timestamp of sensor_10 (Temperature) at timestamp 120 is ready (140.0)
-
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.343294819197908, 'u': '°C', 't': 140}}
-Sensor 10: Weighted mean Temperature: 22.981351684477236
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 140
-Sensor 10: Expected next timestamp of Temperature: 160.0
-Sensor 10: Expected next value of Temperature: 23.258800180829382
-The requested next timestamp of sensor_10 (Temperature) at timestamp 140 is ready (160.0)
-
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.42997155859379, 'u': '°C', 't': 160}}
-Sensor 10: Weighted mean Temperature: 23.08104498983647
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 6.62, 'u': '°C', 't': 120}}
+Sensor 10: Weighted mean Temperature: 6.543333333333333
 Sensor 10: Expected next timestamp of Temperature: 180.0
-Sensor 10: Expected next value of Temperature: 23.436868701828963
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 160
-The requested next timestamp of sensor_10 (Temperature) at timestamp 160 is ready (180.0)
+Sensor 10: Expected next value of Temperature: 6.8500000000000005
+Received request for the next timestamp of sensor_11 (Humidity) at timestamp 120
+The requested next timestamp of sensor_11 (Humidity) at timestamp 120 is ready (180.0)
+Received request for the next timestamp of sensor_10 (Temperature) at timestamp 120
+The requested next timestamp of sensor_10 (Temperature) at timestamp 120 is ready (180.0)
+Received request for next value of sensor_11 (Humidity) at timestamp 120
+The requested next value of sensor_11 (Humidity) at timestamp 120 is ready (40.31000000000001)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.911003229693943, 'u': '°C', 't': 180}}
-Sensor 10: Weighted mean Temperature: 23.047036637807963
-Sensor 10: Expected next timestamp of Temperature: 200.0
-Sensor 10: Expected next value of Temperature: 23.30989782781115
+Received request for next value of sensor_10 (Temperature) at timestamp 120
+The requested next value of sensor_10 (Temperature) at timestamp 120 is ready (6.8500000000000005)
+
+Received request for the next timestamp of sensor_12 (Humidity) at timestamp 120
+The requested next timestamp of sensor_12 (Humidity) at timestamp 120 is ready (180.0)
+Received request for next value of sensor_12 (Humidity) at timestamp 120
+The requested next value of sensor_12 (Humidity) at timestamp 120 is ready (40.60999999999999)
+
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.62, 'u': '%', 't': 180}}
+Sensor 11: Weighted mean Humidity: 40.605
+Sensor 11: Expected next timestamp of Humidity: 240.0
+Sensor 11: Expected next value of Humidity: 40.513333333333335
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.48, 'u': '%', 't': 180}}
+Sensor 12: Weighted mean Humidity: 39.83166666666667
+Sensor 12: Expected next timestamp of Humidity: 240.0
+Sensor 12: Expected next value of Humidity: 39.423333333333325
+Received request for the next timestamp of sensor_11 (Humidity) at timestamp 180
+The requested next timestamp of sensor_11 (Humidity) at timestamp 180 is ready (240.0)
+Received request for next value of sensor_11 (Humidity) at timestamp 180
+The requested next value of sensor_11 (Humidity) at timestamp 180 is ready (40.513333333333335)
+
 Received request for the next timestamp of sensor_10 (Temperature) at timestamp 180
-The requested next timestamp of sensor_10 (Temperature) at timestamp 180 is ready (200.0)
+The requested next timestamp of sensor_10 (Temperature) at timestamp 180 is not yet ready
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.20757181419983, 'u': '°C', 't': 200}}
-Sensor 10: Weighted mean Temperature: 23.258043033515577
-Sensor 10: Expected next timestamp of Temperature: 220.0
-Sensor 10: Expected next value of Temperature: 23.740656837822037
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 200
-The requested next timestamp of sensor_10 (Temperature) at timestamp 200 is ready (220.0)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.752430800116866, 'u': '°C', 't': 220}}
-Sensor 10: Weighted mean Temperature: 23.199019023191255
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 7.0, 'u': '°C', 't': 180}}
+Sensor 10: Weighted mean Temperature: 6.771666666666666
 Sensor 10: Expected next timestamp of Temperature: 240.0
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 220
-Sensor 10: Expected next value of Temperature: 23.405908231954047
-The requested next timestamp of sensor_10 (Temperature) at timestamp 220 is ready (240.0)
+Sensor 10: Expected next value of Temperature: 7.279999999999999
+Received request for the next timestamp of sensor_12 (Humidity) at timestamp 180
+The requested next timestamp of sensor_12 (Humidity) at timestamp 180 is ready (240.0)
+Received request for next value of sensor_12 (Humidity) at timestamp 180
+The requested next value of sensor_12 (Humidity) at timestamp 180 is ready (39.423333333333325)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.011263990316962, 'u': '°C', 't': 240}}
-Sensor 10: Weighted mean Temperature: 23.36080600872066
-Sensor 10: Expected next timestamp of Temperature: 260.0
-Sensor 10: Expected next value of Temperature: 23.74510313443172
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 240
-The requested next timestamp of sensor_10 (Temperature) at timestamp 240 is ready (260.0)
+The requested next timestamp of sensor_10 (Temperature) at timestamp 180 is arrived (240.0)
+Received request for next value of sensor_10 (Temperature) at timestamp 180
+The requested next value of sensor_10 (Temperature) at timestamp 180 is ready (7.279999999999999)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.060412301016388, 'u': '°C', 't': 260}}
-Sensor 10: Weighted mean Temperature: 23.514209229527456
-Sensor 10: Expected next timestamp of Temperature: 280.0
-Sensor 10: Expected next value of Temperature: 23.857042426120387
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 260
-The requested next timestamp of sensor_10 (Temperature) at timestamp 260 is ready (280.0)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.24148554706482, 'u': '°C', 't': 280}}
-Sensor 10: Weighted mean Temperature: 23.30617991430195
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.26, 'u': '%', 't': 240}}
+Sensor 11: Weighted mean Humidity: 40.467
+Sensor 11: Expected next timestamp of Humidity: 300.0
+Sensor 11: Expected next value of Humidity: 40.205
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.34, 'u': '%', 't': 240}}
+Sensor 12: Weighted mean Humidity: 39.635000000000005
+Sensor 12: Expected next timestamp of Humidity: 300.0
+Sensor 12: Expected next value of Humidity: 39.095
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 6.56, 'u': '°C', 't': 240}}
+Sensor 10: Weighted mean Temperature: 6.686999999999999
 Sensor 10: Expected next timestamp of Temperature: 300.0
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 280
-Sensor 10: Expected next value of Temperature: 23.474272174325744
-The requested next timestamp of sensor_10 (Temperature) at timestamp 280 is ready (300.0)
+Sensor 10: Expected next value of Temperature: 6.864999999999998
+Received request for the next timestamp of sensor_11 (Humidity) at timestamp 240
+Received request for the next timestamp of sensor_10 (Temperature) at timestamp 240
+The requested next timestamp of sensor_11 (Humidity) at timestamp 240 is ready (300.0)
+The requested next timestamp of sensor_10 (Temperature) at timestamp 240 is ready (300.0)
+Received request for next value of sensor_11 (Humidity) at timestamp 240
+Received request for next value of sensor_10 (Temperature) at timestamp 240
+The requested next value of sensor_11 (Humidity) at timestamp 240 is ready (40.205)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.80921355621033, 'u': '°C', 't': 300}}
-Sensor 10: Weighted mean Temperature: 23.22728323055964
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 300
-Sensor 10: Expected next timestamp of Temperature: 320.0
-The requested next timestamp of sensor_10 (Temperature) at timestamp 300 is ready (320.0)
-Sensor 10: Expected next value of Temperature: 23.228941880985
+The requested next value of sensor_10 (Temperature) at timestamp 240 is ready (6.864999999999998)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.713268914198746, 'u': '°C', 't': 320}}
-Sensor 10: Weighted mean Temperature: 23.315757353750296
-Sensor 10: Expected next timestamp of Temperature: 340.0
-Sensor 10: Expected next value of Temperature: 23.229799222255206
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 320
-The requested next timestamp of sensor_10 (Temperature) at timestamp 320 is ready (340.0)
-Received request for the next timestamp of sensor_10 (Temperature) at timestamp 340
-The requested next timestamp of sensor_10 (Temperature) at timestamp 340 is not yet ready
+Received request for the next timestamp of sensor_12 (Humidity) at timestamp 240
+The requested next timestamp of sensor_12 (Humidity) at timestamp 240 is ready (300.0)
+Received request for next value of sensor_12 (Humidity) at timestamp 240
+The requested next value of sensor_12 (Humidity) at timestamp 240 is ready (39.095)
 
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.365428233602263, 'u': '°C', 't': 340}}
-Sensor 10: Weighted mean Temperature: 23.137109459303264
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.64, 'u': '%', 't': 300}}
+Sensor 11: Weighted mean Humidity: 40.52466666666666
+Sensor 11: Expected next timestamp of Humidity: 360.0
+Sensor 11: Expected next value of Humidity: 40.422
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.93, 'u': '%', 't': 300}}
+Sensor 12: Weighted mean Humidity: 39.733333333333334
+Sensor 12: Expected next timestamp of Humidity: 360.0
+Sensor 12: Expected next value of Humidity: 39.493
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 6.85, 'u': '°C', 't': 300}}
+Sensor 10: Weighted mean Temperature: 6.7413333333333325
 Sensor 10: Expected next timestamp of Temperature: 360.0
-Sensor 10: Expected next value of Temperature: 22.835521365441586
-The requested next timestamp of sensor_10 (Temperature) at timestamp 340 is arrived (360.0)
+Sensor 10: Expected next value of Temperature: 6.941999999999999
+Received request for the next timestamp of sensor_11 (Humidity) at timestamp 300
+The requested next timestamp of sensor_11 (Humidity) at timestamp 300 is ready (360.0)
+Received request for the next timestamp of sensor_10 (Temperature) at timestamp 300
+The requested next timestamp of sensor_10 (Temperature) at timestamp 300 is ready (360.0)
+Received request for next value of sensor_11 (Humidity) at timestamp 300
+The requested next value of sensor_11 (Humidity) at timestamp 300 is ready (40.422)
+
+Received request for next value of sensor_10 (Temperature) at timestamp 300
+The requested next value of sensor_10 (Temperature) at timestamp 300 is ready (6.941999999999999)
+
+Received request for the next timestamp of sensor_12 (Humidity) at timestamp 300
+The requested next timestamp of sensor_12 (Humidity) at timestamp 300 is ready (360.0)
+Received request for next value of sensor_12 (Humidity) at timestamp 300
+The requested next value of sensor_12 (Humidity) at timestamp 300 is ready (39.493)
+
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 40.88, 'u': '%', 't': 360}}
+Sensor 11: Weighted mean Humidity: 40.62619047619047
+Sensor 11: Expected next timestamp of Humidity: 420.0
+Sensor 11: Expected next value of Humidity: 40.68333333333333
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 39.41, 'u': '%', 't': 360}}
+Sensor 12: Weighted mean Humidity: 39.640952380952385
+Sensor 12: Expected next timestamp of Humidity: 420.0
+Sensor 12: Expected next value of Humidity: 39.334666666666664
+Received request for the next timestamp of sensor_11 (Humidity) at timestamp 360
+The requested next timestamp of sensor_11 (Humidity) at timestamp 360 is ready (420.0)
+Received request for the next timestamp of sensor_10 (Temperature) at timestamp 360
+The requested next timestamp of sensor_10 (Temperature) at timestamp 360 is not yet ready
+
+Received request for next value of sensor_11 (Humidity) at timestamp 360
+The requested next value of sensor_11 (Humidity) at timestamp 360 is ready (40.68333333333333)
+
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 6.81, 'u': '°C', 't': 360}}
+Sensor 10: Weighted mean Temperature: 6.76095238095238
+Sensor 10: Expected next timestamp of Temperature: 420.0
+Sensor 10: Expected next value of Temperature: 6.9399999999999995
+Received request for the next timestamp of sensor_12 (Humidity) at timestamp 360
+The requested next timestamp of sensor_12 (Humidity) at timestamp 360 is ready (420.0)
+Received request for next value of sensor_12 (Humidity) at timestamp 360
+The requested next value of sensor_12 (Humidity) at timestamp 360 is ready (39.334666666666664)
+
+The requested next timestamp of sensor_10 (Temperature) at timestamp 360 is arrived (420.0)
+Received request for next value of sensor_10 (Temperature) at timestamp 360
+The requested next value of sensor_10 (Temperature) at timestamp 360 is ready (6.9399999999999995)
+
