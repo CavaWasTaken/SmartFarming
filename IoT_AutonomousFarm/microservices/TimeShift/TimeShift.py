@@ -73,7 +73,8 @@ for _ in range(5):  # try 5 times to start the MQTT client
         time.sleep(60)   # wait for 60 seconds before trying again
 
 while True:
-    current_time = datetime.now()   # get the current time
+    current_time = datetime.now() + timedelta(hours=2)  # get the current time in UTC+2 (Italy time zone)
+    write_log(f"Current time: {current_time}")
     try:
         response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Data Analysis service
         if response.status_code == 200: # if the request is successful

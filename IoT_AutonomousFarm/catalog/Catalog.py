@@ -1201,39 +1201,29 @@ def update_thingspeak_config(conn, greenhouse_id, channel_id, write_key, read_ke
     
 # used
 # method to get area information by greenhouse_id and area_id
-def get_area_info(self, greenhouse_id, area_id):
+def get_area_info(conn, greenhouse_id, area_id):
     try:
         greenhouse_id = int(greenhouse_id)
         area_id = int(area_id)
+
+        if conn.closed:
+            cherrypy.response.status = 500
+            return {"error": "Database connection is closed"}
         
-        # Connect to the database
-        conn = psycopg2.connect(**self.db_config)
-        cursor = conn.cursor()
-        
-        # Query to get area information
-        query = """
-            SELECT area_id, name, description, greenhouse_id
-            FROM areas 
-            WHERE greenhouse_id = %s AND area_id = %s
-        """
-        
-        cursor.execute(query, (greenhouse_id, area_id))
-        result = cursor.fetchone()
-        
-        cursor.close()
-        conn.close()
-        
-        if result:
+        with conn.cursor() as cur:          
+            # get area information
+            cur.execute(sql.SQL("SELECT * FROM areas WHERE greenhouse_id = %s AND area_id = %s"), [greenhouse_id, area_id])
+            area = cur.fetchone()
+            if not area:
+                cherrypy.response.status = 404
+                return {"error": "Area not found"}
+            
             area_info = {
-                "area_id": result[0],
-                "name": result[1],
-                "description": result[2],
-                "greenhouse_id": result[3]
+                'area_id': area[0],
+                'name': area[1],
+                'greenhouse_id': area[2]
             }
             return area_info
-        else:
-            cherrypy.response.status = 404
-            return {"error": f"Area {area_id} not found in greenhouse {greenhouse_id}"}
             
     except ValueError:
         cherrypy.response.status = 400

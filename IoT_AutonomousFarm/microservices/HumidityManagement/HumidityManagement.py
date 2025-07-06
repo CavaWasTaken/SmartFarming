@@ -81,7 +81,7 @@ def checkSensors():
                     mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/event/sensor_{added_id}")  # add the topic to the list of topics
                     mqtt_topics.append(f"greenhouse_{added_sensor['greenhouse_id']}/area_{added_sensor['area_id']}/sensor_{added_id}")  # add the topic to the list of topics
  
-                sensors = new_sensors  # update the list of sensors
+            sensors = new_sensors  # update the list of sensors
 
     except Exception as e:
         write_log(f"Error checking for updates in the Catalog: {e}")

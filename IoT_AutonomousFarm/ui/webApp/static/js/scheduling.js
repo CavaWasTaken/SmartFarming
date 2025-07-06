@@ -134,24 +134,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Populate sensor dropdowns
-  function populateSensorDropdowns() {
+  async function populateSensorDropdowns() {
     const sensorSelect = document.getElementById('sensorSelect');
     const sensorFilter = document.getElementById('sensorFilter');
     
     // Clear existing options
     sensorSelect.innerHTML = '<option value="">Select a sensor</option>';
-    
-    sensors.forEach(sensor => {
+
+    for (const sensor of sensors) {
+      let areaName = '';
+      if (sensor.area_id) {
+        try {
+          // Synchronously fetch area info (not recommended for large lists, but fine for dropdowns)
+          // If you want to optimize, consider prefetching all areas in loadSensors
+            const areaResponse = await fetch(`${catalogUrl}/get_area_info?area_id=${sensor.area_id}&greenhouse_id=${greenhouseId}`, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+            });
+          if (areaResponse.ok) {
+            const areaData = await areaResponse.json();
+            areaName = areaData.name;
+          } else {
+            areaName = sensor.area_id;
+          }
+        } catch (err) {
+          areaName = sensor.area_id;
+        }
+      }
       const option = document.createElement('option');
       option.value = sensor.sensor_id;
       // Add area info if available
-      const areaText = sensor.area_id ? `${sensor.area_id}` : '';
-      option.textContent = `${sensor.name} (${sensor.type} - area ${areaText})`;
+      const areaText = areaName ? `${areaName}` : (sensor.area_id ? `${sensor.area_id}` : '');
+      option.textContent = `${sensor.name} (${sensor.type} - ${areaText})`;
       option.dataset.type = sensor.type;
       option.dataset.unit = sensor.unit;
       option.dataset.area = sensor.area_id || '';
       sensorSelect.appendChild(option);
-    });
+    }
 
     // Update sensor filter
     sensorFilter.innerHTML = '<option value="all">All Sensors</option>';
@@ -287,10 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Setup event listeners
   function setupEventListeners() {
-    // Back button
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = 'devices.html';
-    });
 
     // Add event button
     document.getElementById('addEventBtn').addEventListener('click', () => {

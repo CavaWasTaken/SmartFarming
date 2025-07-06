@@ -16,23 +16,9 @@
 
   <body>
     <div id="header-container"></div>
-
-    <div class="container mt-4">
-      <!-- Page Header -->
-      <div class="row mb-4">
-        <div class="col-12">
-          <div class="d-flex justify-content-between align-items-center">
-            <div>
-              <h2 class="text-white">Event Scheduling Management</h2>
-              <p class="text-light">Manage your greenhouse automation schedules</p>
-            </div>
-            <button id="backBtn" class="btn btn-secondary">
-              <i class="fas fa-arrow-left"></i> Back to Devices
-            </button>
-          </div>
-        </div>
-      </div>
-
+    
+    <!-- Main Content Container -->
+    <div class="container-fluid main-content">
       <!-- Action Buttons -->
       <div class="row mb-4">
         <div class="col-12 text-center">
@@ -49,7 +35,7 @@
       <div class="row mb-4">
         <div class="col-md-6">
           <div class="filter-card">
-            <h5 class="text-white mb-3">Filter Events</h5>
+            <h5 class="text-dark mb-3">Filter Events</h5>
             <div class="row">
               <div class="col-md-6 mb-2">
                 <select id="statusFilter" class="form-select">
@@ -79,15 +65,15 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- End Main Content Container -->
 
     <!-- Add/Edit Event Modal -->
     <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-dark text-white">
+        <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="eventModalLabel">Add New Event</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="eventForm">
@@ -152,10 +138,10 @@
     <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content bg-dark text-white">
+        <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p>Are you sure you want to delete this scheduled event?</p>

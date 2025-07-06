@@ -36,7 +36,7 @@ class NPK:
                 "P": 200.0 + random.uniform(-15, 15),  # Phosphorus: more stable
                 "K": 200.0 + random.uniform(-12, 12)   # Potassium: moderate variation
             }
-            return self._round_result()
+            return self.current_npk
         
         # evaluate time delta in minutes since last update
         time_delta = (current_time - self.last_update).total_seconds() / 60.0
