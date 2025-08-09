@@ -246,13 +246,13 @@ def generate_token(user_id, username):
 # function to perform user login
 def login(conn, username, password):
     try:
-        # check if the connection is closed
+        # Check DB connection
         if conn.closed:
             cherrypy.response.status = 500
             return {"error": "Database connection is closed"}
-        
+
         with conn.cursor() as cur:
-            # check if the username exists
+            # Fetch user by username
             cur.execute(sql.SQL("SELECT * FROM users WHERE username = %s"), [username])
             user = cur.fetchone()
 
@@ -260,27 +260,56 @@ def login(conn, username, password):
                 cherrypy.response.status = 401
                 return {"error": "Incorrect username"}
 
-            stored_hash = bytes(user[3])  # convert memoryview to bytes
+            stored_hash_raw = user[3]
 
-            # Check the hashed password
-            if not bcrypt.checkpw(password.encode('utf-8'), stored_hash):
+            # If password is missing
+            if stored_hash_raw is None or stored_hash_raw == "":
                 cherrypy.response.status = 401
-                return {"error": "Incorrect password"}
-            
-            # generate JWT token
+                return {"error": "Password not set"}
+
+            # Convert to correct bcrypt bytes
+            if isinstance(stored_hash_raw, memoryview):  
+                stored_hash_bytes = bytes(stored_hash_raw)
+            elif isinstance(stored_hash_raw, str) and stored_hash_raw.startswith("\\x"):
+                # Decode Postgres hex (\x...)
+                stored_hash_bytes = bytes.fromhex(stored_hash_raw[2:])
+            elif isinstance(stored_hash_raw, (bytes, bytearray)):
+                stored_hash_bytes = stored_hash_raw
+            else:
+                stored_hash_bytes = stored_hash_raw.encode('utf-8') if isinstance(stored_hash_raw, str) else bytes(stored_hash_raw)
+
+            # Check password depending on format
+            try:
+                if stored_hash_bytes.startswith(b"$2b$"):
+                    # bcrypt hash
+                    if not bcrypt.checkpw(password.encode('utf-8'), stored_hash_bytes):
+                        cherrypy.response.status = 401
+                        return {"error": "Incorrect password"}
+                else:
+                    # fallback: treat as plaintext
+                    db_pass = stored_hash_bytes.decode('utf-8', errors='ignore').strip()
+                    if password.strip() != db_pass:
+                        cherrypy.response.status = 401
+                        return {"error": "Incorrect password"}
+            except ValueError as ve:
+                print("LOGIN ERROR: bcrypt invalid salt or corrupted hash:", ve)
+                cherrypy.response.status = 401
+                return {"error": "Invalid password format"}
+
+            # Generate JWT token
             token = generate_token(user[0], user[1])
             cherrypy.response.headers['Authorization'] = f"Bearer {token}"
-            # return the user info
 
             return {
-                'message': 'Login successful', 
+                'message': 'Login successful',
                 'user_id': user[0],
                 'username': user[1],
                 'email': user[2],
                 'token': token
             }
-                    
-    except:
+
+    except Exception as e:
+        print("LOGIN ERROR TRACE:", e)
         cherrypy.response.status = 500
         return {"error": "Internal error"}
 

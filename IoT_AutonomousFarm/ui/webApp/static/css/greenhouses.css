@@ -1,7 +1,8 @@
 
 body {
   padding: 20px;
-  background-color: #D6CC99;
+  background:  url(../pics/9701.jpg)
+		no-repeat center center fixed;
   /* background: url(../pics/background.jpg)
     no-repeat center center fixed;   */
 
@@ -28,7 +29,7 @@ table {
 }
 
 thead th {
-  background-color: #344c40;
+  background-color: #010f18;
   color: #fff;
   font-weight: 700;
   text-align: left;
@@ -39,10 +40,10 @@ thead th {
 tbody td {
   padding: 10px;
   text-align: center;
-  border: 1px solid #28333f;
-  background-color: rgba(52, 76, 64, 0.6);
+  border: 1px solid #000000;
+  background-color: rgb(18 19 18 / 84%);
   font-size: 1.2rem;
-  color: #000000;
+  color: #fff;
 }
 
 tbody tr:nth-child(even) td {
@@ -88,17 +89,17 @@ td:before {
 
 /* Buttons */
 .select-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  background: linear-gradient(45deg, #983c2a, #ef816c);
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(45deg, #983c2a, #087b5e);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .select-button:hover {
@@ -123,8 +124,9 @@ td:before {
   /* box-shadow: 0 4px 8px rgba(0,0,0,0.18); */
   cursor: pointer;
   margin: 20px 0;
-  background: linear-gradient(45deg, #983c2a, #ef816c);
+  background: linear-gradient(45deg, #0fb27d, #ef816c);
 }
+
 
 #AddGreenhouseButton:hover {
   transform: translateY(-2px) scale(1.03);

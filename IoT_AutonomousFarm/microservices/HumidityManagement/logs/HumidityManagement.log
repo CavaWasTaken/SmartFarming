@@ -1,32 +1,20 @@
 Device id: 77
 Received 2 sensors: [{'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
 Subscribed to greenhouse_28/area_23/sensor_12
+Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_23/event/sensor_12
 Subscribed to greenhouse_28/area_22/sensor_11
 Subscribed to greenhouse_28/area_22/event/sensor_11
-Connected to mosquitto with result code 0
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 79.84, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 64.24, 'u': '%', 't': 60}}
 WARNING: Failed to get when the next value of Humidity (sensor_12) is expected to arrive
 WARNING: Failed to get the next expected value of Humidity (sensor_12)
 Telegram message sent successfully to user 2070801980
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 78.61, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 64.71, 'u': '%', 't': 60}}
 WARNING: Failed to get when the next value of Humidity (sensor_11) is expected to arrive
 WARNING: Failed to get the next expected value of Humidity (sensor_11)
-Periodic sensor check started
-Periodic sensor check completed
 Telegram message sent successfully to user 2070801980
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 78.94, 'u': '%', 't': 120}}
-The next value of Humidity (sensor_12) is expected to be received at: 180.0
-The next value of Humidity (sensor_12) is expected to be: 78.03999999999999 %
-Wait to see another value to start the decision making for sensor_12 (Humidity)
-
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 79.82, 'u': '%', 't': 120}}
 Periodic sensor check started
 Periodic sensor check completed
-The next value of Humidity (sensor_11) is expected to be received at: 180.0
-The next value of Humidity (sensor_11) is expected to be: 81.02999999999999 %
-Wait to see another value to start the decision making for sensor_11 (Humidity)

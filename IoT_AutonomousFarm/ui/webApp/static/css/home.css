@@ -7,10 +7,10 @@
 }
 
 body {
-    background-color: #D6CC99;
-    /* background: url(../pics/background.jpg)
-      no-repeat center center fixed;   */
-      padding: 20px;
+    background:  url(../pics/9701.jpg)
+		no-repeat center center fixed;
+
+    padding: 20px;
     /* font-family: 'Lato', sans-serif; */
     background-size: cover;
     /* font-size: 1.6rem; */

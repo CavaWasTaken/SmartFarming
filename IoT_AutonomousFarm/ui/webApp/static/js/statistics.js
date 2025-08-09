@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }]
       },
       options: {
+        width: 400,
+        height: 400,
         responsive: true,
         animation: false,
         scales: {

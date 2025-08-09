@@ -3,7 +3,7 @@ import requests
 import random
 import os
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import Application, CommandHandler, ContextTypes
 
 # function to write in a log file the message passed as argument
 def write_log(message):
@@ -113,7 +113,7 @@ async def logout(update: Update, context: ContextTypes.DEFAULT_TYPE):
 #     write_log(f"Error getting user id from the Catalog: {e}")
 
 def main():
-    application = ApplicationBuilder().token(telegram_token).build()
+    application = Application.builder().token(telegram_token).build()
 
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('login', login))
