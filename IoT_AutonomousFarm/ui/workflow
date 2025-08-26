@@ -2,7 +2,7 @@
    │  MQTT publish (JSON)
    ▼
 [ Mosquitto Broker ]
-   │  topics: greenhouse/<gh>/area/<a>/sensor/<id>/measure
+   │  topics: greenhouse_<gh>/area_<a>/sensor_<id>/measure
    ▼
 [ deviceConnector ]
    │  validates → enriches → forwards
