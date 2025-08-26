@@ -1,19 +1,297 @@
-Device id: 81
-Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Device id: 121
+Received 2 sensors: [{'sensor_id': 18, 'area_id': 30, 'type': 'LightIntensity', 'name': 'Light Intensity Sensor', 'unit': 'lux', 'threshold': {'max': 2000, 'min': 800}, 'domain': {'max': 2000, 'min': 0}, 'greenhouse_id': 33}, {'sensor_id': 19, 'area_id': 30, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 77, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 33}]
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
 
+Subscribed to greenhouse_33/area_30/sensor_18
 Connected to mosquitto with result code 0
-Subscribed to greenhouse_28/area_23/sensor_13
-Subscribed to greenhouse_28/area_23/sensor_12
-Subscribed to greenhouse_28/area_22/sensor_10
-Subscribed to greenhouse_28/area_22/sensor_11
+Subscribed to greenhouse_33/area_30/sensor_19
 Started periodic sensor checking thread
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.78, 'P': 214.62, 'K': 195.55}, 'u': 'mg/kg', 't': 60}}
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 64.24, 'u': '%', 't': 60}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 21.71, 'u': '°C', 't': 60}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 64.71, 'u': '%', 't': 60}}
-Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"23": 148.78}', 'field7': '{"23": 214.62}', 'field8': '{"23": 195.55}', 'field2': '{"23": 64.24, "22": 64.71}', 'field1': '{"22": 21.71}'}
-
 Periodic sensor check started
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Connected to mosquitto with result code 0
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 33, 'user_id': 25, 'name': 'Farmer1GreenHouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
 Periodic sensor check completed

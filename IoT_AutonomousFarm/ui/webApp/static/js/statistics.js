@@ -481,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <option value="500">Last 500</option>
         </select>
       </div>
-      <button id="refreshData" class="btn btn-primary">Refresh Data</button>
+      <button id="refreshData" class="btn btn-warning">Refresh Data</button>
     `;
     
     container.insertBefore(controlsDiv, container.firstChild);

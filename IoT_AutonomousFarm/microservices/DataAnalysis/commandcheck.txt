@@ -1,0 +1,65 @@
+# 1) Restart only DataAnalysis
+# Why: ensures it re-subscribes to the right sensors after config changes.
+docker compose -f docker-compose.yml up -d --force-recreate --no-deps dataanalysis
+
+# 2) Confirm DataAnalysis subscribed to sensor 19
+# Why: prove to audience that DA is listening to greenhouse_33/area_30/sensor_19.
+docker exec -it data_analysis sh -lc \
+'grep -ho "Subscribed to greenhouse_[^ ]*" logs/DataAnalysis.log | sort -u | grep "greenhouse_33/area_30/sensor_19" || echo "DA not subscribed yet"'
+
+# 3) Open raw data subscriber (Terminal A)
+# Why: shows raw MQTT humidity readings as they arrive.
+docker exec -it mosquitto_broker sh -lc \
+"mosquitto_sub -h localhost -t 'greenhouse_33/area_30/sensor_19' -v"
+
+# 4) Open HumidityManagement action subscriber (Terminal B)
+# Why: shows what automatic action (increase/decrease) HM publishes based on readings.
+docker exec -it mosquitto_broker sh -lc \
+"mosquitto_sub -h localhost -t 'greenhouse_33/area_30/action/sensor_19' -v"
+
+
+
+
+
+
+# 5a) Send a NORMAL value (within threshold 30–70%)
+# Expectation: Telegram notification = normal reading, no action needed.
+docker exec -it mosquitto_broker sh -lc \
+"mosquitto_pub -h localhost -t greenhouse_33/area_30/sensor_19 \
+ -m '{\"bn\":\"greenhouse_33/area_30/sensor_19\",\"e\":{\"n\":\"Humidity\",\"v\":45.0,\"u\":\"%\",\"t\":1730001000}}'"
+
+# 5b) Send an OUTLIER low value (sudden drop)
+# Expectation: Telegram notification = ⚠️ Unexpected Value, waiting for confirmation.
+docker exec -it mosquitto_broker sh -lc \
+"mosquitto_pub -h localhost -t greenhouse_33/area_30/sensor_19 \
+ -m '{\"bn\":\"greenhouse_33/area_30/sensor_19\",\"e\":{\"n\":\"Humidity\",\"v\":15.0,\"u\":\"%\",\"t\":1730001100}}'"
+
+# 5c) Confirm with another consistent low value
+# Expectation: Now HM decides humidity is below min (30%).
+# - Telegram: ⚠️ Humidity below threshold, action required.
+# - MQTT action topic: {"action":"increase"} appears.
+docker exec -it mosquitto_broker sh -lc \
+"mosquitto_pub -h localhost -t greenhouse_33/area_30/sensor_19 \
+ -m '{\"bn\":\"greenhouse_33/area_30/sensor_19\",\"e\":{\"n\":\"Humidity\",\"v\":16.0,\"u\":\"%\",\"t\":1730001200}}'"
+
+# 5d) Send a HIGH humidity value
+# Expectation: HM sees humidity > 70%.
+# - Telegram: ⚠️ Humidity above threshold.
+# - MQTT action topic: {"action":"decrease"} appears.
+docker exec -it mosquitto_broker sh -lc \
+"mosquitto_pub -h localhost -t greenhouse_33/area_30/sensor_19 \
+ -m '{\"bn\":\"greenhouse_33/area_30/sensor_19\",\"e\":{\"n\":\"Humidity\",\"v\":92.0,\"u\":\"%\",\"t\":1730001300}}'"
+
+
+
+
+# 6a) Show DataAnalysis log entries for sensor 19
+# Why: prove DA is computing weighted mean & predictions.
+docker exec -it data_analysis sh -lc \
+'grep -nE "Sensor 19: (Weighted mean|Expected next)" logs/DataAnalysis.log | tail -20'
+
+# 6b) Query DA REST API for prediction
+# Why: show DA’s REST endpoint returns next expected value.
+
+
+

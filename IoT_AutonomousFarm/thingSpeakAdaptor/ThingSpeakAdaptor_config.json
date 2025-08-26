@@ -1,6 +1,6 @@
 {
     "catalog_url": "http://catalog:8080",
-    "greenhouse_id": 28,
+    "greenhouse_id": 33,
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,
@@ -9,3 +9,6 @@
     "write_url": "https://api.thingspeak.com/update",
     "read_url": "https://api.thingspeak.com/channels"
 }
+
+
+

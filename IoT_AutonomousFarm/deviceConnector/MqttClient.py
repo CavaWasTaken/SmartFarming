@@ -22,7 +22,7 @@ class MqttClient:
         self.paho.loop_stop()
         self.paho.disconnect()
 
-    def subscribe(self, topic):
+    def subscribe(self, topic):  #/greenhouse/area1/temperature
         if topic not in self.subs:
             self.subs.append(topic)
             self.paho.subscribe(topic, 2)

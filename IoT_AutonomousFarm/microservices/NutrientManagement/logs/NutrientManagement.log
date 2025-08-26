@@ -1,17 +1,670 @@
 Device ID: 79
 
-Received 2 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 16, 'area_id': 26, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 6.5, 'min': 5}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 31}]
+Received 3 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 16, 'area_id': 26, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 6.5, 'min': 5}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 31}, {'sensor_id': 22, 'area_id': 33, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 9.5, 'min': 6}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 35}]
 
 Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_23/sensor_13
 Subscribed to greenhouse_28/area_23/event/sensor_13
 Subscribed to greenhouse_31/area_26/sensor_16
 Subscribed to greenhouse_31/area_26/event/sensor_16
+Subscribed to greenhouse_35/area_33/sensor_22
+Subscribed to greenhouse_35/area_33/event/sensor_22
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.78, 'P': 214.62, 'K': 195.55}, 'u': 'mg/kg', 't': 60}}
-WARNING: Failed to get when the next value of NPK (sensor_13) is expected to arrive
-WARNING: Failed to get the next expected value of NPK (sensor_13)
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 152.21, 'P': 202.52, 'K': 191.35}, 'u': 'mg/kg', 't': 60}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 153.75, 'P': 202.62, 'K': 191.01}, 'u': 'mg/kg', 't': 120}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
 Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.52, 'P': 201.83, 'K': 190.43}, 'u': 'mg/kg', 't': 180}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 155.27, 'P': 201.87, 'K': 190.94}, 'u': 'mg/kg', 't': 240}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Telegram message sent successfully to user 2070801980
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 155.66, 'P': 202.61, 'K': 189.1}, 'u': 'mg/kg', 't': 300}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 153.54, 'P': 202.37, 'K': 187.85}, 'u': 'mg/kg', 't': 360}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f8182f77410>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 153.13, 'P': 202.63, 'K': 187.92}, 'u': 'mg/kg', 't': 420}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.26, 'P': 201.38, 'K': 187.05}, 'u': 'mg/kg', 't': 480}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.48, 'P': 202.37, 'K': 188.21}, 'u': 'mg/kg', 't': 539}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 153.08, 'P': 201.78, 'K': 188.24}, 'u': 'mg/kg', 't': 599}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.45, 'P': 201.31, 'K': 186.63}, 'u': 'mg/kg', 't': 659}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f8182f97090>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 153.44, 'P': 199.86, 'K': 186.33}, 'u': 'mg/kg', 't': 719}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f8182f95410>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.59, 'P': 198.69, 'K': 186.65}, 'u': 'mg/kg', 't': 780}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.94, 'P': 199.55, 'K': 187.37}, 'u': 'mg/kg', 't': 840}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.66, 'P': 200.81, 'K': 187.99}, 'u': 'mg/kg', 't': 900}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.29, 'P': 199.37, 'K': 187.04}, 'u': 'mg/kg', 't': 960}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.11, 'P': 200.5, 'K': 187.82}, 'u': 'mg/kg', 't': 1020}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f8182f95c10>, 'Connection to api.telegram.org timed out. (connect timeout=5)'))
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.55, 'P': 201.5, 'K': 187.92}, 'u': 'mg/kg', 't': 1080}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f8182f77fd0>: Failed to resolve 'api.telegram.org' ([Errno -2] Name or service not known)"))
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.71, 'P': 202.85, 'K': 186.23}, 'u': 'mg/kg', 't': 1140}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f818250da50>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.3, 'P': 202.85, 'K': 184.84}, 'u': 'mg/kg', 't': 1200}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.14, 'P': 201.62, 'K': 184.52}, 'u': 'mg/kg', 't': 1260}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.26, 'P': 202.64, 'K': 185.6}, 'u': 'mg/kg', 't': 1320}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.26, 'P': 202.88, 'K': 186.78}, 'u': 'mg/kg', 't': 1380}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.03, 'P': 202.62, 'K': 186.15}, 'u': 'mg/kg', 't': 1440}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.82, 'P': 201.35, 'K': 186.27}, 'u': 'mg/kg', 't': 1500}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.99, 'P': 199.96, 'K': 187.44}, 'u': 'mg/kg', 't': 1561}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.17, 'P': 201.11, 'K': 187.15}, 'u': 'mg/kg', 't': 1621}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.83, 'P': 200.29, 'K': 185.81}, 'u': 'mg/kg', 't': 1681}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.21, 'P': 201.08, 'K': 187.23}, 'u': 'mg/kg', 't': 1741}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.34, 'P': 200.64, 'K': 186.87}, 'u': 'mg/kg', 't': 1801}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.47, 'P': 200.15, 'K': 186.96}, 'u': 'mg/kg', 't': 1861}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.17, 'P': 200.09, 'K': 187.89}, 'u': 'mg/kg', 't': 1921}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.31, 'P': 198.72, 'K': 188.67}, 'u': 'mg/kg', 't': 1981}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.14, 'P': 198.81, 'K': 188.23}, 'u': 'mg/kg', 't': 2041}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.9, 'P': 199.28, 'K': 189.44}, 'u': 'mg/kg', 't': 2101}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.23, 'P': 200.59, 'K': 190.27}, 'u': 'mg/kg', 't': 2161}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 152.03, 'P': 201.63, 'K': 190.6}, 'u': 'mg/kg', 't': 2221}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.92, 'P': 201.69, 'K': 189.99}, 'u': 'mg/kg', 't': 2281}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.96, 'P': 202.38, 'K': 188.55}, 'u': 'mg/kg', 't': 2341}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.3, 'P': 201.26, 'K': 187.49}, 'u': 'mg/kg', 't': 2401}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.97, 'P': 201.76, 'K': 187.29}, 'u': 'mg/kg', 't': 2461}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.8, 'P': 201.05, 'K': 186.41}, 'u': 'mg/kg', 't': 2521}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.92, 'P': 202.1, 'K': 184.52}, 'u': 'mg/kg', 't': 2581}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.94, 'P': 201.21, 'K': 183.89}, 'u': 'mg/kg', 't': 2641}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.58, 'P': 202.46, 'K': 183.27}, 'u': 'mg/kg', 't': 2702}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.57, 'P': 201.36, 'K': 183.0}, 'u': 'mg/kg', 't': 2762}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.87, 'P': 200.03, 'K': 181.93}, 'u': 'mg/kg', 't': 2822}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.65, 'P': 199.41, 'K': 182.98}, 'u': 'mg/kg', 't': 2882}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.69, 'P': 199.0, 'K': 183.34}, 'u': 'mg/kg', 't': 2942}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.78, 'P': 200.32, 'K': 184.91}, 'u': 'mg/kg', 't': 3002}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.7, 'P': 200.26, 'K': 183.83}, 'u': 'mg/kg', 't': 3062}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.33, 'P': 201.24, 'K': 182.67}, 'u': 'mg/kg', 't': 3122}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.88, 'P': 199.86, 'K': 182.51}, 'u': 'mg/kg', 't': 3182}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.09, 'P': 199.36, 'K': 182.59}, 'u': 'mg/kg', 't': 3242}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.74, 'P': 200.16, 'K': 183.39}, 'u': 'mg/kg', 't': 3302}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.91, 'P': 200.27, 'K': 184.61}, 'u': 'mg/kg', 't': 3362}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f8182f97ad0>: Failed to resolve 'api.telegram.org' ([Errno -3] Temporary failure in name resolution)"))
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.65, 'P': 201.29, 'K': 184.86}, 'u': 'mg/kg', 't': 3422}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.88, 'P': 201.38, 'K': 183.15}, 'u': 'mg/kg', 't': 3482}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.5, 'P': 201.32, 'K': 182.97}, 'u': 'mg/kg', 't': 3542}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.62, 'P': 202.34, 'K': 182.7}, 'u': 'mg/kg', 't': 3602}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.13, 'P': 201.25, 'K': 181.8}, 'u': 'mg/kg', 't': 3662}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 150.64, 'P': 201.81, 'K': 182.39}, 'u': 'mg/kg', 't': 3723}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 151.1, 'P': 201.52, 'K': 180.65}, 'u': 'mg/kg', 't': 3783}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.22, 'P': 202.43, 'K': 179.9}, 'u': 'mg/kg', 't': 3843}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 148.37, 'P': 203.13, 'K': 179.77}, 'u': 'mg/kg', 't': 3903}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.41, 'P': 203.69, 'K': 178.99}, 'u': 'mg/kg', 't': 3963}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.81, 'P': 203.07, 'K': 177.09}, 'u': 'mg/kg', 't': 4023}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 149.55, 'P': 201.82, 'K': 176.22}, 'u': 'mg/kg', 't': 4083}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.95, 'P': 203.03, 'K': 175.69}, 'u': 'mg/kg', 't': 4143}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.14, 'P': 202.64, 'K': 174.42}, 'u': 'mg/kg', 't': 4203}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.26, 'P': 202.06, 'K': 174.58}, 'u': 'mg/kg', 't': 4263}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.46, 'P': 201.49, 'K': 176.05}, 'u': 'mg/kg', 't': 4323}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.79, 'P': 201.11, 'K': 174.21}, 'u': 'mg/kg', 't': 4383}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.15, 'P': 199.82, 'K': 173.37}, 'u': 'mg/kg', 't': 4443}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 143.85, 'P': 200.85, 'K': 174.88}, 'u': 'mg/kg', 't': 4503}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.62, 'P': 200.96, 'K': 174.7}, 'u': 'mg/kg', 't': 4563}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 147.24, 'P': 200.48, 'K': 176.33}, 'u': 'mg/kg', 't': 4623}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.25, 'P': 200.32, 'K': 177.16}, 'u': 'mg/kg', 't': 4684}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 144.02, 'P': 199.85, 'K': 176.64}, 'u': 'mg/kg', 't': 4744}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.68, 'P': 199.55, 'K': 178.28}, 'u': 'mg/kg', 't': 4804}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.58, 'P': 199.77, 'K': 179.9}, 'u': 'mg/kg', 't': 4864}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.43, 'P': 199.99, 'K': 179.6}, 'u': 'mg/kg', 't': 4924}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.99, 'P': 199.19, 'K': 178.52}, 'u': 'mg/kg', 't': 4984}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 145.07, 'P': 198.46, 'K': 176.6}, 'u': 'mg/kg', 't': 5044}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 143.78, 'P': 199.25, 'K': 177.61}, 'u': 'mg/kg', 't': 5104}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 144.22, 'P': 198.66, 'K': 177.09}, 'u': 'mg/kg', 't': 5164}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 142.45, 'P': 197.34, 'K': 177.08}, 'u': 'mg/kg', 't': 5224}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 140.35, 'P': 196.59, 'K': 177.22}, 'u': 'mg/kg', 't': 5284}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 139.73, 'P': 197.65, 'K': 176.55}, 'u': 'mg/kg', 't': 5344}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 140.04, 'P': 196.66, 'K': 176.21}, 'u': 'mg/kg', 't': 5404}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 138.54, 'P': 197.38, 'K': 177.36}, 'u': 'mg/kg', 't': 5464}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 139.3, 'P': 196.79, 'K': 177.09}, 'u': 'mg/kg', 't': 5524}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 140.12, 'P': 196.57, 'K': 178.53}, 'u': 'mg/kg', 't': 5584}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of NPK (sensor_13) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of NPK (sensor_13)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+Connected to mosquitto with result code 0
+Periodic sensor check started
+Periodic sensor check completed
 Periodic sensor check started
 Periodic sensor check completed

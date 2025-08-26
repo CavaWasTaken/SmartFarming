@@ -279,6 +279,19 @@ while True:
     
     write_log("")
 
-    time.sleep(60)   # wait for 2 minutes before reading the sensors again
+    time.sleep(60)   # wait for 1 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
+
+
+# example of senML :
+
+# {
+#   "bn": "greenhouse_1/area_2/sensor_5",
+#   "e": {
+#     "n": "Temperature",
+#     "v": 26.5,
+#     "u": "°C",
+#     "t": 18120
+#   }
+# }

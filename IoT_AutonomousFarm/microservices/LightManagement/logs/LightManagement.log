@@ -1,13 +1,664 @@
 Device ID: 78
 Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
 Subscribed to greenhouse_28/area_22/sensor_10
+Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_22/event/sensor_10
 Started periodic sensor checking thread
-Connected to mosquitto with result code 0
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 21.71, 'u': '°C', 't': 60}}
-WARNING: Failed to get when the next value of Temperature (sensor_10) is expected to arrive
-WARNING: Failed to get the next expected value of Temperature (sensor_10)
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.95, 'u': '°C', 't': 60}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
 Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.3, 'u': '°C', 't': 120}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.75, 'u': '°C', 't': 180}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.97, 'u': '°C', 't': 240}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Telegram message sent successfully to user 2070801980
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 16.14, 'u': '°C', 't': 300}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.93, 'u': '°C', 't': 360}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa599fb45d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.81, 'u': '°C', 't': 420}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.34, 'u': '°C', 't': 480}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.7, 'u': '°C', 't': 539}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.66, 'u': '°C', 't': 599}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.55, 'u': '°C', 't': 659}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa599fcb490>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.14, 'u': '°C', 't': 719}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa599fbc690>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.61, 'u': '°C', 't': 780}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.42, 'u': '°C', 't': 840}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.21, 'u': '°C', 't': 900}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.05, 'u': '°C', 't': 960}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.79, 'u': '°C', 't': 1020}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7fa599fd0e10>, 'Connection to api.telegram.org timed out. (connect timeout=5)'))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.55, 'u': '°C', 't': 1080}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fa599fe26d0>: Failed to resolve 'api.telegram.org' ([Errno -2] Name or service not known)"))
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.35, 'u': '°C', 't': 1140}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa599fd2410>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.46, 'u': '°C', 't': 1200}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.51, 'u': '°C', 't': 1260}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.79, 'u': '°C', 't': 1320}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.44, 'u': '°C', 't': 1380}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.12, 'u': '°C', 't': 1440}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.67, 'u': '°C', 't': 1500}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.03, 'u': '°C', 't': 1561}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.67, 'u': '°C', 't': 1621}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.85, 'u': '°C', 't': 1681}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.29, 'u': '°C', 't': 1741}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Telegram message sent successfully to user 2070801980
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.09, 'u': '°C', 't': 1801}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.11, 'u': '°C', 't': 1861}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.43, 'u': '°C', 't': 1921}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.68, 'u': '°C', 't': 1981}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.79, 'u': '°C', 't': 2041}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.45, 'u': '°C', 't': 2101}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.97, 'u': '°C', 't': 2161}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.61, 'u': '°C', 't': 2221}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.14, 'u': '°C', 't': 2281}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.51, 'u': '°C', 't': 2341}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.74, 'u': '°C', 't': 2401}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Telegram message sent successfully to user 2070801980
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.82, 'u': '°C', 't': 2461}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.45, 'u': '°C', 't': 2521}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.23, 'u': '°C', 't': 2581}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.84, 'u': '°C', 't': 2641}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.88, 'u': '°C', 't': 2702}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.77, 'u': '°C', 't': 2762}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.27, 'u': '°C', 't': 2822}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.5, 'u': '°C', 't': 2882}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.59, 'u': '°C', 't': 2942}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.11, 'u': '°C', 't': 3002}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.77, 'u': '°C', 't': 3062}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)')))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.12, 'u': '°C', 't': 3122}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.77, 'u': '°C', 't': 3182}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.71, 'u': '°C', 't': 3242}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.02, 'u': '°C', 't': 3302}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.72, 'u': '°C', 't': 3362}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fa599505090>: Failed to resolve 'api.telegram.org' ([Errno -3] Temporary failure in name resolution)"))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.48, 'u': '°C', 't': 3422}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.19, 'u': '°C', 't': 3482}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.59, 'u': '°C', 't': 3542}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.49, 'u': '°C', 't': 3602}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.25, 'u': '°C', 't': 3662}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.82, 'u': '°C', 't': 3723}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.73, 'u': '°C', 't': 3783}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.28, 'u': '°C', 't': 3843}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.68, 'u': '°C', 't': 3903}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.48, 'u': '°C', 't': 3963}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.57, 'u': '°C', 't': 4023}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.91, 'u': '°C', 't': 4083}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.18, 'u': '°C', 't': 4143}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.51, 'u': '°C', 't': 4203}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.31, 'u': '°C', 't': 4263}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.75, 'u': '°C', 't': 4323}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.45, 'u': '°C', 't': 4383}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.76, 'u': '°C', 't': 4443}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.2, 'u': '°C', 't': 4503}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.54, 'u': '°C', 't': 4563}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.7, 'u': '°C', 't': 4623}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.34, 'u': '°C', 't': 4684}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.48, 'u': '°C', 't': 4744}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.82, 'u': '°C', 't': 4804}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.85, 'u': '°C', 't': 4864}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.09, 'u': '°C', 't': 4924}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.69, 'u': '°C', 't': 4984}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=5)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.06, 'u': '°C', 't': 5044}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.09, 'u': '°C', 't': 5104}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.15, 'u': '°C', 't': 5164}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.78, 'u': '°C', 't': 5224}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.16, 'u': '°C', 't': 5284}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.65, 'u': '°C', 't': 5344}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.01, 'u': '°C', 't': 5404}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.59, 'u': '°C', 't': 5464}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.45, 'u': '°C', 't': 5524}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.39, 'u': '°C', 't': 5584}}
+WARNING: A problem with DataAnalysis component occured while getting when the next value of Temperature (sensor_10) is expected to arrive	(Response: Internal error)
+WARNING: A problem with DataAnalysis component occured while getting the next expected value of Temperature (sensor_10)	(Response: Internal Server Error)
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 2070801980
+Periodic sensor check started
+Periodic sensor check completed
+Connected to mosquitto with result code 0
+Periodic sensor check started
+Periodic sensor check completed
 Periodic sensor check started
 Periodic sensor check completed

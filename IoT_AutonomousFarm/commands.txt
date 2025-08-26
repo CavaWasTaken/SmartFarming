@@ -1,0 +1,45 @@
+1/ start infra :
+
+
+docker compose up -d db mosquitto
+docker compose ps
+docker compose logs -f db mosquitto
+docker exec -it $(docker ps -qf name=db) psql -U $POSTGRES_USER -d $POSTGRES_DB -c
+"\dt"
+mosquitto_sub -h localhost -p 1883 -t 'test/topic' -v &
+mosquitto_pub -h localhost -p 1883 -t 'test/topic' -m 'hello'
+
+
+2/ core services :
+
+docker compose up -d catalog deviceconnector webapp
+docker compose logs -f catalog deviceconnector webapp
+curl -i http://localhost:8000/api/health
+
+
+3/ Ingest Reading :
+
+mosquitto_pub -h localhost -p 1883 -t 'greenhouse/1/area/1/sensor/19/measure' -m
+'{"sensor_id":19,"type":"Humidity","value":22.5,"unit":"%","ts":"$(date -u +%FT%TZ)"}'
+
+
+4/ Start Inteligent :
+
+docker compose up -d dataanalysis humiditymanagement lightmanagement nutrientmanagement timeshift
+
+
+5/ trends :
+
+for v in 21.8 22.1 22.4 22.3 22.5; do
+mosquitto_pub -h localhost -p 1883 -t 'greenhouse/1/area/1/sensor/19/measure' -m
+"{\"sensor_id\":19,\"type\":\"Humidity\",\"value\":$v,\"unit\":\"%\",\"ts\":\"$(date -u +%FT%TZ)\"}"
+sleep 0.8
+done
+mosquitto_pub -h localhost -p 1883 -t 'greenhouse/1/area/1/sensor/19/measure' -m
+'{"sensor_id":19,"type":"Humidity","value":15,"unit":"%","ts":"$(date -u +%FT%TZ)"}'
+
+
+
+6/ down :
+
+docker compose down

@@ -1,0 +1,20 @@
+docker exec -it mosquitto_broker \
+  mosquitto_sub -h localhost -p 1883 \
+  -t 'greenhouse_33/area_30/sensor_19' -v
+
+
+
+
+
+docker exec -it mosquitto_broker \
+  mosquitto_sub -h localhost -p 1883 \
+  -t 'greenhouse_33/area_30/action/sensor_19' -v
+
+
+
+
+
+docker exec -it mosquitto_broker \
+  mosquitto_pub -h localhost -p 1883 \
+  -t 'greenhouse_33/area_30/action/sensor_19' \
+  -m '{"parameter":"Humidity","message":{"action":"increase","min_treshold":"45"}}'

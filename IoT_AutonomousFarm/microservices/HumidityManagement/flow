@@ -1,0 +1,20 @@
+[Sensors: Humidity]
+        │
+        ▼
+ [Mosquitto Broker]
+        │
+        ▼
+ [HumidityManagement]
+    │         │
+    │         ├──> [Queries DataAnalysis for mean & predictions]
+    │
+    ├──> [Checks thresholds from Catalog]
+    │
+    ├──> [Publishes "Increase Humidity" if below min]
+    │
+    ├──> [Publishes "Decrease Humidity" if above max]
+    │
+    └──> [Raises alerts if data is missing]
+        │
+        ▼
+   [Action Topics → Actuators / TelegramBot / WebApp]
