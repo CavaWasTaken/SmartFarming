@@ -532,7 +532,6 @@ def remove_plant_from_greenhouse(conn, area_id, plant_id):
             cur.execute(sql.SQL("DELETE FROM area_plants WHERE area_id = %s AND plant_id = %s"), [area_id, plant_id])
             conn.commit()
             cur.execute(sql.SQL("SELECT plant_id FROM area_plants WHERE area_id = %s"), [area_id])
-            cur.execute(sql.SQL("SELECT plant_id FROM area_plants WHERE area_id = %s"), [area_id])
             plants = cur.fetchall()
             if plants is None:
                 raise cherrypy.HTTPError(404, "No plants found")
@@ -1139,20 +1138,6 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
 
-        elif uri[0] == 'set_sensor_threshold':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'sensor_id' not in input_json or 'threshold' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                if not isinstance(input_json['threshold'], dict):
-                    cherrypy.response.status = 400
-                    return {"error": "Threshold must be a dictionary"}
-                return set_sensor_threshold(self.catalog_connection, input_json['sensor_id'], input_json['threshold'])
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
         elif uri[0] == 'add_plant_to_greenhouse':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
@@ -1160,28 +1145,6 @@ class CatalogREST(object):
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
                 return add_plant_to_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['plant_id'], input_json['area_id'])
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
-        elif uri[0] == 'remove_plant_from_greenhouse':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'area_id' not in input_json or 'plant_id' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                return remove_plant_from_greenhouse(self.catalog_connection, input_json['area_id'], input_json['plant_id'])
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
-        elif uri[0] == 'remove_sensor_from_greenhouse':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'sensor_id' not in input_json or 'area_id' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                return remove_sensor_from_greenhouse(self.catalog_connection, input_json['area_id'], input_json['sensor_id'])
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
@@ -1231,28 +1194,6 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
 
-        elif uri[0] == 'remove_area_from_greenhouse':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'area_id' not in input_json or 'greenhouse_id' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                return remove_area_from_greenhouse(self.catalog_connection, input_json['greenhouse_id'], input_json['area_id'])
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
-        elif uri[0] == 'update_user_info':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                if 'user_id' not in input_json or 'username' not in input_json or 'email' not in input_json or 'new_password' not in input_json:
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                return update_user_info(self.catalog_connection, input_json['user_id'], input_json['username'], input_json['email'], input_json['new_password'])
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
         elif uri[0] == 'otp':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
@@ -1275,6 +1216,52 @@ class CatalogREST(object):
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
 
+        else:
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+
+    def PUT(self, *uri, **params):
+        if len(uri) == 0:
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+            
+        elif uri[0] == 'set_sensor_threshold':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'sensor_id' not in input_json or 'threshold' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                if not isinstance(input_json['threshold'], dict):
+                    cherrypy.response.status = 400
+                    return {"error": "Threshold must be a dictionary"}
+                return set_sensor_threshold(self.catalog_connection, input_json['sensor_id'], input_json['threshold'])
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+                
+        elif uri[0] == 'update_user_info':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                if 'user_id' not in input_json or 'username' not in input_json or 'email' not in input_json or 'new_password' not in input_json:
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                return update_user_info(self.catalog_connection, input_json['user_id'], input_json['username'], input_json['email'], input_json['new_password'])
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+                
+        elif uri[0] == 'update_thingspeak_config':
+            try:
+                input_json = json.loads(cherrypy.request.body.read())
+                required = ['greenhouse_id', 'channel_id', 'writeKey', 'readKey']
+                if any(k not in input_json for k in required):
+                    cherrypy.response.status = 400
+                    return {"error": "Missing required fields"}
+                return update_thingspeak_config(self.catalog_connection, input_json['greenhouse_id'], input_json['channel_id'], input_json['writeKey'], input_json['readKey'])
+            except json.JSONDecodeError:
+                cherrypy.response.status = 400
+                return {"error": "Invalid JSON format"}
+            
         elif uri[0] == 'logout_telegram':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
@@ -1285,30 +1272,17 @@ class CatalogREST(object):
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
-
-        elif uri[0] == 'update_thingspeak_config':
-            try:
-                input_json = json.loads(cherrypy.request.body.read())
-                write_log(f"Received input JSON: {input_json}")
-                required = ['greenhouse_id', 'channel_id', 'writeKey', 'readKey']
-                if any(k not in input_json for k in required):
-                    cherrypy.response.status = 400
-                    return {"error": "Missing required fields"}
-                return update_thingspeak_config(self.catalog_connection, input_json['greenhouse_id'], input_json['channel_id'], input_json['writeKey'], input_json['readKey'])
-            except json.JSONDecodeError:
-                cherrypy.response.status = 400
-                return {"error": "Invalid JSON format"}
-
+            
         else:
-            cherrypy.response.status = 400
-            return {"error": "UNABLE TO MANAGE THIS URL"}
-
-    def PUT(self, *uri, **params):
-        cherrypy.response.status = 405
-        return {"error": "METHOD NOT ALLOWED"}
+            cherrypy.response.status = 405
+            return {"error": "METHOD NOT ALLOWED"}
 
     def DELETE(self, *uri, **params):
-        if uri and uri[0] == 'delete_event':
+        if len(uri) == 0:
+            cherrypy.response.status = 400
+            return {"error": "UNABLE TO MANAGE THIS URL"}
+        
+        if uri[0] == 'delete_event':
             try:
                 if "device_id" not in params and "event_id" not in params:
                     cherrypy.response.status = 400
@@ -1317,6 +1291,25 @@ class CatalogREST(object):
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
+            
+        elif uri[0] == 'remove_area_from_greenhouse':
+            if 'area_id' not in params or 'greenhouse_id' not in params:
+                cherrypy.response.status = 400
+                return {"error": "Missing required fields"}
+            return remove_area_from_greenhouse(self.catalog_connection, params['greenhouse_id'], params['area_id'])
+            
+        elif uri[0] == 'remove_plant_from_greenhouse':
+            if 'area_id' not in params or 'plant_id' not in params:
+                cherrypy.response.status = 400
+                return {"error": "Missing required fields"}
+            return remove_plant_from_greenhouse(self.catalog_connection, params['area_id'], params['plant_id'])
+            
+        elif uri[0] == 'remove_sensor_from_greenhouse':
+            if 'sensor_id' not in params or 'area_id' not in params:
+                cherrypy.response.status = 400
+                return {"error": "Missing required fields"}
+            return remove_sensor_from_greenhouse(self.catalog_connection, params['area_id'], params['sensor_id'])
+            
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}

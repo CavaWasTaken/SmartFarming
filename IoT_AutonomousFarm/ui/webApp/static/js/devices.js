@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(config => {
               const catalog_url = config.catalog_url;
               return fetch(`${catalog_url}/update_thingspeak_config`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
                   Authorization: `Bearer ${token}`,

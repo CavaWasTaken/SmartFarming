@@ -61,7 +61,7 @@ document.getElementById("profileForm").addEventListener("submit", function(event
         const catalog_url = config.catalog_url;
   
         return fetch(`${catalog_url}/update_user_info`, {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`

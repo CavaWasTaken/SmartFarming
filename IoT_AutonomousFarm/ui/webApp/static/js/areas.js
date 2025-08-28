@@ -127,16 +127,12 @@ $(document).ready(function () {
                 .then((res) => res.json())
                 .then((config) => {
                   const catalog_url = config.catalog_url;
-                  return fetch(`${catalog_url}/remove_area_from_greenhouse`, {
-                    method: "POST",
+                return fetch(`${catalog_url}/remove_area_from_greenhouse?greenhouse_id=${greenhouseId}&area_id=${area.area_id}`, {
+                    method: "DELETE",
                     headers: {
                       "Content-Type": "application/json",
                       Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({
-                      greenhouse_id: greenhouseId,
-                      area_id: area.area_id,
-                    }),
+                    }
                   });
                 })
                 .then((res) => res.json())

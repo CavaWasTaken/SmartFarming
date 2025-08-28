@@ -76,7 +76,6 @@ def ActionReceived(client, userdata, message):
     except Exception as e:
         write_log(f"Error processing action: {e}")
 
-
 os.makedirs("./logs", exist_ok=True)   # create the logs directory if it doesn't exist
 
 # each time that the device starts, we clear the log file
@@ -275,6 +274,14 @@ while True:
             
         except Exception as e:
             write_log(f"Error publishing value from sensor {sensor['name']}: {e}")
+            if not client.is_connected():
+                write_log("MQTT client disconnected, trying to reconnect...")
+                try:
+                    client.reconnect()
+                    sensors = []  # clear the sensors list to force re-fetching from the Catalog
+                    write_log("MQTT client reconnected")
+                except Exception as e:
+                    write_log(f"Error reconnecting MQTT client: {e}")
             continue
     
     write_log("")

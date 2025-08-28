@@ -153,16 +153,12 @@ document.addEventListener("DOMContentLoaded", () => {
               .then((res) => res.json())
               .then((config) => {
                 const catalog_url = config.catalog_url;
-                return fetch(`${catalog_url}/remove_sensor_from_greenhouse`, {
-                  method: "POST",
+                return fetch(`${catalog_url}/remove_sensor_from_greenhouse?area_id=${areaId}&sensor_id=${sensor.sensor_id}`, {
+                  method: "DELETE",
                   headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
-                  },
-                  body: JSON.stringify({
-                    area_id: areaId,
-                    sensor_id: sensor.sensor_id,
-                  }),
+                  }
                 });
               })
               .then((res) => res.json())
@@ -346,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   const catalog_url = config.catalog_url;
 
                   return fetch(`${catalog_url}/set_sensor_threshold`, {
-                    method: "POST",
+                    method: "PUT",
                     headers: {
                       "Content-Type": "application/json",
                       Authorization: `Bearer ${token}`,

@@ -396,6 +396,7 @@ if __name__ == "__main__":
                 write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
                 if _ == 4:  # if it is the last attempt
                     write_log("Failed to get sensors from the Catalog after 5 attempts")
+                    cherrypy.engine.exit()
                     exit(1)  # exit the program if the device information is not found
                 
                 time.sleep(60)   # wait for 60 seconds before trying again
@@ -404,6 +405,7 @@ if __name__ == "__main__":
             write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
             if _ == 4:  # if it is the last attempt
                 write_log("Failed to get sensors from the Catalog after 5 attempts")
+                cherrypy.engine.exit()
                 exit(1)
 
             time.sleep(60)  # wait for 60 seconds before trying again

@@ -39,7 +39,7 @@ except KeyError as e:
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         # send a welcome message to the user
-        await context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to the IoT Autonomous Farm Bot!\nList of available commands:" \
+        await context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to the IoT Autonomous Farm Bot!\nList of available commands:\n" \
         "/login to connect telegram to your Smart Greenhouse.\n" \
         "/logout to disconnect telegram from your Smart Greenhouse.\n")
     except Exception as e:
@@ -75,7 +75,7 @@ async def logout(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ask to the catalog service to remove the association between the telegram user and the greenhouse
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Logging out...\nYou will be disconnected from your Smart Greenhouse.")
         user_id = update.effective_user.id
-        response = requests.post(
+        response = requests.put(
             f"{catalog_url}/logout_telegram",
             json={"user_id": user_id}
         )

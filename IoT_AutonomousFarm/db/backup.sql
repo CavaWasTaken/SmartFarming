@@ -293,7 +293,7 @@ CREATE TABLE public.scheduled_events (
     parameter character varying(20) NOT NULL,
     value numeric(10,2) NOT NULL,
     CONSTRAINT frequency_values CHECK (((frequency)::text = ANY (ARRAY[('Once'::character varying)::text, ('Daily'::character varying)::text, ('Weekly'::character varying)::text, ('Monthly'::character varying)::text]))),
-    CONSTRAINT scheduled_events_parameter_check CHECK (((parameter)::text = ANY ((ARRAY['Temperature'::character varying, 'Humidity'::character varying, 'SoilMoisture'::character varying, 'pH'::character varying, 'Nitrogen'::character varying, 'Phosphorus'::character varying, 'Potassium'::character varying, 'LightIntensity'::character varying])::text[])))
+    CONSTRAINT scheduled_events_parameter_check CHECK (((parameter)::text = ANY (ARRAY[('Temperature'::character varying)::text, ('Humidity'::character varying)::text, ('SoilMoisture'::character varying)::text, ('pH'::character varying)::text, ('Nitrogen'::character varying)::text, ('Phosphorus'::character varying)::text, ('Potassium'::character varying)::text, ('LightIntensity'::character varying)::text])))
 );
 
 
