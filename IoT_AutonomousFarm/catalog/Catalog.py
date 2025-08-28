@@ -997,6 +997,7 @@ def update_thingspeak_config(conn, greenhouse_id, channel_id, write_key, read_ke
                 [json.dumps({"channel_id": channel_id, "write_key": write_key, "read_key": read_key}), greenhouse_id]
             )
             conn.commit()
+            cherrypy.response.status = 200
             return {"message": "ThingSpeak configuration updated successfully"}
     except Exception as e:
         conn.rollback()
@@ -1219,7 +1220,10 @@ class CatalogREST(object):
         else:
             cherrypy.response.status = 400
             return {"error": "UNABLE TO MANAGE THIS URL"}
-
+        
+    @cherrypy.tools.cors()
+    @cherrypy.tools.encode(encoding='utf-8')
+    @cherrypy.tools.json_out()
     def PUT(self, *uri, **params):
         if len(uri) == 0:
             cherrypy.response.status = 400
@@ -1277,6 +1281,9 @@ class CatalogREST(object):
             cherrypy.response.status = 405
             return {"error": "METHOD NOT ALLOWED"}
 
+    @cherrypy.tools.cors()
+    @cherrypy.tools.encode(encoding='utf-8')
+    @cherrypy.tools.json_out()
     def DELETE(self, *uri, **params):
         if len(uri) == 0:
             cherrypy.response.status = 400

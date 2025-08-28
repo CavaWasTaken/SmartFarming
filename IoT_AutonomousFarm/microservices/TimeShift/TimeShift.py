@@ -10,6 +10,24 @@ def write_log(message):
     with open("./logs/TimeShift.log", "a") as log_file:
         log_file.write(f"{message}\n")
 
+def reconnectClient(client):
+    while True:
+        try:
+            client.reconnect()
+            write_log("MQTT client reconnected")
+
+            # re-subscribe to all topics
+            if sensors != []:
+                for sensor in sensors:  # iterate over the list of sensors
+                    topic = f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/action/sensor_{sensor['sensor_id']}"  # create the topic to subscribe to
+                    client.subscribe(topic)    # subscribe to the topic to receive actions from the Catalog
+
+            break
+
+        except Exception as e:
+            write_log(f"Error reconnecting MQTT client: {e}")
+            time.sleep(30)  # wait for 30 seconds before trying to reconnect
+
 os.makedirs("./logs", exist_ok=True)   # create the logs directory if it doesn't exist
 
 # each time that the device starts, we clear the log file
@@ -50,14 +68,14 @@ while True:   # try to get the device information from the Catalog for 5 times
             break
 
         else:
-            write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()['error']})\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-            time.sleep(60)
+            write_log(f"Failed to get sensors from the Catalog\t(Response: {response.json()['error']})\nTrying again in 30 seconds...")    # in case of error, write the reason of the error in the log file
+            time.sleep(30)
 
     except Exception as e:
-        write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-        time.sleep(60)   # wait for 60 seconds before trying again
+        write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 30 seconds...")
+        time.sleep(30)   # wait for 30 seconds before trying again
 
-for _ in range(5):  # try 5 times to start the MQTT client
+while True:
     try:
         # MQTT Client setup
         client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"TimeShift_{device_id}", None, write_log)    # create a MQTT client object
@@ -65,12 +83,8 @@ for _ in range(5):  # try 5 times to start the MQTT client
         break   # exit the loop if the client is started successfully
 
     except Exception as e:
-        write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-        if _ == 4:  # if this is the last attempt
-            write_log("Failed to start MQTT client after 5 attempts")
-            exit(1)
-
-        time.sleep(60)   # wait for 60 seconds before trying again
+        write_log(f"Error starting MQTT client: {e}\nTrying again in 30 seconds...")    # in case of error, write the reason of the error in the log file
+        time.sleep(30)   # wait for 30 seconds before trying again
 
 while True:
     current_time = datetime.now() + timedelta(hours=2)  # get the current time in UTC+2 (Italy time zone)
@@ -101,6 +115,10 @@ while True:
 
     except Exception as e:
         write_log(f"Error checking for updates in the Catalog: {e}")
+        # check if the client is still connected, otherwise try to reconnect
+        if not client.is_connected():
+            write_log("MQTT client disconnected, trying to reconnect...")
+            reconnectClient(client)
 
     try:
         response = requests.get(f'{catalog_url}/get_scheduled_events', params={'device_id': device_id, 'device_name': 'TimeShift', 'greenhouse_id': greenhouse_id})    # read the list of sensors from the Catalog
@@ -147,5 +165,9 @@ while True:
     
     except Exception as e:
         write_log(f"Error processing events: {e}")
-        
+        # check if the client is still connected, otherwise try to reconnect
+        if not client.is_connected():
+            write_log("MQTT client disconnected, trying to reconnect...")
+            reconnectClient(client)
+
     time.sleep(60)   # repeat every 60 seconds

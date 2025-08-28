@@ -88,7 +88,7 @@ def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, t
                                             f"**Sensor ID:** {sensor_id}\n"
                                             f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
                                             f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
-                                            f"**Action:** {action}"
+                                            f"**Action:** {action}\n"
                                             f"The measured value is far from the desired range."
                         , area_name)
 
@@ -113,7 +113,7 @@ def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, t
                                                 f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
                                                 f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
                                                 f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
-                                                f"**Action:** {action}"
+                                                f"**Action:** {action}\n"
                                                 f"Both the measured value and the next expected value are outside the desired range. Corrective action is needed."
                             , area_name)  
 
@@ -162,7 +162,7 @@ def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, t
                                                 f"**Measured Value:** {nutrient_val:.2f} {unit}\n"
                                                 f"**Next Expected Value:** {expected_nutrient_val:.2f} {unit}\n"
                                                 f"**Range:** [{min_treshold[nutrient]:.2f}, {max_treshold[nutrient]:.2f}]\n"
-                                                f"**Action:** {action}"
+                                                f"**Action:** {action}\n"
                                                 f"The next expected value is predicted to be far from the desired range."
                             , area_name)
 
@@ -234,7 +234,7 @@ def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, t
                                         f"**Sensor ID:** {sensor_id}\n"
                                         f"**Measured Value:** {val:.2f} {unit}\n"
                                         f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
-                                        f"**Action:** {action}"
+                                        f"**Action:** {action}\n"
                                         f"The measured value is far from the desired range."
                     , area_name)
 
@@ -259,7 +259,7 @@ def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, t
                                             f"**Measured Value:** {val:.2f} {unit}\n"
                                             f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
                                             f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
-                                            f"**Action:** {action}"
+                                            f"**Action:** {action}\n"
                                             f"Both the measured value and the next expected value are outside the desired range. Corrective action is needed."
                         , area_name)
 
@@ -308,7 +308,7 @@ def checkValue(dataAnalysis_url, sensor_id, area_name, sensor_type, val, unit, t
                                             f"**Measured Value:** {val:.2f} {unit}\n"
                                             f"**Next Expected Value:** {expected_val:.2f} {unit}\n"
                                             f"**Range:** [{min_treshold:.2f}, {max_treshold:.2f}]\n"
-                                            f"**Action:** {action}"
+                                            f"**Action:** {action}\n"
                                             f"The next expected value is predicted to be far from the desired range."
                         , area_name)
 

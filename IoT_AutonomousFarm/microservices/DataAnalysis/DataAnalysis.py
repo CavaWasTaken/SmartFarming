@@ -13,6 +13,24 @@ def write_log(message):
     with open("./logs/DataAnalysis.log", "a") as log_file:
         log_file.write(f"{message}\n")
 
+def reconnectClient(client):
+    while True:
+        try:
+            client.reconnect()
+            write_log("MQTT client reconnected")
+
+            # re-subscribe to all topics
+            if sensors != []:
+                for sensor in sensors:  # iterate over the list of sensors
+                    topic = f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/action/sensor_{sensor['sensor_id']}"  # create the topic to subscribe to
+                    client.subscribe(topic)    # subscribe to the topic to receive actions from the Catalog
+
+            break
+
+        except Exception as e:
+            write_log(f"Error reconnecting MQTT client: {e}")
+            time.sleep(30)  # wait for 30 seconds before trying to reconnect
+
 os.makedirs("./logs", exist_ok=True)   # create the logs directory if it does not exist
 
 # each time that the device starts, we clear the log file
@@ -85,7 +103,13 @@ def periodic_sensor_check():
     while True:
         try:
             time.sleep(60)  # Check every 60 seconds
+            if not client.is_connected():
+                write_log("MQTT client disconnected, attempting to reconnect...")
+                reconnectClient(client)
+            write_log("Periodic sensor check started")
             checkSensors()
+            write_log("Periodic sensor check completed")
+
         except Exception as e:
             write_log(f"Error in periodic sensor check: {e}")
 
@@ -379,7 +403,7 @@ if __name__ == "__main__":
 
     N = 10  # number of values to keep track of
 
-    for _ in range(5):
+    while True:
         try:
             # it has to read the sensors from the catalog
             response = requests.get(f"{catalog_url}/get_sensors", params={'greenhouse_id': greenhouse_id, 'device_name': 'DataAnalysis'})
@@ -393,60 +417,57 @@ if __name__ == "__main__":
                 break   # exit the loop if the request is successful
             
             else:
-                write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-                if _ == 4:  # if it is the last attempt
-                    write_log("Failed to get sensors from the Catalog after 5 attempts")
-                    cherrypy.engine.exit()
-                    exit(1)  # exit the program if the device information is not found
-                
-                time.sleep(60)   # wait for 60 seconds before trying again
+                write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 30 seconds...")    # in case of error, write the reason of the error in the log file
+                time.sleep(30)   # wait for 30 seconds before trying again
 
         except Exception as e:
-            write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-            if _ == 4:  # if it is the last attempt
-                write_log("Failed to get sensors from the Catalog after 5 attempts")
-                cherrypy.engine.exit()
-                exit(1)
+            write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 30 seconds...")
+            time.sleep(30)  # wait for 30 seconds before trying again
 
-            time.sleep(60)  # wait for 60 seconds before trying again
+    while True:
+        try:
+            mqtt_topics = [] # initialize the array of topics where the microservice is subscribed
+            for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
+                mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/sensor_{sensor['sensor_id']}")
+                timestamps[sensor["sensor_id"]] = []
+                values[sensor["sensor_id"]] = []
+                mean_value[sensor["sensor_id"]] = 0
+                next_timestamp[sensor["sensor_id"]] = 0
+                next_value[sensor["sensor_id"]] = 0
 
-    mqtt_topics = [] # initialize the array of topics where the microservice is subscribed
-    for sensor in sensors:  # for each sensor of interest for the microservice, add the topic to the list of topics
-        mqtt_topics.append(f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/sensor_{sensor['sensor_id']}")
-        timestamps[sensor["sensor_id"]] = []
-        values[sensor["sensor_id"]] = []
-        mean_value[sensor["sensor_id"]] = 0
-        next_timestamp[sensor["sensor_id"]] = 0
-        next_value[sensor["sensor_id"]] = 0
+            break
+        
+        except Exception as e:
+            write_log(f"Error initializing the list of topics: {e}\nTrying again in 30 seconds...")
+            time.sleep(30)
+    
 
     write_log("")
 
-    for _ in range(5):
+    while True:
         try:
             client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DataAnalysis_{device_id}", on_message, write_log)
             client.start()
             break   # exit the loop if the client is started successfully
 
         except Exception as e:
-            write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-            if _ == 4:  # if it is the last attempt
-                write_log("Failed to start MQTT client after 5 attempts")
-                exit(1)  # exit the program if the device information is not found
-            
-            time.sleep(60)   # wait for 60 seconds before trying again
+            write_log(f"Error starting MQTT client: {e}\nTrying again in 30 seconds...")    # in case of error, write the reason of the error in the log file
+            time.sleep(30)   # wait for 30 seconds before trying again
 
     for topic in mqtt_topics:
-        for _ in range(5):
+        while True:
             try:
                 client.subscribe(topic)
                 break
 
             except Exception as e:
-                write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
-                if _ == 4:  # if it is the last attempt
-                    write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
-                else:
-                    time.sleep(60)  # wait for 60 seconds before trying again
+                write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 30 seconds...")
+                # check if the client is still connected, otherwise try to reconnect
+                if not client.is_connected():
+                    write_log("MQTT client disconnected, trying to reconnect...")
+                    reconnectClient(client)
+
+                time.sleep(30)  # wait for 30 seconds before trying again
 
     # start the periodic sensor checking thread
     sensor_check_thread = threading.Thread(target=periodic_sensor_check, daemon=True)
