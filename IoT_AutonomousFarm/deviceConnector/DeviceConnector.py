@@ -42,23 +42,20 @@ def ActionReceived(client, userdata, message):
         if action == "increase":
             goal = float(msg['message']['min_treshold'])    # get the goal from the action
 
-            if parameter == "Nitrogen":
+            if parameter == "N":
                 sensorClasses[sensor_id].goalN = goal
                 sensorClasses[sensor_id].nitrogenIncrease = True
                 sensorClasses[sensor_id].nitrogenDecrease = False
-                write_log(f"Nitrogen increase action received")
         
-            elif parameter == "Phosphorus":
+            elif parameter == "P":
                 sensorClasses[sensor_id].goalP = goal
                 sensorClasses[sensor_id].phosphorusIncrease = True
                 sensorClasses[sensor_id].phosphorusDecrease = False
-                write_log(f"Phosphorus increase action received")
         
-            elif parameter == "Potassium":
+            elif parameter == "K":
                 sensorClasses[sensor_id].goalK = goal
                 sensorClasses[sensor_id].potassiumIncrease = True
                 sensorClasses[sensor_id].potassiumDecrease = False
-                write_log(f"Potassium increase action received")
 
             else:
                 sensorClasses[sensor_id].goal = goal    # get the goal from the action
@@ -68,23 +65,20 @@ def ActionReceived(client, userdata, message):
         elif action == "decrease":
             goal = float(msg['message']['max_treshold'])    # get the goal from the action
 
-            if parameter == "Nitrogen":
+            if parameter == "N":
                 sensorClasses[sensor_id].goalN = goal
                 sensorClasses[sensor_id].nitrogenDecrease = True
                 sensorClasses[sensor_id].nitrogenIncrease = False
-                write_log(f"Nitrogen decrease action received")
     
-            elif parameter == "Phosphorus":
+            elif parameter == "P":
                 sensorClasses[sensor_id].goalP = goal
                 sensorClasses[sensor_id].phosphorusDecrease = True
                 sensorClasses[sensor_id].phosphorusIncrease = False
-                write_log(f"Phosphorus decrease action received")
     
-            elif parameter == "Potassium":
+            elif parameter == "K":
                 sensorClasses[sensor_id].goalK = goal
                 sensorClasses[sensor_id].potassiumDecrease = True
                 sensorClasses[sensor_id].potassiumIncrease = False
-                write_log(f"Potassium decrease action received")
         
             else:
                 sensorClasses[sensor_id].goal = goal

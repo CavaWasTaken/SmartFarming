@@ -1,6 +1,5 @@
 {
-    "catalog_url": "http://catalog:8080",
-    "thingSpeak_url": "http://localhost:8082",
+    "catalog_url": "http://192.168.0.76:8080",
     "greenhouse_id": 28,
     "mqtt_connection": {
         "mqtt_port": 1883,

@@ -1,18 +1,123 @@
 Device id: 81
-Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
-Current time: 2025-08-28 16:55:48.089124
+Received 5 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 14, 'area_id': 23, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 7.5, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 28}]
+
+Current time: 2025-08-28 23:58:44.182189
 Connected to mosquitto with result code 0
+Received 4 events: [{'event_id': 34, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '200.00'}, {'event_id': 35, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 37, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:59:00', 'sensor_id': 11, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '22.00'}, {'event_id': 39, 'frequency': 'Weekly', 'execution_time': '2025-09-04 21:00:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '6.90'}]
+
+Current time: 2025-08-28 23:59:44.217301
+Received 4 events: [{'event_id': 34, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '200.00'}, {'event_id': 35, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 37, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:59:00', 'sensor_id': 11, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '22.00'}, {'event_id': 39, 'frequency': 'Weekly', 'execution_time': '2025-09-04 21:00:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '6.90'}]
+
+Current time: 2025-08-29 00:00:44.230644
+Received 4 events: [{'event_id': 34, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '200.00'}, {'event_id': 35, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 37, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:59:00', 'sensor_id': 11, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '22.00'}, {'event_id': 39, 'frequency': 'Weekly', 'execution_time': '2025-09-04 21:00:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '6.90'}]
+
+Current time: 2025-08-29 00:01:44.243840
+Received 4 events: [{'event_id': 34, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '200.00'}, {'event_id': 35, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:53:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 37, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:59:00', 'sensor_id': 11, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '22.00'}, {'event_id': 39, 'frequency': 'Weekly', 'execution_time': '2025-09-04 21:00:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '6.90'}]
+
+Current time: 2025-08-29 00:02:44.255103
+Received 2 events: [{'event_id': 37, 'frequency': 'Weekly', 'execution_time': '2025-09-04 20:59:00', 'sensor_id': 11, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '22.00'}, {'event_id': 39, 'frequency': 'Weekly', 'execution_time': '2025-09-04 21:00:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '6.90'}]
+
+Current time: 2025-08-29 00:03:44.266733
+Received 1 events: [{'event_id': 40, 'frequency': 'Daily', 'execution_time': '2025-08-28 00:04:00', 'sensor_id': 12, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '80.00'}]
+Event 40 is in the past: 2025-08-28 00:04:00
+Event 40 deleted from the Catalog
+
+Current time: 2025-08-29 00:04:44.294753
+Received 1 events: [{'event_id': 41, 'frequency': 'Daily', 'execution_time': '2025-08-29 00:05:00', 'sensor_id': 12, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '80.00'}]
+Event 41 scheduled for the current time: 2025-08-29 00:05:00
+Published to greenhouse_28/area_23/event/sensor_12: {"bn": "greenhouse_28/area_23/event/sensor_12", "e": {"event_id": 41, "frequency": "Daily", "execution_time": "2025-08-29 00:05:00", "sensor_id": 12, "greenhouse_id": 28, "parameter": "Humidity", "value": "80.00"}}
+
+Current time: 2025-08-29 00:05:44.308456
+Received 1 events: [{'event_id': 43, 'frequency': 'Weekly', 'execution_time': '2025-08-28 00:06:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '200.00'}]
+Event 43 is in the past: 2025-08-28 00:06:00
+Event 43 deleted from the Catalog
+
+Current time: 2025-08-29 00:06:44.335233
+Received 1 events: [{'event_id': 44, 'frequency': 'Weekly', 'execution_time': '2025-08-29 00:07:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '180.00'}]
+Event 44 scheduled for the current time: 2025-08-29 00:07:00
+Published to greenhouse_28/area_23/event/sensor_13: {"bn": "greenhouse_28/area_23/event/sensor_13", "e": {"event_id": 44, "frequency": "Weekly", "execution_time": "2025-08-29 00:07:00", "sensor_id": 13, "greenhouse_id": 28, "parameter": "Phosphorus", "value": "180.00"}}
+
+Current time: 2025-08-29 00:07:44.347091
 Received 0 events: []
 No events scheduled for the greenhouse 28
-Current time: 2025-08-28 16:56:48.111808
+
+Current time: 2025-08-29 00:08:44.359227
+Received 2 events: [{'event_id': 46, 'frequency': 'Monthly', 'execution_time': '2025-08-29 00:08:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 47, 'frequency': 'Monthly', 'execution_time': '2025-08-29 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+Event 46 is in the past: 2025-08-29 00:08:00
+Event 46 deleted from the Catalog
+Event 47 scheduled for the current time: 2025-08-29 00:09:00
+Published to greenhouse_28/area_23/event/sensor_14: {"bn": "greenhouse_28/area_23/event/sensor_14", "e": {"event_id": 47, "frequency": "Monthly", "execution_time": "2025-08-29 00:09:00", "sensor_id": 14, "greenhouse_id": 28, "parameter": "pH", "value": "7.10"}}
+
+Current time: 2025-08-29 00:09:44.377640
+Received 2 events: [{'event_id': 48, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 49, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:10:44.388059
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:11:44.400813
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:12:44.412810
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:13:44.426688
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:14:44.437361
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:15:44.449613
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:16:44.465071
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:17:44.480442
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:18:44.495046
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:19:44.505252
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:20:44.516975
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:21:44.528498
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:22:44.537812
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:23:44.549625
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:24:44.560705
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:25:44.572492
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:26:44.622196
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:27:44.634587
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:28:44.646626
+Received 1 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:29:44.658684
+Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=TimeShift (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x786f73a0ab10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Error getting events from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_scheduled_events?device_id=81&device_name=TimeShift&greenhouse_id=28 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x786f739f5d90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Current time: 2025-08-29 00:30:44.662646
+Received 2 events: [{'event_id': 50, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}, {'event_id': 51, 'frequency': 'Monthly', 'execution_time': '2025-09-26 00:10:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}]
+
+Current time: 2025-08-29 00:31:44.674736
 Received 0 events: []
 No events scheduled for the greenhouse 28
-Current time: 2025-08-28 16:57:48.124597
-Received 0 events: []
-No events scheduled for the greenhouse 28
-Current time: 2025-08-28 16:58:48.137505
-Received 0 events: []
-No events scheduled for the greenhouse 28
-Current time: 2025-08-28 16:59:48.153533
-Received 0 events: []
-No events scheduled for the greenhouse 28
+
+Current time: 2025-08-29 00:32:44.685967
+Received 1 events: [{'event_id': 55, 'frequency': 'Daily', 'execution_time': '2025-10-17 02:00:00', 'sensor_id': 10, 'greenhouse_id': 28, 'parameter': 'Temperature', 'value': '15.00'}]

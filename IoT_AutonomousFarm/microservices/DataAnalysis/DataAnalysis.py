@@ -42,7 +42,6 @@ try:
     with open("./DataAnalysis_config.json", "r") as config_fd:
         config = json.load(config_fd)
         catalog_url = config["catalog_url"]
-        thingSpeak_url = config["thingSpeak_url"]
         greenhouse_id = config["greenhouse_id"] # get the id of the greenhouse
         mqtt_broker = config["mqtt_connection"]["mqtt_broker"]
         mqtt_port = config["mqtt_connection"]["mqtt_port"]

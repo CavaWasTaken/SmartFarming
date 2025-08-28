@@ -1,46 +1,351 @@
 Device id: 81
-Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Received 5 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 14, 'area_id': 23, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 7.5, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 28}]
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
 
 Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_23/sensor_13
 Subscribed to greenhouse_28/area_23/sensor_12
 Subscribed to greenhouse_28/area_22/sensor_10
 Subscribed to greenhouse_28/area_22/sensor_11
+Subscribed to greenhouse_28/area_23/sensor_14
 Started periodic sensor checking thread
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 155.06, 'P': 204.87, 'K': 209.49}, 'u': 'mg/kg', 't': 60}}
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 74.9, 'u': '%', 't': 60}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.43, 'u': '°C', 't': 60}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 74.02, 'u': '%', 't': 60}}
-Failed to update ThingSpeak. Response: Bad Request
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.5, 'P': 193.04, 'K': 193.89}, 'u': 'mg/kg', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 42.87, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 9.84, 'u': '°C', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 42.86, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.57, 'u': 'pH', 't': 60}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 154.5}', 'field7': '{"23": 193.04}', 'field8': '{"23": 193.89}', 'field2': '{"23": 42.87, "22": 42.86}', 'field1': '{"22": 9.84}', 'field4': '{"23": 6.57}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.41, 'P': 192.89, 'K': 193.75}, 'u': 'mg/kg', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 43.37, 'u': '%', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 9.72, 'u': '°C', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 41.99, 'u': '%', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.61, 'u': 'pH', 't': 120}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 154.41}', 'field7': '{"23": 192.89}', 'field8': '{"23": 193.75}', 'field2': '{"23": 43.37, "22": 41.99}', 'field1': '{"22": 9.72}', 'field4': '{"23": 6.61}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.32, 'P': 192.84, 'K': 193.7}, 'u': 'mg/kg', 't': 180}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 42.36, 'u': '%', 't': 180}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 9.5, 'u': '°C', 't': 180}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 43.21, 'u': '%', 't': 180}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.63, 'u': 'pH', 't': 180}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 154.32}', 'field7': '{"23": 192.84}', 'field8': '{"23": 193.7}', 'field2': '{"23": 42.36, "22": 43.21}', 'field1': '{"22": 9.5}', 'field4': '{"23": 6.63}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.23, 'P': 192.72, 'K': 199.67}, 'u': 'mg/kg', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 44.01, 'u': '%', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 10.0, 'u': '°C', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 45.12, 'u': '%', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.6, 'u': 'pH', 't': 240}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 146.23}', 'field7': '{"23": 192.72}', 'field8': '{"23": 199.67}', 'field2': '{"23": 44.01, "22": 45.12}', 'field1': '{"22": 10.0}', 'field4': '{"23": 6.6}'}
 
 Periodic sensor check started
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
 Periodic sensor check completed
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.87, 'P': 206.13, 'K': 208.49}, 'u': 'mg/kg', 't': 120}}
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 73.92, 'u': '%', 't': 120}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.26, 'u': '°C', 't': 120}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 73.88, 'u': '%', 't': 120}}
-Failed to update ThingSpeak. Response: Bad Request
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 138.31, 'P': 192.6, 'K': 205.73}, 'u': 'mg/kg', 't': 300}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 45.07, 'u': '%', 't': 300}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.2, 'u': '°C', 't': 300}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 45.9, 'u': '%', 't': 300}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.66, 'u': 'pH', 't': 300}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 138.31}', 'field7': '{"23": 192.6}', 'field8': '{"23": 205.73}', 'field2': '{"23": 45.07, "22": 45.9}', 'field1': '{"22": 11.2}', 'field4': '{"23": 6.66}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 130.39, 'P': 192.54, 'K': 205.65}, 'u': 'mg/kg', 't': 360}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 46.64, 'u': '%', 't': 360}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.65, 'u': '°C', 't': 360}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 47.55, 'u': '%', 't': 360}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.7, 'u': 'pH', 't': 360}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 130.39}', 'field7': '{"23": 192.54}', 'field8': '{"23": 205.65}', 'field2': '{"23": 46.64, "22": 47.55}', 'field1': '{"22": 11.65}', 'field4': '{"23": 6.7}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 122.32, 'P': 192.45, 'K': 205.52}, 'u': 'mg/kg', 't': 420}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 48.02, 'u': '%', 't': 420}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.97, 'u': '°C', 't': 420}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 49.54, 'u': '%', 't': 420}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.67, 'u': 'pH', 't': 420}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 122.32}', 'field7': '{"23": 192.45}', 'field8': '{"23": 205.52}', 'field2': '{"23": 48.02, "22": 49.54}', 'field1': '{"22": 11.97}', 'field4': '{"23": 6.67}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 114.29, 'P': 192.33, 'K': 205.45}, 'u': 'mg/kg', 't': 480}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 48.85, 'u': '%', 't': 480}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.73, 'u': '°C', 't': 480}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 51.41, 'u': '%', 't': 480}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.72, 'u': 'pH', 't': 480}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 114.29}', 'field7': '{"23": 192.33}', 'field8': '{"23": 205.45}', 'field2': '{"23": 48.85, "22": 51.41}', 'field1': '{"22": 12.73}', 'field4': '{"23": 6.72}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 106.35, 'P': 192.24, 'K': 205.28}, 'u': 'mg/kg', 't': 540}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 50.88, 'u': '%', 't': 540}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.64, 'u': '°C', 't': 540}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 52.51, 'u': '%', 't': 540}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.76, 'u': 'pH', 't': 540}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 106.35}', 'field7': '{"23": 192.24}', 'field8': '{"23": 205.28}', 'field2': '{"23": 50.88, "22": 52.51}', 'field1': '{"22": 13.64}', 'field4': '{"23": 6.76}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 98.27, 'P': 192.16, 'K': 205.09}, 'u': 'mg/kg', 't': 600}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 53.01, 'u': '%', 't': 600}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.39, 'u': '°C', 't': 600}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 53.97, 'u': '%', 't': 600}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.8, 'u': 'pH', 't': 600}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 98.27}', 'field7': '{"23": 192.16}', 'field8': '{"23": 205.09}', 'field2': '{"23": 53.01, "22": 53.97}', 'field1': '{"22": 14.39}', 'field4': '{"23": 6.8}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 98.02, 'P': 192.04, 'K': 204.97}, 'u': 'mg/kg', 't': 660}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 54.64, 'u': '%', 't': 660}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.56, 'u': '°C', 't': 660}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 54.81, 'u': '%', 't': 660}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.84, 'u': 'pH', 't': 660}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 98.02}', 'field7': '{"23": 192.04}', 'field8': '{"23": 204.97}', 'field2': '{"23": 54.64, "22": 54.81}', 'field1': '{"22": 15.56}', 'field4': '{"23": 6.84}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.86, 'P': 191.93, 'K': 204.89}, 'u': 'mg/kg', 't': 720}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 55.58, 'u': '%', 't': 720}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.88, 'u': '°C', 't': 720}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 56.21, 'u': '%', 't': 720}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.97, 'u': 'pH', 't': 720}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 97.86}', 'field7': '{"23": 191.93}', 'field8': '{"23": 204.89}', 'field2': '{"23": 55.58, "22": 56.21}', 'field1': '{"22": 15.88}', 'field4': '{"23": 6.97}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.72, 'P': 191.89, 'K': 204.85}, 'u': 'mg/kg', 't': 780}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 56.61, 'u': '%', 't': 780}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 17.07, 'u': '°C', 't': 780}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 57.17, 'u': '%', 't': 780}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.06, 'u': 'pH', 't': 780}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 97.72}', 'field7': '{"23": 191.89}', 'field8': '{"23": 204.85}', 'field2': '{"23": 56.61, "22": 57.17}', 'field1': '{"22": 17.07}', 'field4': '{"23": 7.06}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.66, 'P': 191.86, 'K': 204.8}, 'u': 'mg/kg', 't': 840}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 58.38, 'u': '%', 't': 840}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 17.79, 'u': '°C', 't': 840}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 59.09, 'u': '%', 't': 840}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.05, 'u': 'pH', 't': 840}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 97.66}', 'field7': '{"23": 191.86}', 'field8': '{"23": 204.8}', 'field2': '{"23": 58.38, "22": 59.09}', 'field1': '{"22": 17.79}', 'field4': '{"23": 7.05}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.53, 'P': 191.78, 'K': 204.62}, 'u': 'mg/kg', 't': 900}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 60.55, 'u': '%', 't': 900}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 18.63, 'u': '°C', 't': 900}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 60.58, 'u': '%', 't': 900}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.99, 'u': 'pH', 't': 900}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 97.53}', 'field7': '{"23": 191.78}', 'field8': '{"23": 204.62}', 'field2': '{"23": 60.55, "22": 60.58}', 'field1': '{"22": 18.63}', 'field4': '{"23": 6.99}'}
 
 Periodic sensor check started
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
 Periodic sensor check completed
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 155.41, 'P': 206.35, 'K': 208.47}, 'u': 'mg/kg', 't': 180}}
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 73.9, 'u': '%', 't': 180}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.68, 'u': '°C', 't': 180}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 74.17, 'u': '%', 't': 180}}
-Periodic sensor check started
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
-Periodic sensor check completed
-Failed to update ThingSpeak. Response: Bad Request
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 157.13, 'P': 204.8, 'K': 208.91}, 'u': 'mg/kg', 't': 240}}
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 75.01, 'u': '%', 't': 240}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.79, 'u': '°C', 't': 240}}
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.57, 'u': '%', 't': 240}}
-Failed to update ThingSpeak. Response: Bad Request
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.35, 'P': 191.69, 'K': 204.53}, 'u': 'mg/kg', 't': 960}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 61.68, 'u': '%', 't': 960}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 19.67, 'u': '°C', 't': 960}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 61.65, 'u': '%', 't': 960}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.04, 'u': 'pH', 't': 960}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 97.35}', 'field7': '{"23": 191.69}', 'field8': '{"23": 204.53}', 'field2': '{"23": 61.68, "22": 61.65}', 'field1': '{"22": 19.67}', 'field4': '{"23": 7.04}'}
 
 Periodic sensor check started
-Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
 Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.12, 'P': 191.62, 'K': 204.32}, 'u': 'mg/kg', 't': 1020}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 63.54, 'u': '%', 't': 1020}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 20.61, 'u': '°C', 't': 1020}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 63.8, 'u': '%', 't': 1020}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1020}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 97.12}', 'field7': '{"23": 191.62}', 'field8': '{"23": 204.32}', 'field2': '{"23": 63.54, "22": 63.8}', 'field1': '{"22": 20.61}', 'field4': '{"23": 7.02}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.9, 'P': 191.5, 'K': 204.18}, 'u': 'mg/kg', 't': 1080}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 65.51, 'u': '%', 't': 1080}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 21.78, 'u': '°C', 't': 1080}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 65.21, 'u': '%', 't': 1080}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.06, 'u': 'pH', 't': 1080}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.9}', 'field7': '{"23": 191.5}', 'field8': '{"23": 204.18}', 'field2': '{"23": 65.51, "22": 65.21}', 'field1': '{"22": 21.78}', 'field4': '{"23": 7.06}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.83, 'P': 191.43, 'K': 203.99}, 'u': 'mg/kg', 't': 1140}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 67.0, 'u': '%', 't': 1140}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.36, 'u': '°C', 't': 1140}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 66.05, 'u': '%', 't': 1140}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.05, 'u': 'pH', 't': 1140}}
+Periodic sensor check started
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.83}', 'field7': '{"23": 191.43}', 'field8': '{"23": 203.99}', 'field2': '{"23": 67.0, "22": 66.05}', 'field1': '{"22": 22.36}', 'field4': '{"23": 7.05}'}
+
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.69, 'P': 191.35, 'K': 203.95}, 'u': 'mg/kg', 't': 1200}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 68.17, 'u': '%', 't': 1200}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.18, 'u': '°C', 't': 1200}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 67.55, 'u': '%', 't': 1200}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1200}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.69}', 'field7': '{"23": 191.35}', 'field8': '{"23": 203.95}', 'field2': '{"23": 68.17, "22": 67.55}', 'field1': '{"22": 23.18}', 'field4': '{"23": 7.02}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.52, 'P': 191.28, 'K': 203.85}, 'u': 'mg/kg', 't': 1260}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 69.23, 'u': '%', 't': 1260}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.43, 'u': '°C', 't': 1260}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 69.82, 'u': '%', 't': 1260}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.06, 'u': 'pH', 't': 1260}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.52}', 'field7': '{"23": 191.28}', 'field8': '{"23": 203.85}', 'field2': '{"23": 69.23, "22": 69.82}', 'field1': '{"22": 24.43}', 'field4': '{"23": 7.06}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.43, 'P': 191.27, 'K': 203.77}, 'u': 'mg/kg', 't': 1320}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 70.54, 'u': '%', 't': 1320}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.62, 'u': '°C', 't': 1320}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 71.05, 'u': '%', 't': 1320}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1320}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.43}', 'field7': '{"23": 191.27}', 'field8': '{"23": 203.77}', 'field2': '{"23": 70.54, "22": 71.05}', 'field1': '{"22": 25.62}', 'field4': '{"23": 7.02}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.26, 'P': 191.14, 'K': 203.65}, 'u': 'mg/kg', 't': 1380}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 71.95, 'u': '%', 't': 1380}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.39, 'u': '°C', 't': 1380}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 73.13, 'u': '%', 't': 1380}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1380}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.26}', 'field7': '{"23": 191.14}', 'field8': '{"23": 203.65}', 'field2': '{"23": 71.95, "22": 73.13}', 'field1': '{"22": 25.39}', 'field4': '{"23": 6.98}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.07, 'P': 191.11, 'K': 203.48}, 'u': 'mg/kg', 't': 1440}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 72.86, 'u': '%', 't': 1440}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.2, 'u': '°C', 't': 1440}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 74.48, 'u': '%', 't': 1440}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.96, 'u': 'pH', 't': 1440}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 96.07}', 'field7': '{"23": 191.11}', 'field8': '{"23": 203.48}', 'field2': '{"23": 72.86, "22": 74.48}', 'field1': '{"22": 25.2}', 'field4': '{"23": 6.96}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.94, 'P': 190.97, 'K': 203.36}, 'u': 'mg/kg', 't': 1500}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 74.07, 'u': '%', 't': 1500}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.54, 'u': '°C', 't': 1500}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.4, 'u': '%', 't': 1500}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1500}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.94}', 'field7': '{"23": 190.97}', 'field8': '{"23": 203.36}', 'field2': '{"23": 74.07, "22": 76.4}', 'field1': '{"22": 25.54}', 'field4': '{"23": 6.98}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.79, 'P': 190.92, 'K': 203.18}, 'u': 'mg/kg', 't': 1560}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 75.48, 'u': '%', 't': 1560}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.11, 'u': '°C', 't': 1560}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.85, 'u': '%', 't': 1560}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.01, 'u': 'pH', 't': 1560}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.79}', 'field7': '{"23": 190.92}', 'field8': '{"23": 203.18}', 'field2': '{"23": 75.48, "22": 75.85}', 'field1': '{"22": 25.11}', 'field4': '{"23": 7.01}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.69, 'P': 190.9, 'K': 203.04}, 'u': 'mg/kg', 't': 1620}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 76.82, 'u': '%', 't': 1620}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.43, 'u': '°C', 't': 1620}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.92, 'u': '%', 't': 1620}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1620}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.69}', 'field7': '{"23": 190.9}', 'field8': '{"23": 203.04}', 'field2': '{"23": 76.82, "22": 76.92}', 'field1': '{"22": 25.43}', 'field4': '{"23": 6.98}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.62, 'P': 190.77, 'K': 202.85}, 'u': 'mg/kg', 't': 1680}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 78.6, 'u': '%', 't': 1680}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.77, 'u': '°C', 't': 1680}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.78, 'u': '%', 't': 1680}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1680}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.62}', 'field7': '{"23": 190.77}', 'field8': '{"23": 202.85}', 'field2': '{"23": 78.6, "22": 76.78}', 'field1': '{"22": 25.77}', 'field4': '{"23": 6.98}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.47, 'P': 190.62, 'K': 202.72}, 'u': 'mg/kg', 't': 1740}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.45, 'u': '%', 't': 1740}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.1, 'u': '°C', 't': 1740}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.71, 'u': '%', 't': 1740}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1740}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.47}', 'field7': '{"23": 190.62}', 'field8': '{"23": 202.72}', 'field2': '{"23": 80.45, "22": 76.71}', 'field1': '{"22": 25.1}', 'field4': '{"23": 7.02}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.34, 'P': 190.54, 'K': 202.63}, 'u': 'mg/kg', 't': 1800}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.02, 'u': '%', 't': 1800}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.98, 'u': '°C', 't': 1800}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.88, 'u': '%', 't': 1800}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.04, 'u': 'pH', 't': 1800}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.34}', 'field7': '{"23": 190.54}', 'field8': '{"23": 202.63}', 'field2': '{"23": 80.02, "22": 75.88}', 'field1': '{"22": 24.98}', 'field4': '{"23": 7.04}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.11, 'P': 190.42, 'K': 202.56}, 'u': 'mg/kg', 't': 1860}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.27, 'u': '%', 't': 1860}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.6, 'u': '°C', 't': 1860}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.24, 'u': '%', 't': 1860}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.05, 'u': 'pH', 't': 1860}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.11}', 'field7': '{"23": 190.42}', 'field8': '{"23": 202.56}', 'field2': '{"23": 80.27, "22": 76.24}', 'field1': '{"22": 25.6}', 'field4': '{"23": 7.05}'}
+
+Periodic sensor check started
+Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=ThingSpeakAdaptor (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7c575ae4d290>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.03, 'P': 190.31, 'K': 202.39}, 'u': 'mg/kg', 't': 1920}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.76, 'u': '%', 't': 1920}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.53, 'u': '°C', 't': 1920}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.67, 'u': '%', 't': 1920}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.08, 'u': 'pH', 't': 1920}}
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 95.03}', 'field7': '{"23": 190.31}', 'field8': '{"23": 202.39}', 'field2': '{"23": 80.76, "22": 75.67}', 'field1': '{"22": 25.53}', 'field4': '{"23": 7.08}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.83, 'P': 190.29, 'K': 202.29}, 'u': 'mg/kg', 't': 1980}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.98, 'u': '%', 't': 1980}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.97, 'u': '°C', 't': 1980}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.84, 'u': '%', 't': 1980}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.07, 'u': 'pH', 't': 1980}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 94.83}', 'field7': '{"23": 190.29}', 'field8': '{"23": 202.29}', 'field2': '{"23": 80.98, "22": 75.84}', 'field1': '{"22": 24.97}', 'field4': '{"23": 7.07}'}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.66, 'P': 190.25, 'K': 202.26}, 'u': 'mg/kg', 't': 2040}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.96, 'u': '%', 't': 2040}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.62, 'u': '°C', 't': 2040}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.93, 'u': '%', 't': 2040}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.11, 'u': 'pH', 't': 2040}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'C0AVQCKH5ESDIHJ8', 'write_key': 'ERF4GSKL6EO6CZFV', 'channel_id': '3051675'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3051675 with payload: {'api_key': 'ERF4GSKL6EO6CZFV', 'field6': '{"23": 94.66}', 'field7': '{"23": 190.25}', 'field8': '{"23": 202.26}', 'field2': '{"23": 80.96, "22": 75.93}', 'field1': '{"22": 25.62}', 'field4': '{"23": 7.11}'}
+

@@ -1,43 +1,333 @@
 Device ID: 78
 Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
 
+Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_22/sensor_10
 Subscribed to greenhouse_28/area_22/event/sensor_10
-Connected to mosquitto with result code 0
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.43, 'u': '°C', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 9.84, 'u': '°C', 't': 60}}
 WARNING: Failed to get when the next value of Temperature (sensor_10) is expected to arrive
 WARNING: Failed to get the next expected value of Temperature (sensor_10)
-Telegram message sent successfully to user 2070801980
+No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.26, 'u': '°C', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 9.72, 'u': '°C', 't': 120}}
+Periodic sensor check started
+Periodic sensor check completed
 The next value of Temperature (sensor_10) is expected to be received at: 180.0
-The next value of Temperature (sensor_10) is expected to be: 24.09 °C
+The next value of Temperature (sensor_10) is expected to be: 9.600000000000003 °C
 Wait to see another value to start the decision making for sensor_10 (Temperature)
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 9.5, 'u': '°C', 't': 180}}
 Periodic sensor check started
 Periodic sensor check completed
-
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.68, 'u': '°C', 't': 180}}
 The next value of Temperature (sensor_10) is expected to be received at: 240.0
-The next value of Temperature (sensor_10) is expected to be: 24.706666666666667 °C
-WARNING: The measured value 24.68 °C of Temperature (sensor_10) went outside the range [25, 30]
-WARNING: The measured value 24.68 °C and the next expected one 24.706666666666667 °C of sensor_10 (Temperature) are outside the range [25, 30].
+The next value of Temperature (sensor_10) is expected to be: 9.346666666666668 °C
+WARNING: The measured value 9.5 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 9.5 °C and the next expected one 9.346666666666668 °C of sensor_10 (Temperature) are outside the range [25, 30].
 Action needed to increase the value
-Periodic sensor check started
-Periodic sensor check completed
-Telegram message sent successfully to user 2070801980
-Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 24.68, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 180}
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 9.5, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 180}
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.79, 'u': '°C', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 10.0, 'u': '°C', 't': 240}}
 The next value of Temperature (sensor_10) is expected to be received at: 300.0
-The next value of Temperature (sensor_10) is expected to be: 24.915 °C
-WARNING: The measured value 24.79 °C of Temperature (sensor_10) went outside the range [25, 30]
-WARNING: The measured value 24.79 °C and the next expected one 24.915 °C of sensor_10 (Temperature) are outside the range [25, 30].
+The next value of Temperature (sensor_10) is expected to be: 9.830000000000002 °C
+WARNING: The measured value 10.0 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 10.0 °C and the next expected one 9.830000000000002 °C of sensor_10 (Temperature) are outside the range [25, 30].
 Action needed to increase the value
-Telegram message sent successfully to user 2070801980
-Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 24.79, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 240}
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 10.0, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 240}
 Periodic sensor check started
 Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.2, 'u': '°C', 't': 300}}
+The next value of Temperature (sensor_10) is expected to be received at: 360.0
+The next value of Temperature (sensor_10) is expected to be: 10.952000000000002 °C
+WARNING: The measured value 11.2 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 11.2 °C and the next expected one 10.952000000000002 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 11.2, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 300}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.65, 'u': '°C', 't': 360}}
+The next value of Temperature (sensor_10) is expected to be received at: 420.0
+The next value of Temperature (sensor_10) is expected to be: 11.717333333333334 °C
+WARNING: The measured value 11.65 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 11.65 °C and the next expected one 11.717333333333334 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 11.65, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 360}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 11.97, 'u': '°C', 't': 420}}
+The next value of Temperature (sensor_10) is expected to be received at: 480.0
+The next value of Temperature (sensor_10) is expected to be: 12.26142857142857 °C
+WARNING: The measured value 11.97 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 11.97 °C and the next expected one 12.26142857142857 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 11.97, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 420}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 12.73, 'u': '°C', 't': 480}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 540.0
+The next value of Temperature (sensor_10) is expected to be: 12.922500000000003 °C
+WARNING: The measured value 12.73 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 12.73 °C and the next expected one 12.922500000000003 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 12.73, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 480}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 13.64, 'u': '°C', 't': 540}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 600.0
+The next value of Temperature (sensor_10) is expected to be: 13.707222222222224 °C
+WARNING: The measured value 13.64 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 13.64 °C and the next expected one 13.707222222222224 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 13.64, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 540}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 14.39, 'u': '°C', 't': 600}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 660.0
+The next value of Temperature (sensor_10) is expected to be: 14.494000000000003 °C
+WARNING: The measured value 14.39 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 14.39 °C and the next expected one 14.494000000000003 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 14.39, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 600}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.56, 'u': '°C', 't': 660}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 720.0
+The next value of Temperature (sensor_10) is expected to be: 15.699333333333334 °C
+WARNING: The measured value 15.56 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 15.56 °C and the next expected one 15.699333333333334 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 15.56, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 660}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 15.88, 'u': '°C', 't': 720}}
+The next value of Temperature (sensor_10) is expected to be received at: 780.0
+The next value of Temperature (sensor_10) is expected to be: 16.619333333333334 °C
+WARNING: The measured value 15.88 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 15.88 °C and the next expected one 16.619333333333334 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 15.88, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 720}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 17.07, 'u': '°C', 't': 780}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 840.0
+The next value of Temperature (sensor_10) is expected to be: 17.546 °C
+WARNING: The measured value 17.07 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 17.07 °C and the next expected one 17.546 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 17.07, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 780}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 17.79, 'u': '°C', 't': 840}}
+The next value of Temperature (sensor_10) is expected to be received at: 900.0
+The next value of Temperature (sensor_10) is expected to be: 18.389333333333333 °C
+WARNING: The measured value 17.79 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 17.79 °C and the next expected one 18.389333333333333 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 17.79, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 840}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 18.63, 'u': '°C', 't': 900}}
+The next value of Temperature (sensor_10) is expected to be received at: 960.0
+The next value of Temperature (sensor_10) is expected to be: 19.369333333333337 °C
+WARNING: The measured value 18.63 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 18.63 °C and the next expected one 19.369333333333337 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 18.63, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 900}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 19.67, 'u': '°C', 't': 960}}
+The next value of Temperature (sensor_10) is expected to be received at: 1020.0
+The next value of Temperature (sensor_10) is expected to be: 20.39 °C
+WARNING: The measured value 19.67 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 19.67 °C and the next expected one 20.39 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 19.67, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 960}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 20.61, 'u': '°C', 't': 1020}}
+The next value of Temperature (sensor_10) is expected to be received at: 1080.0
+The next value of Temperature (sensor_10) is expected to be: 21.337333333333333 °C
+WARNING: The measured value 20.61 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 20.61 °C and the next expected one 21.337333333333333 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 20.61, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 1020}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 21.78, 'u': '°C', 't': 1080}}
+The next value of Temperature (sensor_10) is expected to be received at: 1140.0
+The next value of Temperature (sensor_10) is expected to be: 22.379333333333335 °C
+WARNING: The measured value 21.78 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 21.78 °C and the next expected one 22.379333333333335 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 21.78, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 1080}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.36, 'u': '°C', 't': 1140}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 1200.0
+The next value of Temperature (sensor_10) is expected to be: 23.29266666666667 °C
+WARNING: The measured value 22.36 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 22.36 °C and the next expected one 23.29266666666667 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 22.36, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 1140}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 23.18, 'u': '°C', 't': 1200}}
+The next value of Temperature (sensor_10) is expected to be received at: 1260.0
+The next value of Temperature (sensor_10) is expected to be: 24.15266666666667 °C
+WARNING: The measured value 23.18 °C of Temperature (sensor_10) went outside the range [25, 30]
+WARNING: The measured value 23.18 °C and the next expected one 24.15266666666667 °C of sensor_10 (Temperature) are outside the range [25, 30].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_10: {"message": {"action": "increase", "val": 23.18, "min_treshold": 25, "max_treshold": 30}, "parameter": "Temperature", "timestamp": 1200}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.43, 'u': '°C', 't': 1260}}
+The next value of Temperature (sensor_10) is expected to be received at: 1320.0
+The next value of Temperature (sensor_10) is expected to be: 25.238666666666667 °C
+WARNING: The measured value 24.43 °C of Temperature (sensor_10) went outside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.62, 'u': '°C', 't': 1320}}
+The next value of Temperature (sensor_10) is expected to be received at: 1380.0
+The next value of Temperature (sensor_10) is expected to be: 26.294666666666668 °C
+The measured value (25.62 °C) and the next prediction (26.294666666666668 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.39, 'u': '°C', 't': 1380}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 1440.0
+The next value of Temperature (sensor_10) is expected to be: 26.926666666666666 °C
+The measured value (25.39 °C) and the next prediction (26.926666666666666 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.2, 'u': '°C', 't': 1440}}
+The next value of Temperature (sensor_10) is expected to be received at: 1500.0
+The next value of Temperature (sensor_10) is expected to be: 27.12 °C
+The measured value (25.2 °C) and the next prediction (27.12 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.54, 'u': '°C', 't': 1500}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 1560.0
+The next value of Temperature (sensor_10) is expected to be: 27.179333333333332 °C
+The measured value (25.54 °C) and the next prediction (27.179333333333332 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.11, 'u': '°C', 't': 1560}}
+The next value of Temperature (sensor_10) is expected to be received at: 1620.0
+The next value of Temperature (sensor_10) is expected to be: 26.88333333333333 °C
+The measured value (25.11 °C) and the next prediction (26.88333333333333 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.43, 'u': '°C', 't': 1620}}
+The next value of Temperature (sensor_10) is expected to be received at: 1680.0
+The next value of Temperature (sensor_10) is expected to be: 26.603333333333335 °C
+The measured value (25.43 °C) and the next prediction (26.603333333333335 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.77, 'u': '°C', 't': 1680}}
+The next value of Temperature (sensor_10) is expected to be received at: 1740.0
+The next value of Temperature (sensor_10) is expected to be: 26.450000000000003 °C
+The measured value (25.77 °C) and the next prediction (26.450000000000003 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.1, 'u': '°C', 't': 1740}}
+The next value of Temperature (sensor_10) is expected to be received at: 1800.0
+The next value of Temperature (sensor_10) is expected to be: 25.91733333333334 °C
+The measured value (25.1 °C) and the next prediction (25.91733333333334 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.98, 'u': '°C', 't': 1800}}
+The next value of Temperature (sensor_10) is expected to be received at: 1860.0
+The next value of Temperature (sensor_10) is expected to be: 25.372666666666664 °C
+WARNING: The measured value 24.98 °C of Temperature (sensor_10) went outside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.6, 'u': '°C', 't': 1860}}
+Error getting area info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_area_info?greenhouse_id=28&area_id=22 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7dd5fed1c950>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Periodic sensor check started
+Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=LightManagement (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7dd5fcb21650>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 1920.0
+The next value of Temperature (sensor_10) is expected to be: 25.28933333333333 °C
+The measured value (25.6 °C) and the next prediction (25.28933333333333 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=78 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7dd5fcb26090>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.53, 'u': '°C', 't': 1920}}
+The next value of Temperature (sensor_10) is expected to be received at: 1980.0
+The next value of Temperature (sensor_10) is expected to be: 25.41733333333334 °C
+The measured value (25.53 °C) and the next prediction (25.41733333333334 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 24.97, 'u': '°C', 't': 1980}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 2040.0
+The next value of Temperature (sensor_10) is expected to be: 25.266000000000002 °C
+WARNING: The measured value 24.97 °C of Temperature (sensor_10) went outside the range [25, 30]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 25.62, 'u': '°C', 't': 2040}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Temperature (sensor_10) is expected to be received at: 2100.0
+The next value of Temperature (sensor_10) is expected to be: 25.352 °C
+The measured value (25.62 °C) and the next prediction (25.352 °C) of sensor_10 (Temperature) are inside the range [25, 30]
+No Telegram user found for this greenhouse

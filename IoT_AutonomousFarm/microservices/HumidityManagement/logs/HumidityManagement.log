@@ -1,70 +1,630 @@
 Device id: 77
 Received 2 sensors: [{'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
 
-Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_23/sensor_12
+Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_23/event/sensor_12
 Subscribed to greenhouse_28/area_22/sensor_11
 Subscribed to greenhouse_28/area_22/event/sensor_11
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 74.9, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 42.87, 'u': '%', 't': 60}}
 WARNING: Failed to get when the next value of Humidity (sensor_12) is expected to arrive
 WARNING: Failed to get the next expected value of Humidity (sensor_12)
-Telegram message sent successfully to user 2070801980
+No Telegram user found for this greenhouse
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 74.02, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 42.86, 'u': '%', 't': 60}}
 WARNING: Failed to get when the next value of Humidity (sensor_11) is expected to arrive
 WARNING: Failed to get the next expected value of Humidity (sensor_11)
-Telegram message sent successfully to user 2070801980
+No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 73.92, 'u': '%', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 43.37, 'u': '%', 't': 120}}
+Periodic sensor check started
+Periodic sensor check completed
 The next value of Humidity (sensor_12) is expected to be received at: 180.0
-The next value of Humidity (sensor_12) is expected to be: 72.94 %
+The next value of Humidity (sensor_12) is expected to be: 43.87 %
 Wait to see another value to start the decision making for sensor_12 (Humidity)
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 73.88, 'u': '%', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 41.99, 'u': '%', 't': 120}}
 The next value of Humidity (sensor_11) is expected to be received at: 180.0
-The next value of Humidity (sensor_11) is expected to be: 73.73999999999998 %
+The next value of Humidity (sensor_11) is expected to be: 41.12 %
 Wait to see another value to start the decision making for sensor_11 (Humidity)
-Periodic sensor check started
-Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 73.9, 'u': '%', 't': 180}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 42.36, 'u': '%', 't': 180}}
 The next value of Humidity (sensor_12) is expected to be received at: 240.0
-The next value of Humidity (sensor_12) is expected to be: 73.24 %
-WARNING: The measured value 73.9 % of Humidity (sensor_12) went outside the range [80, 85]
-WARNING: The measured value 73.9 % and the next expected one 73.24 % of sensor_12 (Humidity) are outside the range [80, 85].
+The next value of Humidity (sensor_12) is expected to be: 42.35666666666667 %
+WARNING: The measured value 42.36 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 42.36 % and the next expected one 42.35666666666667 % of sensor_12 (Humidity) are outside the range [80, 85].
 Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 42.36, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 180}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 43.21, 'u': '%', 't': 180}}
 Periodic sensor check started
 Periodic sensor check completed
-Telegram message sent successfully to user 2070801980
-Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 73.9, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 180}
-
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 74.17, 'u': '%', 't': 180}}
 The next value of Humidity (sensor_11) is expected to be received at: 240.0
-The next value of Humidity (sensor_11) is expected to be: 74.17333333333333 %
-WARNING: The measured value 74.17 % of Humidity (sensor_11) went outside the range [75, 85]
-WARNING: The measured value 74.17 % and the next expected one 74.17333333333333 % of sensor_11 (Humidity) are outside the range [75, 85].
+The next value of Humidity (sensor_11) is expected to be: 43.03666666666667 %
+WARNING: The measured value 43.21 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 43.21 % and the next expected one 43.03666666666667 % of sensor_11 (Humidity) are outside the range [75, 85].
 Action needed to increase the value
-Telegram message sent successfully to user 2070801980
-Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 74.17, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 180}
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 43.21, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 180}
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 75.01, 'u': '%', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 44.01, 'u': '%', 't': 240}}
 The next value of Humidity (sensor_12) is expected to be received at: 300.0
-The next value of Humidity (sensor_12) is expected to be: 74.51 %
-WARNING: The measured value 75.01 % of Humidity (sensor_12) went outside the range [80, 85]
-WARNING: The measured value 75.01 % and the next expected one 74.51 % of sensor_12 (Humidity) are outside the range [80, 85].
+The next value of Humidity (sensor_12) is expected to be: 43.754999999999995 %
+WARNING: The measured value 44.01 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 44.01 % and the next expected one 43.754999999999995 % of sensor_12 (Humidity) are outside the range [80, 85].
 Action needed to increase the value
-Telegram message sent successfully to user 2070801980
-Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 75.01, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 240}
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 44.01, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 240}
 
-Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.57, 'u': '%', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 45.12, 'u': '%', 't': 240}}
 The next value of Humidity (sensor_11) is expected to be received at: 300.0
-The next value of Humidity (sensor_11) is expected to be: 75.645 %
-The measured value (75.57 %) and the next prediction (75.645 %) of sensor_11 (Humidity) are inside the range [75, 85]
-Telegram message sent successfully to user 2070801980
+The next value of Humidity (sensor_11) is expected to be: 45.294999999999995 %
+WARNING: The measured value 45.12 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 45.12 % and the next expected one 45.294999999999995 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 45.12, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 240}
 Periodic sensor check started
 Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 45.07, 'u': '%', 't': 300}}
+The next value of Humidity (sensor_12) is expected to be received at: 360.0
+The next value of Humidity (sensor_12) is expected to be: 45.047999999999995 %
+WARNING: The measured value 45.07 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 45.07 % and the next expected one 45.047999999999995 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 45.07, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 300}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 45.9, 'u': '%', 't': 300}}
+The next value of Humidity (sensor_11) is expected to be received at: 360.0
+The next value of Humidity (sensor_11) is expected to be: 46.579 %
+WARNING: The measured value 45.9 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 45.9 % and the next expected one 46.579 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 45.9, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 300}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 46.64, 'u': '%', 't': 360}}
+The next value of Humidity (sensor_12) is expected to be received at: 420.0
+The next value of Humidity (sensor_12) is expected to be: 46.61333333333334 %
+WARNING: The measured value 46.64 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 46.64 % and the next expected one 46.61333333333334 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 46.64, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 360}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 47.55, 'u': '%', 't': 360}}
+The next value of Humidity (sensor_11) is expected to be received at: 420.0
+The next value of Humidity (sensor_11) is expected to be: 48.14733333333333 %
+WARNING: The measured value 47.55 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 47.55 % and the next expected one 48.14733333333333 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 47.55, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 360}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/event/sensor_12', 'e': {'event_id': 41, 'frequency': 'Daily', 'execution_time': '2025-08-29 00:05:00', 'sensor_id': 12, 'greenhouse_id': 28, 'parameter': 'Humidity', 'value': '80.00'}}
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 46.64, "min_treshold": "80.00"}, "parameter": "Humidity", "timestamp": "2025-08-29 00:05:00"}
+Event 41 deleted from the Catalog
+Event 12 scheduled for the next day
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 48.02, 'u': '%', 't': 420}}
+The next value of Humidity (sensor_12) is expected to be received at: 480.0
+The next value of Humidity (sensor_12) is expected to be: 48.14857142857143 %
+WARNING: The measured value 48.02 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 48.02 % and the next expected one 48.14857142857143 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 48.02, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 420}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 49.54, 'u': '%', 't': 420}}
+The next value of Humidity (sensor_11) is expected to be received at: 480.0
+The next value of Humidity (sensor_11) is expected to be: 50.00285714285714 %
+WARNING: The measured value 49.54 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 49.54 % and the next expected one 50.00285714285714 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 49.54, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 420}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 48.85, 'u': '%', 't': 480}}
+The next value of Humidity (sensor_12) is expected to be received at: 540.0
+The next value of Humidity (sensor_12) is expected to be: 49.38142857142858 %
+WARNING: The measured value 48.85 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 48.85 % and the next expected one 49.38142857142858 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 48.85, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 480}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 51.41, 'u': '%', 't': 480}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 540.0
+The next value of Humidity (sensor_11) is expected to be: 51.91535714285713 %
+WARNING: The measured value 51.41 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 51.41 % and the next expected one 51.91535714285713 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 51.41, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 480}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 50.88, 'u': '%', 't': 540}}
+The next value of Humidity (sensor_12) is expected to be received at: 600.0
+The next value of Humidity (sensor_12) is expected to be: 50.98805555555557 %
+WARNING: The measured value 50.88 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 50.88 % and the next expected one 50.98805555555557 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 50.88, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 540}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 52.51, 'u': '%', 't': 540}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 600.0
+The next value of Humidity (sensor_11) is expected to be: 53.50583333333333 %
+WARNING: The measured value 52.51 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 52.51 % and the next expected one 53.50583333333333 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 52.51, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 540}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 53.01, 'u': '%', 't': 600}}
+The next value of Humidity (sensor_12) is expected to be received at: 660.0
+The next value of Humidity (sensor_12) is expected to be: 52.83733333333333 %
+WARNING: The measured value 53.01 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 53.01 % and the next expected one 52.83733333333333 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 53.01, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 600}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 53.97, 'u': '%', 't': 600}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 660.0
+The next value of Humidity (sensor_11) is expected to be: 55.05733333333332 %
+WARNING: The measured value 53.97 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 53.97 % and the next expected one 55.05733333333332 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 53.97, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 600}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 54.64, 'u': '%', 't': 660}}
+The next value of Humidity (sensor_12) is expected to be received at: 720.0
+The next value of Humidity (sensor_12) is expected to be: 55.11999999999999 %
+WARNING: The measured value 54.64 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 54.64 % and the next expected one 55.11999999999999 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 54.64, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 660}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 54.81, 'u': '%', 't': 660}}
+The next value of Humidity (sensor_11) is expected to be received at: 720.0
+The next value of Humidity (sensor_11) is expected to be: 56.80666666666667 %
+WARNING: The measured value 54.81 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 54.81 % and the next expected one 56.80666666666667 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 54.81, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 660}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 55.58, 'u': '%', 't': 720}}
+The next value of Humidity (sensor_12) is expected to be received at: 780.0
+The next value of Humidity (sensor_12) is expected to be: 57.12733333333333 %
+WARNING: The measured value 55.58 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 55.58 % and the next expected one 57.12733333333333 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 55.58, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 720}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 56.21, 'u': '%', 't': 720}}
+The next value of Humidity (sensor_11) is expected to be received at: 780.0
+The next value of Humidity (sensor_11) is expected to be: 58.08733333333332 %
+WARNING: The measured value 56.21 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 56.21 % and the next expected one 58.08733333333332 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 56.21, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 720}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 56.61, 'u': '%', 't': 780}}
+The next value of Humidity (sensor_12) is expected to be received at: 840.0
+The next value of Humidity (sensor_12) is expected to be: 58.46333333333334 %
+WARNING: The measured value 56.61 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 56.61 % and the next expected one 58.46333333333334 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 56.61, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 780}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 57.17, 'u': '%', 't': 780}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 840.0
+The next value of Humidity (sensor_11) is expected to be: 59.129333333333335 %
+WARNING: The measured value 57.17 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 57.17 % and the next expected one 59.129333333333335 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 57.17, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 780}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 58.38, 'u': '%', 't': 840}}
+The next value of Humidity (sensor_12) is expected to be received at: 900.0
+The next value of Humidity (sensor_12) is expected to be: 59.99733333333334 %
+WARNING: The measured value 58.38 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 58.38 % and the next expected one 59.99733333333334 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 58.38, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 840}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 59.09, 'u': '%', 't': 840}}
+The next value of Humidity (sensor_11) is expected to be received at: 900.0
+The next value of Humidity (sensor_11) is expected to be: 60.518 %
+WARNING: The measured value 59.09 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 59.09 % and the next expected one 60.518 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 59.09, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 840}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 60.55, 'u': '%', 't': 900}}
+The next value of Humidity (sensor_12) is expected to be received at: 960.0
+The next value of Humidity (sensor_12) is expected to be: 61.724 %
+WARNING: The measured value 60.55 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 60.55 % and the next expected one 61.724 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 60.55, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 900}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 60.58, 'u': '%', 't': 900}}
+The next value of Humidity (sensor_11) is expected to be received at: 960.0
+The next value of Humidity (sensor_11) is expected to be: 61.77933333333334 %
+WARNING: The measured value 60.58 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 60.58 % and the next expected one 61.77933333333334 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 60.58, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 900}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 61.68, 'u': '%', 't': 960}}
+The next value of Humidity (sensor_12) is expected to be received at: 1020.0
+The next value of Humidity (sensor_12) is expected to be: 63.28933333333334 %
+WARNING: The measured value 61.68 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 61.68 % and the next expected one 63.28933333333334 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 61.68, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 960}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 61.65, 'u': '%', 't': 960}}
+The next value of Humidity (sensor_11) is expected to be received at: 1020.0
+The next value of Humidity (sensor_11) is expected to be: 62.93000000000001 %
+WARNING: The measured value 61.65 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 61.65 % and the next expected one 62.93000000000001 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 61.65, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 960}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 63.54, 'u': '%', 't': 1020}}
+The next value of Humidity (sensor_12) is expected to be received at: 1080.0
+The next value of Humidity (sensor_12) is expected to be: 64.964 %
+WARNING: The measured value 63.54 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 63.54 % and the next expected one 64.964 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 63.54, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1020}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 63.8, 'u': '%', 't': 1020}}
+The next value of Humidity (sensor_11) is expected to be received at: 1080.0
+The next value of Humidity (sensor_11) is expected to be: 64.53133333333332 %
+WARNING: The measured value 63.8 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 63.8 % and the next expected one 64.53133333333332 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 63.8, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1020}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 65.51, 'u': '%', 't': 1080}}
+The next value of Humidity (sensor_12) is expected to be received at: 1140.0
+The next value of Humidity (sensor_12) is expected to be: 66.61333333333333 %
+WARNING: The measured value 65.51 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 65.51 % and the next expected one 66.61333333333333 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 65.51, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1080}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 65.21, 'u': '%', 't': 1080}}
+The next value of Humidity (sensor_11) is expected to be received at: 1140.0
+The next value of Humidity (sensor_11) is expected to be: 66.24466666666666 %
+WARNING: The measured value 65.21 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 65.21 % and the next expected one 66.24466666666666 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 65.21, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1080}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 67.0, 'u': '%', 't': 1140}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_12) is expected to be received at: 1200.0
+The next value of Humidity (sensor_12) is expected to be: 68.28933333333333 %
+WARNING: The measured value 67.0 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 67.0 % and the next expected one 68.28933333333333 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 67.0, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1140}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 66.05, 'u': '%', 't': 1140}}
+The next value of Humidity (sensor_11) is expected to be received at: 1200.0
+The next value of Humidity (sensor_11) is expected to be: 67.66733333333333 %
+WARNING: The measured value 66.05 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 66.05 % and the next expected one 67.66733333333333 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 66.05, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1140}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 68.17, 'u': '%', 't': 1200}}
+The next value of Humidity (sensor_12) is expected to be received at: 1260.0
+The next value of Humidity (sensor_12) is expected to be: 69.92666666666666 %
+WARNING: The measured value 68.17 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 68.17 % and the next expected one 69.92666666666666 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 68.17, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1200}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 67.55, 'u': '%', 't': 1200}}
+The next value of Humidity (sensor_11) is expected to be received at: 1260.0
+The next value of Humidity (sensor_11) is expected to be: 69.17666666666665 %
+WARNING: The measured value 67.55 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 67.55 % and the next expected one 69.17666666666665 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 67.55, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1200}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 69.23, 'u': '%', 't': 1260}}
+The next value of Humidity (sensor_12) is expected to be received at: 1320.0
+The next value of Humidity (sensor_12) is expected to be: 71.412 %
+WARNING: The measured value 69.23 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 69.23 % and the next expected one 71.412 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 69.23, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1260}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 69.82, 'u': '%', 't': 1260}}
+The next value of Humidity (sensor_11) is expected to be received at: 1320.0
+The next value of Humidity (sensor_11) is expected to be: 70.91266666666665 %
+WARNING: The measured value 69.82 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 69.82 % and the next expected one 70.91266666666665 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 69.82, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1260}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 70.54, 'u': '%', 't': 1320}}
+The next value of Humidity (sensor_12) is expected to be received at: 1380.0
+The next value of Humidity (sensor_12) is expected to be: 72.69933333333336 %
+WARNING: The measured value 70.54 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 70.54 % and the next expected one 72.69933333333336 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 70.54, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1320}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 71.05, 'u': '%', 't': 1320}}
+The next value of Humidity (sensor_11) is expected to be received at: 1380.0
+The next value of Humidity (sensor_11) is expected to be: 72.51333333333334 %
+WARNING: The measured value 71.05 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 71.05 % and the next expected one 72.51333333333334 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 71.05, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1320}
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 71.95, 'u': '%', 't': 1380}}
+The next value of Humidity (sensor_12) is expected to be received at: 1440.0
+The next value of Humidity (sensor_12) is expected to be: 73.828 %
+WARNING: The measured value 71.95 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 71.95 % and the next expected one 73.828 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 71.95, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1380}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 73.13, 'u': '%', 't': 1380}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 1440.0
+The next value of Humidity (sensor_11) is expected to be: 74.21266666666665 %
+WARNING: The measured value 73.13 % of Humidity (sensor_11) went outside the range [75, 85]
+WARNING: The measured value 73.13 % and the next expected one 74.21266666666665 % of sensor_11 (Humidity) are outside the range [75, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_22/action/sensor_11: {"message": {"action": "increase", "val": 73.13, "min_treshold": 75, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1380}
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 72.86, 'u': '%', 't': 1440}}
+The next value of Humidity (sensor_12) is expected to be received at: 1500.0
+The next value of Humidity (sensor_12) is expected to be: 74.77000000000001 %
+WARNING: The measured value 72.86 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 72.86 % and the next expected one 74.77000000000001 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 72.86, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1440}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 74.48, 'u': '%', 't': 1440}}
+The next value of Humidity (sensor_11) is expected to be received at: 1500.0
+The next value of Humidity (sensor_11) is expected to be: 75.9 %
+WARNING: The measured value 74.48 % of Humidity (sensor_11) went outside the range [75, 85]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 74.07, 'u': '%', 't': 1500}}
+The next value of Humidity (sensor_12) is expected to be received at: 1560.0
+The next value of Humidity (sensor_12) is expected to be: 75.80933333333333 %
+WARNING: The measured value 74.07 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 74.07 % and the next expected one 75.80933333333333 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 74.07, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1500}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.4, 'u': '%', 't': 1500}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 1560.0
+The next value of Humidity (sensor_11) is expected to be: 77.72666666666666 %
+The measured value (76.4 %) and the next prediction (77.72666666666666 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 75.48, 'u': '%', 't': 1560}}
+The next value of Humidity (sensor_12) is expected to be received at: 1620.0
+The next value of Humidity (sensor_12) is expected to be: 76.81266666666667 %
+WARNING: The measured value 75.48 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 75.48 % and the next expected one 76.81266666666667 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 75.48, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1560}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.85, 'u': '%', 't': 1560}}
+The next value of Humidity (sensor_11) is expected to be received at: 1620.0
+The next value of Humidity (sensor_11) is expected to be: 78.56400000000001 %
+The measured value (75.85 %) and the next prediction (78.56400000000001 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 76.82, 'u': '%', 't': 1620}}
+The next value of Humidity (sensor_12) is expected to be received at: 1680.0
+The next value of Humidity (sensor_12) is expected to be: 77.92799999999997 %
+WARNING: The measured value 76.82 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 76.82 % and the next expected one 77.92799999999997 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 76.82, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1620}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.92, 'u': '%', 't': 1620}}
+The next value of Humidity (sensor_11) is expected to be received at: 1680.0
+The next value of Humidity (sensor_11) is expected to be: 79.456 %
+The measured value (76.92 %) and the next prediction (79.456 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 78.6, 'u': '%', 't': 1680}}
+The next value of Humidity (sensor_12) is expected to be received at: 1740.0
+The next value of Humidity (sensor_12) is expected to be: 79.39533333333333 %
+WARNING: The measured value 78.6 % of Humidity (sensor_12) went outside the range [80, 85]
+WARNING: The measured value 78.6 % and the next expected one 79.39533333333333 % of sensor_12 (Humidity) are outside the range [80, 85].
+Action needed to increase the value
+No Telegram user found for this greenhouse
+Published to greenhouse_28/area_23/action/sensor_12: {"message": {"action": "increase", "val": 78.6, "min_treshold": 80, "max_treshold": 85}, "parameter": "Humidity", "timestamp": 1680}
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.78, 'u': '%', 't': 1680}}
+The next value of Humidity (sensor_11) is expected to be received at: 1740.0
+The next value of Humidity (sensor_11) is expected to be: 79.79333333333332 %
+The measured value (76.78 %) and the next prediction (79.79333333333332 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.45, 'u': '%', 't': 1740}}
+The next value of Humidity (sensor_12) is expected to be received at: 1800.0
+The next value of Humidity (sensor_12) is expected to be: 81.12733333333334 %
+The measured value (80.45 %) and the next prediction (81.12733333333334 %) of sensor_12 (Humidity) are inside the range [80, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.71, 'u': '%', 't': 1740}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 1800.0
+The next value of Humidity (sensor_11) is expected to be: 79.55533333333334 %
+The measured value (76.71 %) and the next prediction (79.55533333333334 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.02, 'u': '%', 't': 1800}}
+The next value of Humidity (sensor_12) is expected to be received at: 1860.0
+The next value of Humidity (sensor_12) is expected to be: 82.10266666666666 %
+The measured value (80.02 %) and the next prediction (82.10266666666666 %) of sensor_12 (Humidity) are inside the range [80, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.88, 'u': '%', 't': 1800}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 1860.0
+The next value of Humidity (sensor_11) is expected to be: 78.67466666666667 %
+The measured value (75.88 %) and the next prediction (78.67466666666667 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.27, 'u': '%', 't': 1860}}
+Error getting area info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_area_info?greenhouse_id=28&area_id=23 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x722f5f603a90>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Periodic sensor check started
+Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=HumidityManagement (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x722f5f613f10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Periodic sensor check completed
+The next value of Humidity (sensor_12) is expected to be received at: 1920.0
+The next value of Humidity (sensor_12) is expected to be: 82.67066666666665 %
+The measured value (80.27 %) and the next prediction (82.67066666666665 %) of sensor_12 (Humidity) are inside the range [80, 85]
+Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=77 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x722f5f5d29d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 76.24, 'u': '%', 't': 1860}}
+Error getting area info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_area_info?greenhouse_id=28&area_id=22 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x722f5cc011d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+The next value of Humidity (sensor_11) is expected to be received at: 1920.0
+The next value of Humidity (sensor_11) is expected to be: 77.98799999999999 %
+The measured value (76.24 %) and the next prediction (77.98799999999999 %) of sensor_11 (Humidity) are inside the range [75, 85]
+Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=77 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x722f5f613350>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.76, 'u': '%', 't': 1920}}
+The next value of Humidity (sensor_12) is expected to be received at: 1980.0
+The next value of Humidity (sensor_12) is expected to be: 83.048 %
+The measured value (80.76 %) and the next prediction (83.048 %) of sensor_12 (Humidity) are inside the range [80, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.67, 'u': '%', 't': 1920}}
+The next value of Humidity (sensor_11) is expected to be received at: 1980.0
+The next value of Humidity (sensor_11) is expected to be: 76.97333333333333 %
+The measured value (75.67 %) and the next prediction (76.97333333333333 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.98, 'u': '%', 't': 1980}}
+The next value of Humidity (sensor_12) is expected to be received at: 2040.0
+The next value of Humidity (sensor_12) is expected to be: 83.20800000000001 %
+The measured value (80.98 %) and the next prediction (83.20800000000001 %) of sensor_12 (Humidity) are inside the range [80, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.84, 'u': '%', 't': 1980}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 2040.0
+The next value of Humidity (sensor_11) is expected to be: 76.27333333333333 %
+The measured value (75.84 %) and the next prediction (76.27333333333333 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_12', 'e': {'n': 'Humidity', 'v': 80.96, 'u': '%', 't': 2040}}
+The next value of Humidity (sensor_12) is expected to be received at: 2100.0
+The next value of Humidity (sensor_12) is expected to be: 83.00066666666667 %
+The measured value (80.96 %) and the next prediction (83.00066666666667 %) of sensor_12 (Humidity) are inside the range [80, 85]
+No Telegram user found for this greenhouse
+
+Received: {'bn': 'greenhouse_28/area_22/sensor_11', 'e': {'n': 'Humidity', 'v': 75.93, 'u': '%', 't': 2040}}
+Periodic sensor check started
+Periodic sensor check completed
+The next value of Humidity (sensor_11) is expected to be received at: 2100.0
+The next value of Humidity (sensor_11) is expected to be: 75.78866666666667 %
+The measured value (75.93 %) and the next prediction (75.78866666666667 %) of sensor_11 (Humidity) are inside the range [75, 85]
+No Telegram user found for this greenhouse

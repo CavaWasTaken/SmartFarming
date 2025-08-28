@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
   const greenhouseId = localStorage.getItem("greenhouse_id");
+  const areaName = localStorage.getItem("area_name");
   
   // Get URL parameters
   const urlParams = new URLSearchParams(window.location.search);
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         plugins: {
           title: {
             display: true,
-            text: `${sensorType} Data for Area ${areaId}`
+            text: `${sensorType} Data for Area: ${areaName}`
           }
         }
       }

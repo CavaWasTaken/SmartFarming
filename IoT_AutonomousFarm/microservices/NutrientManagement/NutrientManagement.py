@@ -255,27 +255,31 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
 
     if parameter == "Nitrogen":
         lv = liveValue[sensor_id]["N"]
+        parameter_ = "N"
     elif parameter == "Phosphorus":
         lv = liveValue[sensor_id]["P"]
+        parameter_ = "P"
     elif parameter == "Potassium":
         lv = liveValue[sensor_id]["K"]
+        parameter_ = "K"
     else:
         lv = liveValue[sensor_id]
+        parameter_ = parameter
 
     # check if the action needed to reach the desired value is to increase or decrease the value
-    if desired_value < lv:
+    if float(desired_value) < lv:
         sendAction({
             "action": "decrease",
             "val": lv,
             "max_treshold": desired_value,
-        }, parameter)
+        }, parameter_)
 
-    elif desired_value > lv:
+    elif float(desired_value) > lv:
         sendAction({
             "action": "increase",
             "val": lv,
             "min_treshold": desired_value,
-        }, parameter)
+        }, parameter_)
 
     else:
         write_log(f"WARNING: The desired value of {parameter} is equal to the current value. No action needed.")
@@ -288,12 +292,11 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
     
     else:
         write_log(f"WARNING: Failed to delete the event {event_id} from the Catalog\t(Response: {response.json()['error']})")
-    
+
     if frequency == "Daily":
     
         # schedule the next event for the next day
         response = requests.post(f"{catalog_url}/schedule_event", json={
-            "device_id": device_id,
             "greenhouse_id": greenhouse_id,
             "sensor_id": sensor_id,
             "parameter": parameter,
@@ -301,7 +304,7 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
             "desired_value": desired_value,
             "execution_time": (datetime.strptime(execution_time, "%Y-%m-%d %H:%M:%S") + timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
         })
-        if response.status_code == 200:
+        if response.status_code == 200 or response.status_code == 201:
             write_log(f"Event {sensor_id} scheduled for the next day")
         
         else:
@@ -311,7 +314,6 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
         
         # schedule the next event for the next week
         response = requests.post(f"{catalog_url}/schedule_event", json={
-            "device_id": device_id,
             "greenhouse_id": greenhouse_id,
             "sensor_id": sensor_id,
             "parameter": parameter,
@@ -319,7 +321,7 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
             "desired_value": desired_value,
             "execution_time": (datetime.strptime(execution_time, "%Y-%m-%d %H:%M:%S") + timedelta(weeks=1)).strftime("%Y-%m-%d %H:%M:%S")
         })
-        if response.status_code == 200:
+        if response.status_code == 200 or response.status_code == 201:
             write_log(f"Event {sensor_id} scheduled for the next week")
         
         else:
@@ -329,7 +331,6 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
     
         # schedule the next event for the next month
         response = requests.post(f"{catalog_url}/schedule_event", json={
-            "device_id": device_id,
             "greenhouse_id": greenhouse_id,
             "sensor_id": sensor_id,
             "parameter": parameter,
@@ -337,7 +338,7 @@ def handle_event(event_id, greenhouse_id, sensor_id, parameter, frequency, desir
             "desired_value": desired_value,
             "execution_time": (datetime.strptime(execution_time, "%Y-%m-%d %H:%M:%S") + timedelta(weeks=4)).strftime("%Y-%m-%d %H:%M:%S")
         })
-        if response.status_code == 200:
+        if response.status_code == 200 or response.status_code == 201:
             write_log(f"Event {sensor_id} scheduled for the next month")
         
         else:

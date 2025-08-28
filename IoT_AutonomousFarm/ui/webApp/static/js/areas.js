@@ -111,6 +111,7 @@ $(document).ready(function () {
           `;
           card.querySelector(".sensorbtn").addEventListener("click", () => {
             localStorage.setItem("area_id", area.area_id);
+            localStorage.setItem("area_name", area.name);
             window.location.href = "sensors.html";
           });
           

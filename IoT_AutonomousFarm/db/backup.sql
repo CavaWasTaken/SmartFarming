@@ -532,7 +532,7 @@ COPY public.devices (device_id, greenhouse_id, name, type) FROM stdin;
 --
 
 COPY public.greenhouses (greenhouse_id, user_id, name, location, thingspeak_config) FROM stdin;
-28	0	MyGreenhouse	Torino	{"read_key": "ZPZG4DZDXG31P2FU", "write_key": "B1VQS0V9EO4UZFXB", "channel_id": "3002703"}
+28	0	MyGreenhouse	Torino	{"read_key": "C0AVQCKH5ESDIHJ8", "write_key": "ERF4GSKL6EO6CZFV", "channel_id": "3051675"}
 \.
 
 
@@ -600,7 +600,7 @@ COPY public.users (user_id, username, email, password_hash, telegram_user_id) FR
 21	testingfinal	testingfinal@gmail.com	\\x243262243132246a522e364e41497a777a72326e34636552333656754f59314e45376f4a356a746b56694566726d4a646b7878614d7931724c776f2e	\N
 22	newuser123	newuser123@gmail.com	\\x24326224313224576d6642786e2e6472346c793137524237396d337265656d452e77476f4c75464370655034474b5837694e734d6c7948346b62464b	\N
 2	username	thatsnegar@gmail.com	\\x243262243132246378306272593044362f314e526358504a4a514d74754d374c504d2e3830374d34335743472e4e5131716142356434436e73794353	\N
-0	Lorenzo	s346742@studenti.polito.it	\\x24326224313224732f64633664424a70456e37767069487a657a756f2e384f476952797863556433536c592f61336165505475464e4a41784643544f	2070801980
+0	Lorenzo	s346742@studenti.polito.it	\\x24326224313224732f64633664424a70456e37767069487a657a756f2e384f476952797863556433536c592f61336165505475464e4a41784643544f	\N
 \.
 
 
@@ -650,7 +650,7 @@ SELECT pg_catalog.setval('public.plants_plant_id_seq', 1, false);
 -- Name: scheduled_events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: iotproject
 --
 
-SELECT pg_catalog.setval('public.scheduled_events_event_id_seq', 9, true);
+SELECT pg_catalog.setval('public.scheduled_events_event_id_seq', 10, true);
 
 
 --

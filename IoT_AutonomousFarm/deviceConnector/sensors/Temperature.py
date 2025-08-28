@@ -14,7 +14,7 @@ class Temperature:
         self.last_update = None
         self.artificial_offset = 0.0  # Persistent offset from artificial actions
 
-        self.action_strength = 0.5  # How fast the artificial change happens (°C per minute)
+        self.action_strength = 0.8  # How fast the artificial change happens (°C per minute)
         self.diff = None  # difference between current temperature and natural temperature
 
     def getValue(self, elapsed_time):

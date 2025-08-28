@@ -88,7 +88,7 @@ while True:
 
 while True:
     current_time = datetime.now() + timedelta(hours=2)  # get the current time in UTC+2 (Italy time zone)
-    write_log(f"Current time: {current_time}")
+    write_log(f"\nCurrent time: {current_time}")
     try:
         response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Data Analysis service
         if response.status_code == 200: # if the request is successful
@@ -149,7 +149,9 @@ while True:
             # extract the events that are scheduled for the current time and the next minute
             if current_time <= event_time <= current_time + timedelta(minutes=1):
                 write_log(f"Event {event['event_id']} scheduled for the current time: {event_time}")
-                senML = json.dumps({"bn": f"greenhouse_{greenhouse_id}/event/sensor_{event['sensor_id']}", "e": event})   # create the senML message
+                # select the sensor given the event sensor_id
+                sensor = next((s for s in sensors if s["sensor_id"] == event["sensor_id"]), None)
+                senML = json.dumps({"bn": f"greenhouse_{greenhouse_id}/area_{sensor['area_id']}/event/sensor_{event['sensor_id']}", "e": event})   # create the senML message
                 senML_dictionary = json.loads(senML)
                 client.publish(senML_dictionary["bn"], senML)   # publish the senML message to the MQTT broker
 

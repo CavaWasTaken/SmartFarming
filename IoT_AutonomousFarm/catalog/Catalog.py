@@ -603,7 +603,8 @@ def get_scheduled_events(conn, device_id, device_name, greenhouse_id):
         cherrypy.response.status = 500
         return {"error": "Internal error: " + str(e)}
 
-def schedule_event(conn, greenhouse_id, device_id, sensor_id, parameter, frequency, value, execution_time):
+def schedule_event(conn, greenhouse_id, sensor_id, parameter, frequency, value, execution_time):
+    write_log(f"Scheduling event for greenhouse {greenhouse_id}, sensor {sensor_id}, parameter {parameter}, frequency {frequency}, value {value}, execution_time {execution_time}")
     try:
         if conn.closed:
             cherrypy.response.status = 500
@@ -1153,11 +1154,11 @@ class CatalogREST(object):
         elif uri[0] == 'schedule_event':
             try:
                 input_json = json.loads(cherrypy.request.body.read())
-                required = ['device_id', 'greenhouse_id', 'sensor_id', 'parameter', 'frequency', 'desired_value', 'execution_time']
+                required = ["greenhouse_id", "sensor_id", "parameter", "frequency", "desired_value", "execution_time"]
                 if any(k not in input_json for k in required):
                     cherrypy.response.status = 400
                     return {"error": "Missing required fields"}
-                return schedule_event(self.catalog_connection, input_json['greenhouse_id'], input_json['device_id'], input_json['sensor_id'], input_json['parameter'], input_json['frequency'], input_json['desired_value'], input_json['execution_time'])
+                return schedule_event(self.catalog_connection, input_json['greenhouse_id'], input_json['sensor_id'], input_json['parameter'], input_json['frequency'], input_json['desired_value'], input_json['execution_time'])
             except json.JSONDecodeError:
                 cherrypy.response.status = 400
                 return {"error": "Invalid JSON format"}
