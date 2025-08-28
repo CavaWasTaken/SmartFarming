@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const userInfoLink = document.getElementById("userinfo");
       const userProfile = document.getElementById("userProfile");
       const greenhouseLink = document.getElementById("greenhouse");
+      const telegramlink = document.getElementById("telegram");
       const schedulingLink = document.getElementById("scheduling-link");
       const greenhouseId = localStorage.getItem("greenhouse_id");
 

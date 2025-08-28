@@ -1,7 +1,8 @@
-Received device id: 76
-Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
-Received greenhouse location: Torino
+Received device id: 148
+Received 3 sensors: [{'sensor_id': 26, 'area_id': 37, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 27, 'area_id': 38, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 103}, 'N': {'max': 200, 'min': 10}, 'P': {'max': 296, 'min': 100}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}]
+Received greenhouse location: Turin
 
+<<<<<<< HEAD
 Subscribed to greenhouse_28/area_23/action/sensor_13
 Subscribed to greenhouse_28/area_23/action/sensor_12
 Subscribed to greenhouse_28/area_22/action/sensor_10
@@ -662,3 +663,33 @@ Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sens
 
 Received action: {'message': {'action': 'decrease', 'val': 119.82, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 6000}
 Received action: {'message': {'action': 'increase', 'val': 195.58, 'min_treshold': 200, 'max_treshold': 300}, 'parameter': 'K', 'timestamp': 6000}
+=======
+Connected to mosquitto with result code 0
+Subscribed to greenhouse_37/area_37/action/sensor_26
+Subscribed to greenhouse_37/area_38/action/sensor_27
+Subscribed to greenhouse_37/area_38/action/sensor_28
+Published to greenhouse_37/area_37/sensor_26: {"bn": "greenhouse_37/area_37/sensor_26", "e": {"n": "NPK", "v": {"N": 151.82307523100823, "P": 197.77705228444444, "K": 199.39002528578868}, "u": "mg/kg", "t": 0}}
+Published to greenhouse_37/area_38/sensor_27: {"bn": "greenhouse_37/area_38/sensor_27", "e": {"n": "NPK", "v": {"N": 142.99320512291524, "P": 203.61467773304582, "K": 209.5353752710705}, "u": "mg/kg", "t": 0}}
+Published to greenhouse_37/area_38/sensor_28: {"bn": "greenhouse_37/area_38/sensor_28", "e": {"n": "Humidity", "v": 64.93, "u": "%", "t": 0}}
+
+Published to greenhouse_37/area_37/sensor_26: {"bn": "greenhouse_37/area_37/sensor_26", "e": {"n": "NPK", "v": {"N": 150.7, "P": 197.25, "K": 200.06}, "u": "mg/kg", "t": 60}}
+Published to greenhouse_37/area_38/sensor_27: {"bn": "greenhouse_37/area_38/sensor_27", "e": {"n": "NPK", "v": {"N": 141.71, "P": 202.7, "K": 209.25}, "u": "mg/kg", "t": 60}}
+Published to greenhouse_37/area_38/sensor_28: {"bn": "greenhouse_37/area_38/sensor_28", "e": {"n": "Humidity", "v": 64.68, "u": "%", "t": 60}}
+
+Published to greenhouse_37/area_37/sensor_26: {"bn": "greenhouse_37/area_37/sensor_26", "e": {"n": "NPK", "v": {"N": 149.6, "P": 195.9, "K": 201.47}, "u": "mg/kg", "t": 120}}
+Published to greenhouse_37/area_38/sensor_27: {"bn": "greenhouse_37/area_38/sensor_27", "e": {"n": "NPK", "v": {"N": 141.74, "P": 201.8, "K": 210.7}, "u": "mg/kg", "t": 120}}
+Published to greenhouse_37/area_38/sensor_28: {"bn": "greenhouse_37/area_38/sensor_28", "e": {"n": "Humidity", "v": 65.55, "u": "%", "t": 120}}
+
+Published to greenhouse_37/area_37/sensor_26: {"bn": "greenhouse_37/area_37/sensor_26", "e": {"n": "NPK", "v": {"N": 147.81, "P": 197.31, "K": 203.15}, "u": "mg/kg", "t": 180}}
+Published to greenhouse_37/area_38/sensor_27: {"bn": "greenhouse_37/area_38/sensor_27", "e": {"n": "NPK", "v": {"N": 142.28, "P": 202.04, "K": 210.94}, "u": "mg/kg", "t": 180}}
+Published to greenhouse_37/area_38/sensor_28: {"bn": "greenhouse_37/area_38/sensor_28", "e": {"n": "Humidity", "v": 64.74, "u": "%", "t": 180}}
+
+Published to greenhouse_37/area_37/sensor_26: {"bn": "greenhouse_37/area_37/sensor_26", "e": {"n": "NPK", "v": {"N": 148.35, "P": 195.94, "K": 204.39}, "u": "mg/kg", "t": 240}}
+Published to greenhouse_37/area_38/sensor_27: {"bn": "greenhouse_37/area_38/sensor_27", "e": {"n": "NPK", "v": {"N": 142.73, "P": 202.5, "K": 209.38}, "u": "mg/kg", "t": 240}}
+Published to greenhouse_37/area_38/sensor_28: {"bn": "greenhouse_37/area_38/sensor_28", "e": {"n": "Humidity", "v": 64.19, "u": "%", "t": 240}}
+
+Published to greenhouse_37/area_37/sensor_26: {"bn": "greenhouse_37/area_37/sensor_26", "e": {"n": "NPK", "v": {"N": 150.16, "P": 195.32, "K": 204.72}, "u": "mg/kg", "t": 300}}
+Published to greenhouse_37/area_38/sensor_27: {"bn": "greenhouse_37/area_38/sensor_27", "e": {"n": "NPK", "v": {"N": 143.73, "P": 201.88, "K": 209.29}, "u": "mg/kg", "t": 300}}
+Published to greenhouse_37/area_38/sensor_28: {"bn": "greenhouse_37/area_38/sensor_28", "e": {"n": "Humidity", "v": 64.02, "u": "%", "t": 300}}
+
+>>>>>>> 2a2de7a8c88739edc7d959bb8a344d1eadbe4f17

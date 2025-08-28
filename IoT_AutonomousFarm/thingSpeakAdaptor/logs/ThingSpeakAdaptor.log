@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Device id: 81
 Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
 Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
@@ -908,4 +909,54 @@ Periodic sensor check started
 Received greenhouse information: {'greenhouse_id': 28, 'user_id': 0, 'name': 'MyGreenhouse', 'location': 'Torino', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
 Periodic sensor check completed
 Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"23": 119.82}', 'field7': '{"23": 185.25}', 'field8': '{"23": 195.58}', 'field2': '{"23": 80.75, "22": 79.44}', 'field1': '{"22": 27.37}', 'field4': '{"23": 6.28}'}
+=======
+Device id: 153
+Received 3 sensors: [{'sensor_id': 26, 'area_id': 37, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 27, 'area_id': 38, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 103}, 'N': {'max': 200, 'min': 10}, 'P': {'max': 296, 'min': 100}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}]
+Received greenhouse information: {'greenhouse_id': 37, 'user_id': 26, 'name': 'greenhouse#1', 'location': 'Turin', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+
+Subscribed to greenhouse_37/area_37/sensor_26
+Connected to mosquitto with result code 0
+Subscribed to greenhouse_37/area_38/sensor_27
+Subscribed to greenhouse_37/area_38/sensor_28
+Started periodic sensor checking thread
+Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 150.7, 'P': 197.25, 'K': 200.06}, 'u': 'mg/kg', 't': 60}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 141.71, 'P': 202.7, 'K': 209.25}, 'u': 'mg/kg', 't': 60}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.68, 'u': '%', 't': 60}}
+Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"37": 150.7, "38": 141.71}', 'field7': '{"37": 197.25, "38": 202.7}', 'field8': '{"37": 200.06, "38": 209.25}', 'field2': '{"38": 64.68}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 37, 'user_id': 26, 'name': 'greenhouse#1', 'location': 'Turin', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 149.6, 'P': 195.9, 'K': 201.47}, 'u': 'mg/kg', 't': 120}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 141.74, 'P': 201.8, 'K': 210.7}, 'u': 'mg/kg', 't': 120}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 65.55, 'u': '%', 't': 120}}
+Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"37": 149.6, "38": 141.74}', 'field7': '{"37": 195.9, "38": 201.8}', 'field8': '{"37": 201.47, "38": 210.7}', 'field2': '{"38": 65.55}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 37, 'user_id': 26, 'name': 'greenhouse#1', 'location': 'Turin', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 147.81, 'P': 197.31, 'K': 203.15}, 'u': 'mg/kg', 't': 180}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 142.28, 'P': 202.04, 'K': 210.94}, 'u': 'mg/kg', 't': 180}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.74, 'u': '%', 't': 180}}
+Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"37": 147.81, "38": 142.28}', 'field7': '{"37": 197.31, "38": 202.04}', 'field8': '{"37": 203.15, "38": 210.94}', 'field2': '{"38": 64.74}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 37, 'user_id': 26, 'name': 'greenhouse#1', 'location': 'Turin', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 148.35, 'P': 195.94, 'K': 204.39}, 'u': 'mg/kg', 't': 240}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 142.73, 'P': 202.5, 'K': 209.38}, 'u': 'mg/kg', 't': 240}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.19, 'u': '%', 't': 240}}
+Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"37": 148.35, "38": 142.73}', 'field7': '{"37": 195.94, "38": 202.5}', 'field8': '{"37": 204.39, "38": 209.38}', 'field2': '{"38": 64.19}'}
+
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 37, 'user_id': 26, 'name': 'greenhouse#1', 'location': 'Turin', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 150.16, 'P': 195.32, 'K': 204.72}, 'u': 'mg/kg', 't': 300}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 143.73, 'P': 201.88, 'K': 209.29}, 'u': 'mg/kg', 't': 300}}
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.02, 'u': '%', 't': 300}}
+Periodic sensor check started
+Received greenhouse information: {'greenhouse_id': 37, 'user_id': 26, 'name': 'greenhouse#1', 'location': 'Turin', 'thingSpeak_config': {'read_key': 'ZPZG4DZDXG31P2FU', 'write_key': 'B1VQS0V9EO4UZFXB', 'channel_id': '3002703'}}
+Periodic sensor check completed
+Successfully updated ThingSpeak channel 3002703 with payload: {'api_key': 'B1VQS0V9EO4UZFXB', 'field6': '{"37": 150.16, "38": 143.73}', 'field7': '{"37": 195.32, "38": 201.88}', 'field8': '{"37": 204.72, "38": 209.29}', 'field2': '{"38": 64.02}'}
+>>>>>>> 2a2de7a8c88739edc7d959bb8a344d1eadbe4f17
 

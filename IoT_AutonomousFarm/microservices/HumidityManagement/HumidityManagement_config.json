@@ -1,7 +1,11 @@
 {
     "catalog_url": "http://catalog:8080",
     "dataAnalysis_url": "http://dataanalysis:8081",
+<<<<<<< HEAD
     "greenhouse_id": 28,
+=======
+    "greenhouse_id": 37,
+>>>>>>> 2a2de7a8c88739edc7d959bb8a344d1eadbe4f17
     "mqtt_connection": {
         "mqtt_port": 1883,
         "keep_alive": 180,

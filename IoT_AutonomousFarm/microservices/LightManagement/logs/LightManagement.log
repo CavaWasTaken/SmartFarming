@@ -4,6 +4,7 @@ Subscribed to greenhouse_28/area_22/sensor_10
 Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_22/event/sensor_10
 Started periodic sensor checking thread
+<<<<<<< HEAD
 
 Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 22.42, 'u': '°C', 't': 60}}
 WARNING: Failed to get when the next value of Temperature (sensor_10) is expected to arrive
@@ -814,6 +815,16 @@ Periodic sensor check completed
 Telegram message sent successfully to user 2070801980
 
 Received: {'bn': 'greenhouse_28/area_22/sensor_10', 'e': {'n': 'Temperature', 'v': 27.37, 'u': '°C', 't': 6000}}
+=======
+Periodic sensor check started
+Periodic sensor check completed
+Periodic sensor check started
+Periodic sensor check completed
+Periodic sensor check started
+Periodic sensor check completed
+Periodic sensor check started
+Periodic sensor check completed
+>>>>>>> 2a2de7a8c88739edc7d959bb8a344d1eadbe4f17
 Periodic sensor check started
 Periodic sensor check completed
 The next value of Temperature (sensor_10) is expected to be received at: 6060.0

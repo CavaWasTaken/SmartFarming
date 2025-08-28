@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Device id: 81
 Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
 Current time: 2025-08-27 13:06:34.725345
@@ -307,3 +308,26 @@ No events scheduled for the greenhouse 28
 Current time: 2025-08-27 14:46:35.809021
 Received 0 events: []
 No events scheduled for the greenhouse 28
+=======
+Device id: 153
+Received 3 sensors: [{'sensor_id': 26, 'area_id': 37, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 27, 'area_id': 38, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 103}, 'N': {'max': 200, 'min': 10}, 'P': {'max': 296, 'min': 100}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}]
+Connected to mosquitto with result code 0
+Current time: 2025-08-26 19:02:54.788360
+Received 0 events: []
+No events scheduled for the greenhouse 37
+Current time: 2025-08-26 19:03:55.181283
+Received 0 events: []
+No events scheduled for the greenhouse 37
+Current time: 2025-08-26 19:04:55.200633
+Received 0 events: []
+No events scheduled for the greenhouse 37
+Current time: 2025-08-26 19:05:55.233723
+Received 0 events: []
+No events scheduled for the greenhouse 37
+Current time: 2025-08-26 19:06:55.266966
+Received 0 events: []
+No events scheduled for the greenhouse 37
+Current time: 2025-08-26 19:07:55.290795
+Received 0 events: []
+No events scheduled for the greenhouse 37
+>>>>>>> 2a2de7a8c88739edc7d959bb8a344d1eadbe4f17

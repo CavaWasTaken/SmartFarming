@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Device id: 77
 Received 2 sensors: [{'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
 Subscribed to greenhouse_28/area_23/sensor_12
@@ -1405,3 +1406,51 @@ The next value of Humidity (sensor_11) is expected to be received at: 6060.0
 The next value of Humidity (sensor_11) is expected to be: 79.68933333333331 %
 The measured value (79.44 %) and the next prediction (79.68933333333331 %) of sensor_11 (Humidity) are inside the range [75, 85]
 No Telegram user found for this greenhouse
+=======
+Device id: 149
+Received 2 sensors: [{'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 30, 'area_id': 41, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 70}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 39}]
+Connected to mosquitto with result code 0
+Subscribed to greenhouse_37/area_38/sensor_28
+Subscribed to greenhouse_37/area_38/event/sensor_28
+Subscribed to greenhouse_39/area_41/sensor_30
+Subscribed to greenhouse_39/area_41/event/sensor_30
+Started periodic sensor checking thread
+
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.68, 'u': '%', 't': 60}}
+WARNING: Failed to get when the next value of Humidity (sensor_28) is expected to arrive
+WARNING: Failed to get the next expected value of Humidity (sensor_28)
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 65.55, 'u': '%', 't': 120}}
+The next value of Humidity (sensor_28) is expected to be received at: 180.0
+The next value of Humidity (sensor_28) is expected to be: 66.41999999999999 %
+Wait to see another value to start the decision making for sensor_28 (Humidity)
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.74, 'u': '%', 't': 180}}
+The next value of Humidity (sensor_28) is expected to be received at: 240.0
+The next value of Humidity (sensor_28) is expected to be: 65.05 %
+The measured value (64.74 %) and the next prediction (65.05 %) of sensor_28 (Humidity) are inside the range [37, 80]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.19, 'u': '%', 't': 240}}
+The next value of Humidity (sensor_28) is expected to be received at: 300.0
+The next value of Humidity (sensor_28) is expected to be: 64.22 %
+The measured value (64.19 %) and the next prediction (64.22 %) of sensor_28 (Humidity) are inside the range [37, 80]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.02, 'u': '%', 't': 300}}
+The next value of Humidity (sensor_28) is expected to be received at: 360.0
+The next value of Humidity (sensor_28) is expected to be: 63.83199999999999 %
+The measured value (64.02 %) and the next prediction (63.83199999999999 %) of sensor_28 (Humidity) are inside the range [37, 80]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+>>>>>>> 2a2de7a8c88739edc7d959bb8a344d1eadbe4f17
