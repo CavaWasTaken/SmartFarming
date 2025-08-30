@@ -1,46 +1,174 @@
-Device id: 149
-Received 2 sensors: [{'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 30, 'area_id': 41, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 70}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 39}]
+Device id: 181
+Received 2 sensors: [{'sensor_id': 33, 'area_id': 44, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 41}, {'sensor_id': 30, 'area_id': 41, 'type': 'SoilMoisture', 'name': 'Soil Moisture Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 70}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 39}]
+Subscribed to greenhouse_41/area_44/sensor_33
 Connected to mosquitto with result code 0
-Subscribed to greenhouse_37/area_38/sensor_28
-Subscribed to greenhouse_37/area_38/event/sensor_28
+Subscribed to greenhouse_41/area_44/event/sensor_33
 Subscribed to greenhouse_39/area_41/sensor_30
 Subscribed to greenhouse_39/area_41/event/sensor_30
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.68, 'u': '%', 't': 60}}
-WARNING: Failed to get when the next value of Humidity (sensor_28) is expected to arrive
-WARNING: Failed to get the next expected value of Humidity (sensor_28)
-No Telegram user found for this greenhouse
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 78.15, 'u': '%', 't': 60}}
+WARNING: Failed to get when the next value of Humidity (sensor_33) is expected to arrive
+Missing key in the message: 'next_value'
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 65.55, 'u': '%', 't': 120}}
-The next value of Humidity (sensor_28) is expected to be received at: 180.0
-The next value of Humidity (sensor_28) is expected to be: 66.41999999999999 %
-Wait to see another value to start the decision making for sensor_28 (Humidity)
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 78.04, 'u': '%', 't': 120}}
+The next value of Humidity (sensor_33) is expected to be received at: 180.0
+The next value of Humidity (sensor_33) is expected to be: 77.92999999999999 %
+Wait to see another value to start the decision making for sensor_33 (Humidity)
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.74, 'u': '%', 't': 180}}
-The next value of Humidity (sensor_28) is expected to be received at: 240.0
-The next value of Humidity (sensor_28) is expected to be: 65.05 %
-The measured value (64.74 %) and the next prediction (65.05 %) of sensor_28 (Humidity) are inside the range [37, 80]
-No Telegram user found for this greenhouse
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 78.59, 'u': '%', 't': 180}}
+The next value of Humidity (sensor_33) is expected to be received at: 240.0
+The next value of Humidity (sensor_33) is expected to be: 78.7 %
+WARNING: The measured value 78.59 % of Humidity (sensor_33) went outside the range [30, 75]
+WARNING: The measured value 78.59 % and the next expected one 78.7 % of sensor_33 (Humidity) are outside the range [30, 75].
+Action needed to decrease the value
 Periodic sensor check started
 Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a58e50>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Published to greenhouse_41/area_44/action/sensor_33: {"message": {"action": "decrease", "val": 78.59, "min_treshold": 30, "max_treshold": 75}, "parameter": "Humidity", "timestamp": 180}
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.19, 'u': '%', 't': 240}}
-The next value of Humidity (sensor_28) is expected to be received at: 300.0
-The next value of Humidity (sensor_28) is expected to be: 64.22 %
-The measured value (64.19 %) and the next prediction (64.22 %) of sensor_28 (Humidity) are inside the range [37, 80]
-No Telegram user found for this greenhouse
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 77.72, 'u': '%', 't': 240}}
+The next value of Humidity (sensor_33) is expected to be received at: 300.0
+The next value of Humidity (sensor_33) is expected to be: 77.93999999999998 %
+WARNING: The measured value 77.72 % of Humidity (sensor_33) went outside the range [30, 75]
+WARNING: The measured value 77.72 % and the next expected one 77.93999999999998 % of sensor_33 (Humidity) are outside the range [30, 75].
+Action needed to decrease the value
 Periodic sensor check started
 Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a71990>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Published to greenhouse_41/area_44/action/sensor_33: {"message": {"action": "decrease", "val": 77.72, "min_treshold": 30, "max_treshold": 75}, "parameter": "Humidity", "timestamp": 240}
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.02, 'u': '%', 't': 300}}
-The next value of Humidity (sensor_28) is expected to be received at: 360.0
-The next value of Humidity (sensor_28) is expected to be: 63.83199999999999 %
-The measured value (64.02 %) and the next prediction (63.83199999999999 %) of sensor_28 (Humidity) are inside the range [37, 80]
-No Telegram user found for this greenhouse
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.63, 'u': '%', 't': 300}}
+The next value of Humidity (sensor_33) is expected to be received at: 360.0
+The next value of Humidity (sensor_33) is expected to be: 76.01799999999999 %
+WARNING: The measured value 75.63 % of Humidity (sensor_33) went outside the range [30, 75]
+WARNING: The measured value 75.63 % and the next expected one 76.01799999999999 % of sensor_33 (Humidity) are outside the range [30, 75].
+Action needed to decrease the value
 Periodic sensor check started
 Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43880f50>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Published to greenhouse_41/area_44/action/sensor_33: {"message": {"action": "decrease", "val": 75.63, "min_treshold": 30, "max_treshold": 75}, "parameter": "Humidity", "timestamp": 300}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.47, 'u': '%', 't': 360}}
+The next value of Humidity (sensor_33) is expected to be received at: 420.0
+The next value of Humidity (sensor_33) is expected to be: 74.45 %
+The measured value (74.47 %) and the next prediction (74.45 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a71450>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.77, 'u': '%', 't': 420}}
+The next value of Humidity (sensor_33) is expected to be received at: 480.0
+The next value of Humidity (sensor_33) is expected to be: 73.87571428571428 %
+The measured value (74.77 %) and the next prediction (73.87571428571428 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a60910>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.24, 'u': '%', 't': 480}}
+The next value of Humidity (sensor_33) is expected to be received at: 540.0
+The next value of Humidity (sensor_33) is expected to be: 73.835 %
+WARNING: The measured value 75.24 % of Humidity (sensor_33) went outside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a70690>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.08, 'u': '%', 't': 540}}
+The next value of Humidity (sensor_33) is expected to be received at: 600.0
+The next value of Humidity (sensor_33) is expected to be: 73.77916666666667 %
+WARNING: The measured value 75.08 % of Humidity (sensor_33) went outside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43893e10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.11, 'u': '%', 't': 600}}
+The next value of Humidity (sensor_33) is expected to be received at: 660.0
+The next value of Humidity (sensor_33) is expected to be: 73.78533333333333 %
+WARNING: The measured value 75.11 % of Humidity (sensor_33) went outside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43881a90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.8, 'u': '%', 't': 660}}
+The next value of Humidity (sensor_33) is expected to be received at: 720.0
+The next value of Humidity (sensor_33) is expected to be: 73.69199999999998 %
+The measured value (74.8 %) and the next prediction (73.69199999999998 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a5bd10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.41, 'u': '%', 't': 720}}
+The next value of Humidity (sensor_33) is expected to be received at: 780.0
+The next value of Humidity (sensor_33) is expected to be: 73.63666666666664 %
+The measured value (74.41 %) and the next prediction (73.63666666666664 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a5f850>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.05, 'u': '%', 't': 780}}
+The next value of Humidity (sensor_33) is expected to be received at: 840.0
+The next value of Humidity (sensor_33) is expected to be: 73.826 %
+The measured value (74.05 %) and the next prediction (73.826 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a44a102d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.29, 'u': '%', 't': 840}}
+The next value of Humidity (sensor_33) is expected to be received at: 900.0
+The next value of Humidity (sensor_33) is expected to be: 74.582 %
+WARNING: The measured value 75.29 % of Humidity (sensor_33) went outside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a5e2d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 73.99, 'u': '%', 't': 900}}
+The next value of Humidity (sensor_33) is expected to be received at: 960.0
+The next value of Humidity (sensor_33) is expected to be: 74.42266666666667 %
+The measured value (73.99 %) and the next prediction (74.42266666666667 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43882f90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.16, 'u': '%', 't': 960}}
+The next value of Humidity (sensor_33) is expected to be received at: 1020.0
+The next value of Humidity (sensor_33) is expected to be: 74.13133333333333 %
+The measured value (74.16 %) and the next prediction (74.13133333333333 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a59210>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.06, 'u': '%', 't': 1020}}
+The next value of Humidity (sensor_33) is expected to be received at: 1080.0
+The next value of Humidity (sensor_33) is expected to be: 73.90066666666667 %
+The measured value (74.06 %) and the next prediction (73.90066666666667 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2a43a5ced0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.05, 'u': '%', 't': 1081}}
+The next value of Humidity (sensor_33) is expected to be received at: 1141.111111111111
+The next value of Humidity (sensor_33) is expected to be: 74.23871905229387 %
+WARNING: The measured value 75.05 % of Humidity (sensor_33) went outside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.84, 'u': '%', 't': 1141}}
+The next value of Humidity (sensor_33) is expected to be received at: 1201.111111111111
+The next value of Humidity (sensor_33) is expected to be: 74.46354013626811 %
+The measured value (74.84 %) and the next prediction (74.46354013626811 %) of sensor_33 (Humidity) are inside the range [30, 75]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.44, 'u': '%', 't': 1201}}
+Periodic sensor check started
+The next value of Humidity (sensor_33) is expected to be received at: 1261.111111111111
+Periodic sensor check completed
+The next value of Humidity (sensor_33) is expected to be: 74.95172415357723 %
+WARNING: The measured value 75.44 % of Humidity (sensor_33) went outside the range [30, 75]
+Telegram message sent successfully to user 788476502

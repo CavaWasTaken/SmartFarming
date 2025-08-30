@@ -1,169 +1,867 @@
-Device ID: 152
-Received 3 sensors: [{'sensor_id': 26, 'area_id': 37, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 27, 'area_id': 38, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 103}, 'N': {'max': 200, 'min': 10}, 'P': {'max': 296, 'min': 100}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}]
+Device ID: 184
+Received 4 sensors: [{'sensor_id': 32, 'area_id': 44, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': 0}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 41}, {'sensor_id': 31, 'area_id': 44, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 300, 'min': 34}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 41}, {'sensor_id': 33, 'area_id': 44, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 41}, {'sensor_id': 34, 'area_id': 43, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 41}]
 
-Subscribed to greenhouse_37/area_37/sensor_26
+Subscribed to greenhouse_41/area_44/sensor_32
 Connected to mosquitto with result code 0
-Subscribed to greenhouse_37/area_38/sensor_27
-Subscribed to greenhouse_37/area_38/sensor_28
+Subscribed to greenhouse_41/area_44/sensor_31
+Subscribed to greenhouse_41/area_44/sensor_33
+Subscribed to greenhouse_41/area_43/sensor_34
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 150.7, 'P': 197.25, 'K': 200.06}, 'u': 'mg/kg', 't': 60}}
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.68, 'u': '°C', 't': 60}}
 Not enough data to calculate the linear regression
-Sensor 26: Weighted mean NPK: {'N': 150.7, 'P': 197.25, 'K': 200.06}
-Sensor 26: Expected next timestamp of NPK: None
-Sensor 26: Expected next value of NPK: None
+Sensor 32: Weighted mean Temperature: 20.68
+Sensor 32: Expected next timestamp of Temperature: None
+Sensor 32: Expected next value of Temperature: None
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 60
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 60
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 60
+The requested next timestamp of sensor_31 (NPK) at timestamp 60 cannot be evaluated, wait to receive more values
+The requested next timestamp of sensor_32 (Temperature) at timestamp 60 is ready (None)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 60 cannot be evaluated, wait to receive more values
+Received request for next value of sensor_31 (NPK) at timestamp 60
+Received request for next value of sensor_32 (Temperature) at timestamp 60
+The requested next value of sensor_32 (Temperature) at timestamp 60 is ready (None)
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 141.71, 'P': 202.7, 'K': 209.25}, 'u': 'mg/kg', 't': 60}}
-Received request for the next timestamp of sensor_26 (NPK) at timestamp 60
-The requested next timestamp of sensor_26 (NPK) at timestamp 60 is ready (None)
+The requested next timestamp of sensor_31 (NPK) at timestamp 60 cannot be evaluated, wait to receive more values
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 140.73, 'P': 205.58, 'K': 194.15}, 'u': 'mg/kg', 't': 60}}
 Not enough data to calculate the linear regression
-Sensor 27: Weighted mean NPK: {'N': 141.71, 'P': 202.7, 'K': 209.25}
-Sensor 27: Expected next timestamp of NPK: None
-Sensor 27: Expected next value of NPK: None
+Sensor 31: Weighted mean NPK: {'N': 140.73, 'P': 205.58, 'K': 194.15}
+Received request for next value of sensor_33 (Humidity) at timestamp 60
+Sensor 31: Expected next timestamp of NPK: None
+The requested next timestamp of sensor_33 (Humidity) at timestamp 60 cannot be evaluated, wait to receive more values
+Sensor 31: Expected next value of NPK: None
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.68, 'u': '%', 't': 60}}
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 78.15, 'u': '%', 't': 60}}
 Not enough data to calculate the linear regression
-Sensor 28: Weighted mean Humidity: 64.68
-Sensor 28: Expected next timestamp of Humidity: None
-Sensor 28: Expected next value of Humidity: None
-Received request for the next timestamp of sensor_28 (Humidity) at timestamp 60
-Received request for next value of sensor_26 (NPK) at timestamp 60
-The requested next timestamp of sensor_28 (Humidity) at timestamp 60 is ready (None)
-The requested next value of sensor_26 (NPK) at timestamp 60 is ready (None)
+Sensor 33: Weighted mean Humidity: 78.15
+Sensor 33: Expected next timestamp of Humidity: None
+Sensor 33: Expected next value of Humidity: None
 
-Received request for next value of sensor_28 (Humidity) at timestamp 60
-The requested next value of sensor_28 (Humidity) at timestamp 60 is ready (None)
-
-Received request for the next timestamp of sensor_27 (NPK) at timestamp 60
-The requested next timestamp of sensor_27 (NPK) at timestamp 60 is ready (None)
-Received request for next value of sensor_27 (NPK) at timestamp 60
-The requested next value of sensor_27 (NPK) at timestamp 60 is ready (None)
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.07, 'u': '°C', 't': 60}}
+Not enough data to calculate the linear regression
+Sensor 34: Weighted mean Temperature: 20.07
+Sensor 34: Expected next timestamp of Temperature: None
+Sensor 34: Expected next value of Temperature: None
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 60
+The requested next timestamp of sensor_34 (Temperature) at timestamp 60 is ready (None)
+Received request for next value of sensor_34 (Temperature) at timestamp 60
+The requested next value of sensor_34 (Temperature) at timestamp 60 is ready (None)
 
 
-Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 149.6, 'P': 195.9, 'K': 201.47}, 'u': 'mg/kg', 't': 120}}
-Sensor 26: Weighted mean NPK: {'N': 149.96666666666667, 'P': 196.35, 'K': 201.0}
-Sensor 26: Expected next timestamp of NPK: 180.0
-Sensor 26: Expected next value of NPK: {'N': 148.49999999999997, 'P': 194.54999999999998, 'K': 202.87999999999997}
-Received request for the next timestamp of sensor_26 (NPK) at timestamp 120
-The requested next timestamp of sensor_26 (NPK) at timestamp 120 is ready (180.0)
-Received request for the next timestamp of sensor_28 (Humidity) at timestamp 120
-The requested next timestamp of sensor_28 (Humidity) at timestamp 120 is not yet ready
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.18, 'u': '°C', 't': 120}}
+Sensor 32: Weighted mean Temperature: 20.346666666666668
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 120
+Sensor 32: Expected next timestamp of Temperature: 180.0
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 120
+The requested next timestamp of sensor_32 (Temperature) at timestamp 120 is ready (180.0)
+Sensor 32: Expected next value of Temperature: 19.68
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 120
+The requested next timestamp of sensor_31 (NPK) at timestamp 120 is not yet ready
 
-Received request for next value of sensor_26 (NPK) at timestamp 120
-The requested next value of sensor_26 (NPK) at timestamp 120 is ready ({'N': 148.49999999999997, 'P': 194.54999999999998, 'K': 202.87999999999997})
+The requested next timestamp of sensor_33 (Humidity) at timestamp 120 is not yet ready
 
-
-Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 141.74, 'P': 201.8, 'K': 210.7}, 'u': 'mg/kg', 't': 120}}
-Sensor 27: Weighted mean NPK: {'N': 141.73000000000002, 'P': 202.1, 'K': 210.21666666666667}
-Sensor 27: Expected next timestamp of NPK: 180.0
-Sensor 27: Expected next value of NPK: {'N': 141.77, 'P': 200.90000000000003, 'K': 212.14999999999998}
-
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 65.55, 'u': '%', 't': 120}}
-Sensor 28: Weighted mean Humidity: 65.26
-Sensor 28: Expected next timestamp of Humidity: 180.0
-Sensor 28: Expected next value of Humidity: 66.41999999999999
-Received request for the next timestamp of sensor_27 (NPK) at timestamp 120
-The requested next timestamp of sensor_27 (NPK) at timestamp 120 is ready (180.0)
-Received request for next value of sensor_27 (NPK) at timestamp 120
-The requested next value of sensor_27 (NPK) at timestamp 120 is ready ({'N': 141.77, 'P': 200.90000000000003, 'K': 212.14999999999998})
-
-The requested next timestamp of sensor_28 (Humidity) at timestamp 120 is arrived (180.0)
-Received request for next value of sensor_28 (Humidity) at timestamp 120
-The requested next value of sensor_28 (Humidity) at timestamp 120 is ready (66.41999999999999)
+Received request for next value of sensor_32 (Temperature) at timestamp 120
+The requested next value of sensor_32 (Temperature) at timestamp 120 is ready (19.68)
 
 
-Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 147.81, 'P': 197.31, 'K': 203.15}, 'u': 'mg/kg', 't': 180}}
-Sensor 26: Weighted mean NPK: {'N': 148.88833333333332, 'P': 196.83, 'K': 202.07500000000002}
-Sensor 26: Expected next timestamp of NPK: 240.0
-Received request for the next timestamp of sensor_26 (NPK) at timestamp 180
-Sensor 26: Expected next value of NPK: {'N': 146.48, 'P': 196.88000000000002, 'K': 204.64999999999998}
-The requested next timestamp of sensor_26 (NPK) at timestamp 180 is ready (240.0)
-Received request for the next timestamp of sensor_28 (Humidity) at timestamp 180
-The requested next timestamp of sensor_28 (Humidity) at timestamp 180 is not yet ready
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 140.33, 'P': 204.4, 'K': 193.88}, 'u': 'mg/kg', 't': 120}}
+Sensor 31: Weighted mean NPK: {'N': 140.46333333333334, 'P': 204.79333333333332, 'K': 193.97}
+Sensor 31: Expected next timestamp of NPK: 180.0
+Sensor 31: Expected next value of NPK: {'N': 139.93000000000004, 'P': 203.22, 'K': 193.60999999999999}
 
-Received request for next value of sensor_26 (NPK) at timestamp 180
-The requested next value of sensor_26 (NPK) at timestamp 180 is ready ({'N': 146.48, 'P': 196.88000000000002, 'K': 204.64999999999998})
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 78.04, 'u': '%', 't': 120}}
+Sensor 33: Weighted mean Humidity: 78.07666666666667
+Sensor 33: Expected next timestamp of Humidity: 180.0
+Sensor 33: Expected next value of Humidity: 77.92999999999999
 
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.54, 'u': '°C', 't': 120}}
+Sensor 34: Weighted mean Temperature: 20.383333333333333
+Sensor 34: Expected next timestamp of Temperature: 180.0
+Sensor 34: Expected next value of Temperature: 21.009999999999998
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 120
+The requested next timestamp of sensor_34 (Temperature) at timestamp 120 is ready (180.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 120
+The requested next value of sensor_34 (Temperature) at timestamp 120 is ready (21.009999999999998)
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 142.28, 'P': 202.04, 'K': 210.94}, 'u': 'mg/kg', 't': 180}}
-Sensor 27: Weighted mean NPK: {'N': 142.00500000000002, 'P': 202.07000000000002, 'K': 210.5783333333333}
-Sensor 27: Expected next timestamp of NPK: 240.0
-Sensor 27: Expected next value of NPK: {'N': 142.48, 'P': 201.51999999999998, 'K': 211.98666666666665}
+The requested next timestamp of sensor_31 (NPK) at timestamp 120 is arrived (180.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 120 is arrived (180.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 120
+Received request for next value of sensor_31 (NPK) at timestamp 120
+The requested next value of sensor_33 (Humidity) at timestamp 120 is ready (77.92999999999999)
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.74, 'u': '%', 't': 180}}
-Sensor 28: Weighted mean Humidity: 65.0
-Sensor 28: Expected next timestamp of Humidity: 240.0
-Sensor 28: Expected next value of Humidity: 65.05
-Received request for the next timestamp of sensor_27 (NPK) at timestamp 180
-The requested next timestamp of sensor_27 (NPK) at timestamp 180 is ready (240.0)
-Received request for next value of sensor_27 (NPK) at timestamp 180
-The requested next value of sensor_27 (NPK) at timestamp 180 is ready ({'N': 142.48, 'P': 201.51999999999998, 'K': 211.98666666666665})
-
-The requested next timestamp of sensor_28 (Humidity) at timestamp 180 is arrived (240.0)
-Received request for next value of sensor_28 (Humidity) at timestamp 180
-The requested next value of sensor_28 (Humidity) at timestamp 180 is ready (65.05)
+The requested next value of sensor_31 (NPK) at timestamp 120 is ready ({'N': 139.93000000000004, 'P': 203.22, 'K': 193.60999999999999})
 
 
-Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 148.35, 'P': 195.94, 'K': 204.39}, 'u': 'mg/kg', 't': 240}}
-Sensor 26: Weighted mean NPK: {'N': 148.673, 'P': 196.474, 'K': 203.001}
-Sensor 26: Expected next timestamp of NPK: 300.0
-Received request for the next timestamp of sensor_26 (NPK) at timestamp 240
-Sensor 26: Expected next value of NPK: {'N': 146.905, 'P': 195.97000000000003, 'K': 205.93499999999997}
-The requested next timestamp of sensor_26 (NPK) at timestamp 240 is ready (300.0)
-Received request for the next timestamp of sensor_28 (Humidity) at timestamp 240
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.3, 'u': '°C', 't': 180}}
+Sensor 32: Weighted mean Temperature: 20.323333333333334
+Sensor 32: Expected next timestamp of Temperature: 240.0
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 180
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 180
+Sensor 32: Expected next value of Temperature: 20.006666666666668
+The requested next timestamp of sensor_32 (Temperature) at timestamp 180 is ready (240.0)
+The requested next timestamp of sensor_31 (NPK) at timestamp 180 is not yet ready
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 142.73, 'P': 202.5, 'K': 209.38}, 'u': 'mg/kg', 't': 240}}
-The requested next timestamp of sensor_28 (Humidity) at timestamp 240 is not yet ready
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 180
+The requested next timestamp of sensor_33 (Humidity) at timestamp 180 is not yet ready
 
-Sensor 27: Weighted mean NPK: {'N': 142.29500000000002, 'P': 202.24200000000002, 'K': 210.099}
-Received request for next value of sensor_26 (NPK) at timestamp 240
-Sensor 27: Expected next timestamp of NPK: 300.0
-The requested next value of sensor_26 (NPK) at timestamp 240 is ready ({'N': 146.905, 'P': 195.97000000000003, 'K': 205.93499999999997})
-
-Sensor 27: Expected next value of NPK: {'N': 143.015, 'P': 202.17000000000002, 'K': 210.225}
-
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.19, 'u': '%', 't': 240}}
-Sensor 28: Weighted mean Humidity: 64.676
-Sensor 28: Expected next timestamp of Humidity: 300.0
-Sensor 28: Expected next value of Humidity: 64.22
-Received request for the next timestamp of sensor_27 (NPK) at timestamp 240
-The requested next timestamp of sensor_27 (NPK) at timestamp 240 is ready (300.0)
-Received request for next value of sensor_27 (NPK) at timestamp 240
-The requested next value of sensor_27 (NPK) at timestamp 240 is ready ({'N': 143.015, 'P': 202.17000000000002, 'K': 210.225})
-
-The requested next timestamp of sensor_28 (Humidity) at timestamp 240 is arrived (300.0)
-Received request for next value of sensor_28 (Humidity) at timestamp 240
-The requested next value of sensor_28 (Humidity) at timestamp 240 is ready (64.22)
+Received request for next value of sensor_32 (Temperature) at timestamp 180
+The requested next value of sensor_32 (Temperature) at timestamp 180 is ready (20.006666666666668)
 
 
-Received: {'bn': 'greenhouse_37/area_37/sensor_26', 'e': {'n': 'NPK', 'v': {'N': 150.16, 'P': 195.32, 'K': 204.72}, 'u': 'mg/kg', 't': 300}}
-Sensor 26: Weighted mean NPK: {'N': 149.16866666666664, 'P': 196.08933333333334, 'K': 203.574}
-Sensor 26: Expected next timestamp of NPK: 360.0
-Received request for the next timestamp of sensor_26 (NPK) at timestamp 300
-The requested next timestamp of sensor_26 (NPK) at timestamp 300 is ready (360.0)
-Sensor 26: Expected next value of NPK: {'N': 148.62499999999997, 'P': 195.198, 'K': 206.42999999999998}
-Received request for the next timestamp of sensor_28 (Humidity) at timestamp 300
-The requested next timestamp of sensor_28 (Humidity) at timestamp 300 is not yet ready
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 139.09, 'P': 205.48, 'K': 192.23}, 'u': 'mg/kg', 't': 180}}
+Sensor 31: Weighted mean NPK: {'N': 139.77666666666667, 'P': 205.13666666666666, 'K': 193.1}
+Sensor 31: Expected next timestamp of NPK: 240.0
+Sensor 31: Expected next value of NPK: {'N': 138.41, 'P': 205.0533333333333, 'K': 191.49999999999997}
 
-Received request for next value of sensor_26 (NPK) at timestamp 300
-The requested next value of sensor_26 (NPK) at timestamp 300 is ready ({'N': 148.62499999999997, 'P': 195.198, 'K': 206.42999999999998})
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 78.59, 'u': '%', 't': 180}}
+Sensor 33: Weighted mean Humidity: 78.33333333333333
+Sensor 33: Expected next timestamp of Humidity: 240.0
+Sensor 33: Expected next value of Humidity: 78.7
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.49, 'u': '°C', 't': 180}}
+Sensor 34: Weighted mean Temperature: 20.436666666666667
+Sensor 34: Expected next timestamp of Temperature: 240.0
+Sensor 34: Expected next value of Temperature: 20.78666666666666
+The requested next timestamp of sensor_31 (NPK) at timestamp 180 is arrived (240.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 180 is arrived (240.0)
+Received request for next value of sensor_31 (NPK) at timestamp 180
+Received request for next value of sensor_33 (Humidity) at timestamp 180
+The requested next value of sensor_31 (NPK) at timestamp 180 is ready ({'N': 138.41, 'P': 205.0533333333333, 'K': 191.49999999999997})
+
+The requested next value of sensor_33 (Humidity) at timestamp 180 is ready (78.7)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 180
+The requested next timestamp of sensor_34 (Temperature) at timestamp 180 is ready (240.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 180
+The requested next value of sensor_34 (Temperature) at timestamp 180 is ready (20.78666666666666)
 
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_27', 'e': {'n': 'NPK', 'v': {'N': 143.73, 'P': 201.88, 'K': 209.29}, 'u': 'mg/kg', 't': 300}}
-Sensor 27: Weighted mean NPK: {'N': 142.77333333333334, 'P': 202.12133333333335, 'K': 209.8293333333333}
-Sensor 27: Expected next timestamp of NPK: 360.0
-Sensor 27: Expected next value of NPK: {'N': 143.947, 'P': 201.90200000000002, 'K': 209.54}
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.6, 'u': '°C', 't': 240}}
+Sensor 32: Weighted mean Temperature: 20.434
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 240
+Sensor 32: Expected next timestamp of Temperature: 300.0
+The requested next timestamp of sensor_32 (Temperature) at timestamp 240 is ready (300.0)
+Sensor 32: Expected next value of Temperature: 20.409999999999997
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 240
+The requested next timestamp of sensor_31 (NPK) at timestamp 240 is not yet ready
 
-Received: {'bn': 'greenhouse_37/area_38/sensor_28', 'e': {'n': 'Humidity', 'v': 64.02, 'u': '%', 't': 300}}
-Sensor 28: Weighted mean Humidity: 64.45733333333332
-Sensor 28: Expected next timestamp of Humidity: 360.0
-Sensor 28: Expected next value of Humidity: 63.83199999999999
-Received request for the next timestamp of sensor_27 (NPK) at timestamp 300
-The requested next timestamp of sensor_27 (NPK) at timestamp 300 is ready (360.0)
-Received request for next value of sensor_27 (NPK) at timestamp 300
-The requested next value of sensor_27 (NPK) at timestamp 300 is ready ({'N': 143.947, 'P': 201.90200000000002, 'K': 209.54})
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 240
+Received request for next value of sensor_32 (Temperature) at timestamp 240
+The requested next timestamp of sensor_33 (Humidity) at timestamp 240 is not yet ready
 
-The requested next timestamp of sensor_28 (Humidity) at timestamp 300 is arrived (360.0)
-Received request for next value of sensor_28 (Humidity) at timestamp 300
-The requested next value of sensor_28 (Humidity) at timestamp 300 is ready (63.83199999999999)
+The requested next value of sensor_32 (Temperature) at timestamp 240 is ready (20.409999999999997)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 138.97, 'P': 205.45, 'K': 192.62}, 'u': 'mg/kg', 't': 240}}
+Sensor 31: Weighted mean NPK: {'N': 139.454, 'P': 205.262, 'K': 192.908}
+Sensor 31: Expected next timestamp of NPK: 300.0
+Sensor 31: Expected next value of NPK: {'N': 138.15, 'P': 205.39999999999998, 'K': 191.66}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 77.72, 'u': '%', 't': 240}}
+Sensor 33: Weighted mean Humidity: 78.088
+Sensor 33: Expected next timestamp of Humidity: 300.0
+Sensor 33: Expected next value of Humidity: 77.93999999999998
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.99, 'u': '°C', 't': 240}}
+Sensor 34: Weighted mean Temperature: 20.657999999999998
+Sensor 34: Expected next timestamp of Temperature: 300.0
+Sensor 34: Expected next value of Temperature: 21.199999999999996
+The requested next timestamp of sensor_31 (NPK) at timestamp 240 is arrived (300.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 240 is arrived (300.0)
+Received request for next value of sensor_31 (NPK) at timestamp 240
+The requested next value of sensor_31 (NPK) at timestamp 240 is ready ({'N': 138.15, 'P': 205.39999999999998, 'K': 191.66})
+
+Received request for next value of sensor_33 (Humidity) at timestamp 240
+The requested next value of sensor_33 (Humidity) at timestamp 240 is ready (77.93999999999998)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 240
+The requested next timestamp of sensor_34 (Temperature) at timestamp 240 is ready (300.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 240
+The requested next value of sensor_34 (Temperature) at timestamp 240 is ready (21.199999999999996)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.92, 'u': '°C', 't': 300}}
+Sensor 32: Weighted mean Temperature: 20.596
+Sensor 32: Expected next timestamp of Temperature: 360.0
+Sensor 32: Expected next value of Temperature: 20.805999999999997
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 137.94, 'P': 204.66, 'K': 191.29}, 'u': 'mg/kg', 't': 300}}
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 300
+Sensor 31: Weighted mean NPK: {'N': 138.94933333333333, 'P': 205.06133333333335, 'K': 192.36866666666666}
+The requested next timestamp of sensor_32 (Temperature) at timestamp 300 is ready (360.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 300
+Sensor 31: Expected next timestamp of NPK: 360.0
+The requested next timestamp of sensor_31 (NPK) at timestamp 300 is ready (360.0)
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 300
+Sensor 31: Expected next value of NPK: {'N': 137.32999999999998, 'P': 204.87700000000004, 'K': 190.73999999999998}
+The requested next timestamp of sensor_33 (Humidity) at timestamp 300 is not yet ready
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.63, 'u': '%', 't': 300}}
+Received request for next value of sensor_32 (Temperature) at timestamp 300
+Sensor 33: Weighted mean Humidity: 77.26866666666666
+Received request for next value of sensor_31 (NPK) at timestamp 300
+The requested next value of sensor_32 (Temperature) at timestamp 300 is ready (20.805999999999997)
+
+Sensor 33: Expected next timestamp of Humidity: 360.0
+The requested next value of sensor_31 (NPK) at timestamp 300 is ready ({'N': 137.32999999999998, 'P': 204.87700000000004, 'K': 190.73999999999998})
+
+Sensor 33: Expected next value of Humidity: 76.01799999999999
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.22, 'u': '°C', 't': 300}}
+Sensor 34: Weighted mean Temperature: 20.511999999999997
+Sensor 34: Expected next timestamp of Temperature: 360.0
+Sensor 34: Expected next value of Temperature: 20.686999999999998
+The requested next timestamp of sensor_33 (Humidity) at timestamp 300 is arrived (360.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 300
+The requested next value of sensor_33 (Humidity) at timestamp 300 is ready (76.01799999999999)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 300
+The requested next timestamp of sensor_34 (Temperature) at timestamp 300 is ready (360.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 300
+The requested next value of sensor_34 (Temperature) at timestamp 300 is ready (20.686999999999998)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.41, 'u': '°C', 't': 360}}
+Sensor 32: Weighted mean Temperature: 20.54285714285714
+Sensor 32: Expected next timestamp of Temperature: 420.0
+Sensor 32: Expected next value of Temperature: 20.631999999999998
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 138.48, 'P': 203.54, 'K': 192.07}, 'u': 'mg/kg', 't': 360}}
+Sensor 31: Weighted mean NPK: {'N': 138.8152380952381, 'P': 204.62666666666667, 'K': 192.28333333333333}
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 360
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 360
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 360
+The requested next timestamp of sensor_31 (NPK) at timestamp 360 is ready (420.0)
+Sensor 31: Expected next timestamp of NPK: 420.0
+The requested next timestamp of sensor_32 (Temperature) at timestamp 360 is ready (420.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 360 is not yet ready
+
+Sensor 31: Expected next value of NPK: {'N': 137.40266666666668, 'P': 203.9066666666667, 'K': 190.92866666666666}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.47, 'u': '%', 't': 360}}
+Sensor 33: Weighted mean Humidity: 76.46904761904761
+Received request for next value of sensor_31 (NPK) at timestamp 360
+Received request for next value of sensor_32 (Temperature) at timestamp 360
+Sensor 33: Expected next timestamp of Humidity: 420.0
+The requested next value of sensor_31 (NPK) at timestamp 360 is ready ({'N': 137.40266666666668, 'P': 203.9066666666667, 'K': 190.92866666666666})
+
+The requested next value of sensor_32 (Temperature) at timestamp 360 is ready (20.631999999999998)
+
+Sensor 33: Expected next value of Humidity: 74.45
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.94, 'u': '°C', 't': 360}}
+Sensor 34: Weighted mean Temperature: 20.63428571428571
+Sensor 34: Expected next timestamp of Temperature: 420.0
+Sensor 34: Expected next value of Temperature: 20.930666666666667
+The requested next timestamp of sensor_33 (Humidity) at timestamp 360 is arrived (420.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 360
+The requested next value of sensor_33 (Humidity) at timestamp 360 is ready (74.45)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 360
+The requested next timestamp of sensor_34 (Temperature) at timestamp 360 is ready (420.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 360
+The requested next value of sensor_34 (Temperature) at timestamp 360 is ready (20.930666666666667)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.46, 'u': '°C', 't': 420}}
+Sensor 32: Weighted mean Temperature: 20.522142857142857
+Sensor 32: Expected next timestamp of Temperature: 480.0
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 420
+Sensor 32: Expected next value of Temperature: 20.567142857142855
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 420
+The requested next timestamp of sensor_32 (Temperature) at timestamp 420 is ready (480.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 420
+The requested next timestamp of sensor_33 (Humidity) at timestamp 420 is not yet ready
+
+The requested next timestamp of sensor_31 (NPK) at timestamp 420 is not yet ready
+
+Received request for next value of sensor_32 (Temperature) at timestamp 420
+The requested next value of sensor_32 (Temperature) at timestamp 420 is ready (20.567142857142855)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 136.49, 'P': 203.64, 'K': 190.39}, 'u': 'mg/kg', 't': 420}}
+Sensor 31: Weighted mean NPK: {'N': 138.23392857142858, 'P': 204.37999999999997, 'K': 191.81}
+Sensor 31: Expected next timestamp of NPK: 480.0
+Sensor 31: Expected next value of NPK: {'N': 136.35142857142856, 'P': 203.4842857142857, 'K': 190.11285714285714}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.77, 'u': '%', 't': 420}}
+Sensor 33: Weighted mean Humidity: 76.0442857142857
+Sensor 33: Expected next timestamp of Humidity: 480.0
+Sensor 33: Expected next value of Humidity: 73.87571428571428
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.01, 'u': '°C', 't': 420}}
+Sensor 34: Weighted mean Temperature: 20.728214285714284
+Sensor 34: Expected next timestamp of Temperature: 480.0
+Sensor 34: Expected next value of Temperature: 21.087142857142855
+The requested next timestamp of sensor_33 (Humidity) at timestamp 420 is arrived (480.0)
+The requested next timestamp of sensor_31 (NPK) at timestamp 420 is arrived (480.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 420
+The requested next value of sensor_33 (Humidity) at timestamp 420 is ready (73.87571428571428)
+
+Received request for next value of sensor_31 (NPK) at timestamp 420
+The requested next value of sensor_31 (NPK) at timestamp 420 is ready ({'N': 136.35142857142856, 'P': 203.4842857142857, 'K': 190.11285714285714})
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 420
+The requested next timestamp of sensor_34 (Temperature) at timestamp 420 is ready (480.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 420
+The requested next value of sensor_34 (Temperature) at timestamp 420 is ready (21.087142857142855)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.99, 'u': '°C', 't': 480}}
+Sensor 32: Weighted mean Temperature: 20.62611111111111
+Sensor 32: Expected next timestamp of Temperature: 540.0
+Sensor 32: Expected next value of Temperature: 20.79357142857143
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 480
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 137.08, 'P': 203.21, 'K': 189.72}, 'u': 'mg/kg', 't': 480}}
+The requested next timestamp of sensor_32 (Temperature) at timestamp 480 is ready (540.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 480
+Sensor 31: Weighted mean NPK: {'N': 137.97750000000002, 'P': 204.12, 'K': 191.34555555555556}
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 480
+The requested next timestamp of sensor_31 (NPK) at timestamp 480 is ready (540.0)
+Sensor 31: Expected next timestamp of NPK: 540.0
+The requested next timestamp of sensor_33 (Humidity) at timestamp 480 is not yet ready
+
+Sensor 31: Expected next value of NPK: {'N': 136.0882142857143, 'P': 203.04857142857142, 'K': 189.35071428571428}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.24, 'u': '%', 't': 480}}
+Received request for next value of sensor_32 (Temperature) at timestamp 480
+Received request for next value of sensor_31 (NPK) at timestamp 480
+Sensor 33: Weighted mean Humidity: 75.86555555555555
+The requested next value of sensor_32 (Temperature) at timestamp 480 is ready (20.79357142857143)
+
+The requested next value of sensor_31 (NPK) at timestamp 480 is ready ({'N': 136.0882142857143, 'P': 203.04857142857142, 'K': 189.35071428571428})
+
+Sensor 33: Expected next timestamp of Humidity: 540.0
+Sensor 33: Expected next value of Humidity: 73.835
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.51, 'u': '°C', 't': 480}}
+Sensor 34: Weighted mean Temperature: 20.679722222222225
+Sensor 34: Expected next timestamp of Temperature: 540.0
+Sensor 34: Expected next value of Temperature: 20.91821428571429
+The requested next timestamp of sensor_33 (Humidity) at timestamp 480 is arrived (540.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 480
+The requested next value of sensor_33 (Humidity) at timestamp 480 is ready (73.835)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 480
+The requested next timestamp of sensor_34 (Temperature) at timestamp 480 is ready (540.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 480
+The requested next value of sensor_34 (Temperature) at timestamp 480 is ready (20.91821428571429)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.69, 'u': '°C', 't': 540}}
+Sensor 32: Weighted mean Temperature: 20.63888888888889
+Sensor 32: Expected next timestamp of Temperature: 600.0
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 540
+Sensor 32: Expected next value of Temperature: 20.797777777777778
+The requested next timestamp of sensor_32 (Temperature) at timestamp 540 is ready (600.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 540
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 540
+The requested next timestamp of sensor_31 (NPK) at timestamp 540 is not yet ready
+
+The requested next timestamp of sensor_33 (Humidity) at timestamp 540 is not yet ready
+
+Received request for next value of sensor_32 (Temperature) at timestamp 540
+The requested next value of sensor_32 (Temperature) at timestamp 540 is ready (20.797777777777778)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 137.29, 'P': 201.91, 'K': 189.44}, 'u': 'mg/kg', 't': 540}}
+Sensor 31: Weighted mean NPK: {'N': 137.84, 'P': 203.678, 'K': 190.96444444444447}
+Sensor 31: Expected next timestamp of NPK: 600.0
+Sensor 31: Expected next value of NPK: {'N': 136.05555555555557, 'P': 202.22111111111113, 'K': 188.79194444444443}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.08, 'u': '%', 't': 540}}
+Sensor 33: Weighted mean Humidity: 75.70844444444445
+Sensor 33: Expected next timestamp of Humidity: 600.0
+Sensor 33: Expected next value of Humidity: 73.77916666666667
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.01, 'u': '°C', 't': 540}}
+Sensor 34: Weighted mean Temperature: 20.74577777777778
+Sensor 34: Expected next timestamp of Temperature: 600.0
+Sensor 34: Expected next value of Temperature: 21.03055555555556
+The requested next timestamp of sensor_31 (NPK) at timestamp 540 is arrived (600.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 540 is arrived (600.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 540
+Received request for next value of sensor_31 (NPK) at timestamp 540
+The requested next value of sensor_33 (Humidity) at timestamp 540 is ready (73.77916666666667)
+
+The requested next value of sensor_31 (NPK) at timestamp 540 is ready ({'N': 136.05555555555557, 'P': 202.22111111111113, 'K': 188.79194444444443})
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 540
+The requested next timestamp of sensor_34 (Temperature) at timestamp 540 is ready (600.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 540
+The requested next value of sensor_34 (Temperature) at timestamp 540 is ready (21.03055555555556)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.62, 'u': '°C', 't': 600}}
+Sensor 32: Weighted mean Temperature: 20.635454545454547
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 600
+Sensor 32: Expected next timestamp of Temperature: 660.0
+The requested next timestamp of sensor_32 (Temperature) at timestamp 600 is ready (660.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 600
+Sensor 32: Expected next value of Temperature: 20.770000000000003
+The requested next timestamp of sensor_31 (NPK) at timestamp 600 is not yet ready
+
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 600
+The requested next timestamp of sensor_33 (Humidity) at timestamp 600 is not yet ready
+
+Received request for next value of sensor_32 (Temperature) at timestamp 600
+The requested next value of sensor_32 (Temperature) at timestamp 600 is ready (20.770000000000003)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 139.13, 'P': 203.29, 'K': 187.95}, 'u': 'mg/kg', 't': 600}}
+Sensor 31: Weighted mean NPK: {'N': 138.07454545454547, 'P': 203.60745454545454, 'K': 190.41636363636366}
+Sensor 31: Expected next timestamp of NPK: 660.0
+Sensor 31: Expected next value of NPK: {'N': 136.7986666666667, 'P': 202.25133333333332, 'K': 187.86266666666666}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.11, 'u': '%', 't': 600}}
+Sensor 33: Weighted mean Humidity: 75.59963636363638
+Sensor 33: Expected next timestamp of Humidity: 660.0
+Sensor 33: Expected next value of Humidity: 73.78533333333333
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.5, 'u': '°C', 't': 600}}
+Sensor 34: Weighted mean Temperature: 20.701090909090908
+Sensor 34: Expected next timestamp of Temperature: 660.0
+Sensor 34: Expected next value of Temperature: 20.896
+The requested next timestamp of sensor_31 (NPK) at timestamp 600 is arrived (660.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 600 is arrived (660.0)
+Received request for next value of sensor_31 (NPK) at timestamp 600
+The requested next value of sensor_31 (NPK) at timestamp 600 is ready ({'N': 136.7986666666667, 'P': 202.25133333333332, 'K': 187.86266666666666})
+
+Received request for next value of sensor_33 (Humidity) at timestamp 600
+The requested next value of sensor_33 (Humidity) at timestamp 600 is ready (73.78533333333333)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 600
+The requested next timestamp of sensor_34 (Temperature) at timestamp 600 is ready (660.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 600
+The requested next value of sensor_34 (Temperature) at timestamp 600 is ready (20.896)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.32, 'u': '°C', 't': 660}}
+Sensor 32: Weighted mean Temperature: 20.76909090909091
+Sensor 32: Expected next timestamp of Temperature: 720.0
+Sensor 32: Expected next value of Temperature: 21.089333333333332
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 139.22, 'P': 202.73, 'K': 186.7}, 'u': 'mg/kg', 't': 660}}
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 660
+The requested next timestamp of sensor_32 (Temperature) at timestamp 660 is ready (720.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 660
+Sensor 31: Weighted mean NPK: {'N': 138.19581818181817, 'P': 203.35545454545453, 'K': 189.5665454545454}
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 660
+The requested next timestamp of sensor_31 (NPK) at timestamp 660 is ready (720.0)
+Sensor 31: Expected next timestamp of NPK: 720.0
+The requested next timestamp of sensor_33 (Humidity) at timestamp 660 is not yet ready
+
+Sensor 31: Expected next value of NPK: {'N': 137.64600000000002, 'P': 202.08733333333333, 'K': 186.73333333333332}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.8, 'u': '%', 't': 660}}
+Sensor 33: Weighted mean Humidity: 75.33054545454544
+Received request for next value of sensor_31 (NPK) at timestamp 660
+Received request for next value of sensor_32 (Temperature) at timestamp 660
+Sensor 33: Expected next timestamp of Humidity: 720.0
+The requested next value of sensor_31 (NPK) at timestamp 660 is ready ({'N': 137.64600000000002, 'P': 202.08733333333333, 'K': 186.73333333333332})
+
+The requested next value of sensor_32 (Temperature) at timestamp 660 is ready (21.089333333333332)
+
+Sensor 33: Expected next value of Humidity: 73.69199999999998
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.18, 'u': '°C', 't': 660}}
+Sensor 34: Weighted mean Temperature: 20.801454545454547
+Sensor 34: Expected next timestamp of Temperature: 720.0
+Sensor 34: Expected next value of Temperature: 20.967999999999996
+The requested next timestamp of sensor_33 (Humidity) at timestamp 660 is arrived (720.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 660
+The requested next value of sensor_33 (Humidity) at timestamp 660 is ready (73.69199999999998)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 660
+The requested next timestamp of sensor_34 (Temperature) at timestamp 660 is ready (720.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 660
+The requested next value of sensor_34 (Temperature) at timestamp 660 is ready (20.967999999999996)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.95, 'u': '°C', 't': 720}}
+Sensor 32: Weighted mean Temperature: 20.82381818181818
+Sensor 32: Expected next timestamp of Temperature: 780.0
+Sensor 32: Expected next value of Temperature: 21.084666666666664
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 138.19, 'P': 203.54, 'K': 187.7}, 'u': 'mg/kg', 't': 720}}
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 720
+The requested next timestamp of sensor_32 (Temperature) at timestamp 720 is ready (780.0)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 720
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 720
+Sensor 31: Weighted mean NPK: {'N': 138.15727272727273, 'P': 203.30254545454545, 'K': 189.034}
+The requested next timestamp of sensor_31 (NPK) at timestamp 720 is ready (780.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 720 is not yet ready
+
+Sensor 31: Expected next timestamp of NPK: 780.0
+Received request for next value of sensor_32 (Temperature) at timestamp 720
+Sensor 31: Expected next value of NPK: {'N': 138.07533333333336, 'P': 202.12266666666665, 'K': 186.4286666666667}
+The requested next value of sensor_32 (Temperature) at timestamp 720 is ready (21.084666666666664)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.41, 'u': '%', 't': 720}}
+Received request for next value of sensor_31 (NPK) at timestamp 720
+Sensor 33: Weighted mean Humidity: 75.05145454545455
+The requested next value of sensor_31 (NPK) at timestamp 720 is ready ({'N': 138.07533333333336, 'P': 202.12266666666665, 'K': 186.4286666666667})
+
+Sensor 33: Expected next timestamp of Humidity: 780.0
+Sensor 33: Expected next value of Humidity: 73.63666666666664
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.97, 'u': '°C', 't': 720}}
+Sensor 34: Weighted mean Temperature: 20.84345454545455
+Sensor 34: Expected next timestamp of Temperature: 780.0
+Sensor 34: Expected next value of Temperature: 21.007333333333335
+The requested next timestamp of sensor_33 (Humidity) at timestamp 720 is arrived (780.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 720
+The requested next value of sensor_33 (Humidity) at timestamp 720 is ready (73.63666666666664)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 720
+The requested next timestamp of sensor_34 (Temperature) at timestamp 720 is ready (780.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 720
+The requested next value of sensor_34 (Temperature) at timestamp 720 is ready (21.007333333333335)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.22, 'u': '°C', 't': 780}}
+Sensor 32: Weighted mean Temperature: 20.913636363636364
+Sensor 32: Expected next timestamp of Temperature: 840.0
+Sensor 32: Expected next value of Temperature: 21.168666666666667
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 780
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 780
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 138.79, 'P': 202.89, 'K': 188.73}, 'u': 'mg/kg', 't': 780}}
+The requested next timestamp of sensor_32 (Temperature) at timestamp 780 is ready (840.0)
+The requested next timestamp of sensor_31 (NPK) at timestamp 780 is not yet ready
+
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 780
+Sensor 31: Weighted mean NPK: {'N': 138.26672727272728, 'P': 203.1470909090909, 'K': 188.80109090909087}
+The requested next timestamp of sensor_31 (NPK) at timestamp 780 is arrived (840.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 780 is not yet ready
+
+Sensor 31: Expected next timestamp of NPK: 840.0
+Received request for next value of sensor_32 (Temperature) at timestamp 780
+Sensor 31: Expected next value of NPK: {'N': 138.55666666666664, 'P': 202.24333333333328, 'K': 186.50799999999998}
+The requested next value of sensor_32 (Temperature) at timestamp 780 is ready (21.168666666666667)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.05, 'u': '%', 't': 780}}
+Received request for next value of sensor_31 (NPK) at timestamp 780
+Sensor 33: Weighted mean Humidity: 74.7729090909091
+The requested next value of sensor_31 (NPK) at timestamp 780 is ready ({'N': 138.55666666666664, 'P': 202.24333333333328, 'K': 186.50799999999998})
+
+Sensor 33: Expected next timestamp of Humidity: 840.0
+Sensor 33: Expected next value of Humidity: 73.826
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.18, 'u': '°C', 't': 780}}
+Sensor 34: Weighted mean Temperature: 20.915818181818185
+Sensor 34: Expected next timestamp of Temperature: 840.0
+Sensor 34: Expected next value of Temperature: 21.08866666666667
+The requested next timestamp of sensor_33 (Humidity) at timestamp 780 is arrived (840.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 780
+The requested next value of sensor_33 (Humidity) at timestamp 780 is ready (73.826)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 780
+The requested next timestamp of sensor_34 (Temperature) at timestamp 780 is ready (840.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 780
+The requested next value of sensor_34 (Temperature) at timestamp 780 is ready (21.08866666666667)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.1, 'u': '°C', 't': 840}}
+Sensor 32: Weighted mean Temperature: 20.964909090909092
+Sensor 32: Expected next timestamp of Temperature: 900.0
+Sensor 32: Expected next value of Temperature: 21.223333333333336
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 138.43, 'P': 202.91, 'K': 187.41}, 'u': 'mg/kg', 't': 840}}
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 840
+Sensor 31: Weighted mean NPK: {'N': 138.3161818181818, 'P': 203.04236363636363, 'K': 188.39181818181817}
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 840
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 840
+The requested next timestamp of sensor_31 (NPK) at timestamp 840 is ready (900.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 840 is not yet ready
+
+Sensor 31: Expected next timestamp of NPK: 900.0
+The requested next timestamp of sensor_32 (Temperature) at timestamp 840 is ready (900.0)
+Sensor 31: Expected next value of NPK: {'N': 138.88199999999998, 'P': 202.53666666666666, 'K': 186.3966666666667}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.29, 'u': '%', 't': 840}}
+Sensor 33: Weighted mean Humidity: 74.80236363636362
+Received request for next value of sensor_31 (NPK) at timestamp 840
+Sensor 33: Expected next timestamp of Humidity: 900.0
+The requested next value of sensor_31 (NPK) at timestamp 840 is ready ({'N': 138.88199999999998, 'P': 202.53666666666666, 'K': 186.3966666666667})
+
+Sensor 33: Expected next value of Humidity: 74.582
+Received request for next value of sensor_32 (Temperature) at timestamp 840
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.35, 'u': '°C', 't': 840}}
+The requested next value of sensor_32 (Temperature) at timestamp 840 is ready (21.223333333333336)
+
+Sensor 34: Weighted mean Temperature: 21.006545454545456
+Sensor 34: Expected next timestamp of Temperature: 900.0
+Sensor 34: Expected next value of Temperature: 21.325333333333333
+The requested next timestamp of sensor_33 (Humidity) at timestamp 840 is arrived (900.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 840
+The requested next value of sensor_33 (Humidity) at timestamp 840 is ready (74.582)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 840
+The requested next timestamp of sensor_34 (Temperature) at timestamp 840 is ready (900.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 840
+The requested next value of sensor_34 (Temperature) at timestamp 840 is ready (21.325333333333333)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.58, 'u': '°C', 't': 900}}
+Sensor 32: Weighted mean Temperature: 20.912545454545455
+Sensor 32: Expected next timestamp of Temperature: 960.0
+Sensor 32: Expected next value of Temperature: 21.122
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 139.79, 'P': 202.25, 'K': 188.72}, 'u': 'mg/kg', 't': 900}}
+Sensor 31: Weighted mean NPK: {'N': 138.62272727272725, 'P': 202.86381818181815, 'K': 188.31545454545454}
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 900
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 900
+Sensor 31: Expected next timestamp of NPK: 960.0
+The requested next timestamp of sensor_33 (Humidity) at timestamp 900 is not yet ready
+
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 900
+The requested next timestamp of sensor_31 (NPK) at timestamp 900 is ready (960.0)
+Sensor 31: Expected next value of NPK: {'N': 139.5126666666667, 'P': 202.5246666666667, 'K': 186.802}
+The requested next timestamp of sensor_32 (Temperature) at timestamp 900 is ready (960.0)
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 73.99, 'u': '%', 't': 900}}
+Sensor 33: Weighted mean Humidity: 74.63963636363637
+Received request for next value of sensor_31 (NPK) at timestamp 900
+Sensor 33: Expected next timestamp of Humidity: 960.0
+The requested next value of sensor_31 (NPK) at timestamp 900 is ready ({'N': 139.5126666666667, 'P': 202.5246666666667, 'K': 186.802})
+
+Sensor 33: Expected next value of Humidity: 74.42266666666667
+Received request for next value of sensor_32 (Temperature) at timestamp 900
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.7, 'u': '°C', 't': 900}}
+The requested next value of sensor_32 (Temperature) at timestamp 900 is ready (21.122)
+
+Sensor 34: Weighted mean Temperature: 20.97254545454545
+Sensor 34: Expected next timestamp of Temperature: 960.0
+Sensor 34: Expected next value of Temperature: 21.072666666666663
+The requested next timestamp of sensor_33 (Humidity) at timestamp 900 is arrived (960.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 900
+The requested next value of sensor_33 (Humidity) at timestamp 900 is ready (74.42266666666667)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 900
+The requested next timestamp of sensor_34 (Temperature) at timestamp 900 is ready (960.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 900
+The requested next value of sensor_34 (Temperature) at timestamp 900 is ready (21.072666666666663)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.53, 'u': '°C', 't': 960}}
+Sensor 32: Weighted mean Temperature: 21.03909090909091
+Sensor 32: Expected next timestamp of Temperature: 1020.0
+Sensor 32: Expected next value of Temperature: 21.287333333333336
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 137.79, 'P': 201.92, 'K': 189.53}, 'u': 'mg/kg', 't': 960}}
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 960
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 960
+Sensor 31: Weighted mean NPK: {'N': 138.53199999999998, 'P': 202.6690909090909, 'K': 188.43309090909088}
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 960
+The requested next timestamp of sensor_31 (NPK) at timestamp 960 is ready (1020.0)
+The requested next timestamp of sensor_32 (Temperature) at timestamp 960 is ready (1020.0)
+Sensor 31: Expected next timestamp of NPK: 1020.0
+The requested next timestamp of sensor_33 (Humidity) at timestamp 960 is not yet ready
+
+Sensor 31: Expected next value of NPK: {'N': 139.36399999999995, 'P': 202.24266666666668, 'K': 187.91066666666666}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.16, 'u': '%', 't': 960}}
+Received request for next value of sensor_31 (NPK) at timestamp 960
+Received request for next value of sensor_32 (Temperature) at timestamp 960
+Sensor 33: Weighted mean Humidity: 74.53763636363635
+The requested next value of sensor_32 (Temperature) at timestamp 960 is ready (21.287333333333336)
+
+The requested next value of sensor_31 (NPK) at timestamp 960 is ready ({'N': 139.36399999999995, 'P': 202.24266666666668, 'K': 187.91066666666666})
+
+Sensor 33: Expected next timestamp of Humidity: 1020.0
+Sensor 33: Expected next value of Humidity: 74.13133333333333
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.51, 'u': '°C', 't': 960}}
+Sensor 34: Weighted mean Temperature: 21.077090909090906
+Sensor 34: Expected next timestamp of Temperature: 1020.0
+Sensor 34: Expected next value of Temperature: 21.304
+The requested next timestamp of sensor_33 (Humidity) at timestamp 960 is arrived (1020.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 960
+The requested next value of sensor_33 (Humidity) at timestamp 960 is ready (74.13133333333333)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 960
+The requested next timestamp of sensor_34 (Temperature) at timestamp 960 is ready (1020.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 960
+The requested next value of sensor_34 (Temperature) at timestamp 960 is ready (21.304)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.53, 'u': '°C', 't': 1020}}
+Sensor 32: Weighted mean Temperature: 21.145272727272726
+Sensor 32: Expected next timestamp of Temperature: 1080.0
+Sensor 32: Expected next value of Temperature: 21.391333333333336
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 135.71, 'P': 201.03, 'K': 188.52}, 'u': 'mg/kg', 't': 1020}}
+Sensor 31: Weighted mean NPK: {'N': 138.07563636363636, 'P': 202.34199999999998, 'K': 188.41327272727275}
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 1020
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 1020
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 1020
+Sensor 31: Expected next timestamp of NPK: 1080.0
+The requested next timestamp of sensor_32 (Temperature) at timestamp 1020 is ready (1080.0)
+The requested next timestamp of sensor_31 (NPK) at timestamp 1020 is ready (1080.0)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1020 is not yet ready
+
+Sensor 31: Expected next value of NPK: {'N': 137.89866666666666, 'P': 201.73933333333332, 'K': 188.33666666666664}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.06, 'u': '%', 't': 1020}}
+Sensor 33: Weighted mean Humidity: 74.4230909090909
+Received request for next value of sensor_32 (Temperature) at timestamp 1020
+Received request for next value of sensor_31 (NPK) at timestamp 1020
+The requested next value of sensor_32 (Temperature) at timestamp 1020 is ready (21.391333333333336)
+
+Sensor 33: Expected next timestamp of Humidity: 1080.0
+The requested next value of sensor_31 (NPK) at timestamp 1020 is ready ({'N': 137.89866666666666, 'P': 201.73933333333332, 'K': 188.33666666666664})
+
+Sensor 33: Expected next value of Humidity: 73.90066666666667
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.82, 'u': '°C', 't': 1020}}
+Sensor 34: Weighted mean Temperature: 21.04581818181818
+Sensor 34: Expected next timestamp of Temperature: 1080.0
+Sensor 34: Expected next value of Temperature: 21.239999999999995
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1020 is arrived (1080.0)
+Received request for next value of sensor_33 (Humidity) at timestamp 1020
+The requested next value of sensor_33 (Humidity) at timestamp 1020 is ready (73.90066666666667)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 1020
+The requested next timestamp of sensor_34 (Temperature) at timestamp 1020 is ready (1080.0)
+Received request for next value of sensor_34 (Temperature) at timestamp 1020
+The requested next value of sensor_34 (Temperature) at timestamp 1020 is ready (21.239999999999995)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.81, 'u': '°C', 't': 1081}}
+Sensor 32: Weighted mean Temperature: 21.101090909090907
+Sensor 32: Expected next timestamp of Temperature: 1141.111111111111
+Sensor 32: Expected next value of Temperature: 21.277383638126164
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 1081
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 134.54, 'P': 200.98, 'K': 189.79}, 'u': 'mg/kg', 't': 1081}}
+The requested next timestamp of sensor_32 (Temperature) at timestamp 1081 is ready (1141.111111111111)
+Sensor 31: Weighted mean NPK: {'N': 137.42072727272725, 'P': 202.0532727272727, 'K': 188.65836363636362}
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 1081
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 1081
+Sensor 31: Expected next timestamp of NPK: 1141.111111111111
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1081 is not yet ready
+
+The requested next timestamp of sensor_31 (NPK) at timestamp 1081 is ready (1141.111111111111)
+Sensor 31: Expected next value of NPK: {'N': 136.16881665904305, 'P': 201.2724878618928, 'K': 189.2191108068392}
+Received request for next value of sensor_32 (Temperature) at timestamp 1081
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.05, 'u': '%', 't': 1081}}
+The requested next value of sensor_32 (Temperature) at timestamp 1081 is ready (21.277383638126164)
+
+Sensor 33: Weighted mean Humidity: 74.50145454545455
+Sensor 33: Expected next timestamp of Humidity: 1141.111111111111
+Received request for next value of sensor_31 (NPK) at timestamp 1081
+Sensor 33: Expected next value of Humidity: 74.23871905229387
+The requested next value of sensor_31 (NPK) at timestamp 1081 is ready ({'N': 136.16881665904305, 'P': 201.2724878618928, 'K': 189.2191108068392})
+
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.38, 'u': '°C', 't': 1081}}
+Sensor 34: Weighted mean Temperature: 21.119818181818186
+Sensor 34: Expected next timestamp of Temperature: 1141.111111111111
+Sensor 34: Expected next value of Temperature: 21.279961413334735
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1081 is arrived (1141.111111111111)
+Received request for next value of sensor_33 (Humidity) at timestamp 1081
+The requested next value of sensor_33 (Humidity) at timestamp 1081 is ready (74.23871905229387)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 1081
+The requested next timestamp of sensor_34 (Temperature) at timestamp 1081 is ready (1141.111111111111)
+Received request for next value of sensor_34 (Temperature) at timestamp 1081
+The requested next value of sensor_34 (Temperature) at timestamp 1081 is ready (21.279961413334735)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.12, 'u': '°C', 't': 1141}}
+Sensor 32: Weighted mean Temperature: 21.116545454545456
+Sensor 32: Expected next timestamp of Temperature: 1201.111111111111
+Sensor 32: Expected next value of Temperature: 21.219015175855624
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 1141
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 1141
+The requested next timestamp of sensor_31 (NPK) at timestamp 1141 is not yet ready
+
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 1141
+The requested next timestamp of sensor_32 (Temperature) at timestamp 1141 is ready (1201.111111111111)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1141 is not yet ready
+
+Received request for next value of sensor_32 (Temperature) at timestamp 1141
+The requested next value of sensor_32 (Temperature) at timestamp 1141 is ready (21.219015175855624)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 136.29, 'P': 201.28, 'K': 187.94}, 'u': 'mg/kg', 't': 1141}}
+Sensor 31: Weighted mean NPK: {'N': 137.1301818181818, 'P': 201.85963636363635, 'K': 188.56581818181817}
+Sensor 31: Expected next timestamp of NPK: 1201.111111111111
+Sensor 31: Expected next value of NPK: {'N': 135.37187542511072, 'P': 200.73151052126627, 'K': 189.27812558098466}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 74.84, 'u': '%', 't': 1141}}
+Sensor 33: Weighted mean Humidity: 74.5450909090909
+Sensor 33: Expected next timestamp of Humidity: 1201.111111111111
+Sensor 33: Expected next value of Humidity: 74.46354013626811
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.77, 'u': '°C', 't': 1141}}
+Sensor 34: Weighted mean Temperature: 21.067090909090904
+Sensor 34: Expected next timestamp of Temperature: 1201.111111111111
+Sensor 34: Expected next value of Temperature: 21.15003244937155
+The requested next timestamp of sensor_31 (NPK) at timestamp 1141 is arrived (1201.111111111111)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1141 is arrived (1201.111111111111)
+Received request for next value of sensor_31 (NPK) at timestamp 1141
+The requested next value of sensor_31 (NPK) at timestamp 1141 is ready ({'N': 135.37187542511072, 'P': 200.73151052126627, 'K': 189.27812558098466})
+
+Received request for next value of sensor_33 (Humidity) at timestamp 1141
+The requested next value of sensor_33 (Humidity) at timestamp 1141 is ready (74.46354013626811)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 1141
+The requested next timestamp of sensor_34 (Temperature) at timestamp 1141 is ready (1201.111111111111)
+Received request for next value of sensor_34 (Temperature) at timestamp 1141
+The requested next value of sensor_34 (Temperature) at timestamp 1141 is ready (21.15003244937155)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.38, 'u': '°C', 't': 1201}}
+Sensor 32: Weighted mean Temperature: 21.171454545454548
+Sensor 32: Expected next timestamp of Temperature: 1261.111111111111
+Received request for the next timestamp of sensor_32 (Temperature) at timestamp 1201
+Sensor 32: Expected next value of Temperature: 21.21771723632038
+The requested next timestamp of sensor_32 (Temperature) at timestamp 1201 is ready (1261.111111111111)
+Received request for the next timestamp of sensor_31 (NPK) at timestamp 1201
+Received request for the next timestamp of sensor_33 (Humidity) at timestamp 1201
+The requested next timestamp of sensor_31 (NPK) at timestamp 1201 is not yet ready
+
+Received request for next value of sensor_32 (Temperature) at timestamp 1201
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1201 is not yet ready
+
+The requested next value of sensor_32 (Temperature) at timestamp 1201 is ready (21.21771723632038)
+
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_31', 'e': {'n': 'NPK', 'v': {'N': 137.92, 'P': 201.67, 'K': 186.23}, 'u': 'mg/kg', 't': 1201}}
+Sensor 31: Weighted mean NPK: {'N': 137.1541818181818, 'P': 201.74836363636362, 'K': 188.18963636363637}
+Sensor 31: Expected next timestamp of NPK: 1261.111111111111
+Sensor 31: Expected next value of NPK: {'N': 135.78530627704066, 'P': 200.75706914936003, 'K': 188.3557899977533}
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_33', 'e': {'n': 'Humidity', 'v': 75.44, 'u': '%', 't': 1201}}
+Sensor 33: Weighted mean Humidity: 74.70218181818181
+Sensor 33: Expected next timestamp of Humidity: 1261.111111111111
+Sensor 33: Expected next value of Humidity: 74.95172415357723
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.97, 'u': '°C', 't': 1201}}
+Sensor 34: Weighted mean Temperature: 21.055090909090907
+Sensor 34: Expected next timestamp of Temperature: 1261.111111111111
+Sensor 34: Expected next value of Temperature: 20.98070615184877
+The requested next timestamp of sensor_31 (NPK) at timestamp 1201 is arrived (1261.111111111111)
+The requested next timestamp of sensor_33 (Humidity) at timestamp 1201 is arrived (1261.111111111111)
+Received request for next value of sensor_31 (NPK) at timestamp 1201
+The requested next value of sensor_31 (NPK) at timestamp 1201 is ready ({'N': 135.78530627704066, 'P': 200.75706914936003, 'K': 188.3557899977533})
+
+Received request for next value of sensor_33 (Humidity) at timestamp 1201
+The requested next value of sensor_33 (Humidity) at timestamp 1201 is ready (74.95172415357723)
+
+Received request for the next timestamp of sensor_34 (Temperature) at timestamp 1201
+The requested next timestamp of sensor_34 (Temperature) at timestamp 1201 is ready (1261.111111111111)
+Received request for next value of sensor_34 (Temperature) at timestamp 1201
+The requested next value of sensor_34 (Temperature) at timestamp 1201 is ready (20.98070615184877)
 

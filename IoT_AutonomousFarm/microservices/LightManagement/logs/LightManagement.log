@@ -1,16 +1,288 @@
-Device ID: 78
-Received 1 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}]
+Device ID: 182
+Received 3 sensors: [{'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 32, 'area_id': 44, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': 0}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 41}, {'sensor_id': 34, 'area_id': 43, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 41}]
 Subscribed to greenhouse_28/area_22/sensor_10
 Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_22/event/sensor_10
+Subscribed to greenhouse_41/area_44/sensor_32
+Subscribed to greenhouse_41/area_44/event/sensor_32
+Subscribed to greenhouse_41/area_43/sensor_34
+Subscribed to greenhouse_41/area_43/event/sensor_34
 Started periodic sensor checking thread
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.68, 'u': '°C', 't': 60}}
+WARNING: Failed to get when the next value of Temperature (sensor_32) is expected to arrive
+WARNING: Failed to get the next expected value of Temperature (sensor_32)
 Periodic sensor check started
 Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705d6d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.07, 'u': '°C', 't': 60}}
+WARNING: Failed to get when the next value of Temperature (sensor_34) is expected to arrive
+WARNING: Failed to get the next expected value of Temperature (sensor_34)
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705e8d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.18, 'u': '°C', 't': 120}}
+The next value of Temperature (sensor_32) is expected to be received at: 180.0
+The next value of Temperature (sensor_32) is expected to be: 19.68 °C
+Wait to see another value to start the decision making for sensor_32 (Temperature)
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.54, 'u': '°C', 't': 120}}
+The next value of Temperature (sensor_34) is expected to be received at: 180.0
+The next value of Temperature (sensor_34) is expected to be: 21.009999999999998 °C
+Wait to see another value to start the decision making for sensor_34 (Temperature)
 Periodic sensor check started
 Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.3, 'u': '°C', 't': 180}}
+The next value of Temperature (sensor_32) is expected to be received at: 240.0
+The next value of Temperature (sensor_32) is expected to be: 20.006666666666668 °C
+The measured value (20.3 °C) and the next prediction (20.006666666666668 °C) of sensor_32 (Temperature) are inside the range [0, 50]
 Periodic sensor check started
 Periodic sensor check completed
+WARNING: Was expecting a value of Temperature from sensor_34 at time 180.0, but it didn't arrive
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705ea90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.49, 'u': '°C', 't': 180}}
+The next value of Temperature (sensor_34) is expected to be received at: 240.0
+The next value of Temperature (sensor_34) is expected to be: 20.78666666666666 °C
+The measured value (20.49 °C) and the next prediction (20.78666666666666 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705c590>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e92190>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.6, 'u': '°C', 't': 240}}
+The next value of Temperature (sensor_32) is expected to be received at: 300.0
+The next value of Temperature (sensor_32) is expected to be: 20.409999999999997 °C
+The measured value (20.6 °C) and the next prediction (20.409999999999997 °C) of sensor_32 (Temperature) are inside the range [0, 50]
 Periodic sensor check started
 Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e87079490>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.99, 'u': '°C', 't': 240}}
+The next value of Temperature (sensor_34) is expected to be received at: 300.0
+The next value of Temperature (sensor_34) is expected to be: 21.199999999999996 °C
+The measured value (20.99 °C) and the next prediction (21.199999999999996 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e91d90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.92, 'u': '°C', 't': 300}}
+The next value of Temperature (sensor_32) is expected to be received at: 360.0
+The next value of Temperature (sensor_32) is expected to be: 20.805999999999997 °C
+The measured value (20.92 °C) and the next prediction (20.805999999999997 °C) of sensor_32 (Temperature) are inside the range [0, 50]
 Periodic sensor check started
 Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e84110>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.22, 'u': '°C', 't': 300}}
+The next value of Temperature (sensor_34) is expected to be received at: 360.0
+The next value of Temperature (sensor_34) is expected to be: 20.686999999999998 °C
+The measured value (20.22 °C) and the next prediction (20.686999999999998 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e87058d90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.41, 'u': '°C', 't': 360}}
+The next value of Temperature (sensor_32) is expected to be received at: 420.0
+The next value of Temperature (sensor_32) is expected to be: 20.631999999999998 °C
+The measured value (20.41 °C) and the next prediction (20.631999999999998 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8706ed10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.94, 'u': '°C', 't': 360}}
+The next value of Temperature (sensor_34) is expected to be received at: 420.0
+The next value of Temperature (sensor_34) is expected to be: 20.930666666666667 °C
+The measured value (20.94 °C) and the next prediction (20.930666666666667 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e87058350>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.46, 'u': '°C', 't': 420}}
+The next value of Temperature (sensor_32) is expected to be received at: 480.0
+The next value of Temperature (sensor_32) is expected to be: 20.567142857142855 °C
+The measured value (20.46 °C) and the next prediction (20.567142857142855 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8706f290>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.01, 'u': '°C', 't': 420}}
+The next value of Temperature (sensor_34) is expected to be received at: 480.0
+The next value of Temperature (sensor_34) is expected to be: 21.087142857142855 °C
+The measured value (21.01 °C) and the next prediction (21.087142857142855 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e97510>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.99, 'u': '°C', 't': 480}}
+The next value of Temperature (sensor_32) is expected to be received at: 540.0
+The next value of Temperature (sensor_32) is expected to be: 20.79357142857143 °C
+The measured value (20.99 °C) and the next prediction (20.79357142857143 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e95350>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.51, 'u': '°C', 't': 480}}
+The next value of Temperature (sensor_34) is expected to be received at: 540.0
+The next value of Temperature (sensor_34) is expected to be: 20.91821428571429 °C
+The measured value (20.51 °C) and the next prediction (20.91821428571429 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e86710>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.69, 'u': '°C', 't': 540}}
+The next value of Temperature (sensor_32) is expected to be received at: 600.0
+The next value of Temperature (sensor_32) is expected to be: 20.797777777777778 °C
+The measured value (20.69 °C) and the next prediction (20.797777777777778 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705a050>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.01, 'u': '°C', 't': 540}}
+The next value of Temperature (sensor_34) is expected to be received at: 600.0
+The next value of Temperature (sensor_34) is expected to be: 21.03055555555556 °C
+The measured value (21.01 °C) and the next prediction (21.03055555555556 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8707afd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.62, 'u': '°C', 't': 600}}
+The next value of Temperature (sensor_32) is expected to be received at: 660.0
+The next value of Temperature (sensor_32) is expected to be: 20.770000000000003 °C
+The measured value (20.62 °C) and the next prediction (20.770000000000003 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705cc10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.5, 'u': '°C', 't': 600}}
+The next value of Temperature (sensor_34) is expected to be received at: 660.0
+The next value of Temperature (sensor_34) is expected to be: 20.896 °C
+The measured value (20.5 °C) and the next prediction (20.896 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8707ad90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.32, 'u': '°C', 't': 660}}
+The next value of Temperature (sensor_32) is expected to be received at: 720.0
+The next value of Temperature (sensor_32) is expected to be: 21.089333333333332 °C
+The measured value (21.32 °C) and the next prediction (21.089333333333332 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e84950>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.18, 'u': '°C', 't': 660}}
+The next value of Temperature (sensor_34) is expected to be received at: 720.0
+The next value of Temperature (sensor_34) is expected to be: 20.967999999999996 °C
+The measured value (21.18 °C) and the next prediction (20.967999999999996 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8705ac50>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.95, 'u': '°C', 't': 720}}
+The next value of Temperature (sensor_32) is expected to be received at: 780.0
+The next value of Temperature (sensor_32) is expected to be: 21.084666666666664 °C
+The measured value (20.95 °C) and the next prediction (21.084666666666664 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e91dd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.97, 'u': '°C', 't': 720}}
+The next value of Temperature (sensor_34) is expected to be received at: 780.0
+The next value of Temperature (sensor_34) is expected to be: 21.007333333333335 °C
+The measured value (20.97 °C) and the next prediction (21.007333333333335 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e95810>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.22, 'u': '°C', 't': 780}}
+The next value of Temperature (sensor_32) is expected to be received at: 840.0
+The next value of Temperature (sensor_32) is expected to be: 21.168666666666667 °C
+The measured value (21.22 °C) and the next prediction (21.168666666666667 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e969d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.18, 'u': '°C', 't': 780}}
+The next value of Temperature (sensor_34) is expected to be received at: 840.0
+The next value of Temperature (sensor_34) is expected to be: 21.08866666666667 °C
+The measured value (21.18 °C) and the next prediction (21.08866666666667 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e93250>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.1, 'u': '°C', 't': 840}}
+The next value of Temperature (sensor_32) is expected to be received at: 900.0
+The next value of Temperature (sensor_32) is expected to be: 21.223333333333336 °C
+The measured value (21.1 °C) and the next prediction (21.223333333333336 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8706fad0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.35, 'u': '°C', 't': 840}}
+The next value of Temperature (sensor_34) is expected to be received at: 900.0
+The next value of Temperature (sensor_34) is expected to be: 21.325333333333333 °C
+The measured value (21.35 °C) and the next prediction (21.325333333333333 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8707bf10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.58, 'u': '°C', 't': 900}}
+The next value of Temperature (sensor_32) is expected to be received at: 960.0
+The next value of Temperature (sensor_32) is expected to be: 21.122 °C
+The measured value (20.58 °C) and the next prediction (21.122 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e91510>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.7, 'u': '°C', 't': 900}}
+The next value of Temperature (sensor_34) is expected to be received at: 960.0
+The next value of Temperature (sensor_34) is expected to be: 21.072666666666663 °C
+The measured value (20.7 °C) and the next prediction (21.072666666666663 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e95710>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.53, 'u': '°C', 't': 960}}
+The next value of Temperature (sensor_32) is expected to be received at: 1020.0
+The next value of Temperature (sensor_32) is expected to be: 21.287333333333336 °C
+The measured value (21.53 °C) and the next prediction (21.287333333333336 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e97e10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.51, 'u': '°C', 't': 960}}
+The next value of Temperature (sensor_34) is expected to be received at: 1020.0
+The next value of Temperature (sensor_34) is expected to be: 21.304 °C
+The measured value (21.51 °C) and the next prediction (21.304 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86e91f50>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.53, 'u': '°C', 't': 1020}}
+The next value of Temperature (sensor_32) is expected to be received at: 1080.0
+The next value of Temperature (sensor_32) is expected to be: 21.391333333333336 °C
+The measured value (21.53 °C) and the next prediction (21.391333333333336 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e86ea7710>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.82, 'u': '°C', 't': 1020}}
+The next value of Temperature (sensor_34) is expected to be received at: 1080.0
+The next value of Temperature (sensor_34) is expected to be: 21.239999999999995 °C
+The measured value (20.82 °C) and the next prediction (21.239999999999995 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Failed to send Telegram message: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot7794925862:AAEeWdf4lWJeLpexbiMXqeBVVDRXYDEzIu4/sendMessage (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5e8707be90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 20.81, 'u': '°C', 't': 1081}}
+The next value of Temperature (sensor_32) is expected to be received at: 1141.111111111111
+The next value of Temperature (sensor_32) is expected to be: 21.277383638126164 °C
+The measured value (20.81 °C) and the next prediction (21.277383638126164 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 21.38, 'u': '°C', 't': 1081}}
+The next value of Temperature (sensor_34) is expected to be received at: 1141.111111111111
+The next value of Temperature (sensor_34) is expected to be: 21.279961413334735 °C
+The measured value (21.38 °C) and the next prediction (21.279961413334735 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.12, 'u': '°C', 't': 1141}}
+The next value of Temperature (sensor_32) is expected to be received at: 1201.111111111111
+The next value of Temperature (sensor_32) is expected to be: 21.219015175855624 °C
+The measured value (21.12 °C) and the next prediction (21.219015175855624 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.77, 'u': '°C', 't': 1141}}
+The next value of Temperature (sensor_34) is expected to be received at: 1201.111111111111
+The next value of Temperature (sensor_34) is expected to be: 21.15003244937155 °C
+The measured value (20.77 °C) and the next prediction (21.15003244937155 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_44/sensor_32', 'e': {'n': 'Temperature', 'v': 21.38, 'u': '°C', 't': 1201}}
+The next value of Temperature (sensor_32) is expected to be received at: 1261.111111111111
+The next value of Temperature (sensor_32) is expected to be: 21.21771723632038 °C
+The measured value (21.38 °C) and the next prediction (21.21771723632038 °C) of sensor_32 (Temperature) are inside the range [0, 50]
+Periodic sensor check started
+Periodic sensor check completed
+Telegram message sent successfully to user 788476502
+
+Received: {'bn': 'greenhouse_41/area_43/sensor_34', 'e': {'n': 'Temperature', 'v': 20.97, 'u': '°C', 't': 1201}}
+The next value of Temperature (sensor_34) is expected to be received at: 1261.111111111111
+The next value of Temperature (sensor_34) is expected to be: 20.98070615184877 °C
+The measured value (20.97 °C) and the next prediction (20.98070615184877 °C) of sensor_34 (Temperature) are inside the range [-10, 50]
+Telegram message sent successfully to user 788476502

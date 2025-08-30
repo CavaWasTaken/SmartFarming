@@ -1,21 +1,66 @@
-Device id: 153
-Received 3 sensors: [{'sensor_id': 26, 'area_id': 37, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 150, 'min': 50}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 27, 'area_id': 38, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 103}, 'N': {'max': 200, 'min': 10}, 'P': {'max': 296, 'min': 100}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 37}, {'sensor_id': 28, 'area_id': 38, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 80, 'min': 37}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 37}]
+Device id: 185
+Received 4 sensors: [{'sensor_id': 32, 'area_id': 44, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': 0}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 41}, {'sensor_id': 31, 'area_id': 44, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 400, 'min': 100}, 'N': {'max': 300, 'min': 34}, 'P': {'max': 300, 'min': 75}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 41}, {'sensor_id': 33, 'area_id': 44, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 75, 'min': 30}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 41}, {'sensor_id': 34, 'area_id': 43, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 50, 'min': -10}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 41}]
+Current time: 2025-08-29 12:14:45.917495
 Connected to mosquitto with result code 0
-Current time: 2025-08-26 19:02:54.788360
 Received 0 events: []
-No events scheduled for the greenhouse 37
-Current time: 2025-08-26 19:03:55.181283
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:15:45.956589
 Received 0 events: []
-No events scheduled for the greenhouse 37
-Current time: 2025-08-26 19:04:55.200633
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:16:45.987336
 Received 0 events: []
-No events scheduled for the greenhouse 37
-Current time: 2025-08-26 19:05:55.233723
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:17:46.022097
 Received 0 events: []
-No events scheduled for the greenhouse 37
-Current time: 2025-08-26 19:06:55.266966
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:18:46.044359
 Received 0 events: []
-No events scheduled for the greenhouse 37
-Current time: 2025-08-26 19:07:55.290795
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:19:46.069361
 Received 0 events: []
-No events scheduled for the greenhouse 37
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:20:46.108097
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:21:46.144869
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:22:46.160834
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:23:46.196080
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:24:46.243401
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:25:46.302911
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:26:46.336985
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:27:46.344910
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:28:46.401392
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:29:46.473298
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:30:46.532239
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:31:46.653702
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:32:46.801857
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:33:46.874285
+Received 0 events: []
+No events scheduled for the greenhouse 41
+Current time: 2025-08-29 12:34:46.976755
+Received 0 events: []
+No events scheduled for the greenhouse 41
