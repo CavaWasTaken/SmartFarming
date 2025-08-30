@@ -1,0 +1,66 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: smartfarm_db
+      POSTGRES_USER: iotproject
+      POSTGRES_PASSWORD: WeWillDieForIoT
+    ports:
+      - "5433:5432"  # PostgreSQL default port
+    volumes:
+      - pgdata:/var/lib/postgresql/data # persist data storage
+      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # initial data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iotproject -d smartfarm_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - company-network
+
+  catalog:
+    build: ./catalog
+    container_name: catalog_service
+    ports:
+      - "8080:8080"  # expose catalog service publicly
+    volumes:
+      - ./catalog:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - company-network
+
+  telegrambot:
+    build: ./ui/telegramBot
+    container_name: telegram_bot
+    volumes:
+      - ./ui/telegramBot:/app
+    depends_on:
+      catalog:
+        condition: service_started
+      db:
+        condition: service_healthy
+    networks:
+      - company-network
+
+  webapp:
+    build: ./ui/webApp
+    container_name: web_app
+    ports:
+      - "8000:80"  # expose web app publicly
+    depends_on:
+      catalog:
+        condition: service_started
+      db:
+        condition: service_healthy
+    networks:
+      - company-network
+
+volumes:
+  pgdata: # docker volume for persisting data
+
+networks:
+  company-network:
+    driver: bridge

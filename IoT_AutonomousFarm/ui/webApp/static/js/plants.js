@@ -121,16 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
               .then((res) => res.json())
               .then((config) => {
                 const catalog_url = config.catalog_url;
-                return fetch(`${catalog_url}/remove_plant_from_greenhouse`, {
-                  method: "POST",
+                return fetch(`${catalog_url}/remove_plant_from_greenhouse?area_id=${areaId}&plant_id=${plant.plant_id}`, {
+                  method: "DELETE",
                   headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
-                  },
-                  body: JSON.stringify({
-                    area_id: areaId,
-                    plant_id: plant.plant_id,
-                  }),
+                  }
                 });
               })
               .then((res) => res.json())

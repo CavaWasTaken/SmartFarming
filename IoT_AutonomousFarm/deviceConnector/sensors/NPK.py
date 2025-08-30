@@ -32,9 +32,9 @@ class NPK:
             self.last_update = current_time # update last update time
             # initialize current NPK with some realistic values
             self.current_npk = {
-                "N": 150.0 + random.uniform(-10, 10),  # Nitrogen: varies more
-                "P": 200.0 + random.uniform(-15, 15),  # Phosphorus: more stable
-                "K": 200.0 + random.uniform(-12, 12)   # Potassium: moderate variation
+                "N": round(150.0 + random.uniform(-10, 10), 2),  # Nitrogen: varies more
+                "P": round(200.0 + random.uniform(-15, 15), 2),  # Phosphorus: more stable
+                "K": round(200.0 + random.uniform(-12, 12), 2)   # Potassium: moderate variation
             }
             return self.current_npk
         
@@ -79,9 +79,9 @@ class NPK:
 
         # add random noise to simulate sensor fluctuations
         noise = {
-            'N': random.uniform(-2.0, 2.0),
-            'P': random.uniform(-1.5, 1.5),
-            'K': random.uniform(-1.8, 1.8)
+            'N': random.uniform(-0.1, 0.1),
+            'P': random.uniform(-0.07, 0.07),
+            'K': random.uniform(-0.09, 0.09)
         }
         for nutrient in ["N", "P", "K"]:
             self.current_npk[nutrient] += noise[nutrient]

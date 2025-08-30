@@ -1,22 +1,5 @@
 version: '3.9'
 services:
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: smartfarm_db
-      POSTGRES_USER: iotproject
-      POSTGRES_PASSWORD: WeWillDieForIoT
-    ports:
-      - "5433:5432"  # PostgreSQL default port
-    volumes:
-      - pgdata:/var/lib/postgresql/data # persist data storage
-      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql  # initial data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U iotproject -d smartfarm_db"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-  
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto_broker
@@ -33,17 +16,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-
-  catalog:
-    build: ./catalog
-    container_name: catalog_service
-    ports:
-      - "8080:8080"  # expose catalog service to localhost:8080
-    volumes:
-      - ./catalog:/app
-    depends_on:
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   deviceconnector:
     build: ./deviceConnector
@@ -51,12 +25,10 @@ services:
     volumes:
       - ./deviceConnector:/app
     depends_on:
-      catalog:
-        condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   dataanalysis:
     build: ./microservices/DataAnalysis
@@ -64,14 +36,12 @@ services:
     volumes:
       - ./microservices/DataAnalysis:/app
     depends_on:
-      catalog:
-        condition: service_started
       deviceconnector:
         condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   humiditymanagement:
     build: ./microservices/HumidityManagement
@@ -79,14 +49,12 @@ services:
     volumes:
       - ./microservices/HumidityManagement:/app
     depends_on:
-      catalog:
-        condition: service_started
       deviceconnector:
         condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   lightmanagement:
     build: ./microservices/LightManagement
@@ -94,14 +62,12 @@ services:
     volumes:
       - ./microservices/LightManagement:/app
     depends_on:
-      catalog:
-        condition: service_started
       deviceconnector:
         condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   nutrientmanagement:
     build: ./microservices/NutrientManagement
@@ -109,14 +75,12 @@ services:
     volumes:
       - ./microservices/NutrientManagement:/app
     depends_on:
-      catalog:
-        condition: service_started
       deviceconnector:
         condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   timeshift:
     build: ./microservices/TimeShift
@@ -124,14 +88,12 @@ services:
     volumes:
       - ./microservices/TimeShift:/app
     depends_on:
-      catalog:
-        condition: service_started
       deviceconnector:
         condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
   thingspeak:
     build: ./thingSpeakAdaptor
@@ -139,41 +101,13 @@ services:
     volumes:
       - ./thingSpeakAdaptor:/app
     depends_on:
-      catalog:
-        condition: service_started
       deviceconnector:
         condition: service_started
       mosquitto:
         condition: service_healthy
-      db:
-        condition: service_healthy
+    networks:
+      - customer-network
 
-  telegrambot:
-    build: ./ui/telegramBot
-    container_name: telegram_bot
-    volumes:
-      - ./ui/telegramBot:/app
-    depends_on:
-      catalog:
-        condition: service_started
-      mosquitto:
-        condition: service_healthy
-      db:
-        condition: service_healthy
-
-  webapp:
-    build: ./ui/webApp
-    container_name: web_app
-    ports:
-      - "8000:80"  # adjust for your app
-    depends_on:
-      catalog:
-        condition: service_started
-      db:
-        condition: service_healthy
-
-volumes:
-  pgdata: # docker volume for persisting data
-
-
-
+networks:
+  customer-network:
+    driver: bridge

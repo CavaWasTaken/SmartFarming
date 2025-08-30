@@ -22,7 +22,18 @@ class MqttClient:
         self.paho.loop_stop()
         self.paho.disconnect()
 
-    def subscribe(self, topic):  #/greenhouse/area1/temperature
+    def is_connected(self):
+        return self.paho.is_connected()
+
+    def reconnect(self):
+        try:
+            self.paho.reconnect()
+            return True
+        except Exception as e:
+            self.log_function(f"Reconnection failed: {e}")
+            return False
+
+    def subscribe(self, topic):
         if topic not in self.subs:
             self.subs.append(topic)
             self.paho.subscribe(topic, 2)

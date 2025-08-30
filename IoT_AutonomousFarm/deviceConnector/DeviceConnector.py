@@ -12,6 +12,24 @@ def write_log(message):
     with open("./logs/DeviceConnector.log", "a") as log_file:
         log_file.write(f"{message}\n")
 
+def reconnectClient(client):
+    while True:
+        try:
+            client.reconnect()
+            write_log("MQTT client reconnected")
+
+            # re-subscribe to all topics
+            if sensors != []:
+                for sensor in sensors:  # iterate over the list of sensors
+                    topic = f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/action/sensor_{sensor['sensor_id']}"  # create the topic to subscribe to
+                    client.subscribe(topic)    # subscribe to the topic to receive actions from the Catalog
+
+            break
+
+        except Exception as e:
+            write_log(f"Error reconnecting MQTT client: {e}")
+            time.sleep(30)  # wait for 30 seconds before trying to reconnect
+
 # function for the device connector to receive the needed action and perform it
 def ActionReceived(client, userdata, message):
     msg = json.loads(message.payload.decode())    # decode the message received
@@ -24,23 +42,20 @@ def ActionReceived(client, userdata, message):
         if action == "increase":
             goal = float(msg['message']['min_treshold'])    # get the goal from the action
 
-            if parameter == "Nitrogen":
+            if parameter == "N":
                 sensorClasses[sensor_id].goalN = goal
                 sensorClasses[sensor_id].nitrogenIncrease = True
                 sensorClasses[sensor_id].nitrogenDecrease = False
-                write_log(f"Nitrogen increase action received")
         
-            elif parameter == "Phosphorus":
+            elif parameter == "P":
                 sensorClasses[sensor_id].goalP = goal
                 sensorClasses[sensor_id].phosphorusIncrease = True
                 sensorClasses[sensor_id].phosphorusDecrease = False
-                write_log(f"Phosphorus increase action received")
         
-            elif parameter == "Potassium":
+            elif parameter == "K":
                 sensorClasses[sensor_id].goalK = goal
                 sensorClasses[sensor_id].potassiumIncrease = True
                 sensorClasses[sensor_id].potassiumDecrease = False
-                write_log(f"Potassium increase action received")
 
             else:
                 sensorClasses[sensor_id].goal = goal    # get the goal from the action
@@ -50,23 +65,20 @@ def ActionReceived(client, userdata, message):
         elif action == "decrease":
             goal = float(msg['message']['max_treshold'])    # get the goal from the action
 
-            if parameter == "Nitrogen":
+            if parameter == "N":
                 sensorClasses[sensor_id].goalN = goal
                 sensorClasses[sensor_id].nitrogenDecrease = True
                 sensorClasses[sensor_id].nitrogenIncrease = False
-                write_log(f"Nitrogen decrease action received")
     
-            elif parameter == "Phosphorus":
+            elif parameter == "P":
                 sensorClasses[sensor_id].goalP = goal
                 sensorClasses[sensor_id].phosphorusDecrease = True
                 sensorClasses[sensor_id].phosphorusIncrease = False
-                write_log(f"Phosphorus decrease action received")
     
-            elif parameter == "Potassium":
+            elif parameter == "K":
                 sensorClasses[sensor_id].goalK = goal
                 sensorClasses[sensor_id].potassiumDecrease = True
                 sensorClasses[sensor_id].potassiumIncrease = False
-                write_log(f"Potassium decrease action received")
         
             else:
                 sensorClasses[sensor_id].goal = goal
@@ -75,7 +87,6 @@ def ActionReceived(client, userdata, message):
     
     except Exception as e:
         write_log(f"Error processing action: {e}")
-
 
 os.makedirs("./logs", exist_ok=True)   # create the logs directory if it doesn't exist
 
@@ -118,65 +129,55 @@ while True:
             break   # exit the loop if the request is successful
 
         else:
-            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-            time.sleep(60)   # wait for 60 seconds before trying again
+            write_log(f"Failed to get sensors from the Catalog\nResponse: {response.json()['error']}\nTrying again in 30 seconds...")    # in case of error, write the reason of the error in the log file
+            time.sleep(30)   # wait for 30 seconds before trying again
 
     except Exception as e:
-        write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 60 seconds...")
-        time.sleep(60)   # wait for 60 seconds before trying again
+        write_log(f"Error getting sensors from the Catalog: {e}\nTrying again in 30 seconds...")
+        time.sleep(30)   # wait for 30 seconds before trying again
 
-for _ in range(5):  # try 5 times to get the location of the greenhouse
+while True:
     try:
         # get the location of the greenhouse from the Catalog
         response = requests.get(f'{catalog_url}/get_greenhouse_location', params={'greenhouse_id': greenhouse_id})    # read the greenhouse location from the Catalog
         if response.status_code == 200: # if the request is successful
             greenhouse_location = response.json()["location"]    # get the location from the response
-            write_log(f"Received greenhouse location: {greenhouse_location}")
-
-            # create for each sensor its class object
-            classSensor = Sensor.Sensor(location=greenhouse_location)    # create a sensor object with the location of the greenhouse
-            for sensor in sensors:  # iterate over the list of sensors
-                if sensor["type"] == "Temperature":  # if the sensor is a temperature sensor
-                    sensorClasses[sensor["sensor_id"]] = Temperature.Temperature(classSensor)  # create a Temperature object with the sensor object 
-                
-                elif sensor["type"] == "Humidity":  # if the sensor is a humidity sensor
-                    sensorClasses[sensor["sensor_id"]] = Humidity.Humidity(classSensor)  # create a Humidity object with the sensor object
-                
-                elif sensor["type"] == "LightIntensity":  # if the sensor is a light intensity sensor
-                    sensorClasses[sensor["sensor_id"]] = Light.Light(classSensor)  # create a LightIntensity object with the sensor object
-                
-                elif sensor["type"] == "NPK":  # if the sensor is a NPK sensor
-                    sensorClasses[sensor["sensor_id"]] = NPK.NPK(classSensor)  # create a NPK object with the sensor object
-                
-                elif sensor["type"] == "pH":  # if the sensor is a pH sensor
-                    sensorClasses[sensor["sensor_id"]] = pH.pH(classSensor)  # create a pH object with the sensor object
-                
-                elif sensor["type"] == "SoilMoisture":  # if the sensor is a soil moisture sensor
-                    sensorClasses[sensor["sensor_id"]] = SoilMoisture.SoilMoisture(classSensor)  # create a SoilMoisture object with the sensor object
-                
-                else:
-                    write_log(f"Sensor not recognized: {sensor['name']}")
-                    continue    # skip to the next iteration, so at the next sensor
-
-            break   # exit the loop if the request is successful
-
         else:
-            write_log(f"Failed to get greenhouse location from the Catalog\nResponse: {response.reason}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-            if _ == 4:  # if this is the last attempt
-                write_log("Failed to get greenhouse location from the Catalog after 5 attempts")
-                exit(1)
+            greenhouse_location = "Unknown"   # if the request is not successful, set the location to Unknown
 
-            time.sleep(60)   # wait for 60 seconds before trying again
+        write_log(f"Received greenhouse location: {greenhouse_location}")
+        # create for each sensor its class object
+        classSensor = Sensor.Sensor(location=greenhouse_location)    # create a sensor object with the location of the greenhouse
+        for sensor in sensors:  # iterate over the list of sensors
+            if sensor["type"] == "Temperature":  # if the sensor is a temperature sensor
+                sensorClasses[sensor["sensor_id"]] = Temperature.Temperature(classSensor)  # create a Temperature object with the sensor object 
+            
+            elif sensor["type"] == "Humidity":  # if the sensor is a humidity sensor
+                sensorClasses[sensor["sensor_id"]] = Humidity.Humidity(classSensor)  # create a Humidity object with the sensor object
+            
+            elif sensor["type"] == "LightIntensity":  # if the sensor is a light intensity sensor
+                sensorClasses[sensor["sensor_id"]] = Light.Light(classSensor)  # create a LightIntensity object with the sensor object
+            
+            elif sensor["type"] == "NPK":  # if the sensor is a NPK sensor
+                sensorClasses[sensor["sensor_id"]] = NPK.NPK(classSensor)  # create a NPK object with the sensor object
+            
+            elif sensor["type"] == "pH":  # if the sensor is a pH sensor
+                sensorClasses[sensor["sensor_id"]] = pH.pH(classSensor)  # create a pH object with the sensor object
+            
+            elif sensor["type"] == "SoilMoisture":  # if the sensor is a soil moisture sensor
+                sensorClasses[sensor["sensor_id"]] = SoilMoisture.SoilMoisture(classSensor)  # create a SoilMoisture object with the sensor object
+            
+            else:
+                write_log(f"Sensor not recognized: {sensor['name']}")
+                sensors.remove(sensor)  # remove the sensor from the list of sensors if the type is not recognized
+
+        break   # exit the loop if the request is successful
 
     except Exception as e:
-        write_log(f"Error getting greenhouse location from the Catalog: {e}\nTrying again in 60 seconds...")
-        if _ == 4:  # if this is the last attempt
-            write_log("Failed to get greenhouse location from the Catalog after 5 attempts")
-            exit(1)
-        
-        time.sleep(60)
+        write_log(f"Error setting sensors: {e}\nTrying again in 30 seconds...")      
+        time.sleep(30)
 
-for _ in range(5):  # try 5 times to start the MQTT client
+while True:
     try:
         # MQTT Client setup
         client = MqttClient(mqtt_broker, mqtt_port, keep_alive, f"DeviceConnector_{device_id}", ActionReceived, write_log)    # create a MQTT client object
@@ -184,29 +185,27 @@ for _ in range(5):  # try 5 times to start the MQTT client
         break   # exit the loop if the client is started successfully
 
     except Exception as e:
-        write_log(f"Error starting MQTT client: {e}\nTrying again in 60 seconds...")    # in case of error, write the reason of the error in the log file
-        if _ == 4:  # if this is the last attempt
-            write_log("Failed to start MQTT client after 5 attempts")
-            exit(1)
-
-        time.sleep(60)   # wait for 60 seconds before trying again
+        write_log(f"Error starting MQTT client: {e}\nTrying again in 30 seconds...")    # in case of error, write the reason of the error in the log file
+        time.sleep(30)   # wait for 30 seconds before trying again
 
 write_log("")
 
 # connection to topics to receive needed action
 for sensor in sensors:  # iterate over the list of sensors
     topic = f"greenhouse_{sensor['greenhouse_id']}/area_{sensor['area_id']}/action/sensor_{sensor['sensor_id']}"  # create the topic to subscribe to
-    for _ in range(5):
+    while True:
         try:
             client.subscribe(topic)    # subscribe to the topic to receive actions from the Catalog
             break
 
         except Exception as e:
-            write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 60 seconds...")
-            if _ == 4:  # if this is the last attempt
-                write_log(f"Failed to subscribe the client to the topic ({topic}) after 5 attempts")
-            else:
-                time.sleep(60)  # wait for 60 seconds before trying again            
+            write_log(f"Error subscribing the client to the topic ({topic}): {e}\nTrying again in 30 seconds...")
+            # check if the client is connected, if not try to reconnect
+            if not client.is_connected():
+                write_log("MQTT client disconnected, trying to reconnect...")
+                reconnectClient(client)
+                    
+            time.sleep(30)  # wait for 30 seconds before trying again            
 
 start_time = datetime.now() # get the current time
 
@@ -275,6 +274,9 @@ while True:
             
         except Exception as e:
             write_log(f"Error publishing value from sensor {sensor['name']}: {e}")
+            if not client.is_connected():
+                write_log("MQTT client disconnected, trying to reconnect...")
+                reconnectClient(client)
             continue
     
     write_log("")
@@ -283,4 +285,3 @@ while True:
     time.sleep(60)   # wait for 1 minutes before reading the sensors again
 
 client.stop()   # stop the MQTT client
-

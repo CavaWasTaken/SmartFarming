@@ -400,7 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = {
       greenhouse_id: parseInt(greenhouseId),
-      device_id: devices[0]?.device_id, // Use first device as placeholder
       sensor_id: parseInt(document.getElementById('sensorSelect').value),
       parameter: parameter,
       desired_value: parseFloat(document.getElementById('valueInput').value),
@@ -408,6 +407,31 @@ document.addEventListener("DOMContentLoaded", () => {
       execution_time: formatDateTimeForDB(document.getElementById('executionDate').value, document.getElementById('executionTime').value)
     };
 
+    // remove the old event
+    if (editingEventId) {
+      try {
+        const deviceId = devices[0]?.device_id; // Use first device as placeholder
+        const response = await fetch(`${catalogUrl}/delete_event?device_id=${deviceId}&event_id=${editingEventId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to delete event');
+        }
+        
+        editingEventId = null;
+            
+      } catch (error) {
+        console.error('Error deleting event:', error);
+        showError(error.message || 'Failed to delete event');
+      }
+    } 
+    
     try {
       const response = await fetch(`${catalogUrl}/schedule_event`, {
         method: 'POST',
@@ -439,10 +463,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  let editingEventId = null;
+
   // Handle editing an event
   function handleEditEvent(eventId) {
     const event = allEvents.find(e => e.event_id == eventId);
     if (!event) return;
+
+    editingEventId = eventId;
 
     // Setup dropdowns first
     setupParameterDropdown();
