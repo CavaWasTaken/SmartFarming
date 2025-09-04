@@ -43,3 +43,8 @@ mosquitto_pub -h localhost -p 1883 -t 'greenhouse/1/area/1/sensor/19/measure' -m
 6/ down :
 
 docker compose down
+
+
+// up command :
+
+docker compose -f docker-compose-company-server.yml -f docker-compose-customer.yml up

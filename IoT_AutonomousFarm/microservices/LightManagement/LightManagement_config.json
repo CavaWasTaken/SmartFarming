@@ -1,5 +1,5 @@
 {
-    "catalog_url": "http://192.168.0.76:8080",
+   "catalog_url": "http://host.docker.internal:8080",
     "dataAnalysis_url": "http://dataanalysis:8081",
     "greenhouse_id": 41,
     "mqtt_connection": {
