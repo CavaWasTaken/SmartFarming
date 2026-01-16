@@ -7,3 +7,4 @@
 **/mosquitto.db
 **/mosquitto.log
 .DS_Store
+*_config.json
