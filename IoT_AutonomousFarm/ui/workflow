@@ -1,24 +1,14 @@
-[Sensors]
-   │  MQTT publish (JSON)
-   ▼
-[ Mosquitto Broker ]
-   │  topics: greenhouse_<gh>/area_<a>/sensor_<id>/measure
-   ▼
-[ deviceConnector ]
-   │  validates → enriches → forwards
-   ▼
-[ Catalog API (CherryPy) ] ──> [ PostgreSQL DB ]
-        │                           │
-        │                           └─ tables: users, sensors, measurements, alerts
-        │
-        ├──> [ WebApp UI (Nginx/Vite) ]  charts, tables, login
-        ├──> [ Telegram Bot ]  /start /help /status /subscribe
-        ├──> [ ThingSpeak Adaptor ]  optional external telemetry
-        └──> [ DataAnalysis ]
-                 │ computes baseline/forecast
-                 ├─> [ HumidityManagement ]
-                 ├─> [ LightManagement ]
-                 ├─> [ NutrientManagement ]
-                 └─> [ TimeShift ]
-                      ↑
-                  control/# (MQTT) for actions/commands
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                  [ WebApp (UI) ] ──>  [ Catalog API ]  ──>  [ PostgreSQL DB ]
+                           │                │
+                           │                ├──> DataAnalysis (requests stats)
+                           │                ├──> TimeShift (scheduled events)
+                           │                ├──> Management Services (thresholds, sensors, chat_id)
+                           │                └──> Telegram Bot (OTP, chat_id linking)

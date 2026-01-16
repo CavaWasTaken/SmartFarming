@@ -1,2 +1,4 @@
 .venv
 **/mosquitto.db
+**/logs/
+**/__pycache__/

@@ -176,8 +176,8 @@ def handle_message(timestamp, area_id, sensor_type, val):
     payload = {"api_key": thingSpeak_config["write_key"]}
     for sensor_type in fields[timestamp].keys():
         if sensor_type in FIELD_MAPPING:
-            field_number = FIELD_MAPPING[sensor_type]
-            payload[f"field{field_number}"] = json.dumps(fields[timestamp][sensor_type])
+            field_number = FIELD_MAPPING[sensor_type] 
+            payload[f"field{field_number}"] = json.dumps(fields[timestamp][sensor_type]) #  "field1": "{\"22\": 25.4, \"23\": 26.1}",   # Temperature per area
         else:
             write_log(f"Warning: Unknown sensor type '{sensor_type}' - not mapped to any ThingSpeak field")
 
@@ -228,7 +228,7 @@ if __name__ == "__main__":
     while True:   # try to get the device information from the Catalog for 5 times
         try: 
             # get the list of sensors connected to this device connector from the Catalog
-            response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'TimeShift'})    # read the list of sensors from the Catalog
+            response = requests.get(f'{catalog_url}/get_sensors', params={'greenhouse_id': greenhouse_id, 'device_name': 'ThingSpeakAdaptor'})    # read the list of sensors from the Catalog
             if response.status_code == 200: # if the request is successful
                 response = response.json()  # convert the response to a dictionary
                 device_id = response["device_id"]    # get the device id from the response

@@ -1,650 +1,856 @@
 Device ID: 79
 
-Received 2 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 14, 'area_id': 23, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 7.5, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 28}]
+Received 1 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}]
 
 Connected to mosquitto with result code 0
 Subscribed to greenhouse_28/area_23/sensor_13
 Subscribed to greenhouse_28/area_23/event/sensor_13
-Subscribed to greenhouse_28/area_23/sensor_14
-Subscribed to greenhouse_28/area_23/event/sensor_14
 Started periodic sensor checking thread
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.5, 'P': 193.04, 'K': 193.89}, 'u': 'mg/kg', 't': 60}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 144.6, 'P': 191.28, 'K': 207.93}, 'u': 'mg/kg', 't': 60}}
 WARNING: Failed to get when the next value of NPK (sensor_13) is expected to arrive
 WARNING: Failed to get the next expected value of NPK (sensor_13)
 No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.57, 'u': 'pH', 't': 60}}
-WARNING: Failed to get when the next value of pH (sensor_14) is expected to arrive
-WARNING: Failed to get the next expected value of pH (sensor_14)
-No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.41, 'P': 192.89, 'K': 193.75}, 'u': 'mg/kg', 't': 120}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 144.39, 'P': 191.16, 'K': 207.73}, 'u': 'mg/kg', 't': 120}}
 The next value of NPK (sensor_13) is expected to be received at: 180.0
-The next value of NPK (sensor_13) is expected to be: {'N': 154.31999999999996, 'P': 192.73999999999998, 'K': 193.61} mg/kg
+The next value of NPK (sensor_13) is expected to be: {'N': 144.17999999999998, 'P': 191.04, 'K': 207.52999999999994} mg/kg
 Wait to see another value to start the decision making for sensor_13 (NPK)
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.61, 'u': 'pH', 't': 120}}
-The next value of pH (sensor_14) is expected to be received at: 180.0
-The next value of pH (sensor_14) is expected to be: 6.6499999999999995 pH
-Wait to see another value to start the decision making for sensor_14 (pH)
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 154.32, 'P': 192.84, 'K': 193.7}, 'u': 'mg/kg', 't': 180}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 144.31, 'P': 191.04, 'K': 207.59}, 'u': 'mg/kg', 't': 180}}
 The next value of NPK (sensor_13) is expected to be received at: 240.0
-The next value of NPK (sensor_13) is expected to be: {'N': 154.23, 'P': 192.72333333333333, 'K': 193.58999999999997} mg/kg
-WARNING: The measured value 154.32 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 154.32 mg/kg and the next expected one 154.23 mg/kg of NPK - N (sensor_13) are outside the range.
+The next value of NPK (sensor_13) is expected to be: {'N': 144.14333333333335, 'P': 190.92, 'K': 207.41} mg/kg
+WARNING: The measured value 144.31 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
+WARNING: The measured value 144.31 mg/kg and the next expected one 144.14333333333335 mg/kg of NPK - N (sensor_13) are outside the range.
 Action needed to decrease the value
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 154.32, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 180}
-The measured value (192.84 mg/kg) and the next prediction (192.72333333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 144.31, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 180}
+The measured value (191.04 mg/kg) and the next prediction (190.92 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-WARNING: The measured value 193.7 mg/kg of sensor_13 (NPK - K) went outside the range [200, 300]
-WARNING: The measured value 193.7 mg/kg and the next expected one 193.58999999999997 mg/kg of NPK - K (sensor_13) are outside the range.
-Action needed to increase the value
-No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "increase", "val": 193.7, "min_treshold": 200, "max_treshold": 300}, "parameter": "K", "timestamp": 180}
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.63, 'u': 'pH', 't': 180}}
-The next value of pH (sensor_14) is expected to be received at: 240.0
-The next value of pH (sensor_14) is expected to be: 6.663333333333332 pH
-The measured value (6.63 pH) and the next prediction (6.663333333333332 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (207.59 mg/kg) and the next prediction (207.41 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 146.23, 'P': 192.72, 'K': 199.67}, 'u': 'mg/kg', 't': 240}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 136.33, 'P': 190.91, 'K': 207.51}, 'u': 'mg/kg', 't': 240}}
 The next value of NPK (sensor_13) is expected to be received at: 300.0
-The next value of NPK (sensor_13) is expected to be: {'N': 146.13999999999996, 'P': 192.62, 'K': 199.575} mg/kg
-WARNING: The measured value 146.23 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 146.23 mg/kg and the next expected one 146.13999999999996 mg/kg of NPK - N (sensor_13) are outside the range.
+The next value of NPK (sensor_13) is expected to be: {'N': 136.185, 'P': 190.79, 'K': 207.34} mg/kg
+WARNING: The measured value 136.33 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
+WARNING: The measured value 136.33 mg/kg and the next expected one 136.185 mg/kg of NPK - N (sensor_13) are outside the range.
 Action needed to decrease the value
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 146.23, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 240}
-The measured value (192.72 mg/kg) and the next prediction (192.62 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 136.33, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 240}
+The measured value (190.91 mg/kg) and the next prediction (190.79 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-WARNING: The measured value 199.67 mg/kg of sensor_13 (NPK - K) went outside the range [200, 300]
-WARNING: The measured value 199.67 mg/kg and the next expected one 199.575 mg/kg of NPK - K (sensor_13) are outside the range.
-Action needed to increase the value
-No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "increase", "val": 199.67, "min_treshold": 200, "max_treshold": 300}, "parameter": "K", "timestamp": 240}
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.6, 'u': 'pH', 't': 240}}
-The next value of pH (sensor_14) is expected to be received at: 300.0
-The next value of pH (sensor_14) is expected to be: 6.629999999999998 pH
-The measured value (6.6 pH) and the next prediction (6.629999999999998 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (207.51 mg/kg) and the next prediction (207.34 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 138.31, 'P': 192.6, 'K': 205.73}, 'u': 'mg/kg', 't': 300}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 128.3, 'P': 190.86, 'K': 207.31}, 'u': 'mg/kg', 't': 300}}
 The next value of NPK (sensor_13) is expected to be received at: 360.0
-The next value of NPK (sensor_13) is expected to be: {'N': 137.386, 'P': 192.50300000000001, 'K': 206.22799999999998} mg/kg
-WARNING: The measured value 138.31 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 138.31 mg/kg and the next expected one 137.386 mg/kg of NPK - N (sensor_13) are outside the range.
+The next value of NPK (sensor_13) is expected to be: {'N': 127.38800000000003, 'P': 190.723, 'K': 207.176} mg/kg
+WARNING: The measured value 128.3 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
+WARNING: The measured value 128.3 mg/kg and the next expected one 127.38800000000003 mg/kg of NPK - N (sensor_13) are outside the range.
 Action needed to decrease the value
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 138.31, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 300}
-The measured value (192.6 mg/kg) and the next prediction (192.50300000000001 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 128.3, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 300}
+The measured value (190.86 mg/kg) and the next prediction (190.723 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (205.73 mg/kg) and the next prediction (206.22799999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.66, 'u': 'pH', 't': 300}}
-The next value of pH (sensor_14) is expected to be received at: 360.0
-The next value of pH (sensor_14) is expected to be: 6.664999999999998 pH
-The measured value (6.66 pH) and the next prediction (6.664999999999998 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (207.31 mg/kg) and the next prediction (207.176 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 130.39, 'P': 192.54, 'K': 205.65}, 'u': 'mg/kg', 't': 360}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 120.26, 'P': 190.75, 'K': 207.19}, 'u': 'mg/kg', 't': 360}}
 The next value of NPK (sensor_13) is expected to be received at: 420.0
-The next value of NPK (sensor_13) is expected to be: {'N': 128.66599999999997, 'P': 192.42266666666666, 'K': 208.80266666666668} mg/kg
-WARNING: The measured value 130.39 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 130.39 mg/kg and the next expected one 128.66599999999997 mg/kg of NPK - N (sensor_13) are outside the range.
+The next value of NPK (sensor_13) is expected to be: {'N': 118.57000000000002, 'P': 190.632, 'K': 207.0393333333333} mg/kg
+WARNING: The measured value 120.26 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
+WARNING: The measured value 120.26 mg/kg and the next expected one 118.57000000000002 mg/kg of NPK - N (sensor_13) are outside the range.
 Action needed to decrease the value
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 130.39, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 360}
-The measured value (192.54 mg/kg) and the next prediction (192.42266666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 120.26, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 360}
+The measured value (190.75 mg/kg) and the next prediction (190.632 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (205.65 mg/kg) and the next prediction (208.80266666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.7, 'u': 'pH', 't': 360}}
-The next value of pH (sensor_14) is expected to be received at: 420.0
-The next value of pH (sensor_14) is expected to be: 6.705333333333333 pH
-The measured value (6.7 pH) and the next prediction (6.705333333333333 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (207.19 mg/kg) and the next prediction (207.0393333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 122.32, 'P': 192.45, 'K': 205.52}, 'u': 'mg/kg', 't': 420}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 112.35, 'P': 190.7, 'K': 207.09}, 'u': 'mg/kg', 't': 420}}
 The next value of NPK (sensor_13) is expected to be received at: 480.0
-The next value of NPK (sensor_13) is expected to be: {'N': 119.98428571428573, 'P': 192.33857142857144, 'K': 209.8042857142857} mg/kg
-WARNING: The measured value 122.32 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 122.32 mg/kg and the next expected one 119.98428571428573 mg/kg of NPK - N (sensor_13) are outside the range.
+The next value of NPK (sensor_13) is expected to be: {'N': 109.93142857142857, 'P': 190.56571428571428, 'K': 206.92428571428573} mg/kg
+WARNING: The measured value 112.35 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
+WARNING: The measured value 112.35 mg/kg and the next expected one 109.93142857142857 mg/kg of NPK - N (sensor_13) are outside the range.
 Action needed to decrease the value
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 122.32, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 420}
-The measured value (192.45 mg/kg) and the next prediction (192.33857142857144 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 112.35, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 420}
+The measured value (190.7 mg/kg) and the next prediction (190.56571428571428 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (205.52 mg/kg) and the next prediction (209.8042857142857 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.67, 'u': 'pH', 't': 420}}
-The next value of pH (sensor_14) is expected to be received at: 480.0
-The next value of pH (sensor_14) is expected to be: 6.707142857142856 pH
-The measured value (6.67 pH) and the next prediction (6.707142857142856 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (207.09 mg/kg) and the next prediction (206.92428571428573 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 114.29, 'P': 192.33, 'K': 205.45}, 'u': 'mg/kg', 't': 480}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 104.43, 'P': 190.6, 'K': 207.03}, 'u': 'mg/kg', 't': 480}}
 The next value of NPK (sensor_13) is expected to be received at: 540.0
-The next value of NPK (sensor_13) is expected to be: {'N': 111.40178571428571, 'P': 192.23749999999998, 'K': 210.15285714285716} mg/kg
-WARNING: The measured value 114.29 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 114.29 mg/kg and the next expected one 111.40178571428571 mg/kg of NPK - N (sensor_13) are outside the range.
+The next value of NPK (sensor_13) is expected to be: {'N': 101.43, 'P': 190.48499999999999, 'K': 206.83857142857144} mg/kg
+WARNING: The measured value 104.43 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
+WARNING: The measured value 104.43 mg/kg and the next expected one 101.43 mg/kg of NPK - N (sensor_13) are outside the range.
 Action needed to decrease the value
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 114.29, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 480}
-The measured value (192.33 mg/kg) and the next prediction (192.23749999999998 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 104.43, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 480}
+The measured value (190.6 mg/kg) and the next prediction (190.48499999999999 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (205.45 mg/kg) and the next prediction (210.15285714285716 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+The measured value (207.03 mg/kg) and the next prediction (206.83857142857144 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.72, 'u': 'pH', 't': 480}}
-The next value of pH (sensor_14) is expected to be received at: 540.0
-The next value of pH (sensor_14) is expected to be: 6.731785714285714 pH
-The measured value (6.72 pH) and the next prediction (6.731785714285714 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/event/sensor_13', 'e': {'event_id': 44, 'frequency': 'Weekly', 'execution_time': '2025-08-29 00:07:00', 'sensor_id': 13, 'greenhouse_id': 28, 'parameter': 'Phosphorus', 'value': '180.00'}}
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 192.33, "max_treshold": "180.00"}, "parameter": "Phosphorus", "timestamp": "2025-08-29 00:07:00"}
 Periodic sensor check started
-Event 44 deleted from the Catalog
 Periodic sensor check completed
-Event 13 scheduled for the next week
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 106.35, 'P': 192.24, 'K': 205.28}, 'u': 'mg/kg', 't': 540}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.38, 'P': 190.48, 'K': 206.99}, 'u': 'mg/kg', 't': 540}}
 The next value of NPK (sensor_13) is expected to be received at: 600.0
-The next value of NPK (sensor_13) is expected to be: {'N': 102.94666666666663, 'P': 192.14111111111112, 'K': 210.15000000000003} mg/kg
-WARNING: The measured value 106.35 mg/kg of sensor_13 (NPK - N) went outside the range [50, 100]
-WARNING: The measured value 106.35 mg/kg and the next expected one 102.94666666666663 mg/kg of NPK - N (sensor_13) are outside the range.
-Action needed to decrease the value
+The next value of NPK (sensor_13) is expected to be: {'N': 92.97638888888889, 'P': 190.38777777777776, 'K': 206.77611111111113} mg/kg
+The measured value (96.38 mg/kg) and the next prediction (92.97638888888889 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-Published to greenhouse_28/area_23/action/sensor_13: {"message": {"action": "decrease", "val": 106.35, "min_treshold": 50, "max_treshold": 100}, "parameter": "N", "timestamp": 540}
-The measured value (192.24 mg/kg) and the next prediction (192.14111111111112 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.48 mg/kg) and the next prediction (190.38777777777776 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (205.28 mg/kg) and the next prediction (210.15000000000003 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.76, 'u': 'pH', 't': 540}}
-The next value of pH (sensor_14) is expected to be received at: 600.0
-The next value of pH (sensor_14) is expected to be: 6.763611111111111 pH
-The measured value (6.76 pH) and the next prediction (6.763611111111111 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.99 mg/kg) and the next prediction (206.77611111111113 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 98.27, 'P': 192.16, 'K': 205.09}, 'u': 'mg/kg', 't': 600}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.32, 'P': 190.4, 'K': 206.95}, 'u': 'mg/kg', 't': 600}}
 The next value of NPK (sensor_13) is expected to be received at: 660.0
-The next value of NPK (sensor_13) is expected to be: {'N': 94.52933333333331, 'P': 192.05133333333333, 'K': 209.964} mg/kg
-The measured value (98.27 mg/kg) and the next prediction (94.52933333333331 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 87.76799999999999, 'P': 190.29733333333334, 'K': 206.72600000000003} mg/kg
+The measured value (96.32 mg/kg) and the next prediction (87.76799999999999 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (192.16 mg/kg) and the next prediction (192.05133333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.4 mg/kg) and the next prediction (190.29733333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (205.09 mg/kg) and the next prediction (209.964 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+The measured value (206.95 mg/kg) and the next prediction (206.72600000000003 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.8, 'u': 'pH', 't': 600}}
-The next value of pH (sensor_14) is expected to be received at: 660.0
-The next value of pH (sensor_14) is expected to be: 6.799333333333332 pH
-The measured value (6.8 pH) and the next prediction (6.799333333333332 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/event/sensor_14', 'e': {'event_id': 47, 'frequency': 'Monthly', 'execution_time': '2025-08-29 00:09:00', 'sensor_id': 14, 'greenhouse_id': 28, 'parameter': 'pH', 'value': '7.10'}}
-Published to greenhouse_28/area_23/action/sensor_14: {"message": {"action": "increase", "val": 6.8, "min_treshold": "7.10"}, "parameter": "pH", "timestamp": "2025-08-29 00:09:00"}
-Event 47 deleted from the Catalog
-Event 14 scheduled for the next month
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 98.02, 'P': 192.04, 'K': 204.97}, 'u': 'mg/kg', 't': 660}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.16, 'P': 190.26, 'K': 206.91}, 'u': 'mg/kg', 't': 660}}
 The next value of NPK (sensor_13) is expected to be received at: 720.0
-The next value of NPK (sensor_13) is expected to be: {'N': 86.978, 'P': 191.95733333333334, 'K': 209.40733333333336} mg/kg
-The measured value (98.02 mg/kg) and the next prediction (86.978 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 82.94733333333333, 'P': 190.19733333333332, 'K': 206.71666666666667} mg/kg
+The measured value (96.16 mg/kg) and the next prediction (82.94733333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (192.04 mg/kg) and the next prediction (191.95733333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.26 mg/kg) and the next prediction (190.19733333333332 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.97 mg/kg) and the next prediction (209.40733333333336 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.84, 'u': 'pH', 't': 660}}
-The next value of pH (sensor_14) is expected to be received at: 720.0
-The next value of pH (sensor_14) is expected to be: 6.839333333333333 pH
-The measured value (6.84 pH) and the next prediction (6.839333333333333 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.91 mg/kg) and the next prediction (206.71666666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.86, 'P': 191.93, 'K': 204.89}, 'u': 'mg/kg', 't': 720}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.03, 'P': 190.2, 'K': 206.88}, 'u': 'mg/kg', 't': 720}}
 The next value of NPK (sensor_13) is expected to be received at: 780.0
-The next value of NPK (sensor_13) is expected to be: {'N': 83.10399999999998, 'P': 191.846, 'K': 208.0426666666667} mg/kg
-The measured value (97.86 mg/kg) and the next prediction (83.10399999999998 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 81.24800000000002, 'P': 190.10933333333332, 'K': 206.70999999999998} mg/kg
+The measured value (96.03 mg/kg) and the next prediction (81.24800000000002 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.93 mg/kg) and the next prediction (191.846 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.2 mg/kg) and the next prediction (190.10933333333332 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.89 mg/kg) and the next prediction (208.0426666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.97, 'u': 'pH', 't': 720}}
-The next value of pH (sensor_14) is expected to be received at: 780.0
-The next value of pH (sensor_14) is expected to be: 6.9239999999999995 pH
-The measured value (6.97 pH) and the next prediction (6.9239999999999995 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.88 mg/kg) and the next prediction (206.70999999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.72, 'P': 191.89, 'K': 204.85}, 'u': 'mg/kg', 't': 780}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.96, 'P': 190.19, 'K': 206.84}, 'u': 'mg/kg', 't': 780}}
 The next value of NPK (sensor_13) is expected to be received at: 840.0
-The next value of NPK (sensor_13) is expected to be: {'N': 82.92, 'P': 191.76933333333335, 'K': 205.90599999999998} mg/kg
-The measured value (97.72 mg/kg) and the next prediction (82.92 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 82.72333333333331, 'P': 190.04933333333335, 'K': 206.70666666666668} mg/kg
+The measured value (95.96 mg/kg) and the next prediction (82.72333333333331 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.89 mg/kg) and the next prediction (191.76933333333335 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.19 mg/kg) and the next prediction (190.04933333333335 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.85 mg/kg) and the next prediction (205.90599999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.06, 'u': 'pH', 't': 780}}
-The next value of pH (sensor_14) is expected to be received at: 840.0
-The next value of pH (sensor_14) is expected to be: 7.026 pH
-The measured value (7.06 pH) and the next prediction (7.026 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.84 mg/kg) and the next prediction (206.70666666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.66, 'P': 191.86, 'K': 204.8}, 'u': 'mg/kg', 't': 840}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.8, 'P': 190.15, 'K': 206.78}, 'u': 'mg/kg', 't': 840}}
 The next value of NPK (sensor_13) is expected to be received at: 900.0
-The next value of NPK (sensor_13) is expected to be: {'N': 84.328, 'P': 191.71200000000002, 'K': 204.598} mg/kg
-The measured value (97.66 mg/kg) and the next prediction (84.328 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 85.22999999999998, 'P': 189.99533333333332, 'K': 206.708} mg/kg
+The measured value (95.8 mg/kg) and the next prediction (85.22999999999998 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.86 mg/kg) and the next prediction (191.71200000000002 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.15 mg/kg) and the next prediction (189.99533333333332 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.8 mg/kg) and the next prediction (204.598 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.05, 'u': 'pH', 't': 840}}
-The next value of pH (sensor_14) is expected to be received at: 900.0
-The next value of pH (sensor_14) is expected to be: 7.0873333333333335 pH
-The measured value (7.05 pH) and the next prediction (7.0873333333333335 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.78 mg/kg) and the next prediction (206.708 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.53, 'P': 191.78, 'K': 204.62}, 'u': 'mg/kg', 't': 900}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.68, 'P': 190.11, 'K': 206.72}, 'u': 'mg/kg', 't': 900}}
 The next value of NPK (sensor_13) is expected to be received at: 960.0
-The next value of NPK (sensor_13) is expected to be: {'N': 86.81000000000003, 'P': 191.64800000000002, 'K': 204.492} mg/kg
-The measured value (97.53 mg/kg) and the next prediction (86.81000000000003 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 88.24933333333335, 'P': 189.9626666666667, 'K': 206.6806666666667} mg/kg
+The measured value (95.68 mg/kg) and the next prediction (88.24933333333335 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.78 mg/kg) and the next prediction (191.64800000000002 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.11 mg/kg) and the next prediction (189.9626666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.62 mg/kg) and the next prediction (204.492 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.99, 'u': 'pH', 't': 900}}
-The next value of pH (sensor_14) is expected to be received at: 960.0
-The next value of pH (sensor_14) is expected to be: 7.110666666666666 pH
-The measured value (6.99 pH) and the next prediction (7.110666666666666 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.72 mg/kg) and the next prediction (206.6806666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.35, 'P': 191.69, 'K': 204.53}, 'u': 'mg/kg', 't': 960}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.62, 'P': 190.02, 'K': 206.65}, 'u': 'mg/kg', 't': 960}}
 The next value of NPK (sensor_13) is expected to be received at: 1020.0
-The next value of NPK (sensor_13) is expected to be: {'N': 89.82666666666667, 'P': 191.58666666666667, 'K': 204.40266666666665} mg/kg
-The measured value (97.35 mg/kg) and the next prediction (89.82666666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 91.27533333333335, 'P': 189.9146666666667, 'K': 206.63266666666664} mg/kg
+The measured value (95.62 mg/kg) and the next prediction (91.27533333333335 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.69 mg/kg) and the next prediction (191.58666666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (190.02 mg/kg) and the next prediction (189.9146666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.53 mg/kg) and the next prediction (204.40266666666665 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.04, 'u': 'pH', 't': 960}}
-The next value of pH (sensor_14) is expected to be received at: 1020.0
-The next value of pH (sensor_14) is expected to be: 7.142666666666668 pH
-The measured value (7.04 pH) and the next prediction (7.142666666666668 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.65 mg/kg) and the next prediction (206.63266666666664 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 97.12, 'P': 191.62, 'K': 204.32}, 'u': 'mg/kg', 't': 1020}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.46, 'P': 189.99, 'K': 206.61}, 'u': 'mg/kg', 't': 1020}}
 The next value of NPK (sensor_13) is expected to be received at: 1080.0
-The next value of NPK (sensor_13) is expected to be: {'N': 92.80199999999999, 'P': 191.53, 'K': 204.26933333333335} mg/kg
-The measured value (97.12 mg/kg) and the next prediction (92.80199999999999 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.77066666666667, 'P': 189.89, 'K': 206.578} mg/kg
+The measured value (95.46 mg/kg) and the next prediction (93.77066666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.62 mg/kg) and the next prediction (191.53 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.99 mg/kg) and the next prediction (189.89 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.32 mg/kg) and the next prediction (204.26933333333335 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1020}}
-The next value of pH (sensor_14) is expected to be received at: 1080.0
-The next value of pH (sensor_14) is expected to be: 7.136 pH
-The measured value (7.02 pH) and the next prediction (7.136 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.61 mg/kg) and the next prediction (206.578 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.9, 'P': 191.5, 'K': 204.18}, 'u': 'mg/kg', 't': 1080}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.25, 'P': 189.95, 'K': 206.53}, 'u': 'mg/kg', 't': 1080}}
 The next value of NPK (sensor_13) is expected to be received at: 1140.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.22800000000001, 'P': 191.4486666666667, 'K': 204.14133333333334} mg/kg
-The measured value (96.9 mg/kg) and the next prediction (95.22800000000001 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 95.19600000000003, 'P': 189.87, 'K': 206.50733333333335} mg/kg
+The measured value (95.25 mg/kg) and the next prediction (95.19600000000003 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.5 mg/kg) and the next prediction (191.4486666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.95 mg/kg) and the next prediction (189.87 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (204.18 mg/kg) and the next prediction (204.14133333333334 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.06, 'u': 'pH', 't': 1080}}
-The next value of pH (sensor_14) is expected to be received at: 1140.0
-The next value of pH (sensor_14) is expected to be: 7.1353333333333335 pH
-The measured value (7.06 pH) and the next prediction (7.1353333333333335 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.53 mg/kg) and the next prediction (206.50733333333335 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.83, 'P': 191.43, 'K': 203.99}, 'u': 'mg/kg', 't': 1140}}
-Periodic sensor check started
-Periodic sensor check completed
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.07, 'P': 189.93, 'K': 206.32}, 'u': 'mg/kg', 't': 1140}}
 The next value of NPK (sensor_13) is expected to be received at: 1200.0
-The next value of NPK (sensor_13) is expected to be: {'N': 96.66799999999999, 'P': 191.3706666666667, 'K': 203.97666666666666} mg/kg
-The measured value (96.83 mg/kg) and the next prediction (96.66799999999999 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 95.01466666666666, 'P': 189.85333333333335, 'K': 206.37533333333334} mg/kg
+The measured value (95.07 mg/kg) and the next prediction (95.01466666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.43 mg/kg) and the next prediction (191.3706666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.93 mg/kg) and the next prediction (189.85333333333335 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.99 mg/kg) and the next prediction (203.97666666666666 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+The measured value (206.32 mg/kg) and the next prediction (206.37533333333334 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.05, 'u': 'pH', 't': 1140}}
-The next value of pH (sensor_14) is expected to be received at: 1200.0
-The next value of pH (sensor_14) is expected to be: 7.118666666666667 pH
-The measured value (7.05 pH) and the next prediction (7.118666666666667 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.69, 'P': 191.35, 'K': 203.95}, 'u': 'mg/kg', 't': 1200}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.84, 'P': 189.85, 'K': 206.2}, 'u': 'mg/kg', 't': 1200}}
 The next value of NPK (sensor_13) is expected to be received at: 1260.0
-The next value of NPK (sensor_13) is expected to be: {'N': 96.53200000000001, 'P': 191.29333333333332, 'K': 203.83133333333333} mg/kg
-The measured value (96.69 mg/kg) and the next prediction (96.53200000000001 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 94.81266666666667, 'P': 189.82000000000002, 'K': 206.22933333333333} mg/kg
+The measured value (94.84 mg/kg) and the next prediction (94.81266666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.35 mg/kg) and the next prediction (191.29333333333332 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.85 mg/kg) and the next prediction (189.82000000000002 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.95 mg/kg) and the next prediction (203.83133333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1200}}
-The next value of pH (sensor_14) is expected to be received at: 1260.0
-The next value of pH (sensor_14) is expected to be: 7.081333333333333 pH
-The measured value (7.02 pH) and the next prediction (7.081333333333333 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.2 mg/kg) and the next prediction (206.22933333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.52, 'P': 191.28, 'K': 203.85}, 'u': 'mg/kg', 't': 1260}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.71, 'P': 189.84, 'K': 206.09}, 'u': 'mg/kg', 't': 1260}}
 The next value of NPK (sensor_13) is expected to be received at: 1320.0
-The next value of NPK (sensor_13) is expected to be: {'N': 96.36666666666667, 'P': 191.20999999999998, 'K': 203.69} mg/kg
-The measured value (96.52 mg/kg) and the next prediction (96.36666666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 94.61466666666666, 'P': 189.78199999999995, 'K': 206.07866666666666} mg/kg
+The measured value (94.71 mg/kg) and the next prediction (94.61466666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.28 mg/kg) and the next prediction (191.20999999999998 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.84 mg/kg) and the next prediction (189.78199999999995 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.85 mg/kg) and the next prediction (203.69 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.06, 'u': 'pH', 't': 1260}}
-The next value of pH (sensor_14) is expected to be received at: 1320.0
-The next value of pH (sensor_14) is expected to be: 7.055999999999998 pH
-The measured value (7.06 pH) and the next prediction (7.055999999999998 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (206.09 mg/kg) and the next prediction (206.07866666666666 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.43, 'P': 191.27, 'K': 203.77}, 'u': 'mg/kg', 't': 1320}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.52, 'P': 189.72, 'K': 205.99}, 'u': 'mg/kg', 't': 1320}}
 The next value of NPK (sensor_13) is expected to be received at: 1380.0
-The next value of NPK (sensor_13) is expected to be: {'N': 96.22266666666667, 'P': 191.144, 'K': 203.57} mg/kg
-The measured value (96.43 mg/kg) and the next prediction (96.22266666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 94.40266666666668, 'P': 189.708, 'K': 205.9346666666667} mg/kg
+The measured value (94.52 mg/kg) and the next prediction (94.40266666666668 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.27 mg/kg) and the next prediction (191.144 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.72 mg/kg) and the next prediction (189.708 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.77 mg/kg) and the next prediction (203.57 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1320}}
-The next value of pH (sensor_14) is expected to be received at: 1380.0
-The next value of pH (sensor_14) is expected to be: 7.034666666666667 pH
-The measured value (7.02 pH) and the next prediction (7.034666666666667 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.99 mg/kg) and the next prediction (205.9346666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.26, 'P': 191.14, 'K': 203.65}, 'u': 'mg/kg', 't': 1380}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.34, 'P': 189.65, 'K': 205.82}, 'u': 'mg/kg', 't': 1380}}
 The next value of NPK (sensor_13) is expected to be received at: 1440.0
-The next value of NPK (sensor_13) is expected to be: {'N': 96.06866666666667, 'P': 191.05933333333334, 'K': 203.466} mg/kg
-The measured value (96.26 mg/kg) and the next prediction (96.06866666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 94.20066666666666, 'P': 189.63533333333334, 'K': 205.77133333333336} mg/kg
+The measured value (94.34 mg/kg) and the next prediction (94.20066666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.14 mg/kg) and the next prediction (191.05933333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.65 mg/kg) and the next prediction (189.63533333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.65 mg/kg) and the next prediction (203.466 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1380}}
-The next value of pH (sensor_14) is expected to be received at: 1440.0
-The next value of pH (sensor_14) is expected to be: 7.017999999999999 pH
-The measured value (6.98 pH) and the next prediction (7.017999999999999 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.82 mg/kg) and the next prediction (205.77133333333336 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 96.07, 'P': 191.11, 'K': 203.48}, 'u': 'mg/kg', 't': 1440}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.25, 'P': 189.52, 'K': 205.73}, 'u': 'mg/kg', 't': 1440}}
 The next value of NPK (sensor_13) is expected to be received at: 1500.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.91999999999999, 'P': 191.00466666666665, 'K': 203.3606666666667} mg/kg
-The measured value (96.07 mg/kg) and the next prediction (95.91999999999999 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 94.028, 'P': 189.536, 'K': 205.624} mg/kg
+The measured value (94.25 mg/kg) and the next prediction (94.028 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (191.11 mg/kg) and the next prediction (191.00466666666665 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.52 mg/kg) and the next prediction (189.536 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.48 mg/kg) and the next prediction (203.3606666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.96, 'u': 'pH', 't': 1440}}
-The next value of pH (sensor_14) is expected to be received at: 1500.0
-The next value of pH (sensor_14) is expected to be: 6.995999999999999 pH
-The measured value (6.96 pH) and the next prediction (6.995999999999999 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.73 mg/kg) and the next prediction (205.624 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.94, 'P': 190.97, 'K': 203.36}, 'u': 'mg/kg', 't': 1500}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.12, 'P': 189.39, 'K': 205.65}, 'u': 'mg/kg', 't': 1500}}
 The next value of NPK (sensor_13) is expected to be received at: 1560.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.79066666666668, 'P': 190.92266666666666, 'K': 203.24733333333333} mg/kg
-The measured value (95.94 mg/kg) and the next prediction (95.79066666666668 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.87466666666667, 'P': 189.41599999999997, 'K': 205.49866666666668} mg/kg
+The measured value (94.12 mg/kg) and the next prediction (93.87466666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.97 mg/kg) and the next prediction (190.92266666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.39 mg/kg) and the next prediction (189.41599999999997 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.36 mg/kg) and the next prediction (203.24733333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1500}}
-The next value of pH (sensor_14) is expected to be received at: 1560.0
-The next value of pH (sensor_14) is expected to be: 6.972 pH
-The measured value (6.98 pH) and the next prediction (6.972 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.65 mg/kg) and the next prediction (205.49866666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.79, 'P': 190.92, 'K': 203.18}, 'u': 'mg/kg', 't': 1560}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.01, 'P': 189.25, 'K': 205.44}, 'u': 'mg/kg', 't': 1560}}
 The next value of NPK (sensor_13) is expected to be received at: 1620.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.65933333333334, 'P': 190.85066666666665, 'K': 203.122} mg/kg
-The measured value (95.79 mg/kg) and the next prediction (95.65933333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.76533333333336, 'P': 189.264, 'K': 205.342} mg/kg
+The measured value (94.01 mg/kg) and the next prediction (93.76533333333336 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.92 mg/kg) and the next prediction (190.85066666666665 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.25 mg/kg) and the next prediction (189.264 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.18 mg/kg) and the next prediction (203.122 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.01, 'u': 'pH', 't': 1560}}
-The next value of pH (sensor_14) is expected to be received at: 1620.0
-The next value of pH (sensor_14) is expected to be: 6.974000000000001 pH
-The measured value (7.01 pH) and the next prediction (6.974000000000001 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.44 mg/kg) and the next prediction (205.342 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.69, 'P': 190.9, 'K': 203.04}, 'u': 'mg/kg', 't': 1620}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 93.84, 'P': 189.24, 'K': 205.26}, 'u': 'mg/kg', 't': 1620}}
 The next value of NPK (sensor_13) is expected to be received at: 1680.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.53066666666665, 'P': 190.80333333333334, 'K': 202.97466666666668} mg/kg
-The measured value (95.69 mg/kg) and the next prediction (95.53066666666665 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.65266666666668, 'P': 189.15133333333333, 'K': 205.18333333333328} mg/kg
+The measured value (93.84 mg/kg) and the next prediction (93.65266666666668 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.9 mg/kg) and the next prediction (190.80333333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.24 mg/kg) and the next prediction (189.15133333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (203.04 mg/kg) and the next prediction (202.97466666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1620}}
-The next value of pH (sensor_14) is expected to be received at: 1680.0
-The next value of pH (sensor_14) is expected to be: 6.960666666666666 pH
-The measured value (6.98 pH) and the next prediction (6.960666666666666 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.26 mg/kg) and the next prediction (205.18333333333328 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.62, 'P': 190.77, 'K': 202.85}, 'u': 'mg/kg', 't': 1680}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 93.68, 'P': 189.12, 'K': 205.2}, 'u': 'mg/kg', 't': 1680}}
 The next value of NPK (sensor_13) is expected to be received at: 1740.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.41066666666667, 'P': 190.71999999999997, 'K': 202.79933333333332} mg/kg
-The measured value (95.62 mg/kg) and the next prediction (95.41066666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.528, 'P': 189.03, 'K': 205.06933333333333} mg/kg
+The measured value (93.68 mg/kg) and the next prediction (93.528 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.77 mg/kg) and the next prediction (190.71999999999997 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.12 mg/kg) and the next prediction (189.03 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (202.85 mg/kg) and the next prediction (202.79933333333332 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 6.98, 'u': 'pH', 't': 1680}}
-The next value of pH (sensor_14) is expected to be received at: 1740.0
-The next value of pH (sensor_14) is expected to be: 6.9606666666666674 pH
-The measured value (6.98 pH) and the next prediction (6.9606666666666674 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.2 mg/kg) and the next prediction (205.06933333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.47, 'P': 190.62, 'K': 202.72}, 'u': 'mg/kg', 't': 1740}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 93.46, 'P': 189.02, 'K': 205.13}, 'u': 'mg/kg', 't': 1740}}
 The next value of NPK (sensor_13) is expected to be received at: 1800.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.29733333333333, 'P': 190.60666666666665, 'K': 202.61} mg/kg
-The measured value (95.47 mg/kg) and the next prediction (95.29733333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.37200000000003, 'P': 188.91866666666667, 'K': 204.95999999999998} mg/kg
+The measured value (93.46 mg/kg) and the next prediction (93.37200000000003 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.62 mg/kg) and the next prediction (190.60666666666665 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (189.02 mg/kg) and the next prediction (188.91866666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (202.72 mg/kg) and the next prediction (202.61 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.02, 'u': 'pH', 't': 1740}}
-The next value of pH (sensor_14) is expected to be received at: 1800.0
-The next value of pH (sensor_14) is expected to be: 6.979333333333333 pH
-The measured value (7.02 pH) and the next prediction (6.979333333333333 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.13 mg/kg) and the next prediction (204.95999999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.34, 'P': 190.54, 'K': 202.63}, 'u': 'mg/kg', 't': 1800}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 93.26, 'P': 188.89, 'K': 205.07}, 'u': 'mg/kg', 't': 1800}}
 The next value of NPK (sensor_13) is expected to be received at: 1860.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.18533333333333, 'P': 190.494, 'K': 202.45866666666666} mg/kg
-The measured value (95.34 mg/kg) and the next prediction (95.18533333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 93.182, 'P': 188.79466666666664, 'K': 204.874} mg/kg
+The measured value (93.26 mg/kg) and the next prediction (93.182 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.54 mg/kg) and the next prediction (190.494 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (188.89 mg/kg) and the next prediction (188.79466666666664 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (202.63 mg/kg) and the next prediction (202.45866666666666 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.04, 'u': 'pH', 't': 1800}}
-The next value of pH (sensor_14) is expected to be received at: 1860.0
-The next value of pH (sensor_14) is expected to be: 7.0 pH
-The measured value (7.04 pH) and the next prediction (7.0 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (205.07 mg/kg) and the next prediction (204.874 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.11, 'P': 190.42, 'K': 202.56}, 'u': 'mg/kg', 't': 1860}}
-Error getting area info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_area_info?greenhouse_id=28&area_id=23 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b867bf10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 93.07, 'P': 188.74, 'K': 204.96}, 'u': 'mg/kg', 't': 1860}}
 The next value of NPK (sensor_13) is expected to be received at: 1920.0
-The next value of NPK (sensor_13) is expected to be: {'N': 95.026, 'P': 190.36866666666668, 'K': 202.34066666666664} mg/kg
-The measured value (95.11 mg/kg) and the next prediction (95.026 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
-Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=79 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b8692250>: Failed to establish a new connection: [Errno 111] Connection refused'))
-The measured value (190.42 mg/kg) and the next prediction (190.36866666666668 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
-Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=79 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b866ad50>: Failed to establish a new connection: [Errno 111] Connection refused'))
-The measured value (202.56 mg/kg) and the next prediction (202.34066666666664 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=79 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b8660810>: Failed to establish a new connection: [Errno 111] Connection refused'))
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.05, 'u': 'pH', 't': 1860}}
-Error getting area info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_area_info?greenhouse_id=28&area_id=23 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b5c6d190>: Failed to establish a new connection: [Errno 111] Connection refused'))
-The next value of pH (sensor_14) is expected to be received at: 1920.0
-The next value of pH (sensor_14) is expected to be: 7.034000000000001 pH
-The measured value (7.05 pH) and the next prediction (7.034000000000001 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
-Error getting greenhouse info from the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_greenhouse_info?greenhouse_id=28&device_id=79 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b5c89bd0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+The next value of NPK (sensor_13) is expected to be: {'N': 92.98666666666665, 'P': 188.67199999999994, 'K': 204.79000000000002} mg/kg
+The measured value (93.07 mg/kg) and the next prediction (92.98666666666665 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.74 mg/kg) and the next prediction (188.67199999999994 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.96 mg/kg) and the next prediction (204.79000000000002 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
 Periodic sensor check started
-Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=NutrientManagement (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7e31b8679510>: Failed to establish a new connection: [Errno 111] Connection refused'))
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 95.03, 'P': 190.31, 'K': 202.39}, 'u': 'mg/kg', 't': 1920}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 92.91, 'P': 188.68, 'K': 204.9}, 'u': 'mg/kg', 't': 1920}}
 The next value of NPK (sensor_13) is expected to be received at: 1980.0
-The next value of NPK (sensor_13) is expected to be: {'N': 94.90466666666669, 'P': 190.254, 'K': 202.21933333333334} mg/kg
-The measured value (95.03 mg/kg) and the next prediction (94.90466666666669 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 92.78599999999999, 'P': 188.56666666666666, 'K': 204.73066666666665} mg/kg
+The measured value (92.91 mg/kg) and the next prediction (92.78599999999999 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.31 mg/kg) and the next prediction (190.254 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (188.68 mg/kg) and the next prediction (188.56666666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (202.39 mg/kg) and the next prediction (202.21933333333334 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.08, 'u': 'pH', 't': 1920}}
-The next value of pH (sensor_14) is expected to be received at: 1980.0
-The next value of pH (sensor_14) is expected to be: 7.07 pH
-The measured value (7.08 pH) and the next prediction (7.07 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (204.9 mg/kg) and the next prediction (204.73066666666665 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.83, 'P': 190.29, 'K': 202.29}, 'u': 'mg/kg', 't': 1980}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 92.72, 'P': 188.6, 'K': 204.8}, 'u': 'mg/kg', 't': 1980}}
 The next value of NPK (sensor_13) is expected to be received at: 2040.0
-The next value of NPK (sensor_13) is expected to be: {'N': 94.75133333333333, 'P': 190.16066666666666, 'K': 202.118} mg/kg
-The measured value (94.83 mg/kg) and the next prediction (94.75133333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 92.56866666666667, 'P': 188.48000000000002, 'K': 204.65866666666668} mg/kg
+The measured value (92.72 mg/kg) and the next prediction (92.56866666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.29 mg/kg) and the next prediction (190.16066666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (188.6 mg/kg) and the next prediction (188.48000000000002 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (202.29 mg/kg) and the next prediction (202.118 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
-No Telegram user found for this greenhouse
-
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.07, 'u': 'pH', 't': 1980}}
-The next value of pH (sensor_14) is expected to be received at: 2040.0
-The next value of pH (sensor_14) is expected to be: 7.087333333333333 pH
-The measured value (7.07 pH) and the next prediction (7.087333333333333 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+The measured value (204.8 mg/kg) and the next prediction (204.65866666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 94.66, 'P': 190.25, 'K': 202.26}, 'u': 'mg/kg', 't': 2040}}
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 92.5, 'P': 188.51, 'K': 204.6}, 'u': 'mg/kg', 't': 2040}}
 The next value of NPK (sensor_13) is expected to be received at: 2100.0
-The next value of NPK (sensor_13) is expected to be: {'N': 94.57466666666666, 'P': 190.1, 'K': 202.05} mg/kg
-The measured value (94.66 mg/kg) and the next prediction (94.57466666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+The next value of NPK (sensor_13) is expected to be: {'N': 92.34733333333334, 'P': 188.39266666666666, 'K': 204.55066666666664} mg/kg
+The measured value (92.5 mg/kg) and the next prediction (92.34733333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
 No Telegram user found for this greenhouse
-The measured value (190.25 mg/kg) and the next prediction (190.1 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+The measured value (188.51 mg/kg) and the next prediction (188.39266666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
 No Telegram user found for this greenhouse
-The measured value (202.26 mg/kg) and the next prediction (202.05 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+The measured value (204.6 mg/kg) and the next prediction (204.55066666666664 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
 
-Received: {'bn': 'greenhouse_28/area_23/sensor_14', 'e': {'n': 'pH', 'v': 7.11, 'u': 'pH', 't': 2040}}
-The next value of pH (sensor_14) is expected to be received at: 2100.0
-The next value of pH (sensor_14) is expected to be: 7.109333333333335 pH
-The measured value (7.11 pH) and the next prediction (7.109333333333335 pH) of sensor_14 (pH) are inside the range [6.0, 7.5]
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 92.34, 'P': 188.48, 'K': 204.57}, 'u': 'mg/kg', 't': 2100}}
+The next value of NPK (sensor_13) is expected to be received at: 2160.0
+The next value of NPK (sensor_13) is expected to be: {'N': 92.14399999999999, 'P': 188.326, 'K': 204.48466666666667} mg/kg
+The measured value (92.34 mg/kg) and the next prediction (92.14399999999999 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.48 mg/kg) and the next prediction (188.326 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.57 mg/kg) and the next prediction (204.48466666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 92.27, 'P': 188.46, 'K': 204.52}, 'u': 'mg/kg', 't': 2160}}
+The next value of NPK (sensor_13) is expected to be received at: 2220.0
+The next value of NPK (sensor_13) is expected to be: {'N': 92.00200000000001, 'P': 188.27466666666666, 'K': 204.4146666666667} mg/kg
+The measured value (92.27 mg/kg) and the next prediction (92.00200000000001 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.46 mg/kg) and the next prediction (188.27466666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.52 mg/kg) and the next prediction (204.4146666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 92.06, 'P': 188.35, 'K': 204.44}, 'u': 'mg/kg', 't': 2220}}
+The next value of NPK (sensor_13) is expected to be received at: 2280.0
+The next value of NPK (sensor_13) is expected to be: {'N': 91.84666666666666, 'P': 188.22933333333333, 'K': 204.32600000000002} mg/kg
+The measured value (92.06 mg/kg) and the next prediction (91.84666666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.35 mg/kg) and the next prediction (188.22933333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.44 mg/kg) and the next prediction (204.32600000000002 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.83, 'P': 188.31, 'K': 204.4}, 'u': 'mg/kg', 't': 2280}}
+The next value of NPK (sensor_13) is expected to be received at: 2340.0
+The next value of NPK (sensor_13) is expected to be: {'N': 91.67533333333333, 'P': 188.1953333333333, 'K': 204.26} mg/kg
+The measured value (91.83 mg/kg) and the next prediction (91.67533333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.31 mg/kg) and the next prediction (188.1953333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.4 mg/kg) and the next prediction (204.26 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.76, 'P': 188.17, 'K': 204.27}, 'u': 'mg/kg', 't': 2340}}
+The next value of NPK (sensor_13) is expected to be received at: 2400.0
+The next value of NPK (sensor_13) is expected to be: {'N': 91.54066666666665, 'P': 188.1326666666667, 'K': 204.1766666666667} mg/kg
+The measured value (91.76 mg/kg) and the next prediction (91.54066666666665 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.17 mg/kg) and the next prediction (188.1326666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.27 mg/kg) and the next prediction (204.1766666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.59, 'P': 188.1, 'K': 204.1}, 'u': 'mg/kg', 't': 2400}}
+The next value of NPK (sensor_13) is expected to be received at: 2460.0
+The next value of NPK (sensor_13) is expected to be: {'N': 91.39800000000001, 'P': 188.064, 'K': 204.06666666666666} mg/kg
+The measured value (91.59 mg/kg) and the next prediction (91.39800000000001 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (188.1 mg/kg) and the next prediction (188.064 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.1 mg/kg) and the next prediction (204.06666666666666 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.42, 'P': 187.98, 'K': 204.02}, 'u': 'mg/kg', 't': 2460}}
+The next value of NPK (sensor_13) is expected to be received at: 2520.0
+The next value of NPK (sensor_13) is expected to be: {'N': 91.248, 'P': 187.95999999999998, 'K': 203.95999999999998} mg/kg
+The measured value (91.42 mg/kg) and the next prediction (91.248 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.98 mg/kg) and the next prediction (187.95999999999998 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (204.02 mg/kg) and the next prediction (203.95999999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.22, 'P': 187.96, 'K': 203.94}, 'u': 'mg/kg', 't': 2520}}
+The next value of NPK (sensor_13) is expected to be received at: 2580.0
+The next value of NPK (sensor_13) is expected to be: {'N': 91.08533333333334, 'P': 187.8826666666667, 'K': 203.86800000000002} mg/kg
+The measured value (91.22 mg/kg) and the next prediction (91.08533333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.96 mg/kg) and the next prediction (187.8826666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.94 mg/kg) and the next prediction (203.86800000000002 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.16, 'P': 187.85, 'K': 203.82}, 'u': 'mg/kg', 't': 2580}}
+The next value of NPK (sensor_13) is expected to be received at: 2640.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.96066666666665, 'P': 187.78799999999998, 'K': 203.76533333333333} mg/kg
+The measured value (91.16 mg/kg) and the next prediction (90.96066666666665 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.85 mg/kg) and the next prediction (187.78799999999998 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.82 mg/kg) and the next prediction (203.76533333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 91.1, 'P': 187.84, 'K': 203.62}, 'u': 'mg/kg', 't': 2640}}
+The next value of NPK (sensor_13) is expected to be received at: 2700.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.85733333333333, 'P': 187.71533333333332, 'K': 203.59466666666668} mg/kg
+The measured value (91.1 mg/kg) and the next prediction (90.85733333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.84 mg/kg) and the next prediction (187.71533333333332 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.62 mg/kg) and the next prediction (203.59466666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.96, 'P': 187.79, 'K': 203.52}, 'u': 'mg/kg', 't': 2700}}
+The next value of NPK (sensor_13) is expected to be received at: 2760.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.74866666666667, 'P': 187.6593333333333, 'K': 203.44133333333335} mg/kg
+The measured value (90.96 mg/kg) and the next prediction (90.74866666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.79 mg/kg) and the next prediction (187.6593333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.52 mg/kg) and the next prediction (203.44133333333335 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.81, 'P': 187.67, 'K': 203.31}, 'u': 'mg/kg', 't': 2760}}
+The next value of NPK (sensor_13) is expected to be received at: 2820.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.65333333333334, 'P': 187.596, 'K': 203.26066666666668} mg/kg
+The measured value (90.81 mg/kg) and the next prediction (90.65333333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.67 mg/kg) and the next prediction (187.596 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.31 mg/kg) and the next prediction (203.26066666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.73, 'P': 187.53, 'K': 203.13}, 'u': 'mg/kg', 't': 2820}}
+The next value of NPK (sensor_13) is expected to be received at: 2880.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.56733333333332, 'P': 187.50000000000003, 'K': 203.06733333333335} mg/kg
+The measured value (90.73 mg/kg) and the next prediction (90.56733333333332 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.53 mg/kg) and the next prediction (187.50000000000003 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.13 mg/kg) and the next prediction (203.06733333333335 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.55, 'P': 187.4, 'K': 203.0}, 'u': 'mg/kg', 't': 2880}}
+The next value of NPK (sensor_13) is expected to be received at: 2940.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.43666666666665, 'P': 187.39600000000002, 'K': 202.89866666666666} mg/kg
+The measured value (90.55 mg/kg) and the next prediction (90.43666666666665 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.4 mg/kg) and the next prediction (187.39600000000002 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (203.0 mg/kg) and the next prediction (202.89866666666666 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.38, 'P': 187.25, 'K': 202.85}, 'u': 'mg/kg', 't': 2940}}
+The next value of NPK (sensor_13) is expected to be received at: 3000.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.30466666666666, 'P': 187.25533333333334, 'K': 202.72866666666667} mg/kg
+The measured value (90.38 mg/kg) and the next prediction (90.30466666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.25 mg/kg) and the next prediction (187.25533333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.85 mg/kg) and the next prediction (202.72866666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.19, 'P': 187.22, 'K': 202.79}, 'u': 'mg/kg', 't': 3000}}
+The next value of NPK (sensor_13) is expected to be received at: 3060.0
+The next value of NPK (sensor_13) is expected to be: {'N': 90.14333333333335, 'P': 187.14533333333333, 'K': 202.584} mg/kg
+The measured value (90.19 mg/kg) and the next prediction (90.14333333333335 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.22 mg/kg) and the next prediction (187.14533333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.79 mg/kg) and the next prediction (202.584 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 90.04, 'P': 187.1, 'K': 202.69}, 'u': 'mg/kg', 't': 3060}}
+The next value of NPK (sensor_13) is expected to be received at: 3120.0
+The next value of NPK (sensor_13) is expected to be: {'N': 89.97000000000001, 'P': 187.01399999999995, 'K': 202.46533333333332} mg/kg
+The measured value (90.04 mg/kg) and the next prediction (89.97000000000001 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.1 mg/kg) and the next prediction (187.01399999999995 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.69 mg/kg) and the next prediction (202.46533333333332 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 89.86, 'P': 187.07, 'K': 202.51}, 'u': 'mg/kg', 't': 3120}}
+The next value of NPK (sensor_13) is expected to be received at: 3180.0
+The next value of NPK (sensor_13) is expected to be: {'N': 89.76333333333334, 'P': 186.924, 'K': 202.34199999999998} mg/kg
+The measured value (89.86 mg/kg) and the next prediction (89.76333333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (187.07 mg/kg) and the next prediction (186.924 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.51 mg/kg) and the next prediction (202.34199999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 89.77, 'P': 186.98, 'K': 202.45}, 'u': 'mg/kg', 't': 3180}}
+The next value of NPK (sensor_13) is expected to be received at: 3240.0
+The next value of NPK (sensor_13) is expected to be: {'N': 89.59533333333333, 'P': 186.82799999999997, 'K': 202.25799999999998} mg/kg
+The measured value (89.77 mg/kg) and the next prediction (89.59533333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.98 mg/kg) and the next prediction (186.82799999999997 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.45 mg/kg) and the next prediction (202.25799999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 89.52, 'P': 186.85, 'K': 202.33}, 'u': 'mg/kg', 't': 3240}}
+The next value of NPK (sensor_13) is expected to be received at: 3300.0
+The next value of NPK (sensor_13) is expected to be: {'N': 89.40399999999998, 'P': 186.73533333333333, 'K': 202.16400000000002} mg/kg
+The measured value (89.52 mg/kg) and the next prediction (89.40399999999998 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.85 mg/kg) and the next prediction (186.73533333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.33 mg/kg) and the next prediction (202.16400000000002 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 89.45, 'P': 186.8, 'K': 202.12}, 'u': 'mg/kg', 't': 3300}}
+The next value of NPK (sensor_13) is expected to be received at: 3360.0
+The next value of NPK (sensor_13) is expected to be: {'N': 89.25266666666668, 'P': 186.6753333333333, 'K': 202.04533333333333} mg/kg
+The measured value (89.45 mg/kg) and the next prediction (89.25266666666668 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.8 mg/kg) and the next prediction (186.6753333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.12 mg/kg) and the next prediction (202.04533333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 89.22, 'P': 186.78, 'K': 202.05}, 'u': 'mg/kg', 't': 3360}}
+The next value of NPK (sensor_13) is expected to be received at: 3420.0
+The next value of NPK (sensor_13) is expected to be: {'N': 89.07, 'P': 186.64133333333334, 'K': 201.93599999999998} mg/kg
+The measured value (89.22 mg/kg) and the next prediction (89.07 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.78 mg/kg) and the next prediction (186.64133333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (202.05 mg/kg) and the next prediction (201.93599999999998 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 89.14, 'P': 186.75, 'K': 201.94}, 'u': 'mg/kg', 't': 3420}}
+The next value of NPK (sensor_13) is expected to be received at: 3480.0
+The next value of NPK (sensor_13) is expected to be: {'N': 88.94, 'P': 186.61733333333336, 'K': 201.8186666666667} mg/kg
+The measured value (89.14 mg/kg) and the next prediction (88.94 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.75 mg/kg) and the next prediction (186.61733333333336 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.94 mg/kg) and the next prediction (201.8186666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 88.89, 'P': 186.62, 'K': 201.79}, 'u': 'mg/kg', 't': 3480}}
+The next value of NPK (sensor_13) is expected to be received at: 3540.0
+The next value of NPK (sensor_13) is expected to be: {'N': 88.768, 'P': 186.55866666666668, 'K': 201.686} mg/kg
+The measured value (88.89 mg/kg) and the next prediction (88.768 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.62 mg/kg) and the next prediction (186.55866666666668 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.79 mg/kg) and the next prediction (201.686 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 88.65, 'P': 186.47, 'K': 201.62}, 'u': 'mg/kg', 't': 3540}}
+The next value of NPK (sensor_13) is expected to be received at: 3600.0
+The next value of NPK (sensor_13) is expected to be: {'N': 88.56533333333334, 'P': 186.45199999999997, 'K': 201.526} mg/kg
+The measured value (88.65 mg/kg) and the next prediction (88.56533333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.47 mg/kg) and the next prediction (186.45199999999997 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.62 mg/kg) and the next prediction (201.526 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 88.45, 'P': 186.34, 'K': 201.48}, 'u': 'mg/kg', 't': 3600}}
+The next value of NPK (sensor_13) is expected to be received at: 3660.0
+The next value of NPK (sensor_13) is expected to be: {'N': 88.34733333333335, 'P': 186.33733333333336, 'K': 201.37600000000003} mg/kg
+The measured value (88.45 mg/kg) and the next prediction (88.34733333333335 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.34 mg/kg) and the next prediction (186.33733333333336 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.48 mg/kg) and the next prediction (201.37600000000003 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 88.34, 'P': 186.29, 'K': 201.34}, 'u': 'mg/kg', 't': 3660}}
+The next value of NPK (sensor_13) is expected to be received at: 3720.0
+The next value of NPK (sensor_13) is expected to be: {'N': 88.16133333333335, 'P': 186.22933333333333, 'K': 201.23066666666665} mg/kg
+The measured value (88.34 mg/kg) and the next prediction (88.16133333333335 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.29 mg/kg) and the next prediction (186.22933333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.34 mg/kg) and the next prediction (201.23066666666665 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 88.1, 'P': 186.21, 'K': 201.23}, 'u': 'mg/kg', 't': 3720}}
+The next value of NPK (sensor_13) is expected to be received at: 3780.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.94466666666666, 'P': 186.13533333333334, 'K': 201.08333333333331} mg/kg
+The measured value (88.1 mg/kg) and the next prediction (87.94466666666666 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.21 mg/kg) and the next prediction (186.13533333333334 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.23 mg/kg) and the next prediction (201.08333333333331 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.99, 'P': 186.15, 'K': 201.02}, 'u': 'mg/kg', 't': 3780}}
+The next value of NPK (sensor_13) is expected to be received at: 3840.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.77733333333333, 'P': 186.0506666666667, 'K': 200.92133333333334} mg/kg
+The measured value (87.99 mg/kg) and the next prediction (87.77733333333333 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.15 mg/kg) and the next prediction (186.0506666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (201.02 mg/kg) and the next prediction (200.92133333333334 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.87, 'P': 186.1, 'K': 200.91}, 'u': 'mg/kg', 't': 3840}}
+The next value of NPK (sensor_13) is expected to be received at: 3900.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.614, 'P': 185.96666666666664, 'K': 200.77866666666668} mg/kg
+The measured value (87.87 mg/kg) and the next prediction (87.614 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.1 mg/kg) and the next prediction (185.96666666666664 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.91 mg/kg) and the next prediction (200.77866666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.72, 'P': 186.02, 'K': 200.82}, 'u': 'mg/kg', 't': 3900}}
+The next value of NPK (sensor_13) is expected to be received at: 3960.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.482, 'P': 185.88733333333332, 'K': 200.63866666666667} mg/kg
+The measured value (87.72 mg/kg) and the next prediction (87.482 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (186.02 mg/kg) and the next prediction (185.88733333333332 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.82 mg/kg) and the next prediction (200.63866666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.62, 'P': 185.96, 'K': 200.71}, 'u': 'mg/kg', 't': 3960}}
+The next value of NPK (sensor_13) is expected to be received at: 4020.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.364, 'P': 185.83066666666667, 'K': 200.52266666666668} mg/kg
+The measured value (87.62 mg/kg) and the next prediction (87.364 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (185.96 mg/kg) and the next prediction (185.83066666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.71 mg/kg) and the next prediction (200.52266666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.46, 'P': 185.89, 'K': 200.53}, 'u': 'mg/kg', 't': 4020}}
+The next value of NPK (sensor_13) is expected to be received at: 4080.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.26733333333334, 'P': 185.7926666666667, 'K': 200.39466666666667} mg/kg
+The measured value (87.46 mg/kg) and the next prediction (87.26733333333334 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (185.89 mg/kg) and the next prediction (185.7926666666667 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.53 mg/kg) and the next prediction (200.39466666666667 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.27, 'P': 185.8, 'K': 200.35}, 'u': 'mg/kg', 't': 4080}}
+The next value of NPK (sensor_13) is expected to be received at: 4140.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.14, 'P': 185.74133333333333, 'K': 200.24866666666668} mg/kg
+The measured value (87.27 mg/kg) and the next prediction (87.14 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (185.8 mg/kg) and the next prediction (185.74133333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.35 mg/kg) and the next prediction (200.24866666666668 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.15, 'P': 185.72, 'K': 200.3}, 'u': 'mg/kg', 't': 4140}}
+The next value of NPK (sensor_13) is expected to be received at: 4200.0
+The next value of NPK (sensor_13) is expected to be: {'N': 87.00866666666667, 'P': 185.67266666666666, 'K': 200.1333333333333} mg/kg
+The measured value (87.15 mg/kg) and the next prediction (87.00866666666667 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (185.72 mg/kg) and the next prediction (185.67266666666666 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.3 mg/kg) and the next prediction (200.1333333333333 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
+No Telegram user found for this greenhouse
+Periodic sensor check started
+Periodic sensor check completed
+
+Received: {'bn': 'greenhouse_28/area_23/sensor_13', 'e': {'n': 'NPK', 'v': {'N': 87.09, 'P': 185.6, 'K': 200.16}, 'u': 'mg/kg', 't': 4200}}
+The next value of NPK (sensor_13) is expected to be received at: 4260.0
+The next value of NPK (sensor_13) is expected to be: {'N': 86.9, 'P': 185.5713333333333, 'K': 200.01266666666666} mg/kg
+The measured value (87.09 mg/kg) and the next prediction (86.9 mg/kg) of NPK - N (sensor_13) are inside the range [50, 100]
+No Telegram user found for this greenhouse
+The measured value (185.6 mg/kg) and the next prediction (185.5713333333333 mg/kg) of NPK - P (sensor_13) are inside the range [150, 200]
+No Telegram user found for this greenhouse
+The measured value (200.16 mg/kg) and the next prediction (200.01266666666666 mg/kg) of NPK - K (sensor_13) are inside the range [200, 300]
 No Telegram user found for this greenhouse
 Periodic sensor check started
 Periodic sensor check completed

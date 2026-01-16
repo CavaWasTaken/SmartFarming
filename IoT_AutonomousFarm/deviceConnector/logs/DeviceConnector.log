@@ -1,5 +1,5 @@
 Received device id: 76
-Received 5 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 14, 'area_id': 23, 'type': 'pH', 'name': 'pH Sensor', 'unit': 'pH', 'threshold': {'max': 7.5, 'min': 6.0}, 'domain': {'max': 10.0, 'min': 3.0}, 'greenhouse_id': 28}]
+Received 4 sensors: [{'sensor_id': 13, 'area_id': 23, 'type': 'NPK', 'name': 'NPK Sensor', 'unit': 'mg/kg', 'threshold': {'K': {'max': 300, 'min': 200}, 'N': {'max': 100, 'min': 50}, 'P': {'max': 200, 'min': 150}}, 'domain': {'max': 1000, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 12, 'area_id': 23, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 80}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}, {'sensor_id': 10, 'area_id': 22, 'type': 'Temperature', 'name': 'Temperature Sensor', 'unit': '°C', 'threshold': {'max': 30, 'min': 25}, 'domain': {'max': 100, 'min': -50}, 'greenhouse_id': 28}, {'sensor_id': 11, 'area_id': 22, 'type': 'Humidity', 'name': 'Humidity Sensor', 'unit': '%', 'threshold': {'max': 85, 'min': 75}, 'domain': {'max': 100, 'min': 0}, 'greenhouse_id': 28}]
 Received greenhouse location: Torino
 Connected to mosquitto with result code 0
 
@@ -7,299 +7,370 @@ Subscribed to greenhouse_28/area_23/action/sensor_13
 Subscribed to greenhouse_28/area_23/action/sensor_12
 Subscribed to greenhouse_28/area_22/action/sensor_10
 Subscribed to greenhouse_28/area_22/action/sensor_11
-Subscribed to greenhouse_28/area_23/action/sensor_14
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 154.63, "P": 193.13, "K": 193.98}, "u": "mg/kg", "t": 0}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 42.74, "u": "%", "t": 0}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 10.05, "u": "\u00b0C", "t": 0}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 42.74, "u": "%", "t": 0}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.58, "u": "pH", "t": 0}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 144.84, "P": 191.35, "K": 208.03}, "u": "mg/kg", "t": 0}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 78.95, "u": "%", "t": 0}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.8, "u": "\u00b0C", "t": 0}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.95, "u": "%", "t": 0}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 154.5, "P": 193.04, "K": 193.89}, "u": "mg/kg", "t": 60}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 42.87, "u": "%", "t": 60}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 9.84, "u": "\u00b0C", "t": 60}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 42.86, "u": "%", "t": 60}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.57, "u": "pH", "t": 60}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 144.6, "P": 191.28, "K": 207.93}, "u": "mg/kg", "t": 60}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 78.17, "u": "%", "t": 60}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.26, "u": "\u00b0C", "t": 60}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 79.46, "u": "%", "t": 60}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 154.41, "P": 192.89, "K": 193.75}, "u": "mg/kg", "t": 120}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 43.37, "u": "%", "t": 120}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 9.72, "u": "\u00b0C", "t": 120}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 41.99, "u": "%", "t": 120}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.61, "u": "pH", "t": 120}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 144.39, "P": 191.16, "K": 207.73}, "u": "mg/kg", "t": 120}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 78.83, "u": "%", "t": 120}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.05, "u": "\u00b0C", "t": 120}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 79.13, "u": "%", "t": 120}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 154.32, "P": 192.84, "K": 193.7}, "u": "mg/kg", "t": 180}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 42.36, "u": "%", "t": 180}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 9.5, "u": "\u00b0C", "t": 180}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 43.21, "u": "%", "t": 180}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.63, "u": "pH", "t": 180}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 144.31, "P": 191.04, "K": 207.59}, "u": "mg/kg", "t": 180}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 78.26, "u": "%", "t": 180}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.55, "u": "\u00b0C", "t": 180}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 79.66, "u": "%", "t": 180}}
 
-Received action: {'message': {'action': 'increase', 'val': 42.36, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 180}
-Received action: {'message': {'action': 'decrease', 'val': 154.32, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 180}
-Received action: {'message': {'action': 'increase', 'val': 193.7, 'min_treshold': 200, 'max_treshold': 300}, 'parameter': 'K', 'timestamp': 180}
-Received action: {'message': {'action': 'increase', 'val': 9.5, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 180}
-Received action: {'message': {'action': 'increase', 'val': 43.21, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 180}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 146.23, "P": 192.72, "K": 199.67}, "u": "mg/kg", "t": 240}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 44.01, "u": "%", "t": 240}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 10.0, "u": "\u00b0C", "t": 240}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 45.12, "u": "%", "t": 240}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.6, "u": "pH", "t": 240}}
+Received action: {'message': {'action': 'increase', 'val': 24.55, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 180}
+Received action: {'message': {'action': 'decrease', 'val': 144.31, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 180}
+Received action: {'message': {'action': 'increase', 'val': 78.26, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 180}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 136.33, "P": 190.91, "K": 207.51}, "u": "mg/kg", "t": 240}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.03, "u": "%", "t": 240}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.5, "u": "\u00b0C", "t": 240}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.89, "u": "%", "t": 240}}
 
-Received action: {'message': {'action': 'decrease', 'val': 146.23, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 240}
-Received action: {'message': {'action': 'increase', 'val': 199.67, 'min_treshold': 200, 'max_treshold': 300}, 'parameter': 'K', 'timestamp': 240}
-Received action: {'message': {'action': 'increase', 'val': 44.01, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 240}
-Received action: {'message': {'action': 'increase', 'val': 45.12, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 240}
-Received action: {'message': {'action': 'increase', 'val': 10.0, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 240}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 138.31, "P": 192.6, "K": 205.73}, "u": "mg/kg", "t": 300}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 45.07, "u": "%", "t": 300}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 11.2, "u": "\u00b0C", "t": 300}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 45.9, "u": "%", "t": 300}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.66, "u": "pH", "t": 300}}
+Received action: {'message': {'action': 'decrease', 'val': 136.33, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 240}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 128.3, "P": 190.86, "K": 207.31}, "u": "mg/kg", "t": 300}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.72, "u": "%", "t": 300}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.61, "u": "\u00b0C", "t": 300}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.8, "u": "%", "t": 300}}
 
-Received action: {'message': {'action': 'increase', 'val': 45.07, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 300}
-Received action: {'message': {'action': 'increase', 'val': 11.2, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 300}
-Received action: {'message': {'action': 'decrease', 'val': 138.31, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 300}
-Received action: {'message': {'action': 'increase', 'val': 45.9, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 300}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 130.39, "P": 192.54, "K": 205.65}, "u": "mg/kg", "t": 360}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 46.64, "u": "%", "t": 360}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 11.65, "u": "\u00b0C", "t": 360}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 47.55, "u": "%", "t": 360}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.7, "u": "pH", "t": 360}}
+Received action: {'message': {'action': 'decrease', 'val': 128.3, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 300}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 120.26, "P": 190.75, "K": 207.19}, "u": "mg/kg", "t": 360}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.57, "u": "%", "t": 360}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.46, "u": "\u00b0C", "t": 360}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.43, "u": "%", "t": 360}}
 
-Received action: {'message': {'action': 'increase', 'val': 46.64, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 360}
-Received action: {'message': {'action': 'increase', 'val': 47.55, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 360}
-Received action: {'message': {'action': 'increase', 'val': 11.65, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 360}
-Received action: {'message': {'action': 'decrease', 'val': 130.39, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 360}
-Received action: {'message': {'action': 'increase', 'val': 46.64, 'min_treshold': '80.00'}, 'parameter': 'Humidity', 'timestamp': '2025-08-29 00:05:00'}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 122.32, "P": 192.45, "K": 205.52}, "u": "mg/kg", "t": 420}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 48.02, "u": "%", "t": 420}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 11.97, "u": "\u00b0C", "t": 420}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 49.54, "u": "%", "t": 420}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.67, "u": "pH", "t": 420}}
+Received action: {'message': {'action': 'decrease', 'val': 120.26, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 360}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 112.35, "P": 190.7, "K": 207.09}, "u": "mg/kg", "t": 420}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.39, "u": "%", "t": 420}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.64, "u": "\u00b0C", "t": 420}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 79.41, "u": "%", "t": 420}}
 
-Received action: {'message': {'action': 'increase', 'val': 48.02, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 420}
-Received action: {'message': {'action': 'increase', 'val': 49.54, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 420}
-Received action: {'message': {'action': 'increase', 'val': 11.97, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 420}
-Received action: {'message': {'action': 'decrease', 'val': 122.32, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 420}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 114.29, "P": 192.33, "K": 205.45}, "u": "mg/kg", "t": 480}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 48.85, "u": "%", "t": 480}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 12.73, "u": "\u00b0C", "t": 480}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 51.41, "u": "%", "t": 480}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.72, "u": "pH", "t": 480}}
+Received action: {'message': {'action': 'decrease', 'val': 112.35, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 420}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 104.43, "P": 190.6, "K": 207.03}, "u": "mg/kg", "t": 480}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.29, "u": "%", "t": 480}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.56, "u": "\u00b0C", "t": 480}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 79.22, "u": "%", "t": 480}}
 
-Received action: {'message': {'action': 'increase', 'val': 48.85, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 480}
-Received action: {'message': {'action': 'decrease', 'val': 114.29, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 480}
-Received action: {'message': {'action': 'decrease', 'val': 192.33, 'max_treshold': '180.00'}, 'parameter': 'Phosphorus', 'timestamp': '2025-08-29 00:07:00'}
-Received action: {'message': {'action': 'increase', 'val': 12.73, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 480}
-Received action: {'message': {'action': 'increase', 'val': 51.41, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 480}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 106.35, "P": 192.24, "K": 205.28}, "u": "mg/kg", "t": 540}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 50.88, "u": "%", "t": 540}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 13.64, "u": "\u00b0C", "t": 540}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 52.51, "u": "%", "t": 540}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.76, "u": "pH", "t": 540}}
+Received action: {'message': {'action': 'decrease', 'val': 104.43, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 480}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.38, "P": 190.48, "K": 206.99}, "u": "mg/kg", "t": 540}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.11, "u": "%", "t": 540}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.77, "u": "\u00b0C", "t": 540}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 79.38, "u": "%", "t": 540}}
 
-Received action: {'message': {'action': 'increase', 'val': 50.88, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 540}
-Received action: {'message': {'action': 'decrease', 'val': 106.35, 'min_treshold': 50, 'max_treshold': 100}, 'parameter': 'N', 'timestamp': 540}
-Received action: {'message': {'action': 'increase', 'val': 13.64, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 540}
-Received action: {'message': {'action': 'increase', 'val': 52.51, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 540}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 98.27, "P": 192.16, "K": 205.09}, "u": "mg/kg", "t": 600}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 53.01, "u": "%", "t": 600}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 14.39, "u": "\u00b0C", "t": 600}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 53.97, "u": "%", "t": 600}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.8, "u": "pH", "t": 600}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.32, "P": 190.4, "K": 206.95}, "u": "mg/kg", "t": 600}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.52, "u": "%", "t": 600}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.62, "u": "\u00b0C", "t": 600}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.53, "u": "%", "t": 600}}
 
-Received action: {'message': {'action': 'increase', 'val': 53.01, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 600}
-Received action: {'message': {'action': 'increase', 'val': 6.8, 'min_treshold': '7.10'}, 'parameter': 'pH', 'timestamp': '2025-08-29 00:09:00'}
-Received action: {'message': {'action': 'increase', 'val': 14.39, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 600}
-Received action: {'message': {'action': 'increase', 'val': 53.97, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 600}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 98.02, "P": 192.04, "K": 204.97}, "u": "mg/kg", "t": 660}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 54.64, "u": "%", "t": 660}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 15.56, "u": "\u00b0C", "t": 660}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 54.81, "u": "%", "t": 660}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.84, "u": "pH", "t": 660}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.16, "P": 190.26, "K": 206.91}, "u": "mg/kg", "t": 660}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.17, "u": "%", "t": 660}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.18, "u": "\u00b0C", "t": 660}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.27, "u": "%", "t": 660}}
 
-Received action: {'message': {'action': 'increase', 'val': 54.64, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 660}
-Received action: {'message': {'action': 'increase', 'val': 54.81, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 660}
-Received action: {'message': {'action': 'increase', 'val': 15.56, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 660}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 97.86, "P": 191.93, "K": 204.89}, "u": "mg/kg", "t": 720}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 55.58, "u": "%", "t": 720}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 15.88, "u": "\u00b0C", "t": 720}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 56.21, "u": "%", "t": 720}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.97, "u": "pH", "t": 720}}
+Received action: {'message': {'action': 'increase', 'val': 79.17, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 660}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.03, "P": 190.2, "K": 206.88}, "u": "mg/kg", "t": 720}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.89, "u": "%", "t": 720}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.88, "u": "\u00b0C", "t": 720}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.63, "u": "%", "t": 720}}
 
-Received action: {'message': {'action': 'increase', 'val': 55.58, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 720}
-Received action: {'message': {'action': 'increase', 'val': 15.88, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 720}
-Received action: {'message': {'action': 'increase', 'val': 56.21, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 720}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 97.72, "P": 191.89, "K": 204.85}, "u": "mg/kg", "t": 780}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 56.61, "u": "%", "t": 780}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 17.07, "u": "\u00b0C", "t": 780}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 57.17, "u": "%", "t": 780}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.06, "u": "pH", "t": 780}}
+Received action: {'message': {'action': 'increase', 'val': 79.89, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 720}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.96, "P": 190.19, "K": 206.84}, "u": "mg/kg", "t": 780}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.73, "u": "%", "t": 780}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.56, "u": "\u00b0C", "t": 780}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.51, "u": "%", "t": 780}}
 
-Received action: {'message': {'action': 'increase', 'val': 56.61, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 780}
-Received action: {'message': {'action': 'increase', 'val': 17.07, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 780}
-Received action: {'message': {'action': 'increase', 'val': 57.17, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 780}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 97.66, "P": 191.86, "K": 204.8}, "u": "mg/kg", "t": 840}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 58.38, "u": "%", "t": 840}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 17.79, "u": "\u00b0C", "t": 840}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 59.09, "u": "%", "t": 840}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.05, "u": "pH", "t": 840}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.8, "P": 190.15, "K": 206.78}, "u": "mg/kg", "t": 840}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.83, "u": "%", "t": 840}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.18, "u": "\u00b0C", "t": 840}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.8, "u": "%", "t": 840}}
 
-Received action: {'message': {'action': 'increase', 'val': 17.79, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 840}
-Received action: {'message': {'action': 'increase', 'val': 58.38, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 840}
-Received action: {'message': {'action': 'increase', 'val': 59.09, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 840}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 97.53, "P": 191.78, "K": 204.62}, "u": "mg/kg", "t": 900}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 60.55, "u": "%", "t": 900}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 18.63, "u": "\u00b0C", "t": 900}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 60.58, "u": "%", "t": 900}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.99, "u": "pH", "t": 900}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.68, "P": 190.11, "K": 206.72}, "u": "mg/kg", "t": 900}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.26, "u": "%", "t": 900}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.32, "u": "\u00b0C", "t": 900}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.49, "u": "%", "t": 900}}
 
-Received action: {'message': {'action': 'increase', 'val': 60.55, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 900}
-Received action: {'message': {'action': 'increase', 'val': 60.58, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 900}
-Received action: {'message': {'action': 'increase', 'val': 18.63, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 900}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 97.35, "P": 191.69, "K": 204.53}, "u": "mg/kg", "t": 960}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 61.68, "u": "%", "t": 960}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 19.67, "u": "\u00b0C", "t": 960}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 61.65, "u": "%", "t": 960}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.04, "u": "pH", "t": 960}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.62, "P": 190.02, "K": 206.65}, "u": "mg/kg", "t": 960}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.13, "u": "%", "t": 960}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.51, "u": "\u00b0C", "t": 960}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.34, "u": "%", "t": 960}}
 
-Received action: {'message': {'action': 'increase', 'val': 61.68, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 960}
-Received action: {'message': {'action': 'increase', 'val': 19.67, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 960}
-Received action: {'message': {'action': 'increase', 'val': 61.65, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 960}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 97.12, "P": 191.62, "K": 204.32}, "u": "mg/kg", "t": 1020}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 63.54, "u": "%", "t": 1020}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 20.61, "u": "\u00b0C", "t": 1020}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 63.8, "u": "%", "t": 1020}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.02, "u": "pH", "t": 1020}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.46, "P": 189.99, "K": 206.61}, "u": "mg/kg", "t": 1020}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.49, "u": "%", "t": 1020}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 26.04, "u": "\u00b0C", "t": 1020}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.57, "u": "%", "t": 1020}}
 
-Received action: {'message': {'action': 'increase', 'val': 63.54, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1020}
-Received action: {'message': {'action': 'increase', 'val': 20.61, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 1020}
-Received action: {'message': {'action': 'increase', 'val': 63.8, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1020}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.9, "P": 191.5, "K": 204.18}, "u": "mg/kg", "t": 1080}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 65.51, "u": "%", "t": 1080}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 21.78, "u": "\u00b0C", "t": 1080}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 65.21, "u": "%", "t": 1080}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.06, "u": "pH", "t": 1080}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.25, "P": 189.95, "K": 206.53}, "u": "mg/kg", "t": 1080}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.94, "u": "%", "t": 1080}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.96, "u": "\u00b0C", "t": 1080}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.88, "u": "%", "t": 1080}}
 
-Received action: {'message': {'action': 'increase', 'val': 65.51, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1080}
-Received action: {'message': {'action': 'increase', 'val': 65.21, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1080}
-Received action: {'message': {'action': 'increase', 'val': 21.78, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 1080}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.83, "P": 191.43, "K": 203.99}, "u": "mg/kg", "t": 1140}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 67.0, "u": "%", "t": 1140}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 22.36, "u": "\u00b0C", "t": 1140}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 66.05, "u": "%", "t": 1140}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.05, "u": "pH", "t": 1140}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.07, "P": 189.93, "K": 206.32}, "u": "mg/kg", "t": 1140}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.89, "u": "%", "t": 1140}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.28, "u": "\u00b0C", "t": 1140}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.0, "u": "%", "t": 1140}}
 
-Received action: {'message': {'action': 'increase', 'val': 67.0, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1140}
-Received action: {'message': {'action': 'increase', 'val': 66.05, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1140}
-Received action: {'message': {'action': 'increase', 'val': 22.36, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 1140}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.69, "P": 191.35, "K": 203.95}, "u": "mg/kg", "t": 1200}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 68.17, "u": "%", "t": 1200}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 23.18, "u": "\u00b0C", "t": 1200}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 67.55, "u": "%", "t": 1200}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.02, "u": "pH", "t": 1200}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.84, "P": 189.85, "K": 206.2}, "u": "mg/kg", "t": 1200}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.23, "u": "%", "t": 1200}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.35, "u": "\u00b0C", "t": 1200}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.55, "u": "%", "t": 1200}}
 
-Received action: {'message': {'action': 'increase', 'val': 68.17, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1200}
-Received action: {'message': {'action': 'increase', 'val': 23.18, 'min_treshold': 25, 'max_treshold': 30}, 'parameter': 'Temperature', 'timestamp': 1200}
-Received action: {'message': {'action': 'increase', 'val': 67.55, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1200}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.52, "P": 191.28, "K": 203.85}, "u": "mg/kg", "t": 1260}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 69.23, "u": "%", "t": 1260}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.43, "u": "\u00b0C", "t": 1260}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 69.82, "u": "%", "t": 1260}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.06, "u": "pH", "t": 1260}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.71, "P": 189.84, "K": 206.09}, "u": "mg/kg", "t": 1260}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.16, "u": "%", "t": 1260}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.13, "u": "\u00b0C", "t": 1260}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.02, "u": "%", "t": 1260}}
 
-Received action: {'message': {'action': 'increase', 'val': 69.23, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1260}
-Received action: {'message': {'action': 'increase', 'val': 69.82, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1260}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.43, "P": 191.27, "K": 203.77}, "u": "mg/kg", "t": 1320}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 70.54, "u": "%", "t": 1320}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.62, "u": "\u00b0C", "t": 1320}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 71.05, "u": "%", "t": 1320}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.02, "u": "pH", "t": 1320}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.52, "P": 189.72, "K": 205.99}, "u": "mg/kg", "t": 1320}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.0, "u": "%", "t": 1320}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.86, "u": "\u00b0C", "t": 1320}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.91, "u": "%", "t": 1320}}
 
-Received action: {'message': {'action': 'increase', 'val': 70.54, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1320}
-Received action: {'message': {'action': 'increase', 'val': 71.05, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1320}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.26, "P": 191.14, "K": 203.65}, "u": "mg/kg", "t": 1380}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 71.95, "u": "%", "t": 1380}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.39, "u": "\u00b0C", "t": 1380}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 73.13, "u": "%", "t": 1380}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.98, "u": "pH", "t": 1380}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.34, "P": 189.65, "K": 205.82}, "u": "mg/kg", "t": 1380}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.46, "u": "%", "t": 1380}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.5, "u": "\u00b0C", "t": 1380}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.22, "u": "%", "t": 1380}}
 
-Received action: {'message': {'action': 'increase', 'val': 71.95, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1380}
-Received action: {'message': {'action': 'increase', 'val': 73.13, 'min_treshold': 75, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1380}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 96.07, "P": 191.11, "K": 203.48}, "u": "mg/kg", "t": 1440}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 72.86, "u": "%", "t": 1440}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.2, "u": "\u00b0C", "t": 1440}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 74.48, "u": "%", "t": 1440}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.96, "u": "pH", "t": 1440}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.25, "P": 189.52, "K": 205.73}, "u": "mg/kg", "t": 1440}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.31, "u": "%", "t": 1440}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.76, "u": "\u00b0C", "t": 1440}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.6, "u": "%", "t": 1440}}
 
-Received action: {'message': {'action': 'increase', 'val': 72.86, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1440}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.94, "P": 190.97, "K": 203.36}, "u": "mg/kg", "t": 1500}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 74.07, "u": "%", "t": 1500}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.54, "u": "\u00b0C", "t": 1500}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.4, "u": "%", "t": 1500}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.98, "u": "pH", "t": 1500}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.12, "P": 189.39, "K": 205.65}, "u": "mg/kg", "t": 1500}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.55, "u": "%", "t": 1500}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.53, "u": "\u00b0C", "t": 1500}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.47, "u": "%", "t": 1500}}
 
-Received action: {'message': {'action': 'increase', 'val': 74.07, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1500}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.79, "P": 190.92, "K": 203.18}, "u": "mg/kg", "t": 1560}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 75.48, "u": "%", "t": 1560}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.11, "u": "\u00b0C", "t": 1560}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 75.85, "u": "%", "t": 1560}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.01, "u": "pH", "t": 1560}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.01, "P": 189.25, "K": 205.44}, "u": "mg/kg", "t": 1560}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.85, "u": "%", "t": 1560}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.83, "u": "\u00b0C", "t": 1560}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.62, "u": "%", "t": 1560}}
 
-Received action: {'message': {'action': 'increase', 'val': 75.48, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1560}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.69, "P": 190.9, "K": 203.04}, "u": "mg/kg", "t": 1620}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 76.82, "u": "%", "t": 1620}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.43, "u": "\u00b0C", "t": 1620}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.92, "u": "%", "t": 1620}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.98, "u": "pH", "t": 1620}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 93.84, "P": 189.24, "K": 205.26}, "u": "mg/kg", "t": 1620}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.09, "u": "%", "t": 1620}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.4, "u": "\u00b0C", "t": 1620}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.05, "u": "%", "t": 1620}}
 
-Received action: {'message': {'action': 'increase', 'val': 76.82, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1620}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.62, "P": 190.77, "K": 202.85}, "u": "mg/kg", "t": 1680}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 78.6, "u": "%", "t": 1680}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.77, "u": "\u00b0C", "t": 1680}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.78, "u": "%", "t": 1680}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 6.98, "u": "pH", "t": 1680}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 93.68, "P": 189.12, "K": 205.2}, "u": "mg/kg", "t": 1680}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.05, "u": "%", "t": 1680}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.59, "u": "\u00b0C", "t": 1680}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.56, "u": "%", "t": 1680}}
 
-Received action: {'message': {'action': 'increase', 'val': 78.6, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1680}
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.47, "P": 190.62, "K": 202.72}, "u": "mg/kg", "t": 1740}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.45, "u": "%", "t": 1740}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.1, "u": "\u00b0C", "t": 1740}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.71, "u": "%", "t": 1740}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.02, "u": "pH", "t": 1740}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 93.46, "P": 189.02, "K": 205.13}, "u": "mg/kg", "t": 1740}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.53, "u": "%", "t": 1740}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.16, "u": "\u00b0C", "t": 1740}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.52, "u": "%", "t": 1740}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.34, "P": 190.54, "K": 202.63}, "u": "mg/kg", "t": 1800}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.02, "u": "%", "t": 1800}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.98, "u": "\u00b0C", "t": 1800}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 75.88, "u": "%", "t": 1800}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.04, "u": "pH", "t": 1800}}
+Received action: {'message': {'action': 'increase', 'val': 79.53, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 1740}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 93.26, "P": 188.89, "K": 205.07}, "u": "mg/kg", "t": 1800}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.7, "u": "%", "t": 1800}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.15, "u": "\u00b0C", "t": 1800}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.74, "u": "%", "t": 1800}}
 
-Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=DeviceConnector (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x79aa83716c90>: Failed to establish a new connection: [Errno 111] Connection refused'))
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.11, "P": 190.42, "K": 202.56}, "u": "mg/kg", "t": 1860}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.27, "u": "%", "t": 1860}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.6, "u": "\u00b0C", "t": 1860}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.24, "u": "%", "t": 1860}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.05, "u": "pH", "t": 1860}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 93.07, "P": 188.74, "K": 204.96}, "u": "mg/kg", "t": 1860}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.43, "u": "%", "t": 1860}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 26.06, "u": "\u00b0C", "t": 1860}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.3, "u": "%", "t": 1860}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 95.03, "P": 190.31, "K": 202.39}, "u": "mg/kg", "t": 1920}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.76, "u": "%", "t": 1920}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.53, "u": "\u00b0C", "t": 1920}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 75.67, "u": "%", "t": 1920}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.08, "u": "pH", "t": 1920}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 92.91, "P": 188.68, "K": 204.9}, "u": "mg/kg", "t": 1920}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.96, "u": "%", "t": 1920}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.3, "u": "\u00b0C", "t": 1920}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.5, "u": "%", "t": 1920}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.83, "P": 190.29, "K": 202.29}, "u": "mg/kg", "t": 1980}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.98, "u": "%", "t": 1980}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 24.97, "u": "\u00b0C", "t": 1980}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 75.84, "u": "%", "t": 1980}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.07, "u": "pH", "t": 1980}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 92.72, "P": 188.6, "K": 204.8}, "u": "mg/kg", "t": 1980}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.31, "u": "%", "t": 1980}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.47, "u": "\u00b0C", "t": 1980}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.37, "u": "%", "t": 1980}}
 
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.66, "P": 190.25, "K": 202.26}, "u": "mg/kg", "t": 2040}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.96, "u": "%", "t": 2040}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.62, "u": "\u00b0C", "t": 2040}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 75.93, "u": "%", "t": 2040}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.11, "u": "pH", "t": 2040}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 92.5, "P": 188.51, "K": 204.6}, "u": "mg/kg", "t": 2040}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.64, "u": "%", "t": 2040}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.59, "u": "\u00b0C", "t": 2040}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.31, "u": "%", "t": 2040}}
 
-Error checking for updates in the Catalog: HTTPConnectionPool(host='192.168.0.76', port=8080): Max retries exceeded with url: /get_sensors?greenhouse_id=28&device_name=DeviceConnector (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x79aa837252d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
-Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 94.6, "P": 190.17, "K": 202.06}, "u": "mg/kg", "t": 2100}}
-Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.8, "u": "%", "t": 2100}}
-Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.14, "u": "\u00b0C", "t": 2100}}
-Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.73, "u": "%", "t": 2100}}
-Published to greenhouse_28/area_23/sensor_14: {"bn": "greenhouse_28/area_23/sensor_14", "e": {"n": "pH", "v": 7.06, "u": "pH", "t": 2100}}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 92.34, "P": 188.48, "K": 204.57}, "u": "mg/kg", "t": 2100}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.89, "u": "%", "t": 2100}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.89, "u": "\u00b0C", "t": 2100}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.34, "u": "%", "t": 2100}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 92.27, "P": 188.46, "K": 204.52}, "u": "mg/kg", "t": 2160}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.29, "u": "%", "t": 2160}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.31, "u": "\u00b0C", "t": 2160}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.99, "u": "%", "t": 2160}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 92.06, "P": 188.35, "K": 204.44}, "u": "mg/kg", "t": 2220}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.97, "u": "%", "t": 2220}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.18, "u": "\u00b0C", "t": 2220}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.03, "u": "%", "t": 2220}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.83, "P": 188.31, "K": 204.4}, "u": "mg/kg", "t": 2280}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 82.14, "u": "%", "t": 2280}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.68, "u": "\u00b0C", "t": 2280}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.82, "u": "%", "t": 2280}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.76, "P": 188.17, "K": 204.27}, "u": "mg/kg", "t": 2340}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.94, "u": "%", "t": 2340}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.26, "u": "\u00b0C", "t": 2340}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.47, "u": "%", "t": 2340}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.59, "P": 188.1, "K": 204.1}, "u": "mg/kg", "t": 2400}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.56, "u": "%", "t": 2400}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.49, "u": "\u00b0C", "t": 2400}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.05, "u": "%", "t": 2400}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.42, "P": 187.98, "K": 204.02}, "u": "mg/kg", "t": 2460}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.25, "u": "%", "t": 2460}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.71, "u": "\u00b0C", "t": 2460}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.29, "u": "%", "t": 2460}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.22, "P": 187.96, "K": 203.94}, "u": "mg/kg", "t": 2520}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.46, "u": "%", "t": 2520}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.76, "u": "\u00b0C", "t": 2520}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.79, "u": "%", "t": 2520}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.16, "P": 187.85, "K": 203.82}, "u": "mg/kg", "t": 2580}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.3, "u": "%", "t": 2580}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 26.11, "u": "\u00b0C", "t": 2580}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.93, "u": "%", "t": 2580}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 91.1, "P": 187.84, "K": 203.62}, "u": "mg/kg", "t": 2640}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.8, "u": "%", "t": 2640}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.91, "u": "\u00b0C", "t": 2640}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 78.15, "u": "%", "t": 2640}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.96, "P": 187.79, "K": 203.52}, "u": "mg/kg", "t": 2700}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.59, "u": "%", "t": 2700}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.41, "u": "\u00b0C", "t": 2700}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.61, "u": "%", "t": 2700}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.81, "P": 187.67, "K": 203.31}, "u": "mg/kg", "t": 2760}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.97, "u": "%", "t": 2760}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.32, "u": "\u00b0C", "t": 2760}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.79, "u": "%", "t": 2760}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.73, "P": 187.53, "K": 203.13}, "u": "mg/kg", "t": 2820}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.49, "u": "%", "t": 2820}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.96, "u": "\u00b0C", "t": 2820}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.05, "u": "%", "t": 2820}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.55, "P": 187.4, "K": 203.0}, "u": "mg/kg", "t": 2880}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.68, "u": "%", "t": 2880}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.95, "u": "\u00b0C", "t": 2880}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.68, "u": "%", "t": 2880}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.38, "P": 187.25, "K": 202.85}, "u": "mg/kg", "t": 2940}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.68, "u": "%", "t": 2940}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.97, "u": "\u00b0C", "t": 2940}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.82, "u": "%", "t": 2940}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.19, "P": 187.22, "K": 202.79}, "u": "mg/kg", "t": 3000}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.92, "u": "%", "t": 3000}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.49, "u": "\u00b0C", "t": 3000}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.93, "u": "%", "t": 3000}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 90.04, "P": 187.1, "K": 202.69}, "u": "mg/kg", "t": 3060}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.5, "u": "%", "t": 3060}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.5, "u": "\u00b0C", "t": 3060}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.55, "u": "%", "t": 3060}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 89.86, "P": 187.07, "K": 202.51}, "u": "mg/kg", "t": 3120}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.16, "u": "%", "t": 3120}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.53, "u": "\u00b0C", "t": 3120}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.55, "u": "%", "t": 3120}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 89.77, "P": 186.98, "K": 202.45}, "u": "mg/kg", "t": 3180}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.21, "u": "%", "t": 3180}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.4, "u": "\u00b0C", "t": 3180}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.65, "u": "%", "t": 3180}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 89.52, "P": 186.85, "K": 202.33}, "u": "mg/kg", "t": 3240}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.33, "u": "%", "t": 3240}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.52, "u": "\u00b0C", "t": 3240}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.95, "u": "%", "t": 3240}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 89.45, "P": 186.8, "K": 202.12}, "u": "mg/kg", "t": 3300}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.55, "u": "%", "t": 3300}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.26, "u": "\u00b0C", "t": 3300}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.13, "u": "%", "t": 3300}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 89.22, "P": 186.78, "K": 202.05}, "u": "mg/kg", "t": 3360}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.87, "u": "%", "t": 3360}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.91, "u": "\u00b0C", "t": 3360}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.59, "u": "%", "t": 3360}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 89.14, "P": 186.75, "K": 201.94}, "u": "mg/kg", "t": 3420}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.24, "u": "%", "t": 3420}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.22, "u": "\u00b0C", "t": 3420}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.59, "u": "%", "t": 3420}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 88.89, "P": 186.62, "K": 201.79}, "u": "mg/kg", "t": 3480}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.8, "u": "%", "t": 3480}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.94, "u": "\u00b0C", "t": 3480}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.21, "u": "%", "t": 3480}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 88.65, "P": 186.47, "K": 201.62}, "u": "mg/kg", "t": 3540}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.52, "u": "%", "t": 3540}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.15, "u": "\u00b0C", "t": 3540}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 75.98, "u": "%", "t": 3540}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 88.45, "P": 186.34, "K": 201.48}, "u": "mg/kg", "t": 3600}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.7, "u": "%", "t": 3600}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.92, "u": "\u00b0C", "t": 3600}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.67, "u": "%", "t": 3600}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 88.34, "P": 186.29, "K": 201.34}, "u": "mg/kg", "t": 3660}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.32, "u": "%", "t": 3660}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.28, "u": "\u00b0C", "t": 3660}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.19, "u": "%", "t": 3660}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 88.1, "P": 186.21, "K": 201.23}, "u": "mg/kg", "t": 3720}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.7, "u": "%", "t": 3720}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.74, "u": "\u00b0C", "t": 3720}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.07, "u": "%", "t": 3720}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.99, "P": 186.15, "K": 201.02}, "u": "mg/kg", "t": 3780}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.8, "u": "%", "t": 3780}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.66, "u": "\u00b0C", "t": 3780}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.0, "u": "%", "t": 3780}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.87, "P": 186.1, "K": 200.91}, "u": "mg/kg", "t": 3840}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.62, "u": "%", "t": 3840}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.41, "u": "\u00b0C", "t": 3840}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.95, "u": "%", "t": 3840}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.72, "P": 186.02, "K": 200.82}, "u": "mg/kg", "t": 3900}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.05, "u": "%", "t": 3900}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.12, "u": "\u00b0C", "t": 3900}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 77.14, "u": "%", "t": 3900}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.62, "P": 185.96, "K": 200.71}, "u": "mg/kg", "t": 3960}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 80.8, "u": "%", "t": 3960}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.96, "u": "\u00b0C", "t": 3960}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.69, "u": "%", "t": 3960}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.46, "P": 185.89, "K": 200.53}, "u": "mg/kg", "t": 4020}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.88, "u": "%", "t": 4020}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.97, "u": "\u00b0C", "t": 4020}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.84, "u": "%", "t": 4020}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.27, "P": 185.8, "K": 200.35}, "u": "mg/kg", "t": 4080}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 79.91, "u": "%", "t": 4080}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.79, "u": "\u00b0C", "t": 4080}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.58, "u": "%", "t": 4080}}
+
+Received action: {'message': {'action': 'increase', 'val': 79.91, 'min_treshold': 80, 'max_treshold': 85}, 'parameter': 'Humidity', 'timestamp': 4080}
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.15, "P": 185.72, "K": 200.3}, "u": "mg/kg", "t": 4140}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 81.52, "u": "%", "t": 4140}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 25.32, "u": "\u00b0C", "t": 4140}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.03, "u": "%", "t": 4140}}
+
+Published to greenhouse_28/area_23/sensor_13: {"bn": "greenhouse_28/area_23/sensor_13", "e": {"n": "NPK", "v": {"N": 87.09, "P": 185.6, "K": 200.16}, "u": "mg/kg", "t": 4200}}
+Published to greenhouse_28/area_23/sensor_12: {"bn": "greenhouse_28/area_23/sensor_12", "e": {"n": "Humidity", "v": 82.13, "u": "%", "t": 4200}}
+Published to greenhouse_28/area_22/sensor_10: {"bn": "greenhouse_28/area_22/sensor_10", "e": {"n": "Temperature", "v": 26.02, "u": "\u00b0C", "t": 4200}}
+Published to greenhouse_28/area_22/sensor_11: {"bn": "greenhouse_28/area_22/sensor_11", "e": {"n": "Humidity", "v": 76.59, "u": "%", "t": 4200}}
 
