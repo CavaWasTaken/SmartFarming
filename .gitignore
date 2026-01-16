@@ -1,4 +1,9 @@
 .venv
-**/mosquitto.db
-**/logs/
 **/__pycache__/
+*.pyc
+*.pyo
+*.log
+**/logs/
+**/mosquitto.db
+**/mosquitto.log
+.DS_Store
